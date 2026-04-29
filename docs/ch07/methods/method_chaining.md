@@ -119,9 +119,13 @@ Python typically uses method chaining. Functional-style composition with nested 
 
 ## Designing for Chaining
 
-In object-oriented design, chaining is enabled when methods return `self` or a new object of the same type:
+When writing [instance methods](instance_methods.md), the return value determines whether chaining is possible and what style of chaining you get:
+
+- **Return `self`** (mutable style) --- mutates the object in place and returns it. The chain operates on a single object.
+- **Return a new object** (immutable style) --- leaves the original untouched and returns a fresh instance. Each step in the chain produces a new object.
 
 ```python
+# Mutable style: returns self
 class Builder:
     def step1(self):
         print("step1")
@@ -135,7 +139,23 @@ b = Builder()
 b.step1().step2()
 ```
 
-This is called a **fluent interface**. It is common in configuration builders, query builders, and testing frameworks.
+```python
+# Immutable style: returns new object
+class Text:
+    def __init__(self, value):
+        self.value = value
+
+    def upper(self):
+        return Text(self.value.upper())
+
+    def add_prefix(self, prefix):
+        return Text(prefix + self.value)
+
+result = Text("hello").upper().add_prefix(">> ")
+print(result.value)  # >> HELLO
+```
+
+The mutable pattern is called a **fluent interface** and is common in configuration builders, query builders, and testing frameworks. The immutable pattern mirrors how built-in string methods work.
 
 ---
 
@@ -234,3 +254,35 @@ Write a class `TextProcessor` with methods `strip_text()`, `lowercase()`, and `a
     ```
 
     Each method modifies `self.text` and returns `self`, enabling the next method call on the same object. This is the fluent interface pattern. Note that this mutates the object in place --- an immutable alternative would return new `TextProcessor` instances instead.
+
+---
+
+**Exercise 4.**
+Rewrite the `TextProcessor` from Exercise 3 using the **immutable style** --- each method should return a new `TextProcessor` instead of modifying `self`. Create an original instance, chain methods, and show that the original is unchanged while the result holds the transformed text.
+
+??? success "Solution to Exercise 4"
+    ```python
+    class TextProcessor:
+        def __init__(self, text):
+            self.text = text
+
+        def strip_text(self):
+            return TextProcessor(self.text.strip())
+
+        def lowercase(self):
+            return TextProcessor(self.text.lower())
+
+        def add_prefix(self, prefix):
+            return TextProcessor(prefix + self.text)
+
+        def __repr__(self):
+            return f"TextProcessor({self.text!r})"
+
+    original = TextProcessor("  HELLO  ")
+    result = original.strip_text().lowercase().add_prefix(">> ")
+
+    print(original)  # TextProcessor('  HELLO  ') — unchanged
+    print(result)     # TextProcessor('>> hello')
+    ```
+
+    The immutable style mirrors how built-in `str` methods work: each call returns a new object, leaving the original intact. This is safer for shared references but creates more objects. The mutable style (Exercise 3) is more memory-efficient but can surprise callers who hold a reference to the original.
