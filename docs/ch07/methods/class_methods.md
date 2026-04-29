@@ -1,6 +1,6 @@
 # Class Methods
 
-Class methods receive the class itself as the first argument, enabling operations on class-level data and alternative constructors.
+Class methods receive the class itself as the first argument, enabling operations on class-level data and alternative constructors. Unlike [instance methods](instance_methods.md) that bind to an object via `self`, class methods bind to the class via `cls`. For utilities that need neither, see [Static Methods](static_methods.md).
 
 ---
 
@@ -220,7 +220,7 @@ def instance_method(self):
 
 ### 3. Different Scopes
 
-Class methods operate on class, instance methods on instances.
+Class methods operate on class, instance methods on instances. See [Instance Methods](instance_methods.md) for a comparison table of all three method types.
 
 ---
 
@@ -246,7 +246,7 @@ print(Parent.count) # 0
 
 ### 2. `cls` is Dynamic
 
-`cls` refers to the calling class.
+`cls` refers to the calling class, not the class where the method was defined. Under the hood, `@classmethod` is a descriptor that wraps the function and binds it to whatever class triggers the lookup --- this is why `Child.increment()` sets `cls` to `Child`, not `Parent`.
 
 ### 3. Polymorphic Behavior
 
@@ -362,7 +362,7 @@ def static_method(param):
 
 ### 3. Choose Based on Need
 
-Use class method if you need class reference.
+Use class method when you need access to the class (e.g., modifying class state, alternative constructors). Use [static method](static_methods.md) when the function needs no access to class or instance.
 
 ---
 
@@ -468,3 +468,55 @@ Build a `Currency` class with `amount` and `code`. Add class methods `from_usd(a
         c = Crypto.from_usd(100)
         print(c)            # Crypto(100, 'USD')
         print(type(c))      # <class 'Crypto'> — cls works correctly
+
+---
+
+**Exercise 4.**
+Consider the following hierarchy. Predict the output and explain why `cls` is different in each call, even though `increment` is defined only on `Base`.
+
+```python
+class Base:
+    count = 0
+
+    @classmethod
+    def increment(cls):
+        cls.count += 1
+        return cls.__name__
+
+class Alpha(Base):
+    count = 0
+
+class Beta(Base):
+    count = 0
+
+print(Alpha.increment())
+print(Alpha.increment())
+print(Beta.increment())
+print(Base.count, Alpha.count, Beta.count)
+```
+
+??? success "Solution to Exercise 4"
+
+        class Base:
+            count = 0
+
+            @classmethod
+            def increment(cls):
+                cls.count += 1
+                return cls.__name__
+
+        class Alpha(Base):
+            count = 0
+
+        class Beta(Base):
+            count = 0
+
+        print(Alpha.increment())  # "Alpha"
+        print(Alpha.increment())  # "Alpha"
+        print(Beta.increment())   # "Beta"
+        print(Base.count, Alpha.count, Beta.count)  # 0 2 1
+
+        # cls is dynamic: when called as Alpha.increment(), cls=Alpha,
+        # so cls.count += 1 modifies Alpha.count, not Base.count.
+        # This works because @classmethod is a descriptor that binds
+        # the function to the calling class, not the defining class.
