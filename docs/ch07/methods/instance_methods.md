@@ -1,6 +1,6 @@
 # Instance Methods
 
-Instance methods are functions that belong to class instances, operating on instance-specific data.
+Instance methods are functions defined inside a class that operate on instance-specific data via `self`. They are the most common method type --- for alternatives that operate on the class or neither, see [Class Methods](class_methods.md) and [Static Methods](static_methods.md).
 
 ---
 
@@ -142,6 +142,8 @@ Student.add_course(student, "Physics")
 
 ### 3. Chaining Methods
 
+Instance methods can support [method chaining](method_chaining.md) by returning `self` (mutable style) or a new object of the same type (immutable style).
+
 ```python
 class Counter:
     def __init__(self):
@@ -261,6 +263,14 @@ a = Student()
 print(Student.greet)  # <function greet>
 print(a.greet)        # <bound method greet>
 ```
+
+This binding happens because functions are **descriptors** --- they implement a `__get__` method. When you access a function through an instance (`a.greet`), Python's descriptor protocol automatically wraps it into a bound method that fixes `self` to the instance. This same mechanism underlies [`@classmethod`](class_methods.md) (binds to the class) and [`@staticmethod`](static_methods.md) (disables binding entirely).
+
+| Type | Receives | Bound to | Use case |
+|---|---|---|---|
+| Instance method | `self` | instance | Object behavior and state |
+| Class method | `cls` | class | Shared config, alt constructors |
+| Static method | nothing | nothing | Utility, no state needed |
 
 ---
 
@@ -471,3 +481,48 @@ Build a `Rectangle` class with `width` and `height`. Add instance methods `area(
         # Two ways to call
         print(r.area())              # 24
         print(Rectangle.area(r))     # 24 — explicit self
+
+---
+
+**Exercise 4.**
+Examine the following code and predict what each `print` outputs. Explain why `Student.greet` and `s.greet` have different types, and what the descriptor protocol has to do with it.
+
+```python
+class Student:
+    def greet(self):
+        return f"Hi, I'm {self.name}"
+
+s = Student()
+s.name = "Alice"
+
+print(type(Student.greet))
+print(type(s.greet))
+print(Student.greet(s))
+print(s.greet())
+
+f = s.greet
+print(f())
+```
+
+??? success "Solution to Exercise 4"
+
+        class Student:
+            def greet(self):
+                return f"Hi, I'm {self.name}"
+
+        s = Student()
+        s.name = "Alice"
+
+        print(type(Student.greet))  # <class 'function'>
+        print(type(s.greet))        # <class 'method'>
+        print(Student.greet(s))     # Hi, I'm Alice
+        print(s.greet())            # Hi, I'm Alice
+
+        f = s.greet
+        print(f())  # Hi, I'm Alice — f is a bound method, self is captured
+
+        # Student.greet is a plain function (accessed on the class).
+        # s.greet is a bound method (accessed on an instance).
+        # The difference exists because functions are descriptors:
+        # function.__get__(s, Student) returns a bound method with self=s.
+        # That is why s.greet() works without passing self explicitly.
