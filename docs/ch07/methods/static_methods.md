@@ -1,6 +1,6 @@
 # Static Methods
 
-Static methods are utility functions that belong to a class but don't access instance or class data.
+Static methods are utility functions that belong to a class namespace but don't access instance or class data. Unlike [instance methods](instance_methods.md) (bound to `self`) and [class methods](class_methods.md) (bound to `cls`), static methods receive no implicit first argument --- they are essentially plain functions that happen to live on a class.
 
 ---
 
@@ -80,7 +80,7 @@ print(a.is_workday)        # <function> (not bound!)
 
 ### 3. Not Bound
 
-Static methods are never bound to instances.
+Static methods are never bound to instances. Under the hood, `@staticmethod` is a descriptor that *disables* the normal binding mechanism --- it returns the raw function regardless of whether you access it via the class or an instance. Compare this with regular functions (which become bound methods on instances) and `@classmethod` (which binds to the class). See [Instance Methods](instance_methods.md) for details on method binding.
 
 ---
 
@@ -308,6 +308,8 @@ class InputValidator:
 
 ## Design Considerations
 
+Static methods are primarily **organizational**, not conceptual. They don't leverage the class system (no `self`, no `cls`, no inheritance binding). In many cases a plain module-level function is simpler and equally correct.
+
 ### 1. Alternative: Module Function
 
 ```python
@@ -324,16 +326,17 @@ class DateUtils:
         pass
 ```
 
-### 2. Use Static When
+### 2. Prefer Static Method When
 
-- Function relates to class conceptually
-- Want to group related utilities
-- Might need polymorphism later
+- Function is conceptually part of the class's domain
+- You want to group related utilities under a namespace
+- Subclasses may need to override the behavior
 
-### 3. Use Module Function When
+### 3. Prefer Module Function When
 
-- Truly independent utility
-- No relationship to any class
+- The function is a truly independent utility
+- It has no conceptual link to a specific class
+- You want it easily importable without referencing a class
 
 ---
 
@@ -472,3 +475,65 @@ Build a `Temperature` class with instance attribute `celsius` and static methods
         # Instance method uses static method internally
         t = Temperature(37)
         print(t.to_fahrenheit())  # 98.6
+
+---
+
+**Exercise 4.**
+A colleague argues that this static method should be a module-level function instead. Evaluate their claim --- is `@staticmethod` justified here, or would a module function be better? Explain your reasoning.
+
+```python
+class FileParser:
+    def __init__(self, path):
+        self.path = path
+
+    def read(self):
+        with open(self.path) as f:
+            return self._parse(f.read())
+
+    def _parse(self, raw):
+        return [self.clean_line(line) for line in raw.splitlines()]
+
+    @staticmethod
+    def clean_line(line):
+        return line.strip().lower()
+```
+
+??? success "Solution to Exercise 4"
+
+        # The static method IS justified here. Reasons:
+        #
+        # 1. clean_line is used internally by the instance method _parse,
+        #    so it belongs to FileParser's domain.
+        #
+        # 2. A subclass might override clean_line to change parsing behavior
+        #    (e.g., preserve case). If it were a module function, subclasses
+        #    could not override it without also overriding _parse.
+        #
+        # 3. It does not need self or cls, so @staticmethod is correct
+        #    (an instance method would misleadingly suggest state dependency).
+        #
+        # Counter-argument: if clean_line is genuinely reusable outside
+        # FileParser, a module-level function would be more accessible.
+        # But as a helper tied to the class's parsing logic, @staticmethod
+        # is the right call.
+
+        class FileParser:
+            def __init__(self, path):
+                self.path = path
+
+            def read(self):
+                with open(self.path) as f:
+                    return self._parse(f.read())
+
+            def _parse(self, raw):
+                return [self.clean_line(line) for line in raw.splitlines()]
+
+            @staticmethod
+            def clean_line(line):
+                return line.strip().lower()
+
+        # Subclass can override without touching _parse:
+        class CaseSensitiveParser(FileParser):
+            @staticmethod
+            def clean_line(line):
+                return line.strip()  # preserve case
