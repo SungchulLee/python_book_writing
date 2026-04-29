@@ -1,12 +1,39 @@
 # Attribute Lookup
 
-When you access an attribute on a Python object, the interpreter does not simply retrieve a stored value. Instead, it follows a well-defined search chain that moves from the instance to its class and then up through the class hierarchy. Understanding this lookup mechanism is essential for working with inheritance, class design, and advanced features like descriptors.
+When you access an attribute on a Python object, the interpreter does not simply retrieve a stored value. Instead, it follows a well-defined search chain that involves descriptors, instance dictionaries, and the class hierarchy. Understanding this lookup mechanism is essential for working with inheritance, class design, and advanced features like properties and custom descriptors.
 
 ## Lookup Order
 
-### 1. Instance, Class, Parent
+### The Full Resolution Model
 
-When you write `obj.attr`, Python searches in a specific order: it checks the instance's own namespace first, then the class that created the instance, and finally any parent classes following the method resolution order (MRO). The first match wins.
+When you write `obj.attr`, Python does not just check "instance, then class, then parent." The actual resolution involves **descriptors** --- objects that define `__get__`, `__set__`, or `__delete__` methods and can intercept attribute access. The complete lookup order is:
+
+1. **Data descriptors on the class** (via MRO) --- objects that define both `__get__` and `__set__` (e.g., `property`, slots)
+2. **Instance `__dict__`** --- the instance's own namespace
+3. **Non-data descriptors and other class attributes** (via MRO) --- objects that define only `__get__` (e.g., regular methods), plus plain class variables
+
+This ordering explains why `@property` can intercept attribute access even when an instance has a key of the same name in its `__dict__`: properties are data descriptors, so they take priority over instance attributes.
+
+```mermaid
+flowchart TD
+    A["obj.attr"] --> B{"Data descriptor\non class (via MRO)?"}
+    B -->|yes| C["Call descriptor __get__"]
+    B -->|no| D{"Key in\ninstance __dict__?"}
+    D -->|yes| E["Return instance value"]
+    D -->|no| F{"Non-data descriptor\nor class attr (via MRO)?"}
+    F -->|yes| G["Return class value\n(call __get__ if descriptor)"]
+    F -->|no| H["Raise AttributeError"]
+```
+
+### Simplified View: Instance, Class, Parent
+
+For everyday code that does not involve descriptors, the lookup simplifies to:
+
+1. Check the instance's own `__dict__`
+2. Check the class's `__dict__`
+3. Walk up the MRO through parent classes
+
+The first match wins.
 
 ```python
 class Parent:
@@ -25,13 +52,13 @@ print(obj.x)  # parent (found in parent)
 
 In this example, `obj.z` is found directly on the instance. The name `obj.y` is not on the instance, so Python checks `Child` and finds it there. Finally, `obj.x` is not on the instance or on `Child`, so Python continues up to `Parent` where it finds the match.
 
-## The __dict__ Dictionary
+## The `__dict__` Dictionary
 
-Every object and class in Python maintains a `__dict__` dictionary that stores its attributes. This dictionary is the underlying data structure that powers the attribute lookup chain described above.
+Every object and class in Python maintains a `__dict__` dictionary that stores its attributes. This dictionary is the underlying data structure that powers the attribute lookup chain described above. For details on how instance and class dictionaries differ, see [Instance Attributes](instance_attributes.md) and [Class Attributes](class_attributes.md).
 
-### 1. Instance Dict
+### Instance Dict
 
-Attributes set through `self.x = value` inside a method (or directly on the instance) are stored in the instance's `__dict__`. This is the first place Python looks during attribute resolution.
+Attributes set through `self.x = value` inside a method (or directly on the instance) are stored in the instance's `__dict__`. This is the first place Python looks during attribute resolution (after checking for data descriptors).
 
 ```python
 class MyClass:
@@ -42,7 +69,7 @@ obj = MyClass(10)
 print(obj.__dict__)  # {'x': 10}
 ```
 
-### 2. Class Dict
+### Class Dict
 
 Class-level attributes, methods, and other definitions live in the class's `__dict__`. Python searches here after checking the instance namespace.
 
@@ -51,11 +78,45 @@ print(MyClass.__dict__)
 # Contains methods and class attributes
 ```
 
+## Descriptors and Properties
+
+Properties and methods are implemented using Python's **descriptor protocol**. A descriptor is any object that defines at least one of `__get__`, `__set__`, or `__delete__`. When Python encounters a descriptor during attribute lookup, it calls the appropriate method instead of returning the descriptor object itself.
+
+- **Data descriptors** define `__set__` (and usually `__get__`). Examples: `property`, attributes created by `__slots__`.
+- **Non-data descriptors** define only `__get__`. Example: regular functions (which become bound methods).
+
+This is why `@property` can add validation to attribute access --- it installs a data descriptor on the class that intercepts reads and writes:
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Below absolute zero")
+        self._celsius = value
+
+t = Temperature(25)
+print(t.celsius)       # calls property __get__
+t.celsius = 100        # calls property __set__
+print(t.__dict__)      # {'_celsius': 100} --- no 'celsius' key
+print(type(t).__dict__['celsius'])  # <property object>
+```
+
+Notice that `celsius` does not appear in the instance `__dict__` --- the data descriptor on the class intercepts the access before the instance dictionary is consulted.
+
 ## Summary
 
-- Python resolves attribute access by searching the instance namespace first, then the class, and finally parent classes in MRO order.
+- Python resolves attribute access through a three-tier system: data descriptors, instance `__dict__`, then non-data descriptors and class attributes.
+- For most everyday code, the simplified view (instance, class, parents via MRO) is sufficient.
 - The `__dict__` dictionary on each object and class is the storage mechanism behind this lookup chain.
-- This dynamic lookup process runs every time you access an attribute, which gives Python its flexibility for runtime modifications.
+- Properties and methods work because of the descriptor protocol, which intercepts attribute access at the class level.
 
 ---
 
@@ -465,3 +526,96 @@ Build a class `Tracker` that uses `__dict__` inspection to demonstrate attribute
         # {'name': 'alpha', 'version': 2}
         print(t.version)         # 2 - instance shadows class
         print(Tracker.version)   # 1 - class attribute unchanged
+
+---
+
+**Exercise 4.**
+Predict the output of the following code, then verify by running it. Explain why `obj.celsius` does not appear in `obj.__dict__` even after assignment, and which step of the full lookup model is responsible.
+
+```python
+class Temp:
+    def __init__(self, c):
+        self._c = c
+
+    @property
+    def celsius(self):
+        return self._c
+
+    @celsius.setter
+    def celsius(self, value):
+        self._c = value
+
+obj = Temp(20)
+obj.celsius = 30
+print("celsius" in obj.__dict__)
+print("_c" in obj.__dict__)
+print(obj.celsius)
+```
+
+??? success "Solution to Exercise 4"
+
+        class Temp:
+            def __init__(self, c):
+                self._c = c
+
+            @property
+            def celsius(self):
+                return self._c
+
+            @celsius.setter
+            def celsius(self, value):
+                self._c = value
+
+        obj = Temp(20)
+        obj.celsius = 30
+        print("celsius" in obj.__dict__)  # False
+        print("_c" in obj.__dict__)       # True
+        print(obj.celsius)                # 30
+
+        # Explanation:
+        # @property creates a data descriptor on the class.
+        # Data descriptors are checked BEFORE the instance __dict__
+        # (step 1 of the full lookup model).
+        # So obj.celsius = 30 calls the property setter, which
+        # stores the value in obj._c, not obj.celsius.
+        # The key "celsius" never enters the instance __dict__.
+
+---
+
+**Exercise 5.**
+A non-data descriptor defines `__get__` but not `__set__`. Create a class `Verbose` that implements `__get__` to print a message and return a value. Install it on a class `Host`. Show that accessing `host.attr` triggers the descriptor. Then assign `host.attr = "direct"` and show that the instance `__dict__` entry now shadows the non-data descriptor. Explain why this shadowing works for non-data descriptors but not for data descriptors like `property`.
+
+??? success "Solution to Exercise 5"
+
+        class Verbose:
+            """A non-data descriptor (only __get__, no __set__)."""
+            def __init__(self, value):
+                self.value = value
+
+            def __get__(self, obj, objtype=None):
+                print(f"Descriptor __get__ called")
+                return self.value
+
+        class Host:
+            attr = Verbose(42)
+
+        host = Host()
+        print(host.attr)
+        # Descriptor __get__ called
+        # 42
+
+        # Shadow the non-data descriptor with an instance attribute
+        host.attr = "direct"
+        print(host.attr)
+        # "direct" --- no descriptor call, instance __dict__ wins
+        print(host.__dict__)
+        # {'attr': 'direct'}
+
+        # Why this works:
+        # Non-data descriptors sit at step 3 of the lookup model.
+        # Instance __dict__ is checked at step 2.
+        # So after host.attr = "direct" puts a key in instance __dict__,
+        # the instance value is found first and the descriptor is skipped.
+        #
+        # Data descriptors (like property) sit at step 1, BEFORE instance
+        # __dict__, so they cannot be shadowed this way.
