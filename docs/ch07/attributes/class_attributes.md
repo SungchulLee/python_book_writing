@@ -1,6 +1,6 @@
 # Class Attributes
 
-Class attributes are shared across all instances of a class, storing data that belongs to the class itself.
+Class attributes are shared across all instances of a class, storing data that belongs to the class itself. Unlike [instance attributes](instance_attributes.md) which hold per-object state, class attributes exist once on the class and are found via the [attribute lookup chain](attribute_lookup.md) when not shadowed by an instance attribute.
 
 ---
 
@@ -118,6 +118,8 @@ print(Student.num_students)  # Still 0!
 
 ### 2. Creates Instance Attribute
 
+`self.num_students += 1` is equivalent to `self.num_students = self.num_students + 1`. The read on the right-hand side finds the class attribute (via [lookup](attribute_lookup.md)), but the write on the left-hand side creates a new entry in the instance's `__dict__`, shadowing the class attribute.
+
 ```python
 a = Student("Lee")
 print(a.__dict__)  # {'name': 'Lee', 'num_students': 1}
@@ -126,7 +128,7 @@ print(Student.__dict__)  # num_students still 0
 
 ### 3. Shadowing
 
-Instance attribute shadows class attribute.
+Instance attribute shadows class attribute. See [Attribute Lookup](attribute_lookup.md) for the full resolution order.
 
 ---
 
@@ -291,33 +293,7 @@ print(Student.__dict__)
 
 ### 3. Separate Namespaces
 
-Instance and class have different dictionaries.
-
----
-
-## Lookup Order
-
-### 1. Instance First
-
-```python
-class A:
-    x = 10
-
-a = A()
-print(a.x)  # 10 - found in class
-```
-
-### 2. Then Class
-
-```python
-a.x = 20  # Create instance attribute
-print(a.x)  # 20 - found in instance
-print(A.x)  # 10 - class unchanged
-```
-
-### 3. Instance Shadows Class
-
-Instance attribute hides class attribute of same name.
+Instance and class have different dictionaries. When you access an attribute on an instance, Python searches the instance dictionary first, then the class dictionary, then parent classes. See [Attribute Lookup](attribute_lookup.md) for the complete resolution model including descriptors.
 
 ---
 
@@ -355,7 +331,7 @@ class Config:
 
 - Class attributes are shared across instances.
 - Modify via class name, not `self`.
-- Using `self` creates instance attribute.
+- Using `self` creates instance attribute (shadowing).
 - Use `@classmethod` for class-level operations.
 - Class `__dict__` is read-only mapping.
 
@@ -670,3 +646,37 @@ Write a `Counter` class with a class attribute `count = 0` that tracks how many 
         # The read (self.count) finds the class attribute
         # The write (self.count = ...) creates an INSTANCE attribute
         # So the class attribute is never incremented after the first call
+
+---
+
+**Exercise 4.**
+Create a `Settings` class with a mutable class attribute `options = {"color": "blue", "size": 10}`. In `__init__`, do NOT copy `options`. Create two instances. Mutate `options` through one instance (`self.options["color"] = "red"`) and show that both instances see the change. Now add a line `self.options = {"color": "green"}` to a third instance and inspect its `__dict__`. Explain the difference between mutating a shared mutable class attribute in place versus reassigning it on an instance, using the [attribute lookup model](attribute_lookup.md).
+
+??? success "Solution to Exercise 4"
+
+        class Settings:
+            options = {"color": "blue", "size": 10}
+
+            def __init__(self):
+                pass
+
+        s1 = Settings()
+        s2 = Settings()
+
+        # Mutating in place - modifies the shared class dict
+        s1.options["color"] = "red"
+        print(s2.options["color"])  # "red" - both see the change
+        print("options" in s1.__dict__)  # False - no instance attribute created
+
+        # Reassigning - creates an instance attribute that shadows class attr
+        s3 = Settings()
+        s3.options = {"color": "green"}
+        print(s3.options["color"])  # "green" - instance attribute
+        print(s2.options["color"])  # "red" - still sees class attribute
+        print("options" in s3.__dict__)  # True - instance attribute exists
+
+        # Key insight:
+        # s1.options["color"] = "red" never assigns to s1.options itself,
+        # it calls __setitem__ on the dict found via lookup (the class dict).
+        # s3.options = {...} assigns to s3.options, creating an instance
+        # attribute that shadows the class attribute from that point on.
