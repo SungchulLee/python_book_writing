@@ -1,6 +1,6 @@
 # Instance Attributes
 
-Instance attributes are variables that belong to individual object instances, storing unique state for each object.
+Instance attributes are variables that belong to individual object instances, storing unique state for each object. While [class attributes](class_attributes.md) are shared across all instances, instance attributes give each object its own independent data. For how Python resolves which attribute you get, see [Attribute Lookup](attribute_lookup.md).
 
 ---
 
@@ -36,7 +36,7 @@ Best practice: define in constructor.
 
 ## Creating Attributes
 
-### 1. In Constructor (Good)
+### 1. In Constructor (Recommended)
 
 ```python
 class Student:
@@ -48,7 +48,9 @@ class Student:
 a = Student("Lee", "Math", ["Calculus", "Algebra"])
 ```
 
-### 2. Dynamic (Bad)
+### 2. Dynamic Creation (Use with Caution)
+
+Dynamic attribute creation is powerful and used extensively in frameworks (ORMs, serializers, configuration libraries), but it can make code harder to understand and debug when used casually.
 
 ```python
 class Student:
@@ -56,7 +58,7 @@ class Student:
 
 a = Student()
 a.name = "Lee"      # Created dynamically
-a.major = "Math"    # Not recommended
+a.major = "Math"    # Works, but bypasses __init__
 ```
 
 ### 3. In Methods (Sometimes)
@@ -189,6 +191,8 @@ class DataLoader:
 
 ### 1. `__dict__`
 
+Every instance stores its attributes in a `__dict__` dictionary. This is the same dictionary that the [attribute lookup](attribute_lookup.md) mechanism consults at step 2 (after data descriptors).
+
 ```python
 class Student:
     def __init__(self, name, major):
@@ -273,7 +277,7 @@ print(b.name)  # "Kim" - unchanged
 
 ### 3. Independence
 
-Changes to one instance don't affect others.
+Changes to one instance don't affect others. For how instance attributes interact with [class attributes](class_attributes.md) of the same name (shadowing), see [Attribute Lookup](attribute_lookup.md).
 
 ---
 
@@ -533,3 +537,50 @@ Design a `Student` class with instance attributes `name`, `grades` (a list), and
         # {'name': 'Alice', 'grades': [90, 85], 'enrolled': False}
         print(vars(s2))
         # {'name': 'Bob', 'grades': [70, 75, 80], 'enrolled': True}
+
+---
+
+**Exercise 4.**
+Debug the following class. Predict what `print(a.x, b.x)` outputs and explain why. Then fix the code so that each instance tracks its own count independently.
+
+```python
+class Broken:
+    x = 0
+    def __init__(self):
+        self.x += 1
+
+a = Broken()
+b = Broken()
+print(a.x, b.x)
+print(Broken.x)
+```
+
+??? success "Solution to Exercise 4"
+
+        class Broken:
+            x = 0
+            def __init__(self):
+                self.x += 1
+
+        a = Broken()
+        b = Broken()
+        print(a.x, b.x)   # 1 1
+        print(Broken.x)    # 0
+
+        # Explanation:
+        # self.x += 1 is self.x = self.x + 1
+        # On the right side, self.x finds class attribute x = 0 (via lookup)
+        # On the left side, self.x = ... creates an INSTANCE attribute
+        # So each instance gets its own x = 1, and Broken.x stays 0
+        #
+        # This is the shadowing trap described in Attribute Lookup.
+
+        # Fixed version - use a proper instance attribute
+        class Fixed:
+            def __init__(self):
+                self.x = 0  # explicit instance attribute
+                self.x += 1
+
+        a = Fixed()
+        b = Fixed()
+        print(a.x, b.x)  # 1 1 - each has own independent counter
