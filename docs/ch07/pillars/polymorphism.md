@@ -1,6 +1,6 @@
 # Polymorphism
 
-Polymorphism allows objects of different types to be treated through a common interface, with each type implementing behavior in its own way.
+Polymorphism allows objects of different types to be treated through a common interface, with each type implementing behavior in its own way. At its core, polymorphism replaces conditional branching (`if/elif` on types) with **dispatch** --- the right method is called automatically based on the object's type. Polymorphism works alongside [encapsulation](encapsulation.md) (protecting state), [abstraction](abstraction.md) (defining interfaces), and [inheritance](inheritance.md) (sharing structure).
 
 ---
 
@@ -98,6 +98,21 @@ If it has `speak()`, it works.
 if hasattr(obj, 'speak'):
     obj.speak()
 ```
+
+---
+
+## Types of Polymorphism
+
+Python supports several forms of polymorphism:
+
+| Type | Mechanism | Example |
+|---|---|---|
+| Subtype (inheritance) | Method overriding via class hierarchy | `Dog(Animal).speak()` |
+| Duck typing (structural) | Any object with the right methods | `Robot().speak()` works without inheriting `Animal` |
+| Operator overloading | Special methods (`__add__`, `__eq__`, ...) | `Vector(1,2) + Vector(3,4)` |
+| Parametric (generics) | Type parameters (Python 3.12+ syntax) | `list[int]`, `dict[str, float]` |
+
+In Python, **duck typing is the dominant form** --- inheritance-based polymorphism is available but not required. This is a key difference from languages like Java or C++ where subtype polymorphism is the primary mechanism.
 
 ---
 
@@ -279,8 +294,10 @@ Forces subclasses to implement.
 
 ### 3. Key Difference
 
-Polymorphism = same interface, different behaviors.
-Abstraction = enforced contract with ABC.
+Polymorphism = same interface, different behaviors (the runtime mechanism).
+[Abstraction](abstraction.md) = enforced contract with ABC (the design-time guarantee).
+
+Polymorphism can work without abstraction (via duck typing), and abstraction without polymorphism is just a contract with one implementation. They are most powerful together.
 
 ---
 
