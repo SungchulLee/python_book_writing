@@ -551,9 +551,11 @@ class Animal:
 duck = Animal([FlyAbility(), SwimAbility()])
 ```
 
-### 2. When Inheritance is OK
+### 2. When Inheritance is OK (and Sometimes Simpler)
 
-Use for:
+Composition is not always simpler. For small, stable hierarchies inheritance is often **less code and easier to read**. Don't force composition when a two-level hierarchy with three subclasses would do the job.
+
+Use inheritance for:
 - True **is-a** relationships
 - **Abstract base classes** (interfaces)
 - **Framework extension points**
