@@ -55,12 +55,26 @@ with open("data.txt") as f:
 
 As resource management grows more complex (nested resources, exception handling, conditional cleanup), `try/finally` becomes error-prone while `with` stays clean. Context managers also serve as a design pattern analogous to RAII (Resource Acquisition Is Initialization) in C++. See also [Callable Objects](dunder_callable.md), [Containers](dunder_containers.md), and [Iteration](dunder_iterables.md) for the other core protocols.
 
+!!! warning "Be Careful with Exception Suppression"
+    If `__exit__` returns `True`, the exception is **suppressed** — execution continues normally after the `with` block as if nothing went wrong. This is a powerful but dangerous capability. Most context managers should return `False` (or `None`) to let exceptions propagate. Suppressing exceptions can hide bugs and make debugging extremely difficult. Only suppress exceptions when you have a clear, documented reason (e.g., `contextlib.suppress`).
+
+!!! tip "Common Use Cases"
+    Context managers are the standard pattern for:
+
+    - **File I/O** — open/close
+    - **Database transactions** — begin/commit/rollback
+    - **Thread locks** — acquire/release
+    - **Network connections** — connect/disconnect
+    - **Temporary state changes** — redirect stdout, change working directory
+    - **Resource pooling** — acquire from pool, return to pool
+
 ## Summary
 
 - Context managers guarantee resource cleanup by pairing setup (`__enter__`) with teardown (`__exit__`).
 - The `__exit__` method always runs, even when an exception occurs inside the `with` block.
 - Prefer `with` over `try/finally` --- it is shorter, safer, and composable.
 - Implement `__enter__` and `__exit__` on any class to make its instances usable with the `with` statement.
+- Most context managers should **not** suppress exceptions — return `False` from `__exit__` unless you have a specific reason to suppress.
 
 ---
 
@@ -1240,3 +1254,116 @@ Build a `Transaction` context manager for a simple in-memory database (a diction
             raise ValueError("Something went wrong")
 
         print(db)  # {'name': 'Alice', 'balance': 200} — rolled back
+
+---
+
+**Exercise 4.**
+Explain why the following context manager is dangerous. What happens if the `with` block raises a `ValueError`? Rewrite `__exit__` so that it only suppresses `ZeroDivisionError` and lets all other exceptions propagate.
+
+```python
+class SuppressAll:
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        return True  # Suppresses ALL exceptions!
+```
+
+??? success "Solution to Exercise 4"
+
+    `return True` in `__exit__` suppresses **every** exception — `ValueError`, `TypeError`, `KeyboardInterrupt`, `SystemExit`, everything. This hides bugs silently: the program continues as if nothing went wrong, but the expected operation never completed. Debugging becomes nearly impossible because errors leave no trace.
+
+    If the `with` block raises `ValueError`, the error is swallowed and execution continues after the `with` block — the caller has no idea something failed.
+
+    **Fixed version:**
+
+        class SuppressZeroDivision:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, exc_type, exc_val, exc_tb):
+                if exc_type is ZeroDivisionError:
+                    print("Caught ZeroDivisionError, suppressing")
+                    return True  # Suppress only this one
+                return False  # Propagate everything else
+
+        with SuppressZeroDivision():
+            x = 1 / 0  # Suppressed
+
+        with SuppressZeroDivision():
+            x = int("abc")  # ValueError propagates — not suppressed
+
+    **Rule of thumb:** only suppress exceptions you explicitly expect and can handle. For everything else, let them propagate. The stdlib provides `contextlib.suppress(ExceptionType)` for this exact use case.
+
+---
+
+**Exercise 5.**
+Build a `Redirect` context manager that temporarily redirects `sys.stdout` to a `StringIO` buffer. Inside the `with` block, all `print()` output goes to the buffer instead of the console. After the block, `stdout` is restored and the captured output is available as `self.output`. Demonstrate by capturing printed output and verifying it as a string.
+
+??? success "Solution to Exercise 5"
+
+        import sys
+        from io import StringIO
+
+        class Redirect:
+            def __enter__(self):
+                self._original = sys.stdout
+                self._buffer = StringIO()
+                sys.stdout = self._buffer
+                return self
+
+            def __exit__(self, exc_type, exc_val, exc_tb):
+                self.output = self._buffer.getvalue()
+                sys.stdout = self._original
+                self._buffer.close()
+                return False
+
+        with Redirect() as r:
+            print("Hello, captured world!")
+            print("Line two")
+
+        # stdout is restored — this prints normally
+        print(f"Captured: {r.output!r}")
+        # Captured: 'Hello, captured world!\nLine two\n'
+
+        assert "Hello" in r.output
+        assert r.output.count("\n") == 2
+
+    This pattern is used in testing frameworks to capture printed output for assertions. The stdlib provides `contextlib.redirect_stdout` for the same purpose, but building it from scratch demonstrates how `__enter__` (save + replace) and `__exit__` (restore) work together to manage temporary state changes safely.
+
+---
+
+**Exercise 6.**
+Consider the following function. A student worries that `return` inside a `with` block might skip `f.close()`, causing a resource leak. Determine the exact order of operations when `return` executes inside a `with` block. Does the file get closed? Why?
+
+```python
+def load_file(filename):
+    with open(filename, "r") as f:
+        return f.read()
+```
+
+??? success "Solution to Exercise 6"
+
+    The file **is always closed properly**. The execution order is:
+
+    ```text
+    1. Evaluate f.read()
+    2. Prepare the return value
+    3. Exit the with-block
+    4. Call f.__exit__() → this calls f.close()
+    5. Return from the function
+    6. Destroy the function frame
+    ```
+
+    The `with` statement is syntactic sugar for a `try/finally` block:
+
+    ```python
+    f = open(filename, "r")
+    try:
+        result = f.read()
+        return result
+    finally:
+        f.close()  # always runs, even on return
+    ```
+
+    Python guarantees that `__exit__` (and therefore `finally`) runs **before** the function actually returns, even if `return` appears inside the `with` block. The return value is saved, cleanup runs, and then the saved value is returned. There is no resource leak.
