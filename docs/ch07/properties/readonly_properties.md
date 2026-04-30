@@ -32,6 +32,10 @@ c.area = 100   # ❌ AttributeError: can't set attribute
 - Maintain data consistency
 - Express design intent clearly
 
+### 4. Caveat: `__dict__` Override
+
+Because `property` is a data descriptor, assigning `obj.area = 100` triggers the setter (or raises `AttributeError` if there is none). However, writing directly to `obj.__dict__['area'] = 100` bypasses the descriptor entirely and creates an instance attribute. This shadowed value is never returned because the data descriptor takes priority, but it can cause confusion. Avoid manipulating `__dict__` directly for property-controlled attributes. For more on how this works, see [Properties as Descriptors](property_descriptor_connection.md).
+
 ## Common Patterns
 
 ### 1. Computed Values
