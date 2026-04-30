@@ -4,7 +4,12 @@
 
 ### 1. What Is Caching?
 
-A **cached property** computes its value **once** on first access, stores the result inside the instance (usually in `__dict__`), and on future accesses, just returns the cached value — skipping recomputation.
+A **cached property** computes its value **once** on first access, stores the result inside the instance (usually in `__dict__`), and on future accesses, just returns the cached value — skipping recomputation. The key mental model: a cached property **starts as a descriptor** but after the first access, it **replaces itself with a plain attribute** in the instance. From that point on, the descriptor is no longer involved.
+
+```text
+@property:        always intercepts → always runs getter
+cached_property:  intercepts once → then becomes a normal attribute
+```
 
 ### 2. When to Use
 
