@@ -1,5 +1,7 @@
 # Getter Setter Deleter
 
+The `@property` decorator with `@prop.setter` and `@prop.deleter` provides the three access hooks for an attribute. Under the hood, each `@property` creates a **descriptor object** that intercepts reads, writes, and deletions --- see [Properties as Descriptors](property_descriptor_connection.md) for the full mechanism. For a deeper treatment of property design, see [Property Decorator](property_decorator.md).
+
 ## Property Decorator
 
 ### 1. Getter
@@ -46,12 +48,19 @@ c.radius = 10  # OK
         del self._radius
 ```
 
+## Best Practices
+
+- **Start with plain attributes**. Add `@property` only when you need validation, computation, or read-only access.
+- **Don't use setters for expensive operations** (I/O, network calls). Users expect `obj.x = val` to be fast.
+- **Setter names must match** the property name --- `@radius.setter def radius(self, value)`.
+- **Prefer immutability** when possible: omit the setter to make an attribute read-only.
+
 ## Summary
 
-- @property for getter
-- @prop.setter for setter
-- @prop.deleter for deleter
-- Clean interface
+- `@property` for getter
+- `@prop.setter` for setter
+- `@prop.deleter` for deleter
+- All three are backed by a single descriptor object on the class
 
 ---
 
