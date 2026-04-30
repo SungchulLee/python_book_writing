@@ -47,11 +47,23 @@ These methods let your class support built-in operators and container protocols.
 - `__eq__`, `__lt__`, `__gt__`: comparison operators
 - `__len__`, `__getitem__`, `__setitem__`: container and indexing operations
 
+## The Python Data Model: Protocols, Not Just Methods
+
+Dunder methods are not isolated features. They form **protocols** --- groups of methods that, when implemented together, make your object behave like a built-in type. For example, implementing `__len__` and `__getitem__` gives you the sequence protocol; implementing `__eq__` and `__hash__` makes your object usable in sets and as dictionary keys.
+
+The mental model is:
+
+1. **Python asks your object what it can do** by looking for the appropriate dunder method.
+2. **If the method returns `NotImplemented`**, Python tries a fallback (e.g., the reflected method on the other operand).
+3. **If no method handles the operation**, Python raises a `TypeError`.
+
+This protocol-based approach means you don't inherit from a special base class to be "list-like" or "number-like" --- you just implement the right methods. See the [quick reference](magic_methods_quick_reference.md) for which methods each protocol requires.
+
 ## Summary
 
 - Dunder methods are the mechanism Python uses to connect user-defined classes with built-in syntax and operations.
 - You define them in your class, and Python calls them automatically when the corresponding operator or function is used.
-- The most commonly overridden dunder methods cover initialization, string representation, arithmetic operators, and container behavior.
+- The most commonly overridden dunder methods cover initialization, string representation, [arithmetic operators](dunder_arithmetic.md), [comparisons](dunder_comparison.md), [string conversion](dunder_string.md), and [object lifecycle](dunder_lifecycle.md).
 
 ---
 
