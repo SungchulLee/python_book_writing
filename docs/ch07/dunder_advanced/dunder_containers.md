@@ -1,6 +1,11 @@
 # Container Protocol
 
-Container dunder methods enable your objects to behave like built-in collections.
+Container dunder methods enable your objects to behave like built-in collections. This is part of Python's protocol-based design --- Python doesn't check your type, only whether you implement the right methods. See also [Iteration Protocol](dunder_iterables.md), [Callable Objects](dunder_callable.md), and [Context Managers](dunder_context.md).
+
+There are two main container protocols:
+
+- **Sequence protocol** (list-like): integer indices, ordering, slicing. Implement `__getitem__` with `int`/`slice` keys, `__len__`.
+- **Mapping protocol** (dict-like): arbitrary keys, no inherent ordering. Implement `__getitem__` with hashable keys, `__len__`, `__contains__`.
 
 ## Core Container Methods
 
@@ -428,8 +433,9 @@ print('content-type' in headers)  # True
 
 ## Key Takeaways
 
+- **Sequence vs mapping**: sequences use integer indices and support slicing; mappings use arbitrary hashable keys. Choose the right model for your data.
 - `__len__` enables `len()` and boolean evaluation
-- `__getitem__` enables indexing, slicing, and iteration fallback
+- `__getitem__` enables indexing, slicing, and [iteration fallback](dunder_iterables.md)
 - `__setitem__` enables item assignment with `[]`
 - `__delitem__` enables item deletion with `del`
 - `__contains__` enables `in` operator (falls back to iteration)
