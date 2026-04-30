@@ -149,7 +149,7 @@ print(type(Person.name))  # <class 'property'>
 
 ### 3. How It Works
 
-Properties are **descriptors** stored at the class level that intercept attribute access at the instance level.
+Properties are **descriptors** stored at the class level that intercept attribute access at the instance level. Because `property` defines `__get__` and `__set__`, it is a **data descriptor** --- it takes priority over instance `__dict__` entries during attribute lookup. This is also why a property on a parent class works correctly on subclass instances. For the full descriptor mechanics, see [Properties as Descriptors](property_descriptor_connection.md).
 
 ---
 
