@@ -1,6 +1,8 @@
 # Callable Objects
 
-In Python, any object with a `__call__` method is considered callable — you can invoke it with parentheses just like a function. This is a powerful pattern because, unlike plain functions, callable objects can carry state between invocations. Whenever you need a function that remembers configuration or accumulates results, a callable object is a natural fit.
+In Python, any object with a `__call__` method is considered callable — you can invoke it with parentheses just like a function. This is one of Python's core **protocols**: Python doesn't care *what type* your object is, only *whether it implements `__call__`*. The same protocol-based approach drives [containers](dunder_containers.md), [iteration](dunder_iterables.md), and [context managers](dunder_context.md).
+
+Callable objects are powerful because, unlike plain functions, they can carry state between invocations. Whenever you need a function that remembers configuration or accumulates results, a callable object is a natural fit.
 
 ## Making Objects Callable
 
@@ -35,11 +37,33 @@ print(double(12))  # 24
 
 The `double` object carries the factor `2` as internal state. Each call to `double(x)` multiplies `x` by that stored factor, producing the same behavior as a function but with the flexibility to change the factor or add methods later.
 
+## Callable Objects vs Closures
+
+Closures can also carry state, so when should you use a callable object instead?
+
+```python
+# Closure approach
+def make_multiplier(factor):
+    def multiply(x):
+        return x * factor
+    return multiply
+
+# Callable object approach
+class Multiplier:
+    def __init__(self, factor):
+        self.factor = factor
+    def __call__(self, x):
+        return x * self.factor
+```
+
+Use a **closure** when the state is simple and read-only. Use a **callable object** when you need mutable state, multiple methods, inheritance, or introspection (`isinstance` checks, attribute access).
+
 ## Summary
 
 - Defining `__call__` on a class makes its instances callable with the same syntax as a regular function.
 - Callable objects combine the convenience of function call syntax with the ability to store and update internal state.
-- Common applications include configurable operations, stateful decorators, and state machines.
+- Prefer closures for simple stateless or read-only-state cases; prefer callable objects when you need mutability, methods, or introspection.
+- Common applications include configurable operations (strategy pattern), stateful decorators, and state machines.
 
 ---
 
