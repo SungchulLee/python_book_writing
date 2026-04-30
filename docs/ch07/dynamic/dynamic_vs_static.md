@@ -1,6 +1,6 @@
 # Dynamic vs Static
 
-Programming languages differ fundamentally in when they check types. Statically typed languages like Java and C++ verify types at compile time and require every attribute to be declared before use. Python, by contrast, is dynamically typed: objects can receive new attributes at any point during execution without prior declaration. This flexibility is a core part of Python's design, but it requires discipline to avoid runtime errors from typos or unexpected attribute additions.
+Programming languages differ fundamentally in when they check types. Statically typed languages like Java and C++ verify types at compile time and require every attribute to be declared before use. Python, by contrast, is dynamically typed: objects can receive new attributes at any point during execution without prior declaration. Python is also **strongly typed**, meaning it does not silently coerce between unrelated types — for example, `"3" + 5` raises a `TypeError` rather than guessing what the programmer intended. This flexibility is a core part of Python's design, but it requires discipline to avoid runtime errors from typos or unexpected attribute additions.
 
 ## Dynamic Typing
 
@@ -18,6 +18,33 @@ dog.name = "Rex"  # OK
 dog.age = 5       # OK
 ```
 
+### 2. Duck Typing
+
+Python's dynamic type system embraces **duck typing**: "if it walks like a duck and quacks like a duck, it's a duck." Instead of checking an object's declared type, Python code simply calls the methods or accesses the attributes it needs. If the object provides them, it works — regardless of its class.
+
+```python
+class Duck:
+    def quack(self):
+        return "Quack!"
+
+class Person:
+    def quack(self):
+        return "I can quack too!"
+
+def make_it_quack(thing):
+    # No type check — just call the method
+    print(thing.quack())
+
+make_it_quack(Duck())    # Quack!
+make_it_quack(Person())  # I can quack too!
+```
+
+Duck typing is one of the most powerful consequences of dynamic typing. The function `make_it_quack` never inspects the type of `thing` — it only cares that the object has a `quack` method. This makes code naturally polymorphic without requiring inheritance hierarchies or shared interfaces.
+
+!!! info "Duck Typing vs Explicit Type Checks"
+
+    Idiomatic Python avoids `isinstance()` checks when duck typing suffices. Checking types explicitly couples your code to specific classes, while duck typing keeps it open to any object that satisfies the required interface. The `collections.abc` module and `typing.Protocol` formalize duck typing for static analysis.
+
 ## Static Typing
 
 ### 1. Other Languages
@@ -32,6 +59,10 @@ class Dog {
 ```
 
 Attempting to assign `dog.age` without declaring `age` in the class would cause a compilation error in Java, whereas Python would silently create the attribute.
+
+!!! note "The Static–Dynamic Spectrum"
+
+    The divide between static and dynamic typing is a **spectrum**, not a binary. Many "static" languages support dynamic features: Java has reflection, Kotlin and Rust have type inference that reduces annotation burden, and TypeScript offers gradual typing where you can opt in or out file by file. Conversely, Python's type hints bring static-analysis capabilities into a dynamic language. When comparing languages, think in terms of **how much** type information is checked at compile time versus runtime, rather than placing each language into a rigid category.
 
 ## Type Hints
 
@@ -49,12 +80,56 @@ class Dog:
 
 Type hints make code more readable and allow tools to catch type errors before the program runs, but the Python interpreter itself does not enforce them.
 
+### 2. Static Analysis with mypy
+
+While Python ignores type hints at runtime, **mypy** is a static analysis tool that reads your annotations and catches type errors before you run the program — giving you compile-time-like safety in a dynamic language.
+
+```python
+# mypy catches this at analysis time
+def greet(name: str) -> str:
+    return "Hello, " + name
+
+greet(42)  # mypy error: Argument 1 has incompatible type "int"; expected "str"
+```
+
+Running `mypy your_file.py` reports the error without executing any code. This bridges the gap between dynamic flexibility and static safety: you write Python as usual, but mypy acts as a compile-time checker for the portions of code you have annotated.
+
+```bash
+$ mypy your_file.py
+your_file.py:5: error: Argument 1 to "greet" has incompatible type "int"; expected "str"
+```
+
+### 3. Managing Dynamic Typing Safely
+
+Dynamic typing gives you freedom, but freedom without discipline leads to bugs that only appear at runtime. The Python ecosystem provides several tools and patterns to manage this tradeoff.
+
+!!! tip "Practical Tools for Taming Dynamic Typing"
+
+    - **Use type hints consistently.** Annotate function signatures, return types, and important variables. Even partial coverage helps readers and tools understand your intent.
+    - **Run mypy in CI.** Integrate `mypy --strict` into your continuous integration pipeline so type errors are caught before code is merged.
+    - **Prefer `dataclasses` or `pydantic` for structured data.** These enforce a fixed set of fields with declared types, preventing silent attribute creation and providing validation.
+    - **Use `__slots__` when attribute sets are fixed.** This prevents accidental attribute creation via typos and reduces memory usage.
+    - **Leverage linters.** Tools like `pylint` and `pyright` catch common mistakes, enforce coding standards, and complement type checking.
+
+## Connection to the Attribute System
+
+Dynamic typing is not an abstract philosophy — it is a direct consequence of how Python resolves attributes at runtime:
+
+```
+obj.attr  →  type(obj).__getattribute__(obj, "attr")
+              →  descriptors / instance __dict__ / __getattr__
+```
+
+Because this resolution happens at runtime (not compile time), you can add attributes on the fly, swap methods, and use objects based on behavior rather than type. The built-in functions [`getattr`/`setattr`/`delattr`](builtin_attr_functions.md) provide programmatic access to this same mechanism. Everything you learned about [attribute lookup](../attributes/attribute_lookup.md) and [descriptors](../attributes/attribute_lookup.md) is the machinery that makes dynamic typing work.
+
 ## Summary
 
-- Python is dynamically typed, allowing attributes to be added to any object at any time without declaration.
-- Statically typed languages require all attributes to be declared in advance and enforce this at compile time.
-- Type hints provide an optional way to document expected types and enable static analysis without changing Python's dynamic runtime behavior.
-- Dynamic typing offers flexibility but demands careful discipline, since typos in attribute names create new attributes silently rather than raising errors.
+- Python is **dynamically typed** (types are checked at runtime) and **strongly typed** (no silent coercion between unrelated types like `str + int`).
+- Python embraces **duck typing**: objects are used based on the methods and attributes they provide, not their declared type.
+- Statically typed languages require all attributes to be declared in advance and enforce this at compile time, but the static-vs-dynamic divide is a **spectrum** — many static languages support reflection, type inference, or gradual typing.
+- **Type hints** provide an optional way to document expected types and enable static analysis without changing Python's dynamic runtime behavior.
+- **mypy** and similar tools bring compile-time-like checking to Python by analyzing type annotations before runtime.
+- Dynamic typing offers flexibility but demands careful discipline. Tools like `dataclasses`, `pydantic`, `__slots__`, and linters help manage the tradeoff between freedom and safety.
 
 ---
 
