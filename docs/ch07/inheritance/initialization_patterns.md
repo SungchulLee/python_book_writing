@@ -28,7 +28,22 @@ Without the `super().__init__(x)` call, `obj.x` would never be set, and accessin
 
 ### 1. MRO Order
 
-With multiple inheritance, `super()` follows the Method Resolution Order (MRO). Python uses an algorithm called C3 linearization to determine a consistent order in which classes are visited. Each `super()` call passes control to the next class in the MRO chain, not necessarily the direct parent.
+With multiple inheritance, `super()` follows the [Method Resolution Order (MRO)](mro.md). Python uses [C3 linearization](c3_linearization.md) to determine a consistent order in which classes are visited. Each `super()` call passes control to the next class in the MRO chain, not necessarily the direct parent.
+
+**Key invariant**: for cooperative multiple inheritance to work, all classes in the hierarchy must accept compatible signatures. The standard pattern is to use `**kwargs` to absorb and forward unknown arguments:
+
+```python
+class Base:
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+class Left(Base):
+    def __init__(self, left_val, **kwargs):
+        super().__init__(**kwargs)
+        self.left_val = left_val
+```
+
+Without `**kwargs`, adding a new class to the hierarchy can break existing `__init__` chains due to unexpected arguments.
 
 ```python
 class A:
@@ -52,11 +67,21 @@ obj = C()
 
 The MRO for `C` is `[C, A, B, object]`. When `C.__init__` calls `super().__init__()`, control passes to `A`. When `A` calls `super().__init__()`, control passes to `B` (the next in the MRO), not to `object`. Finally, `B` calls `super().__init__()`, which reaches `object.__init__()` and the chain completes.
 
+## When Not to Call `super()`
+
+"Always call `super().__init__()`" is the right default, but there are legitimate exceptions:
+
+- **Non-cooperative third-party classes** that don't call `super()` themselves --- inserting a `super()` call may cause unexpected double-initialization or argument errors.
+- **Deliberately terminating the chain** --- a class designed to be the final base in an MRO may intentionally omit `super().__init__()`.
+
+When in doubt, call `super()`. But inspect the MRO and parent signatures first in complex hierarchies.
+
 ## Summary
 
-- Always call `super().__init__()` in a child class to ensure the parent's initialization logic executes.
-- The Method Resolution Order (MRO) determines the sequence in which `super()` dispatches calls through the class hierarchy.
-- In multiple inheritance, every class in the chain should call `super().__init__()` so that all initializers run in the correct MRO order.
+- Call `super().__init__()` in child classes to ensure the parent's initialization logic executes.
+- Use `**kwargs` in cooperative hierarchies so that arguments pass cleanly through the MRO chain.
+- The [Method Resolution Order (MRO)](mro.md) determines the sequence in which `super()` dispatches calls.
+- In multiple inheritance, every cooperative class should call `super().__init__(**kwargs)` so that all initializers run exactly once in MRO order.
 
 ---
 
