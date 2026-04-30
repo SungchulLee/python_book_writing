@@ -264,7 +264,7 @@ print(c3)  # Connection(localhost:8080)
 
 ## `__del__`: Object Destruction
 
-`__del__` is called when an object is about to be destroyed.
+`__del__` is called when an object is about to be garbage-collected. **Avoid `__del__` in real code** unless you have a thorough understanding of Python's garbage collector. Its timing is unpredictable, it may never run (circular references, interpreter shutdown), and exceptions raised inside it are silently ignored. Use context managers (`with` statements) for reliable cleanup instead.
 
 ### Basic __del__
 
