@@ -46,12 +46,37 @@ del car  # Engine is cleaned up along with Car
 
 Because the `Engine` was created inside `Car.__init__` and no external variable holds a reference to it, deleting the `Car` removes the last reference to the `Engine`, and Python's garbage collector reclaims it.
 
+## When Composition Goes Too Far
+
+Composition is not free of costs. Over-decomposing into many tiny objects can **increase indirection** and hurt readability:
+
+```python
+# Over-composition: every concept is its own class
+class NameValidator:
+    def validate(self, name): ...
+
+class NameFormatter:
+    def format(self, name): ...
+
+class NameStorage:
+    def store(self, name): ...
+
+class NameManager:
+    def __init__(self):
+        self._validator = NameValidator()
+        self._formatter = NameFormatter()
+        self._storage = NameStorage()
+```
+
+When a few lines of code inside one class would suffice, creating separate objects for each responsibility adds complexity without benefit. Composition should simplify your design, not multiply your classes.
+
 ## Summary
 
 - Composition establishes a has-a relationship where the container creates and owns its parts.
 - The owned component shares the lifetime of its container and is destroyed when the container is destroyed.
 - This strong coupling between the whole and its parts means the part cannot exist independently.
 - Composition promotes modular design by encapsulating implementation details behind the container's interface.
+- **Avoid over-composition** --- don't create micro-objects for every concept when simpler inline code would suffice.
 
 ---
 
