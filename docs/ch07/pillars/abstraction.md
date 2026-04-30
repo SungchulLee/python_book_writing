@@ -181,12 +181,20 @@ Any object with a `process(amount)` method works --- no base class needed.
 
 ### 2. When to Use ABC vs Duck Typing
 
-- **Use ABC** when you want Python to enforce the contract at instantiation time (failing fast if methods are missing).
-- **Use duck typing** when flexibility matters more than compile-time safety, or when you are working with third-party classes you cannot modify.
+- **Use ABC** when you need guarantees --- frameworks, public APIs, multiple developers, or contracts that must be enforced at design time.
+- **Use duck typing** when flexibility matters more --- scripts, internal logic, rapid development, or working with third-party classes you cannot modify.
 
 ### 3. Trade-off
 
-Duck typing is more flexible but offers no enforcement. ABCs are more rigid but catch missing methods earlier. Both are valid forms of abstraction.
+| Aspect | ABC | Duck Typing |
+|---|---|---|
+| Enforcement | Strong (fails at instantiation) | None (fails at runtime) |
+| Flexibility | Lower | High |
+| Safety | Early errors | Runtime errors |
+| Coupling | Higher | Lower |
+| Best for | Frameworks, shared APIs | Scripts, internal logic |
+
+Both are valid forms of abstraction. ABC enforces contracts explicitly; duck typing relies on implicit behavioral contracts without enforcement.
 
 ---
 
