@@ -227,6 +227,12 @@ class Matrix:
 - Computation is expensive
 - Multiple accesses expected
 
+### 3. When NOT to Use `@cached_property`
+
+- **Mutable underlying state**: if the attributes the cached property depends on can change after construction (e.g., `self.radius` is modified), the cached value becomes stale and silently wrong.
+- **Thread safety**: `functools.cached_property` is **not thread-safe**. If multiple threads access the property simultaneously before it is cached, the computation may run multiple times. Use `threading.Lock` if this matters.
+- **Side effects**: avoid caching properties that perform I/O or modify external state --- the user expects repeated access to be harmless.
+
 ---
 
 ## Exercises
