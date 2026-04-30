@@ -42,11 +42,20 @@ Choose inheritance when there is a genuine "is-a" relationship and the subclass 
 - **Shared interface**: all subclasses need to expose the same set of methods so that client code can treat them interchangeably.
 - **Natural hierarchy**: the domain has a clear, shallow hierarchy that is unlikely to change frequently.
 
+## Ambiguous Cases
+
+Real design decisions are often not clear-cut. Some cases genuinely support either approach:
+
+- **`Manager` and `Employee`**: a manager *is-a* employee, but a manager also *has-a* set of responsibilities that could be composed. If roles change at runtime, composition may be better.
+- **`Stack` and `list`**: a stack *is-a* restricted list, but inheriting from `list` exposes methods (`insert`, `sort`) that violate the stack contract. Composition (wrapping a list) is safer.
+
+When the choice is ambiguous, ask: **will this hierarchy need to change?** If yes, lean toward composition. If the hierarchy is small and stable, inheritance is fine. See [Is-a vs Has-a](isa_vs_hasa.md) and [Composition vs Inheritance](composition_vs_inheritance.md) for deeper comparisons.
+
 ## Summary
 
 - Favor composition when you need flexibility, runtime configurability, or when combining unrelated behaviors.
 - Use inheritance sparingly and only for genuine is-a relationships with shallow, stable hierarchies.
-- Consider the flexibility trade-off: inheritance is simpler for small hierarchies, but composition scales better as requirements grow.
+- **When the choice is ambiguous**, ask whether the hierarchy will need to change --- if yes, lean toward composition.
 - Think about the relationship first --- if "has-a" describes it more accurately than "is-a," composition is almost always the better choice.
 
 ---
