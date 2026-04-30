@@ -1,6 +1,6 @@
 # Inheritance Basics
 
-Inheritance allows classes to reuse and extend behavior. `super()` enables cooperative method calls.
+Inheritance allows a class to reuse and extend the behavior of another, creating an **is-a** relationship with tight coupling. `super()` enables cooperative method calls across the hierarchy. Inheritance works alongside [encapsulation](encapsulation.md) (protecting state), [abstraction](abstraction.md) (defining interfaces), and [polymorphism](polymorphism.md) (enabling flexible dispatch).
 
 ---
 
@@ -51,23 +51,58 @@ Makes refactoring easier and designs more flexible.
 
 ### 1. Use `super()` Always
 
-In cooperative hierarchies, always use `super()`.
+In cooperative hierarchies, always use `super()` instead of hardcoding parent class names (e.g., `Parent.__init__(self, ...)`). Hardcoded calls break the MRO chain in multiple inheritance.
 
 ### 2. Keep Shallow
 
-Prefer shallow inheritance hierarchies.
+Prefer shallow inheritance hierarchies. Deep chains become impossible to reason about and amplify the fragile base class problem.
 
 ### 3. Prefer Composition
 
-Use composition when inheritance isn't needed.
+Use composition when you need to reuse behavior without establishing an is-a relationship. Composition gives controlled flexibility; inheritance gives tight coupling.
+
+```python
+# Composition: Bird HAS-A fly behavior
+class Bird:
+    def __init__(self, fly_behavior):
+        self.fly_behavior = fly_behavior
+
+# Inheritance: Penguin IS-A Bird — but can it fly?
+class Penguin(Bird):
+    pass  # Violates expectations if Bird.fly() exists
+```
+
+---
+
+## Dangers of Inheritance
+
+### 1. Tight Coupling
+
+Subclasses depend on the parent's internal design. Changes to the parent can silently break children.
+
+### 2. Fragile Base Class Problem
+
+Adding or changing a method in a base class may break subclasses that assumed the old behavior.
+
+### 3. Liskov Substitution Violations
+
+If a subclass cannot be used everywhere the parent is expected (e.g., a `Penguin` that cannot `fly()`), the hierarchy is incorrectly modeled.
+
+### When NOT to Use Inheritance
+
+- When the relationship is "has-a" rather than "is-a"
+- When you only need one or two methods from the parent
+- When the base class is likely to change frequently
+- When deep hierarchies make behavior hard to trace
 
 ---
 
 ## Key Takeaways
 
-- Inheritance extends behavior.
-- `super()` follows the MRO.
-- Proper use enables flexible designs.
+- Inheritance extends behavior but introduces tight coupling.
+- `super()` follows the MRO --- never hardcode parent names.
+- Prefer composition over inheritance when the is-a relationship is not strict.
+- Watch for fragile base class and Liskov Substitution violations.
 
 ---
 
@@ -376,11 +411,13 @@ class Developer(Employee):
 
 class TechLead(Manager, Developer):
     """
-    A TechLead is both a Manager and a Developer
-    This demonstrates multiple inheritance and super() with MRO
+    A TechLead is both a Manager and a Developer.
+    Note: This example uses Manager.__init__() directly, which
+    bypasses cooperative MRO. In production code, use super() with
+    **kwargs to support cooperative multiple inheritance properly.
     """
     def __init__(self, name, employee_id, salary, department, programming_languages):
-        # super() handles the complex inheritance chain
+        # Hardcoded parent call — works but breaks cooperative MRO
         Manager.__init__(self, name, employee_id, salary, department)
         self.programming_languages = programming_languages
         self.projects_completed = 0
