@@ -37,11 +37,27 @@ print(len(wheels))  # 4 — wheels still exist
 
 Because `wheels` was created outside of `Car`, deleting the `Car` instance has no effect on the `Wheel` objects. They remain accessible through the original `wheels` variable.
 
+## Danger: Shared Mutable State
+
+Because aggregated objects can be shared across multiple containers, mutations through one container are visible everywhere. This is the main trade-off of aggregation versus [composition](composition_pattern.md).
+
+```python
+wheels = [Wheel(), Wheel()]
+car_a = Car(wheels)
+car_b = Car(wheels)
+
+car_a.wheels.append(Wheel())
+print(len(car_b.wheels))  # 3 — surprise!
+```
+
+If shared mutation is a concern, the container should store a **copy** of the list, or the aggregated objects themselves should be immutable.
+
 ## Summary
 
 - Aggregation is a weaker has-a relationship where the container does not own the lifecycle of its parts.
 - Contained objects have independent lifetimes and can exist before and after the container.
 - Multiple containers can share the same aggregated objects, enabling flexible designs.
+- **Watch for shared mutable state** --- mutations through one container affect all others holding the same references.
 - Aggregation produces loose coupling between the container and its parts, making each component easier to test and reuse independently.
 
 ---
