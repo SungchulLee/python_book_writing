@@ -27,30 +27,46 @@ print(v1 + v2)  # Vector(4, 6)
 
 ### All Basic Operations
 
+Every arithmetic method should type-check its operand and return `NotImplemented` for unsupported types. This allows Python to try the reflected operation on the other operand instead of crashing.
+
 ```python
 class Number:
     def __init__(self, value):
         self.value = value
     
     def __add__(self, other):       # self + other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value + other.value)
     
     def __sub__(self, other):       # self - other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value - other.value)
     
     def __mul__(self, other):       # self * other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value * other.value)
     
     def __truediv__(self, other):   # self / other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value / other.value)
     
     def __floordiv__(self, other):  # self // other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value // other.value)
     
     def __mod__(self, other):       # self % other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value % other.value)
     
     def __pow__(self, other):       # self ** other
+        if not isinstance(other, Number):
+            return NotImplemented
         return Number(self.value ** other.value)
     
     def __repr__(self):
@@ -183,6 +199,11 @@ print(id(c))    # 140234567890 (same object!)
 ```
 
 ### Mutable vs Immutable In-Place
+
+Whether `+=` modifies the object in place or creates a new one is a **deliberate design decision**, not an implementation detail. Choose one style and be consistent:
+
+- **Mutable** (`__iadd__` returns `self`): efficient, but shared references see the change.
+- **Immutable** (no `__iadd__`, falls back to `__add__` + rebind): safer, but allocates a new object.
 
 ```python
 # Mutable: modify in place
