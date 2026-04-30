@@ -118,21 +118,24 @@ Setters enable validation logic.
 
 ## Private Methods
 
+Name mangling applies to methods exactly the same way as attributes --- `__method` becomes `_ClassName__method`.
+
 ### 1. Internal Logic
 
 ```python
 class Hello:
-    def __print_c(self):  # private method
+    def __print_c(self):  # name-mangled method
         print(self.__c)
 ```
 
-Private methods are for internal use only.
+Intended for internal use only, but not truly hidden.
 
-### 2. Cannot Call Externally
+### 2. Mangled, Not Inaccessible
 
 ```python
 m = Hello()
-m.__print_c()  # AttributeError
+m.__print_c()            # AttributeError (mangled name)
+m._Hello__print_c()      # Works — same mangling as attributes
 ```
 
 ### 3. Expose via Public
