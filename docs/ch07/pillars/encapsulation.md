@@ -1,6 +1,6 @@
 # Encapsulation
 
-Encapsulation restricts direct access to an object's data and controls how it can be modified through well-defined interfaces.
+Encapsulation controls how an object's state can be accessed and modified, ensuring that all mutations go through well-defined interfaces. The goal is not merely to hide data, but to **protect invariants** --- making invalid states impossible. Encapsulation works alongside [abstraction](abstraction.md) (defining stable interfaces), [inheritance](inheritance.md) (sharing structure), and [polymorphism](polymorphism.md) (enabling flexibility).
 
 ---
 
@@ -72,9 +72,11 @@ Name mangling prevents direct external access.
 
 ---
 
-## Private Attributes
+## Name Mangling (`__`)
 
-### 1. Cannot Access Directly
+### 1. Not Truly Private
+
+Python has no true access control like Java or C++. Double-underscore attributes are **name-mangled**, not locked. `self.__name` becomes `self._ClassName__name` internally, which discourages accidental access but does not prevent it.
 
 ```python
 class Person:
@@ -82,7 +84,8 @@ class Person:
         self.__name = name
 
 person = Person("John")
-print(person.__name)  # AttributeError
+# person.__name             # AttributeError (mangled name)
+print(person._Person__name)  # "John" — still accessible
 ```
 
 ### 2. Use Getter Methods
@@ -179,6 +182,44 @@ def get_name(self):
 
 ---
 
+## Idiomatic Python: `@property`
+
+Java-style `get_x()` / `set_x()` methods work but are not idiomatic in Python. The Pythonic approach is to start with direct attribute access and add `@property` only when validation or computation is needed --- the external API stays the same either way.
+
+### 1. Clean Syntax
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Below absolute zero")
+        self._celsius = value
+```
+
+### 2. Transparent to Callers
+
+```python
+t = Temperature(25)
+t.celsius = 100      # looks like direct access, but runs validation
+print(t.celsius)     # 100
+```
+
+### 3. When to Use
+
+- Start with public attributes (`self.x`)
+- Add `@property` later if you need validation, computation, or read-only access
+- No need to pre-emptively wrap everything in getters/setters
+
+---
+
 ## Why Encapsulation
 
 ### 1. Data Protection
@@ -195,9 +236,11 @@ Setters can enforce business rules and constraints.
 
 ---
 
-## Inheritance Example
+## Inheritance and Name Mangling
 
-### 1. Cannot Access Private
+### 1. Mangled Names Do Not Inherit Transparently
+
+Name mangling is per-class: `self.__width` in `Polygon` becomes `self._Polygon__width`, which a subclass cannot access as `self.__width` (that would look for `self._Rectangle__width`).
 
 ```python
 class Polygon:
@@ -207,10 +250,12 @@ class Polygon:
 
 class Rectangle(Polygon):
     def compute_area(self):
-        return self.__width * self.__height  # Error!
+        return self.__width * self.__height  # AttributeError!
 ```
 
-### 2. Use Public Methods
+For attributes that subclasses need, use single-underscore convention (`self._width`) instead.
+
+### 2. Use Public or Protected Methods
 
 ```python
 class Polygon:
@@ -233,11 +278,11 @@ class Rectangle(Polygon):
 
 ## Key Takeaways
 
-- Encapsulation bundles data and methods.
-- Use `__` for truly private attributes.
-- Use `_` for internal-use conventions.
-- Provide getters/setters for controlled access.
-- Enables validation and data protection.
+- Encapsulation protects invariants and controls how state changes.
+- `_` (single underscore) is the preferred convention for internal attributes.
+- `__` (double underscore) triggers name mangling --- discourages access but does not enforce true privacy.
+- Use `@property` for idiomatic validation instead of Java-style getters/setters.
+- Python relies on **convention and design**, not language-enforced access control.
 
 ---
 
