@@ -177,9 +177,14 @@ class Rectangle:
         self.height = h
 
 class Square(Rectangle):
-    # Breaks when width != height
+    # Must keep width == height, but set_width/set_height
+    # allow them to differ → invariant violated.
+    # Code expecting a Rectangle (where width and height
+    # can change independently) breaks with a Square.
     pass
 ```
+
+This is the classic **Liskov Substitution** trap: mathematically a square *is* a rectangle, but in code `Square` cannot honor `Rectangle`'s contract that width and height are independently settable.
 
 **Composition works:**
 ```python
@@ -191,6 +196,19 @@ class Square:
     def area(self):
         return self.side ** 2
 ```
+
+## Unified Mental Model
+
+All OOP relationships can be understood through four dimensions:
+
+| Dimension | Inheritance (is-a) | Composition (has-a, strong) | Aggregation (has-a, weak) |
+|---|---|---|---|
+| Ownership | Implicit (type system) | Container owns parts | No ownership |
+| Lifetime | Tied to type | Parts die with container | Independent |
+| Coupling | Tight | Moderate | Loose |
+| Flexibility | Low (compile-time) | Medium | High (runtime) |
+
+When choosing, think about **ownership** (who creates/destroys?), **lifetime** (do parts outlive the container?), **coupling** (how much does one class know about another?), and **flexibility** (can behavior change at runtime?).
 
 ## Design Guidelines
 
