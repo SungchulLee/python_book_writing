@@ -174,7 +174,7 @@ class FastPoint:
 
 ## Hashing and Equality
 
-Objects that compare equal should have equal hashes. If you define `__eq__`, you should also define `__hash__`.
+Objects that compare equal **must** have equal hashes. Defining `__eq__` without `__hash__` is one of the most common dunder-method mistakes --- Python will set `__hash__` to `None`, making your objects unhashable (they cannot be used in sets or as dictionary keys). Always pair the two.
 
 ```python
 class Color:
