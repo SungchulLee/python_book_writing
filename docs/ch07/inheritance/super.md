@@ -1,6 +1,6 @@
 # `super()` Mechanics
 
-The `super()` function enables cooperative multiple inheritance by following the Method Resolution Order (MRO).
+The `super()` function enables cooperative multiple inheritance by following the [Method Resolution Order (MRO)](mro.md). Together with [C3 linearization](c3_linearization.md), it forms the core of Python's method dispatch: C3 computes the order, the MRO stores it, and `super()` walks it.
 
 ---
 
@@ -31,7 +31,7 @@ class D(B, C):
 
 ### 3. Dynamic Dispatch
 
-The next class depends on the instance's type, not where `super()` appears.
+`super()` is internally bound to a **(class, instance) pair**. The "class" is the class where `super()` appears in the source code, and the "instance" is the actual object. Python uses this pair to find the current position in the instance's MRO and dispatch to the next class. This is why the same `super()` call in `B` may dispatch to different classes depending on whether the instance is a `B` or a `D(B, C)`.
 
 ---
 
