@@ -71,6 +71,15 @@ print(getattr(p, 'email', 'no-email'))  # "no-email"
 # print(getattr(p, 'email'))  # ❌ AttributeError
 ```
 
+!!! note "getattr Follows the Full Lookup Chain"
+
+    `getattr(obj, name)` is not a simple dictionary lookup on `obj.__dict__`. It follows
+    the full attribute lookup chain: it calls `type(obj).__getattribute__(obj, name)`,
+    which checks data descriptors, instance `__dict__`, non-data descriptors, and finally
+    `__getattr__` if defined. This means accessing a property via `getattr` executes the
+    property's getter, and accessing a class-level descriptor invokes its `__get__` method.
+    Be aware of this when using `getattr` on objects with complex attribute access logic.
+
 ## setattr Function
 
 ### 1. Basic Syntax
@@ -215,13 +224,7 @@ result = method(5, 3)  # 8
 ```python
 def to_dict(obj):
     """Convert object attributes to dictionary"""
-    result = {}
-    for attr in dir(obj):
-        if not attr.startswith('_'):
-            value = getattr(obj, attr)
-            if not callable(value):
-                result[attr] = value
-    return result
+    return {k: v for k, v in vars(obj).items() if not k.startswith('_')}
 
 class Person:
     def __init__(self, name, age):
@@ -260,6 +263,15 @@ if hasattr(obj, 'attr'):
     value = getattr(obj, 'attr')
 ```
 
+!!! warning "hasattr Internally Calls getattr"
+
+    `hasattr(obj, name)` works by calling `getattr(obj, name)` and returning `False` if an
+    `AttributeError` is raised. This means it triggers the full attribute lookup chain,
+    including `__getattr__`, `__getattribute__`, and property getters. If any of these have
+    side effects (logging, database queries, lazy initialization), `hasattr` will execute
+    them. Avoid using `hasattr` on objects where attribute access is expensive or has
+    side effects.
+
 ### 3. Combined Example
 
 ```python
@@ -271,6 +283,22 @@ def safe_get(obj, attr, default=None):
 
 age = safe_get(person, 'age', 0)
 ```
+
+## The Unified Attribute System
+
+The three functions form a symmetric system that maps directly to Python's dunder methods:
+
+| Operation | Built-in | Dunder Method | Syntax Equivalent |
+|---|---|---|---|
+| Read | `getattr(obj, name)` | `__getattribute__` → `__getattr__` (fallback) | `obj.name` |
+| Write | `setattr(obj, name, val)` | `__setattr__` | `obj.name = val` |
+| Delete | `delattr(obj, name)` | `__delattr__` | `del obj.name` |
+
+Both static access (`obj.attr`) and dynamic access (`getattr(obj, "attr")`) trigger the **same** underlying mechanism. The only difference is whether the attribute name is known at coding time or determined at runtime.
+
+!!! note "Bound Methods via getattr"
+
+    When `getattr(obj, "method")` retrieves a method, it returns a **bound method**, not the raw function. This happens because functions are descriptors: `getattr` triggers `function.__get__(obj, type(obj))`, which binds the instance as the first argument. This is the same descriptor mechanism described in the [Attribute Lookup](../attributes/attribute_lookup.md) chapter.
 
 ## Comparison
 
@@ -295,6 +323,22 @@ age = safe_get(person, 'age', 0)
 - Writing generic utilities or frameworks
 - Need to iterate over arbitrary attributes
 - Implementing serialization/deserialization
+
+!!! warning "Prefer Static Access by Default"
+
+    Dynamic attribute access should be used sparingly in production code. Overuse leads to
+    code that is hard to debug, resistant to refactoring, and invisible to static analysis
+    tools like mypy. When attribute names are known at coding time, always prefer static
+    access (`obj.attr`). Reserve `getattr`/`setattr`/`delattr` for genuinely dynamic
+    scenarios such as frameworks, serialization, and configuration-driven code.
+
+!!! tip "Connection to Dunder Methods"
+
+    `getattr(obj, name)` calls `type(obj).__getattribute__(obj, name)` internally. If
+    `__getattribute__` raises `AttributeError` and the class defines `__getattr__`, Python
+    falls back to `obj.__getattr__(name)`. Similarly, `setattr` invokes `__setattr__` and
+    `delattr` invokes `__delattr__`. Understanding this link between built-in functions and
+    dunder methods is key for Chapter 7's descriptor and attribute access topics.
 
 ---
 
