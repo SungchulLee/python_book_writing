@@ -151,6 +151,8 @@ m.print_c()  # Works
 
 ## Getters and Setters
 
+Java-style `get_x()` / `set_x()` methods work in Python but are **not idiomatic**. Prefer `@property` (see the next section) for new code. The pattern below is shown for completeness and for reading legacy codebases.
+
 ### 1. Basic Pattern
 
 ```python
