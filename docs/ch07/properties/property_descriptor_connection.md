@@ -1,5 +1,7 @@
 # Properties as Descriptors
 
+The key mental model for this page: **`property` is just a specialized descriptor**. Everything you can do with `@property` --- getters, setters, deleters --- is implemented via the descriptor protocol (`__get__`, `__set__`, `__delete__`). Understanding this connection lets you build your own reusable property-like tools. This page builds on [Property Decorator](property_decorator.md) and [Getter/Setter/Deleter](getter_setter_deleter.md).
+
 ## The Connection
 
 ### 1. Property IS a Descriptor
