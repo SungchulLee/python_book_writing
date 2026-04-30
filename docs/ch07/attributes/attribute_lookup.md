@@ -2,17 +2,39 @@
 
 When you access an attribute on a Python object, the interpreter does not simply retrieve a stored value. Instead, it follows a well-defined search chain that involves descriptors, instance dictionaries, and the class hierarchy. Understanding this lookup mechanism is essential for working with inheritance, class design, and advanced features like properties and custom descriptors.
 
+!!! tip "Mental Model: A Prioritized Chain"
+
+    Think of attribute lookup not as a "search" but as a **prioritized chain** with three tiers:
+
+    1. **Class-controlled access** — data descriptors (e.g., `property`) can intercept reads and writes before the instance is even consulted.
+    2. **Object state** — the instance's own `__dict__`, where `self.x = value` stores data.
+    3. **Class defaults** — class attributes and non-data descriptors, inherited via the MRO.
+
+    The first tier that matches wins. Everything in Python attributes — methods, properties, slots, plain variables — is built on this single system.
+
 ## Lookup Order
 
 ### The Full Resolution Model
 
 When you write `obj.attr`, Python does not just check "instance, then class, then parent." The actual resolution involves **descriptors** --- objects that define `__get__`, `__set__`, or `__delete__` methods and can intercept attribute access. The complete lookup order is:
 
-1. **Data descriptors on the class** (via MRO) --- objects that define both `__get__` and `__set__` (e.g., `property`, slots)
+1. **Data descriptors on the class** (via MRO) --- objects that define `__set__` or `__delete__` (and usually `__get__`). Examples: `property`, `__slots__`.
 2. **Instance `__dict__`** --- the instance's own namespace
-3. **Non-data descriptors and other class attributes** (via MRO) --- objects that define only `__get__` (e.g., regular methods), plus plain class variables
+3. **Non-data descriptors and other class attributes** (via MRO) --- objects that define only `__get__` (e.g., regular functions/methods, `@classmethod`, `@staticmethod`), plus plain class variables that are not descriptors at all.
 
 This ordering explains why `@property` can intercept attribute access even when an instance has a key of the same name in its `__dict__`: properties are data descriptors, so they take priority over instance attributes.
+
+!!! warning "Common Misconception: @property Without a Setter"
+
+    A `@property` with only a getter is still a **data descriptor (tier 1)**, not a non-data descriptor. The `property` class always implements `__set__` internally --- if you don't define a setter, it installs one that raises `AttributeError("can't set attribute")`. The same applies to `__delete__`. Because `__set__` exists (even though it raises), `@property` is always tier 1.
+
+    | What | Descriptor type | Tier |
+    |---|---|---|
+    | `@property` (getter only) | Data descriptor | 1 |
+    | `@property` + setter | Data descriptor | 1 |
+    | `def method(self)` (function) | Non-data descriptor | 3 |
+    | `@classmethod` / `@staticmethod` | Non-data descriptor | 3 |
+    | Plain class variable (`x = 10`) | Not a descriptor | 3 |
 
 ```mermaid
 flowchart TD
@@ -24,6 +46,28 @@ flowchart TD
     F -->|yes| G["Return class value\n(call __get__ if descriptor)"]
     F -->|no| H["Raise AttributeError"]
 ```
+
+### A Surprising Consequence
+
+Because data descriptors take priority over instance `__dict__`, assigning to an attribute does not always mean you can read back the same value from `__dict__`:
+
+```python
+class Surprise:
+    @property
+    def x(self):
+        return "from descriptor"
+
+    @x.setter
+    def x(self, value):
+        print(f"Setter called with {value}, but not stored as x")
+
+obj = Surprise()
+obj.x = 10         # setter intercepts — does not store in __dict__
+print(obj.x)        # "from descriptor" — getter intercepts the read
+print(obj.__dict__) # {} — no 'x' key at all
+```
+
+This is not a trick — it is exactly how `@property` works in practice. The property descriptor sits at tier 1 of the lookup chain, so it intercepts both reads and writes before the instance `__dict__` is ever consulted.
 
 ### Simplified View: Instance, Class, Parent
 
@@ -84,6 +128,10 @@ Properties and methods are implemented using Python's **descriptor protocol**. A
 
 - **Data descriptors** define `__set__` (and usually `__get__`). Examples: `property`, attributes created by `__slots__`.
 - **Non-data descriptors** define only `__get__`. Example: regular functions (which become bound methods).
+
+!!! note "Intuition: Why Two Kinds?"
+
+    Data descriptors **must** win over instance `__dict__` so that `@property` validation cannot be bypassed by writing directly to the instance. Non-data descriptors (like methods) **should** lose to instance `__dict__` so that you can shadow a method on a specific instance if needed. The split exists to serve these two different design needs.
 
 This is why `@property` can add validation to attribute access --- it installs a data descriptor on the class that intercepts reads and writes:
 
