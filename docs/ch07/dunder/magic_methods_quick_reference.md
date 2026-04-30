@@ -131,6 +131,33 @@ def __exit__(self, exc_type, exc_val, exc_tb):
     return False  # False = propagate exceptions
 ```
 
+## Protocol Checklist
+
+Before implementing dunder methods, use this table to identify which methods your class needs:
+
+| Goal | Required Methods |
+|---|---|
+| Numeric type | `__add__`, `__mul__`, `__eq__`, `__lt__`, `__repr__`, `__hash__` |
+| Sequence (read-only) | `__len__`, `__getitem__` |
+| Mutable sequence | `__len__`, `__getitem__`, `__setitem__`, `__delitem__` |
+| Hashable object | `__eq__` + `__hash__` (must be immutable) |
+| Sortable object | `__eq__` + `__lt__` (use `@total_ordering` for the rest) |
+| Context manager | `__enter__`, `__exit__` |
+| Callable object | `__call__` |
+| Iterable | `__iter__` (or `__getitem__` as fallback) |
+
+## Design Rules
+
+Only implement dunder methods when they match user expectations:
+
+1. **Does the operation make semantic sense?** `Vector + Vector` is natural; `User + User` is not.
+2. **Is it consistent?** If `a + b` works, `b + a` should too (when appropriate). Implement `__radd__`.
+3. **What about other types?** Always return `NotImplemented` for unsupported types --- never raise `TypeError` directly in the method.
+4. **Mutable or immutable?** Decide upfront. If immutable, implement `__hash__`. If mutable, set `__hash__ = None`.
+5. **Does `__eq__` exist?** Then `__hash__` must too (or be explicitly `None`).
+
+---
+
 ## Common Patterns
 
 ### Immutable Class (tuple-like)
