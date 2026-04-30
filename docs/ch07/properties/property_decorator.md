@@ -17,6 +17,9 @@ Use properties to:
 - Enforce **validation** or **read-only** access
 - Keep internal representation private while providing clean interface
 
+!!! tip "Core Rule"
+    `@property` = **controlled attribute access**. It lets you compute, validate, or restrict without changing how users access the attribute. The caller writes `obj.attr` — they never know whether it is a stored value or a method call.
+
 ### 3. Basic Syntax
 
 ```python
@@ -124,7 +127,19 @@ class Person:
 
 ## Internal Mechanism
 
-### 1. Descriptor Object
+### 1. The Plain-English Version
+
+When you write `@property` above a method, Python does not store that method as a normal attribute. Instead, it creates a **gatekeeper object** that sits on the class and watches for anyone trying to read, write, or delete that attribute name.
+
+- When you **read** `obj.name`, the gatekeeper calls your getter function and returns the result.
+- When you **write** `obj.name = value`, the gatekeeper calls your setter function (or raises an error if you didn't define one).
+- When you **delete** `del obj.name`, the gatekeeper calls your deleter function.
+
+The gatekeeper always runs before Python checks the instance's own dictionary, so it cannot be bypassed by accident. This is why properties can enforce validation --- the gatekeeper intercepts every access.
+
+In Python's technical vocabulary, this gatekeeper is called a **descriptor**. You don't need to understand descriptors to use `@property` effectively, but knowing they exist explains why properties "just work."
+
+### 2. The Technical Details
 
 When you define a property:
 
@@ -139,7 +154,7 @@ Python creates a **descriptor object** of type `property`, which:
 - Lives in the class's namespace (`Person.__dict__`)
 - Manages how the attribute behaves at the instance level
 
-### 2. Inspection
+### 3. Inspection
 
 You can inspect it:
 
@@ -147,7 +162,7 @@ You can inspect it:
 print(type(Person.name))  # <class 'property'>
 ```
 
-### 3. How It Works
+### 4. How It Works
 
 Properties are **descriptors** stored at the class level that intercept attribute access at the instance level. Because `property` defines `__get__` and `__set__`, it is a **data descriptor** --- it takes priority over instance `__dict__` entries during attribute lookup. This is also why a property on a parent class works correctly on subclass instances. For the full descriptor mechanics, see [Properties as Descriptors](property_descriptor_connection.md).
 
