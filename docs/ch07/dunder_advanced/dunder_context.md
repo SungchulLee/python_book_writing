@@ -36,10 +36,30 @@ with ManagedFile("example.txt") as f:
 
 When the `with` block begins, `__enter__` opens the file and returns the file handle. When the block ends — normally or via exception — `__exit__` closes the file.
 
+## `with` vs `try/finally`
+
+Context managers replace the `try/finally` pattern. Both guarantee cleanup, but `with` is shorter and harder to get wrong:
+
+```python
+# try/finally — correct but verbose
+f = open("data.txt")
+try:
+    data = f.read()
+finally:
+    f.close()
+
+# with — same guarantee, less code
+with open("data.txt") as f:
+    data = f.read()
+```
+
+As resource management grows more complex (nested resources, exception handling, conditional cleanup), `try/finally` becomes error-prone while `with` stays clean. Context managers also serve as a design pattern analogous to RAII (Resource Acquisition Is Initialization) in C++. See also [Callable Objects](dunder_callable.md), [Containers](dunder_containers.md), and [Iteration](dunder_iterables.md) for the other core protocols.
+
 ## Summary
 
 - Context managers guarantee resource cleanup by pairing setup (`__enter__`) with teardown (`__exit__`).
 - The `__exit__` method always runs, even when an exception occurs inside the `with` block.
+- Prefer `with` over `try/finally` --- it is shorter, safer, and composable.
 - Implement `__enter__` and `__exit__` on any class to make its instances usable with the `with` statement.
 
 ---
