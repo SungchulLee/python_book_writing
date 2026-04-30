@@ -71,6 +71,8 @@ All `Animal` objects have a `speak` method.
 
 ## Duck Typing
 
+If polymorphism is the **designer's** perspective (designing classes to share a common interface), duck typing is the **user's** perspective (using objects based on expected behavior, regardless of type). Polymorphism shapes the objects; duck typing shapes the usage.
+
 ### 1. No Type Declaration
 
 ```python
@@ -90,7 +92,7 @@ class Robot:
 make_speak(Robot())  # Works!
 ```
 
-If it has `speak()`, it works.
+If it has `speak()`, it works --- no shared base class required.
 
 ### 3. Runtime Check
 
