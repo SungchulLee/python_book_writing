@@ -78,15 +78,26 @@ class Penguin(Bird):
 
 ### 1. Tight Coupling
 
-Subclasses depend on the parent's internal design. Changes to the parent can silently break children.
+Subclasses depend on the parent's internal design. If the parent renames a method, changes its signature, or reorders internal calls, every subclass can silently break --- even if the subclass code itself was not touched.
+
+```python
+# Parent changes _validate() to _check() → Child breaks
+class Parent:
+    def save(self):
+        self._check()  # was _validate()
+
+class Child(Parent):
+    def _validate(self):  # dead code now — never called
+        ...
+```
 
 ### 2. Fragile Base Class Problem
 
-Adding or changing a method in a base class may break subclasses that assumed the old behavior.
+Adding or changing a method in a base class may break subclasses that assumed the old behavior. This is particularly dangerous when the base class is in a library you don't control --- an upgrade can break your subclass without warning.
 
 ### 3. Liskov Substitution Violations
 
-If a subclass cannot be used everywhere the parent is expected (e.g., a `Penguin` that cannot `fly()`), the hierarchy is incorrectly modeled.
+If a subclass cannot be used everywhere the parent is expected (e.g., a `Penguin` that cannot `fly()`), the hierarchy is incorrectly modeled. Code that calls `bird.fly()` will fail at runtime for penguins, defeating the purpose of polymorphism.
 
 ### When NOT to Use Inheritance
 
@@ -94,6 +105,18 @@ If a subclass cannot be used everywhere the parent is expected (e.g., a `Penguin
 - When you only need one or two methods from the parent
 - When the base class is likely to change frequently
 - When deep hierarchies make behavior hard to trace
+
+---
+
+## How Inheritance Connects to the Other Pillars
+
+Inheritance does not work in isolation:
+
+- [Encapsulation](encapsulation.md) **protects** parent internals so subclasses don't depend on implementation details.
+- [Abstraction](abstraction.md) **defines** the interface that subclasses must honor (via ABC or convention).
+- [Polymorphism](polymorphism.md) **uses** the shared interface so callers don't care which subclass they hold.
+
+When inheritance is well-designed, these four pillars reinforce each other. When it is misused (tight coupling, broken Liskov Substitution), the other pillars break down too.
 
 ---
 
@@ -412,12 +435,15 @@ class Developer(Employee):
 class TechLead(Manager, Developer):
     """
     A TechLead is both a Manager and a Developer.
-    Note: This example uses Manager.__init__() directly, which
-    bypasses cooperative MRO. In production code, use super() with
-    **kwargs to support cooperative multiple inheritance properly.
+
+    ⚠️ WARNING: This example uses Manager.__init__() directly, which
+    bypasses cooperative MRO — Developer.__init__() is never called.
+    This is shown as an anti-pattern. See the corrected version below
+    using super() with **kwargs for proper cooperative initialization.
     """
     def __init__(self, name, employee_id, salary, department, programming_languages):
-        # Hardcoded parent call — works but breaks cooperative MRO
+        # ❌ Hardcoded parent call — breaks cooperative MRO!
+        # Developer.__init__() is skipped entirely.
         Manager.__init__(self, name, employee_id, salary, department)
         self.programming_languages = programming_languages
         self.projects_completed = 0
