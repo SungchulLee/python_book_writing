@@ -1,6 +1,6 @@
 # Iteration Protocol
 
-Iteration dunder methods enable objects to work with `for` loops, comprehensions, and other iteration contexts.
+Iteration dunder methods enable objects to work with `for` loops, comprehensions, and other iteration contexts. Like [containers](dunder_containers.md), [callables](dunder_callable.md), and [context managers](dunder_context.md), iteration is a **protocol** --- Python doesn't care about your class's type, only whether it implements `__iter__` (or falls back to `__getitem__`).
 
 ## The Iteration Protocol
 
@@ -469,15 +469,32 @@ it = MyIterator(3)
 print(list(it))  # [1, 2, 3]
 ```
 
+## The Single-Use Iterator Trap
+
+This is one of the most common bugs in real Python code. An **iterator** is exhausted after one pass --- iterating again silently yields nothing:
+
+```python
+numbers = iter([1, 2, 3])
+print(sum(numbers))   # 6
+print(sum(numbers))   # 0 — silently empty!
+```
+
+To allow multiple iterations, your class should be an **iterable** (returns a fresh iterator from `__iter__` each time), not an iterator itself. If your `__iter__` returns `self` and you also define `__next__`, the object is single-use.
+
+## Lazy vs Eager Evaluation
+
+Generators and iterators are **lazy** --- they produce values one at a time, using constant memory regardless of dataset size. Lists are **eager** --- they compute and store all values upfront. Use lazy iteration when the dataset is large or potentially infinite; use eager evaluation when you need random access or multiple passes.
+
 ## Key Takeaways
 
 - `__iter__` returns an iterator object
 - `__next__` returns the next value or raises `StopIteration`
-- Use generators in `__iter__` for simple cases
+- **Watch for single-use iterators** --- if `__iter__` returns `self`, the object can only be iterated once
+- Use generators in `__iter__` for simple cases (automatically creates fresh iterators)
 - Separate iterator classes allow multiple simultaneous iterations
+- **Lazy iteration** (generators) saves memory; **eager evaluation** (lists) allows random access
 - `__reversed__` enables custom `reversed()` behavior
 - `__getitem__` provides fallback iteration if `__iter__` is missing
-- Iterators are typically single-use; iterables can be reused
 - Use `collections.abc` base classes for compliance
 - `yield from` enables clean recursive iteration
 
