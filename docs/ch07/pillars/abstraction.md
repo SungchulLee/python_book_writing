@@ -1,22 +1,22 @@
 # Abstraction
 
-Abstraction hides complex implementation details and shows only the necessary features, reducing complexity for users.
+Abstraction is the practice of defining stable interfaces that hide volatile implementation details, allowing components to change independently. It is a **design concept** --- not just a Python module. While the `abc` module provides one enforcement mechanism, abstraction also happens through duck typing, protocols, and simple function signatures. Abstraction works alongside [encapsulation](encapsulation.md) (protecting state), [inheritance](inheritance.md) (sharing structure), and [polymorphism](polymorphism.md) (enabling flexibility).
 
 ---
 
 ## What is Abstraction
 
-### 1. Hide Complexity
+### 1. Define Stable Boundaries
 
-Show only essential features while hiding implementation details.
+Show only essential features while hiding implementation details that may change.
 
 ### 2. High-Level Interface
 
 Users interact with objects at a high level without understanding internals.
 
-### 3. Essential Features
+### 3. Design for Change
 
-Focus on **what** an object does, not **how** it does it.
+Focus on **what** an object does, not **how** it does it --- so that implementations can evolve without breaking consumers.
 
 ---
 
@@ -166,6 +166,30 @@ class MyBase(ABC):
 
 ---
 
+## Abstraction Without ABC (Duck Typing)
+
+You do not always need `ABC` to achieve abstraction in Python. Thanks to duck typing, any object that implements the expected methods can serve as an implementation --- no formal inheritance required.
+
+### 1. Implicit Interface
+
+```python
+def process_payment(processor, amount):
+    processor.process(amount)
+```
+
+Any object with a `process(amount)` method works --- no base class needed.
+
+### 2. When to Use ABC vs Duck Typing
+
+- **Use ABC** when you want Python to enforce the contract at instantiation time (failing fast if methods are missing).
+- **Use duck typing** when flexibility matters more than compile-time safety, or when you are working with third-party classes you cannot modify.
+
+### 3. Trade-off
+
+Duck typing is more flexible but offers no enforcement. ABCs are more rigid but catch missing methods earlier. Both are valid forms of abstraction.
+
+---
+
 ## Real-World Example
 
 ### 1. Shape Hierarchy
@@ -273,13 +297,26 @@ class Creator(ABC):
 
 ---
 
+## When Abstraction Goes Wrong
+
+### 1. Leaky Abstraction
+
+When the interface exposes implementation details (e.g., requiring a specific SQL dialect), the abstraction fails to isolate consumers from change.
+
+### 2. Over-Abstraction
+
+Too many abstract layers slow development and obscure intent. Not every function needs an abstract base class.
+
+---
+
 ## Key Takeaways
 
-- Abstraction hides implementation details.
-- ABC module enforces contracts.
+- Abstraction defines stable interfaces that hide implementation details.
+- ABC module enforces contracts; duck typing offers a lighter alternative.
 - `@abstractmethod` marks required methods.
 - Cannot instantiate abstract classes.
-- Enables polymorphic designs.
+- Enables [polymorphic](polymorphism.md) designs.
+- Beware leaky or excessive abstraction.
 
 ---
 
