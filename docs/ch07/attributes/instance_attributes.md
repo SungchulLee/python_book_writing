@@ -2,6 +2,9 @@
 
 Instance attributes are variables that belong to individual object instances, storing unique state for each object. While [class attributes](class_attributes.md) are shared across all instances, instance attributes give each object its own independent data. For how Python resolves which attribute you get, see [Attribute Lookup](attribute_lookup.md).
 
+!!! note "Role in the Lookup Chain"
+    In Python's [attribute lookup model](attribute_lookup.md), instance attributes sit at **tier 2** — after data descriptors but before class attributes. This means a `@property` (a data descriptor) can intercept access to an attribute name even if that name exists in the instance's `__dict__`. When no descriptor is involved, instance attributes take precedence over class attributes of the same name.
+
 ---
 
 ## What are Instances
@@ -181,7 +184,7 @@ class DataLoader:
     @property
     def data(self):
         if self._data is None:
-            self._data = load_file(self.filename)
+            self._data = load_file(self.filename)  # defined elsewhere
         return self._data
 ```
 
@@ -203,6 +206,9 @@ a = Student("Lee", "Math")
 print(a.__dict__)
 # {'name': 'Lee', 'major': 'Math'}
 ```
+
+!!! note "When __dict__ Is Bypassed"
+    Not all attribute access consults `__dict__`. If a class defines a data descriptor (like `@property` or `__slots__`) for an attribute name, the descriptor intercepts access **before** `__dict__` is checked. This is why `obj.celsius` in a class with `@property def celsius` does not appear in `obj.__dict__` even after assignment — the property's setter stores the value under a different name (e.g., `_celsius`).
 
 ### 2. Modifying `__dict__`
 
@@ -278,6 +284,9 @@ print(b.name)  # "Kim" - unchanged
 ### 3. Independence
 
 Changes to one instance don't affect others. For how instance attributes interact with [class attributes](class_attributes.md) of the same name (shadowing), see [Attribute Lookup](attribute_lookup.md).
+
+!!! warning "Shadowing Class Attributes"
+    Assigning `self.x = value` creates an instance attribute that **shadows** any class attribute of the same name. After shadowing, the instance sees its own value while other instances and the class still see the original. This is intentional — it is how Python separates per-object state from shared class state — but it can cause subtle bugs when you accidentally shadow a class attribute you meant to modify. Always use `ClassName.attr` to modify shared class state.
 
 ---
 
