@@ -57,6 +57,10 @@ The mental model is:
 2. **If the method returns `NotImplemented`**, Python tries a fallback (e.g., the reflected method on the other operand).
 3. **If no method handles the operation**, Python raises a `TypeError`.
 
+!!! note "Connection to Descriptors"
+
+    Dunder methods are triggered by syntax (e.g., `+` calls `__add__`), but the way Python *finds* those methods is controlled by the descriptor protocol and the attribute lookup chain. When you write `obj + other`, Python looks up `type(obj).__add__` — and that lookup follows the same MRO and descriptor rules described in the [Attribute Lookup](../object_model/attribute_lookup.md) section. Methods themselves are non-data descriptors: accessing `obj.method` invokes `__get__` to produce a bound method. This means descriptors and dunder methods are not separate systems — they are two facets of the same underlying mechanism.
+
 This protocol-based approach means you don't inherit from a special base class to be "list-like" or "number-like" --- you just implement the right methods. See the [quick reference](magic_methods_quick_reference.md) for which methods each protocol requires.
 
 ## Summary

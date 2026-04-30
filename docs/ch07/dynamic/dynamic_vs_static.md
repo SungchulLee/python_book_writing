@@ -120,7 +120,7 @@ obj.attr  →  type(obj).__getattribute__(obj, "attr")
               →  descriptors / instance __dict__ / __getattr__
 ```
 
-Because this resolution happens at runtime (not compile time), you can add attributes on the fly, swap methods, and use objects based on behavior rather than type. The built-in functions [`getattr`/`setattr`/`delattr`](builtin_attr_functions.md) provide programmatic access to this same mechanism. Everything you learned about [attribute lookup](../attributes/attribute_lookup.md) and [descriptors](../attributes/attribute_lookup.md) is the machinery that makes dynamic typing work.
+Because this resolution happens at runtime (not compile time), you can add attributes on the fly, swap methods, and use objects based on behavior rather than type. The built-in functions [`getattr`/`setattr`/`delattr`](builtin_attr_functions.md) provide programmatic access to this same mechanism. Everything you learned about [attribute lookup](../object_model/attribute_lookup.md) and [descriptors](../object_model/attribute_lookup.md) is the machinery that makes dynamic typing work.
 
 ## Summary
 

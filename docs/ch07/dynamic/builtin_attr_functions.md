@@ -298,7 +298,7 @@ Both static access (`obj.attr`) and dynamic access (`getattr(obj, "attr")`) trig
 
 !!! note "Bound Methods via getattr"
 
-    When `getattr(obj, "method")` retrieves a method, it returns a **bound method**, not the raw function. This happens because functions are descriptors: `getattr` triggers `function.__get__(obj, type(obj))`, which binds the instance as the first argument. This is the same descriptor mechanism described in the [Attribute Lookup](../attributes/attribute_lookup.md) chapter.
+    When `getattr(obj, "method")` retrieves a method, it returns a **bound method**, not the raw function. This happens because functions are descriptors: `getattr` triggers `function.__get__(obj, type(obj))`, which binds the instance as the first argument. This is the same descriptor mechanism described in the [Attribute Lookup](../object_model/attribute_lookup.md) chapter.
 
 ## Comparison
 
