@@ -4,15 +4,27 @@ C3 linearization is the algorithm Python uses to compute the Method Resolution O
 
 ---
 
+## Why C3? (Not DFS or BFS)
+
+Naïve traversals fail for multiple inheritance:
+
+| Strategy | Problem |
+|---|---|
+| Depth-first (DFS) | Visits common ancestors too early, causing duplicates (e.g., `D → B → A → C → A`) |
+| Breadth-first (BFS) | Can break local precedence order (a parent listed first may appear after one listed second) |
+| C3 linearization | Preserves local order, avoids duplicates, rejects inconsistent hierarchies |
+
+Python adopted C3 in version 2.3 specifically because DFS and BFS both violate key invariants that cooperative inheritance relies on.
+
 ## Algorithm Overview
 
 ### 1. Named After Paper
 
-C3 linearization algorithm from Barrett et al.
+C3 linearization algorithm, based on the Dylan language's approach and formalized by Barrett et al.
 
 ### 2. Not Simple Traversal
 
-Not depth-first or breadth-first—a specialized merge algorithm.
+Not depth-first or breadth-first --- a specialized merge algorithm that produces a single consistent ordering or rejects the hierarchy.
 
 ### 3. Three Key Properties
 
@@ -45,7 +57,7 @@ Examine the first element of each list.
 
 ### 2. Find Valid Head
 
-Pick the first head that **is not in the tail** of any other list.
+Pick the first head that **is not in the tail** of any other list. The intuition: if a class appears in someone else's tail, that means some other class must come before it (the tail represents "things that should come after the head"). Picking only classes with no such constraint ensures we never violate any ordering requirement.
 
 ### 3. Append and Remove
 
