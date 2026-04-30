@@ -1,6 +1,6 @@
 # Method Resolution Order
 
-The **Method Resolution Order (MRO)** defines how Python resolves methods in inheritance hierarchies, especially with multiple inheritance.
+The **Method Resolution Order (MRO)** defines how Python resolves methods in inheritance hierarchies, especially with multiple inheritance. The MRO, [C3 linearization](c3_linearization.md), and [`super()`](super.md) form a unified system: C3 computes the order, the MRO stores it, and `super()` walks it at runtime.
 
 ---
 
@@ -79,9 +79,9 @@ Methods are searched left to right through this list.
 
 The class itself is always first in MRO.
 
-### 2. Left-to-Right
+### 2. Left-to-Right (Subject to C3 Constraints)
 
-Parents are searched in declaration order.
+Parents are generally searched in declaration order, but this rule is subject to the constraints imposed by [C3 linearization](c3_linearization.md). "Left-to-right" is a useful simplification for most cases, but the full algorithm also preserves monotonicity and parent MRO consistency.
 
 ```python
 class D(B, C):  # B before C
@@ -104,17 +104,17 @@ A parent appears before its own parents.
 
 ### 1. Algorithm Used
 
-Python uses C3 linearization to compute MRO.
+Python uses [C3 linearization](c3_linearization.md) to compute MRO. Unlike naïve depth-first or breadth-first traversals, C3 guarantees a consistent ordering or rejects the hierarchy.
 
 ### 2. Three Properties
 
 - Preserves local precedence order
-- Maintains parent MRO
+- Maintains parent MRO consistency
 - Ensures monotonicity
 
 ### 3. Consistency
 
-Guarantees a consistent resolution order or raises an error.
+Guarantees a consistent resolution order or raises an error. See [C3 Linearization](c3_linearization.md) for the full merge algorithm and worked examples.
 
 ---
 
