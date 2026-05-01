@@ -2,6 +2,10 @@
 
 The **Method Resolution Order (MRO)** defines how Python resolves methods in inheritance hierarchies, especially with multiple inheritance. The MRO, [C3 linearization](c3_linearization.md), and [`super()`](super.md) form a unified system: C3 computes the order, the MRO stores it, and `super()` walks it at runtime.
 
+!!! note "MRO Governs All Attribute Lookup"
+
+    Despite its name, the Method Resolution Order is not limited to methods. It defines the search order for **all** attribute access on an object. When you write `obj.attr`, Python searches the instance `__dict__` first, then walks the class hierarchy in MRO order looking for `attr` in each class's `__dict__`. Methods, class variables, descriptors, and properties are all found through this same mechanism. Methods are simply attributes that happen to be callable.
+
 ---
 
 ## Why MRO Exists
@@ -69,7 +73,7 @@ print(D.__mro__)
 
 ### 3. Reading the Order
 
-Methods are searched left to right through this list.
+Attributes are searched through this list from left to right. However, the full lookup is: **data descriptors → instance `__dict__` → class hierarchy (MRO) → `__getattr__`**. The MRO governs the class hierarchy part of this chain. See the [descriptor section](../descriptors/descriptor_intro.md) for the complete picture.
 
 ---
 

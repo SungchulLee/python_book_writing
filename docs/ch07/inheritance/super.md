@@ -8,7 +8,7 @@ The `super()` function enables cooperative multiple inheritance by following the
 
 ### 1. Not Just Parent
 
-`super()` doesn't call the "parent" class—it calls the **next class in MRO**.
+`super()` doesn't call the "parent" class—it calls the **next class in MRO**. The simplest correct mental model: `super()` means **"continue the chain."**
 
 ```python
 class A:
@@ -32,6 +32,18 @@ class D(B, C):
 ### 3. Dynamic Dispatch
 
 `super()` is internally bound to a **(class, instance) pair**. The "class" is the class where `super()` appears in the source code, and the "instance" is the actual object. Python uses this pair to find the current position in the instance's MRO and dispatch to the next class. This is why the same `super()` call in `B` may dispatch to different classes depending on whether the instance is a `B` or a `D(B, C)`.
+
+!!! note "How super() Works Internally"
+
+    `super()` returns a **proxy object**, not a class. When you call a method on this proxy, Python:
+
+    1. Finds the current class (where `super()` appears) in the instance's MRO
+    2. Moves to the **next** class in the MRO
+    3. Looks up the method name on that class
+    4. Binds the method to the original instance
+    5. Returns the bound method (which you then call)
+
+    This is why `super()` is MRO-aware and not simply "call my parent" — step 2 uses the full MRO of the actual instance, which may include classes the current class knows nothing about.
 
 ---
 

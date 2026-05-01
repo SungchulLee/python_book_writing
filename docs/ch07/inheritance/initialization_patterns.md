@@ -43,7 +43,11 @@ class Left(Base):
         self.left_val = left_val
 ```
 
-Without `**kwargs`, adding a new class to the hierarchy can break existing `__init__` chains due to unexpected arguments.
+Without `**kwargs`, the chain breaks:
+
+- Arguments meant for downstream classes are **lost** or cause `TypeError`
+- Adding a new class to the hierarchy **breaks** existing `__init__` calls
+- In large hierarchies, these failures appear far from the actual bug, making them hard to debug
 
 ```python
 class A:
@@ -69,7 +73,10 @@ The MRO for `C` is `[C, A, B, object]`. When `C.__init__` calls `super().__init_
 
 ## When Not to Call `super()`
 
-"Always call `super().__init__()`" is the right default, but there are legitimate exceptions:
+!!! tip "Default Rule"
+    Use `super()` in cooperative hierarchies — this is the right choice in the vast majority of cases.
+
+There are two legitimate exceptions:
 
 - **Non-cooperative third-party classes** that don't call `super()` themselves --- inserting a `super()` call may cause unexpected double-initialization or argument errors.
 - **Deliberately terminating the chain** --- a class designed to be the final base in an MRO may intentionally omit `super().__init__()`.
