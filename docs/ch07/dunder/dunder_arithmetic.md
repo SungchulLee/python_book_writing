@@ -1,6 +1,6 @@
 # Arithmetic Operators
 
-Arithmetic dunder methods enable mathematical operations on custom objects through operator overloading.
+Arithmetic dunder methods enable mathematical operations on custom objects through operator overloading. Before implementing them, ask: **does this operation make semantic sense for the class?** `Vector + Vector` is natural; `User + User` is not. If the meaning of `+` is not immediately obvious without reading the source, use a named method instead.
 
 ## Basic Arithmetic Operations
 
@@ -150,6 +150,10 @@ int.__mul__(3, v) → NotImplemented
   ↓
 Vector.__rmul__(v, 3) → Vector(3, 6)
 ```
+
+!!! note "Subclass Priority"
+
+    If the right operand's type is a **subclass** of the left operand's type, Python tries the right operand's reflected method **first**, before the left operand's forward method. This ensures that subclasses can override the behavior of their parent's operators. For example, if `B` is a subclass of `A`, then `a + b` tries `B.__radd__(b, a)` before `A.__add__(a, b)`. Without this rule, a subclass could never customize how it interacts with its parent type.
 
 ### All Reflected Methods
 

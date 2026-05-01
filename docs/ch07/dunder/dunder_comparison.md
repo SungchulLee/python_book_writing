@@ -54,11 +54,7 @@ class Version:
             return NotImplemented
         return self._to_tuple() == other._to_tuple()
     
-    def __ne__(self, other):
-        result = self.__eq__(other)
-        if result is NotImplemented:
-            return result
-        return not result
+    # __ne__ is NOT needed — Python automatically derives it from __eq__
     
     def __lt__(self, other):
         if not isinstance(other, Version):
@@ -171,6 +167,10 @@ class FastPoint:
     def __ge__(self, other):
         return (self.x, self.y) >= (other.x, other.y)
 ```
+
+!!! tip "Practical Advice"
+
+    In practice, use `@total_ordering` unless you have a specific reason not to. Manual implementation of all six comparison methods is rarely needed — the two main exceptions are: (1) performance-critical code where the decorator's overhead matters (it wraps each derived method in an extra function call), and (2) non-standard comparison semantics where the derived methods would produce incorrect results. For the vast majority of classes, `__eq__` + `__lt__` + `@total_ordering` is the right choice.
 
 ## Hashing and Equality
 

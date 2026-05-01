@@ -63,6 +63,28 @@ The mental model is:
 
 This protocol-based approach means you don't inherit from a special base class to be "list-like" or "number-like" --- you just implement the right methods. See the [quick reference](magic_methods_quick_reference.md) for which methods each protocol requires.
 
+## The Full Chain
+
+Everything in Python connects through one mechanism:
+
+```mermaid
+flowchart LR
+    A["Operators<br/>a + b"] --> B["Dunder methods<br/>a.__add__(b)"]
+    B --> C["Attribute lookup<br/>type(a).__add__"]
+    C --> D["Descriptor protocol<br/>__get__ → bound method"]
+    D --> E["Method call<br/>result returned"]
+    E --> F["If NotImplemented<br/>→ try reflected op"]
+```
+
+```text
+Operators      → dunder methods
+Dunder methods → attribute lookup
+Lookup         → descriptor protocol
+Classes        → metaclass (type)
+```
+
+This is the entire Python object model in one chain. Everything you write as clean syntax (`a + b`, `obj.method()`, `len(x)`) passes through this same machinery.
+
 ## Summary
 
 - Dunder methods are the mechanism Python uses to connect user-defined classes with built-in syntax and operations.
