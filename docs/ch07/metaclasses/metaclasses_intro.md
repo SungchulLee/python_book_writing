@@ -7,6 +7,14 @@ A metaclass is a class whose instances are classes. Just as a class defines how 
     object (via `__new__`), initializes it (via `__init__`), and controls how that
     class creates its own instances (via `__call__`).
 
+    ```text
+    Metaclass → builds classes
+    Class     → builds instances
+    ABC       → constrains class design
+    ```
+
+    A metaclass is **not** responsible for constructing instances — that is the class's job. The metaclass constructs the class itself.
+
 ---
 
 ## Understanding the Concept
