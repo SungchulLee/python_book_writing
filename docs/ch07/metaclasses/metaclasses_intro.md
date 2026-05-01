@@ -1,6 +1,11 @@
 # Metaclasses Introduction
 
-A metaclass is a class whose instances are classes. Just as a class defines how instances behave, a metaclass defines how classes behave.
+A metaclass is a class whose instances are classes. Just as a class defines how instances behave, a metaclass defines how classes behave. Every class in Python is created by a metaclass — if you don't specify one, Python uses `type` as the default. You are always using a metaclass, even when you don't say so explicitly.
+
+!!! note "Mental Model"
+    A metaclass is a **class factory + behavior controller**. It builds the class
+    object (via `__new__`), initializes it (via `__init__`), and controls how that
+    class creates its own instances (via `__call__`).
 
 ---
 
@@ -99,15 +104,22 @@ class MyClass(metaclass=MyMeta):
 
 ### __new__ vs __init__ in Metaclass
 
+The key difference: `__new__` can **replace** the class object entirely (by returning
+a different object), while `__init__` receives the already-created class and can only
+modify it in place. Use `__new__` when you need to intercept or transform the class
+before it exists; use `__init__` for post-creation setup.
+
 ```python
 class MyMeta(type):
     def __new__(mcs, name, bases, namespace):
-        """Called to CREATE the class object."""
+        """Called to CREATE the class object.
+        Can modify namespace or return a completely different class."""
         print(f"__new__: Creating {name}")
         return super().__new__(mcs, name, bases, namespace)
     
     def __init__(cls, name, bases, namespace):
-        """Called to INITIALIZE the class object."""
+        """Called to INITIALIZE the class object.
+        The class already exists — can only modify it, not replace it."""
         print(f"__init__: Initializing {name}")
         super().__init__(name, bases, namespace)
 
@@ -138,6 +150,18 @@ a = Singleton()
 b = Singleton()
 print(a is b)  # True
 ```
+
+!!! warning "Singleton caveat: first initialization wins"
+    After the first instance is created, all subsequent calls return that same
+    instance — **any new arguments are silently ignored**. This can hide bugs:
+
+    ```python
+    db1 = Database("postgres")  # Creates instance with postgres
+    db2 = Database("mysql")     # Returns db1 — "mysql" is ignored!
+    print(db2.url)              # "postgres"
+    ```
+
+    Document this behavior clearly, or raise an error on re-initialization.
 
 ---
 
@@ -319,6 +343,25 @@ class MyClass:
 
 ---
 
+## Class Creation Timeline
+
+The full pipeline, showing where each hook fires and how `__init_subclass__` fits in:
+
+```text
+class MyClass(Base, metaclass=MyMeta):
+    ...
+
+Step 1:  MyMeta.__prepare__('MyClass', (Base,))   → namespace dict
+Step 2:  Execute class body in that namespace
+Step 3:  MyMeta.__new__(mcs, 'MyClass', ...)       → class object created
+Step 4:  MyMeta.__init__(cls, 'MyClass', ...)       → class object initialized
+Step 5:  Base.__init_subclass__(MyClass)            → parent's subclass hook
+```
+
+`__init_subclass__` runs **after** the metaclass has finished creating the class.
+This is why it cannot modify the namespace or replace the class — it only sees the
+finished product.
+
 ## Advanced: __prepare__
 
 Control the namespace dict used during class creation:
@@ -365,6 +408,19 @@ print(Record._field_order)
 - ABC module (`ABCMeta`)
 - Enum (`EnumMeta`)
 
+### Metaclass vs ABC (Common Confusion)
+
+Metaclasses and abstract base classes (ABCs) both "control class behavior" but at different levels:
+
+| Aspect | Metaclass | ABC |
+|---|---|---|
+| Level | Class **creation** | Class **usage** (instantiation) |
+| When it runs | Class definition time | Instance creation time |
+| Purpose | Modify/build the class object | Enforce an interface contract |
+| Complexity | Very high | Moderate |
+
+The relationship: ABC is **implemented using** a metaclass. Writing `class Shape(ABC)` is equivalent to `class Shape(metaclass=ABCMeta)`. The metaclass is the underlying mechanism; ABC is a practical tool built on top of it.
+
 ---
 
 ## Summary
@@ -389,6 +445,21 @@ MyClass # Regular class (instance of MyMeta)
 | `__call__` | Creating instance | Singleton, pooling |
 | `__prepare__` | Before body execution | Custom namespace |
 
+!!! note "Mental Compression"
+
+    A metaclass is to a class what a class is to an instance:
+
+    | Relationship | Factory | Product |
+    |---|---|---|
+    | Class → Instance | `MyClass()` calls `type.__call__` | instance object |
+    | Metaclass → Class | `class MyClass:` calls `MyMeta.__new__` + `MyMeta.__init__` | class object |
+
+    The three metaclass hooks map directly to this:
+
+    - `__new__` — **builds** the class (like `__new__` builds an instance)
+    - `__init__` — **configures** the class after creation
+    - `__call__` — controls what happens when the class **creates instances**
+
 **Key Takeaways**:
 
 - Classes are instances of metaclasses
@@ -397,6 +468,22 @@ MyClass # Regular class (instance of MyMeta)
 - Use `__init_subclass__` or decorators when possible
 - Reserve metaclasses for framework-level code
 - "If you wonder whether you need metaclasses, you don't" — Tim Peters
+
+!!! tip "The Unifying Insight"
+
+    Python is built on just **two fundamental operations**:
+
+    1. **Attribute access**: `obj.attr` → resolved via `__getattribute__`, descriptors, and MRO
+    2. **Call**: `obj(...)` → resolved via `__call__`
+
+    Everything else is built on these two:
+
+    - `obj.method()` → attribute lookup + call
+    - `MyClass()` → `type.__call__(MyClass)` → `MyClass.__new__` + `MyClass.__init__`
+    - `class MyClass:` → `metaclass(name, bases, namespace)` → another call
+    - `super().method()` → modified attribute lookup + call
+
+    Once you see this, the entire object model — classes, metaclasses, descriptors, MRO, `super()` — reduces to attribute access and calls, composed in different ways.
 
 ---
 
