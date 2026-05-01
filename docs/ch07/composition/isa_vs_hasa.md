@@ -9,7 +9,10 @@ In object-oriented design, relationships between classes fall into two primary c
 - **Is-a**: Inheritance relationship (subclass/superclass)
 - **Has-a**: Composition/Aggregation relationship (container/component)
 
-Understanding these relationships is crucial for choosing the right design pattern.
+Understanding these relationships is the foundation for every design decision in this chapter. The pages on [Composition](composition_pattern.md), [Aggregation](aggregation_pattern.md), [Composition vs Inheritance](composition_vs_inheritance.md), and [Design Guidelines](design_guidelines.md) all build on the concepts introduced here.
+
+!!! tip "Quick Rule"
+    **Default to composition.** Use inheritance only when there is a true type relationship. Use aggregation when objects must be shared or outlive their container.
 
 ### 2. Identifying Relationships
 
@@ -209,6 +212,9 @@ All OOP relationships can be understood through four dimensions:
 | Flexibility | Low (compile-time) | Medium | High (runtime) |
 
 When choosing, think about **ownership** (who creates/destroys?), **lifetime** (do parts outlive the container?), **coupling** (how much does one class know about another?), and **flexibility** (can behavior change at runtime?).
+
+!!! note "Python Reality"
+    In Python, the composition vs aggregation distinction is **conceptual, not enforced**. There is no language-level mechanism that ties an object's lifetime to its container or prevents sharing. The difference is purely **design intent** — whether the container creates its parts internally (composition) or receives pre-existing objects from outside (aggregation). Python's garbage collector handles lifetime automatically based on reference counts, regardless of which pattern you intended.
 
 ## Design Guidelines
 
@@ -528,3 +534,94 @@ Create an `Employee` class with `name` and `role`. Then create `Company` that ow
 
         del project
         print(alice)  # Employee('Alice') — survives project deletion
+
+---
+
+**Exercise 4.**
+The classic Square/Rectangle problem illustrates when "is-a" thinking goes wrong. Implement a `Rectangle` with `set_width` and `set_height` methods, and a `Square` that inherits from it. Show a function that expects a `Rectangle` (sets width and height independently) but breaks when given a `Square`. Explain the Liskov Substitution Principle violation.
+
+??? success "Solution to Exercise 4"
+
+        class Rectangle:
+            def __init__(self, w, h):
+                self._w = w
+                self._h = h
+
+            def set_width(self, w):
+                self._w = w
+
+            def set_height(self, h):
+                self._h = h
+
+            def area(self):
+                return self._w * self._h
+
+        class Square(Rectangle):
+            def __init__(self, side):
+                super().__init__(side, side)
+
+            def set_width(self, w):
+                self._w = w
+                self._h = w  # Must keep square invariant
+
+            def set_height(self, h):
+                self._w = h
+                self._h = h
+
+        def double_width(rect: Rectangle):
+            """Assumes width and height are independent."""
+            old_height = rect._h
+            rect.set_width(rect._w * 2)
+            assert rect._h == old_height, "Height should not change!"
+            return rect.area()
+
+        r = Rectangle(4, 5)
+        print(double_width(r))  # 40 — works fine
+
+        s = Square(4)
+        try:
+            double_width(s)  # AssertionError: Height should not change!
+        except AssertionError as e:
+            print(f"LSP violation: {e}")
+
+    **LSP violation:** `Rectangle`'s contract says width and height can change independently. `Square` breaks this contract — setting the width also changes the height. Any code that depends on independent dimensions breaks when a `Square` is substituted for a `Rectangle`. Mathematically a square *is* a rectangle, but in code the `Square` class cannot satisfy the `Rectangle` interface contract.
+
+    **Fix:** don't inherit `Square` from `Rectangle`. Either make both independent classes implementing a `Shape` interface, or use a single `Rectangle` class with a factory method `Rectangle.square(side)`.
+
+---
+
+**Exercise 5.**
+For each scenario below, decide whether to use inheritance, composition, or aggregation. Justify your choice using the four dimensions from the Unified Mental Model table (ownership, lifetime, coupling, flexibility).
+
+1. A `Browser` that uses a `RenderingEngine`
+2. A `Student` enrolled in multiple `Course`s
+3. A `CheckingAccount` in a banking system that is a kind of `BankAccount`
+
+??? success "Solution to Exercise 5"
+
+    **1. Browser / RenderingEngine → Composition**
+
+    - *Ownership:* The browser creates and owns its rendering engine.
+    - *Lifetime:* The engine lives and dies with the browser.
+    - *Coupling:* Moderate — the browser delegates rendering to the engine.
+    - *Flexibility:* The engine could be swapped (e.g., switching from one rendering backend to another).
+
+    A browser *has-a* rendering engine; it *is not* a rendering engine.
+
+    **2. Student / Courses → Aggregation**
+
+    - *Ownership:* Neither owns the other. A course exists before students enroll.
+    - *Lifetime:* Students and courses have independent lifetimes.
+    - *Coupling:* Loose — a student holds references to courses.
+    - *Flexibility:* High — students can enroll/unenroll at runtime, and courses can be shared across students.
+
+    A student *has* courses, but does not *own* them.
+
+    **3. CheckingAccount / BankAccount → Inheritance**
+
+    - *Ownership:* Type system relationship — no part/container involved.
+    - *Lifetime:* The subclass *is* the superclass (same object).
+    - *Coupling:* Tight, but appropriate — all bank accounts share a core interface.
+    - *Flexibility:* Low, but the hierarchy is stable (account types don't change often).
+
+    A checking account *is-a* bank account. The hierarchy is shallow and stable, and polymorphism is needed (e.g., processing a list of mixed account types).
