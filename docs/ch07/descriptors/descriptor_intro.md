@@ -2,6 +2,9 @@
 
 ## What Is a Descriptor?
 
+!!! tip "Mental Model"
+    Think of descriptors as **hooks inserted into the attribute access pipeline**. When Python encounters a descriptor during attribute lookup, it hands control to the descriptor's methods instead of returning the object directly.
+
 ### 1. Definition
 
 A **descriptor** is any object that defines at least one of these three special methods:
@@ -26,47 +29,49 @@ obj = MyClass()
 print(obj.attr)  # "descriptor value" (accessed on instance)
 ```
 
-### 3. You've Used Them
+### 3. Descriptors ARE Python OOP
 
-You've already used descriptors, even if you didn't know:
+Everything in Python OOP is built on descriptors:
 
-- `@property` - is a descriptor
-- Methods - become bound methods via descriptors
-- `classmethod` and `staticmethod` - are descriptors
-- ORM fields (Django, SQLAlchemy) - use descriptors
+- `@property` — is a descriptor
+- Methods — become bound methods via descriptors
+- `classmethod` and `staticmethod` — are descriptors
+- ORM fields (Django, SQLAlchemy) — use descriptors
+
+### 4. The Three Rules of Attribute Lookup
+
+Attribute lookup is a **priority competition**. Remember these three rules and everything else follows:
+
+1. **Data descriptor wins** — if the class (via MRO) has a data descriptor for that name, it intercepts the access.
+2. **Instance `__dict__` wins** — if there is no data descriptor, the instance's own dictionary is checked.
+3. **Non-data descriptor / class attribute runs** — if nothing is found on the instance, non-data descriptors and plain class attributes are consulted.
+
+See [Attribute Access and Lookup](attribute_access_lookup.md) for the full pipeline and [Data vs Non-Data](descriptor_types.md) for why the distinction matters.
+
+### 5. Three Layers of the System
+
+This section covers three layers, each building on the previous:
+
+```text
+Layer 1: Attribute system
+    __getattribute__, __getattr__, __setattr__, __delattr__
+
+Layer 2: Descriptor protocol
+    __get__, __set__, __delete__
+
+Layer 3: Applications
+    properties, methods, ORM, caching
+```
+
+Layer 1 defines *when* the hooks run. Layer 2 defines *what* the hooks do. Layer 3 is what you build with them.
+
+If you understand descriptors, you understand Python's attribute access system.
 
 ## How Python Uses Descriptors
 
-### 1. Attribute Access Protocol
+Descriptors plug into Python's attribute lookup pipeline. When you access `obj.attr`, data descriptors are checked before the instance `__dict__`, while non-data descriptors are checked after. See [Attribute Access and Lookup](attribute_access_lookup.md) for the complete resolution order.
 
-When you access `obj.attr`, Python:
-
-1. Checks if `attr` is a **data descriptor** in the class
-2. Checks `obj.__dict__` for instance attribute
-3. Checks if `attr` is a **non-data descriptor** in the class
-4. Checks class attributes
-5. Calls `__getattr__` if defined
-6. Raises `AttributeError`
-
-### 2. Descriptor Lives on Class
-
-```python
-class Descriptor:
-    def __get__(self, instance, owner):
-        return "value"
-
-class MyClass:
-    attr = Descriptor()  # Lives in class namespace
-
-# Accessing from class
-print(MyClass.attr)  # Descriptor.__get__(None, MyClass)
-
-# Accessing from instance
-obj = MyClass()
-print(obj.attr)      # Descriptor.__get__(obj, MyClass)
-```
-
-### 3. Manages Instance Access
+### Descriptor Lives on Class, Manages Instance Access
 
 ```python
 class Descriptor:
@@ -76,9 +81,12 @@ class Descriptor:
         return f"Value for {instance}"  # Accessed from instance
 
 class MyClass:
-    attr = Descriptor()
+    attr = Descriptor()  # Lives in class namespace
 
+# Accessing from class — instance is None
 print(MyClass.attr)    # <Descriptor object>
+
+# Accessing from instance — instance is the object
 obj = MyClass()
 print(obj.attr)        # "Value for <MyClass object>"
 ```
@@ -291,112 +299,25 @@ class Circle:
     radius = PositiveNumber('radius')
 ```
 
-## Common Use Cases
-
-### 1. Type Enforcement
-
-```python
-class Integer:
-    def __init__(self, name):
-        self.name = name
-    
-    def __set__(self, instance, value):
-        if not isinstance(value, int):
-            raise TypeError(f"{self.name} must be int")
-        instance.__dict__[self.name] = value
-```
-
-### 2. Value Validation
-
-```python
-class Bounded:
-    def __init__(self, name, min_val, max_val):
-        self.name = name
-        self.min_val = min_val
-        self.max_val = max_val
-    
-    def __set__(self, instance, value):
-        if not self.min_val <= value <= self.max_val:
-            raise ValueError(f"{self.name} must be in [{self.min_val}, {self.max_val}]")
-        instance.__dict__[self.name] = value
-```
-
-### 3. Read-Only Attributes
-
-```python
-class ReadOnly:
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
-    
-    def __get__(self, instance, owner):
-        return self.value
-    
-    def __set__(self, instance, value):
-        raise AttributeError("Read-only attribute")
-
-class Config:
-    MAX_CONNECTIONS = ReadOnly('MAX_CONNECTIONS', 100)
-```
-
-### 4. Logging Access
-
-```python
-class LoggedAccess:
-    def __init__(self, name):
-        self.name = name
-    
-    def __get__(self, instance, owner):
-        if instance is None:
-            return self
-        value = instance.__dict__.get(self.name)
-        print(f"[GET] {self.name} = {value}")
-        return value
-    
-    def __set__(self, instance, value):
-        print(f"[SET] {self.name} = {value}")
-        instance.__dict__[self.name] = value
-```
-
 ## Why Descriptors Matter
 
-### 1. Framework Building
-
-ORMs use descriptors extensively:
-
-```python
-# Django-style models
-class User(Model):
-    name = CharField(max_length=100)
-    age = IntegerField()
-    email = EmailField()
-```
-
-Each field is a descriptor that handles database storage/retrieval.
-
-### 2. Attribute Management
-
-Descriptors centralize attribute logic:
-
-```python
-class ManagedAttribute:
-    """Handles validation, logging, caching"""
-    def __init__(self, validator, logger):
-        self.validator = validator
-        self.logger = logger
-```
-
-### 3. Code Reuse
-
-Write once, use everywhere:
+Descriptors enable **reusable attribute logic** — write validation, type checking, or access control once and apply it across many classes:
 
 ```python
 # Define once
 class NonNegative:
+    def __set_name__(self, owner, name):
+        self.name = name
+
     def __set__(self, instance, value):
         if value < 0:
             raise ValueError("Must be non-negative")
         instance.__dict__[self.name] = value
+
+    def __get__(self, instance, owner):
+        if instance is None:
+            return self
+        return instance.__dict__.get(self.name, 0)
 
 # Use everywhere
 class BankAccount:
@@ -408,6 +329,8 @@ class ShoppingCart:
 class Inventory:
     quantity = NonNegative()
 ```
+
+Frameworks like Django and SQLAlchemy use descriptors extensively — every ORM field is a descriptor that handles database storage and retrieval. See [Descriptor Use Cases](descriptor_applications.md) for validation, ORM, caching, and access control patterns.
 
 ---
 
