@@ -2,6 +2,9 @@
 
 NumPy provides fundamental mathematical constants and special values.
 
+!!! tip "Mental Model"
+    NumPy bundles the standard mathematical constants (`np.pi`, `np.e`, `np.inf`, `np.nan`) so you never need to hard-code magic numbers. `np.inf` and `np.nan` are IEEE 754 special values that propagate through arithmetic in well-defined ways -- learning their propagation rules prevents subtle bugs in numerical code.
+
 
 ## Version Check
 
@@ -206,6 +209,24 @@ import numpy as np
 data = np.array([1, 2, np.nan, 4])
 mean = np.nanmean(data)  # Ignores NaN
 ```
+
+## The Floating-Point Value System
+
+`nan` and `inf` are not NumPy inventions --- they are part of the IEEE 754 floating-point standard that all modern hardware implements. Think of the floating-point number system as having three categories:
+
+```text
+Finite numbers:  -1.5, 0.0, 3.14, 1e308
+Infinity:        np.inf, -np.inf    (result of overflow or 1/0)
+Not a Number:    np.nan             (result of 0/0 or undefined ops)
+```
+
+Both propagate through arithmetic automatically:
+
+- `nan + anything = nan` (unknown stays unknown)
+- `inf + finite = inf` (unbounded stays unbounded)
+- `inf - inf = nan` (indeterminate)
+
+Understanding these rules prevents silent bugs in numerical pipelines where missing data (`nan`) or overflow (`inf`) can propagate through an entire computation unnoticed.
 
 ---
 

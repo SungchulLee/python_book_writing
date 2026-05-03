@@ -1,5 +1,8 @@
 # Lists vs Arrays
 
+!!! tip "Mental Model"
+    Python lists store pointers to scattered objects; NumPy arrays store raw values in a single contiguous block. This difference makes arrays 10-100x faster for numeric operations because the CPU can process elements in bulk without pointer chasing. The trade-off is that arrays require a single dtype, while lists can mix types freely.
+
 ## Performance
 
 ### 1. Speed Comparison
@@ -359,6 +362,25 @@ if __name__ == "__main__":
 
     🔜 NEXT: 02_array_creation.py
     """)
+```
+
+## The Core Trade-off
+
+NumPy trades **generality for performance**:
+
+| | Python lists | NumPy arrays |
+|---|---|---|
+| Types | Any mix (`[1, "a", []]`) | Single dtype |
+| Memory | Scattered pointers | Contiguous block |
+| Speed | Python loop per element | Vectorized bulk ops |
+| Flexibility | High | Restricted |
+
+This trade-off explains everything that follows: why vectorization is fast, why broadcasting works, why memory layout matters, and why you cannot mix types in an array.
+
+```python
+# The core difference in one example:
+my_list * 3    # repetition → [1, 2, 1, 2, 1, 2]
+my_array * 3   # multiplication → array([3, 6, 9])
 ```
 
 ---
