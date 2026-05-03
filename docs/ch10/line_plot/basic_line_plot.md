@@ -2,6 +2,27 @@
 
 The `plot()` method is the fundamental tool for creating line plots in Matplotlib.
 
+!!! tip "Mental Model"
+    `ax.plot(x, y)` connects data points with straight line segments in order. If you pass only y-values, Matplotlib uses 0, 1, 2, ... as x-values. Every `plot()` call returns a list of `Line2D` artists, and you can stack multiple `plot()` calls on the same Axes to overlay several lines.
+
+    The core concept: **`plot()` maps numerical data to visual position (x, y).**
+    Everything else — line styles, colors, markers, labels — is styling on top of
+    this spatial encoding.
+
+!!! note "Matplotlib Workflow"
+    Every visualization follows the same five-step pipeline:
+
+    ```text
+    1. Prepare data         (NumPy / Pandas)
+    2. Plot data            (plot, scatter, bar, hist, ...)
+    3. Style                (color, linestyle, markers)
+    4. Annotate             (labels, legend, title)
+    5. Layout               (subplots, spacing, saving)
+    ```
+
+    This section covers steps 2--4 for line plots. The remaining pages in this
+    folder detail each styling and annotation layer.
+
 ---
 
 ## Simplest Line Plot
@@ -715,6 +736,10 @@ if __name__ == "__main__":
     """
 ```
 
+
+!!! info "In Machine Learning"
+
+    Line plots are the primary tool for **training curves**: plot loss vs epoch to diagnose convergence, overfitting (train loss drops but validation loss rises), and learning rate issues. Overlaying train and validation lines on the same axes is the first thing practitioners check after every training run.
 
 ---
 

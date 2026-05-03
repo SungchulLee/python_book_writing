@@ -2,6 +2,21 @@
 
 Map continuous data values to colors using colormaps, enabling visualization of three-dimensional relationships in 2D scatter plots.
 
+!!! tip "Mental Model"
+    Color mapping turns a number into a color. Pass an array of values to `c=` and choose a colormap with `cmap=` -- Matplotlib linearly maps the data range to the color gradient. Add a colorbar to show readers the number-to-color lookup table. This is how you visualize a third variable on a 2D scatter plot.
+
+!!! warning "Colormap Guidelines"
+    Not all colormaps are perceptually equal:
+
+    - **Use perceptually uniform maps** (`viridis`, `plasma`, `inferno`, `magma`)
+      — brightness changes proportionally to data changes
+    - **Avoid rainbow maps** (`jet`, `rainbow`) — they create false boundaries
+      and misleading gradients where none exist in the data
+    - **Use diverging maps** (`RdBu`, `coolwarm`) only when data has a meaningful
+      center point (e.g., positive/negative, above/below average)
+    - **Use sequential maps** for data that goes from low to high without a
+      special midpoint
+
 ## Basic Color Mapping
 
 Use the `c` parameter with numeric values to map data to colors.
@@ -338,6 +353,10 @@ plt.tight_layout()
 plt.show()
 ```
 
+
+!!! info "In Machine Learning"
+
+    Color-mapped scatter plots are essential for visualizing **clusters** and **class separability**. Plot two features on x/y axes and color by cluster label (discrete cmap) or prediction confidence (continuous cmap). This immediately reveals whether clusters are well-separated and where misclassifications occur.
 
 ---
 

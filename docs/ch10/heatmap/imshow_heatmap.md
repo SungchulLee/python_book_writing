@@ -2,6 +2,14 @@
 
 The `ax.imshow()` method displays 2D data as a color-coded image, ideal for matrices, correlation tables, and gridded data.
 
+!!! tip "Mental Model"
+    `imshow()` treats a 2D array as a grid of pixels, coloring each cell by its value. Row 0 is at the top (image convention), and cells are equally sized. It is the simplest way to visualize matrices and correlation tables. For non-uniform grids or coordinate-based data, use `pcolormesh()` instead.
+
+!!! warning "Coordinate Convention"
+    `imshow()` uses **image coordinates** by default: row 0 is at the **top** (`origin='upper'`). This matches image/pixel convention but is upside-down relative to mathematical plots. Set `origin='lower'` when your y-axis represents a quantity that increases upward (e.g., frequency, temperature). Forgetting this is one of the most common heatmap bugs.
+
+    For data on non-uniform or real-valued grids, use [`pcolormesh()`](pcolormesh_heatmap.md) instead — it accepts explicit coordinate arrays. For colormap guidance, see [Colormap Selection](colormap_selection.md).
+
 ## Basic Heatmap
 
 Create a simple heatmap from a 2D array.
@@ -148,6 +156,9 @@ ax.xaxis.set_label_position('top')
 ## Annotating Cells
 
 Add text values to each cell.
+
+!!! warning "Scalability"
+    The nested-loop annotation pattern below works well for small matrices (up to ~20×20). For larger matrices, annotations become unreadable and the loop becomes slow. For large data, rely on the colorbar and skip cell labels.
 
 ### 1. Basic Annotation
 
@@ -303,6 +314,10 @@ if __name__ == "__main__":
     print("Key functions: heatmap(), clustermap()")
 ```
 
+
+!!! info "In Machine Learning"
+
+    Heatmaps are used for **confusion matrices** (predicted vs actual class, with cell values = counts) and **correlation matrices** (feature-to-feature Pearson correlations). Annotating cells with `ax.text()` and choosing a diverging colormap (`'RdBu'` centered at 0 for correlations, sequential for counts) makes these instantly readable.
 
 ---
 

@@ -2,6 +2,9 @@
 
 The `contourf` method creates filled contour plots, where regions between contour levels are filled with colors. This is in contrast to `contour` which only draws contour lines.
 
+!!! tip "Mental Model"
+    `contourf()` is `contour()` with the regions between lines filled in with color, like a heat map with smooth boundaries. It bridges the gap between contour lines (precise but sparse) and full heatmaps (dense but pixelated). Add `contour()` lines on top of `contourf()` fills for the most readable combination.
+
 ## Basic Usage
 
 Create filled contour plots from meshgrid data.
@@ -542,6 +545,10 @@ ax.set_ylabel('y')
 plt.colorbar(cf, ax=ax, label='Temperature (°C)')
 plt.show()
 ```
+
+!!! info "In Machine Learning"
+
+    Filled contour plots are the standard way to visualize **decision boundaries** in classification. Train a classifier on 2D features, evaluate it on a meshgrid, and `contourf` the predictions — each colored region shows where the model assigns a different class. Overlaying the training points as a scatter plot reveals how well the boundary fits the data.
 
 ---
 

@@ -572,6 +572,10 @@ plt.tight_layout()
 plt.show()
 ```
 
+!!! info "In Machine Learning"
+
+    Surface plots visualize **loss landscapes** — plot the loss function over two weight dimensions to see minima, saddle points, and the terrain that gradient descent navigates. This is a key tool for understanding optimization behavior, especially when comparing different architectures or learning rates.
+
 ## Choosing the Right 3D Representation
 
 | Data type | Method | When to use |

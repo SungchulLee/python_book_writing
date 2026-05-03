@@ -2,6 +2,9 @@
 
 Fill regions in your plots to highlight areas of interest.
 
+!!! tip "Mental Model"
+    `fill_between(x, y1, y2)` shades the vertical region between two curves, while `fill()` fills an arbitrary polygon. Use `fill_between` to highlight confidence intervals, area under a curve, or the gap between two series. The `where` parameter lets you conditionally shade only parts that meet a criterion (e.g., where y1 > y2).
+
 ---
 
 ## ax.fill()
@@ -211,6 +214,10 @@ plt.show()
 - `fill_betweenx()` fills horizontally
 - Great for confidence intervals and crossover signals
 
+!!! info "In Statistics and ML"
+
+    `fill_between` is the standard tool for **confidence intervals** and **uncertainty bands**. Plot the mean prediction as a line and shade ±1 or ±2 standard deviations around it. In Bayesian models and ensemble methods, this visualizes prediction uncertainty — wider bands mean the model is less certain.
+
 ---
 
 ## Exercises
@@ -289,5 +296,54 @@ Simulate a random walk of 200 steps and compute a rolling mean and rolling stand
                          rolling_mean + rolling_std,
                          color='blue', alpha=0.2, label='1 SD Band')
         ax.legend()
+        ax.set_title('Random Walk with Rolling Mean and SD Band')
+        plt.show()
+
+---
+
+**Exercise 4.**
+Use `fill_between` with the `where` parameter to shade only the regions where a sinusoid is positive (green) and negative (red) separately. Plot `y = sin(x)` for `x` in `[0, 4π]`.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(0, 4 * np.pi, 500)
+        y = np.sin(x)
+
+        fig, ax = plt.subplots()
+        ax.plot(x, y, 'k-', linewidth=1)
+        ax.axhline(0, color='gray', linewidth=0.5)
+        ax.fill_between(x, y, 0, where=(y > 0), color='green', alpha=0.3, label='Positive')
+        ax.fill_between(x, y, 0, where=(y < 0), color='red', alpha=0.3, label='Negative')
+        ax.legend()
+        ax.set_title('sin(x): Positive vs Negative Regions')
+        plt.show()
+
+---
+
+**Exercise 5.**
+Create a confidence band: plot `y = x^2` and shade the region between `y - 0.5|x|` and `y + 0.5|x|`. Explain how this visual communicates uncertainty without cluttering the plot.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(-3, 3, 100)
+        y = x ** 2
+        unc = 0.5 * np.abs(x)
+
+        fig, ax = plt.subplots()
+        ax.plot(x, y, 'b-', linewidth=2, label='$y = x^2$')
+        ax.fill_between(x, y - unc, y + unc, alpha=0.2, color='blue', label='Uncertainty')
+        ax.legend()
+        ax.set_title('Function with Confidence Band')
+        plt.show()
+
+        # The band shows where the true value might lie. Wide band = high
+        # uncertainty, narrow band = precise. This is cleaner than individual
+        # error bars and more informative than just the line alone.
         ax.set_title('Random Walk with Rolling Mean and SD Band')
         plt.show()

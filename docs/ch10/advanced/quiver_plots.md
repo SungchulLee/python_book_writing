@@ -2,6 +2,9 @@
 
 Quiver plots visualize vector fields using arrows to show direction and magnitude.
 
+!!! tip "Mental Model"
+    `ax.quiver(X, Y, U, V)` draws an arrow at each (X, Y) point with direction and length determined by the (U, V) vector components. Think of it as placing tiny wind vanes on a grid -- each arrow shows which way the "wind" blows and how strong it is at that location. It is the standard tool for visualizing gradients, flow fields, and force diagrams.
+
 ## Basic Quiver Plot
 
 ```python
@@ -137,6 +140,10 @@ plt.show()
 - Gradient visualization
 - Force diagrams
 
+!!! info "In Machine Learning"
+
+    Quiver plots visualize **gradient fields** in optimization. Plot the gradient of a loss function on a meshgrid to see how gradient descent navigates the loss surface — arrows point "downhill." This reveals saddle points, flat regions, and why some initializations converge faster than others.
+
 ---
 
 ## Exercises
@@ -249,3 +256,72 @@ Plot the electric field of two point charges: a positive charge at $(-1, 0)$ and
         ax.legend()
         ax.set_aspect('equal')
         plt.show()
+
+---
+
+**Exercise 4.**
+Create a quiver plot of the gradient of `f(x, y) = sin(x) * cos(y)` over a grid on `[-π, π] × [-π, π]`. Compute the partial derivatives analytically (`∂f/∂x = cos(x)cos(y)`, `∂f/∂y = -sin(x)sin(y)`), plot the gradient field, and overlay a contour plot of `f` itself.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(-np.pi, np.pi, 15)
+        y = np.linspace(-np.pi, np.pi, 15)
+        X, Y = np.meshgrid(x, y)
+
+        # Function and its gradient
+        F = np.sin(X) * np.cos(Y)
+        dFdx = np.cos(X) * np.cos(Y)
+        dFdy = -np.sin(X) * np.sin(Y)
+
+        fig, ax = plt.subplots(figsize=(8, 8))
+        # Contour of f
+        xf = np.linspace(-np.pi, np.pi, 100)
+        yf = np.linspace(-np.pi, np.pi, 100)
+        Xf, Yf = np.meshgrid(xf, yf)
+        ax.contour(Xf, Yf, np.sin(Xf) * np.cos(Yf), levels=10, alpha=0.5)
+        # Gradient arrows
+        ax.quiver(X, Y, dFdx, dFdy, color='red', alpha=0.7)
+        ax.set_title(r'$\nabla(sin(x)cos(y))$ with Contours')
+        ax.set_aspect('equal')
+        plt.show()
+
+---
+
+**Exercise 5.**
+Explain the difference between `quiver` and `streamplot`. When would you use each? Create a side-by-side comparison of the same vector field `(u, v) = (-Y, X)` (rotation) displayed as a quiver plot and a streamplot.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(-2, 2, 10)
+        y = np.linspace(-2, 2, 10)
+        X, Y = np.meshgrid(x, y)
+        U, V = -Y, X
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+        ax1.quiver(X, Y, U, V)
+        ax1.set_title('Quiver (discrete arrows)')
+        ax1.set_aspect('equal')
+
+        xs = np.linspace(-2, 2, 50)
+        ys = np.linspace(-2, 2, 50)
+        Xs, Ys = np.meshgrid(xs, ys)
+        ax2.streamplot(xs, ys, -Ys, Xs)
+        ax2.set_title('Streamplot (flow lines)')
+        ax2.set_aspect('equal')
+
+        plt.tight_layout()
+        plt.show()
+
+        # Quiver: shows discrete vectors at sample points. Good for seeing
+        # local magnitude and direction at specific locations.
+        # Streamplot: shows continuous flow lines that follow the field.
+        # Good for understanding global flow patterns and topology.
+        # Use quiver for precise local measurements, streamplot for
+        # understanding the overall flow structure.

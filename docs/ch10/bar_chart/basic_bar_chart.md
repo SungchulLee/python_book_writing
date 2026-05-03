@@ -2,6 +2,21 @@
 
 Bar charts display categorical data with rectangular bars, where bar length represents the value for each category.
 
+!!! tip "Mental Model"
+    `ax.bar(categories, values)` draws one rectangle per category, with height proportional to the value. Think of it as a scatter plot for categorical x-axes -- instead of dots, you get bars that make magnitude differences visually obvious. Use `ax.barh()` for horizontal bars when category labels are long.
+
+!!! note "When to Use Bar Charts"
+    Bar charts are for **discrete comparison**, not continuous relationships. Choose your plot type by the question you are answering:
+
+    | Question | Plot |
+    |----------|------|
+    | How do categories compare? | **Bar chart** |
+    | How does a value change over a continuous domain? | Line plot |
+    | What is the relationship between two variables? | Scatter plot |
+    | How is a single variable distributed? | Histogram |
+
+    If your x-axis is categorical (names, groups, labels), bars are almost always the right choice.
+
 ## Simple Bar Chart
 
 Create a basic vertical bar chart with `ax.bar()`.
@@ -620,6 +635,10 @@ if __name__ == "__main__":
     print("TUTORIAL 04 COMPLETE!")
     print("="*80)
 ```
+
+!!! info "In Machine Learning"
+
+    Bar charts are the standard way to compare **model performance metrics** side by side: accuracy, precision, recall, and F1 score across multiple models. Grouped bar charts compare metrics within models; stacked bars show class-level contributions to overall performance.
 
 ---
 
