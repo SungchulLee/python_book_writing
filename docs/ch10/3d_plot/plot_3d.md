@@ -26,6 +26,8 @@ ax.set_zlabel('z')
 plt.show()
 ```
 
+**Interpreting the helix**: `x = cos(t)` and `y = sin(t)` produce circular motion in the xy-plane, while `z = t` adds linear progression upward. The combined curve is a helix --- rotating motion over time. This decomposition (circular + linear) is the key to reading parametric curves: each component tells you what happens along one axis.
+
 ### 2. plot vs plot3D
 
 Both methods produce identical results:

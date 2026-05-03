@@ -479,7 +479,12 @@ plt.show()
 | Diagonal | `(30, 45)` | Overall 3D shape (default) |
 | Rotated side | `(0, 90)` | Cross-section along the other axis |
 
-When exploring a new surface, start with the default view, then rotate to top-down to see contours and to side views to see amplitude profiles.
+**Workflow for choosing the best view:**
+
+1. Start at default `(30, -60)` --- get overall shape
+2. Rotate to top-down `(90, 0)` --- check symmetry and contour structure
+3. Rotate to side `(0, 0)` and `(0, 90)` --- check amplitude profiles along each axis
+4. Choose the angle that reveals the most structure with least occlusion
 
 ---
 

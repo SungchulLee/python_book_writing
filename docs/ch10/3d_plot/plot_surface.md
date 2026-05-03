@@ -587,6 +587,8 @@ plt.show()
 
 Use parametric curves when data flows along a single parameter; use surfaces when data covers a 2D domain.
 
+**Surface vs contour**: use `plot_surface` when absolute height matters (seeing peaks and valleys). Use `contour`/`contourf` when **structure** matters more than height (seeing level sets, decision boundaries, gradients). Often the clearest approach is a 2D contour plot rather than a 3D surface — especially in static figures.
+
 ---
 
 ## Exercises

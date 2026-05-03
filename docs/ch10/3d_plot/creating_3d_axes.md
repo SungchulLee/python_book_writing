@@ -330,6 +330,24 @@ if __name__ == "__main__":
     main()
 ```
 
+## When to Use 3D (and When Not To)
+
+!!! warning "Limitations of Matplotlib 3D"
+
+    Matplotlib's 3D is for **exploration**, not high-end rendering. It uses painter's algorithm (not true depth buffering), has no lighting model, and perspective can obscure structure. For publication, often a well-chosen 2D projection is clearer.
+
+**Use 3D when:**
+
+- Relationships depend on three variables
+- Structure is inherently geometric (curves, surfaces)
+- Spatial intuition is needed (loss landscapes, trajectories)
+
+**Avoid 3D when:**
+
+- Data is easily understood in 2D (use contour instead)
+- Perspective hides more than it reveals
+- Readers cannot interact with the plot (static images in papers)
+
 ---
 
 ## Exercises
