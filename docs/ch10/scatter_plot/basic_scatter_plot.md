@@ -272,6 +272,25 @@ plt.show()
 ```
 
 
+## Scatter Plots as Multidimensional Encoding
+
+A scatter plot maps data points into **visual space** using multiple channels simultaneously:
+
+```text
+2D → x, y (position)
+3D → + color (c parameter)
+4D → + size (s parameter)
+5D → + shape (marker parameter, categorical only)
+```
+
+This makes scatter plots the most flexible encoding for high-dimensional data in a 2D figure. Each additional channel adds one variable — but also increases cognitive load. Use at most 2--3 encodings per plot for readability.
+
+Unlike histograms or KDE, scatter plots show **raw observations** without aggregation. Related views:
+
+- Histogram → distribution of one variable
+- KDE / density plot → aggregated scatter (smoothed)
+- Heatmap (hist2d) → binned scatter (counted)
+
 ---
 
 ## Exercises

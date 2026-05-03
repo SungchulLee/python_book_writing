@@ -354,6 +354,18 @@ plt.show()
 ```
 
 
+## Color Mapping as a Function
+
+Color mapping is a **transformation function**:
+
+```text
+raw value → normalize to [0, 1] → look up in colormap → RGB color
+```
+
+This is the same pipeline used in heatmaps, contourf, and any color-encoded visualization. Changing the normalization (linear, log, power) changes what "structure" becomes visible — just like changing axis limits changes what spatial patterns are visible.
+
+Color effectively adds a **third axis** to the scatter plot, but encoded as hue/intensity rather than position.
+
 !!! info "In Machine Learning"
 
     Color-mapped scatter plots are essential for visualizing **clusters** and **class separability**. Plot two features on x/y axes and color by cluster label (discrete cmap) or prediction confidence (continuous cmap). This immediately reveals whether clusters are well-separated and where misclassifications occur.

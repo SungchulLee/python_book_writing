@@ -310,6 +310,21 @@ plt.show()
 ```
 
 
+## Parameters as Visual Channels
+
+Each scatter keyword maps to a visual encoding channel:
+
+| Parameter | Visual channel | What it encodes |
+|---|---|---|
+| `x`, `y` | Position | Primary relationship |
+| `c` | Color | Additional variable or category |
+| `s` | Size (area) | Magnitude or weight |
+| `marker` | Shape | Categorical distinction |
+| `alpha` | Transparency | Density (overlapping points reveal concentration) |
+| `edgecolors` | Border | Emphasis or distinction from background |
+
+Understanding this mapping means you can design scatter plots intentionally — choosing which variables go to which channel based on importance and precision.
+
 ---
 
 ## Exercises
