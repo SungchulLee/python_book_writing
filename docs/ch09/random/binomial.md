@@ -2,6 +2,20 @@
 
 The binomial distribution models the number of successes in a fixed number of independent trials.
 
+!!! note "Random Computation Model (applies to all distributions in this section)"
+
+    Every distribution in NumPy follows the same four-step pattern:
+
+    1. **Choose a distribution** — uniform, normal, binomial, Poisson, etc.
+    2. **Generate many samples** — vectorized, in a single call
+    3. **Treat samples as an array** — apply NumPy operations
+    4. **Compute statistics or simulate** — mean, histogram, Monte Carlo
+
+    This turns probability theory into array computation. Each distribution page that follows uses this same pipeline.
+
+!!! tip "Mental Model"
+    The binomial distribution answers "out of $n$ coin flips with probability $p$ of heads, how many heads do I get?" Each call to `np.random.binomial(n, p)` simulates that experiment once. Pass a `size` argument to run thousands of experiments in a single vectorized call, which is far faster than a Python loop.
+
 ## np.random.binomial
 
 ### 1. Basic Usage

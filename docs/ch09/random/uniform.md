@@ -1,6 +1,9 @@
 # Uniform Distributions
 
-NumPy provides functions for generating uniformly distributed random numbers over continuous intervals.
+NumPy provides functions for generating uniformly distributed random numbers over continuous intervals. The uniform distribution is the **foundation of all randomness** in NumPy --- every other distribution can be derived from uniform samples via mathematical transformations (inverse transform sampling).
+
+!!! tip "Mental Model"
+    `np.random.rand` draws from the half-open interval $[0, 1)$; scale and shift with `low + (high - low) * rand(...)` to cover any range, or use `np.random.uniform(low, high, size)` directly. Uniform samples are the raw ingredient from which all other distributions can be generated via inverse transform sampling.
 
 
 ## np.random.rand
