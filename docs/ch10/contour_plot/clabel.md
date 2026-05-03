@@ -385,6 +385,15 @@ plt.tight_layout()
 plt.show()
 ```
 
+## Why Labels Matter
+
+Contour lines show **structure** (where things are equal). Labels turn that structure into **numbers** (what value the level represents).
+
+- Without labels → qualitative understanding (steep here, flat there)
+- With labels → quantitative understanding (this line is $z = 0.5$, that one is $z = 1.0$)
+
+Use labels sparingly. Too many clutter the plot and reduce the very readability they are meant to provide.
+
 ---
 
 ## Exercises

@@ -376,6 +376,20 @@ plt.tight_layout()
 plt.show()
 ```
 
+## Reading Contour Shapes
+
+Contours reveal the **geometry** of a function. Learn to recognize common patterns:
+
+| Contour shape | What it means | Example function |
+|---|---|---|
+| Concentric circles | Radial symmetry | Gaussian, $x^2 + y^2$ |
+| Ellipses | Stretched/scaled axes | $ax^2 + by^2$ |
+| Hyperbolas (X-shaped) | Saddle point | $x^2 - y^2$ |
+| Parallel lines | Linear function | $ax + by$ |
+| Wavy lines | Sinusoidal behavior | $\sin(x) + \cos(y)$ |
+
+Close contour lines = steep gradient. Wide spacing = flat region. This is why contour plots are sometimes called "topographic maps" of functions.
+
 ---
 
 ## Exercises

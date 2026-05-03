@@ -486,6 +486,21 @@ plt.show()
 | Wireframe + Contour | Structure visualization |
 | Dashboard (multiple views) | Complete exploration |
 
+## The Unifying Idea: Scalar Field Visualization
+
+All contour and surface plots visualize the same mathematical object: a **scalar field** $z = f(x, y)$.
+
+Each method shows it differently:
+
+| Method | What it reveals | Best for |
+|---|---|---|
+| `contour` | Level sets (where values are equal) | Exact values, gradients |
+| `contourf` | Regions (how values group) | Patterns, classification |
+| `plot_surface` | Geometry (how values rise and fall) | Shape intuition, peaks/valleys |
+| Projection | How 2D relates to 3D | Connecting perspectives |
+
+Choosing the plot means choosing **how to see the function**. A contour plot is a projection onto the (x, y) plane; a surface plot is an embedding in 3D. They are different views of the same object --- like looking at a mountain from above (contour map) vs from the side (landscape).
+
 ---
 
 ## Exercises

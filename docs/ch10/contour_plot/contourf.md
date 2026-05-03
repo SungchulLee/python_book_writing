@@ -546,6 +546,19 @@ plt.colorbar(cf, ax=ax, label='Temperature (°C)')
 plt.show()
 ```
 
+## Contourf vs Heatmap
+
+Both show scalar fields as colored areas, but they work differently:
+
+```text
+Heatmap (imshow)  → pixel-based, shows every grid cell as a colored square
+Contourf          → region-based, groups values into level bands with smooth boundaries
+```
+
+Contourf emphasizes **structure** (where are the peaks, valleys, gradients?). Heatmaps emphasize **raw resolution** (what is the value at each exact point?). Contourf is smoother and better for continuous functions; heatmaps are better for discrete data matrices.
+
+**Levels = resolution of interpretation**: few levels → simple structure; many levels → detailed variation.
+
 !!! info "In Machine Learning"
 
     Filled contour plots are the standard way to visualize **decision boundaries** in classification. Train a classifier on 2D features, evaluate it on a meshgrid, and `contourf` the predictions — each colored region shows where the model assigns a different class. Overlaying the training points as a scatter plot reveals how well the boundary fits the data.
