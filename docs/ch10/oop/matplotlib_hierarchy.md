@@ -1,5 +1,8 @@
 # Figure-Axes-Artist
 
+!!! tip "Mental Model"
+    Matplotlib uses a tree structure: a Figure contains Axes, and each Axes contains Artists. This is the composite pattern -- every node knows its children and can draw them recursively. When you call `fig.savefig()`, the Figure asks each Axes to render, and each Axes asks its Artists to render. Understanding this tree is the key to debugging any display issue.
+
 ## Composite Pattern
 
 ### 1. Hierarchy
@@ -97,6 +100,35 @@ ax_inset = inset_axes(ax, width="30%", height="30%", loc='upper right')
 ax_inset.plot([1, 2, 3], [3, 2, 1])
 ```
 
+
+## The Full Rendering Pipeline
+
+The hierarchy doesn't stop at Artists. The complete model from data to screen:
+
+```text
+Data
+  ↓
+Artist (Line2D, Text, Patch, ...)
+  ↓
+Axes (coordinates, scaling, limits)
+  ↓
+Figure (container, size, DPI)
+  ↓
+Renderer + Backend (converts to pixels)
+  ↓
+Screen / File (.png, .pdf, .svg)
+```
+
+When something doesn't appear on screen, trace this pipeline: is the data correct? Is the Artist created? Are the axes limits right? Is the backend rendering?
+
+!!! warning "Axes vs Axis"
+
+    This is one of the most common naming confusions in Matplotlib:
+
+    - **Axes** = the entire plotting area (contains everything: lines, labels, ticks)
+    - **Axis** = one x-axis or y-axis (contains ticks, tick labels, axis label)
+
+    One Axes contains two (or three in 3D) Axis objects. `ax` refers to Axes; `ax.xaxis` and `ax.yaxis` refer to Axis objects.
 
 ---
 

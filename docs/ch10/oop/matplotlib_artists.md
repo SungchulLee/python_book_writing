@@ -1,5 +1,8 @@
 # Line2D and Artists
 
+!!! tip "Mental Model"
+    Every visible element on a Matplotlib plot -- every line, text label, axis tick, legend entry -- is an Artist object. `Line2D` is the Artist created by `ax.plot()`. Once you realize that plotting commands return Artists, you can grab them, inspect their properties with `get_*()`, and modify them with `set_*()` after the fact.
+
 ## Artist Base Class
 
 ### 1. Hierarchy
@@ -88,6 +91,40 @@ lc = LineCollection(segments, colors='red', linewidths=2)
 ax.add_collection(lc)
 ```
 
+
+## The One Abstraction
+
+Every Artist is a **stateful object with properties and a `draw()` method**. That's it. Lines, text, patches, ticks, legends --- they all follow the same pattern:
+
+```python
+artist.set_color('red')     # change a property
+artist.get_linewidth()       # read a property
+artist.set_visible(False)    # hide it
+```
+
+## Debugging with Artists
+
+When a plot looks wrong, inspect the Artist tree:
+
+```python
+fig, ax = plt.subplots()
+ax.plot([1, 2, 3], [1, 4, 9])
+
+# List all artists on the axes
+for child in ax.get_children():
+    print(type(child).__name__, getattr(child, 'get_label', lambda: '')())
+
+# Inspect a specific line
+lines = ax.get_lines()
+for line in lines:
+    print(f"color={line.get_color()}, lw={line.get_linewidth()}, visible={line.get_visible()}")
+```
+
+Common issues:
+
+- **Plot not showing?** → Check `artist.get_visible()` and axis limits
+- **Wrong z-order?** → Check `artist.get_zorder()` --- higher values draw on top
+- **Plot not updating?** → Call `fig.canvas.draw()` after modifying Artists
 
 ---
 
