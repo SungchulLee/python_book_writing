@@ -284,7 +284,15 @@ print(Student.greet)  # <function greet>
 print(a.greet)        # <bound method greet>
 ```
 
-This binding happens because functions are **descriptors** --- they implement a `__get__` method. When you access a function through an instance (`a.greet`), Python's descriptor protocol automatically wraps it into a bound method that fixes `self` to the instance. This same mechanism underlies [`@classmethod`](class_methods.md) (binds to the class) and [`@staticmethod`](static_methods.md) (disables binding entirely).
+"Bound" means **the function already knows which object (`self`) it will use**. `Student.greet` is just a function — nobody's `self` is attached. `a.greet` is a bound method — `self` is fixed to `a`, so calling `a.greet()` automatically passes `a` as the first argument.
+
+This binding happens at **access time, not definition time**, because functions are **descriptors** --- they implement a `__get__` method. When you access a function through an instance (`a.greet`), Python calls `function.__get__(a, Student)`, which produces a bound method. This same mechanism underlies [`@classmethod`](class_methods.md) (binds to the class) and [`@staticmethod`](static_methods.md) (disables binding entirely).
+
+| Expression | What it is | `self` attached? |
+|---|---|---|
+| `Student.greet` | function (unbound) | No |
+| `a.greet` | bound method | Yes — fixed to `a` |
+| `a.greet()` | calls `Student.greet(a)` | Automatic |
 
 A bound method is a lightweight wrapper that holds two pointers: `__func__` (the shared function) and `__self__` (the bound instance). A **new** wrapper is created on every access --- `a.greet is a.greet` is `False` --- but all wrappers share the same underlying function object.
 
