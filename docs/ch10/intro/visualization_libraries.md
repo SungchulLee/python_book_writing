@@ -2,6 +2,9 @@
 
 Python offers a rich ecosystem of visualization libraries for different use cases.
 
+!!! tip "Mental Model"
+    Matplotlib is the "assembly language" of Python visualization -- low-level and fully controllable. Libraries like Seaborn, Plotly, and Bokeh are built on top of it (or inspired by it), trading some control for convenience. Learn Matplotlib first and every higher-level library becomes easier to understand and debug.
+
 ---
 
 ## General Purpose
@@ -519,6 +522,21 @@ if __name__ == "__main__":
     print("="*80)
 ```
 
+
+## Choosing the Right Library
+
+Instead of describing features, think in terms of **what you need**:
+
+| If you need... | Use | Why |
+|---|---|---|
+| Full control, publication figures | **Matplotlib** | Maximum flexibility, any customization possible |
+| Fast EDA, statistical plots | **Seaborn** | One-line plots with smart defaults, built on Matplotlib |
+| Interactive dashboards, web | **Plotly** | Zoom/pan/hover in browser, shareable HTML |
+| Declarative grammar | **Altair** | Concise, composable specification language |
+| Large datasets, streaming | **Bokeh** | Server-backed interactivity, handles millions of points |
+| Publication with ggplot style | **plotnine** | R's ggplot2 grammar, in Python |
+
+**Trade-off**: flexibility vs convenience. Matplotlib gives you every pixel; higher-level libraries make common plots easy but limit edge-case customization.
 
 ---
 

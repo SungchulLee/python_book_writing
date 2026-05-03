@@ -2,6 +2,9 @@
 
 Interactive mode allows dynamic updating of plots without blocking script execution.
 
+!!! tip "Mental Model"
+    Think of interactive mode as a live preview toggle. With `plt.ion()`, every plotting command immediately updates the window, like typing into a live document. With `plt.ioff()`, changes accumulate silently until you explicitly call `plt.show()` to reveal the final result.
+
 ---
 
 ## Enabling Interactive Mode
@@ -256,6 +259,17 @@ plt.show()
 - Use for real-time data and simple animations
 - Consider `FuncAnimation` for complex animations
 
+
+!!! warning "Backend Dependency"
+
+    Interactive mode behavior depends on the **backend** (the rendering engine Matplotlib uses). Different environments behave differently:
+
+    - **Jupyter Notebook** (`%matplotlib inline`) — renders static images per cell; `ion()` has limited effect
+    - **Jupyter with widget backend** (`%matplotlib widget`) — true interactive mode with pan/zoom
+    - **Python scripts** — requires a GUI backend (Qt, Tk, etc.); `plt.show()` blocks until window closes
+    - **Some IDEs** (VS Code, PyCharm) — may override backend behavior
+
+    If interactive mode "doesn't work," check your backend first: `print(matplotlib.get_backend())`.
 
 ---
 

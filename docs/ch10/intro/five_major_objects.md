@@ -2,6 +2,9 @@
 
 Matplotlib is built around five major object types that form a hierarchy. Understanding these objects is essential for effective plotting.
 
+!!! tip "Mental Model"
+    Picture a Figure as a physical canvas on a wall, and each Axes as a framed picture hanging on that canvas. Inside each frame, the XAxis, YAxis, and Spines form the border, while Artists (lines, text, patches) are the painted content. Every plotting command ultimately creates or modifies one of these five objects.
+
 ---
 
 ## Object Hierarchy
@@ -519,6 +522,17 @@ if __name__ == "__main__":
     """
 ```
 
+
+## The Artist Abstraction
+
+Everything visible in a Matplotlib plot is an **Artist** --- lines, text, patches, tick marks, axis labels, even the Axes and Figure themselves. This means:
+
+- To change anything visual, you are modifying an Artist's properties
+- `ax.plot()` returns a list of `Line2D` Artists
+- `ax.set_title()` creates a `Text` Artist
+- Debugging "why does my plot look wrong?" becomes: "which Artist has the wrong property?"
+
+The rendering pipeline: **Data → Axes → Artists → Backend → Pixels**
 
 ---
 
