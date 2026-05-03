@@ -499,6 +499,10 @@ ax.pie(
 ```
 
 
+!!! note "Customization Does Not Fix Perception"
+
+    Styling improves **readability** (colors, labels, explode), but it does not change the **fundamental limitation**: pie charts still rely on angle perception. No amount of customization can make angle as precise as length. If the comparison task demands accuracy, switch to a bar chart — don't try to fix the pie chart with more styling.
+
 ---
 
 ## Exercises

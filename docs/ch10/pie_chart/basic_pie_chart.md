@@ -389,6 +389,26 @@ plt.show()
 ```
 
 
+## Pie Charts as an Encoding Lesson
+
+Pie charts encode data using **angle**, which is one of the least precise visual channels humans have:
+
+| Visual channel | Precision | Example plot |
+|---|---|---|
+| Position (x, y) | Highest | Scatter plot |
+| Length | High | Bar chart |
+| Area | Medium | Bubble chart |
+| **Angle** | **Low** | **Pie chart** |
+| Color intensity | Lowest | Heatmap |
+
+This is why bar charts are almost always better for comparison tasks: they use length, which humans perceive 2--3x more accurately than angle. Pie charts are appropriate only when the goal is to show **part-to-whole** relationships with few categories where exact comparison is not needed.
+
+**Use pie charts only when:**
+
+- Data represents parts of a whole (summing to 100%)
+- Number of categories is small (3--5)
+- Approximate visual impression is sufficient (not precise comparison)
+
 ---
 
 ## Exercises
