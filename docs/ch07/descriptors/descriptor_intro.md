@@ -3,7 +3,7 @@
 ## What Is a Descriptor?
 
 !!! tip "Mental Model"
-    Think of descriptors as **hooks inserted into the attribute access pipeline**. When Python encounters a descriptor during attribute lookup, it hands control to the descriptor's methods instead of returning the object directly.
+    Without a descriptor, `obj.attr` simply returns the stored value. With a descriptor, Python calls the descriptor's `__get__` method instead — **the descriptor decides what to return**. In short, a descriptor replaces "return the stored object" with "run custom logic and return the result."
 
 ### 1. Definition
 
@@ -31,20 +31,23 @@ print(obj.attr)  # "descriptor value" (accessed on instance)
 
 ### 3. Descriptors ARE Python OOP
 
-Everything in Python OOP is built on descriptors:
+Most advanced attribute behavior in Python OOP is implemented using descriptors:
 
-- `@property` — is a descriptor
-- Methods — become bound methods via descriptors
-- `classmethod` and `staticmethod` — are descriptors
-- ORM fields (Django, SQLAlchemy) — use descriptors
+| Feature | Descriptor Type | Why |
+|---|---|---|
+| `@property` | **Data** descriptor | Has `__get__` + `__set__` (even if setter raises) |
+| Methods (functions) | **Non-data** descriptor | Only `__get__` (binds `self` to produce bound method) |
+| `@classmethod` | **Non-data** descriptor | Only `__get__` (binds to class instead of instance) |
+| `@staticmethod` | **Non-data** descriptor | Only `__get__` (returns raw function, no binding) |
+| ORM fields (Django, SQLAlchemy) | **Data** descriptor | Has `__get__` + `__set__` (controls DB read/write) |
 
 ### 4. The Three Rules of Attribute Lookup
 
-Attribute lookup is a **priority competition**. Remember these three rules and everything else follows:
+Attribute lookup is a **priority competition** run in phases, not per-class loops. Each phase scans the **entire** MRO before moving on:
 
-1. **Data descriptor wins** — if the class (via MRO) has a data descriptor for that name, it intercepts the access.
-2. **Instance `__dict__` wins** — if there is no data descriptor, the instance's own dictionary is checked.
-3. **Non-data descriptor / class attribute runs** — if nothing is found on the instance, non-data descriptors and plain class attributes are consulted.
+1. **Data descriptor wins** — scan all classes in MRO; if any has a data descriptor for that name, it intercepts the access immediately.
+2. **Instance `__dict__` wins** — if no data descriptor was found anywhere, the instance's own dictionary is checked.
+3. **Non-data descriptor / class attribute runs** — if nothing is found on the instance, scan MRO again for non-data descriptors and plain class attributes.
 
 See [Attribute Access and Lookup](attribute_access_lookup.md) for the full pipeline and [Data vs Non-Data](descriptor_types.md) for why the distinction matters.
 
