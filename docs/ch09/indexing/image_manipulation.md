@@ -2,6 +2,9 @@
 
 NumPy indexing enables powerful image transformations.
 
+!!! tip "Mental Model"
+    An image in NumPy is just a 3D array of shape `(height, width, channels)`. Slicing along the first two axes crops the image; indexing the third axis isolates color channels. Every image operation -- flipping, rotating, channel swapping -- is an array indexing operation in disguise.
+
 
 ## Channel Extraction
 
@@ -230,6 +233,19 @@ if __name__ == "__main__":
 ### 2. Axis Parameter
 
 `axis=0` rolls vertically; `axis=1` rolls horizontally.
+
+## Key Insight
+
+All image operations reduce to array indexing:
+
+```text
+Crop       → slicing (img[y1:y2, x1:x2])
+Flip       → reverse slicing (img[::-1])
+Channel    → indexing (img[:, :, 0])
+Overlay    → mask assignment (img[mask] = color)
+```
+
+No special image library is needed for these basic transformations --- they are just NumPy selection operations.
 
 ---
 

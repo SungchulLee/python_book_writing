@@ -1,6 +1,16 @@
 # Basic Indexing
 
-NumPy arrays support flexible indexing to access individual elements.
+NumPy arrays support flexible indexing to access individual elements. This is the first of four selection methods that together form NumPy's selection system:
+
+| Method | What it selects | View or Copy | Dimension effect |
+|---|---|---|---|
+| **Indexing** (this page) | Single elements | View | Reduces dimension |
+| [Slicing](slicing.md) | Contiguous ranges | **View** | Preserves dimension |
+| [Boolean masking](boolean_masking.md) | Condition-based | **Copy** | Flattens |
+| [Fancy indexing](fancy_indexing.md) | Arbitrary positions | **Copy** | Shape = index shape |
+
+!!! tip "Mental Model"
+    NumPy indexing works like Python list indexing extended to multiple dimensions. Supply one index per axis, separated by commas, to pinpoint a single element. Negative indices count from the end, and each index reduces the result by one dimension.
 
 
 ## Positive Indexing

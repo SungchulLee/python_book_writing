@@ -2,6 +2,9 @@
 
 Fancy indexing selects elements using arrays of indices instead of scalars or slices.
 
+!!! tip "Mental Model"
+    Fancy indexing lets you cherry-pick elements by passing an array of positions, like handing a librarian a list of shelf numbers. Unlike slicing, the positions need not be contiguous or in order, and the result is always a copy. The output shape matches the shape of your index array, not the original data.
+
 
 ## 1D Fancy Indexing
 
@@ -199,6 +202,22 @@ Rearrange array elements in arbitrary order.
 ### 3. Sampling
 
 Select random subsets using random index arrays.
+
+## Fancy Indexing vs Boolean Masking
+
+Both return copies, but they serve different purposes:
+
+```text
+Fancy indexing → "give me elements at these exact positions"
+Boolean masking → "give me elements that satisfy this condition"
+```
+
+| | Fancy indexing | Boolean masking |
+|---|---|---|
+| Input | Array of indices | Array of True/False |
+| Result shape | Shape of index array | Number of True values |
+| Use case | Reorder, sample, permute | Filter by condition |
+| Returns | Copy | Copy |
 
 ---
 

@@ -2,6 +2,9 @@
 
 Slicing extracts contiguous subsequences from arrays using `start:stop:step` syntax.
 
+!!! tip "Mental Model"
+    A slice is a window into the original array's memory -- it selects a contiguous range without copying data. The `start:stop:step` syntax works the same as Python lists, but NumPy slices extend to multiple dimensions with comma-separated ranges. Because slices return views, modifying a slice modifies the original.
+
 
 ## 1D Array Slicing
 
@@ -287,6 +290,19 @@ Output:
 [[2 3]
  [5 6]]
 ```
+
+!!! warning "Views Are Fast but Dangerous"
+
+    Slices return **views** (no data copy), which makes them fast and memory-efficient. But modifying a view modifies the original array:
+
+    ```python
+    a = np.arange(10)
+    view = a[2:5]
+    view[0] = 999
+    print(a[2])  # 999 — original changed!
+    ```
+
+    Use `.copy()` when you need an independent copy: `safe = a[2:5].copy()`.
 
 ---
 

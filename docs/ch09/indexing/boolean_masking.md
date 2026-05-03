@@ -2,6 +2,9 @@
 
 Boolean masking uses logical conditions to selectively operate on array subsets.
 
+!!! tip "Mental Model"
+    A boolean mask is an array of True/False values the same shape as your data. Using it as an index selects only the True elements, like a stencil laid over the array. This is the NumPy equivalent of a SQL `WHERE` clause -- filter, replace, or count elements that satisfy any condition, all without writing a loop.
+
 
 ## Filtering Basics
 
@@ -491,6 +494,19 @@ if __name__ == "__main__":
 ### 2. Chained np.where
 
 Apply multiple conditions sequentially to enforce bounds.
+
+!!! warning "Boolean Masking Always Returns a Copy"
+
+    Unlike slicing (which returns a view), boolean masking **always returns a copy**. Modifying the result does not modify the original array:
+
+    ```python
+    a = np.arange(10)
+    result = a[a > 5]   # copy, not a view
+    result[0] = 999
+    print(a)  # unchanged
+    ```
+
+    To modify the original, use mask assignment directly: `a[a > 5] = 0`.
 
 ---
 
