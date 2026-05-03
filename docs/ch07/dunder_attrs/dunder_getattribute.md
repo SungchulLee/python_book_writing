@@ -29,6 +29,32 @@ def __getattribute__(self, name):
 - Properties
 - Dunder methods (like `__dict__`)
 
+!!! tip "Core Idea"
+    `__getattribute__` intercepts **every** attribute read — existing, missing, methods, properties, even `__dict__` itself. It is the single entry point for all attribute access in Python. If you only need to handle *missing* attributes, use [`__getattr__`](dunder_getattr.md) instead.
+
+## Attribute Lifecycle — Unified Mental Model
+
+All four attribute dunder methods fit into a single lifecycle:
+
+```text
+READ:   obj.attr  →  __getattribute__  →  (AttributeError?)  →  __getattr__
+WRITE:  obj.attr = val  →  __setattr__
+DELETE: del obj.attr    →  __delattr__
+```
+
+`__getattribute__` is the only hook that runs on **every** read — it is the entry
+point. `__getattr__` is the fallback that fires only when `__getattribute__` raises
+`AttributeError`. `__setattr__` and `__delattr__` each handle their respective
+operations unconditionally.
+
+| Goal | Use |
+|------|-----|
+| Handle missing attributes | `__getattr__` |
+| Intercept every read | `__getattribute__` |
+| Validate / transform writes | `__setattr__` |
+| Control deletion | `__delattr__` |
+| Control a single named attribute | `@property` |
+
 ## Basic Implementation
 
 ### 1. Simple Override
@@ -65,6 +91,16 @@ def __getattribute__(self, name):
         raise AttributeError("Access denied")
     return super().__getattribute__(name)
 ```
+
+!!! note "What super().__getattribute__ Does Internally"
+    When you call `super().__getattribute__(name)`, Python's default implementation follows a precise lookup order:
+
+    1. **Data descriptors** on the class (via MRO) — e.g., `@property`, `__slots__`
+    2. **Instance `__dict__`** — the object's own namespace
+    3. **Non-data descriptors and class attributes** (via MRO) — e.g., methods, class variables
+    4. If none found → raise `AttributeError` → triggers `__getattr__` (if defined)
+
+    This is the same [attribute lookup chain](../descriptors/attribute_access_lookup.md) described earlier. `__getattribute__` is the entry point; the descriptor protocol governs what happens inside it.
 
 ## Avoiding Recursion
 
@@ -307,19 +343,28 @@ print(obj.get_counts())  # {'data': 3}
 
 ### 2. Avoid When
 
-❌ **Simple attribute access** - Use normal attributes
-❌ **Validation only** - Use `@property` instead
-❌ **Missing attributes** - Use `__getattr__` instead
-❌ **Performance critical** - Adds overhead
+❌ **Simple attribute access** — Use normal attributes
+❌ **Validation only** — Use `@property` instead
+❌ **Missing attributes** — Use `__getattr__` instead (cheaper, safer)
+❌ **Performance-critical paths** — Every attribute read passes through this hook,
+including internal accesses like `self.x` inside other methods. In tight loops this
+overhead is measurable.
 
-### 3. Comparison
+!!! warning "Performance cost"
+    `__getattribute__` is called for **every** attribute access — not just the ones
+    you care about. A class with 5 attributes accessed in a method body triggers 5
+    calls per invocation. In contrast, `__getattr__` is **free** for existing
+    attributes (it is never called). Prefer `__getattr__` or `@property` unless you
+    genuinely need to intercept all reads (proxies, frameworks).
 
-| Scenario | Use |
-|----------|-----|
-| All attribute access | `__getattribute__` |
-| Missing attributes only | `__getattr__` |
-| Specific attributes | `@property` |
-| Simple storage | Plain attributes |
+!!! tip "The Master Insight"
+    Everything in Python is built on attribute access. Even a method call like `obj.method()` is actually:
+
+    1. `type(obj).__getattribute__(obj, 'method')` — finds the function
+    2. `function.__get__(obj, type(obj))` — descriptor produces a bound method
+    3. The bound method is then called
+
+    This means **all Python behavior starts with attribute lookup**. Descriptors, methods, properties, and protocols all flow through `__getattribute__`. Understanding this single hook is the key to understanding the entire Python object model.
 
 ## Common Mistakes
 
@@ -434,3 +479,82 @@ Build a class `CountedAccess` that tracks how many times each attribute has been
         _ = obj.x
         _ = obj.y
         print(obj.access_counts())  # {'x': 2, 'y': 1}
+
+---
+
+**Exercise 4.**
+Explain why the following code produces infinite recursion. Trace the first three calls step by step. Then fix it using two different approaches: `super().__getattribute__()` and `object.__getattribute__()`.
+
+```python
+class Broken:
+    def __init__(self):
+        self.data = [1, 2, 3]
+
+    def __getattribute__(self, name):
+        print(f"Getting {name}")
+        if name == "data":
+            return self.data  # Intended to return self.data
+        return super().__getattribute__(name)
+```
+
+??? success "Solution to Exercise 4"
+
+    **Trace of the recursion:**
+
+    1. `obj.data` → calls `__getattribute__("data")`
+    2. Inside, `self.data` → calls `__getattribute__("data")` again
+    3. Inside, `self.data` → calls `__getattribute__("data")` again
+    4. ... infinite recursion → `RecursionError`
+
+    The problem is that `self.data` inside `__getattribute__` triggers another call to `__getattribute__`, creating a loop.
+
+    **Fix 1 — `super()`:**
+
+        def __getattribute__(self, name):
+            print(f"Getting {name}")
+            return super().__getattribute__(name)
+
+    **Fix 2 — `object.__getattribute__`:**
+
+        def __getattribute__(self, name):
+            print(f"Getting {name}")
+            return object.__getattribute__(self, name)
+
+    Both bypass the custom `__getattribute__` and go directly to the default implementation, which reads from `__dict__` and the class hierarchy without recursion. The rule: **never use `self.anything` inside `__getattribute__`** — always use `super()` or `object.__getattribute__`.
+
+---
+
+**Exercise 5.**
+A class uses `__getattribute__` to block access to attributes whose names start with `_`. A colleague points out that this also blocks `__dict__`, `__class__`, and `__repr__`, breaking basic Python functionality. Explain why, and write a version that blocks single-underscore attributes (like `_secret`) while allowing dunder attributes (like `__dict__`).
+
+??? success "Solution to Exercise 5"
+
+    Dunder attributes (`__dict__`, `__class__`, `__repr__`) also start with `_`, so a blanket check `name.startswith('_')` blocks them too. Without `__dict__`, `vars(obj)` fails. Without `__class__`, `type(obj)` and `isinstance()` fail. Without `__repr__`, printing the object fails.
+
+    **Fixed version:**
+
+        class SafeRestricted:
+            def __init__(self):
+                self._secret = "hidden"
+                self.public = "visible"
+
+            def __getattribute__(self, name):
+                # Allow dunder attributes (start AND end with __)
+                if name.startswith('__') and name.endswith('__'):
+                    return super().__getattribute__(name)
+                # Block single-underscore private attributes
+                if name.startswith('_'):
+                    raise AttributeError(f"Access denied: {name}")
+                return super().__getattribute__(name)
+
+        obj = SafeRestricted()
+        print(obj.public)       # "visible" — allowed
+        print(type(obj))        # <class 'SafeRestricted'> — __class__ allowed
+        print(vars(obj))        # works — __dict__ allowed
+
+        try:
+            obj._secret
+        except AttributeError as e:
+            print(e)  # Access denied: _secret
+
+    The key insight: dunder names (`__x__`) are Python infrastructure — they must always be accessible. Single-underscore names (`_x`) are the convention for "internal" attributes.

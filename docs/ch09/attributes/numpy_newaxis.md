@@ -2,6 +2,9 @@
 
 `np.newaxis` inserts a new axis (dimension) into an array, increasing its dimensionality by one. This is essential for broadcasting and reshaping operations.
 
+!!! tip "Mental Model"
+    `np.newaxis` is just `None` used inside square brackets -- it tells NumPy "insert a length-1 axis here." Picture it as stretching a 1D ruler into a 2D sheet by adding a direction. Unlike `expand_dims`, you place it directly in the indexing expression, making it concise for inline broadcasting.
+
 ```python
 import numpy as np
 ```

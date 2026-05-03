@@ -2,6 +2,9 @@
 
 Python supports asynchronous versions of `for` loops and `with` statements for working with async resources.
 
+!!! tip "Mental Model"
+    `async for` and `async with` are the async equivalents of their synchronous counterparts, designed for sources that produce items or manage resources over the network. Picture a streaming API where each item requires an `await` to arrive -- `async for` lets you loop over that stream naturally, while `async with` ensures connections and sessions are properly opened and closed even when pauses happen in between.
+
 ## async for - Asynchronous Iteration
 
 ### Async Iterators

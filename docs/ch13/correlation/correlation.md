@@ -2,6 +2,9 @@
 
 Quantifying the strength and direction of a relationship between two variables is one of the most common tasks in statistical analysis. The Pearson correlation coefficient measures the degree of linear association, while the Spearman rank correlation captures monotonic relationships without assuming linearity. Choosing the right measure depends on the data's distributional properties and the type of relationship under investigation.
 
+!!! tip "Mental Model"
+    Pearson correlation measures how well a straight line fits the scatter plot; Spearman measures how well any monotonic curve fits it. If you care about "do both variables increase together," use Spearman. If you care specifically about a linear rate of increase, use Pearson.
+
 ## Pearson Correlation
 
 The **Pearson correlation coefficient** between two random variables $X$ and $Y$ is defined as

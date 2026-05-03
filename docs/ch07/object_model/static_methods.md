@@ -2,6 +2,9 @@
 
 Static methods are utility functions that belong to a class namespace but don't access instance or class data. Unlike [instance methods](instance_methods.md) (bound to `self`) and [class methods](class_methods.md) (bound to `cls`), static methods receive no implicit first argument --- they are essentially plain functions that happen to live on a class.
 
+!!! tip "Mental Model"
+    A static method is a plain function wearing a class badge. It receives no `self` or `cls` -- it cannot access or modify instance or class state. Its only relationship to the class is organizational: it lives in the class namespace because it is conceptually related to the class's domain, not because it needs the class's data.
+
 !!! tip "Importance Hierarchy"
     ```text
     1. Instance methods → core OOP behavior (used everywhere)

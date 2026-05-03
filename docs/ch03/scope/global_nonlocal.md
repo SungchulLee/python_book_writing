@@ -3,6 +3,9 @@
 
 By default, assignment inside a function creates a local variable. The `global` and `nonlocal` keywords let a function explicitly modify a variable defined in an outer scope---`global` targets the module-level scope, while `nonlocal` targets the nearest enclosing function scope.
 
+!!! tip "Mental Model"
+    Python's default rule is simple: any assignment inside a function creates a local variable. `global` and `nonlocal` are explicit overrides that say "do not create a local -- rebind the name in a specific outer scope instead." `global` always means the module-level scope; `nonlocal` means the nearest enclosing function scope.
+
 ## global Keyword
 
 ### Modifying a Global Variable

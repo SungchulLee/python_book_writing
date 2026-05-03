@@ -2,6 +2,9 @@
 
 # Clock Speed and Instructions
 
+!!! tip "Mental Model"
+    Think of a CPU as a factory assembly line: clock speed is how fast the conveyor belt moves, while instructions per cycle (IPC) is how many workers are stationed along the belt. A faster belt helps, but adding more workers per cycle often matters more -- which is why modern CPUs focus on doing more useful work each tick rather than simply ticking faster.
+
 CPU performance depends on two fundamental factors:
 
 1. **Clock speed** — how frequently the processor advances its internal clock

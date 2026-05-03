@@ -2,6 +2,19 @@
 
 The `ax.hist()` method accepts various keyword arguments to customize histogram appearance and behavior.
 
+!!! tip "Mental Model"
+    The three most important histogram keywords are `bins` (how many divisions), `density` (counts vs. probability density), and `histtype` (bar style). `bins` controls resolution, `density=True` normalizes area to 1 for comparison with PDFs, and `histtype='step'` draws outlines instead of filled bars for overlaying multiple distributions.
+
+!!! note "Decision Guide — When to Use Which Option"
+    | Situation | Parameter | Setting |
+    |-----------|-----------|---------|
+    | Comparing distributions with different sample sizes | `density` | `True` |
+    | Overlaying multiple histograms | `histtype` | `'step'` or `'stepfilled'` with `alpha` |
+    | Skewed data with long tails | `bins` | Custom edges (e.g., log-spaced) |
+    | Side-by-side group comparison | `multiple datasets` | Pass list to `ax.hist()` |
+    | Need exact bin boundaries | `bins` | Explicit sequence `[0, 10, 20, ...]` |
+    | Want to see cumulative distribution | `cumulative` | `True` |
+
 ## bins
 
 The `bins` parameter controls how data is grouped. It accepts either an integer (number of bins) or a sequence (explicit bin edges).

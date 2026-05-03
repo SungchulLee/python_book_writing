@@ -2,6 +2,9 @@
 
 Master the most useful pdb commands for effective debugging.
 
+!!! tip "Mental Model"
+    pdb commands fall into three categories: *navigation* (step, next, continue — controlling where execution goes), *inspection* (print, display, where — seeing program state), and *control* (break, condition, clear — managing breakpoints). Learning a handful from each category is enough to debug most issues efficiently.
+
 ## Navigation Commands
 
 Commands for stepping through code.

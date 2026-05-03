@@ -1,5 +1,8 @@
 # Recursion Patterns
 
+!!! tip "Mental Model"
+    Recursive problems come in recognizable shapes. Direct recursion calls itself; indirect recursion bounces between functions; linear recursion makes one recursive call per step; tree recursion branches into multiple calls. Recognizing the pattern tells you the time complexity and whether optimizations like memoization or tail-call conversion apply.
+
 ## Types of Recursion
 
 ### 1. Direct Recursion

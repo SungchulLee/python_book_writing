@@ -2,6 +2,9 @@
 
 The `json` module provides tools for encoding and decoding JSON (JavaScript Object Notation) data.
 
+!!! tip "Mental Model"
+    JSON is the universal language for structured data exchange — nearly every web API speaks it. Python's `json` module is a two-way translator: it converts Python dicts, lists, and primitives into JSON strings (`dumps`/`dump`) and parses JSON strings back into Python objects (`loads`/`load`). Master these four functions and you can talk to almost any external service.
+
 ## What is JSON?
 
 JSON is a lightweight data format for exchanging structured data.

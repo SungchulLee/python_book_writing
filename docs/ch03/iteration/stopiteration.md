@@ -2,6 +2,9 @@
 
 StopIteration is the protocol-level signal that an iterator has no more values. Understanding StopIteration is fundamental to Python's iteration protocol and generator behavior.
 
+!!! tip "Mental Model"
+    `StopIteration` is not an error -- it is the "end of tape" signal. When `__next__()` raises it, the `for` loop knows to stop gracefully. In generators, falling off the end of the function or executing a bare `return` automatically raises `StopIteration`. You almost never catch it yourself; the `for` loop does that for you.
+
 ---
 
 ## Iterator Protocol

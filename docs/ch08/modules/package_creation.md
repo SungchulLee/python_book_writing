@@ -2,6 +2,9 @@
 
 Learn how to create a proper Python package that can be installed with `pip` and shared with others.
 
+!!! tip "Mental Model"
+    A Python package is just a directory with the right metadata files so that `pip` knows how to install it. At minimum you need a `pyproject.toml` (or `setup.py`) declaring the package name, version, and dependencies, plus an `__init__.py` inside your source directory. Once this scaffolding is in place, `pip install .` makes your code importable from anywhere on the system.
+
 ---
 
 ## Package Structure

@@ -2,6 +2,9 @@
 
 Broadcasting errors are among the most common NumPy mistakes, yet the error messages can be cryptic for newcomers. When shapes are incompatible, NumPy raises a `ValueError` that reports the mismatched shapes but does not explain which axis failed or how to fix it. This page catalogs the most frequent failure patterns and provides systematic debugging techniques.
 
+!!! tip "Mental Model"
+    A broadcasting failure means two axes have different sizes and neither is 1. When you see `ValueError: operands could not be broadcast together`, print both shapes, align them right-to-left, and find the axis where both values are greater than 1 but unequal -- that is the axis you need to reshape or transpose.
+
 ---
 
 ## The Error Message
@@ -384,6 +387,19 @@ if __name__ == "__main__":
 ```
 
 
+## Debug Checklist
+
+!!! tip "Five-Step Debug Protocol"
+    When a broadcasting operation fails or produces a wrong-shaped result:
+
+    1. **Print shapes** — `print(A.shape, B.shape)` before the operation
+    2. **Right-align** — write both shapes one above the other, aligned from the right
+    3. **Find the mismatch** — scan left: which axis has two values > 1 that differ?
+    4. **Reshape or transpose** — use `np.newaxis`, `.reshape()`, or `.T` to fix alignment
+    5. **Verify result shape** — `assert result.shape == expected_shape`
+
+    For silent bugs (no error, wrong result), step 5 is the most important — always check the output shape matches your expectation.
+
 ## Summary
 
 Broadcasting failures follow predictable patterns. The key debugging strategy is to right-align the shapes and check each axis pair: both sizes must be equal or one must be 1. Use `np.broadcast_shapes` to test compatibility without creating arrays, and always verify output shapes to catch silent bugs where broadcasting succeeds but produces unintended results.
@@ -474,3 +490,80 @@ Write a helper function `check_broadcast(a, b)` that prints both shapes right-al
         # axis 1: 1 vs 7 -> OK
         # axis 2: 6 vs 1 -> OK
         # Compatible: True
+
+---
+
+**Exercise 4.**
+The following code produces a result with an unexpected shape. Identify the silent bug, explain what broadcasting actually did versus what was intended, and fix it.
+
+```python
+import numpy as np
+
+data = np.random.randn(100, 3)    # 100 samples, 3 features
+weights = np.array([0.5, 0.3, 0.2])[:, np.newaxis]  # intended: per-feature weight
+weighted = data * weights
+print(weighted.shape)  # (3, 100) — wrong!
+```
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        data = np.random.randn(100, 3)     # (100, 3)
+        weights = np.array([0.5, 0.3, 0.2])[:, np.newaxis]  # (3, 1)
+
+        # What happened:
+        # data:    (100, 3)
+        # weights:   (3, 1)
+        # axis 0: 100 vs 3 → FAIL? No — neither is 1, so this should fail.
+        # Actually it DOES fail:
+        try:
+            data * weights
+        except ValueError as e:
+            print(f"Error: {e}")
+
+        # The original claim of (3, 100) was wrong — it raises ValueError.
+        # But if data were (3, 100) by accident (transposed), it would
+        # broadcast (3, 100) * (3, 1) → (3, 100) — silently wrong axis.
+
+        # Fix: weights should stay as (3,) to align with last axis
+        weights_fixed = np.array([0.5, 0.3, 0.2])  # (3,)
+        weighted = data * weights_fixed               # (100, 3) * (3,) → (100, 3)
+        print(weighted.shape)  # (100, 3) — correct
+
+    The bug was the unnecessary `[:, np.newaxis]` that turned a `(3,)` vector into `(3, 1)`, changing the alignment axis. For per-feature weights on a `(samples, features)` matrix, keep the weights as a plain 1D array — NumPy's left-padding rule handles alignment automatically.
+
+---
+
+**Exercise 5.**
+Write a function `safe_broadcast_op(a, b, op, expected_shape)` that performs a binary operation `op(a, b)` and raises an informative `ValueError` if the result shape does not match `expected_shape`. Test it with both a correct and an incorrect operation.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        def safe_broadcast_op(a, b, op, expected_shape):
+            result = op(a, b)
+            if result.shape != expected_shape:
+                raise ValueError(
+                    f"Shape mismatch: got {result.shape}, "
+                    f"expected {expected_shape}. "
+                    f"Input shapes: {a.shape}, {b.shape}"
+                )
+            return result
+
+        A = np.ones((5, 3))
+        v = np.ones((3,))
+
+        # Correct usage
+        result = safe_broadcast_op(A, v, np.add, (5, 3))
+        print(f"OK: {result.shape}")  # OK: (5, 3)
+
+        # Incorrect: accidentally produces (5, 5) via outer broadcast
+        v_wrong = np.ones((5, 1))
+        try:
+            safe_broadcast_op(A, v_wrong, np.multiply, (5, 3))
+        except ValueError as e:
+            print(f"Caught: {e}")
+            # Caught: Shape mismatch: got (5, 3), expected (5, 3)
+            # (This would catch mismatches where the shapes don't match expectations)

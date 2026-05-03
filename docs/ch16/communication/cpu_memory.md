@@ -1,5 +1,8 @@
 # CPU-Memory Communication
 
+!!! tip "Mental Model"
+    The CPU accesses memory through a hierarchy of increasingly large but slower caches, like a desk drawer (L1), filing cabinet (L2), office closet (L3), and warehouse (RAM). Most of the time you reach for the drawer first, and only go to the warehouse on a cache miss -- which costs 60 ns you cannot get back.
+
 ## The Memory Controller
 
 Modern CPUs have an integrated **memory controller** that manages communication with RAM:

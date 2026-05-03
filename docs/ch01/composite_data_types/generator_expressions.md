@@ -12,6 +12,9 @@ squares_list = [x**2 for x in range(1000)]
 squares_gen = (x**2 for x in range(1000))
 ```
 
+!!! tip "Mental Model"
+    A generator expression is a recipe, not a meal. It remembers how to compute each value but does not compute any of them until asked. This means it uses almost no memory regardless of how many values it can produce---ideal for large or infinite sequences where you only need one element at a time.
+
 ---
 
 ## Lazy Evaluation

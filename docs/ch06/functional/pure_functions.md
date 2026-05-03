@@ -1,5 +1,8 @@
 # Pure Functions
 
+!!! tip "Mental Model"
+    A pure function is a reliable black box: same inputs always produce the same output, and nothing outside the function changes. No printing, no modifying globals, no mutating arguments. This predictability makes pure functions trivially testable, safely cacheable, and easy to reason about.
+
 ## Definition
 
 ### 1. No Side Effects

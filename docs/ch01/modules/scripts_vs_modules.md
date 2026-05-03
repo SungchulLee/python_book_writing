@@ -14,6 +14,9 @@ flowchart TD
     A --> C[Module]
 ```
 
+!!! tip "Mental Model"
+    A script is a program you run; a module is a library you import. The same `.py` file can play either role. Scripts perform actions (print results, write files); modules provide reusable definitions (functions, classes). Well-structured Python files work as both, using the `__name__` guard to separate run-only code from importable code.
+
 ---
 
 ## 1. What Is a Script?

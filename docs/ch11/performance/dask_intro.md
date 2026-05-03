@@ -2,6 +2,9 @@
 
 When datasets exceed available RAM or when you need parallel processing, Dask extends pandas to handle larger-than-memory data across multiple cores.
 
+!!! tip "Mental Model"
+    Dask is "lazy pandas." It mirrors the pandas API but builds a task graph instead of computing immediately. When you call `.compute()`, Dask executes the graph in parallel across CPU cores, streaming data from disk. If your code works in pandas but runs out of memory, switching to Dask often requires changing just the import and adding `.compute()` at the end.
+
 ## Why Dask?
 
 | Limitation of Pandas | Dask Solution |

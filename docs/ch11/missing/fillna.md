@@ -2,6 +2,9 @@
 
 The `fillna()` method replaces missing values with specified values. It is one of the most common approaches to handling missing data.
 
+!!! tip "Mental Model"
+    `fillna()` is the "plug the hole" strategy: every NaN is replaced with a value you specify. Pass a scalar to fill all gaps with the same number, a dict to fill each column differently, or a Series/DataFrame to fill position-by-position. The choice of fill value encodes your assumption about what the missing data would have been.
+
 ## Single Value Fill
 
 Replace all NaN values with a single value.

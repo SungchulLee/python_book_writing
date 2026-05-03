@@ -7,6 +7,9 @@ of each predictor while controlling for the others. This page presents the matri
 formulation, the OLS solution, and the key diagnostics that arise when moving
 beyond a single predictor.
 
+!!! tip "Mental Model"
+    Multiple regression is simple regression scaled up: instead of one slope, you have $p$ slopes -- one per predictor. Each coefficient measures the effect of its predictor while holding all others constant. The matrix formulation $\hat{\boldsymbol{\beta}} = (\mathbf{X}^\top \mathbf{X})^{-1}\mathbf{X}^\top \mathbf{y}$ is the universal OLS formula that works regardless of how many predictors you have.
+
 ---
 
 ## The Matrix Model

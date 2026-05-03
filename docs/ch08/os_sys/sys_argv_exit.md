@@ -2,6 +2,9 @@
 
 Process command-line arguments with sys.argv and control program termination with sys.exit.
 
+!!! tip "Mental Model"
+    `sys.argv` is a list of strings the OS hands to your script — `argv[0]` is the script name, and the rest are whatever the user typed after it. `sys.exit()` is the clean way to stop the program with a status code (0 = success, nonzero = error). Together they form the minimal interface between a Python script and the shell that launched it.
+
 ## sys.argv - Command-Line Arguments
 
 Access command-line arguments passed to the script.

@@ -2,6 +2,9 @@
 
 Relative imports allow modules within a package to import each other using dot notation, without specifying the full package path.
 
+!!! tip "Mental Model"
+    Relative imports are filesystem-style navigation for packages. A single dot (`.`) means "this package," two dots (`..`) mean "parent package," just like `./` and `../` in a terminal. They keep intra-package imports stable even if the top-level package is renamed, but they only work inside packages — never in a script run directly with `python script.py`.
+
 ---
 
 ## Syntax

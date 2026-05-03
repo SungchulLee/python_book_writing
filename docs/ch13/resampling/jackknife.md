@@ -4,6 +4,9 @@ Before the bootstrap, statisticians needed a general-purpose method for estimati
 
 This page defines the delete-one jackknife, derives its bias and variance estimators, introduces pseudovalues, and discusses when the jackknife succeeds or fails.
 
+!!! tip "Mental Model"
+    The jackknife removes one observation at a time and recomputes the statistic, producing exactly $n$ leave-one-out estimates. The variation among these estimates approximates the sampling variability. Unlike the bootstrap, the jackknife is deterministic and requires no random number generation, but it fails for non-smooth statistics like the median.
+
 ---
 
 ## The Delete-One Jackknife

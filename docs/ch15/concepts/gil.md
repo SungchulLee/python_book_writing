@@ -2,6 +2,9 @@
 
 The GIL is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecode simultaneously. Understanding the GIL is essential for effective concurrent programming in Python.
 
+!!! tip "Mental Model"
+    The GIL is a single microphone in a room full of speakers (threads). Only the thread holding the microphone can execute Python code; everyone else waits. This makes CPython's memory management safe but means threads cannot speed up CPU-heavy work. For true CPU parallelism, you must use separate processes, each with its own microphone.
+
 ---
 
 ## What is the GIL?

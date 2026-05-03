@@ -1,5 +1,8 @@
 # Cached Properties
 
+!!! tip "Mental Model"
+    A cached property is a lazy, self-destructing descriptor. On first access it computes the value, stores it in the instance's `__dict__`, and from that point on the descriptor is never called again -- the instance attribute shadows it. Think of it as a "compute once, remember forever" pattern: the first read does the work, every subsequent read is a plain dictionary lookup.
+
 ## Concept
 
 ### 1. What Is Caching?

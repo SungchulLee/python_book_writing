@@ -18,6 +18,9 @@ flowchart TD
     A --> D[docstrings]
 ````
 
+!!! tip "Mental Model"
+    String formatting is about embedding dynamic values into text templates. f-strings (`f"Hello, {name}"`) are the modern, preferred approach---they evaluate expressions inline and read naturally. The older `.format()` method works similarly but is more verbose. Both replace manual string concatenation with a cleaner, more readable pattern.
+
 ---
 
 ## 1. f-Strings

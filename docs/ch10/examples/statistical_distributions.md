@@ -2,6 +2,26 @@
 
 This document provides practical examples for visualizing probability distributions, including PDFs, CDFs, and comparisons across distribution families.
 
+!!! tip "Mental Model"
+    Visualizing distributions means plotting their PDF (bell curve shape), CDF (cumulative probability from 0 to 1), or both. Use `scipy.stats` to compute the theoretical curves and Matplotlib to draw them. Overlaying multiple distributions on one Axes with `ax.plot()` and a legend makes parameter effects (e.g., changing mean or variance) immediately visible.
+
+!!! note "When to Use Which Distribution"
+    The shape of a distribution encodes its generating mechanism:
+
+    | Distribution | Shape | Use when |
+    |-------------|-------|----------|
+    | Normal | Symmetric bell | Sums of many small effects (CLT) |
+    | Exponential | Decaying right tail | Waiting times between events |
+    | Uniform | Flat | No prior information, equal likelihood |
+    | Poisson | Discrete, right-skewed | Counting rare events in fixed intervals |
+    | Binomial | Discrete, symmetric for large $n$ | Fixed number of yes/no trials |
+    | Gamma | Flexible right-skewed | Sum of exponential waiting times |
+
+    Many distributions are related: Gamma generalizes Exponential ($k=1$),
+    Chi-squared is Gamma with specific parameters, and Poisson approximates
+    Binomial for large $n$ and small $p$. Overlaying related distributions on
+    one plot makes these connections visible.
+
 ## Setup
 
 ```python

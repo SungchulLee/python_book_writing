@@ -2,6 +2,9 @@
 
 The `pivot()` method reshapes data from long format to wide format, spreading values across columns.
 
+!!! tip "Mental Model"
+    `pivot` takes three columns -- index, columns, values -- and reshapes the table so that unique values of the "columns" column become actual column headers. It is a pure reshape with no aggregation, so it requires unique (index, columns) pairs. If duplicates exist, use `pivot_table` instead.
+
 ## Basic Usage
 
 Pivot a DataFrame.

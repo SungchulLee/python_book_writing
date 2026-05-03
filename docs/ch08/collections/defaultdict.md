@@ -2,6 +2,9 @@
 
 A `defaultdict` is a dict subclass that automatically creates missing keys using a factory function.
 
+!!! tip "Mental Model"
+    A `defaultdict` is a dictionary that never says "key not found." When you access a missing key, it silently creates a default value (an empty list, zero, a new set — whatever factory you specified) and inserts it before returning. This eliminates the "check-then-initialize" pattern that clutters grouping and counting loops.
+
 ---
 
 ## The Problem

@@ -2,6 +2,12 @@
 
 NumPy provides two primary functions for generating sequences of numbers: `np.arange` for integer steps and `np.linspace` for evenly spaced floats.
 
+!!! tip "Mental Model"
+    Use `arange` when you know the step size and `linspace` when you know the number of points. `arange` excludes the endpoint like Python's `range`, while `linspace` includes it by default. For floating-point grids, `linspace` is almost always safer because it guarantees the exact count of points.
+
+!!! warning "Floating-Point Implications"
+    `arange` computes each value by repeatedly adding the step, which can **accumulate floating-point error** — the final element may drift from the expected endpoint. `linspace` computes each value independently as `start + i * (stop - start) / (num - 1)`, so it produces **deterministic, reproducible grids** regardless of the number of points. For continuous-domain sampling (plotting, FFT grids, numerical integration), always prefer `linspace`.
+
 
 ## np.arange Function
 

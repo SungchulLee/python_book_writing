@@ -2,6 +2,9 @@
 
 The lognormal and Weibull distributions are both continuous distributions on $(0, \infty)$ commonly used for modeling positive, right-skewed data. The lognormal distribution arises from multiplicative processes and is central to financial asset price modeling. The Weibull distribution is the standard model for reliability analysis and survival times, with a shape parameter that controls whether the failure rate increases, decreases, or remains constant over time.
 
+!!! tip "Mental Model"
+    If additive effects produce normality (Central Limit Theorem), multiplicative effects produce lognormality -- take the log of a lognormal variable and you get a normal. The Weibull, by contrast, is the "reliability distribution": its shape parameter controls whether failure rate increases (aging), decreases (infant mortality), or stays constant (random failure) over time.
+
 ---
 
 ## Lognormal Distribution

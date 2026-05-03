@@ -2,6 +2,9 @@
 
 The `memory_profiler` module tracks memory usage at the line level, helping identify memory leaks and inefficient memory access patterns.
 
+!!! tip "Mental Model"
+    `memory_profiler` does for memory what `line_profiler` does for time -- it shows you the memory increment of each line. Decorate a function with `@profile`, run the script, and you get a line-by-line ledger of memory consumption. Look for lines with large positive increments to find your biggest memory consumers.
+
 ---
 
 ## Installation

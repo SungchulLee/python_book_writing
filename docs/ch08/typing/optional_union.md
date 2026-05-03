@@ -2,6 +2,9 @@
 
 `Optional` represents values that can be None, while `Union` represents a value that can be one of several types.
 
+!!! tip "Mental Model"
+    `Optional[X]` is shorthand for `Union[X, None]` — it says "this value is either an X or None." `Union[X, Y]` says "this value is either an X or a Y." In Python 3.10+ you can write `X | Y` instead, which reads more naturally. These annotations make nullable and multi-type values explicit so type checkers can warn you when you forget a None check.
+
 ## Optional - Nullable Types
 
 Use `Optional[T]` when a value can be of type T or None.

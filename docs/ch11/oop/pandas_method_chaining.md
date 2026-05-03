@@ -1,5 +1,8 @@
 # Method Chaining
 
+!!! tip "Mental Model"
+    Method chaining works because most pandas methods return a new DataFrame or Series. Each call in the chain takes the output of the previous call as input, forming a pipeline: `read -> clean -> filter -> transform -> aggregate`. This fluent style eliminates intermediate variables and makes the data flow read like a recipe.
+
 ## Fluent Interface
 
 ### 1. Concept

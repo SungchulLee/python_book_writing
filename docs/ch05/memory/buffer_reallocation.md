@@ -1,5 +1,8 @@
 # Buffer Reallocation
 
+!!! tip "Mental Model"
+    A Python list is like a row of seats in a theater. When you run out of seats, you cannot just add one -- you move everyone to a bigger row with extra empty seats. This over-allocation strategy means most `append` calls are instant (an empty seat is waiting), and the occasional move is amortized across many appends, giving O(1) average cost.
+
 ## List Growth
 
 ### 1. Dynamic Arrays

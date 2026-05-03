@@ -2,6 +2,9 @@
 
 The **probability density function** (PDF) and **probability mass function** (PMF) describe how probability is distributed across the values a random variable can take. The PDF applies to continuous distributions, while the PMF applies to discrete distributions.
 
+!!! tip "Mental Model"
+    The PMF gives the actual probability of each discrete outcome, while the PDF gives the probability density -- a relative likelihood that must be integrated over an interval to yield a probability. A PDF value above 1 is perfectly valid; what matters is that the total area under the curve equals 1.
+
 ---
 
 ## Probability Density Function (PDF)

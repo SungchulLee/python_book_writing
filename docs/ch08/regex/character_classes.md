@@ -1,5 +1,8 @@
 # Character Classes
 
+!!! tip "Mental Model"
+    A character class is a single-character menu: `[aeiou]` means "match exactly one character, and it must be one of these." Ranges like `[a-z]` and shorthands like `\d` (digits) are just compact ways to define the menu. Negation (`[^...]`) flips the menu into "match anything *except* these."
+
 ## What Is a Character Class?
 
 A **character class** (also called a character set) matches **one character** from a defined set. Character classes are enclosed in square brackets `[...]`.

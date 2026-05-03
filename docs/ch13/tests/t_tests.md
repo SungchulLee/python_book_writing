@@ -2,6 +2,9 @@
 
 The t-test is the fundamental tool for comparing means when the population standard deviation is unknown. Unlike the z-test, which requires known variance, the t-test estimates variance from the sample and uses the heavier-tailed t-distribution to account for this additional uncertainty. SciPy provides three variants: one-sample, independent two-sample, and paired.
 
+!!! tip "Mental Model"
+    The t-test standardizes a difference in means by dividing by the estimated standard error, producing a signal-to-noise ratio. A large $|t|$ means the observed difference is many standard errors away from zero -- unlikely under the null. SciPy's three functions map to three scenarios: one sample vs. a known value, two independent groups, and two paired measurements.
+
 ## One-Sample t-Test
 
 The one-sample t-test determines whether a sample mean differs significantly from a hypothesized population mean $\mu_0$.

@@ -2,6 +2,9 @@
 
 Decorators can be applied to classes, and classes can be used as decorators.
 
+!!! tip "Mental Model"
+    A class decorator intercepts a class at creation time, modifies or wraps it, and hands it back -- just like a function decorator, but the input is a class object instead of a function. Think of it as a factory inspector who stamps extra features onto each class as it rolls off the assembly line.
+
 ## Decorating Classes
 
 A class decorator receives a class and returns a modified class.

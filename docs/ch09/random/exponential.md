@@ -2,6 +2,9 @@
 
 The exponential distribution models waiting times between events in a Poisson process.
 
+!!! tip "Mental Model"
+    The exponential distribution answers "how long until the next event?" when events occur at a constant average rate. It is the continuous counterpart of the geometric distribution and the inter-arrival time of a Poisson process. The single parameter `scale` is the average waiting time (the inverse of the rate).
+
 ## np.random.exponential
 
 ### 1. Basic Usage

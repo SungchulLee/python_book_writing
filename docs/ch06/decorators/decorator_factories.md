@@ -2,6 +2,9 @@
 
 Decorator factories create parameterized decorators, allowing you to customize decorator behavior.
 
+!!! tip "Mental Model"
+    A decorator factory is a function that returns a decorator -- it adds one extra layer of nesting so you can pass configuration arguments. When you write `@repeat(3)`, Python first calls `repeat(3)` to get a decorator, then applies that decorator to your function. Three nested functions, three distinct jobs: configure, wrap, execute.
+
 ## Basic Factory Pattern
 
 A decorator factory is a function that returns a decorator:

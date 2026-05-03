@@ -2,6 +2,9 @@
 
 The `scipy.optimize.minimize()` function is the workhorse of optimization in SciPy. It provides a flexible interface to various minimization algorithms, handling everything from simple scalar functions to complex multidimensional optimization problems.
 
+!!! tip "Mental Model"
+    Think of `minimize()` as a universal remote for optimization: you hand it a cost function (what to minimize), a starting point (where to begin searching), and optionally a method (which algorithm to use). It returns a result object that tells you the best parameters found, the minimum value achieved, and whether the search actually converged. The cost function is yours to define -- the optimizer just walks downhill.
+
 ---
 
 ## Understanding Cost Functions

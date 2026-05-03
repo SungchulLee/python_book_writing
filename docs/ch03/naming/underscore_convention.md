@@ -1,5 +1,8 @@
 # Underscore Convention
 
+!!! tip "Mental Model"
+    Underscores in Python names are signals with increasing strength: `_x` means "internal, please don't touch," `__x` triggers name mangling to avoid subclass collisions, `__x__` is reserved for Python's own special methods, and a bare `_` means "I don't care about this value." Memorize these four patterns and you can read any Python naming convention at a glance.
+
 ## Single Leading
 
 ### 1. Throwaway Variable

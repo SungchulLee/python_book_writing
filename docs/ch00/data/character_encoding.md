@@ -2,6 +2,9 @@
 
 # Character Encoding
 
+!!! tip "Mental Model"
+    A character encoding is a lookup table that translates between human-readable characters and the bytes a computer stores. Without agreeing on which table to use, the same bytes can display as completely different text on different systems. UTF-8 has become the universal answer: it can represent every character in every language while staying backward-compatible with ASCII.
+
 Computers ultimately store information as **binary data**—patterns of bits and bytes. Human languages, however, consist of **characters** such as letters, digits, punctuation, and symbols.
 
 A **character encoding** defines how these characters are represented as sequences of bytes so that computers can store, transmit, and display text.

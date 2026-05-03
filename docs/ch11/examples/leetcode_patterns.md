@@ -2,6 +2,9 @@
 
 Common pandas patterns from LeetCode SQL problems, demonstrating practical data manipulation techniques.
 
+!!! tip "Mental Model"
+    Most LeetCode pandas problems reduce to a small set of recurring patterns: group-and-count, self-merge for comparisons, rank within groups, and boolean masking for conditional filters. Learn to recognize which pattern a problem uses, and the solution becomes a templated one-liner or short chain.
+
 ## GroupBy Count Pattern
 
 Count occurrences within groups.

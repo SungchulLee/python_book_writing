@@ -26,6 +26,9 @@ flowchart LR
 
 This cycle allows Python to execute commands interactively.
 
+!!! tip "Mental Model"
+    The REPL is a conversation with Python. You type an expression, Python evaluates it and shows the result, then waits for your next input. This tight feedback loop makes the REPL the best place to experiment, test small ideas, and build intuition for how Python works before committing code to a file.
+
 ---
 
 ## 1. Starting the Interpreter

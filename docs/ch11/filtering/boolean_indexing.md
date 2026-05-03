@@ -2,6 +2,9 @@
 
 Filter DataFrame rows using boolean conditions and masks.
 
+!!! tip "Mental Model"
+    Boolean indexing is a two-step process: first create a True/False mask the same length as your DataFrame, then pass it inside `[]` to keep only the True rows. The mask is just a Series of booleans, and you combine masks with `&` (and), `|` (or), and `~` (not) -- never Python's `and`/`or`.
+
 ## Basic Comparison
 
 Filter using comparison operators.

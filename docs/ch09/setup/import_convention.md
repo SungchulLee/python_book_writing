@@ -1,5 +1,30 @@
 # Import Convention
 
+!!! note "Computational Environment Model"
+    Reliable numerical computing requires three things:
+
+    1. **A consistent environment** — [installation](installation.md) with pinned versions
+    2. **A standard interface** — import conventions (this page)
+    3. **A known version** — [version checking](version_check.md) for compatibility
+
+    Together these ensure reproducibility, portability, and correctness. This section
+    is not just setup — it is the foundation for every computation in this book.
+
+    The governing law: **Result = f(code, data, environment).** A numerical result
+    is only reproducible when all three inputs are controlled. The code is what you
+    write; the data is what you feed in; the environment is the library version,
+    platform, and runtime that execute it.
+
+!!! tip "Mental Model"
+    `import numpy as np` is the universally accepted convention — virtually every NumPy tutorial, library, and codebase uses it. The `np` alias gives you a **namespace for numerical computation**: every function behind `np.` is a NumPy operation, making code self-documenting. Never use `from numpy import *`, which pollutes your namespace and hides where functions come from.
+
+    This is not merely a style convention — it is **interface design for
+    computation.** The import statement defines the boundary through which you
+    access numerical operations. A consistent namespace (`np`) ensures that every
+    operation is explicitly tied to NumPy, making code readable, auditable, and
+    unambiguous when multiple libraries coexist (e.g., `np.sum` vs `math.sum` vs
+    built-in `sum`).
+
 ## Standard Import
 
 ### 1. The np Alias
@@ -184,3 +209,23 @@ print(type(a))
     import numpy as np
     print(np.eye(3))
     ```
+
+---
+
+**Exercise 5.**
+A colleague's script begins with `from numpy import array, zeros, linspace, mean, std, random`. It works, but later they add `from statistics import mean` for a different purpose and the script breaks silently. Explain the bug and how `import numpy as np` prevents it.
+
+??? success "Solution to Exercise 5"
+    Both `numpy` and `statistics` export a function called `mean`. When both are imported with `from ... import mean`, the second import shadows the first — `mean` now refers to `statistics.mean`, not `numpy.mean`. NumPy's `mean` accepts arrays and axis parameters; `statistics.mean` does not. The script may raise errors or silently compute wrong results.
+
+    With the `np` convention, there is no ambiguity:
+
+    ```python
+    import numpy as np
+    from statistics import mean
+
+    np.mean(arr)   # NumPy mean — clear
+    mean(values)   # statistics mean — clear
+    ```
+
+    Namespaced imports eliminate name collisions entirely. This is the primary reason `import numpy as np` is preferred over selective imports.

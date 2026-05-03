@@ -2,6 +2,9 @@
 
 DataFrames can be created from various data structures including dictionaries, lists, NumPy arrays, and other DataFrames.
 
+!!! tip "Mental Model"
+    Every DataFrame constructor answers the same question: "How should I interpret this raw data as rows and columns?" A dict of lists reads keys as column names. A list of dicts reads keys as column names per row. A 2D array needs explicit column labels. Choose the constructor that matches how your source data is already organized.
+
 ## From Dictionary of Lists
 
 Column-oriented data with lists as values.

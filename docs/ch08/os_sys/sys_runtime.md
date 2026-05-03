@@ -2,6 +2,9 @@
 
 Access runtime information like memory usage, loaded modules, and recursion limits.
 
+!!! tip "Mental Model"
+    `sys` runtime functions are the interpreter's dashboard gauges. `sys.getsizeof()` shows an object's memory footprint, `sys.getrecursionlimit()` reveals how deep the call stack can go, and `sys.modules` lists everything that has been imported. Use these tools to diagnose memory bloat, stack overflows, or unexpected import side effects.
+
 ## Memory and Resource Information
 
 Check memory and system resources.

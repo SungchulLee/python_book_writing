@@ -2,6 +2,9 @@
 
 Python supports multiple number system representations for integers.
 
+!!! tip "Mental Model"
+    An integer is just a number -- the base you write it in is a display choice, not a different type. `0b1010`, `0o12`, `10`, and `0xa` are all the same `int` object (ten). Python provides literal prefixes for binary, octal, and hex, plus `bin()`, `oct()`, and `hex()` to convert back to string representations.
+
 ---
 
 ## Representations

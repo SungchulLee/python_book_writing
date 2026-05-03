@@ -2,6 +2,25 @@
 
 The Figure object is the top-level container for all plot elements in Matplotlib.
 
+!!! tip "Mental Model"
+    A Figure is a blank sheet of paper. It has a size (`figsize`), a resolution (`dpi`), and a background color, but no data until you add Axes to it. You can create Figures explicitly with `plt.figure()` or implicitly when `plt.subplots()` builds one for you.
+
+!!! note "The Matplotlib Hierarchy"
+    ```text
+    Figure  →  the whole canvas (size, background, export)
+      └── Axes  →  a single plot area (data, labels, limits)
+            └── Artists  →  individual visual elements (lines, text, patches)
+    ```
+    Every plotting command operates at one of these levels. `fig.suptitle()` is Figure-level; `ax.plot()` is Axes-level; `line.set_color()` is Artist-level. Confusing which level you need is the #1 beginner mistake.
+
+!!! tip "Which Method to Use"
+    | Need | Use | Why |
+    |---|---|---|
+    | Standard grid of subplots | `plt.subplots(nrows, ncols)` | Default — simplest, returns fig + axes |
+    | Axes at arbitrary positions | `fig.add_axes([l, b, w, h])` | Normalized coordinates for custom layouts |
+    | Inset or overlay plot | `ax.inset_axes([l, b, w, h])` | Axes within axes |
+    | Legacy / incremental | `plt.subplot(nrows, ncols, idx)` | Avoid in new code; less flexible |
+
 ---
 
 ## Using plt.figure
@@ -255,5 +274,35 @@ plt.show()
             ax.set_title(f'#{i}: $\sqrt{{x}}$', fontsize=9)
 
     plt.tight_layout()
+    plt.show()
+    ```
+
+---
+
+**Exercise 5.** Explain the difference between `fig.add_axes([0.1, 0.1, 0.8, 0.4])` and `fig.add_subplot(2, 1, 1)`. What coordinate system does `add_axes` use? Create a figure with one main axes and one small overlay axes using `add_axes`, positioning the overlay in the bottom-left corner at 20% width and 20% height.
+
+??? success "Solution to Exercise 5"
+
+    `add_axes([left, bottom, width, height])` uses **normalized figure coordinates** — each value is a fraction of the figure's total width/height (0 to 1). `[0.1, 0.1, 0.8, 0.4]` means: start at 10% from the left edge, 10% from the bottom, span 80% of the width and 40% of the height.
+
+    `add_subplot(nrows, ncols, index)` uses a grid-based system that automatically computes the position.
+
+    ```python
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    fig = plt.figure(figsize=(8, 6))
+
+    # Main axes: most of the figure
+    ax_main = fig.add_axes([0.1, 0.3, 0.85, 0.6])
+    x = np.linspace(0, 10, 100)
+    ax_main.plot(x, np.sin(x))
+    ax_main.set_title('Main Plot')
+
+    # Overlay: bottom-left, 20% width and height
+    ax_small = fig.add_axes([0.15, 0.05, 0.2, 0.2])
+    ax_small.plot(x, np.cos(x), 'r-')
+    ax_small.set_title('Overlay', fontsize=8)
+
     plt.show()
     ```

@@ -2,6 +2,15 @@
 
 While convolution applies a fixed kernel operation, `generic_filter()` allows you to apply arbitrary Python functions over neighborhoods. This enables complex, stateful, and custom operations on array data.
 
+!!! tip "Mental Model"
+    `generic_filter` is like convolution but with a custom function instead of a fixed kernel: at each position, it collects the neighborhood values into a flat array and passes them to your callback. This unlimited flexibility comes at a cost -- the callback runs in Python, not C -- so use it only when no built-in filter can express your operation.
+
+    Where convolution is restricted to **linear** operators (weighted sums) and
+    morphology to **set-based** operators (min, max, connectivity),
+    `generic_filter` handles **nonlinear** operators — median, percentile,
+    variance, entropy, or any arbitrary computation. It completes the trio:
+    linear (convolution) → geometric (morphology) → fully general (generic filter).
+
 ## Introduction to Generic Filters
 
 `ndi.generic_filter()` slides a neighborhood window over an array and applies a user-defined function to each neighborhood. The signature is:

@@ -1,5 +1,8 @@
 # CPython vs Language
 
+!!! tip "Mental Model"
+    The Python language specification is a contract that every implementation must honor; CPython is just one implementation that fulfills that contract. If a behavior is not in the spec -- like small-integer caching -- it is an implementation detail you must never rely on in portable code.
+
 ## Language Guarantees
 
 ### 1. Semantic Behavior

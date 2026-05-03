@@ -2,6 +2,29 @@
 
 Matplotlib supports two plotting interfaces: the pyplot (MATLAB-style) interface and the object-oriented (OOP) interface. Understanding both is essential for effective visualization.
 
+!!! tip "Mental Model"
+    Pyplot is like a TV remote -- you press buttons and the current channel changes behind the scenes. The OOP interface is like holding the TV object directly -- you call methods on a specific Figure and specific Axes, so there is never ambiguity about which plot you are modifying. Use pyplot for quick exploration; switch to OOP for anything with multiple subplots or production code.
+
+!!! note "The State Machine Under Pyplot"
+    Pyplot maintains a **global stack** of figures and axes. Every `plt.*` call
+    implicitly targets the figure and axes at the top of this stack. `plt.subplot()`
+    pushes a new axes onto the stack and makes it "current." This is why bugs like
+    the following are common:
+
+    ```python
+    plt.subplot(1, 2, 1)
+    plt.plot(x1)
+
+    plt.subplot(1, 2, 2)
+    plt.plot(x2)
+
+    plt.title("Oops")  # Applies to subplot 2, not subplot 1!
+    ```
+
+    The implicit state makes it **fragile and error-prone**, not impossible. The OOP
+    style avoids this entirely because every call names its target explicitly
+    (`ax1.set_title(...)`).
+
 ---
 
 ## Two Paradigms
@@ -39,7 +62,9 @@ plt.plot([1, 2, 3])   # Acts on current axes
 plt.title('Title')    # Acts on current axes
 ```
 
-**Limitation**: You cannot easily go back and modify previous subplots once you move to a new one.
+**Limitation**: Pyplot's implicit state makes it **fragile and confusing** to manage
+multiple subplots — modifying a previous subplot requires switching the "current"
+axes back, which is error-prone and hard to read.
 
 ---
 
@@ -261,6 +286,20 @@ plt.show()
 - **Prefer OOP style** for anything beyond simple exploratory plots
 - Return figure objects from functions; let caller handle display
 - Avoid mixing styles in the same codebase
+
+!!! tip "Design Philosophy"
+    The OOP vs pyplot choice reflects a universal programming principle:
+
+    ```text
+    Explicit > implicit
+    Local control > global state
+    Composable functions > side effects
+    ```
+
+    OOP-style plotting follows all three: you name every target, control every
+    axes locally, and compose plots from functions that return figure objects.
+    This is why it scales to complex dashboards and production code while pyplot
+    does not.
 
 ---
 

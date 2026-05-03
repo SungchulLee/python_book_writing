@@ -2,6 +2,9 @@
 
 `threading.local()` provides storage where each thread has its own independent copy of data.
 
+!!! tip "Mental Model"
+    `threading.local()` gives every thread its own private namespace that looks like a shared object. Each thread reads and writes the same attribute names, but they see different values -- like each employee having a personal desk drawer inside a shared desk. It is the simplest way to avoid sharing state without passing data through every function call.
+
 ## The Problem: Shared State
 
 Without thread-local storage, all threads share the same global variables:

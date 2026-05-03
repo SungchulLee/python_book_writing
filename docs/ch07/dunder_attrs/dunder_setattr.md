@@ -1,5 +1,8 @@
 # __setattr__
 
+!!! tip "Mental Model"
+    `__setattr__` intercepts every `obj.attr = value` assignment -- including those inside `__init__`. This makes it a universal validation and logging hook, but it also means you must use `super().__setattr__()` or direct `__dict__` writes internally to avoid infinite recursion. Think of it as a customs checkpoint: everything passes through, so your inspection logic must know which shipments to wave through.
+
 ## Fundamentals
 
 ### 1. Definition
@@ -29,6 +32,18 @@ self.x = 10       # Calls __setattr__('x', 10)
 self.name = "hi"  # Calls __setattr__('name', "hi")
 self.data = []    # Calls __setattr__('data', [])
 ```
+
+!!! note "Symmetry with Other Attribute Hooks"
+
+    The three attribute-mutation hooks form a symmetric system:
+
+    | Operation | Syntax | Hook |
+    |---|---|---|
+    | Read | `obj.attr` | `__getattribute__` → `__getattr__` (fallback) |
+    | Write | `obj.attr = val` | `__setattr__` (always) |
+    | Delete | `del obj.attr` | `__delattr__` (always) |
+
+    Reading has a two-stage fallback (`__getattribute__` first, then `__getattr__` if not found). Writing and deletion each have a single hook that runs unconditionally. This asymmetry exists because reads need a "not found" fallback while writes and deletes always know their target.
 
 ## Basic Implementation
 
@@ -184,9 +199,9 @@ class TrackedObject:
             else:
                 old_value = None
             
-            # Record change
+            # Record change — use a list to preserve full history
             changes = super().__getattribute__('_changes')
-            changes[name] = (old_value, value)
+            changes.setdefault(name, []).append((old_value, value))
         
         super().__setattr__(name, value)
 
@@ -195,7 +210,7 @@ obj.x = 10
 obj.x = 20
 obj.y = 30
 print(obj._changes)
-# {'x': (None, 10), 'x': (10, 20), 'y': (None, 30)}
+# {'x': [(None, 10), (10, 20)], 'y': [(None, 30)]}
 ```
 
 ## Read-Only Attributes
@@ -263,47 +278,11 @@ doc.finalize()
 
 ## Logging and Debugging
 
-### 1. Attribute Logger
-
-```python
-class LoggedAttributes:
-    def __setattr__(self, name, value):
-        print(f"[SET] {name} = {value} (type: {type(value).__name__})")
-        super().__setattr__(name, value)
-
-obj = LoggedAttributes()
-obj.x = 42
-# [SET] x = 42 (type: int)
-obj.name = "Alice"
-# [SET] name = Alice (type: str)
-```
-
-### 2. With Timestamps
-
 ```python
 from datetime import datetime
 
-class TimestampedAttributes:
-    def __init__(self):
-        super().__setattr__('_timestamps', {})
-    
-    def __setattr__(self, name, value):
-        if name != '_timestamps':
-            timestamps = super().__getattribute__('_timestamps')
-            timestamps[name] = datetime.now()
-        super().__setattr__(name, value)
-
-obj = TimestampedAttributes()
-obj.x = 10
-obj.y = 20
-print(obj._timestamps)
-# {'x': datetime(...), 'y': datetime(...)}
-```
-
-### 3. Audit Trail
-
-```python
 class AuditedObject:
+    """Logs every attribute write with a timestamp."""
     def __init__(self):
         super().__setattr__('_history', [])
     
@@ -315,8 +294,31 @@ class AuditedObject:
                 'value': value,
                 'time': datetime.now()
             })
+            print(f"[SET] {name} = {value} (type: {type(value).__name__})")
         super().__setattr__(name, value)
+
+obj = AuditedObject()
+obj.x = 42
+# [SET] x = 42 (type: int)
+print(obj._history)
+# [{'attr': 'x', 'value': 42, 'time': datetime(...)}]
 ```
+
+## __setattr__ vs @property Setters
+
+Both `__setattr__` and `@property` setters intercept attribute writes, but they
+serve different purposes:
+
+| Concern | `__setattr__` | `@property` setter |
+|---------|--------------|-------------------|
+| Scope | **All** attributes | **One** named attribute |
+| Use when | You need blanket validation, logging, or type enforcement across many attributes | You need custom logic for a specific attribute |
+| Performance | Runs on every assignment (including `__init__`) | Runs only for the decorated name |
+| Complexity | Higher — must avoid recursion, handle internal attrs | Lower — self-contained |
+
+**Rule of thumb**: if you only need to control one or two attributes, use
+`@property`. Reach for `__setattr__` when the policy applies to all (or most)
+attributes uniformly.
 
 ## Interaction with Properties
 
@@ -432,6 +434,15 @@ obj = StrictSlots()
 obj.x = 10  # ✅ OK
 # obj.z = 20  # ❌ AttributeError
 ```
+
+## When NOT to Use __setattr__
+
+!!! warning "Avoid When"
+    - **Validating only one or two attributes** — use `@property` setters instead. `__setattr__` intercepts *every* assignment, including internal ones in `__init__`, which adds complexity for no benefit when only one field needs validation.
+    - **Simple logging of one attribute** — a property setter with a `print` is far simpler.
+    - **Performance-sensitive code** — `__setattr__` runs on every assignment, including `self.x = ...` inside methods. In tight loops this overhead is measurable.
+
+    Use `__setattr__` only when the policy applies to **all or most** attributes uniformly (type enforcement, change tracking, freezing). For per-attribute control, `@property` is the right tool.
 
 ## Common Mistakes
 
@@ -566,3 +577,85 @@ Build a class `WriteOnce` where `__setattr__` allows an attribute to be set only
         except AttributeError as e:
             print(f"Error: {e}")
             # Error: 'name' already set and cannot be changed
+
+---
+
+**Exercise 4.**
+Explain why the following `__init__` triggers `__setattr__` three times, even though the developer only intends to set two user-visible attributes. Trace each `__setattr__` call with the attribute name and value.
+
+```python
+class Traced:
+    def __init__(self, x, y):
+        self._internal = []
+        self.x = x
+        self.y = y
+
+    def __setattr__(self, name, value):
+        print(f"__setattr__({name!r}, {value!r})")
+        super().__setattr__(name, value)
+
+obj = Traced(10, 20)
+```
+
+??? success "Solution to Exercise 4"
+
+    Output:
+
+        __setattr__('_internal', [])
+        __setattr__('x', 10)
+        __setattr__('y', 20)
+
+    `__setattr__` runs for **every** assignment, including `self._internal = []` inside `__init__`. This is often surprising — developers assume `__setattr__` only fires for "user" assignments, but Python makes no distinction.
+
+    This is why `__setattr__` implementations must handle internal attributes carefully:
+
+    - **Option 1:** Check `if name == '_internal'` and skip validation.
+    - **Option 2:** Use `object.__setattr__(self, '_internal', [])` in `__init__` to bypass the custom hook for internal setup.
+    - **Option 3:** Use a flag like `_initialized` (set via `object.__setattr__`) and only apply validation after initialization is complete.
+
+    The takeaway: `__setattr__` has no concept of "internal" vs "external" — all assignments are equal.
+
+---
+
+**Exercise 5.**
+Compare `__setattr__` and `@property` for the following scenario: a `Temperature` class where `celsius` must always be a non-negative number. Implement both approaches. Then explain which you would choose if the class also needs `fahrenheit` and `kelvin` attributes with similar validation.
+
+??? success "Solution to Exercise 5"
+
+        # Approach 1: @property (per-attribute)
+        class TempProperty:
+            def __init__(self, celsius):
+                self.celsius = celsius
+
+            @property
+            def celsius(self):
+                return self._celsius
+
+            @celsius.setter
+            def celsius(self, value):
+                if not isinstance(value, (int, float)) or value < 0:
+                    raise ValueError("celsius must be a non-negative number")
+                self._celsius = value
+
+        # Approach 2: __setattr__ (blanket policy)
+        class TempSetattr:
+            _numeric_fields = {"celsius", "fahrenheit", "kelvin"}
+
+            def __init__(self, celsius):
+                self.celsius = celsius
+
+            def __setattr__(self, name, value):
+                if name in self._numeric_fields:
+                    if not isinstance(value, (int, float)) or value < 0:
+                        raise ValueError(f"{name} must be a non-negative number")
+                super().__setattr__(name, value)
+
+        # Both work for one attribute
+        t1 = TempProperty(100)
+        t2 = TempSetattr(100)
+
+    **For one attribute:** `@property` is simpler — it's self-contained, no recursion risk, and the validation logic is co-located with the getter.
+
+    **For three attributes with identical rules:** `__setattr__` is better — writing three `@property` blocks with identical validation logic is repetitive. `__setattr__` applies the rule once to all fields in `_numeric_fields`.
+
+    **Rule of thumb:** use `@property` when each attribute has unique validation logic. Use `__setattr__` when the same rule applies uniformly to multiple attributes.

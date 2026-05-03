@@ -2,6 +2,9 @@
 
 The pickle module serializes Python objects into bytes for storage or transmission. While convenient for Python-specific data, pickle has security implications and limitations compared to other formats.
 
+!!! tip "Mental Model"
+    Pickle is Python's way of freeze-drying an object into bytes and rehydrating it later. It can handle nearly any Python object, but the resulting bytes are Python-specific and can execute arbitrary code on load. Treat unpickling untrusted data like running untrusted code -- never do it.
+
 ---
 
 ## Basic Pickling

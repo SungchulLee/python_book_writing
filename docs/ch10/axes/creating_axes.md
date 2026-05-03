@@ -2,6 +2,18 @@
 
 There are multiple ways to create Axes objects in Matplotlib, each suited for different use cases.
 
+!!! tip "Mental Model"
+    Creating an Axes means carving out a rectangular region on the Figure for plotting. `plt.subplots()` carves a regular grid, `fig.add_axes()` places a rectangle at exact coordinates, and `GridSpec` offers the most flexible partitioning. Every approach ultimately produces the same Axes object -- they differ only in how they specify position and size.
+
+    **In practice, the methods are not equally common:**
+
+    - **~90% of plots** → `plt.subplots()` (regular grid, covers most use cases)
+    - **~9%** → `fig.add_subplot()` (build incrementally, mixed layouts)
+    - **~1%** → `fig.add_axes()` / `GridSpec` (pixel-precise or irregular layouts)
+
+    Start with `subplots()` and reach for the others only when it cannot express
+    your layout.
+
 ---
 
 ## plt.subplots

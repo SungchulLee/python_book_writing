@@ -2,6 +2,9 @@
 
 클로저의 실용적인 활용 패턴과 디버깅 방법입니다.
 
+!!! tip "Mental Model"
+    Closures are lightweight alternatives to classes when you need a function bundled with a small amount of private state. Factories produce customized functions, decorators wrap behavior around existing functions, and callback registries remember context. If you find yourself writing a class with only `__init__` and one method, a closure is usually simpler.
+
 ## Factory Functions
 
 ### Basic Factory

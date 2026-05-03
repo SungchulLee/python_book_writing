@@ -2,6 +2,9 @@
 
 The `ax.boxplot()` method accepts numerous keyword arguments to control appearance and behavior.
 
+!!! tip "Mental Model"
+    Box plot keywords fall into three groups: data interpretation (`vert`, `whis`, `showfliers`), labeling (`labels`, `positions`), and styling (`patch_artist`, `boxprops`, `medianprops`). The most impactful is `patch_artist=True`, which switches boxes from outlines to filled patches, unlocking color customization.
+
 ## Labels
 
 The `labels` keyword assigns names to each box on the x-axis.

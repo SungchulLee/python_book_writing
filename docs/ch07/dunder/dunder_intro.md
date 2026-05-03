@@ -2,6 +2,9 @@
 
 Python uses a special set of methods as hooks that let user-defined classes integrate seamlessly with built-in syntax. When you write `a + b`, Python calls `a.__add__(b)` behind the scenes. When you call `len(obj)`, Python calls `obj.__len__()`. These hooks are called dunder methods, and understanding them is key to writing classes that feel natural and Pythonic.
 
+!!! tip "Mental Model"
+    Dunder methods are Python's plug-in system for operators and built-in functions. Each built-in operation (`+`, `len()`, `str()`, `for`) has a corresponding hook (`__add__`, `__len__`, `__str__`, `__iter__`) that your class can implement. By filling in the right hooks, your objects become first-class citizens of the language -- indistinguishable from built-in types at the call site.
+
 ## What Are Dunder Methods?
 
 ### 1. Definition

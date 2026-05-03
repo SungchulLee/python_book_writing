@@ -20,6 +20,9 @@ flowchart LR
     D --> A
 ````
 
+!!! tip "Mental Model"
+    `print()` and `input()` are your program's mouth and ears. `print()` converts any Python object into text and sends it to the screen; `input()` pauses the program, waits for the user to type, and always returns a string. Remember that `input()` returns a string even when the user types a number---you must convert it yourself.
+
 ---
 
 ## print()

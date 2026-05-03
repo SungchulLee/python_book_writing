@@ -2,6 +2,9 @@
 
 Effective caching can significantly improve performance by avoiding redundant computation and object creation.
 
+!!! tip "Mental Model"
+    Think of caching as keeping a notepad of answers you have already computed. Instead of re-solving the same math problem every time, you glance at your notepad first. The trade-off is always memory for speed -- you are renting shelf space to avoid re-doing work.
+
 ## LRU Cache
 
 The built-in `functools.lru_cache` provides a simple Least Recently Used cache:

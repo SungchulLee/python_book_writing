@@ -2,6 +2,9 @@
 
 Chi-square tests evaluate whether observed frequencies in categorical data differ significantly from expected frequencies. These tests are among the most widely used tools for analyzing count data, enabling researchers to assess goodness of fit to a theoretical distribution and to test for independence between two categorical variables.
 
+!!! tip "Mental Model"
+    The chi-square statistic sums up $(O - E)^2 / E$ across all categories -- each term measures how far an observed count deviates from what the null hypothesis predicted, scaled by the expected count. Large values mean the data do not match the expected pattern. The test works for both goodness-of-fit (one variable) and independence (two variables in a contingency table).
+
 ## Chi-Square Test Statistic
 
 The chi-square test statistic measures the discrepancy between observed counts $O_i$ and expected counts $E_i$ across $k$ categories:

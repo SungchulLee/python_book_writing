@@ -2,6 +2,9 @@
 
 Inheritance allows a class to reuse and extend the behavior of another, creating an **is-a** relationship with tight coupling. `super()` enables cooperative method calls across the hierarchy. Inheritance works alongside [encapsulation](encapsulation.md) (protecting state), [abstraction](abstraction.md) (defining interfaces), and [polymorphism](polymorphism.md) (enabling flexible dispatch).
 
+!!! tip "Mental Model"
+    Inheritance is a parent-child contract: the child gets everything the parent has (attributes, methods) for free, and can override or extend any part. The trade-off is tight coupling -- changes to the parent ripple into every child. Use inheritance for genuine "is-a" taxonomies (Dog is an Animal), not just to reuse code.
+
 ---
 
 ## Basic Inheritance
@@ -117,6 +120,10 @@ Inheritance does not work in isolation:
 - [Polymorphism](polymorphism.md) **uses** the shared interface so callers don't care which subclass they hold.
 
 When inheritance is well-designed, these four pillars reinforce each other. When it is misused (tight coupling, broken Liskov Substitution), the other pillars break down too.
+
+!!! note "Inheritance Is Not the Goal"
+
+    Inheritance is a **mechanism**, not an objective. Its primary purpose is to enable [polymorphism](polymorphism.md): by sharing a common interface through a base class, different subclasses become interchangeable in client code. If inheritance does not produce polymorphic substitutability, it is likely the wrong tool — consider composition instead.
 
 ---
 

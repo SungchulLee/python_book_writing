@@ -1,5 +1,8 @@
 # __get__ __set__ __delete__
 
+!!! tip "Mental Model"
+    The three descriptor methods are **interceptors on the attribute access pipeline**. `__get__` intercepts reads, `__set__` intercepts writes, `__delete__` intercepts deletions. Each gives the descriptor full control over what happens — it can validate, transform, compute, cache, or deny the operation entirely.
+
 ## The Three Methods
 
 ### 1. Method Signatures
@@ -561,13 +564,9 @@ if __name__ == "__main__":
     print()
 
     print("""
-    WHY: Functions are non-data descriptors:
-        - They have __get__ but not __set__
-        - When accessed via instance, __get__ creates a bound method
-        - When accessed via class, __get__ returns the function itself
-        - Instance __dict__ can shadow methods (methods aren't data descriptors)
-
-    This is the descriptor protocol in action!
+    Functions are non-data descriptors: they have __get__ but not __set__.
+    Via instance, __get__ creates a bound method; via class, it returns
+    the function itself.
     """)
 
     # ============ EXAMPLE 2: The Bound Method ============
@@ -614,17 +613,11 @@ if __name__ == "__main__":
     print(f"  Text.reverse(word) = {result}")
 
     print("""
-    WHY: The bound method:
-        - Returned by obj.method (instance access)
-        - Carries a reference to both the function and the instance
-        - When called, automatically passes the instance as 'self'
+    Bound method (obj.method): carries both function and instance,
+    passes instance as 'self' automatically.
 
-    The unbound function:
-        - Returned by Class.method (class access)
-        - Just the function, no 'self' binding
-        - You must pass an instance if you call it
-
-    This is how Python makes 'self' implicit and convenient.
+    Unbound function (Class.method): just the function — you must
+    pass the instance explicitly.
     """)
 
     # ============ EXAMPLE 3: How __get__ Works ============
@@ -658,12 +651,8 @@ if __name__ == "__main__":
     print(f"bound() = {bound()}")
 
     print("""
-    WHY: Understanding __get__ explains:
-        - __func__: The actual function object
-        - __self__: The instance it's bound to
-        - When you call the bound method, __self__ is passed as 'self'
-
-    This is all transparent normally, but now you see the mechanism!
+    __func__ holds the actual function, __self__ holds the bound instance.
+    Calling the bound method passes __self__ as the first argument.
     """)
 
     # ============ EXAMPLE 4: Shadowing Methods ============
@@ -700,13 +689,8 @@ if __name__ == "__main__":
     print(f"  obj.method() = {obj.method()}")
 
     print("""
-    WHY: Methods are non-data descriptors:
-        - Non-data means instance __dict__ can shadow them
-        - Set obj.method = something, and that takes priority
-        - This is unlike @property (data descriptor), which always intercepts
-        - This flexibility is useful but requires care
-
-    This shows why non-data descriptors matter - methods are practical!
+    Methods are non-data descriptors, so instance __dict__ can shadow them.
+    Unlike @property (data descriptor), which always intercepts access.
     """)
 
     # ============ EXAMPLE 5: Bound Method Equality ============
@@ -739,13 +723,8 @@ if __name__ == "__main__":
     print(f"  m3.__self__ is m4.__self__ = {m3.__self__ is m4.__self__}")
 
     print("""
-    WHY: Bound methods are created fresh on each access:
-        - obj.method doesn't cache the bound method
-        - Each access calls __get__ and creates a new bound method object
-        - They compare equal if they wrap the same function and instance
-        - But they're not identical (different objects)
-
-    This is usually transparent, but matters if you use bound methods as dict keys.
+    Bound methods are created fresh on each access via __get__. They compare
+    equal if same function + instance, but are not identical objects.
     """)
 
     # ============ EXAMPLE 6: Using map With Methods ============
@@ -828,24 +807,10 @@ if __name__ == "__main__":
     print(f"obj.static() = {obj.static()}")
 
     print("""
-    WHY: Python provides three method types:
-
-    1. INSTANCE METHOD (normal function)
-       - Descriptor: __get__ binds self
-       - Access: obj.method() or Class.method(obj)
-       - Use: Most methods
-
-    2. CLASS METHOD (@classmethod)
-       - Descriptor: __get__ binds cls
-       - Access: obj.method() or Class.method()
-       - Use: Factory methods, class-specific operations
-
-    3. STATIC METHOD (@staticmethod)
-       - Not a descriptor, just a plain function wrapper
-       - Access: obj.method() or Class.method()
-       - Use: Utility functions in a class namespace
-
-    All are descriptors (or descriptor-like) but serve different purposes!
+    Three method types, all using the descriptor protocol:
+      Instance method: __get__ binds self
+      Class method:    __get__ binds cls
+      Static method:   wraps function, no binding
     """)
 
     # ============ EXAMPLE 8: Custom Descriptor Mimicking Methods ============
@@ -884,142 +849,28 @@ if __name__ == "__main__":
     print()
 
     print("""
-    WHY: This demonstrates:
-        - How to build a descriptor from scratch
-        - How __get__ can return different things based on context
-        - How to create a "bound method" using a lambda
-        - That descriptors give you complete control over access
-
-    In practice, use @property or regular methods. This is educational!
+    This shows how __get__ can return different things based on context.
+    In practice, use regular methods — this is for understanding the mechanism.
     """)
 
-    # ============ EXAMPLE 9: Summary - The Method Mechanism ============
-    print("\n# Example 9: Complete Picture - How Methods Work")
+    # ============ EXAMPLE 9: Summary ============
+    print("\n# Example 9: How Methods Work — Summary")
     print("=" * 70)
 
     print("""
-    THE METHOD MECHANISM - STEP BY STEP:
+    THE METHOD MECHANISM:
 
-    WHEN YOU WRITE:
-        class MyClass:
-            def method(self):
-                pass
+    obj.method access:
+      1. Look up 'method' in obj.__dict__ (not found)
+      2. Find function in class.__dict__
+      3. Call function.__get__(obj, MyClass) — creates bound method
+      4. Bound method passes obj as 'self' when called
 
-    PYTHON CREATES:
-        - A function object (the code)
-        - Stores it as MyClass.method
-
-    WHEN YOU ACCESS obj.method:
-        1. Python looks up 'method' in obj.__dict__ (not found)
-        2. Python looks in MyClass.__dict__ (finds the function)
-        3. Function is a descriptor, so calls function.__get__(obj, MyClass)
-        4. __get__ returns a bound method (the function + obj + call wrapper)
-        5. You get a callable bound method
-
-    WHEN YOU CALL obj.method():
-        1. The bound method is callable
-        2. It calls the original function with obj as the first argument
-        3. That first argument is named 'self' in the function definition
-        4. Everything works transparently
-
-    WHY THIS IS BRILLIANT:
-        - Functions implement __get__ to enable method binding
-        - No special syntax needed (no need to write obj.method(obj))
-        - Class and instance access both work (different behaviors)
-        - Non-data descriptor means instance __dict__ can shadow (flexibility)
-        - The same mechanism is used for @property, @staticmethod, etc.
-
-    THE DESCRIPTOR PROTOCOL MAKES THIS POSSIBLE:
-        - __get__(self, instance, owner)
-        - instance: the object being accessed (None if via class)
-        - owner: the class
-        - Returns: the computed value (in this case, a bound method)
-
-    PERFORMANCE NOTE:
-        - Each obj.method access calls __get__ (creates new bound method)
-        - But Python optimizes this so it's very fast
-        - You shouldn't cache bound methods unless you have a specific reason
-
-    WHEN YOU'D USE THIS KNOWLEDGE:
-        - Understanding how Python works internally
-        - Implementing custom descriptors
-        - Debugging method binding issues
-        - Advanced metaprogramming
-        - Building frameworks and tools
-    """)
-
-    # ============ EXAMPLE 10: Practical Takeaway ============
-    print("\n# Example 10: Practical Application - Knowing This Helps")
-    print("=" * 70)
-
-    print("""
-    NOW THAT YOU KNOW METHODS ARE DESCRIPTORS:
-
-    YOU UNDERSTAND WHY:
-        ✓ obj.method needs no argument but method() gets 'self'
-        ✓ You can access unbound methods via Class.method
-        ✓ Instance methods can be shadowed by instance attributes
-        ✓ @property and @staticmethod are also descriptors
-        ✓ Python's attribute access is so flexible and powerful
-
-    YOU CAN:
-        ✓ Debug issues with method binding
-        ✓ Write custom descriptors when needed
-        ✓ Understand frameworks that use descriptors
-        ✓ Know why certain patterns work
-        ✓ Appreciate Python's elegance
-
-    YOU KNOW TO:
-        ✓ Use methods normally (no need for manual binding)
-        ✓ Not worry about __get__ in daily code
-        ✓ Reach for descriptors when you need custom access control
-        ✓ Read framework code with understanding
-
-    REMEMBER:
-        - This is advanced knowledge
-        - You probably won't write custom descriptors often
-        - But understanding them makes you a better Python programmer
-        - Every Python feature you use depends on this protocol
-    """)
-
-    print("\n" + "=" * 70)
-    print("KEY TAKEAWAYS")
-    print("=" * 70)
-    print("""
-    1. FUNCTIONS ARE DESCRIPTORS: Every function has __get__, making them
-       descriptors that create bound methods.
-
-    2. METHODS ARE CREATED ON ACCESS: Accessing obj.method calls function.__get__
-       which creates a bound method carrying both function and instance.
-
-    3. BOUND VS UNBOUND: obj.method is bound (self is fixed), Class.method is
-       unbound (you must pass instance).
-
-    4. __GET__ DOES THE MAGIC: The function's __get__ method is what creates
-       the callable bound method with 'self' implicitly available.
-
-    5. THIS IS THE DESCRIPTOR PROTOCOL: Understanding __get__ and __set__ explains
-       how Python implements methods, properties, and more.
-
-    6. NON-DATA DESCRIPTORS: Since functions don't have __set__, instance __dict__
-       can shadow them (unlike @property).
-
-    7. METHODS ARE FLEXIBLE: You can replace them with instance attributes, call
-       unbound versions, use them with map(), etc.
-
-    8. THIS EXTENDS BEYOND METHODS: The same mechanism powers @property,
-       @staticmethod, @classmethod, and custom descriptors.
-
-    9. PYTHON'S ELEGANCE: All of Python's method magic boils down to a simple
-       protocol (__get__, __set__, __delete__).
-
-    10. DEEP UNDERSTANDING: Knowing this puts you in the top tier of Python
-        programmers who truly understand how the language works.
-
-    FINAL THOUGHT:
-    The beauty of Python's descriptor protocol is that it unifies behavior
-    that would require special-casing in other languages. One simple protocol
-    handles methods, properties, static methods, and more.
+    KEY POINTS:
+      - Functions are non-data descriptors (have __get__, not __set__)
+      - Instance __dict__ can shadow methods
+      - Same mechanism powers @property, @staticmethod, @classmethod
+      - Each access creates a fresh bound method (Python optimizes this)
     """)
 ```
 

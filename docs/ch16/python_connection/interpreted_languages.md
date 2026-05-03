@@ -1,5 +1,8 @@
 # Hardware and Interpreted Languages
 
+!!! tip "Mental Model"
+    Compiled languages hand the CPU a finished recipe; interpreted languages read and translate the recipe one step at a time while cooking. Python sits in between -- it compiles to bytecode once, then interprets that bytecode. The translation overhead is the price you pay for flexibility, dynamic typing, and rapid development.
+
 ## The Language Spectrum
 
 Programming languages exist on a spectrum from hardware to abstraction:

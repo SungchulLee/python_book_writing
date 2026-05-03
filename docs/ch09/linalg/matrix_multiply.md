@@ -2,6 +2,56 @@
 
 NumPy provides multiple ways to perform matrix multiplication.
 
+!!! tip "Mental Model"
+    The `@` operator is the standard way to do matrix multiplication in NumPy -- `A @ B` means "dot rows of A with columns of B." Remember that `*` is element-wise multiplication, not matrix multiplication. For 1D arrays, `@` computes the dot product; for higher dimensions, it broadcasts the matrix multiply over batch axes.
+
+    Conceptually, matrix multiplication is **composition of linear transformations**:
+    if $A$ maps space one way and $B$ maps it another, $A @ B$ applies $B$ first, then
+    $A$. This geometric view is why matrix multiply is not commutative ($AB \neq BA$)
+    and why the inner dimensions must match.
+
+!!! note "Matrix Computation System"
+    All linear algebra operations in this section fall into three categories:
+
+    ```text
+    Matrix A
+        │
+        ├── 1. Transformations
+        │       A @ x  (matrix multiply)
+        │
+        ├── 2. Solvers
+        │       Ax = b  (solve, lstsq, Cholesky-solve, QR-solve)
+        │
+        └── 3. Decompositions
+                Factor A into simpler components:
+                ├── LU       → general solve
+                ├── QR       → least squares, eigenvalue algorithms
+                ├── LLᵀ      → symmetric positive definite (Cholesky)
+                ├── VΛV⁻¹    → eigen decomposition (square)
+                └── UΣVᵀ     → most general (SVD)
+    ```
+
+    Each decomposition reveals different structure:
+
+    - **Cholesky** → positive definiteness (fast SPD solve, sampling)
+    - **QR** → orthogonality (stable least squares)
+    - **Eigen** → intrinsic directions (PCA, stability, oscillation modes)
+    - **SVD** → full geometry and rank (compression, pseudoinverse, ML)
+
+    The decompositions form a hierarchy of generality:
+    Cholesky $\subset$ QR $\subset$ SVD (each works on a broader class of matrices).
+
+    **Which method to use?**
+
+    | Problem | Method |
+    |---------|--------|
+    | Square system $Ax = b$ | `np.linalg.solve` (LU internally) |
+    | Overdetermined system | `np.linalg.lstsq` or QR |
+    | Symmetric positive definite | Cholesky (2x faster than LU) |
+    | Need eigenstructure | `eig` / `eigh` |
+    | Need robustness / rank analysis | SVD |
+    | Any matrix, maximum generality | SVD |
+
 ## The @ Operator
 
 ### 1. Basic Usage

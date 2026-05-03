@@ -1,5 +1,8 @@
 # Magic Methods Practice Exercises
 
+!!! tip "Mental Model"
+    These exercises ask you to make custom objects behave like built-in types. The key insight: every Python operator and built-in function has a corresponding dunder method. By implementing the right hooks, your objects become indistinguishable from native types at the call site -- they support `+`, `len()`, `for`, `with`, and `[]` just like lists and dicts.
+
 ## Exercise 1: Temperature Class
 Create a `Temperature` class that:
 - Stores temperature in Celsius

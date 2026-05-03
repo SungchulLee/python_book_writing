@@ -15,6 +15,9 @@ The output automatically includes the expression:
 x=42
 ```
 
+!!! tip "Mental Model"
+    The `=` inside an f-string brace is a "show your work" button. `f"{expr=}"` prints both the expression text and its result, saving you from writing `print(f"expr={expr}")` manually. It works with any expression, not just variable names -- `f"{len(data)=}"` prints `len(data)=42`.
+
 ---
 
 ## Basic Usage

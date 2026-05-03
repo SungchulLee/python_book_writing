@@ -2,6 +2,9 @@
 
 Covariance is the foundational measure of how two random variables change together. It underpins correlation, portfolio variance in finance, principal component analysis, and nearly all of multivariate statistics. Unlike correlation, covariance retains the original scale of the variables, making it essential when absolute magnitudes matter but less suitable for comparing relationships across different measurement units.
 
+!!! tip "Mental Model"
+    Covariance is the "raw" version of correlation -- it tells you whether two variables move together and by how much in their original units. Dividing by both standard deviations normalizes this to the $[-1, 1]$ scale of correlation, but covariance itself is what appears in portfolio variance formulas and PCA because the actual magnitudes matter there.
+
 ## Definition
 
 The **covariance** of two random variables $X$ and $Y$ with means $\mu_X$ and $\mu_Y$ is

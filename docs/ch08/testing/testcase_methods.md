@@ -2,6 +2,9 @@
 
 Common assertion methods provided by TestCase.
 
+!!! tip "Mental Model"
+    `TestCase` assertion methods are specialized comparisons that produce clear failure messages. `assertEqual(a, b)` is not just `assert a == b` — it tells you *what* `a` and `b` actually were when they differed. Choosing the most specific assertion (e.g., `assertIn`, `assertRaises`, `assertAlmostEqual`) gives you the most informative error output when a test fails.
+
 ## Equality and Comparison Assertions
 
 Assert equality and inequality.

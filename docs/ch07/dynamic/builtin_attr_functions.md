@@ -1,5 +1,8 @@
 # getattr setattr delattr
 
+!!! tip "Mental Model"
+    `getattr`, `setattr`, and `delattr` are Python's way of turning attribute names into variables. Instead of hardcoding `obj.name`, you pass the attribute name as a string: `getattr(obj, "name")`. This lets you write generic code -- serializers, ORMs, and frameworks -- that works with any attribute on any object without knowing the class at coding time.
+
 ## Built-In Functions
 
 ### 1. Overview

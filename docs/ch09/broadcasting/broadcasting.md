@@ -2,6 +2,9 @@
 
 Broadcasting allows NumPy to perform elementwise operations on arrays of different shapes without explicit loops.
 
+!!! tip "Mental Model"
+    Broadcasting is NumPy's rule for stretching smaller arrays to match larger ones during element-wise operations -- without actually copying data. Imagine tiling a single row across all rows of a matrix: NumPy does this virtually, comparing shapes right-to-left and requiring each axis to be equal or one.
+
 
 ## Motivation
 
@@ -54,6 +57,19 @@ s_1\neq s_2,\ s_1\neq 1, s_2\neq 1&\Rightarrow&\text{NOT OK}\\
 
 The resultant shape is the element-wise maximum of input shapes across each dimension.
 
+
+## The Complete Algorithm
+
+!!! tip "Broadcasting in Five Steps"
+    ```text
+    1. PAD — prepend 1s to the shorter shape until both have the same ndim
+    2. ALIGN — compare shapes right-to-left, axis by axis
+    3. CHECK — each pair must be equal or one must be 1
+    4. EXPAND — size-1 axes are virtually stretched to match
+    5. RESULT — the output shape is the element-wise maximum
+    ```
+
+    **Under the hood:** NumPy does not copy data to expand size-1 axes. Instead, it sets the **stride to 0** along that axis — the same memory is read repeatedly. This is why broadcasting is both fast and memory-efficient: the "stretched" array exists only as a view with modified strides.
 
 ## Visual Alignment
 
@@ -734,3 +750,55 @@ Write a function that takes two 1D arrays `a` of shape `(m,)` and `b` of shape `
         #  [False False]
         #  [ True False]]
         print(result.shape)  # (3, 2)
+
+---
+
+**Exercise 4.**
+Use `np.broadcast_to` to inspect what a scalar `5` looks like when broadcast to shape `(3, 4)`. Print the result, its shape, and its strides. Explain why the stride is `(0, 0)` and what this means for memory usage.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        scalar = np.array(5)
+        expanded = np.broadcast_to(scalar, (3, 4))
+        print(expanded)
+        print(f"Shape:   {expanded.shape}")    # (3, 4)
+        print(f"Strides: {expanded.strides}")  # (0, 0)
+        print(f"Memory:  {scalar.nbytes} bytes (actual)")
+
+        # Strides (0, 0) means: moving along any axis reads the
+        # same memory location. The value 5 is stored once (8 bytes)
+        # but appears as a 3×4 array. No data is copied — NumPy
+        # reuses the single value by setting both strides to zero.
+        # This is how broadcasting achieves zero-copy expansion.
+
+---
+
+**Exercise 5.**
+Walk through the broadcasting algorithm step by step for shapes `(8, 1, 4, 1)` and `(7, 1, 5)`. Show the padding, alignment, compatibility check for each axis, and the final result shape. Verify with `np.broadcast_shapes`.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        # Step 1: PAD — shorter shape gets 1s prepended
+        # A: (8, 1, 4, 1)   — already 4D
+        # B:    (7, 1, 5)   → (1, 7, 1, 5)
+
+        # Step 2: ALIGN right-to-left
+        # axis:  0  1  2  3
+        # A:     8  1  4  1
+        # B:     1  7  1  5
+
+        # Step 3: CHECK each axis
+        # axis 0: 8 vs 1 → OK (1 expands)
+        # axis 1: 1 vs 7 → OK (1 expands)
+        # axis 2: 4 vs 1 → OK (1 expands)
+        # axis 3: 1 vs 5 → OK (1 expands)
+
+        # Step 4: EXPAND 1s → max per axis
+        # Step 5: RESULT = (8, 7, 4, 5)
+
+        result = np.broadcast_shapes((8, 1, 4, 1), (7, 1, 5))
+        print(result)  # (8, 7, 4, 5)

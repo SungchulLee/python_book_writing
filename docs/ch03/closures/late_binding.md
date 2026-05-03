@@ -2,6 +2,9 @@
 
 When a nested function references variables from its enclosing scope, Python creates a closure. Understanding how closures capture variables—and the "late binding" behavior—is essential for avoiding subtle bugs.
 
+!!! tip "Mental Model"
+    Closures capture variables by reference, not by value -- they hold a pointer to the name, not a snapshot of its current value. This means the closure always sees the variable's latest value at the time it is called. When closures are created inside a loop, they all share the same loop variable and all see its final value -- the classic late-binding trap.
+
 ---
 
 ## What is a Closure?

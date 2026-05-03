@@ -1,5 +1,8 @@
 # Short-Time Fourier Transform (STFT) and Spectrograms
 
+!!! tip "Mental Model"
+    The STFT slides a short window across a signal and computes an FFT for each position, producing a 2D map of frequency vs. time. The result -- a spectrogram -- tells you not just which frequencies are present, but when they appear. The window length controls the trade-off: shorter windows give better time resolution, longer windows give better frequency resolution.
+
 ## Understanding the Limitation of Standard FFT
 
 When you apply a standard FFT to a long signal, you get frequency information but **lose all time information**. You cannot tell *when* specific frequencies occur in the signal. This limitation becomes critical when analyzing signals whose frequency content changes over time—like music, speech, or radar signals.
@@ -93,6 +96,16 @@ plt.show()
     - **Shorter windows** → better time resolution, worse frequency resolution
     - **Zero-padding** (`nfft > nperseg`) → smoother frequency display, doesn't improve actual resolution
     - **More overlap** → smoother transitions between frames
+
+!!! note "The Time-Frequency Tradeoff"
+    ```text
+    Short window  →  precise time localization,  blurry frequency
+    Long window   →  blurry time localization,   precise frequency
+    ```
+    This is not a limitation of the implementation — it is a fundamental property
+    of Fourier analysis (related to the Heisenberg uncertainty principle). You
+    cannot have perfect resolution in both domains simultaneously. The window
+    length is your dial between the two extremes.
 
 ## Manual STFT Implementation
 
@@ -190,8 +203,15 @@ print(f"SciPy STFT shape: {Sxx_scipy.shape}")
 print(f"Results match: {np.allclose(Sxx_manual, Sxx_scipy)}")
 ```
 
-!!! note "Window Function Impact"
-    The window function is critical for reducing **spectral leakage** at segment boundaries. Without windowing, the abrupt transitions at segment edges introduce artificial high-frequency components. We'll explore windowing in detail in the next section.
+!!! note "Window Function Impact — Connection to Windowing"
+    The window function is critical for reducing **spectral leakage** at segment
+    boundaries. Without windowing, the abrupt transitions at segment edges introduce
+    artificial high-frequency components. Every STFT implicitly applies a window —
+    choosing `window='hann'` vs `'blackman'` trades off frequency resolution against
+    sidelobe suppression, exactly as described in the
+    [Windowing](windowing.md) section. The window choice in STFT is not
+    independent of the window length: together they determine both the time
+    resolution and the spectral leakage characteristics of your spectrogram.
 
 ## Logarithmic Compression: Converting to Decibels
 

@@ -2,6 +2,9 @@
 
 The `pd.read_csv()` function loads comma-separated values files into DataFrames with extensive customization options.
 
+!!! tip "Mental Model"
+    `read_csv` is a parser with dozens of knobs. At its core it splits each line by a delimiter, uses the first row as column names, and infers dtypes. Most real-world CSV quirks -- wrong delimiters, missing headers, date columns stored as strings -- are handled by a single keyword argument rather than post-load cleanup.
+
 ## Basic Usage
 
 Load a CSV file with default settings.

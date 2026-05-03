@@ -2,6 +2,9 @@
 
 Extend JSONEncoder to handle custom Python objects that aren't JSON serializable by default.
 
+!!! tip "Mental Model"
+    JSON only natively understands strings, numbers, booleans, null, arrays, and objects. A custom encoder teaches `json.dumps` how to convert Python types it doesn't recognize — like `datetime`, `Decimal`, or your own classes — into one of those six JSON-safe forms. Override `default()` in a `JSONEncoder` subclass and the serializer calls it for any object it can't handle on its own.
+
 ## Creating Custom Encoders
 
 Subclass JSONEncoder to handle custom types.

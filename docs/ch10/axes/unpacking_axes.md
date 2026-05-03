@@ -2,6 +2,18 @@
 
 Python's tuple unpacking provides a clean way to name individual axes when creating subplots.
 
+!!! tip "Mental Model"
+    `fig, ax = plt.subplots()` is just Python tuple unpacking -- the function returns a pair and you name each element. For grids, `fig, (ax1, ax2) = plt.subplots(1, 2)` unpacks the axes array in the same way. Giving each Axes a descriptive name makes your code read like a sentence instead of an index lookup.
+
+    The deeper principle: **naming axes = naming meaning.** Compare
+    `axes[0]` vs `ax_price` — the first is a position, the second is a concept.
+    Descriptive names make code self-documenting and prevent mix-ups when a
+    layout has many panels:
+
+    ```python
+    fig, (ax_price, ax_volume, ax_returns) = plt.subplots(3, 1)
+    ```
+
 ---
 
 ## Unpacking a Single Axes

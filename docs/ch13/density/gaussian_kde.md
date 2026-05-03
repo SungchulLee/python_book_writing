@@ -2,6 +2,9 @@
 
 Estimating the probability density function of a random variable from observed data is a fundamental task in statistics. Parametric approaches assume a specific distributional form (e.g., Gaussian), but when the true distribution is unknown or complex, a nonparametric approach is needed. SciPy's `gaussian_kde` class provides kernel density estimation (KDE) using a Gaussian kernel, offering a smooth, continuous estimate of the underlying density without distributional assumptions.
 
+!!! tip "Mental Model"
+    Place a small Gaussian bell curve on top of each data point, then add them all up and normalize. The result is a smooth density estimate that inherits no assumptions about the shape of the underlying distribution. The width of each bell (the bandwidth) is the only tuning knob.
+
 ## Kernel Density Estimation
 
 Given observations $x_1, x_2, \ldots, x_n$ drawn from an unknown density $f$, the **kernel density estimator** places a kernel function centered at each data point and averages:

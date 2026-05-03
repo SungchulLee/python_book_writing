@@ -2,6 +2,9 @@
 
 Resource management is a recurring challenge in programming: files must be closed, locks must be released, and database connections must be returned to the pool — even when an exception interrupts normal flow. Python's `with` statement and the context manager protocol guarantee that cleanup code runs no matter what. Any object that implements `__enter__` and `__exit__` can be used with `with`.
 
+!!! tip "Mental Model"
+    A context manager is a pair of bookends: `__enter__` sets things up and `__exit__` tears them down, guaranteed. No matter what happens between them -- even if an exception fires -- the cleanup code runs. Whenever you find yourself writing try/finally, a context manager is the Pythonic replacement.
+
 ## With Statement Support
 
 ### 1. The __enter__ Method
@@ -75,6 +78,10 @@ As resource management grows more complex (nested resources, exception handling,
 - Prefer `with` over `try/finally` --- it is shorter, safer, and composable.
 - Implement `__enter__` and `__exit__` on any class to make its instances usable with the `with` statement.
 - Most context managers should **not** suppress exceptions — return `False` from `__exit__` unless you have a specific reason to suppress.
+
+!!! warning "When NOT to Use a Context Manager"
+
+    Don't use a context manager when there is no **setup/teardown symmetry**. If your object only needs setup (initialization) or only needs cleanup (finalization), a context manager adds complexity without benefit. Similarly, avoid context managers when the resource's lifecycle is not **scoped** — if the resource must outlive the `with` block, a context manager forces an awkward pattern. Use explicit `open()`/`close()` methods instead, or manage lifecycle at a higher level.
 
 ---
 

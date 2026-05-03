@@ -2,6 +2,12 @@
 
 The `auto()` function automatically assigns values to enum members, eliminating tedious manual assignment.
 
+!!! tip "Mental Model"
+    `auto()` tells Python "I care about the names, not the values -- just number them for me." This is the right choice when member identity matters more than the underlying value. If you persist enum values externally (databases, APIs), prefer explicit values, because reordering members silently changes what `auto()` assigns.
+
+!!! warning "Order Sensitivity"
+    When using `auto()` with default integer values, the assigned values depend on **member declaration order**. Reordering members changes their values. If your code persists enum values (databases, APIs, config files), prefer explicit values to avoid silent breakage when members are reordered.
+
 ---
 
 ## Basic auto() Usage
@@ -45,16 +51,22 @@ print(user_perms)  # Permission.READ|WRITE
 
 ## Customizing auto() Behavior
 
+Override `_generate_next_value_` to control what `auto()` produces. This static method is called once per member during class creation and receives four arguments:
+
+| Parameter | Meaning |
+|---|---|
+| `name` | The member's Python name (e.g., `"LOW"`) |
+| `start` | The start value (default `1`, rarely changed) |
+| `count` | How many members have been created so far |
+| `last_values` | List of all previously assigned values |
+
+The return value becomes the member's `.value`.
+
 ```python
 from enum import Enum, auto
 
 class Priority(Enum):
     def _generate_next_value_(name, start, count, last_values):
-        # Custom logic for auto values
-        # name: member name
-        # start: starting value
-        # count: number of members so far
-        # last_values: list of previous values
         return name.lower()
     
     LOW = auto()
@@ -156,6 +168,9 @@ print(ContentType.JSON_DATA.value)    # 'json-data'
 - Natural progression (1, 2, 3, ...)
 - Combined with custom `_generate_next_value_` for domain-specific values
 
+!!! warning "When to Avoid auto()"
+    Use `auto()` only when values are **not externally visible**. If enum values are stored in databases, sent over APIs, or written to configuration files, use explicit values instead. With `auto()`, reordering members or inserting new ones silently changes the assigned values, which can corrupt persisted data.
+
 ---
 
 ## Exercises
@@ -241,3 +256,64 @@ Create a `APIEndpoint` enum with a custom `_generate_next_value_` that converts 
         # USER_PROFILE: /user-profile
         # SETTINGS_PAGE: /settings-page
         # API_DOCS: /api-docs
+
+---
+
+**Exercise 4.**
+A developer stores `auto()`-generated integer values in a database. Later, they reorder the enum members and add a new one in the middle. Explain what goes wrong and how to prevent it. Write a short example showing the before and after to illustrate the problem.
+
+??? success "Solution to Exercise 4"
+
+    With `auto()`, values are assigned by declaration order starting from 1. Reordering members or inserting new ones changes the values assigned to existing members:
+
+        # BEFORE
+        class Status(Enum):
+            PENDING = auto()    # 1
+            ACTIVE = auto()     # 2
+            ARCHIVED = auto()   # 3
+
+        # AFTER — added REVIEW in the middle
+        class Status(Enum):
+            PENDING = auto()    # 1
+            REVIEW = auto()     # 2  ← new
+            ACTIVE = auto()     # 3  ← was 2!
+            ARCHIVED = auto()   # 4  ← was 3!
+
+    Any database rows that stored `2` for `ACTIVE` now map to `REVIEW` instead — a silent data corruption bug.
+
+    **Prevention:** When values are persisted externally, always use explicit values:
+
+        class Status(Enum):
+            PENDING = 1
+            REVIEW = 4     # New members get new explicit values
+            ACTIVE = 2
+            ARCHIVED = 3
+
+    Use `auto()` only when the specific value does not matter (e.g., internal-only enums where only identity is compared).
+
+---
+
+**Exercise 5.**
+Write a `_generate_next_value_` override that assigns values as `"{name}:{count}"` — for example, the first member `ALPHA` gets value `"ALPHA:0"`, the second member `BETA` gets `"BETA:1"`. Create an enum `Tag` with members `ALPHA`, `BETA`, `GAMMA` and verify the values. Then explain which of the four parameters you used and which you ignored.
+
+??? success "Solution to Exercise 5"
+
+        from enum import Enum, auto
+
+        class Tag(Enum):
+            def _generate_next_value_(name, start, count, last_values):
+                return f"{name}:{count}"
+
+            ALPHA = auto()
+            BETA = auto()
+            GAMMA = auto()
+
+        for t in Tag:
+            print(f"{t.name} = {t.value!r}")
+        # ALPHA = 'ALPHA:0'
+        # BETA = 'BETA:1'
+        # GAMMA = 'GAMMA:2'
+
+    **Parameters used:** `name` (the member's Python name) and `count` (how many members have been defined before this one, starting from 0).
+
+    **Parameters ignored:** `start` (the default starting integer, only relevant for numeric sequences) and `last_values` (the list of previously assigned values — useful when each value depends on the previous one, e.g., doubling).

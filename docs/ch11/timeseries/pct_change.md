@@ -2,6 +2,9 @@
 
 The `pct_change()` method calculates percentage change between consecutive elements, essential for financial analysis.
 
+!!! tip "Mental Model"
+    `pct_change()` computes `(current - previous) / previous` for each row. The first row is always NaN because there is no previous value. It is the standard way to compute returns from price series, growth rates from revenue series, or any relative change over consecutive periods.
+
 ## Basic Usage
 
 Calculate period-over-period percentage change.

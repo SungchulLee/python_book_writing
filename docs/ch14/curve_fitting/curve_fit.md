@@ -2,6 +2,9 @@
 
 Curve fitting is one of the most practical applications of optimization: given noisy experimental data, find the best parameters of a mathematical model. The `scipy.optimize.curve_fit()` function makes this remarkably straightforward.
 
+!!! tip "Mental Model"
+    Imagine you have a flexible wire that you can bend by turning a few knobs (parameters). Curve fitting adjusts those knobs until the wire passes as close as possible to every data point. The covariance matrix tells you how wobbly each knob is -- a tight knob means the data pins down that parameter precisely, while a loose knob means different values fit almost equally well.
+
 ---
 
 ## Understanding Curve Fitting

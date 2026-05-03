@@ -2,6 +2,9 @@
 
 The t-distribution (Student's t-distribution) arises when estimating the mean of a normally distributed population using a small sample with unknown variance. It has heavier tails than the standard normal distribution, which accounts for the additional uncertainty introduced by estimating the variance from the data. The t-distribution is the basis for t-tests and confidence intervals in classical statistics.
 
+!!! tip "Mental Model"
+    The t-distribution is a "cautious normal." When you estimate variance from a small sample, there is extra uncertainty, so the distribution has heavier tails -- extreme values are more probable than a normal would predict. As the sample size (degrees of freedom) grows, this extra uncertainty vanishes and the t-distribution converges to the standard normal.
+
 ---
 
 ## Mathematical Definition

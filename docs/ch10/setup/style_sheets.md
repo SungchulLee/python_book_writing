@@ -1,5 +1,16 @@
 # Style Sheets
 
+!!! tip "Mental Model"
+    Style sheets are like CSS for Matplotlib. A single `plt.style.use('ggplot')` call changes dozens of defaults -- colors, fonts, backgrounds, line widths -- so your plots look polished without setting each property by hand. Think of them as preset themes you can swap in one line.
+
+!!! note "Design Principles"
+    Style matters, but **clarity beats decoration**. A few rules:
+
+    - **Consistency** matters more than which style you pick — use one style throughout a project
+    - **Avoid overly dark or light extremes** unless the context demands it (e.g., dark mode for presentations)
+    - **Data ink ratio** — maximize the ink spent on data, minimize decorative elements
+    - When in doubt, use `seaborn-v0_8-whitegrid` for clean, professional output
+
 ## What are Style Sheets?
 
 Style sheets are predefined sets of rcParams that control the appearance of Matplotlib figures. They provide a quick way to change the overall look of your plots.
@@ -250,71 +261,68 @@ plt.style.use('dark_background')
 
 ## Exercises
 
-**Exercise 1.** Write code that lists all available Matplotlib style sheets using `plt.style.available`.
+**Exercise 1.** Write code that lists all available Matplotlib style sheets using `plt.style.available` and prints how many are available.
 
 ??? success "Solution to Exercise 1"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
+        import matplotlib.pyplot as plt
 
-    np.random.seed(42)
-    # Solution code depends on the specific exercise
-    x = np.linspace(0, 2 * np.pi, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x))
-    ax.set_title('Example Solution')
-    plt.show()
-    ```
-
-    See the content of this page for the relevant API details to construct the full solution.
+        styles = plt.style.available
+        print(f"Number of styles: {len(styles)}")
+        for s in sorted(styles):
+            print(f"  {s}")
 
 ---
 
 **Exercise 2.** Explain the difference between `plt.style.use()` and `plt.style.context()`. When would you use each?
 
 ??? success "Solution to Exercise 2"
-    See the explanation in the main content of this page for the key concepts. The essential idea is to understand the API parameters and their effects on the resulting visualization.
+    `plt.style.use(name)` applies a style **globally** — all subsequent plots use it until you call `plt.style.use('default')` or `plt.rcdefaults()`. Use it at the top of a script or notebook when you want a consistent look throughout.
+
+    `plt.style.context(name)` applies a style **temporarily** inside a `with` block. When the block exits, the previous style is restored. Use it when you need one-off styled plots without affecting the rest of your code:
+
+        with plt.style.context('dark_background'):
+            plt.plot([1, 2, 3])
+            plt.show()
+        # style reverts here
 
 ---
 
-**Exercise 3.** Write code that creates the same plot using three different style sheets in three subplots, using `plt.style.context()` for each.
+**Exercise 3.** Write code that creates the same sin(x) plot using three different style sheets (`'default'`, `'ggplot'`, `'dark_background'`) in three subplots, using `plt.style.context()` for each.
 
 ??? success "Solution to Exercise 3"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-    np.random.seed(42)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        x = np.linspace(0, 2 * np.pi, 100)
+        styles = ['default', 'ggplot', 'dark_background']
 
-    x = np.linspace(0, 2 * np.pi, 100)
-    axes[0].plot(x, np.sin(x))
-    axes[0].set_title('Left Subplot')
-
-    axes[1].plot(x, np.cos(x))
-    axes[1].set_title('Right Subplot')
-
-    plt.tight_layout()
-    plt.show()
-    ```
-
-    Adapt this pattern to the specific requirements of the exercise.
+        fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+        for ax, style in zip(axes, styles):
+            with plt.style.context(style):
+                ax.plot(x, np.sin(x))
+                ax.set_title(f"Style: '{style}'")
+        plt.tight_layout()
+        plt.show()
 
 ---
 
-**Exercise 4.** Create a custom style by modifying `plt.rcParams` to set the default font size to 14, line width to 2, and grid alpha to 0.3.
+**Exercise 4.** Create a custom style by modifying `plt.rcParams` to set the default font size to 14, line width to 2, and grid alpha to 0.3. Plot a simple line to verify the settings, then reset to defaults.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        # Apply custom settings
+        plt.rcParams['font.size'] = 14
+        plt.rcParams['lines.linewidth'] = 2
+        plt.rcParams['grid.alpha'] = 0.3
 
-    Refer to the code examples in the main content for the specific API calls needed.
+        x = np.linspace(0, 10, 100)
+        fig, ax = plt.subplots()
+        ax.plot(x, np.sin(x))
+        ax.set_title('Custom Style')
+        ax.grid(True)
+        plt.show()
+
+        # Reset to defaults
+        plt.rcdefaults()

@@ -2,6 +2,9 @@
 
 The `datetime` module provides classes for manipulating dates and times, including date, time, datetime, timedelta, and timezone support.
 
+!!! tip "Mental Model"
+    The `datetime` module gives you a small family of types: points in time (`date`, `time`, `datetime`) and durations between them (`timedelta`). You create a point, do arithmetic with durations, and format results as strings. Nearly all date/time work in Python starts here before reaching for third-party libraries.
+
 ## Core Classes
 
 The datetime module provides several core classes for date and time manipulation.

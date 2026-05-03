@@ -16,6 +16,9 @@ flowchart TD
     B -->|no| D[__name__ = module name]
 ````
 
+!!! tip "Mental Model"
+    Every Python file wears a name tag. When you run it directly, the tag reads `"__main__"`; when it is imported, the tag reads the module's actual name. The `if __name__ == "__main__"` guard uses this tag to separate code that should only run when the file is executed as a script from code that should be available when imported.
+
 ---
 
 ## 1. The **name** Variable

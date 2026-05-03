@@ -2,6 +2,9 @@
 
 The `dropna()` method removes rows or columns containing missing values. It is useful when missing data cannot be reliably imputed.
 
+!!! tip "Mental Model"
+    `dropna()` is the "delete the problem" strategy for missing data. It removes entire rows (or columns) that contain NaN. It is safe when missing values are few and random, but dangerous when data is missing systematically -- dropping those rows could introduce bias. Always check how much data you are losing before committing.
+
 ## Basic Usage
 
 Drop rows with any missing values.

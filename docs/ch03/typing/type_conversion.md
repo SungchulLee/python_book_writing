@@ -1,5 +1,8 @@
 # Type Conversion
 
+!!! tip "Mental Model"
+    Type conversion creates a new object of the target type from an existing value. `int("42")` builds a new `int` from a string; `str(42)` builds a new string from an int. The original object is never modified. Conversion can fail at runtime if the value is not representable in the target type -- `int("hello")` raises `ValueError`.
+
 ## Built-in Converters
 
 ### 1. To Integer

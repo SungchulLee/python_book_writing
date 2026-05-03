@@ -2,6 +2,12 @@
 
 A histogram groups numerical data into bins and displays the count (or density) of observations in each bin, revealing the shape of the underlying distribution. Whether the data is symmetric, skewed, or multimodal becomes immediately visible, making histograms one of the most common first steps in exploratory data analysis. The `ax.hist()` method in Matplotlib creates histogram visualizations from data arrays.
 
+!!! tip "Mental Model"
+    A histogram is a bar chart where the x-axis is a continuous number line divided into bins and the y-axis counts how many data points fall into each bin. Unlike a bar chart for categories, the bins must be contiguous -- gaps would distort the distribution shape. More bins reveal more detail; fewer bins show broader trends.
+
+    The core pipeline: **data → bins → counts → shape.** Everything else —
+    density normalization, styling, PDF overlays — builds on this foundation.
+
 ## Basic Usage
 
 The following example generates 10,000 samples from a standard normal distribution and plots the histogram with 100 bins.

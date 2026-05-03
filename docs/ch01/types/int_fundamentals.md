@@ -29,6 +29,9 @@ flowchart TD
     A --> D[negative]
 ```
 
+!!! tip "Mental Model"
+    Integers in Python are exact---they have no rounding errors and no size limit. Unlike most languages where integers overflow at some fixed bit width, Python integers grow as large as your memory allows. This makes `int` the natural choice whenever you need precise, whole-number arithmetic.
+
 ---
 
 ## 1. Integers as Mathematical Objects

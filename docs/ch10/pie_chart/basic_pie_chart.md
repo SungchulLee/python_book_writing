@@ -2,6 +2,19 @@
 
 Pie charts display proportional data as slices of a circle, where each slice represents a category's contribution to the whole.
 
+!!! tip "Mental Model"
+    A pie chart maps values to angles: each slice's arc is proportional to its share of the total. Matplotlib auto-normalizes the values so they sum to 360 degrees. Pie charts work best with a small number of categories (3–6) where you want to emphasize part-to-whole relationships.
+
+!!! warning "When NOT to Use a Pie Chart"
+    Humans are poor at comparing angles and arc lengths — research consistently shows that bar charts are faster and more accurate for most comparison tasks. Avoid pie charts when:
+
+    - **Many categories (>6):** small slices become indistinguishable. Use a horizontal bar chart.
+    - **Precise comparison needed:** "Is 23% bigger than 21%?" is hard to see in a pie but obvious in a bar chart.
+    - **Multiple pies side-by-side:** comparing slices across circles is nearly impossible. Use grouped bars.
+    - **Values do not sum to a whole:** pie charts assume parts add to 100%.
+
+    **Rule of thumb:** if your first instinct is a pie chart, ask "would a bar chart be clearer?" The answer is usually yes.
+
 ## Simple Pie Chart
 
 Create a basic pie chart with `ax.pie()`.
@@ -435,16 +448,46 @@ plt.show()
 **Exercise 4.** Write code that creates a donut chart by setting `wedgeprops=dict(width=0.4)` and adds a label in the center.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        import matplotlib.pyplot as plt
 
-    Refer to the code examples in the main content for the specific API calls needed.
+        sizes = [35, 25, 20, 20]
+        labels = ['A', 'B', 'C', 'D']
+        colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99']
+
+        fig, ax = plt.subplots()
+        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.0f%%',
+               wedgeprops=dict(width=0.4))
+        ax.text(0, 0, 'Total\n100%', ha='center', va='center', fontsize=14)
+        ax.set_title('Donut Chart')
+        plt.show()
+
+---
+
+**Exercise 5.** A colleague presents data with 12 categories as a pie chart. Explain why this is a poor choice, then create both the pie chart and a better horizontal bar chart side by side.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        categories = [f'Cat {i}' for i in range(1, 13)]
+        values = np.random.randint(5, 20, 12)
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 5))
+
+        ax1.pie(values, labels=categories, autopct='%1.0f%%', textprops={'fontsize': 7})
+        ax1.set_title('Pie Chart (hard to read)')
+
+        ax2.barh(np.arange(12), values, color='steelblue')
+        ax2.set_yticks(np.arange(12))
+        ax2.set_yticklabels(categories)
+        ax2.set_xlabel('Value')
+        ax2.set_title('Bar Chart (easy to compare)')
+
+        plt.tight_layout()
+        plt.show()
+
+        # The pie fails because 12 slices are visually indistinguishable,
+        # labels overlap, and angle comparison is imprecise. The bar chart
+        # makes ranking immediate via length comparison.

@@ -2,6 +2,9 @@
 
 Big-O notation describes how algorithm performance scales with input size. Understanding Big-O is essential for choosing algorithms and data structures that perform well at scale.
 
+!!! tip "Mental Model"
+    Big-O answers one question: "if I double the input size, how much longer does this take?" O(1) stays the same, O(n) doubles, O(n^2) quadruples, and O(log n) barely increases. Focus on the dominant term and ignore constants -- Big-O captures the growth rate, not the exact runtime.
+
 ---
 
 ## Common Complexities

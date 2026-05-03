@@ -1,5 +1,8 @@
 # Weak Reference Patterns
 
+!!! tip "Mental Model"
+    Weak references let you observe an object without voting to keep it alive. In patterns like observer or cache, this is critical: you want to know about an object while it exists, but you don't want your reference to be the reason it can never be garbage collected. `WeakSet` and `WeakValueDictionary` are the standard tools for this.
+
 ## Observer Pattern
 
 The observer pattern often creates memory leaks because observables hold strong references to observers. Use `WeakSet` to allow observers to be garbage collected when no longer needed elsewhere.

@@ -6,6 +6,9 @@
 
 This chapter covers recursive functions, how they work, the call stack during recursion, common recursive patterns, optimization techniques, and how to prevent and handle stack overflow errors.
 
+!!! tip "Mental Model"
+    Recursion is a function solving a problem by asking itself to solve a smaller version of the same problem. Every recursive function needs two things: a base case that stops the descent, and a recursive case that shrinks the problem. Each call pushes a frame onto the call stack, and the answers bubble back up as frames pop off.
+
 ## What is Recursion?
 
 A recursive function has two key components:

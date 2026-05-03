@@ -2,6 +2,9 @@
 
 Hierarchical indexing (also called MultiIndex) enables you to store and manipulate data with multiple levels of indexing. This is essential for working with higher-dimensional data in a 2D DataFrame structure.
 
+!!! tip "Mental Model"
+    A MultiIndex is a tree of labels on the row (or column) axis. Instead of a flat list like `[0, 1, 2]`, you get nested levels like `(country, city)`. This lets a 2D DataFrame represent 3D or higher-dimensional data by encoding extra dimensions into the index, without needing separate tables.
+
 ## Conceptual Overview
 
 ```

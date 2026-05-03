@@ -2,6 +2,9 @@
 
 Python의 메모리 관리는 두 가지 메커니즘이 함께 동작합니다.
 
+!!! tip "Mental Model"
+    Python uses a two-layer cleanup system. Reference counting is the fast, automatic first pass -- the moment nothing points to an object, it is freed instantly. The garbage collector is the slower second pass that catches the edge case reference counting misses: circular references where objects keep each other alive with no outside connections.
+
 ## Two Mechanisms
 
 ### 1. Reference Counting

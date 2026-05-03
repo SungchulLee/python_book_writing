@@ -1,5 +1,8 @@
 # Integer Caching
 
+!!! tip "Mental Model"
+    CPython pre-allocates integer objects for -5 through 256 at startup, so every use of `42` points to the same object. Outside this range, each expression creates a fresh object. This is a performance shortcut, not a language rule -- always compare integers with `==`, never `is`.
+
 ## CPython Behavior
 
 ### 1. Small Integers

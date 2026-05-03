@@ -2,6 +2,9 @@
 
 By default, `DataFrame.join` matches rows using the index of both DataFrames. The `on` parameter overrides this by specifying a column from the calling DataFrame to use as the join key instead. When both DataFrames share non-key column names, the `lsuffix` and `rsuffix` parameters add distinguishing suffixes to avoid name collisions.
 
+!!! tip "Mental Model"
+    `on` shifts the left side's join key from the index to a named column, while the right side still matches on its index. `lsuffix` and `rsuffix` are disambiguation labels: when both DataFrames share a column name, pandas appends these suffixes so you can tell `value_left` from `value_right` in the result.
+
 ```python
 import pandas as pd
 ```

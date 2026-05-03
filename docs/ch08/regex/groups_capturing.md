@@ -1,5 +1,8 @@
 # Groups and Capturing
 
+!!! tip "Mental Model"
+    Parentheses in regex do double duty: they *group* tokens so quantifiers and alternation apply to the whole unit, and they *capture* the matched text so you can extract it later. Named groups (`(?P<name>...)`) add a label for clarity. If you only need grouping without capturing, use `(?:...)` to avoid cluttering your match results.
+
 ## Capturing Groups
 
 Parentheses `(...)` serve two purposes in regex: **grouping** (treating multiple tokens as a unit) and **capturing** (extracting the matched substring).

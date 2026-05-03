@@ -2,6 +2,9 @@
 
 The `cat` accessor in pandas provides methods and properties for working with categorical data. It allows you to inspect, modify, and manipulate the categories of a Categorical Series.
 
+!!! tip "Mental Model"
+    Think of `.cat` as a control panel attached to any categorical Series. Just as a TV remote only works with a TV, `.cat` only activates on categorical dtype -- but once you have it, you can rename, reorder, add, or remove the category labels that define the column's vocabulary.
+
 ## Overview
 
 ```python

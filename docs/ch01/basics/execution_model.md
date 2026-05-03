@@ -13,6 +13,9 @@ Python code can be run in several ways:
 | Jupyter notebooks                         | interactive code + documentation |
 | Integrated development environments (IDE) | full programming environment     |
 
+!!! tip "Mental Model"
+    The Python interpreter is a machine that reads your code one statement at a time, executes it, and moves on. Whether you type into a REPL or run a script file, the underlying process is the same: read, evaluate, continue. Understanding this loop is the key to predicting what your program will do.
+
 ---
 
 ## 1. Interactive Interpreter

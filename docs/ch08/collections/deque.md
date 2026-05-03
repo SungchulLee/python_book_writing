@@ -2,6 +2,9 @@
 
 A `deque` (double-ended queue, pronounced "deck") supports O(1) appends and pops from both ends. It's the go-to data structure for queues and sliding windows.
 
+!!! tip "Mental Model"
+    Picture a deck of cards you can deal from either end in constant time. A Python list is fast at the right end but slow at the left because it must shift every element. A `deque` uses a doubly-linked block structure, so pushing or popping from either side is always O(1) — making it the natural choice for queues, stacks, and fixed-size sliding windows.
+
 ---
 
 ## The Problem with Lists

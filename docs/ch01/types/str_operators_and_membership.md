@@ -17,6 +17,9 @@ flowchart TD
     A --> D[Membership]
 ````
 
+!!! tip "Mental Model"
+    `+` glues strings end to end, `*` repeats a string a given number of times, and `in` checks whether one string appears inside another. Because strings are immutable, `+` and `*` always create new string objects. For building strings from many pieces, prefer `"".join(parts)` or f-strings over repeated `+`, which creates unnecessary intermediate objects.
+
 ---
 
 ## 1. Concatenation

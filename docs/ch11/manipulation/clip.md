@@ -2,6 +2,9 @@
 
 The `clip()` method constrains values to a specified range.
 
+!!! tip "Mental Model"
+    `clip(lower, upper)` is a guardrail: any value below `lower` is raised to `lower`, any value above `upper` is capped at `upper`, and everything in between is untouched. It is the vectorized equivalent of `max(lower, min(x, upper))` applied to every element at once.
+
 ## Basic Usage
 
 ### Clipping with Lower and Upper Bounds

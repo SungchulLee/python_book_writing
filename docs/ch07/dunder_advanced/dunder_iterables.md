@@ -2,6 +2,12 @@
 
 Iteration dunder methods enable objects to work with `for` loops, comprehensions, and other iteration contexts. Like [containers](dunder_containers.md), [callables](dunder_callable.md), and [context managers](dunder_context.md), iteration is a **protocol** --- Python doesn't care about your class's type, only whether it implements `__iter__` (or falls back to `__getitem__`).
 
+!!! tip "Mental Model"
+    An iterable is anything that can produce an iterator (`__iter__`), and an iterator is anything that can produce the next value (`__next__`) and signal when it is done (`StopIteration`). Think of an iterable as a book and an iterator as a bookmark -- you can have multiple bookmarks in the same book, each tracking its own position independently.
+
+!!! note "Containers vs Iterables"
+    The container protocol and the iteration protocol serve different purposes. **Containers** provide **access** — retrieving items by index or key (`__getitem__`, `__len__`). **Iterables** provide **traversal** — producing items one at a time in sequence (`__iter__`, `__next__`). Many objects implement both (e.g., `list`), but the protocols are independent: a generator is iterable but not a container; a mapping is a container but may define its own iteration order.
+
 ## The Iteration Protocol
 
 ```
@@ -231,6 +237,9 @@ for v in [1, 2, 3, 4]:
 print(list(ll))           # [4, 3, 2, 1]
 print(list(reversed(ll))) # [1, 2, 3, 4]
 ```
+
+!!! note "How `for` Triggers Iteration"
+    When Python encounters `for item in obj`, it calls `iter(obj)`, which is equivalent to `type(obj).__iter__(obj)` — looking up `__iter__` on the **class**, not the instance. This is the same class-based lookup used by all protocols (`__call__`, `__contains__`, `__enter__`, etc.). The unified model: Python syntax triggers a method lookup on the type, calls it if found, tries a fallback if not, or raises an error.
 
 ## __getitem__ Fallback
 
@@ -498,6 +507,9 @@ Generators and iterators are **lazy** --- they produce values one at a time, usi
 - Use `collections.abc` base classes for compliance
 - `yield from` enables clean recursive iteration
 
+!!! warning "When NOT to Implement __iter__"
+    Don't implement `__iter__` when your object is not conceptually a collection or sequence. If iterating over an object has no obvious meaning — what would `for item in user:` produce? — the iteration protocol is the wrong fit. Use explicit methods like `user.get_permissions()` instead. Protocols should reveal intent, not obscure it.
+
 ---
 
 ## Exercises
@@ -582,3 +594,97 @@ Build a `FibonacciSequence` class where `__iter__` returns a generator that yiel
 
         for n in FibonacciSequence(20):
             print(n, end=" ")  # 1 1 2 3 5 8 13
+
+---
+
+**Exercise 4.**
+Demonstrate the single-use iterator trap. Create a class `Squares` that is an **iterator** (returns `self` from `__iter__`, defines `__next__`). Show that iterating twice over the same instance gives results the first time but an empty sequence the second time. Then fix it by making `Squares` an **iterable** (returns a new iterator from `__iter__` each time). Explain the design principle.
+
+??? success "Solution to Exercise 4"
+
+        # Bug: single-use iterator
+        class SquaresIterator:
+            def __init__(self, n):
+                self.n = n
+                self.i = 0
+
+            def __iter__(self):
+                return self  # Returns self — single-use!
+
+            def __next__(self):
+                if self.i >= self.n:
+                    raise StopIteration
+                val = self.i ** 2
+                self.i += 1
+                return val
+
+        sq = SquaresIterator(4)
+        print(list(sq))  # [0, 1, 4, 9]
+        print(list(sq))  # [] — exhausted!
+
+        # Fix: reusable iterable
+        class Squares:
+            def __init__(self, n):
+                self.n = n
+
+            def __iter__(self):
+                for i in range(self.n):
+                    yield i ** 2  # Fresh generator each time
+
+        sq = Squares(4)
+        print(list(sq))  # [0, 1, 4, 9]
+        print(list(sq))  # [0, 1, 4, 9] — works again!
+
+    **Design principle:** an **iterable** creates a new iterator on each call to `__iter__`, so it can be iterated multiple times. An **iterator** returns `self` from `__iter__` and tracks position internally, so it can only be consumed once. Use generators in `__iter__` to get reusable iteration with minimal code.
+
+---
+
+**Exercise 5.**
+Build a `Zipper` class that takes two iterables and yields pairs, like the built-in `zip()`. Implement `__iter__` using a generator. Handle the case where the iterables have different lengths (stop at the shorter one). Then add a `longest` parameter that, when `True`, pads the shorter iterable with `None` (like `itertools.zip_longest`).
+
+??? success "Solution to Exercise 5"
+
+        class Zipper:
+            def __init__(self, iter_a, iter_b, longest=False):
+                self._a = iter_a
+                self._b = iter_b
+                self._longest = longest
+
+            def __iter__(self):
+                it_a = iter(self._a)
+                it_b = iter(self._b)
+
+                while True:
+                    a_done = False
+                    b_done = False
+
+                    try:
+                        val_a = next(it_a)
+                    except StopIteration:
+                        a_done = True
+                        val_a = None
+
+                    try:
+                        val_b = next(it_b)
+                    except StopIteration:
+                        b_done = True
+                        val_b = None
+
+                    if a_done and b_done:
+                        return
+                    if (a_done or b_done) and not self._longest:
+                        return
+                    yield (val_a, val_b)
+
+        # Shortest (default)
+        print(list(Zipper([1, 2, 3], ["a", "b"])))
+        # [(1, 'a'), (2, 'b')]
+
+        # Longest
+        print(list(Zipper([1, 2, 3], ["a", "b"], longest=True)))
+        # [(1, 'a'), (2, 'b'), (3, None)]
+
+        # Reusable
+        z = Zipper("AB", [1, 2])
+        print(list(z))  # [('A', 1), ('B', 2)]
+        print(list(z))  # [('A', 1), ('B', 2)] — works again

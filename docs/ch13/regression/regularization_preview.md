@@ -10,6 +10,9 @@ This page introduces the two most common regularization methods -- Ridge and
 Lasso -- as a preview. Full treatment with cross-validation tuning and elastic
 net belongs to dedicated machine learning resources.
 
+!!! tip "Mental Model"
+    Regularization adds a "penalty for complexity" to the OLS objective: Ridge penalizes large coefficients with $\lambda \sum \beta_j^2$ (shrinks toward zero but never to zero), while Lasso uses $\lambda \sum |\beta_j|$ (can shrink coefficients exactly to zero, performing feature selection). The tuning parameter $\lambda$ controls how much you trade fit for simplicity.
+
 ---
 
 ## The Overfitting Problem

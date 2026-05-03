@@ -1,5 +1,15 @@
 # 2D FFT for Image Processing
 
+!!! tip "Mental Model"
+    A 2D FFT decomposes an image into spatial frequencies along rows and columns simultaneously. Low frequencies near the center capture smooth gradients; high frequencies at the edges capture sharp details and noise. Filtering in the frequency domain is just multiplying by a mask, making operations like blurring or edge detection fast and elegant.
+
+!!! note "Visual Cheat Sheet"
+    ```text
+    Center of shifted FFT   →  low frequencies  →  smooth gradients
+    Edges of shifted FFT    →  high frequencies →  sharp details / noise
+    Bright isolated spikes  →  periodic noise   →  remove with notch filter
+    ```
+
 ## Why 2D FFT for Images?
 
 A digital image is a 2D signal: a matrix of pixel intensities. Just as 1D FFT decomposes signals into frequency components, **2D FFT** decomposes images into frequency components in both spatial dimensions.
@@ -262,7 +272,7 @@ print(f"Improvement: {noise_original / noise_restored:.1f}x")
 
 ## FFT-Based Convolution
 
-For large kernels, **FFT-based convolution** is faster than spatial domain convolution:
+The **convolution theorem** is the bridge between spatial and frequency domains: convolution in the spatial domain is equivalent to pointwise multiplication in the frequency domain (and vice versa). This means a filter that would require expensive sliding-window operations in spatial space becomes a single element-wise multiply after an FFT:
 
 $$y = \text{IFFT}(\text{FFT}(x) \cdot \text{FFT}(h))$$
 
@@ -522,6 +532,13 @@ for ax in axes:
 plt.tight_layout()
 plt.show()
 ```
+
+!!! tip "Why 2D FFT Is Separable"
+    The 2D DFT can be computed as a sequence of 1D DFTs: first along rows, then
+    along columns (or vice versa). This **separability** is why `np.fft.fft2` is
+    efficient — it applies the 1D FFT algorithm twice rather than computing the full
+    2D sum directly. It also means that intuition from 1D FFT (frequency bins,
+    symmetry, leakage) transfers directly to each axis of the 2D case.
 
 ## Summary
 

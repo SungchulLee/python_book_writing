@@ -5,6 +5,9 @@ Imagine two ways to rearrange books on a shelf. You could physically move the bo
 
 This distinction runs through all of Python. Understanding when to mutate existing data and when to produce new data is fundamental to writing correct, maintainable programs.
 
+!!! tip "Mental Model"
+    In-place style changes existing data where it lives; functional style builds new data and leaves the original untouched. Choose in-place when performance matters and you own the data, and functional style when you need safety, clarity, or must preserve the original for other consumers.
+
 ## Two Philosophies
 
 **In-place modification** (mutation) changes the existing object. The object's identity stays the same, but its contents change.

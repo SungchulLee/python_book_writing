@@ -2,6 +2,9 @@
 
 The `collections` module provides specialized container types that extend Python's built-in `list`, `dict`, `tuple`, and `set`.
 
+!!! tip "Mental Model"
+    Think of `collections` as Python's toolbox of purpose-built containers. Just as a carpenter reaches for a chisel instead of a screwdriver when carving wood, you reach for `Counter`, `defaultdict`, or `deque` when the built-in types make a task awkward. Each type removes a specific category of boilerplate so your code reads closer to your intent.
+
 ---
 
 ## Why Use collections?

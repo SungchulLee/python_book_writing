@@ -2,6 +2,9 @@
 
 `aiohttp` is the standard library for async HTTP in Python, supporting both client and server functionality.
 
+!!! tip "Mental Model"
+    Think of `aiohttp` as a post office that can send and receive thousands of letters simultaneously on a single desk. Instead of waiting for each reply before sending the next letter, it fires off requests and processes responses as they arrive, making it ideal for web scraping, API clients, and microservices that handle many network calls at once.
+
 ## Installation
 
 ```bash

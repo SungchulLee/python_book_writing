@@ -2,6 +2,9 @@
 
 The `functools` module provides higher-order functions and operations on callable objects. It's essential for functional programming patterns in Python.
 
+!!! tip "Mental Model"
+    `functools` is Python's toolkit for working *on* functions rather than *with* them. It lets you freeze arguments (`partial`), cache results (`lru_cache`, `cache`), preserve metadata across decorators (`wraps`), fold sequences (`reduce`), and dispatch by type (`singledispatch`). Whenever you need to transform or augment a callable, check `functools` first.
+
 ```python
 import functools
 # or

@@ -2,6 +2,9 @@
 
 Python’s built-in functions, exceptions, and types live in the **`builtins` namespace**. Understanding this namespace clarifies what is always available without imports.
 
+!!! tip "Mental Model"
+    Think of `builtins` as Python’s always-open toolbox -- every name you use without an import (`len`, `print`, `int`, `ValueError`) lives there. When you accidentally shadow one of these names with your own variable, you are placing a sticky note over a tool in the toolbox; removing the note (`del`) reveals the original tool underneath.
+
 ---
 
 ## What is `builtins`?

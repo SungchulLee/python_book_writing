@@ -2,6 +2,14 @@
 
 Solve systems of linear equations $Ax = b$ using `np.linalg`.
 
+!!! tip "Mental Model"
+    `np.linalg.solve(A, b)` finds the vector $x$ such that $Ax = b$, using LU decomposition internally. Always prefer `solve` over computing `inv(A) @ b` -- it is both faster and more numerically accurate. For overdetermined systems (more equations than unknowns), use `np.linalg.lstsq` instead.
+
+    At the deepest level, almost every numerical linear algebra problem reduces to
+    some form of $Ax = b$: regression is $Ax \approx b$ (least squares), eigenvalue
+    problems become $(A - \lambda I)x = 0$, and matrix factorizations are tools for
+    solving $Ax = b$ efficiently under different structural assumptions.
+
 ## np.linalg.solve
 
 ### 1. Basic Usage

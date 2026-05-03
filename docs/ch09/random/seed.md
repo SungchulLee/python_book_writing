@@ -2,6 +2,9 @@
 
 Setting a random seed ensures reproducible results in simulations and scientific computing.
 
+!!! tip "Mental Model"
+    A seed is the starting state of a pseudorandom number generator -- same seed, same sequence, every time. Set it once at the start of a script for reproducible experiments. Prefer the modern `np.random.default_rng(seed)` over the legacy `np.random.seed()` because the new API provides independent generators that do not share global state.
+
 
 ## Why Seeds Matter
 

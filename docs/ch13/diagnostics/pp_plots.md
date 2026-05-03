@@ -2,6 +2,9 @@
 
 A probability-probability (PP) plot compares the empirical cumulative distribution function of a sample against a theoretical CDF by plotting their values at each data point. While QQ plots compare quantiles and are more sensitive to tail deviations, PP plots compare cumulative probabilities and are more sensitive to deviations near the center of the distribution. This page explains how PP plots are constructed, how to interpret common patterns, and how to build them with SciPy.
 
+!!! tip "Mental Model"
+    A PP plot compares "how much probability has accumulated" at each data point under the empirical and theoretical distributions. Points on the diagonal mean the CDFs agree; S-shaped departures indicate a location or scale mismatch. PP plots are most sensitive near the center of the distribution, complementing QQ plots which are most sensitive in the tails.
+
 ---
 
 ## Construction

@@ -2,6 +2,9 @@
 
 When multiple threads access shared data, synchronization is essential to prevent race conditions and ensure data integrity.
 
+!!! tip "Mental Model"
+    Synchronization primitives are traffic signals for threads. A `Lock` is a single-occupancy bathroom door -- only one thread enters at a time. An `RLock` lets the same thread re-enter. A `Semaphore` is a parking garage with limited spots. An `Event` is a starting gun that all waiting threads hear at once. Pick the lightest primitive that solves your coordination problem.
+
 ---
 
 ## The Problem: Race Conditions

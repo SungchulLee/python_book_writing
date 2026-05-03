@@ -2,6 +2,9 @@
 
 Container dunder methods enable your objects to behave like built-in collections. This is part of Python's protocol-based design --- Python doesn't check your type, only whether you implement the right methods. See also [Iteration Protocol](dunder_iterables.md), [Callable Objects](dunder_callable.md), and [Context Managers](dunder_context.md).
 
+!!! tip "Mental Model"
+    A container is any object that answers three questions: "how many items?" (`__len__`), "give me this item" (`__getitem__`), and "is this item here?" (`__contains__`). Implement these methods and your object works with `len()`, `[]`, and `in` -- Python never checks whether it is "really" a list or dict.
+
 There are two main container protocols:
 
 - **Sequence protocol** (list-like): integer indices, ordering, slicing. Implement `__getitem__` with `int`/`slice` keys, `__len__`.
@@ -230,6 +233,19 @@ print(100 in r)  # False
 print(0 in r)    # False
 ```
 
+### Membership Check Protocol Chain
+
+When you write `item in obj`, Python follows a cascade of fallbacks:
+
+!!! tip "Protocol Cascade for `in`"
+    ```text
+    item in obj
+        → obj.__contains__(item)           # First: explicit membership test
+        → else: iterate via obj.__iter__() # Second: scan via iteration
+        → else: fallback to obj.__getitem__(0, 1, 2, ...)  # Third: legacy sequence
+    ```
+    This means you get `in` support for free if you implement either `__iter__` or `__getitem__`, even without defining `__contains__`. However, `__contains__` lets you optimize: a `set`-based container can check membership in O(1) instead of O(n) iteration.
+
 ### Without __contains__
 
 If `__contains__` isn't defined, Python falls back to iteration:
@@ -443,6 +459,10 @@ print('content-type' in headers)  # True
 - Handle both integers and slices in `__getitem__` for sequence types
 - Use `collections.abc` base classes for full protocol compliance
 - Tuples as keys enable multi-dimensional access: `obj[row, col]`
+
+!!! warning "When NOT to Implement Container Methods"
+
+    Don't implement `__getitem__` when your object has no natural indexing or key-based access. If `obj[x]` would be ambiguous — does `x` mean an index, a key, a label? — use named methods instead (`obj.get_by_id(x)`). Similarly, avoid `__contains__` when membership testing has no clear meaning for your domain. Container protocols should make access feel **natural**, not force a collection metaphor onto an object that isn't one.
 
 ---
 
@@ -775,3 +795,81 @@ Build a `DataFrame` class that stores data as a list of dictionaries (rows). Imp
         print(df["name"])     # ['Alice', 'Bob', 'Charlie']
         print(len(df))        # 3
         print("age" in df)    # True
+
+---
+
+**Exercise 4.**
+Create a class `HistoryDict` that behaves like a dictionary but tracks the history of all values assigned to each key. Implement `__setitem__`, `__getitem__` (returns the current value), and add a `history(key)` method that returns the list of all values ever assigned to that key. Also implement `__contains__` and `__len__`.
+
+??? success "Solution to Exercise 4"
+
+        class HistoryDict:
+            def __init__(self):
+                self._current = {}
+                self._history = {}
+
+            def __setitem__(self, key, value):
+                if key not in self._history:
+                    self._history[key] = []
+                self._history[key].append(value)
+                self._current[key] = value
+
+            def __getitem__(self, key):
+                return self._current[key]
+
+            def __contains__(self, key):
+                return key in self._current
+
+            def __len__(self):
+                return len(self._current)
+
+            def history(self, key):
+                return self._history.get(key, [])
+
+        hd = HistoryDict()
+        hd["name"] = "Alice"
+        hd["name"] = "Bob"
+        hd["name"] = "Charlie"
+
+        print(hd["name"])            # Charlie (current value)
+        print(hd.history("name"))    # ['Alice', 'Bob', 'Charlie']
+        print("name" in hd)          # True
+        print(len(hd))               # 1 (one key)
+
+---
+
+**Exercise 5.**
+Explain the membership check protocol chain by constructing a class that has `__getitem__` but neither `__contains__` nor `__iter__`. Show that `in` still works by falling back to `__getitem__`. Then add `__iter__` and show that `in` now uses iteration instead. Finally add `__contains__` and show it takes priority over both. What does this fallback chain tell you about how Python protocols compose?
+
+??? success "Solution to Exercise 5"
+
+        # Step 1: Only __getitem__ — in falls back to sequential indexing
+        class OnlyGetitem:
+            def __init__(self, data):
+                self._data = data
+
+            def __getitem__(self, index):
+                return self._data[index]
+
+        og = OnlyGetitem([10, 20, 30])
+        print(20 in og)  # True — Python calls __getitem__(0), (1), (2), ...
+
+        # Step 2: Add __iter__ — in now uses iteration
+        class WithIter(OnlyGetitem):
+            def __iter__(self):
+                print("  (using __iter__)")
+                return iter(self._data)
+
+        wi = WithIter([10, 20, 30])
+        print(20 in wi)  # True — uses __iter__, prints "(using __iter__)"
+
+        # Step 3: Add __contains__ — takes priority
+        class WithContains(WithIter):
+            def __contains__(self, item):
+                print("  (using __contains__)")
+                return item in self._data
+
+        wc = WithContains([10, 20, 30])
+        print(20 in wc)  # True — uses __contains__, prints "(using __contains__)"
+
+    The protocol chain is: `__contains__` → `__iter__` → `__getitem__`. Python tries the most specific method first and falls back to more general ones. This layered design means simple containers get `in` support for free (via `__getitem__`), while complex containers can override for performance (`__contains__` with O(1) set lookup). The same cascade principle applies throughout Python's data model.

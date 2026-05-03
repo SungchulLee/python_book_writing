@@ -2,6 +2,9 @@
 
 Common utility functions built from itertools primitives, providing elegant solutions to frequent programming tasks.
 
+!!! tip "Mental Model"
+    itertools recipes are pre-assembled pipelines built from the module's primitives — the same way you combine basic LEGO bricks into recognizable structures. Functions like `flatten`, `pairwise`, and `batched` appear so often that they have become community standards. Knowing these recipes saves you from reinventing common patterns and signals clear intent to other developers.
+
 ## flatten() - Flatten Nested Iterables
 
 Flatten a list of lists into a single sequence.

@@ -2,6 +2,9 @@
 
 Composite data types can contain other composite types, creating hierarchical data structures. Understanding nested structures is essential for working with real-world data.
 
+!!! tip "Mental Model"
+    Nested structures are containers inside containers, like folders inside folders. Each level of nesting requires an additional index to reach (`matrix[row][col]`). The critical pitfall is shared references: `[[0]*3]*3` creates three references to the same inner list, while `[[0]*3 for _ in range(3)]` creates three independent lists.
+
 ## Nested Lists
 
 Lists containing other lists form multi-dimensional structures.

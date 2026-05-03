@@ -2,6 +2,25 @@
 
 Tight layout automatically adjusts subplot parameters to prevent overlapping labels and titles.
 
+!!! tip "Mental Model"
+    `fig.tight_layout()` is an automatic spacing fixer. It measures all text (titles, labels, tick labels) and adjusts subplot margins so nothing overlaps. Call it once at the end, right before `savefig()` or `show()`. For even more control, use `constrained_layout=True` when creating the figure, which adjusts continuously as you add elements.
+
+    Under the hood, the layout engine computes **bounding boxes** of all text
+    elements (titles, labels, tick labels, legends) and adjusts subplot positions
+    so no bounding boxes overlap. This is why it must be called *after* all text
+    is added — it cannot anticipate text that doesn't exist yet.
+
+!!! warning "When tight_layout Fails"
+    `tight_layout()` is a heuristic, not a guarantee. It may produce poor results
+    with:
+
+    - **Colorbars** — they are separate axes and confuse the spacing algorithm
+    - **Complex GridSpec layouts** — nested or spanning cells can break the optimizer
+    - **Large annotations or text** — bounding boxes outside subplot areas are ignored
+
+    For these cases, use `constrained_layout=True` (more robust) or manual
+    `subplots_adjust()` for full control.
+
 ## The Problem
 
 Without adjustment, labels and titles can overlap.

@@ -2,6 +2,9 @@
 
 A **namedtuple** is a tuple subclass with named fields. It combines the immutability of tuples with the readability of classes.
 
+!!! tip "Mental Model"
+    A `namedtuple` is a lightweight, immutable record — like a `struct` in C or a row in a spreadsheet. You get the memory efficiency and hashability of a tuple, but you access fields by name (`point.x`) instead of by cryptic index (`point[0]`). Use it whenever you need a simple data container without the overhead of a full class.
+
 ---
 
 ## Creating Named Tuples

@@ -19,6 +19,9 @@ flowchart TD
     B -->|falsy| D[treated as False]
 ````
 
+!!! tip "Mental Model"
+    In Python, "empty means false." Zero, empty strings, empty collections, and `None` are all falsy; everything else is truthy. This is why `if my_list:` works as a check for a non-empty list. Truthiness lets you write concise conditions without explicit comparisons like `if len(my_list) > 0`.
+
 ---
 
 ## 1. Truthy and Falsy Values

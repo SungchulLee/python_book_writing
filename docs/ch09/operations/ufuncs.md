@@ -2,6 +2,20 @@
 
 Universal functions (ufuncs) operate element-wise on arrays with broadcasting support.
 
+!!! tip "Mental Model"
+    Ufuncs are the engine behind NumPy's speed: each one is a compiled C loop that takes array inputs, applies a scalar operation element-by-element, and handles broadcasting, type promotion, and output allocation automatically. When you write `a + b` on arrays, Python dispatches to `np.add`, which is a ufunc -- no Python loop ever runs.
+
+    The key elevation: **ufuncs are the abstraction layer for ALL array computation.**
+    Arithmetic, comparisons, math functions, and rounding are all ufuncs. Their
+    methods unify many seemingly different operations:
+
+    | Concept | UFunc expression |
+    |---------|-----------------|
+    | `np.sum(a)` | `np.add.reduce(a)` |
+    | `np.cumsum(a)` | `np.add.accumulate(a)` |
+    | Outer product | `np.multiply.outer(a, b)` |
+    | In-place update | `np.add.at(a, idx, val)` |
+
 ## What are Ufuncs
 
 ### 1. Definition

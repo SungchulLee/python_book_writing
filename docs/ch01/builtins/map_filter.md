@@ -2,6 +2,9 @@
 
 These are **functional-style transformations**: `map()` applies a function to every element; `filter()` selects elements matching a predicate. Both return lazy iterators---use `list()` if you need all results at once. In modern Python, list comprehensions are often preferred for readability, but `map()` and `filter()` remain useful when passing an existing named function directly.
 
+!!! tip "Mental Model"
+    `map()` transforms every item through a function; `filter()` keeps only the items that pass a test. Both produce lazy iterators, meaning they process elements on demand rather than building a full list upfront. They are the functional equivalents of a for-loop with an append and a for-loop with an if-check.
+
 ## map()
 
 ```python

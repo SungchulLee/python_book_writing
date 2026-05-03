@@ -2,6 +2,9 @@
 
 The `ax.pcolormesh()` method creates pseudocolor plots with quadrilateral cells, offering more flexibility than `imshow` for non-uniform grids and coordinate-based data.
 
+!!! tip "Mental Model"
+    `pcolormesh()` is like `imshow()` but with explicit coordinates. Instead of assuming a uniform pixel grid, you supply X and Y coordinate arrays that define each cell's corners. This makes it ideal for data on non-uniform grids, curvilinear coordinates, or when axes must reflect real-world units.
+
 ## Basic pcolormesh
 
 Create a heatmap using pcolormesh.
@@ -140,6 +143,15 @@ plt.show()
 ## Shading Options
 
 The `shading` keyword controls cell rendering.
+
+!!! info "Shading Explained"
+    **`flat`** — each cell is a single solid color. Coordinates define cell **edges**, so X and Y must have one more element per dimension than the data array (e.g., data is 10×10, coordinates are 11×11).
+
+    **`auto`** — matplotlib infers whether coordinates are edges or centers and adjusts automatically. This is the safest default when you are unsure about shape matching.
+
+    **`gouraud`** — colors are interpolated smoothly between vertices, producing gradient fills. Coordinates must be the **same shape** as the data (one value per data point, not per edge).
+
+    Most shape-mismatch errors come from confusing edge coordinates (`flat`) with center coordinates (`gouraud`). Use `shading='auto'` until you need explicit control.
 
 ### 1. Flat Shading (Default)
 

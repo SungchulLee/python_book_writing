@@ -1,5 +1,8 @@
 # Stack Overflow
 
+!!! tip "Mental Model"
+    A stack overflow happens when you pile up more function call frames than the stack can hold -- like stacking books until the shelf breaks. Python prevents actual crashes by raising `RecursionError` before the OS limit is reached. The fix is almost always to ensure your recursion has a valid base case, or to convert the algorithm to an iterative loop.
+
 ## The Problem
 
 ### 1. Too Deep

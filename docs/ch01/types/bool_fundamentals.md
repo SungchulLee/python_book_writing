@@ -24,6 +24,9 @@ flowchart TD
     A --> C[False]
 ```
 
+!!! tip "Mental Model"
+    Booleans are the answers to yes/no questions. Every `if` statement, every `while` condition, and every comparison ultimately reduces to `True` or `False`. In Python, `bool` is a subclass of `int`---`True` is `1` and `False` is `0`---which is why you can add booleans and use them in arithmetic.
+
 ---
 
 ## 1. Boolean Values

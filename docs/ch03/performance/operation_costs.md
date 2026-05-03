@@ -2,6 +2,9 @@
 
 Different Python operations have different performance costs. Understanding which operations are expensive helps optimize code effectively.
 
+!!! tip "Mental Model"
+    Not all Python operations are created equal. Membership testing in a list is O(n) but in a set is O(1). String concatenation in a loop is O(n^2) but `''.join()` is O(n). Function calls, attribute lookups, and global variable access all have measurable overhead. Knowing these relative costs lets you spot bottlenecks before reaching for a profiler.
+
 ---
 
 ## Collection Operations

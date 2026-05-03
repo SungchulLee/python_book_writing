@@ -2,6 +2,9 @@
 
 When analyzing time series data, a natural question arises: does the value at one time point predict values at future time points? For example, stock returns today may influence returns tomorrow, and temperature measurements exhibit seasonal patterns. Autocorrelation quantifies this self-similarity by measuring the correlation of a signal with a delayed copy of itself, providing essential tools for detecting temporal dependencies in data.
 
+!!! tip "Mental Model"
+    Autocorrelation asks: "Does a time series remember its past?" Slide a copy of the signal forward by lag $k$ and correlate the original with the shifted version. High autocorrelation at lag $k$ means today's value is a useful predictor of the value $k$ steps ahead.
+
 ## Definition
 
 For a stationary stochastic process $\{X_t\}$ with mean $\mu$ and variance $\sigma^2$, the **autocorrelation function** (ACF) at lag $\tau$ is defined as

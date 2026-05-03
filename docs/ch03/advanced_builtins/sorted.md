@@ -2,6 +2,9 @@
 
 The `sorted()` function returns a new sorted list from any iterable. Understanding sorting keys and custom comparisons is essential for data manipulation.
 
+!!! tip "Mental Model"
+    `sorted()` never touches the original data -- it always hands you a brand-new list in order. The `key` parameter is a lens: it tells `sorted()` what aspect of each element to compare, without changing the elements themselves. Master `key` and you can sort anything by any criterion in a single call.
+
 ---
 
 ## Basic Usage

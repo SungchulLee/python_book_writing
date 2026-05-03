@@ -2,6 +2,9 @@
 
 `ThreadPoolExecutor` manages a pool of worker threads for concurrent execution. Best suited for **I/O-bound tasks** where the GIL is released.
 
+!!! tip "Mental Model"
+    A ThreadPoolExecutor is a reusable team of threads that pick up jobs from a shared queue. You submit work, the pool assigns it to an idle thread, and you get a Future back. Because threads share memory and the GIL is released during I/O, this is the fastest way to parallelize network calls, file reads, and database queries without the overhead of spawning processes.
+
 ---
 
 ## Basic Usage

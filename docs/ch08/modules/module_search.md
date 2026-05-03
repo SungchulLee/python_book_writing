@@ -2,6 +2,9 @@
 
 Python searches for modules in a well-defined order stored in `sys.path`. Understanding this is crucial for managing imports in larger projects.
 
+!!! tip "Mental Model"
+    When you write `import foo`, Python walks through the directories listed in `sys.path` — top to bottom, first match wins. The list starts with the script's own directory, then site-packages, then the standard library. Most "ModuleNotFoundError" bugs come down to the target module not being on any path in this list, and most fixes amount to adjusting `sys.path` or installing the package in the right environment.
+
 ---
 
 ## The Module Search Path

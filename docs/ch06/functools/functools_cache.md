@@ -2,6 +2,9 @@
 
 The `@cache` decorator provides simple, unbounded memoization. It's a simpler alternative to `@lru_cache` when you don't need cache size limits.
 
+!!! tip "Mental Model"
+    `@cache` is a dictionary that sits in front of your function: before executing, it checks whether it has already seen these arguments. If yes, it returns the stored result instantly. The cache grows without bound, so it trades memory for speed -- perfect for pure functions with a finite input domain.
+
 ```python
 from functools import cache  # Python 3.9+
 ```

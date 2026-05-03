@@ -2,6 +2,9 @@
 
 A `Counter` is a dict subclass designed for counting hashable objects. It's the Pythonic way to do frequency analysis.
 
+!!! tip "Mental Model"
+    A `Counter` is a bag (multiset) that remembers how many of each item you dropped in. You toss items in, and it keeps a running tally — then you can ask questions like "what are the 3 most common?" or combine two bags with arithmetic. Wherever you would write a loop that increments a dictionary value, a `Counter` does it in one call.
+
 ---
 
 ## Creating Counters

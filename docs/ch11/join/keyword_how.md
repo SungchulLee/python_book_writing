@@ -2,6 +2,9 @@
 
 The `how` parameter in `join()` specifies the type of join, controlling which rows are included based on index matching.
 
+!!! tip "Mental Model"
+    `how` answers "which rows survive the join?" Left keeps all rows from the caller, right keeps all from the other, inner keeps only matches, and outer keeps everything. Unmatched cells are filled with NaN. Visualize two overlapping circles: `how` controls which parts of the Venn diagram you keep.
+
 ## Left Join (Default)
 
 Keep all rows from the calling DataFrame.

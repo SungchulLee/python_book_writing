@@ -2,6 +2,9 @@
 
 Python 3.9+ introduced the | and |= operators for merging dictionaries, providing a cleaner syntax than update() and providing merge semantics. This is part of PEP 584 and improves dict manipulation.
 
+!!! tip "Mental Model"
+    Think of `|` as layering two transparencies: the left dict goes down first, then the right dict goes on top. Where keys overlap, the right side wins. `|` produces a new dict (like `+` for lists), while `|=` updates the left dict in place (like `+=` for lists).
+
 ---
 
 ## The | Operator (Merge)

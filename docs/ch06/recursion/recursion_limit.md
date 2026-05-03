@@ -2,6 +2,9 @@
 
 Python limits recursion depth to prevent stack overflow. The default is typically 1000. Understanding and adjusting this limit is important for deep recursion.
 
+!!! tip "Mental Model"
+    Python's recursion limit is a safety guardrail, not a performance knob. Each recursive call consumes real stack memory, and exceeding the OS stack size crashes the interpreter. Raising the limit lets deeper recursion succeed, but the real fix for deep problems is usually converting to iteration or using `sys.setrecursionlimit` together with `threading.stack_size`.
+
 ---
 
 ## The Default Limit

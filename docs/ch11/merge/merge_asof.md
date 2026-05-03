@@ -2,6 +2,9 @@
 
 The `merge_asof()` function performs an approximate merge, matching on the nearest key rather than exact equality. It is designed for ordered data like time series.
 
+!!! tip "Mental Model"
+    `merge_asof` is a "closest match" join. For each row in the left table, it finds the nearest preceding (or nearest overall) key in the right table. This is essential for time series: if you have trades at irregular timestamps and quotes at different timestamps, `merge_asof` pairs each trade with the most recent quote.
+
 ## Basic Concept
 
 Match to the nearest preceding value.

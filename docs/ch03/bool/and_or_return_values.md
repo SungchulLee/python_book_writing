@@ -2,6 +2,9 @@
 
 The and and or operators don't return boolean values—they return one of their operands. This behavior is powerful for default value patterns and conditional value selection, but differs from other languages' boolean operators.
 
+!!! tip "Mental Model"
+    `and` walks left to right looking for the first falsy value and returns it; if everything is truthy, it returns the last value. `or` does the opposite -- it returns the first truthy value, or the last value if all are falsy. Neither operator ever converts its result to `True`/`False`; they always return an original operand.
+
 ---
 
 ## and Return Values

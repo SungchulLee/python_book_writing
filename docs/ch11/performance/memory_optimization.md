@@ -2,6 +2,9 @@
 
 Efficient memory usage is critical when working with large datasets. This document covers strategies to reduce memory consumption in pandas.
 
+!!! tip "Mental Model"
+    Memory optimization is about choosing the smallest dtype that fits your data. `int64` uses 8 bytes per value, but if values fit in 0-255, `uint8` uses just 1 byte -- an 8x savings. String columns with few unique values should be converted to `category`. Measure with `memory_usage(deep=True)`, downcast numeric columns, and convert repetitive strings to categoricals.
+
 ## Understanding Memory Consumption
 
 ### Check Current Memory

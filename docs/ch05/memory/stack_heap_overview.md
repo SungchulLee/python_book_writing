@@ -1,5 +1,8 @@
 # Stack & Heap Overview
 
+!!! tip "Mental Model"
+    Python's runtime uses two memory regions with different personalities. The stack is fast, organized, and automatic -- it grows and shrinks with function calls, holding local variable names. The heap is large, flexible, and managed by the garbage collector -- it stores every actual Python object. Names on the stack point to objects on the heap.
+
 ## Two Memory Areas
 
 ### 1. Stack

@@ -1,5 +1,10 @@
 # Element-wise Min Max
 
+!!! tip "Mental Model"
+    `np.minimum` and `np.maximum` compare two arrays position by position and return the smaller or larger value at each slot. Unlike `np.min`/`np.max` which reduce an array to a single value, these are element-wise ufuncs that produce an output the same shape as the inputs — perfect for clamping values or building piecewise functions.
+
+    **Deeper insight:** these functions are **vectorized conditionals** — each element independently picks one of two values based on a comparison. This makes them the building blocks for **piecewise function construction**: ReLU (`np.maximum(x, 0)`), clipping (`np.clip` = minimum + maximum), and any function defined differently in different regions.
+
 ## np.minimum
 
 ### 1. Basic Usage
@@ -480,3 +485,44 @@ Given a 2D array of random values, use `np.minimum` with broadcasting to clamp e
         max_vals = np.array([1.0, 2.0, 3.0])
         result = np.minimum(a, max_vals)  # broadcasts (5,3) with (3,)
         print(f"Max per column: {result.max(axis=0)}")
+
+---
+
+**Exercise 4.**
+Implement a ReLU function `relu(x)` and a Leaky ReLU `leaky_relu(x, alpha=0.01)` using only `np.maximum`. Apply both to `x = np.linspace(-3, 3, 7)` and print the results. Explain why these are piecewise functions.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        def relu(x):
+            return np.maximum(x, 0)
+
+        def leaky_relu(x, alpha=0.01):
+            return np.maximum(x, alpha * x)
+
+        x = np.linspace(-3, 3, 7)
+        print(f"x:          {x}")
+        print(f"ReLU:       {relu(x)}")
+        print(f"Leaky ReLU: {leaky_relu(x)}")
+
+        # These are piecewise because:
+        # ReLU(x) = x if x > 0, else 0       (two pieces)
+        # Leaky(x) = x if x > 0, else 0.01*x (two pieces)
+        # np.maximum selects the larger of two values at each point,
+        # effectively choosing which "piece" of the function to use.
+
+---
+
+**Exercise 5.**
+Use `np.clip` (which combines `np.minimum` and `np.maximum`) to normalize pixel values in an image array from arbitrary range to `[0, 255]`. Given `pixels = np.random.randn(100, 100) * 100 + 128`, clip to `[0, 255]` and convert to `uint8`. Verify no values are outside the range.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        pixels = np.random.randn(100, 100) * 100 + 128
+        clipped = np.clip(pixels, 0, 255).astype(np.uint8)
+        print(f"Min: {clipped.min()}, Max: {clipped.max()}")
+        print(f"All in [0, 255]: {clipped.min() >= 0 and clipped.max() <= 255}")
+        print(f"Dtype: {clipped.dtype}")  # uint8

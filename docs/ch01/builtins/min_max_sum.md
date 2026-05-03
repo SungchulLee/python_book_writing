@@ -11,6 +11,9 @@ flowchart LR
     A --> D[sum()]
 ````
 
+!!! tip "Mental Model"
+    These three functions reduce a collection to a single answer: the smallest, the largest, or the total. They scan through an iterable once, so you never need to write a loop just to find a minimum, maximum, or sum. Think of them as questions you ask a collection: "what is the least?", "the most?", "the total?"
+
 ---
 
 ## min()

@@ -2,6 +2,8 @@
 
 The `argparse` module provides a way to parse command-line arguments passed to Python scripts.
 
+!!! tip "Mental Model"
+    `argparse` turns your script into a proper command-line tool. You declare what arguments and flags your program accepts, and `argparse` parses `sys.argv`, validates inputs, generates help text, and returns a namespace of clean values. It is the standard-library alternative to manually slicing `sys.argv`.
 
 ## Basic Usage
 

@@ -2,6 +2,41 @@
 
 Convolution is one of the most fundamental operations in image processing and scientific computing. It allows us to compute weighted sums over neighborhoods in arrays, enabling edge detection, smoothing, and feature extraction.
 
+!!! tip "Mental Model"
+    Convolution slides a small kernel across an array and computes a weighted sum at every position. A uniform kernel blurs (averaging), a derivative kernel detects edges, and a Gaussian kernel smooths while preserving locality. `scipy.ndimage` handles boundary conditions and multi-dimensional arrays, making it the go-to for array-based spatial filtering.
+
+    Mathematically, convolution is a **linear operator** — it satisfies
+    $\text{conv}(\alpha x + \beta y) = \alpha\,\text{conv}(x) + \beta\,\text{conv}(y)$.
+    This linearity is what makes convolution composable (applying two kernels in
+    sequence is the same as convolving with their combined kernel) and analyzable
+    via the Fourier transform.
+
+!!! note "Unified Neighborhood Operator Framework"
+    All spatial operations in this section follow the same pattern:
+
+    1. **Define a neighborhood** (kernel, structure element, or footprint)
+    2. **Extract values** around each point
+    3. **Apply a function** to that neighborhood
+    4. **Write the result** to the output array
+
+    This gives three major operator classes:
+
+    | Class | Neighborhood function | Example |
+    |-------|----------------------|---------|
+    | **Convolution** | Weighted sum (linear) | Gaussian blur, Sobel edges |
+    | **Morphology** | Shape-based set rules (geometric) | Erosion, dilation, opening |
+    | **Generic filter** | Arbitrary Python function (nonlinear) | Median, percentile, Game of Life |
+
+    The difference is only in step 3. Once you see this, the three topics become
+    variations on a single idea: *point → neighborhood → transformation*.
+
+    The deeper insight: these are **local computations that produce global
+    structure**. Each element sees only its neighbors, applies a rule, and writes
+    one output value — yet the aggregate effect creates smoothing, edge detection,
+    segmentation, and even dynamic systems like cellular automata. The same
+    pattern underlies convolutional neural networks (CNNs), PDE solvers (finite
+    differences), and reaction-diffusion simulations.
+
 ## What is Convolution?
 
 Convolution combines two functions to produce a third function that expresses how one function modifies the other. In discrete form, for a 1D signal, convolution is defined as:

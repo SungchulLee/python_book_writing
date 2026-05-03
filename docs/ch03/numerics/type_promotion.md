@@ -2,6 +2,8 @@
 
 Type promotion is the automatic elevation of a value from a smaller or less precise data type to a larger or more precise data type during operations. Python performs this implicitly to prevent data loss.
 
+!!! tip "Mental Model"
+    When you mix numeric types in an expression, Python promotes the narrower type to the wider one: `bool` to `int` to `float` to `complex`. The result always has the type of the most general operand. This prevents silent data loss but means that `1 + 1.0` gives a `float`, not an `int`.
 
 ## Promotion Hierarchy
 

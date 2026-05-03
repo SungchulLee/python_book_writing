@@ -2,6 +2,18 @@
 
 A common use case for histograms is visualizing empirical data alongside theoretical probability distributions. This involves estimating distribution parameters from data and overlaying the fitted PDF.
 
+!!! tip "Mental Model"
+    Distribution fitting overlays a smooth theoretical curve on your histogram to see how well a known distribution (e.g., Normal, Exponential) explains your data. Plot the histogram with `density=True` so the y-axis shows probability density, then draw the fitted PDF on top. A good fit means the curve hugs the bars closely.
+
+!!! warning "Histogram is not a density estimator"
+    A histogram's shape depends heavily on the number of bins and their placement.
+    Two different bin counts on the same data can suggest different distributions.
+    Visual alignment between bars and a PDF curve is suggestive but **not proof** of
+    a good fit. For rigorous assessment, use a goodness-of-fit test like the
+    Kolmogorov-Smirnov test (`scipy.stats.kstest`) or compare log-likelihoods.
+    Also consider that with small samples, almost any distribution can appear to
+    fit — more data sharpens the comparison.
+
 ## Fitting Normal Distribution
 
 ### Manual PDF Formula
@@ -144,7 +156,9 @@ plt.show()
 **Exercise 2.** Explain why `density=True` is necessary when overlaying a PDF curve on a histogram. What units does the y-axis represent?
 
 ??? success "Solution to Exercise 2"
-    `ax.hist()` returns `(n, bins, patches)` where `n` has shape `(20,)` containing the count or density in each bin, `bins` has shape `(21,)` containing the bin edges (one more than the number of bins), and `patches` is a list of 20 Rectangle objects.
+    Without `density=True`, the y-axis shows raw **counts** (number of data points per bin). A PDF curve, however, is defined so that the total area under it equals 1, and its y-axis represents **probability density** (probability per unit of x). Overlaying a PDF on raw counts would produce a mismatch — the PDF curve would be invisibly small next to bars with heights in the hundreds or thousands.
+
+    Setting `density=True` normalizes the histogram so that the total area of all bars equals 1, making the y-axis units **probability density** — the same units as the PDF. This allows a meaningful visual comparison: if the bars and curve align, the distribution is a plausible model for the data.
 
 ---
 

@@ -1,5 +1,8 @@
 # How NumPy Bridges the Gap
 
+!!! tip "Mental Model"
+    NumPy lets you write one line of Python that triggers millions of operations in optimized C. The trick is contiguous, typed memory: instead of a Python list of boxed objects scattered across the heap, NumPy stores raw numbers side by side, enabling cache-friendly access and SIMD vectorization. You describe what to compute; NumPy handles how.
+
 ## The NumPy Strategy
 
 NumPy achieves C-like performance while staying in Python by:

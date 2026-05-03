@@ -2,6 +2,9 @@
 
 Parsing dates involves converting string representations of dates and times into datetime objects. This is essential for time series analysis and date-based operations in pandas.
 
+!!! tip "Mental Model"
+    A date string like `"2024-01-15"` is just text -- you cannot add days or extract the month from it. `pd.to_datetime()` parses the string into a Timestamp object that understands calendar logic. Always parse date columns at load time (`parse_dates` in `read_csv`) rather than after, so every downstream operation benefits from proper datetime dtype.
+
 ## Understanding Date Parsing
 
 ### String vs Datetime

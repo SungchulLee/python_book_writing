@@ -2,6 +2,9 @@
 
 Sets are implemented similarly to dictionaries—as hash tables—enabling O(1) average membership testing and set operations. Understanding set internals explains their performance characteristics and implementation constraints.
 
+!!! tip "Mental Model"
+    A set is a dict that stores only keys with no values. Like dicts, sets use hash tables for O(1) membership testing and require elements to be hashable. This shared foundation is why sets and dicts have the same performance profile and the same restrictions on what they can contain.
+
 ---
 
 ## Hash-Based Implementation

@@ -2,6 +2,9 @@
 
 Given a sample of observations, a natural question is: which parametric distribution best describes the data, and what are its parameters? The `.fit()` method on `scipy.stats` continuous distributions answers the second part by finding the **maximum likelihood estimates** (MLEs) of the distribution's parameters. This page covers the statistical principle behind `.fit()`, its usage, and practical considerations for reliable fitting.
 
+!!! tip "Mental Model"
+    Fitting a distribution asks: "Which parameter values make the observed data most probable?" The `.fit()` method searches the parameter space to maximize this likelihood. The result is the parametric model that best explains your sample, but always verify the fit visually -- MLE finds the best parameters for a given family, even if that family is wrong for your data.
+
 ---
 
 ## Maximum Likelihood Estimation

@@ -2,6 +2,9 @@
 
 Python's logical operators `or`, `and`, and `not` can work with integers because non-zero integers are **truthy** and `0` is **falsy**.
 
+!!! tip "Mental Model"
+    Python's `and`/`or` are not Boolean gates -- they are short-circuit selectors that return one of their operands. `or` returns the first truthy value (or the last), `and` returns the first falsy value (or the last). Once you see them as "pick the deciding operand," their behavior with any type becomes predictable.
+
 ---
 
 ## Truthiness

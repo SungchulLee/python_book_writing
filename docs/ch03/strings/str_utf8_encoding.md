@@ -15,6 +15,9 @@ D["Bytes"]
 A --> B --> C --> D
 ```
 
+!!! tip "Mental Model"
+    UTF-8 uses 1 to 4 bytes per character, scaling with the code point's size. ASCII characters (0-127) use exactly 1 byte, so all ASCII text is valid UTF-8 for free. Larger code points use more bytes, with leading bits that tell the decoder how many bytes to consume. This variable-length design makes UTF-8 compact for English while supporting every Unicode character.
+
 ---
 
 ## Why UTF-8?

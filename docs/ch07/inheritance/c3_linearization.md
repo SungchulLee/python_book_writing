@@ -67,6 +67,16 @@ Append this head to result and remove it from all lists.
 
 Continue until all lists are empty.
 
+!!! tip "Mental Model"
+
+    Think of C3 as: **"Take the next class that does not violate any ordering constraint."**
+
+    - **Heads** are candidates — classes that could come next in the MRO.
+    - **Tails** represent constraints — if a class appears in someone's tail, something else must come before it.
+    - A head is valid only if it does not appear in any other list's tail (no constraint blocks it).
+
+    If every head appears in some tail, no valid pick exists and the hierarchy is inconsistent — Python raises `TypeError`.
+
 ---
 
 ## Simple Example

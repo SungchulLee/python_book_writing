@@ -2,17 +2,30 @@
 
 Understanding Python's attribute access system—including the lookup hierarchy, descriptor protocol, and access hooks—is essential for advanced OOP.
 
+!!! tip "Mental Model"
+    Think of attribute access as a **pipeline**: every time you write `obj.attr`, Python walks a chain of checks—data descriptors, instance dictionaries, non-data descriptors, class hierarchies, and fallback hooks—before returning a value. Without a descriptor, Python returns the stored value directly. With a descriptor, Python calls its `__get__` — the descriptor decides what to return.
+
 ---
 
 ## Attribute Resolution Order
 
 When you access `obj.attr`, Python searches in this order:
 
-1. **Data descriptors** from `type(obj)` and its bases
-2. **Instance attributes** from `obj.__dict__`
-3. **Non-data descriptors** from `type(obj)` and its bases
-4. **Class attributes** from `type(obj)` and its bases
-5. **`__getattr__`** if defined and attribute not found
+1. **Data descriptors** — search each class's `__dict__` in MRO order for a data descriptor
+2. **Instance attributes** — check `obj.__dict__`
+3. **Non-data descriptors and class attributes** — search MRO again for non-data descriptors or plain attributes
+4. **`__getattr__`** — called only if nothing was found above
+
+!!! warning "Phases, Not Per-Class Loops"
+    A common misconception is that Python runs steps 1–3 per class before moving to the next class in MRO. It does **not**. Each step is a **phase across the entire MRO**:
+
+    - Phase 1 scans **all** classes in MRO for data descriptors
+    - Phase 2 checks the instance `__dict__`
+    - Phase 3 scans **all** classes in MRO again for non-data descriptors / plain attributes
+
+    This is why a data descriptor in a parent class overrides an instance attribute — Python finds it in phase 1, before ever reaching phase 2.
+
+    **Performance:** this sounds expensive, but CPython optimizes heavily — cached attribute lookups, type version tags, fast paths in `LOAD_ATTR` bytecode. Most MROs are short (2–3 classes), so even the logical search is small. The lookup rules are designed for correctness first; CPython then optimizes the common cases.
 
 ### Visual Flow
 
@@ -21,15 +34,13 @@ obj.attr
     ↓
 __getattribute__ called
     ↓
-Check data descriptors in class
+[1] Search MRO for data descriptor → call __get__
     ↓
-Check instance __dict__
+[2] Check instance __dict__
     ↓
-Check non-data descriptors in class
+[3] Search MRO for non-data descriptor / plain attribute
     ↓
-Check class attributes
-    ↓
-__getattr__ (if defined)
+[4] __getattr__ (if defined)
     ↓
 AttributeError
 ```
@@ -49,9 +60,7 @@ The key distinction affecting lookup priority:
 | **Data descriptor** | `__get__` + `__set__` or `__delete__` | Before instance `__dict__` |
 | **Non-data descriptor** | Only `__get__` | After instance `__dict__` |
 
-**Key principle**: Data descriptors override instance attributes; non-data descriptors defer to them.
-
-See [Data vs Non-Data Descriptors](descriptor_types.md) for detailed examples, use cases, and patterns.
+See [Data vs Non-Data Descriptors](descriptor_types.md) for detailed examples, priority demonstrations, and patterns.
 
 ---
 
@@ -222,48 +231,14 @@ print(obj.method())  # "Base"
 
 ## Descriptor Protocol
 
-### How Descriptors Work
-
-When accessing `obj.attr`:
+Descriptors integrate directly into this lookup pipeline. Without a descriptor, Python returns the stored value directly. With a descriptor, Python calls its `__get__` method — the descriptor decides what to return:
 
 ```python
 # Python internally does:
 type(obj).__dict__['attr'].__get__(obj, type(obj))
 ```
 
-### Methods as Descriptors
-
-Functions are non-data descriptors:
-
-```python
-class MyClass:
-    def method(self):
-        return "method called"
-
-obj = MyClass()
-
-# Function in class dict
-print(type(MyClass.__dict__['method']))  # <class 'function'>
-
-# Descriptor protocol creates bound method
-print(type(obj.method))  # <class 'method'>
-```
-
-### Descriptor Access Levels
-
-```python
-class MyDescriptor:
-    def __get__(self, instance, owner):
-        if instance is None:
-            return self  # Accessed from class
-        return "value"  # Accessed from instance
-
-class MyClass:
-    attr = MyDescriptor()
-
-print(MyClass.attr)      # <MyDescriptor object>
-print(MyClass().attr)    # "value"
-```
+See [Descriptor Introduction](descriptor_intro.md) for what descriptors are and when to use them, and [Descriptor Methods](descriptor_methods.md) for the full `__get__`, `__set__`, `__delete__` protocol.
 
 ---
 
@@ -342,6 +317,18 @@ obj = ValidatedObject()
 obj.age = 30   # ✓ OK
 # obj.age = 200  # ✗ ValueError
 ```
+
+---
+
+## Debugging Attribute Access
+
+!!! tip "Debugging Rule"
+    If `obj.attr` behaves unexpectedly, check in this order:
+
+    1. Is it a **property or descriptor**? → Check `type(type(obj).__dict__.get('attr'))`
+    2. Is it in **`obj.__dict__`**? → Check `obj.__dict__`
+    3. Is it in the **class**? → Check `type(obj).__dict__`
+    4. Is **`__getattr__`** involved? → Check if the class defines `__getattr__`
 
 ---
 
@@ -434,7 +421,7 @@ print(Example.__dict__)    # {..., 'class_var': 'class', ...}
 
 | Concept | Key Point |
 |---------|-----------|
-| Resolution order | Data descriptors → instance → non-data → class → `__getattr__` |
+| Resolution order | Data descriptors (MRO) → instance `__dict__` → non-data / class attrs (MRO) → `__getattr__` |
 | Data descriptor | Has `__set__` or `__delete__`, overrides instance |
 | Non-data descriptor | Only `__get__`, defers to instance |
 | `__getattribute__` | Called for every attribute access |

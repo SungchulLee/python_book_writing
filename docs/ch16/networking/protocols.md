@@ -1,5 +1,8 @@
 # Protocols (TCP/IP, HTTP)
 
+!!! tip "Mental Model"
+    Protocols are the agreed-upon languages computers speak. TCP is like registered mail -- guaranteed delivery with tracking -- while UDP is like shouting across a room -- fast but no guarantee anyone heard. HTTP sits on top and gives you a structured request-response conversation, which is why nearly every web API you call uses it.
+
 ## What is a Protocol?
 
 A **protocol** is a set of rules for communication. Like languages for computers—both sides must follow the same rules to understand each other.

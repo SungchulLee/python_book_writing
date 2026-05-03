@@ -2,6 +2,9 @@
 
 NumPy provides multiple functions for generating samples from normal (Gaussian) distributions.
 
+!!! tip "Mental Model"
+    `np.random.randn` draws from the standard normal $\mathcal{N}(0,1)$; scale and shift with `sigma * randn(...) + mu` to get any normal distribution. Alternatively, `np.random.normal(mu, sigma, size)` does it in one call. The normal distribution appears everywhere because the Central Limit Theorem guarantees that sums of many independent variables converge to it.
+
 ## np.random.randn
 
 Generates samples from the standard normal distribution $\mathcal{N}(0, 1)$.

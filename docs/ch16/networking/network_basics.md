@@ -1,5 +1,8 @@
 # Network Basics
 
+!!! tip "Mental Model"
+    A network is a postal system for computers. Each machine has an address (IP), each service has a mailbox number (port), and data travels in envelopes (packets) that get routed through intermediate post offices (switches and routers). Understanding this layered delivery system explains why every network operation adds overhead.
+
 ## What is a Network?
 
 A **network** is a collection of devices connected to share resources and communicate. Networks enable distributed computing, data sharing, and internet access.

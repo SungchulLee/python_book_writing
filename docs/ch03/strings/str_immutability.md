@@ -7,6 +7,9 @@ Python strings are **immutable**: once created, their contents cannot be changed
 This means operations on strings **never modify the original object**.
 Instead, they **create new strings**.
 
+!!! tip "Mental Model"
+    A Python string is a sealed tube of characters -- you can read any position, but you cannot change one in place. Every "modification" (`replace`, `upper`, concatenation) builds a brand-new string. This immutability is why strings are hashable and safe as dict keys, but it also means repeated concatenation in a loop creates many throwaway objects -- use `''.join()` instead.
+
 ---
 
 ## Attempting to Modify a String

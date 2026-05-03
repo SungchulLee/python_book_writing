@@ -1,5 +1,8 @@
 # Type Introspection
 
+!!! tip "Mental Model"
+    `type(x)` tells you exactly which class `x` is -- no more, no less. `isinstance(x, SomeClass)` is more flexible: it returns `True` for `SomeClass` and all its subclasses. Prefer `isinstance()` for type checks in real code because it respects inheritance; reserve `type()` for debugging and exact-class comparisons.
+
 ## type() Function
 
 ### 1. Basic Usage

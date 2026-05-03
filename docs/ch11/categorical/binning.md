@@ -2,6 +2,9 @@
 
 Binning (discretization) converts continuous data into discrete categories. pandas provides two primary functions: `pd.cut()` for equal-width bins and `pd.qcut()` for equal-frequency bins.
 
+!!! tip "Mental Model"
+    Imagine a number line chopped into buckets. `cut` chops by equal width (every bucket spans the same range), while `qcut` chops by equal count (every bucket holds roughly the same number of data points). Choose `cut` when the bin boundaries matter, and `qcut` when balanced group sizes matter.
+
 ## pd.cut - Equal-Width Bins
 
 Divides data into bins of equal width (range).

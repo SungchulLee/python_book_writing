@@ -2,6 +2,9 @@
 
 Guidelines for writing maintainable and effective tests.
 
+!!! tip "Mental Model"
+    Good tests follow the AAA pattern: *Arrange* (set up inputs), *Act* (call the code), *Assert* (check the result). Keep each test focused on one behavior, name it after what it verifies, and organize test files to mirror your source tree. Tests that are easy to read and run are tests that actually get maintained.
+
 ## Test Organization
 
 Structure tests logically.

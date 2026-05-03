@@ -1,5 +1,8 @@
 # Hashability and Hash Tables
 
+!!! tip "Mental Model"
+    Hashability means one thing: the object has a `__hash__` method that returns a stable integer for its lifetime. Immutability is the easiest way to guarantee that stability, but they are not the same concept. A tuple of lists is immutable yet unhashable; a custom class with `__hash__` can be mutable yet hashable.
+
 ## Hashability vs Immutability
 
 These are two distinct concepts that are often confused:

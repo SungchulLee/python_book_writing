@@ -2,6 +2,9 @@
 
 Pandas provides multiple functions for combining DataFrames, and choosing the wrong one can produce incorrect results or unnecessary performance overhead. The three main options — `pd.concat`, `DataFrame.append`, and `pd.merge` — serve different purposes. This page clarifies when to use each and how they differ in behavior, performance, and API design.
 
+!!! tip "Mental Model"
+    `concat` is glue -- it stacks DataFrames by position along an axis. `merge` is a database join -- it matches rows by key values. `append` was just a thin shortcut for vertical `concat` and is now deprecated. Ask yourself: "Am I stacking or matching?" Stacking means `concat`; matching means `merge`.
+
 ```python
 import pandas as pd
 ```

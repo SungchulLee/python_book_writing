@@ -2,6 +2,9 @@
 
 The `slots=True` parameter reduces memory usage by preventing `__dict__`. The `kw_only=True` parameter requires keyword-only arguments in `__init__()`.
 
+!!! tip "Mental Model"
+    `slots=True` replaces the flexible dictionary inside each instance with a fixed-size struct -- faster and leaner, but you lose the ability to add arbitrary attributes at runtime. `kw_only=True` forces callers to name every argument, eliminating positional mix-ups. Together, they trade flexibility for safety and performance.
+
 ---
 
 ## Using slots=True
@@ -138,9 +141,52 @@ print(f"Slotted: {time_slotted:.4f}s")
 
 ## When to Use
 
-- **slots=True**: Large number of instances, memory matters
+- **slots=True**: Use when you create many instances (100k+) and memory or attribute
+  access speed matters. For a handful of instances, the savings are negligible.
 - **kw_only=True**: Prevent positional argument confusion, improve code clarity
 - **Both**: Performance-critical code with many objects
+
+!!! warning "When NOT to use `slots=True`"
+    Slots prevent dynamic attribute assignment, which breaks patterns that rely on it:
+
+    - **No `__dict__`**: Libraries or debugging tools that inspect `instance.__dict__`
+      will fail. Monkey-patching attributes in tests also becomes impossible.
+    - **Multiple inheritance friction**: If a parent class already defines `__slots__`,
+      combining it with a slotted dataclass requires careful coordination to avoid
+      duplicate slot definitions.
+    - **Harder debugging**: Some debuggers and serializers rely on `__dict__` to
+      enumerate attributes. With slots, they may show incomplete information.
+
+    If you only create a handful of instances, the memory savings are negligible and
+    the restrictions are not worth it.
+
+!!! tip "Why `kw_only` prevents real bugs"
+    Positional arguments become dangerous when a dataclass has many fields of the
+    same type. Consider:
+
+    ```python
+    @dataclass
+    class Transfer:
+        sender: str
+        receiver: str
+        amount: float
+
+    # Bug: sender and receiver are swapped, but no error raised
+    t = Transfer("bob@bank.com", "alice@bank.com", 500.0)
+    ```
+
+    With `kw_only=True`, the call site must name every argument, making the swap
+    immediately visible:
+
+    ```python
+    @dataclass(kw_only=True)
+    class Transfer:
+        sender: str
+        receiver: str
+        amount: float
+
+    t = Transfer(sender="alice@bank.com", receiver="bob@bank.com", amount=500.0)
+    ```
 
 ---
 

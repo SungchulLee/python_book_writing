@@ -7,6 +7,9 @@ relationships by adding powers of the predictor to the model. Despite the
 nonlinear shape of the fitted curve, polynomial regression is a special case
 of multiple linear regression, so the entire OLS machinery applies unchanged.
 
+!!! tip "Mental Model"
+    Polynomial regression fits a curve by treating $x, x^2, x^3, \ldots$ as separate predictors and running ordinary linear regression on them. The curve looks nonlinear in $x$, but the math is identical to multiple regression. The danger is overfitting: a degree-$n$ polynomial passes through $n+1$ points exactly, so high-degree models memorize noise instead of learning the trend.
+
 ---
 
 ## The Polynomial Model

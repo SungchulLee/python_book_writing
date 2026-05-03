@@ -16,6 +16,9 @@ flowchart TD
     A --> C[check methods]
 ````
 
+!!! tip "Mental Model"
+    Case methods (`.upper()`, `.lower()`, `.title()`) transform text into a standard form; check methods (`.isdigit()`, `.isalpha()`, `.isspace()`) test what kind of characters a string contains. Both return new values without modifying the original string. Use case methods to normalize user input and check methods to validate it.
+
 ---
 
 ## 1. Case Methods

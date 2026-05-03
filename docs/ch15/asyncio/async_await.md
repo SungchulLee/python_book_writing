@@ -1,5 +1,8 @@
 # async and await
 
+!!! tip "Mental Model"
+    `async def` declares a function that can pause, and `await` is where it pauses. When a coroutine hits `await`, it hands control back to the event loop so other work can proceed -- like a chef who starts boiling water and chops vegetables while waiting, rather than staring at the pot.
+
 ## The async Keyword
 
 The `async` keyword defines a **coroutine function**. Calling it returns a coroutine object, not the result.

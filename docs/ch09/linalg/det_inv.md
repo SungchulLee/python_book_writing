@@ -2,6 +2,14 @@
 
 Compute matrix determinants and inverses using `np.linalg`.
 
+!!! tip "Mental Model"
+    The determinant measures how a matrix scales volume -- zero means the matrix is singular and has no inverse. `np.linalg.inv` computes the inverse, but in practice you should almost always use `np.linalg.solve` instead, because solving a system directly is faster and more numerically stable than inverting first and multiplying.
+
+    The sharper insight: $\det(A) = 0$ means **information collapse** — the
+    transformation $A$ maps some directions to zero, making it impossible to
+    recover the original input. A near-zero determinant (ill-conditioned matrix)
+    means the collapse is almost happening, and numerical results become unreliable.
+
 ## np.linalg.det
 
 ### 1. Basic Usage

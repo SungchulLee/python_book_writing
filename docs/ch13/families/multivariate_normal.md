@@ -2,6 +2,9 @@
 
 The multivariate normal (Gaussian) distribution extends the univariate normal distribution to multiple correlated dimensions. It is the foundation of modern portfolio theory, multivariate statistical analysis, and Gaussian process models. Understanding its properties is essential because many results in statistics and finance — from mean-variance optimization to principal component analysis — rely on the assumption of joint normality.
 
+!!! tip "Mental Model"
+    A multivariate normal is fully described by its mean vector (where the cloud of points is centered) and its covariance matrix (the shape, size, and orientation of the ellipsoidal cloud). Every marginal and every conditional distribution is also normal, and uncorrelated components are genuinely independent -- properties that make multivariate normals uniquely tractable.
+
 ---
 
 ## Mathematical Definition

@@ -2,6 +2,9 @@
 
 This document covers common LeetCode patterns involving pandas DataFrame operations including groupby, merge, pivot, and multi-table manipulations.
 
+!!! tip "Mental Model"
+    LeetCode DataFrame problems are SQL queries in disguise. Each problem maps to a chain of pandas verbs: `groupby` for GROUP BY, `merge` for JOIN, `query` for WHERE. Recognizing the SQL pattern first, then translating to pandas, is the fastest path to a solution.
+
 ## Pattern 1: GroupBy and Aggregation
 
 ### LeetCode 586: Customer Placing the Largest Number of Orders

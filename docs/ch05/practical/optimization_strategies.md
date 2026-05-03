@@ -2,6 +2,9 @@
 
 Strategic code optimization requires identifying bottlenecks and applying targeted improvements. Here are proven techniques.
 
+!!! tip "Mental Model"
+    Optimization follows a strict priority order: algorithm first, data structure second, micro-optimization last. Replacing an O(n^2) loop with an O(n) set lookup dwarfs any micro-tweak. Always profile before optimizing -- the bottleneck is rarely where you think it is.
+
 ---
 
 ## Algorithmic Optimization

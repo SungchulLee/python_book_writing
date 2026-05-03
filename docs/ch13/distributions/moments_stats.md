@@ -2,6 +2,9 @@
 
 The **moments** of a probability distribution encode its shape: the mean locates the center, the variance measures spread, skewness quantifies asymmetry, and kurtosis captures tail weight. Rather than estimating these from samples, `scipy.stats` distribution objects compute them analytically from the distribution's parameters, giving exact values with no sampling error. This page defines each moment and demonstrates the corresponding `scipy.stats` methods.
 
+!!! tip "Mental Model"
+    Distribution objects know their own moments exactly -- no sampling needed. Calling `.mean()` or `.var()` on a frozen distribution returns the theoretical value derived from the parameters, not an estimate. This is useful for verifying simulation results or computing quantities like the coefficient of variation without generating any data.
+
 ---
 
 ## Mean and Variance

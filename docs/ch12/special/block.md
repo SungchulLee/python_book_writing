@@ -2,6 +2,9 @@
 
 Block matrices arise naturally when a system has multiple components that interact in a structured way — for example, coupled differential equations, multi-asset portfolio models, or finite element discretizations. A block diagonal matrix places smaller matrices along the diagonal with zeros elsewhere, preserving the independence of each block. SciPy provides both dense and sparse constructors for block diagonal matrices.
 
+!!! tip "Mental Model"
+    A block diagonal matrix is a collection of independent sub-problems stacked into one matrix. Its determinant, eigenvalues, and inverse all decompose into the corresponding quantities of each block. This structure lets you solve large systems by solving several small ones independently, which is both faster and more memory-efficient.
+
 ```python
 import numpy as np
 from scipy import linalg

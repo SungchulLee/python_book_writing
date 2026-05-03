@@ -1,5 +1,8 @@
 # Map Filter Reduce
 
+!!! tip "Mental Model"
+    `map` transforms every element, `filter` selects elements that pass a test, and `reduce` collapses a sequence into a single value. Together they form the classic functional trio: transform, select, accumulate. In modern Python, list comprehensions often replace `map` and `filter`, but understanding these primitives clarifies how data flows through pipelines.
+
 ## map()
 
 ### 1. Transform Elements

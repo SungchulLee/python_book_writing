@@ -1,5 +1,8 @@
 # sub and split
 
+!!! tip "Mental Model"
+    `re.sub` is find-and-replace powered by regex — it locates every match and swaps it with a replacement string (or the return value of a callback function). `re.split` is `str.split` on steroids — it splits a string on a regex pattern instead of a fixed delimiter. Together they handle the two most common text-transformation tasks: replacing and splitting.
+
 ## `re.sub()` — Substitution
 
 `re.sub(pattern, repl, string, count=0, flags=0)` replaces all occurrences of the pattern with a replacement string:

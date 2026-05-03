@@ -2,6 +2,9 @@
 
 Understanding memory consumption is essential when working with large datasets. Pandas provides `memory_usage()` and `info()` methods for profiling DataFrame memory.
 
+!!! tip "Mental Model"
+    Each column occupies a contiguous block of memory whose size depends on dtype and row count. `memory_usage(deep=True)` measures the true footprint, including the actual string contents of object columns. The key insight: object columns often dominate memory because each cell is a separate Python object, while numeric columns are compact arrays.
+
 ## memory_usage() Method
 
 Returns the memory consumption of each column in bytes.

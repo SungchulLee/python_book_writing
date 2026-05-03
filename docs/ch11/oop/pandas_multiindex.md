@@ -1,5 +1,8 @@
 # MultiIndex Hierarchy
 
+!!! tip "Mental Model"
+    A MultiIndex is a tree encoded as tuples. Each "row label" is actually a tuple of values from multiple levels, like `('US', 'NY')`. Internally, pandas stores each level as a separate array and uses integer codes to map rows to level values, making the structure memory-efficient even with millions of rows.
+
 ## Hierarchical Indexing
 
 ### 1. Definition

@@ -19,8 +19,11 @@ print(len(s1))     # 4
 print(len(s2))     # 5
 ```
 
-The two strings look identical when printed, but have different lengths — proof
+The two strings look identical when printed, but have different lengths -- proof
 that they are internally different.
+
+!!! tip "Mental Model"
+    Unicode normalization collapses equivalent representations into a single canonical form. NFC composes characters (e + accent becomes one code point), NFD decomposes them (one accented character becomes base + accent). Always normalize before comparing or hashing strings from external sources, because two visually identical strings may have different code point sequences.
 
 ---
 

@@ -2,6 +2,9 @@
 
 Sparse matrices for graph representation and analysis.
 
+!!! tip "Mental Model"
+    A graph's adjacency matrix is naturally sparse -- most nodes connect to only a few neighbors, so the matrix is almost entirely zeros. By storing this matrix in a sparse format, you can run graph algorithms like shortest paths and connected components at a fraction of the memory and time cost of dense representations.
+
 ## Adjacency Matrix
 
 ```python

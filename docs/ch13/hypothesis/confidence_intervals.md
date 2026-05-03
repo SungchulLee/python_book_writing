@@ -2,6 +2,9 @@
 
 A point estimate like a sample mean gives a single best guess for a population parameter, but it says nothing about how precise that guess is. Confidence intervals address this gap by providing a range of plausible values for the parameter, together with a stated level of confidence. They are the natural complement to hypothesis tests: a 95% confidence interval contains exactly those parameter values that a two-sided test at the 5% level would fail to reject.
 
+!!! tip "Mental Model"
+    A confidence interval is a net, not a bullseye. The 95% in "95% confidence" means that if you cast this net repeatedly across many samples, 95% of the nets would catch the true parameter. Any single net either caught it or missed -- you just do not know which. Wider intervals reflect more uncertainty; narrower intervals reflect more data or less variability.
+
 ---
 
 ## Definition and Interpretation

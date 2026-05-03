@@ -1,5 +1,8 @@
 # Namespace Implementation
 
+!!! tip "Mental Model"
+    Under the hood, every namespace is literally a Python dictionary mapping name strings to object references. `globals()` hands you that dictionary directly; understanding this makes dynamic variable creation, `exec`, and metaprogramming far less mysterious.
+
 ## Dictionary Storage
 
 ### 1. Namespace is Dict

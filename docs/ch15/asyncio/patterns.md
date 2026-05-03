@@ -1,5 +1,8 @@
 # Asyncio Patterns
 
+!!! tip "Mental Model"
+    Async patterns are recipes for coordinating coroutines that need to work together. Producer-consumer decouples data generation from processing, semaphores throttle concurrency to avoid overwhelming resources, and pipelines chain stages together. Each pattern solves a specific coordination problem that arises when many tasks share a single thread.
+
 ## Producer-Consumer Pattern
 
 ### Basic Queue

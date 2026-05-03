@@ -1,5 +1,8 @@
 # GPU Clusters
 
+!!! tip "Mental Model"
+    A GPU cluster is a team of powerful machines, each packed with GPUs, connected by a fast network. The challenge is not raw compute -- individual GPUs are fast -- but coordination: synchronizing gradients across nodes costs time that grows with cluster size. Scaling efficiency is the gap between the parallelism you buy and the speedup you actually get.
+
 ## Why GPU Clusters?
 
 Single GPUs have limits. Large-scale deep learning and scientific computing often require multiple GPUs across multiple machines.

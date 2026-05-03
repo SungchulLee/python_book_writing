@@ -1,5 +1,8 @@
 # Dynamic Typing
 
+!!! tip "Mental Model"
+    In Python, variables do not have types -- objects do. A variable is just a name tag that can be moved from one object to another at any time. Type checking happens at runtime when an operation is attempted, not at compile time. This is why `x = 42` followed by `x = "hello"` is perfectly legal.
+
 ## Overview
 
 ### 1. No Type Declarations

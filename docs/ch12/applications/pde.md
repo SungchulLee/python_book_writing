@@ -2,6 +2,9 @@
 
 Sparse matrices from discretizing PDEs.
 
+!!! tip "Mental Model"
+    Discretizing a PDE on a grid turns it into a linear system where each grid point only interacts with its immediate neighbors. The resulting matrix is extremely sparse -- a 1000-point grid produces a matrix with a million entries but only a few thousand nonzeros. Sparse solvers exploit this structure to solve PDE systems that would be impossible with dense methods.
+
 ## 1D Laplacian
 
 ```python

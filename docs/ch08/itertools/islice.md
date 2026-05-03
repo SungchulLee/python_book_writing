@@ -2,6 +2,9 @@
 
 `islice()` extracts a slice from an iterator without consuming the entire iterator or materializing it into memory.
 
+!!! tip "Mental Model"
+    `islice` is the iterator equivalent of list slicing (`lst[start:stop:step]`). Regular slicing requires a sequence in memory, but `islice` works on any iterator — including infinite ones — by lazily skipping and yielding elements. It consumes elements it skips, so the iterator advances; it does not rewind.
+
 ## Basic Slicing with islice
 
 Extract specific elements from an iterator using `islice(iterable, start, stop, step)`.

@@ -2,6 +2,9 @@
 
 A `Future` represents the result of an asynchronous operation. It's returned by `executor.submit()` and provides methods to check status, get results, and handle completion.
 
+!!! tip "Mental Model"
+    A Future is a claim ticket for work being done elsewhere. When you call `submit()`, you get the ticket immediately and can keep doing other things. Call `result()` to redeem the ticket -- if the work is done you get the answer instantly, otherwise you block until it is ready. You can also check `done()`, set timeouts, or attach callbacks to be notified automatically.
+
 ---
 
 ## What is a Future?

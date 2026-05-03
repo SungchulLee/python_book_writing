@@ -1,5 +1,8 @@
 # Composition Pattern
 
+!!! tip "Mental Model"
+    Composition means an object *owns* its parts and controls their lifetime -- when the owner dies, the parts die with it. Think of a car and its engine: the engine is created inside the car and has no independent existence. This tight ownership distinguishes composition from looser forms of association like aggregation.
+
 ## Strong Has-a
 
 ### 1. Definition

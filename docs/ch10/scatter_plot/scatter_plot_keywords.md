@@ -2,6 +2,22 @@
 
 The `ax.scatter()` method accepts numerous keyword arguments to control marker appearance and behavior.
 
+!!! tip "Mental Model"
+    `scatter()` keywords map directly to visual channels: `s` controls size, `c` controls color, `marker` controls shape, `alpha` controls transparency, and `edgecolors`/`linewidths` control the marker border. Each parameter can be a single value (uniform) or an array (per-point), giving you fine-grained control over every dot.
+
+!!! note "Parameter Priority"
+    Not all scatter parameters are equally important. In practice:
+
+    1. **`x`, `y`** — the data (always required)
+    2. **`c`** + `cmap` — color encoding (most common third dimension)
+    3. **`s`** — size encoding (use sparingly — area perception is imprecise)
+    4. **`alpha`** — transparency for dense/overlapping data (reveals density)
+    5. **`marker`**, `edgecolors`, `linewidths` — fine-tuning (rarely critical)
+
+    A useful interaction: **`alpha` + dense data reveals density** — where many
+    transparent points overlap, the color intensifies, acting as a poor-man's
+    heatmap without any binning.
+
 ## Marker Size
 
 The `s` parameter controls marker size in points squared.

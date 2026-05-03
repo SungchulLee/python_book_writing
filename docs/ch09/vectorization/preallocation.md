@@ -2,6 +2,9 @@
 
 Preallocate arrays before iterative population to avoid dynamic allocation overhead.
 
+!!! tip "Mental Model"
+    Growing an array inside a loop (via `np.append` or `np.concatenate`) copies the entire array on every iteration, turning O(n) work into O(n^2). Preallocating with `np.empty` or `np.zeros` and filling by index keeps work at O(n). Always allocate first, then fill.
+
 
 ## The Problem
 

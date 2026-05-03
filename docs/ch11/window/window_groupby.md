@@ -2,6 +2,9 @@
 
 Combine window functions with groupby to apply rolling, expanding, or EWM calculations within groups.
 
+!!! tip "Mental Model"
+    `groupby(...).rolling(N)` applies the rolling window independently within each group. This is essential for panel data: computing a 20-day moving average per stock, not across stocks. Use `transform` with a lambda for clean integration back into the original DataFrame without index headaches.
+
 ## Rolling Within Groups
 
 Apply rolling calculations per group.

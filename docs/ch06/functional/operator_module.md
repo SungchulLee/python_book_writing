@@ -2,6 +2,9 @@
 
 The `operator` module provides function equivalents for Python's built-in operators. These are faster than lambdas and cleaner for functional programming.
 
+!!! tip "Mental Model"
+    Every Python operator (`+`, `[]`, `.attr`) has a function twin in the `operator` module. These named functions are faster than equivalent lambdas (they're implemented in C) and make functional code more readable -- `itemgetter('name')` says what it does more clearly than `lambda x: x['name']`.
+
 ```python
 import operator
 # or

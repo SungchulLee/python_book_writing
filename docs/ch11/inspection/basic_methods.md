@@ -2,6 +2,9 @@
 
 Essential methods for inspecting and exploring DataFrame contents.
 
+!!! tip "Mental Model"
+    Inspection methods are your data microscope. `head()` and `tail()` show the edges, `info()` gives a structural summary with dtypes and null counts, and `describe()` computes column-wise statistics. Run these three right after loading any new dataset to build a mental picture before writing analysis code.
+
 ## head and tail
 
 View first or last rows.

@@ -2,6 +2,9 @@
 
 The `on` parameter specifies which column(s) to use as the join key when both DataFrames share the same column name.
 
+!!! tip "Mental Model"
+    `on` is the explicit key selector for merge. Without it, pandas merges on all shared column names, which can produce surprising results if tables share incidental columns. Always specify `on` to make the join key unambiguous and self-documenting.
+
 ## Single Column
 
 Join on a single shared column.

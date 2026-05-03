@@ -4,6 +4,9 @@ After fitting a regression model, the natural question is: how well does the mod
 
 This page defines residuals, introduces their key properties, and shows how standard diagnostic plots reveal common regression pathologies.
 
+!!! tip "Mental Model"
+    Residuals are the model's mistakes. If the model is correct, these mistakes should be random -- no patterns, no trends, no funneling. Plotting residuals against fitted values, predictors, or observation order reveals specific violations: curves mean missing nonlinearity, fans mean non-constant variance, and clusters mean missing variables.
+
 ---
 
 ## Definition of Residuals

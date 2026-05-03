@@ -1,5 +1,8 @@
 # Identity Stability
 
+!!! tip "Mental Model"
+    An object's identity (`id()`) is its fixed address in memory -- like a house number that never changes as long as the house exists. Mutating the contents (repainting walls) keeps the same address, but reassigning the variable (moving to a new house) gives you a different address. This is why `is` checks identity while `==` checks content.
+
 ## Object Identity
 
 ### 1. Constant ID

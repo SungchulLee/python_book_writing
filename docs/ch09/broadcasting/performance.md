@@ -2,6 +2,9 @@
 
 Broadcasting is not just a syntactic convenience. It has real consequences for execution speed and memory consumption. In the best case, broadcasting eliminates both Python-level loops and unnecessary data copies, yielding orders-of-magnitude speedups. In the worst case, a broadcasted operation can silently allocate a temporary array far larger than either input. This page examines both sides so that the reader can use broadcasting effectively.
 
+!!! tip "Mental Model"
+    Broadcasting gives you C-level speed by avoiding Python loops, but the output array can be much larger than either input. A `(10000, 1)` array broadcast against `(1, 10000)` silently creates a 100-million-element result. Always check the resulting shape mentally before running a broadcasted operation on large data.
+
 ---
 
 ## Speed vs Python Loops
@@ -331,6 +334,16 @@ if __name__ == "__main__":
 If most values are zero, sparse matrices (`scipy.sparse`) are more memory-efficient than dense broadcasting.
 
 
+## Rules of Thumb
+
+!!! tip "Performance Quick Reference"
+    1. **Broadcasting vs loops:** expect 100-1000x speedup over Python `for` loops on arrays larger than ~1000 elements.
+    2. **Memory check first:** before broadcasting, estimate `np.prod(result_shape) * 8` bytes. If it exceeds ~25% of RAM, chunk or use `scipy`.
+    3. **In-place when possible:** `M += v` avoids allocating a new array; `np.add(M, v, out=M)` does the same.
+    4. **C-order + last-axis broadcast** is fastest — this is the default and cache-friendly layout.
+    5. **Avoid giant intermediates:** pairwise distance on 10k points creates a 2.4 GB temporary. Use `scipy.spatial.distance.cdist` instead.
+    6. **Pre-allocate for loops:** if you broadcast repeatedly in a loop, create `out = np.empty(...)` once and reuse via the `out` parameter.
+
 ## Summary
 
 Broadcasting provides substantial speedups (100-1000x over Python loops) and avoids unnecessary data copies through zero-stride expansion. The main performance risk is temporary array explosion, where an intermediate result is far larger than either input. Estimate output sizes before broadcasting, use in-place operations when possible, and fall back to chunked processing or specialized libraries for very large pairwise computations.
@@ -413,3 +426,73 @@ Implement a chunked pairwise Euclidean distance computation for `X = np.random.r
         print(f"Full intermediate:  {full_intermediate / 1e6:.1f} MB")
         print(f"Chunk intermediate: {chunk_intermediate / 1e6:.1f} MB")
         print(f"Memory saved:       {saved_bytes / 1e6:.1f} MB")
+
+---
+
+**Exercise 4.**
+Compare `np.add(M, v, out=M)` versus `M = M + v` in a loop of 100 iterations for `M` of shape `(2000, 2000)`. Measure wall-clock time for each approach and explain why the `out` parameter version is faster.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+        import time
+
+        M_orig = np.random.randn(2000, 2000)
+        v = np.random.randn(2000)
+
+        # Approach 1: M = M + v (allocates new array each iteration)
+        M1 = M_orig.copy()
+        start = time.perf_counter()
+        for _ in range(100):
+            M1 = M1 + v
+        t_alloc = time.perf_counter() - start
+
+        # Approach 2: np.add with out (reuses same array)
+        M2 = M_orig.copy()
+        start = time.perf_counter()
+        for _ in range(100):
+            np.add(M2, v, out=M2)
+        t_out = time.perf_counter() - start
+
+        print(f"New array each time: {t_alloc:.4f} sec")
+        print(f"Reuse via out:       {t_out:.4f} sec")
+        print(f"Speedup:             {t_alloc / t_out:.2f}x")
+
+        # The `out` version is faster because:
+        # 1. No memory allocation per iteration (allocation is expensive)
+        # 2. Better cache locality (same memory region reused)
+        # 3. No garbage collection pressure from temporary arrays
+
+---
+
+**Exercise 5.**
+Estimate whether the following pairwise operation will fit in 16 GB of RAM: `X[:, None, :] - X[None, :, :]` where `X` has shape `(20000, 50)` and dtype `float64`. Calculate the intermediate size in GB. If it does not fit, implement a chunked version that processes 1000 rows at a time.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        n, d = 20000, 50
+
+        # Intermediate shape: (20000, 20000, 50)
+        n_elements = n * n * d
+        memory_gb = n_elements * 8 / 1e9
+        print(f"Intermediate: ({n}, {n}, {d})")
+        print(f"Memory: {memory_gb:.1f} GB")  # 160.0 GB — does NOT fit!
+
+        # Chunked version
+        X = np.random.randn(n, d)
+        chunk_size = 1000
+        dist_rows = []
+
+        for i in range(0, n, chunk_size):
+            chunk = X[i:i+chunk_size]  # (1000, 50)
+            diff = chunk[:, None, :] - X[None, :, :]  # (1000, 20000, 50)
+            dist_chunk = np.sqrt((diff ** 2).sum(axis=2))  # (1000, 20000)
+            dist_rows.append(dist_chunk)
+            # Each chunk uses: 1000 * 20000 * 50 * 8 = 8 GB — marginal
+            # Reduce chunk_size to 500 for safer memory
+
+        # For this problem, scipy.spatial.distance.cdist is the practical choice:
+        # from scipy.spatial.distance import cdist
+        # dist = cdist(X, X)  # memory-efficient, uses (20000, 20000) only

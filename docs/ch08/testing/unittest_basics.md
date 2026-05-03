@@ -2,6 +2,9 @@
 
 Introduction to Python's built-in unittest framework.
 
+!!! tip "Mental Model"
+    `unittest` follows the xUnit pattern: you subclass `TestCase`, write methods named `test_*`, use `self.assert*` to check results, and run them with a test runner. `setUp` runs before each test, `tearDown` after. It is more verbose than pytest but ships with Python and is well-suited for teams already familiar with JUnit or NUnit from other languages.
+
 ## Creating Test Cases
 
 Write test classes with unittest.

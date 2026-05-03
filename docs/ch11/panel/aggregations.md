@@ -2,6 +2,9 @@
 
 Panel data enables both entity-wise and time-wise aggregations. This document covers common aggregation patterns.
 
+!!! tip "Mental Model"
+    Panel aggregation has two natural directions: aggregate across time (one result per entity) or across entities (one result per time point). Use `groupby(level='ticker')` for entity-wise and `groupby(level='date')` for time-wise summaries. The `level` parameter in `groupby` replaces column names with index level names.
+
 ## Setup
 
 ```python

@@ -2,6 +2,9 @@
 
 `contextvars` provides context-local state that works correctly with both threads and async tasks.
 
+!!! tip "Mental Model"
+    Think of a context variable as an invisible backpack that each async task carries independently. Unlike `threading.local()`, which attaches data to threads, `contextvars` attaches data to logical tasks -- so when multiple coroutines share the same thread but take turns running, each one still sees its own private data after every `await`.
+
 ## Why contextvars?
 
 ### The Problem with threading.local in Async

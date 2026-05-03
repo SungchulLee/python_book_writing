@@ -5,6 +5,9 @@ Every Python object carries three fundamental properties: a **type**, a **value*
 
 Think of identity as an object's **address in memory**. Just as every house on a street has a unique address regardless of how similar it looks to its neighbors, every object in a running Python program has a unique identity regardless of its value.
 
+!!! tip "Mental Model"
+    Every object has a unique identity -- a numeric label returned by `id()` -- that stays fixed for the object's entire lifetime. Identity tells you *which* object you have, not *what* it contains, and it is the foundation for understanding aliasing, the `is` operator, and how Python manages objects behind the scenes.
+
 ---
 
 ## 1. The `id()` Function

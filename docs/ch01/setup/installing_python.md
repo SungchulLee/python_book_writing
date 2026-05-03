@@ -25,6 +25,9 @@ flowchart TD
 
 Once Python is installed successfully, programs can be executed from the terminal or through development tools.
 
+!!! tip "Mental Model"
+    Installing Python puts the interpreter on your machine so your operating system knows how to run `.py` files. The key verification step is typing `python --version` in a terminal---if it prints a version number, you are ready to go. On macOS and Linux, Python is often pre-installed, but you may need to install a newer version.
+
 ---
 
 ## 1. Installing on Windows

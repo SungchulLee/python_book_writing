@@ -13,6 +13,9 @@ flowchart LR
     C --> D[Local Python environment]
 ````
 
+!!! tip "Mental Model"
+    PyPI is a massive library catalog; `pip` is the librarian that fetches packages from it and installs them into your Python environment. Running `pip install requests` downloads the `requests` package from PyPI and makes it available for `import`. Virtual environments keep each project's installed packages separate so they do not interfere with one another.
+
 ---
 
 ## 1. What Is PyPI?

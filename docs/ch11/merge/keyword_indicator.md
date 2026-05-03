@@ -2,6 +2,9 @@
 
 The `indicator` parameter adds a column showing the source of each row, useful for debugging and understanding merge results.
 
+!!! tip "Mental Model"
+    `indicator=True` adds a `_merge` column with values `left_only`, `right_only`, or `both`, revealing exactly which table contributed each row. It is the best debugging tool for merges -- use it to verify that an inner join did not silently drop rows or that an outer join introduced expected NaN rows.
+
 ## Basic Usage
 
 Add a column indicating merge source.

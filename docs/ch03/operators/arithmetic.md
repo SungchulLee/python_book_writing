@@ -2,6 +2,8 @@
 
 Arithmetic operators perform mathematical operations on numeric values.
 
+!!! tip "Mental Model"
+    Python has two division operators: `/` always returns a float (true division), while `//` always rounds toward negative infinity (floor division). The modulo `%` follows floor division's sign convention. These three operators -- `/`, `//`, `%` -- form a consistent trio governed by the invariant `a == (a // b) * b + (a % b)`.
 
 ## Operator Summary
 

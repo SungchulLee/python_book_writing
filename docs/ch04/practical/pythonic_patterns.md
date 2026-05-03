@@ -2,6 +2,9 @@
 
 Idiomatic Python patterns for clean, efficient, and readable code.
 
+!!! tip "Mental Model"
+    Pythonic code follows one guiding principle: say what you mean, not how to do it. Prefer EAFP over LBYL, use built-in protocols (iteration, context management, unpacking) instead of manual loops and flags, and let duck typing handle polymorphism naturally.
+
 ## EAFP vs LBYL
 
 Python favors "Easier to Ask Forgiveness than Permission" (EAFP) over "Look Before You Leap" (LBYL).

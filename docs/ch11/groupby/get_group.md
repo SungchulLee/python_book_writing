@@ -2,6 +2,9 @@
 
 The `get_group()` method retrieves a specific group from a GroupBy object by its key.
 
+!!! tip "Mental Model"
+    A GroupBy object is a lazy container of sub-DataFrames, one per unique key. `get_group('key')` reaches in and pulls out exactly one of those sub-DataFrames. It is the targeted alternative to iterating through all groups when you only need a specific one.
+
 ## Basic Usage
 
 Access a single group by name.

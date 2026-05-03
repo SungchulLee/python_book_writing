@@ -2,6 +2,9 @@
 
 Python provides powerful syntax for extracting values from sequences and assigning them to multiple variables.
 
+!!! tip "Mental Model"
+    Unpacking is just parallel assignment: Python iterates through the right-hand side and binds each element to the corresponding name on the left. The star (`*`) operator acts like a catch-all bucket that collects whatever the named targets don't claim.
+
 ## Basic Unpacking
 
 ### Tuple Unpacking

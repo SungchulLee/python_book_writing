@@ -2,6 +2,9 @@
 
 Vectorization is the practice of applying operations to entire arrays at once, rather than iterating through elements. Vectorized operations in pandas are typically 10-100x faster than loops.
 
+!!! tip "Mental Model"
+    A Python `for` loop processes one value per iteration with full interpreter overhead. A vectorized operation hands the entire array to a compiled C/Fortran routine that processes all values in a tight, optimized loop. The rule is simple: if you can express the operation without a Python loop, do so -- the speedup is typically 10-100x.
+
 ## Why Vectorization Matters
 
 ### The Problem with Loops

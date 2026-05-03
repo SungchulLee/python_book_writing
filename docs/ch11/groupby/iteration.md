@@ -2,6 +2,9 @@
 
 GroupBy objects support iteration, allowing you to process each group individually.
 
+!!! tip "Mental Model"
+    Iterating over a GroupBy yields `(key, sub_dataframe)` pairs, one per group. It is the escape hatch for custom logic that does not fit into `agg`, `transform`, or `filter`. Use it sparingly -- vectorized group operations are faster -- but it is invaluable for debugging or applying complex per-group logic.
+
 ## Basic Iteration
 
 Iterate through groups as (name, group) pairs.

@@ -1,6 +1,19 @@
 # Virtual Subclasses (register)
 
-The `register()` method allows classes to be registered as virtual subclasses of an ABC without inheriting from it. This enables duck typing with formal guarantees.
+The `register()` method allows classes to be registered as virtual subclasses of an ABC without inheriting from it. This makes `isinstance()` and `issubclass()` return `True` for classes that were not written to inherit from the ABC — useful when adapting third-party code or bridging legacy interfaces.
+
+!!! tip "Mental Model"
+    Think of `register()` as adding a name to a guest list without giving them a key to the building. The bouncer (`isinstance`) will let them in, but they get no access to the rooms inside (no inherited methods, no MRO entry). It is a declaration of compatibility, not a grant of capability.
+
+!!! note "Core Insight"
+    `register()` does not create an inheritance relationship. It modifies the ABC's
+    **internal subclass registry** — a set maintained by `ABCMeta` that `isinstance()`
+    and `issubclass()` consult. The registered class gains no methods, no MRO entry,
+    and no enforcement. In short: `register()` tells `isinstance()` to say "yes"
+    without verifying anything.
+
+!!! warning "register() Does NOT Enforce the Interface"
+    Unlike real inheritance from an ABC, `register()` performs **no method checking at all**. A registered class can pass `isinstance()` checks while missing every abstract method. Use `register()` only for **interop and adaptation**, not as a design tool for new code. For new interfaces, prefer `ABC` with inheritance or `typing.Protocol`.
 
 ---
 
@@ -202,6 +215,9 @@ print(charge_user(stripe, 100))  # Works!
 
 ## Limitations of Virtual Subclasses
 
+!!! danger "False Confidence in Type Safety"
+    `register()` makes `isinstance()` return `True` without verifying that a single method exists. This can mask bugs that would normally be caught at instantiation time with real ABC inheritance.
+
 ```python
 from abc import ABC, abstractmethod
 
@@ -230,14 +246,37 @@ bad = BadCircle()
 # bad.draw()  # AttributeError - draw method doesn't exist!
 ```
 
+## register() vs Protocol
+
+For new code where you need structural compatibility without inheritance, `typing.Protocol` is usually the safer choice:
+
+| Feature | `register()` | `Protocol` |
+|---|---|---|
+| Requires inheritance | No | No |
+| Enforces method existence (static) | No | Yes (via mypy) |
+| Enforces method existence (runtime) | No | Only with `@runtime_checkable` |
+| Best use case | Adapting existing / third-party code | Defining new interfaces |
+
+Use `register()` when you need to retrofit an existing class into an ABC hierarchy you cannot change. For everything else, prefer `Protocol` or direct ABC inheritance.
+
+!!! tip "Interaction with `__subclasshook__`"
+    If the ABC defines `__subclasshook__`, it runs **before** the registry is
+    consulted. A `__subclasshook__` returning `True` or `False` overrides `register()`
+    entirely. Only when `__subclasshook__` returns `NotImplemented` does Python fall
+    back to checking the registry. This means a class can pass `isinstance()` via
+    `__subclasshook__` without ever being registered, or fail despite being
+    registered if `__subclasshook__` explicitly returns `False`.
+
+---
+
 ## Best Practices
 
-- Use register() for adapting existing classes
-- Ensure registered classes actually implement the interface
-- Document the expected interface clearly
-- Consider inheritance for new classes (enforces interface)
-- Use ABC with abstractmethod for strict enforcement
-- Register for duck typing compatibility
+- Use `register()` for adapting existing or third-party classes you cannot modify
+- Always verify that registered classes actually implement the expected methods
+- Document the required interface clearly in the ABC's docstrings
+- Prefer direct ABC inheritance for new classes (enforces the interface)
+- Prefer `typing.Protocol` when inheritance is undesirable but static safety matters
+- Never use `register()` as a substitute for proper design — it is a bridge, not a foundation
 
 ---
 
@@ -624,3 +663,102 @@ Build a plugin system using virtual subclasses. Define an ABC `Plugin` with abst
         # upper: HELLO WORLD
         # reverse: dlrow olleh
         # length: 11
+
+---
+
+**Exercise 4.**
+Explain why the following code prints `True` for the `isinstance` check but then raises an `AttributeError`. What is the fundamental guarantee that `register()` does **not** provide compared to direct ABC inheritance? How would you redesign this to catch the error earlier?
+
+```python
+from abc import ABC, abstractmethod
+
+class Renderable(ABC):
+    @abstractmethod
+    def render(self):
+        pass
+
+class EmptyWidget:
+    pass
+
+Renderable.register(EmptyWidget)
+
+print(isinstance(EmptyWidget(), Renderable))  # True
+EmptyWidget().render()  # AttributeError!
+```
+
+??? success "Solution to Exercise 4"
+
+    `register()` tells Python's ABC machinery to treat `EmptyWidget` as a subclass of `Renderable` for `isinstance()` and `issubclass()` purposes — but it performs **no method checking**. The class is accepted purely on declaration, not on capability.
+
+    With direct inheritance (`class EmptyWidget(Renderable):`), Python would raise `TypeError` **at instantiation time** because `render()` is not implemented. That is the guarantee `register()` does not provide: enforcement of abstract method implementation.
+
+    To catch the error earlier, choose one of these approaches:
+
+    1. **Use direct inheritance** — `class EmptyWidget(Renderable):` — so Python enforces the contract.
+    2. **Use `typing.Protocol`** with a static type checker like `mypy` — no inheritance needed, but missing methods are flagged before runtime.
+    3. **Add a manual check** after registering:
+
+            for method in Renderable.__abstractmethods__:
+                if not hasattr(EmptyWidget, method):
+                    raise TypeError(f"EmptyWidget missing required method: {method}")
+
+---
+
+**Exercise 5.**
+Compare three ways to make a `Serializer` interface and a `JSONSerializer` implementation: (1) ABC with inheritance, (2) `register()` as a virtual subclass, and (3) `typing.Protocol`. For each approach, state whether `isinstance(JSONSerializer(), Serializer)` returns `True`, whether a missing method is caught before runtime, and when you would choose that approach in production code.
+
+??? success "Solution to Exercise 5"
+
+        # Approach 1: ABC with inheritance
+        from abc import ABC, abstractmethod
+
+        class SerializerABC(ABC):
+            @abstractmethod
+            def serialize(self, obj): pass
+            @abstractmethod
+            def deserialize(self, data): pass
+
+        class JSONSerializer1(SerializerABC):
+            def serialize(self, obj):
+                import json; return json.dumps(obj)
+            def deserialize(self, data):
+                import json; return json.loads(data)
+
+        print(isinstance(JSONSerializer1(), SerializerABC))  # True
+        # Missing method → TypeError at instantiation ✓
+
+        # Approach 2: register()
+        class JSONSerializer2:
+            def serialize(self, obj):
+                import json; return json.dumps(obj)
+            def deserialize(self, data):
+                import json; return json.loads(data)
+
+        SerializerABC.register(JSONSerializer2)
+        print(isinstance(JSONSerializer2(), SerializerABC))  # True
+        # Missing method → NOT caught (only fails at call time) ✗
+
+        # Approach 3: Protocol
+        from typing import Protocol
+
+        class SerializerProto(Protocol):
+            def serialize(self, obj) -> str: ...
+            def deserialize(self, data: str): ...
+
+        class JSONSerializer3:
+            def serialize(self, obj) -> str:
+                import json; return json.dumps(obj)
+            def deserialize(self, data: str):
+                import json; return json.loads(data)
+
+        # isinstance requires @runtime_checkable; without it → False
+        # Missing method → caught by mypy at analysis time ✓
+
+    | Feature | ABC + inherit | register() | Protocol |
+    |---|---|---|---|
+    | `isinstance()` works | Yes | Yes | Only with `@runtime_checkable` |
+    | Missing method caught early | Yes (instantiation) | No | Yes (static analysis) |
+    | Requires inheritance | Yes | No | No |
+    | Best for | Owned hierarchies | Third-party adaptation | Modern interfaces |
+
+    **In production:** default to `Protocol` for new interfaces, use ABC when you need shared concrete methods, and reserve `register()` for integrating code you cannot modify.

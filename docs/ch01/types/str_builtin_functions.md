@@ -26,6 +26,9 @@ flowchart TD
     A --> F[ord/chr]
 ````
 
+!!! tip "Mental Model"
+    Because strings are sequences, every built-in that works on sequences---`len()`, `sorted()`, `reversed()`, `enumerate()`---also works on strings, treating each character as an element. `ord()` and `chr()` bridge between characters and their numeric Unicode code points, revealing that every character is ultimately a number.
+
 ---
 
 ## 1. len()

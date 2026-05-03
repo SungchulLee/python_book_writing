@@ -1,5 +1,8 @@
 # Covariance Correlation
 
+!!! tip "Mental Model"
+    Covariance measures how two variables move together (positive = same direction, negative = opposite), while correlation normalizes covariance to the $[-1, 1]$ range for easy comparison. `np.cov` returns a matrix where entry $(i,j)$ is the covariance between variables $i$ and $j$; `np.corrcoef` does the same but normalized.
+
 ## np.cov
 
 ### 1. Basic Usage
@@ -405,3 +408,57 @@ Generate two uncorrelated variables `x` and `y` (independent standard normals, 5
 
         y_corr = x + y
         print(f"corr(x, x+y): {np.corrcoef(x, y_corr)[0, 1]:.4f}")  # ~0.707
+
+---
+
+**Exercise 4.**
+Given a `(1000, 3)` data matrix representing three stock returns, compute the full `3x3` correlation matrix using `np.corrcoef`. Identify the most and least correlated pair of stocks by finding the off-diagonal maximum and minimum.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        np.random.seed(42)
+        base = np.random.randn(1000)
+        returns = np.column_stack([
+            base + np.random.randn(1000) * 0.5,
+            base + np.random.randn(1000) * 2,
+            np.random.randn(1000)
+        ])
+
+        corr = np.corrcoef(returns.T)
+        print(f"Correlation matrix:\n{np.round(corr, 3)}")
+
+        # Mask diagonal for off-diagonal search
+        np.fill_diagonal(corr, np.nan)
+        max_idx = np.unravel_index(np.nanargmax(corr), corr.shape)
+        min_idx = np.unravel_index(np.nanargmin(corr), corr.shape)
+        print(f"Most correlated pair:  stocks {max_idx}")
+        print(f"Least correlated pair: stocks {min_idx}")
+
+---
+
+**Exercise 5.**
+Demonstrate that correlation is scale-invariant but covariance is not. Compute `np.cov` and `np.corrcoef` for two variables `x` and `y`, then for `10*x` and `y`. Show that covariance changes by a factor of 10 but correlation stays the same.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        np.random.seed(0)
+        x = np.random.randn(500)
+        y = 2 * x + np.random.randn(500)
+
+        cov_orig = np.cov(x, y)[0, 1]
+        corr_orig = np.corrcoef(x, y)[0, 1]
+
+        cov_scaled = np.cov(10 * x, y)[0, 1]
+        corr_scaled = np.corrcoef(10 * x, y)[0, 1]
+
+        print(f"Cov(x, y):      {cov_orig:.4f}")
+        print(f"Cov(10x, y):    {cov_scaled:.4f}")  # ~10x larger
+        print(f"Ratio:          {cov_scaled / cov_orig:.1f}")  # ~10
+
+        print(f"Corr(x, y):     {corr_orig:.4f}")
+        print(f"Corr(10x, y):   {corr_scaled:.4f}")  # Same!
+        print(f"Same: {np.allclose(corr_orig, corr_scaled)}")  # True

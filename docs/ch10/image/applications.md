@@ -2,6 +2,17 @@
 
 This document covers practical image applications including QR code generation and image compression.
 
+!!! tip "Mental Model"
+    Images in Matplotlib are just 2D or 3D NumPy arrays displayed with `imshow()`. This means any array operation -- SVD compression, channel manipulation, thresholding -- becomes a visual transformation you can immediately plot. The bridge between numerical computing and visual output makes Matplotlib a natural tool for image processing workflows.
+
+!!! note "Two Sides of Image Applications"
+    This page covers two complementary applications of images as arrays:
+
+    - **Generation** — creating images programmatically (QR codes, synthetic data). The image is an output produced by encoding information into a pixel grid.
+    - **Compression** — reducing image file size while preserving visual quality. Compression exploits **redundancy** in the array: neighboring pixels are often similar (spatial redundancy) and human vision is less sensitive to certain details (perceptual redundancy). SVD-based compression, shown below, approximates the image matrix with fewer components — discarding small singular values removes information the eye barely notices.
+
+    Both topics treat images as **numerical data** that can be created, analyzed, and optimized using the same NumPy array operations.
+
 ## QR Code Generation
 
 Generate and visualize QR codes using the `qrcode` library.

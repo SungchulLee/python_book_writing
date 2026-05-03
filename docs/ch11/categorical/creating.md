@@ -2,6 +2,9 @@
 
 There are several ways to create categorical data in pandas, from simple type conversion to explicit construction with custom categories and ordering.
 
+!!! tip "Mental Model"
+    Creating a categorical is like defining an enum: you declare the allowed values (categories) and then each element is just a pointer into that list. The simplest path is `astype('category')` which infers the categories from the data, but `CategoricalDtype` gives you full control over which values are allowed and their order.
+
 ## Method 1: Using astype('category')
 
 The simplest way to convert existing data to categorical.

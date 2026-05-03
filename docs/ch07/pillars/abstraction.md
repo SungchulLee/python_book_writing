@@ -2,6 +2,9 @@
 
 Abstraction is the practice of defining stable interfaces that hide volatile implementation details, allowing components to change independently. It is a **design concept** --- not just a Python module. While the `abc` module provides one enforcement mechanism, abstraction also happens through duck typing, protocols, and simple function signatures. Abstraction works alongside [encapsulation](encapsulation.md) (protecting state), [inheritance](inheritance.md) (sharing structure), and [polymorphism](polymorphism.md) (enabling flexibility).
 
+!!! tip "Mental Model"
+    Abstraction is a contract between a provider and a consumer: the provider promises *what* it can do (the interface), and the consumer agrees not to care *how* it does it. Good abstraction means a caller can use your object correctly without reading its source code -- the method names, signatures, and docstrings tell the whole story.
+
 ---
 
 ## What is Abstraction
@@ -17,6 +20,10 @@ Users interact with objects at a high level without understanding internals.
 ### 3. Design for Change
 
 Focus on **what** an object does, not **how** it does it --- so that implementations can evolve without breaking consumers.
+
+!!! tip "Abstraction Exists at the Call Site"
+
+    The quality of an abstraction is measured at the **call site**, not in the class definition. Good abstraction: the caller does not need to know implementation details to use the object correctly. Bad abstraction: the caller must understand internals to avoid errors. If a caller needs to read the source code to use your interface, the abstraction is leaking.
 
 ---
 

@@ -2,6 +2,27 @@
 
 Box plots (box-and-whisker plots) visualize the distribution of data through quartiles, providing a compact summary of central tendency, spread, and outliers.
 
+!!! tip "Mental Model"
+    A box plot compresses an entire distribution into five numbers: minimum, Q1, median, Q3, and maximum. The box spans the interquartile range (middle 50% of data), the line inside marks the median, and whiskers extend to the extremes. Points beyond the whiskers are outliers, making them easy to spot at a glance.
+
+!!! note "Distribution Visualization Model"
+    All distribution plots answer the same question at different levels of detail:
+
+    | Level of detail | Plot type | What it shows |
+    |----------------|-----------|---------------|
+    | Summary (5 numbers) | **Box plot** | Center, spread, outliers |
+    | Full shape | **Histogram / Violin** | Density, skewness, multimodality |
+    | Exact points | **Scatter / Strip** | Individual observations |
+
+    **Decision guide:**
+
+    - Compare groups compactly → **box plot**
+    - Reveal distributional shape → **histogram or violin**
+    - Show raw data alongside summary → **combine** (box + scatter, violin + box)
+
+    Different plots reveal different aspects of the same distribution —
+    combining them gives the reader both the quick summary and the full picture.
+
 ## Single Data Set
 
 The simplest box plot displays one distribution using `ax.boxplot()`.

@@ -2,7 +2,19 @@
 
 While NumPy's `polyfit` fits a single polynomial to data, `scipy.interpolate` provides piecewise spline interpolation that avoids the oscillation problems of high-degree polynomials. Spline interpolation is essential in financial mathematics for constructing smooth yield curves, volatility surfaces, and forward rate curves from discrete market data.
 
+!!! tip "Mental Model"
+    Instead of one global polynomial that oscillates wildly at the edges, spline interpolation stitches together many low-degree polynomials -- one per interval between data points -- and enforces smoothness at the joints. The result passes exactly through your data while staying well-behaved between points.
+
+    The key distinction from `polyfit` / `Polynomial.fit`: those are **global
+    approximation** (one polynomial for the entire domain), while splines are
+    **local approximation** (many small polynomials, each responsible for one
+    interval). Global fitting minimizes overall error but can oscillate; local
+    fitting trades global optimality for guaranteed smoothness.
+
 ---
+
+!!! warning "Why Not Just Use a High-Degree Polynomial?"
+    A single high-degree polynomial through $n$ points tends to **oscillate wildly** between the data points, especially near the edges. This is the **Runge phenomenon** — the very reason splines exist. Splines avoid it by using many low-degree (typically cubic) pieces joined smoothly, keeping the curve well-behaved everywhere.
 
 ## interp1d — 1D Interpolation
 

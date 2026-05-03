@@ -2,6 +2,9 @@
 
 The `axis` parameter in `apply()` determines whether the function is applied along rows or columns. Understanding axis behavior is crucial for correct DataFrame operations.
 
+!!! tip "Mental Model"
+    `axis=0` feeds each column as a Series to your function (the function "moves down" the rows). `axis=1` feeds each row as a Series (the function "moves across" the columns). The axis number tells you which dimension is being collapsed or iterated over.
+
 ## axis=0 Column-wise
 
 Apply function to each column (default behavior).

@@ -2,6 +2,9 @@
 
 Use pytest fixtures for setup/teardown and parameterized test data.
 
+!!! tip "Mental Model"
+    A fixture is a reusable setup recipe. You define it once as a function decorated with `@pytest.fixture`, and any test that names it as a parameter automatically receives its return value. Fixtures replace the `setUp`/`tearDown` ceremony of unittest with explicit dependency injection — each test declares exactly what it needs, nothing more.
+
 ## Creating and Using Fixtures
 
 Define reusable test setup with fixtures.

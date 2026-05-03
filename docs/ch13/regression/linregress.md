@@ -7,6 +7,9 @@ line explains the observed variation. SciPy's `stats.linregress` offers a fast,
 one-call interface for this task, returning the fitted parameters along with key
 inferential statistics.
 
+!!! tip "Mental Model"
+    `linregress` is SciPy's one-liner for fitting $y = mx + b$. It returns slope, intercept, $r$-value, p-value, and standard error in a single call. Think of it as the simplest possible regression -- one predictor, one response, one straight line -- with built-in significance testing.
+
 ---
 
 ## The Linear Model

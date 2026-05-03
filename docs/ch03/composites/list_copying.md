@@ -2,6 +2,9 @@
 
 Understanding copy semantics is essential when working with mutable lists.
 
+!!! tip "Mental Model"
+    Assignment (`b = a`) creates a second label on the same box -- both names see the same list. A shallow copy (`a[:]`, `list(a)`) creates a new box but fills it with references to the same inner objects. A deep copy (`copy.deepcopy`) clones the box and recursively clones everything inside it. Choose the right level based on whether your list contains mutable elements.
+
 ---
 
 ## The Aliasing Problem

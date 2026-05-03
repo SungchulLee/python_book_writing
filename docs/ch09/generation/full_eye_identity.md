@@ -2,6 +2,13 @@
 
 NumPy provides functions for creating constant-filled arrays and identity matrices commonly used in linear algebra.
 
+!!! tip "Mental Model"
+    `np.full` fills every element with a value you choose, while `np.eye` and `np.identity` place ones on the diagonal and zeros elsewhere. These are the constant-valued building blocks you reach for when initializing accumulators, masks, or identity transformations in linear algebra.
+
+    Together with [`np.diag`](diag_matrices.md), `eye` and `identity` form NumPy's
+    **structured matrix** family — functions that create arrays with mathematical
+    structure (constant, diagonal, banded) rather than arbitrary values.
+
 
 ## np.full Function
 
@@ -151,6 +158,10 @@ Prefer `np.eye` for its greater flexibility in all cases.
 ## Linear Algebra Use
 
 Identity matrices are fundamental in matrix operations.
+
+!!! note "The Identity Matrix Is the 'Do Nothing' Transformation"
+
+    The identity matrix $I$ is the **neutral element** of matrix multiplication: $A \cdot I = I \cdot A = A$ for any conformable matrix $A$. Multiplying by $I$ leaves the operand unchanged, just as multiplying a number by 1 does. This makes it the starting point for iterative algorithms, the reference for measuring how far a matrix deviates from "doing nothing," and the foundation of inverse and eigenvalue computations.
 
 ### 1. Matrix Inverse
 

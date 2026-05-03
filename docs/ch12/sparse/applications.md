@@ -2,6 +2,9 @@
 
 Beyond linear algebra, sparse matrices unlock elegant solutions to real-world problems. This section explores practical applications where the structure and efficiency of sparse formats shine.
 
+!!! tip "Mental Model"
+    Sparse matrices are not just a storage optimization -- they are a computational paradigm. Whenever a problem involves pairwise relationships over a large set (confusion matrices, co-occurrence counts, graph Laplacians), the underlying matrix is almost always sparse. Recognizing this pattern lets you replace slow Python loops with fast vectorized sparse operations.
+
 ## Contingency Tables via COO Format
 
 ### The Problem: Counting Co-occurrences

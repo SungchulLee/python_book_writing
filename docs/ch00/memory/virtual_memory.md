@@ -2,6 +2,9 @@
 
 # Virtual Memory
 
+!!! tip "Mental Model"
+    Virtual memory is a lie the operating system tells each program: "You have a huge, private, contiguous block of memory all to yourself." Behind the scenes, the OS and CPU collaborate to map these fictional addresses to scattered chunks of physical RAM (and even disk). This illusion gives every process isolation and protection while letting the system run programs whose combined memory demands exceed physical RAM.
+
 Modern operating systems give every process the illusion that it has access to a large, continuous block of memory. This abstraction is called **virtual memory**.
 
 Virtual memory provides three essential capabilities:

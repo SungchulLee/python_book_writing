@@ -2,6 +2,9 @@
 
 The `agg()` method (short for aggregate) applies one or more aggregation functions to columns. It provides flexible control over which functions to apply.
 
+!!! tip "Mental Model"
+    While `mean()` or `sum()` apply a single reduction, `agg()` is the Swiss-army knife: pass it a function name, a list, or a dict and it routes the right aggregation to the right column. Think of it as a dispatch table that maps columns to reduction functions.
+
 ## Basic Usage
 
 Apply aggregation functions to a DataFrame.

@@ -2,6 +2,9 @@
 
 Choosing the right probability model for a dataset requires comparing the empirical distribution against candidate theoretical distributions. Visual comparison methods complement formal tests by revealing where a model fits well and where it fails. This page covers the main graphical techniques for distribution comparison using `scipy.stats` and Matplotlib.
 
+!!! tip "Mental Model"
+    Formal goodness-of-fit tests give a binary yes/no answer; visual comparisons show you exactly where a model fits and where it fails. Overlay a fitted density on a histogram to check the overall shape, compare CDFs to spot systematic shifts, and use QQ plots to zoom in on tail behavior.
+
 ---
 
 ## Histogram with Density Overlay

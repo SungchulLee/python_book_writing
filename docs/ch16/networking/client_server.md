@@ -1,5 +1,8 @@
 # Client-Server Model
 
+!!! tip "Mental Model"
+    The client-server model is a conversation between an asker and an answerer. The client says "I need X," the server does the work and replies. Almost every web page you load, every API call you make, and every database query you run follows this pattern -- understanding it is the foundation of networked programming.
+
 ## What is Client-Server?
 
 The **client-server model** divides computing between service requesters (clients) and service providers (servers):

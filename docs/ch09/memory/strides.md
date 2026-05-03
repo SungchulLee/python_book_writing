@@ -2,6 +2,12 @@
 
 Strides control how NumPy traverses memory to access array elements.
 
+!!! tip "Mental Model"
+    Strides are the byte-level recipe for navigating an array: each axis has a stride telling NumPy how many bytes to jump to reach the next element along that axis. By manipulating strides (via `np.lib.stride_tricks`), you can create sliding windows, tiled views, or even circular buffers -- all without copying a single byte.
+
+!!! note "Who Needs This?"
+    Most NumPy users never manipulate strides directly — slicing, reshape, and transpose handle strides automatically. But understanding strides explains **why** certain operations are free (views) while others cost memory (copies), why transpose doesn't move data, and why contiguity affects performance. Strides are the mechanism behind the abstraction.
+
 
 ## Stride Fundamentals
 

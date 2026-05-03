@@ -2,6 +2,9 @@
 
 Compute arbitrary matrix powers $A^p$ including fractional exponents.
 
+!!! tip "Mental Model"
+    Fractional matrix powers generalize the idea of "square root of a matrix" to arbitrary exponents. If $A = V \Lambda V^{-1}$, then $A^p = V \Lambda^p V^{-1}$ -- each eigenvalue is raised to the power $p$. This lets you smoothly interpolate between the identity ($A^0$) and the matrix itself ($A^1$), which is useful in diffusion processes, interpolation, and numerical methods.
+
 ## linalg.fractional_matrix_power
 
 ### 1. Basic Usage

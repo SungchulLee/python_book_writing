@@ -2,6 +2,14 @@
 
 Matplotlib accepts various data types for plotting, providing flexibility for different workflows.
 
+!!! tip "Mental Model"
+    Matplotlib converts everything to NumPy arrays internally. You can pass Python lists, NumPy arrays, Pandas Series, or even dictionaries -- they all become arrays before drawing.
+
+    **The fundamental requirement:** `x` and `y` must be **1D sequences of equal
+    length** (or convertible to such). Mismatched lengths, 2D arrays, or mixed
+    dtypes will raise errors or produce unexpected results. When in doubt, verify
+    with `np.asarray(data).shape` before plotting.
+
 ---
 
 ## Python Lists

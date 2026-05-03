@@ -1,5 +1,8 @@
 # Namespace Hierarchies
 
+!!! tip "Mental Model"
+    Picture namespaces as layered transparent sheets stacked Local-Enclosing-Global-Built-in. When Python looks up a name, it reads downward through the stack and stops at the first sheet where the name appears. Assignment always writes to the top sheet unless `global` or `nonlocal` redirects it.
+
 ## Four Levels
 
 ### 1. LEGB Rule

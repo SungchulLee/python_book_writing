@@ -2,6 +2,9 @@
 
 Finding the roots of a polynomial is equivalent to finding the eigenvalues of a particular matrix constructed from the polynomial's coefficients. This matrix is called the companion matrix, and it converts root-finding into an eigenvalue problem — which is how `np.roots` works internally. SciPy provides `linalg.companion` to construct this matrix directly.
 
+!!! tip "Mental Model"
+    The companion matrix bridges polynomials and linear algebra: its eigenvalues are exactly the roots of the polynomial. This is not just a theoretical curiosity -- it is how numerical root-finders like `np.roots` actually work under the hood, converting an algebraic problem into a well-studied eigenvalue problem.
+
 ```python
 import numpy as np
 from scipy import linalg

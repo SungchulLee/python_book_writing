@@ -1,5 +1,8 @@
 # DataFrame Architecture
 
+!!! tip "Mental Model"
+    Under the hood, a DataFrame is not a 2D array -- it is a collection of 1D arrays (one per column) managed by a BlockManager. Each column can have a different dtype, and operations like adding or dropping columns rearrange pointers rather than copying data. Understanding this columnar layout explains why column operations are fast and row iterations are slow.
+
 ## Columnar Design
 
 ### 1. Structure

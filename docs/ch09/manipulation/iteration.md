@@ -2,6 +2,12 @@
 
 NumPy provides several ways to iterate over array elements.
 
+!!! tip "Mental Model"
+    Iterating over a NumPy array with a Python `for` loop works but is slow because each iteration crosses the Python-C boundary. Use iteration only for debugging or when the operation genuinely cannot be vectorized. For flat traversal, `nditer` and `ndenumerate` provide efficient multi-dimensional iteration, but vectorized operations should always be your first choice.
+
+!!! warning "Escape Hatch, Not Main Tool"
+    Iteration is the **last resort** in NumPy, not the default approach. If you find yourself writing `for` loops over array elements, ask: can this be expressed as a vectorized operation, a boolean mask, or a ufunc? Iteration exists for the rare cases where element-wise logic is genuinely data-dependent and cannot be vectorized.
+
 ## Basic For Loop
 
 ### 1. 1D Array

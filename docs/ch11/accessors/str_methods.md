@@ -2,6 +2,9 @@
 
 Complete reference for all string methods available through the pandas `str` accessor.
 
+!!! tip "Mental Model"
+    This page is a lookup table: given a string task (change case, find a substring, split, pad), find the matching `.str` method. Every method here mirrors a built-in Python string method but operates on an entire Series at once, with automatic NaN handling baked in.
+
 ## Case Methods
 
 | Method | Description | Example |

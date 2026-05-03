@@ -2,6 +2,9 @@
 
 Handlers determine where log messages go: console, files, or rotating files.
 
+!!! tip "Mental Model"
+    A handler is a delivery truck for log messages — it picks up a formatted log record and drops it at a destination. `StreamHandler` delivers to the console, `FileHandler` to a file, and `RotatingFileHandler` to a file that automatically rolls over when it gets too large. Attach multiple handlers to a single logger and every message goes to all destinations simultaneously.
+
 ## Stream Handler (Console)
 
 Log to console with StreamHandler.

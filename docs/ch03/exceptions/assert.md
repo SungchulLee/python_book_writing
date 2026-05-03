@@ -2,6 +2,8 @@
 
 The `assert` statement is a debugging aid that tests a condition and raises `AssertionError` if the condition is `False`. It helps verify assumptions during development.
 
+!!! tip "Mental Model"
+    An `assert` is a contract with your future self: "at this point in the code, this condition must be true." It is a development-time safety net, not a runtime error handler. Python silently removes all `assert` statements when you run with `-O` (optimize), so never use them for input validation or security checks.
 
 ## Basic Syntax
 

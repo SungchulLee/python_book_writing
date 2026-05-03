@@ -19,6 +19,9 @@ flowchart TD
     A --> D[not]
 ````
 
+!!! tip "Mental Model"
+    `and`, `or`, and `not` combine simple true/false answers into compound ones. `and` requires both sides to be true; `or` requires at least one; `not` flips the answer. A key Python detail: `and` and `or` short-circuit and return one of their operands (not necessarily `True`/`False`), which enables idioms like `value or default`.
+
 ---
 
 ## 1. The `and` Operator

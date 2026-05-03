@@ -2,6 +2,15 @@
 
 The `ax.hexbin()` method creates hexagonal binning plots for 2D data density visualization.
 
+!!! tip "Mental Model"
+    `hexbin()` is a 2D histogram with hexagonal bins instead of squares. Hexagons tile the plane more naturally -- each bin has six equidistant neighbors, reducing visual artifacts. Color intensity shows how many points fall in each hexagon. Use it when scatter plots become too crowded to reveal density patterns.
+
+    In the [density estimation spectrum](hist2d.md), hexbin occupies the middle
+    ground: it is still a discrete binning method (like `hist2d`), but with
+    better spatial geometry — hexagons minimize the maximum distance from any
+    point to the nearest bin center, producing smoother-looking results without
+    the computational cost of KDE.
+
 [Official Documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hexbin.html)
 
 ## Basic Usage

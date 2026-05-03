@@ -2,6 +2,9 @@
 
 The `how` parameter specifies the type of join to perform. It determines which rows are included in the result based on key matching.
 
+!!! tip "Mental Model"
+    `how` is the Venn-diagram selector. `inner` keeps only the intersection (keys in both tables). `left` keeps all keys from the left table. `right` keeps all keys from the right. `outer` keeps the union of all keys. Unmatched cells are filled with NaN.
+
 ## Inner Join
 
 Keep only rows with matching keys in both DataFrames.

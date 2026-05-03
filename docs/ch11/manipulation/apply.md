@@ -2,6 +2,9 @@
 
 The `apply()` method applies a function along an axis of a DataFrame or to elements of a Series. It is one of the most versatile pandas methods.
 
+!!! tip "Mental Model"
+    `apply()` is the escape hatch: when no built-in vectorized method exists, you hand pandas a custom function and it runs it on every element (Series) or every row/column (DataFrame). It is more flexible than `map` but slower than vectorized operations -- reach for it only when no built-in method fits.
+
 ## Series apply
 
 Apply a function to each element of a Series.

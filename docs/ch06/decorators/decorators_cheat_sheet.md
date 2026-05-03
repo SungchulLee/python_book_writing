@@ -1,5 +1,8 @@
 # Python Decorators - Quick Reference Cheat Sheet
 
+!!! tip "Mental Model"
+    Decorators are function transformers: they take a function in, add behavior, and return a new function out. Every pattern on this page is a variation of that single idea -- the differences are in what gets wrapped (functions vs. classes) and how the wrapper is configured (plain decorator vs. factory).
+
 ## Basic Syntax
 
 ### Simple Decorator

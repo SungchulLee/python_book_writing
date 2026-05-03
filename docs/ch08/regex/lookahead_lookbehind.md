@@ -1,5 +1,8 @@
 # Lookahead and Lookbehind
 
+!!! tip "Mental Model"
+    Lookarounds are invisible checkpoints in a pattern. A lookahead peeks at what comes *after* the current position, and a lookbehind peeks at what came *before* — but neither consumes any characters. They let you assert context without including it in the match, which is essential for tasks like "find a number only if it is followed by a dollar sign."
+
 ## What Are Lookarounds?
 
 Lookarounds are **zero-width assertions** — they check whether a pattern exists before or after the current position without consuming any characters. The matched text is not included in the result.

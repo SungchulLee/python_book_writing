@@ -1,5 +1,8 @@
 # Reserved Keywords
 
+!!! tip "Mental Model"
+    Keywords are names the parser has claimed for itself -- `if`, `def`, `class`, `return`, and about 30 others. Unlike built-in names, keywords cannot be used as variable names at all; attempting to do so is a `SyntaxError`. Use `keyword.kwlist` to see the full list and `keyword.iskeyword()` to check any name.
+
 ## View Keywords
 
 ### 1. List All

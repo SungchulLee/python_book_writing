@@ -4,6 +4,9 @@ File operations can fail for many reasons: the file may not exist, the user may 
 permission, or the disk may be full. Robust programs anticipate these failures and
 handle them gracefully using Python's exception mechanism.
 
+!!! tip "Mental Model"
+    File errors are boundary failures---they happen where your program meets the outside world. The file might not exist, permissions might be wrong, or the disk might be full. Wrapping file operations in `try/except` blocks lets your program fail gracefully instead of crashing when the real world does not cooperate.
+
 ---
 
 ## 1. Common File Exceptions

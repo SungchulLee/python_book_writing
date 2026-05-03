@@ -27,6 +27,9 @@ flowchart TD
     A --> C[fractional part]
 ```
 
+!!! tip "Mental Model"
+    Floats are approximations of real numbers stored in a fixed amount of memory. They can represent a huge range of values, but not all decimal fractions exactly---`0.1 + 0.2` is not precisely `0.3`. This is not a Python bug; it is a fundamental property of how all computers store fractional numbers in binary.
+
 ---
 
 ## 1. Floating-Point Numbers

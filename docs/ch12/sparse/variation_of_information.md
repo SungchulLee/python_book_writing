@@ -1,5 +1,8 @@
 # Variation of Information
 
+!!! tip "Mental Model"
+    Variation of information measures the distance between two clusterings using information theory: how many bits you lose going from one clustering to another, plus how many you gain. It is a true metric (unlike mutual information), and computing it efficiently on large datasets requires sparse matrices because the joint distribution over cluster pairs is almost always sparse.
+
 ## Background
 
 The **variation of information** (VI) is a metric on the space of clusterings,

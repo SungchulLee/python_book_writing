@@ -2,6 +2,9 @@
 
 Python and C handle floating-point numbers differently. Understanding these differences explains performance characteristics and memory usage patterns.
 
+!!! tip "Mental Model"
+    Both Python and C use the same IEEE 754 double-precision format for floats, so they agree on precision. The difference is overhead: C's `double` is a bare 8-byte value on the stack, while Python's `float` is a heap-allocated object with a type pointer and reference count, making it roughly 3x larger and slower to allocate.
+
 ## Introductory Example
 
 A surprising result from floating-point arithmetic.

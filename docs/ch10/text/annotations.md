@@ -2,6 +2,18 @@
 
 Annotations combine text with arrows to highlight specific features in your plot.
 
+!!! tip "Mental Model"
+    `ax.annotate()` is `ax.text()` with an arrow. You specify two points: where the arrow points to (`xy`) and where the text sits (`xytext`). The `arrowprops` dictionary controls the arrow style. Use annotations to call out specific data points -- peaks, anomalies, or thresholds -- making your plot tell a story.
+
+!!! warning "Annotation Rules"
+    - **Highlight only key points** — annotate the peak, the anomaly, or the
+      threshold, not every data point
+    - **Avoid annotating everything** — more than 3--5 annotations on a single
+      Axes creates visual clutter that defeats the purpose
+    - **Keep arrows short** — long arrows crossing the plot area are hard to follow
+    - **Prioritize insights** — annotate the most important finding first; secondary
+      observations can go in captions or accompanying text
+
 ---
 
 ## Basic Annotation

@@ -2,6 +2,9 @@
 
 When concatenating DataFrames with `pd.concat`, mismatched columns can silently introduce `NaN` values, and duplicate index labels can go undetected. The `join` parameter controls how columns (or indices) that do not appear in all DataFrames are handled, while `verify_integrity` provides a safety check against duplicate index values in the result.
 
+!!! tip "Mental Model"
+    `join="outer"` keeps every column from every DataFrame, filling gaps with NaN. `join="inner"` keeps only the columns that appear in all DataFrames. `verify_integrity=True` is a safety net that raises an error if the resulting index has duplicates -- useful for catching accidental double-stacking.
+
 ```python
 import pandas as pd
 ```

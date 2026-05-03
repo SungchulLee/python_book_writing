@@ -2,6 +2,9 @@
 
 Complete reference for all datetime methods and properties available through the pandas `dt` accessor.
 
+!!! tip "Mental Model"
+    Every datetime value is a structured object with nested fields -- year, month, day, hour, and so on. The `dt` methods are extractors and formatters that pull out or reshape these fields across an entire Series at once. If you can describe it on a calendar or a clock, `dt` has a property for it.
+
 ## Date Component Properties
 
 | Property | Description | Return Type |

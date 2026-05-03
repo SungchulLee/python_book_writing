@@ -2,6 +2,9 @@
 
 Histograms and kernel density estimators are the two primary nonparametric approaches to estimating a probability density function from data. Both methods avoid assuming a specific distributional form, but they differ fundamentally in smoothness, convergence properties, and sensitivity to tuning parameters. Understanding these differences helps practitioners choose the right tool for visualization and analysis.
 
+!!! tip "Mental Model"
+    A histogram chops the number line into bins and counts; a KDE places a smooth bump at each data point and averages. The histogram is fast and intuitive but discontinuous and sensitive to bin edges. The KDE is smooth and converges faster, making it the better estimator -- but the histogram remains the better quick visualization tool.
+
 ## Histogram as a Density Estimator
 
 A histogram partitions the real line into bins $B_1, B_2, \ldots$ of width $w$ and estimates the density as a piecewise constant function:

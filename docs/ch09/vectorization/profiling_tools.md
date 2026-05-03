@@ -2,6 +2,15 @@
 
 Empirical performance analysis guides optimization efforts.
 
+!!! tip "Mental Model"
+    Never guess where the bottleneck is -- measure it. `%timeit` gives quick micro-benchmarks in Jupyter, `cProfile` identifies which functions consume the most time, and `line_profiler` pinpoints the expensive lines within a function. Profile first, then optimize only the hot path.
+
+    Profiling is the **decision engine** of the [optimization hierarchy](vectorization_basics.md):
+    it tells you *which* level of the hierarchy to apply and *where*. Without
+    measurement, you risk optimizing code that is not the bottleneck — or worse,
+    making it slower through premature complexity. The workflow is always:
+    **profile → identify hot path → apply the highest applicable optimization → re-profile.**
+
 
 ## IPython %timeit
 

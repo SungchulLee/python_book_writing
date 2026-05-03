@@ -2,6 +2,9 @@
 
 Titles and axis labels provide context for your plots.
 
+!!! tip "Mental Model"
+    A plot without labels is like a photograph without a caption -- technically visible but missing context. `ax.set_title()` tells readers what they are looking at, `ax.set_xlabel()`/`ax.set_ylabel()` tell them what the axes represent. These three calls turn a raw chart into a self-explanatory figure.
+
 ---
 
 ## Setting Title

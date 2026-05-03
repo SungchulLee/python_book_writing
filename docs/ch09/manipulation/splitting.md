@@ -2,6 +2,12 @@
 
 NumPy provides functions to split arrays into multiple sub-arrays.
 
+!!! tip "Mental Model"
+    Splitting is the reverse of concatenation: it divides one array into a list of smaller arrays along a specified axis. `np.split` requires equal-sized chunks (or explicit cut points), while `np.array_split` handles remainders gracefully by distributing extra elements across the first few chunks.
+
+!!! info "Core Concept"
+    Splitting is **partitioning data along an axis** — the inverse of concatenation. If you concatenated arrays A, B, C along axis 0, splitting the result along axis 0 gives you A, B, C back.
+
 ## np.split
 
 ### 1. Equal Parts

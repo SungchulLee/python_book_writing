@@ -2,6 +2,9 @@
 
 Binary files store raw bytes rather than human-readable text. Working with binary mode is essential for images, audio, executables, and custom data formats.
 
+!!! tip "Mental Model"
+    Text mode (`'r'`/`'w'`) gives you strings with automatic encoding/decoding and newline translation. Binary mode (`'rb'`/`'wb'`) gives you raw `bytes` with no translation at all. If the file is not meant for humans to read (images, audio, serialized data), always use binary mode to avoid corruption from encoding conversions.
+
 ## Opening Binary Files
 
 Use `'b'` mode flag to read and write files as raw bytes.

@@ -2,6 +2,9 @@
 
 Understanding how integers are stored in memory and how negative numbers are represented.
 
+!!! tip "Mental Model"
+    Python integers have unlimited precision -- they grow as needed. But hardware (and C) uses fixed-width two's complement, where flipping all bits and adding one turns a positive number into its negative. Understanding this fixed-width encoding explains overflow, bitwise operator behavior, and why Python must simulate it for negative numbers.
+
 ---
 
 ## Python Storage

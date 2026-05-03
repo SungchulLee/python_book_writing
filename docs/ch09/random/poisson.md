@@ -2,6 +2,9 @@
 
 The Poisson distribution models the number of events occurring in a fixed interval of time or space.
 
+!!! tip "Mental Model"
+    The Poisson distribution answers "how many events happen in a fixed window?" when events occur independently at a constant average rate $\lambda$. Its single parameter $\lambda$ is both the mean and the variance. For large $\lambda$, the Poisson approaches a normal distribution, which is why count data often looks bell-shaped.
+
 ## np.random.poisson
 
 ### 1. Basic Usage

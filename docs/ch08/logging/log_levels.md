@@ -2,6 +2,9 @@
 
 Understanding log levels (DEBUG, INFO, WARNING, ERROR, CRITICAL) and when to use each.
 
+!!! tip "Mental Model"
+    Log levels are a volume knob. DEBUG is the loudest (everything), CRITICAL is the quietest (only catastrophes). Setting a logger to WARNING silences everything below it — DEBUG and INFO vanish. In development you crank it to DEBUG; in production you set it to WARNING or ERROR so only actionable events get recorded.
+
 ## Log Level Hierarchy
 
 Log levels control which messages are recorded.

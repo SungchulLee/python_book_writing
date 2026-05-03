@@ -2,6 +2,9 @@
 
 Configure grid lines and axis behavior for clearer visualizations.
 
+!!! tip "Mental Model"
+    Grid lines are faint reference lines aligned with tick marks that help readers trace values from data points back to the axes. `ax.grid(True)` adds them, and the `which`, `axis`, and `linestyle` parameters let you control major vs. minor grids, x vs. y, and their visual weight. Subtle grids improve readability; heavy grids create clutter.
+
 ---
 
 ## Basic Grid

@@ -2,6 +2,21 @@
 
 This document covers techniques for combining 2D contour plots with 3D surface visualizations to provide complementary views of the same data.
 
+!!! tip "Mental Model"
+    A surface plot shows the full 3D shape while a contour plot shows the same data as a flat map with level curves. Placing them side by side (or projecting contours onto the base of a 3D plot) gives readers two complementary viewpoints: the surface reveals peaks and valleys, while contours reveal precise level sets and gradients.
+
+!!! tip "Choosing the Right Representation"
+    All four visualizations show the same scalar field $z = f(x, y)$ from different perspectives:
+
+    | Representation | Best for | Perspective |
+    |---|---|---|
+    | `contour` (lines) | Precision reading of exact values | Top-down |
+    | `contourf` (filled) | Pattern recognition, regional trends | Top-down |
+    | Surface plot | Geometric intuition (peaks, valleys, saddles) | 3D |
+    | Projection (contour on 3D base) | Connecting 2D level sets to 3D shape | Hybrid |
+
+    Use `contour` + `contourf` together for the most readable 2D map. Use surface + projected contour for the most complete 3D view.
+
 ## Setup
 
 ```python

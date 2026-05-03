@@ -2,6 +2,9 @@
 
 SciPy's `scipy.linalg` extends NumPy's linear algebra capabilities.
 
+!!! tip "Mental Model"
+    NumPy provides the essentials -- determinants, eigenvalues, SVD, and basic solves. SciPy's `linalg` is a strict superset that adds specialized decompositions (LU, QR, Schur, Hessenberg), matrix functions (expm, logm), and LAPACK-level control over algorithm parameters. When in doubt, import from `scipy.linalg` -- it covers everything NumPy does and more.
+
 ## Module Comparison
 
 ### 1. Basic Import

@@ -13,6 +13,8 @@ print(b)  # [0, 'Hi Alice'] — b changed too!
 
 Both `a` and `b` point to the same list object. Python doesn't copy values into variables — it binds names to objects. The same principle governs how arguments are passed to functions.
 
+!!! tip "Mental Model"
+    When you call `f(x)`, Python copies the reference, not the object. Inside the function, the parameter name points to the same object as the caller's variable. Mutating that object (e.g., `x.append(1)`) is visible to the caller, but rebinding the name (e.g., `x = []`) only changes the local pointer and leaves the caller's variable untouched.
 
 ## Neither Call-by-Value nor Call-by-Reference
 

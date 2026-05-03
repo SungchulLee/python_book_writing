@@ -1,5 +1,27 @@
 # ndarray Object Model
 
+!!! tip "Mental Model"
+    An `ndarray` is a thin Python wrapper around a contiguous C buffer plus metadata (dtype, shape, strides). The data lives in a flat byte array; the metadata tells NumPy how to interpret those bytes as a multi-dimensional grid. This separation is why reshaping and transposing are nearly free -- only the metadata changes, not the data.
+
+!!! note "The NumPy Core Model"
+    ```text
+    An array is:
+      - a contiguous block of memory  (data buffer)
+      - interpreted by               dtype
+      - structured by                shape
+      - accessed via                 strides
+
+    Computation happens through:
+      - ufuncs        (elementwise C loops)
+      - broadcasting  (shape alignment)
+    ```
+    Every other NumPy feature — views, reshaping, fancy indexing, linear algebra —
+    builds on these six concepts. This model explains three things:
+
+    - **Performance**: contiguous memory + compiled C loops = near-C speed
+    - **Flexibility**: changing dtype or shape reinterprets existing bytes without copying
+    - **Behavior**: views share the data buffer, so mutations propagate; copies don't
+
 ## Core Architecture
 
 ### 1. C-Contiguous Memory

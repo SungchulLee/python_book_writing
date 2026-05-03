@@ -2,6 +2,9 @@
 
 Tuples are optimized in CPython through tuple interning and caching, making them faster for hashable collections and reducing memory usage. Understanding these optimizations explains why tuples are preferred for immutable sequences and dictionary keys.
 
+!!! tip "Mental Model"
+    Because tuples are immutable, CPython can cache and reuse them aggressively. Small tuples with constant elements may be interned (shared across your program), and freed tuples are recycled from a free list instead of being garbage-collected. This makes tuple creation and destruction significantly cheaper than list equivalents.
+
 ---
 
 ## Tuple Interning

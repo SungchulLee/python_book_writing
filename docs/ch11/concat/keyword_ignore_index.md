@@ -2,6 +2,9 @@
 
 The `ignore_index` parameter resets the index of the concatenated result to a new RangeIndex.
 
+!!! tip "Mental Model"
+    When you stack two DataFrames, their original indices tag along, often producing duplicates like `[0, 1, 0, 1]`. Setting `ignore_index=True` throws away those old labels and renumbers from scratch -- `[0, 1, 2, 3]`. Use it whenever the original index values carry no meaning.
+
 ## Default Behavior
 
 By default, original indices are preserved.

@@ -17,6 +17,9 @@ flowchart TD
     B --> C[integer result]
 ````
 
+!!! tip "Mental Model"
+    `int()` strips away everything that is not a whole number. For floats, it truncates toward zero (dropping the decimal part). For strings, it parses the text as a number. If the conversion is impossible---like `int("hello")`---Python raises a `ValueError` rather than guessing. This makes `int()` both a converter and a validator.
+
 ---
 
 ## 1. Basic Syntax

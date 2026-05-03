@@ -2,6 +2,9 @@
 
 The `kind` parameter in pandas `plot()` determines the type of visualization. This document covers all available plot types.
 
+!!! tip "Mental Model"
+    The `kind` parameter selects the chart type. Line for trends over time, bar for category comparisons, hist for distributions, scatter for relationships between two variables, box for distribution summaries. Each kind answers a different question about the data -- pick the kind that matches your question.
+
 ## Available Plot Types
 
 | kind | Plot Type | Use Case |

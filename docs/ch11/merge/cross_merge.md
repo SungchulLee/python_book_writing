@@ -2,6 +2,9 @@
 
 A cross merge produces the Cartesian product of two DataFrames, pairing every row from the left with every row from the right.
 
+!!! tip "Mental Model"
+    A cross merge is "every possible combination." If the left has M rows and the right has N rows, the result has M x N rows. It is SQL's `CROSS JOIN` -- useful for generating all pairings (e.g., students x exams) but dangerous on large tables because the output size explodes multiplicatively.
+
 ## Basic Concept
 
 Create all possible combinations of rows.

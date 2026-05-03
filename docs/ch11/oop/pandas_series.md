@@ -1,5 +1,8 @@
 # Series Object
 
+!!! tip "Mental Model"
+    A Series is a thin wrapper around a NumPy array plus an Index. The array holds the data, the Index provides labels, and the `name` attribute identifies which column it came from. When you do arithmetic between two Series, pandas aligns them by Index labels first -- this automatic alignment is the defining feature that separates Series from a plain array.
+
 ## Core Structure
 
 ### 1. Definition

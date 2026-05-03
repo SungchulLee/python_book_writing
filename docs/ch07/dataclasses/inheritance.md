@@ -2,6 +2,9 @@
 
 Dataclasses support inheritance with automatic handling of parent and child fields. Understanding field ordering rules is important.
 
+!!! tip "Mental Model"
+    When a child dataclass inherits from a parent, Python concatenates the parent's fields before the child's fields to build `__init__`. This means a parent field with a default followed by a child field without one creates an illegal signature (positional after keyword). Think of it as stacking cards: the parent's cards go on the bottom, the child's on top, and the resulting deck must follow Python's argument-ordering rules.
+
 ---
 
 ## Basic Inheritance
@@ -144,6 +147,36 @@ print(col2)  # ExtendedCollection(items=[], metadata={})  # Independent
 - Place required fields in parent, optional in child
 - Call `super().__post_init__()` when overriding
 - Consider composition over inheritance for complex cases
+
+!!! warning "Dataclass inheritance is convenient but brittle"
+    Keep hierarchies shallow (one level of inheritance is ideal). Beyond two levels,
+    field ordering constraints compound, defaults become hard to manage, and
+    `__post_init__` chaining grows fragile. If you find yourself fighting the
+    framework, flatten the hierarchy or switch to composition.
+
+!!! tip "When NOT to use inheritance"
+    Dataclass inheritance works well for shallow, "is-a" hierarchies (e.g., `Dog`
+    is an `Animal`). Prefer **composition** when:
+
+    - Behavior differs significantly between parent and child — you end up
+      overriding most methods, defeating the purpose of reuse.
+    - The hierarchy grows deeper than two levels — field ordering constraints
+      compound and defaults become hard to manage.
+    - You need to mix capabilities from multiple unrelated sources — multiple
+      inheritance with dataclasses can produce surprising MRO and field-order issues.
+
+    ```python
+    # Composition instead of deep inheritance
+    @dataclass
+    class Engine:
+        horsepower: int
+        fuel_type: str
+
+    @dataclass
+    class Car:
+        make: str
+        engine: Engine  # has-a, not is-a
+    ```
 
 ---
 

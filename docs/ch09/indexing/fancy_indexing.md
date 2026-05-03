@@ -203,6 +203,20 @@ Rearrange array elements in arbitrary order.
 
 Select random subsets using random index arrays.
 
+## Fancy Indexing vs Slicing
+
+!!! note "Key Contrast"
+    **Slicing** selects a contiguous range and returns a **view** (shared memory, no copy).
+    **Fancy indexing** selects arbitrary, possibly non-contiguous positions and always returns a **copy**.
+
+    ```python
+    a = np.arange(10)
+    s = a[2:5]        # slice → view, contiguous [2, 3, 4]
+    f = a[[2, 7, 0]]  # fancy → copy, arbitrary [2, 7, 0]
+    ```
+
+    Use slicing when positions are contiguous; use fancy indexing when you need arbitrary reordering, sampling, or permutation.
+
 ## Fancy Indexing vs Boolean Masking
 
 Both return copies, but they serve different purposes:

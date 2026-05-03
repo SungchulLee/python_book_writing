@@ -15,6 +15,9 @@ flowchart LR
     B --> E[variables]
 ````
 
+!!! tip "Mental Model"
+    `import` is how Python files share code. When you write `import math`, Python finds the `math.py` file, executes it once, and gives you access to its names. The imported module's code runs at import time, and subsequent imports reuse the already-loaded module rather than re-executing it.
+
 ---
 
 ## 1. What Is a Module?

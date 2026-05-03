@@ -2,6 +2,9 @@
 
 Every hypothesis test begins with a precise question: is there evidence that a population parameter differs from a specified value? To answer this, we formulate two competing statements — the null hypothesis, which represents the status quo, and the alternative hypothesis, which represents the effect we are trying to detect. The testing framework then uses sample data to decide which hypothesis the evidence supports.
 
+!!! tip "Mental Model"
+    The null hypothesis is the "nothing special is happening" baseline; the alternative is the claim you hope to prove. The test assumes the null is true and asks whether the data are too surprising to be consistent with it. You never prove the null -- you either reject it or fail to find enough evidence against it.
+
 ---
 
 ## Definitions

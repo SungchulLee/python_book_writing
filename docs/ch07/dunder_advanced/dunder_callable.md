@@ -4,11 +4,17 @@ In Python, any object with a `__call__` method is considered callable — you ca
 
 Callable objects are powerful because, unlike plain functions, they can carry state between invocations. Whenever you need a function that remembers configuration or accumulates results, a callable object is a natural fit.
 
+!!! tip "Mental Model"
+    A callable object is a function that remembers. Where a plain function is stateless (or relies on closures), a callable object stores configuration in `self` and uses `__call__` as its entry point. Think of it as upgrading a function to a class whenever you need persistent state between calls.
+
 ## Making Objects Callable
 
 ### 1. The __call__ Method
 
-When you define `__call__` on a class, instances of that class become callable. Writing `obj(args)` is translated by Python into `obj.__call__(args)`. This means the instance behaves like a function while retaining all the benefits of being an object, including mutable internal state and inheritance.
+When you define `__call__` on a class, instances of that class become callable. Conceptually, writing `obj(args)` is translated by Python into `type(obj).__call__(obj, args)` — Python looks up `__call__` on the **class**, not the instance. (The actual C-level call path is more complex, but this model is accurate for understanding behavior.) This is the same descriptor-based lookup used by all dunder methods.
+
+!!! note "Class Lookup, Not Instance Lookup"
+    `obj()` does **not** call `obj.__call__()` via instance attribute lookup. It calls `type(obj).__call__(obj)`, which means `__call__` must be defined on the class (or a superclass), not assigned to the instance. This is consistent with how all Python protocols work: the method is looked up on the type, not on the object itself.
 
 ### 2. Use Cases
 
@@ -64,6 +70,10 @@ Use a **closure** when the state is simple and read-only. Use a **callable objec
 - Callable objects combine the convenience of function call syntax with the ability to store and update internal state.
 - Prefer closures for simple stateless or read-only-state cases; prefer callable objects when you need mutability, methods, or introspection.
 - Common applications include configurable operations (strategy pattern), stateful decorators, and state machines.
+- Callable objects are widely used in libraries like PyTorch (`nn.Module.__call__`), scikit-learn (transformers), and TensorFlow (layers) — any framework where objects need to behave like functions while carrying learned state.
+
+!!! warning "When NOT to Use __call__"
+    Don't implement `__call__` when its meaning would be ambiguous. A `User()` object that is callable — what does calling it do? If the answer is not immediately obvious, use a named method instead. Protocols should make code **more readable**, not clever.
 
 ---
 
@@ -548,3 +558,89 @@ Build a `Pipeline` callable class that chains multiple functions together. Its `
 
         math_pipe = Pipeline([abs, float, lambda x: x ** 2])
         print(math_pipe(-5))  # 25.0
+
+---
+
+**Exercise 4.**
+Explain why the following code does not make the instance callable, even though `__call__` is assigned as an instance attribute. What does this reveal about how Python looks up dunder methods?
+
+```python
+class Foo:
+    pass
+
+f = Foo()
+f.__call__ = lambda: "called!"
+f()  # TypeError: 'Foo' object is not callable
+```
+
+??? success "Solution to Exercise 4"
+
+    Python looks up dunder methods on the **class** (via `type(obj)`), not on the instance. When you write `f()`, Python does `type(f).__call__(f)`, which looks for `__call__` on `Foo`, not on `f` itself. Since `Foo` doesn't define `__call__`, the call fails with `TypeError`.
+
+    The instance attribute `f.__call__` exists but is never consulted by the call machinery. To make it work, you must define `__call__` on the class:
+
+        class Foo:
+            def __call__(self):
+                return "called!"
+
+        f = Foo()
+        f()  # "called!" — works because __call__ is on the class
+
+    This class-based lookup rule applies to all dunder methods (`__len__`, `__iter__`, `__enter__`, etc.) and is part of Python's data model. It exists so that metaclasses and type behavior remain consistent — the class defines the behavior, not individual instances.
+
+---
+
+**Exercise 5.**
+Compare a closure and a callable class for implementing a rate limiter that allows at most `n` calls per `interval` seconds. Implement both approaches. Then explain which is easier to extend if you later need to add a `reset()` method and track the total number of rejected calls.
+
+??? success "Solution to Exercise 5"
+
+        import time
+
+        # Closure approach
+        def make_rate_limiter(max_calls, interval):
+            timestamps = []
+
+            def limiter():
+                now = time.time()
+                # Remove expired timestamps
+                while timestamps and now - timestamps[0] > interval:
+                    timestamps.pop(0)
+                if len(timestamps) < max_calls:
+                    timestamps.append(now)
+                    return True
+                return False
+
+            return limiter
+
+        # Callable class approach
+        class RateLimiter:
+            def __init__(self, max_calls, interval):
+                self.max_calls = max_calls
+                self.interval = interval
+                self._timestamps = []
+                self.rejected = 0
+
+            def __call__(self):
+                now = time.time()
+                while self._timestamps and now - self._timestamps[0] > self.interval:
+                    self._timestamps.pop(0)
+                if len(self._timestamps) < self.max_calls:
+                    self._timestamps.append(now)
+                    return True
+                self.rejected += 1
+                return False
+
+            def reset(self):
+                self._timestamps.clear()
+                self.rejected = 0
+
+        # Usage
+        limiter = RateLimiter(max_calls=3, interval=1.0)
+        print(limiter())  # True
+        print(limiter())  # True
+        print(limiter())  # True
+        print(limiter())  # False — rate limited
+        print(f"Rejected: {limiter.rejected}")  # 1
+
+    The closure works but cannot easily gain a `reset()` method or a `rejected` counter without resorting to mutable containers (e.g., a `dict`) shared between inner functions — which is awkward. The callable class naturally supports additional methods and attributes, making it the better choice when the "function" needs to grow beyond simple state.

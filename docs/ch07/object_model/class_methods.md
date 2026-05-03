@@ -2,6 +2,9 @@
 
 Class methods receive the class itself as the first argument, enabling operations on class-level data and alternative constructors. Unlike [instance methods](instance_methods.md) that bind to an object via `self`, class methods bind to the class via `cls`. For utilities that need neither, see [Static Methods](static_methods.md).
 
+!!! tip "Mental Model"
+    An instance method works on one object (`self`); a class method works on the class itself (`cls`). The most common use is alternative constructors -- `dict.fromkeys()`, `datetime.now()` -- that create instances through a different entry point than `__init__`. Because `cls` is passed automatically, class methods also work correctly with inheritance: a subclass calling an inherited class method receives its own class, not the parent.
+
 ---
 
 ## What are Class Methods
@@ -246,7 +249,15 @@ print(Parent.count) # 0
 
 ### 2. `cls` is Dynamic
 
-`cls` refers to the calling class, not the class where the method was defined. Under the hood, `@classmethod` is a descriptor that wraps the function and binds it to whatever class triggers the lookup --- this is why `Child.increment()` sets `cls` to `Child`, not `Parent`.
+`cls` refers to the calling class, not the class where the method was defined. Under the hood, `@classmethod` is a descriptor whose `__get__` method returns a callable
+bound to the class rather than the instance:
+
+```text
+classmethod.__get__(None, Child) → function bound to Child
+```
+
+This is why `Child.increment()` sets `cls` to `Child`, not `Parent` — the
+descriptor binds to whatever class triggered the attribute lookup.
 
 ### 3. Polymorphic Behavior
 

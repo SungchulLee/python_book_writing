@@ -2,6 +2,9 @@
 
 `TypeVar` defines type variables for generic functions and classes, allowing flexible yet type-safe code.
 
+!!! tip "Mental Model"
+    A `TypeVar` is a placeholder for "some type to be determined later." When you write `def first(items: list[T]) -> T`, the `T` binds to whatever type the caller passes — `list[int]` makes it `int`, `list[str]` makes it `str`. This lets you write one function that is generic yet fully type-checked, without resorting to `Any`.
+
 ## TypeVar - Generic Type Variables
 
 Use TypeVar to write generic functions that work with any type.

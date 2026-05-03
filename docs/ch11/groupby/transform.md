@@ -2,6 +2,9 @@
 
 The `transform()` method applies a function to each group and returns a result with the same shape as the original DataFrame.
 
+!!! tip "Mental Model"
+    `transform` is the shape-preserving counterpart to `agg`. While `agg` collapses each group to one row, `transform` broadcasts the group result back to every row of that group. This is how you create columns like "each value minus its group mean" -- the group statistic is repeated to match the original row count.
+
 ## Basic Concept
 
 Transform preserves the original index.

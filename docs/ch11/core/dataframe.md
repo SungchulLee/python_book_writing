@@ -2,6 +2,9 @@
 
 A **DataFrame** is a two-dimensional labeled data structure with columns of potentially different types. It is the primary pandas data structure for tabular data, analogous to a spreadsheet or SQL table.
 
+!!! tip "Mental Model"
+    A DataFrame is a dictionary of Series that share the same index. Each column can have its own dtype (int, float, string), but all columns are aligned by a common set of row labels. Think of it as a spreadsheet where the row numbers are replaced by meaningful labels and each column is a typed array.
+
 ## Conceptual Overview
 
 A DataFrame can be thought of as:

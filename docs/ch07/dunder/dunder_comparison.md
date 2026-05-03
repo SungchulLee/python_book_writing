@@ -2,6 +2,9 @@
 
 Comparison dunder methods enable custom comparison logic and sorting for your objects.
 
+!!! tip "Mental Model"
+    Comparison dunders teach Python what "equal", "less than", and "greater than" mean for your type. Define `__eq__` and `__lt__`, then apply `@functools.total_ordering` to get all six operators for free. Always return `NotImplemented` for incompatible types so Python can try the other operand's method instead of crashing.
+
 ## Basic Comparison Methods
 
 ### Equality: `__eq__`

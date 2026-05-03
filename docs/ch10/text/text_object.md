@@ -2,6 +2,20 @@
 
 Text objects in Matplotlib represent any text element including tick labels, axis labels, titles, and annotations.
 
+!!! tip "Mental Model"
+    Every piece of text on a Matplotlib figure -- every tick label, title, axis label, and annotation -- is a `Text` Artist object. This means you can grab any text element, inspect its properties (`get_fontsize()`, `get_position()`), and modify it after creation (`set_color()`, `set_rotation()`). Understanding this unifies all text customization under one interface.
+
+!!! tip "Debugging Text Layout"
+    When text overlaps or appears misaligned:
+
+    1. **Inspect position**: `text_obj.get_position()` — is it where you expect?
+    2. **Check transform**: `text_obj.get_transform()` — data coords vs axes coords?
+    3. **Check alignment**: `text_obj.get_ha()`, `text_obj.get_va()` — anchor point correct?
+    4. **Visualize bbox**: `text_obj.get_bbox_patch()` or add `bbox=dict(boxstyle='round')` to see the text extent
+
+    Most "misaligned" text is actually a transform or alignment issue, not a
+    position issue.
+
 ---
 
 ## Text Objects in Axes

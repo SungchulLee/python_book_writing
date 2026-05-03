@@ -2,6 +2,9 @@
 
 NumPy's legacy functions `np.polyfit` and `np.poly1d` represent polynomials with coefficients in descending power order, which can cause numerical instability for high-degree fits. The `np.polynomial` module provides a modern replacement that stores coefficients in ascending order, supports fitting over shifted and scaled domains, and offers multiple polynomial bases beyond the standard power basis. This page covers the modern API and highlights the practical differences from the legacy interface.
 
+!!! tip "Mental Model"
+    The modern `Polynomial` class fixes the two biggest problems with the legacy API: coefficient order is ascending (constant term first, matching math convention), and fitting automatically maps data to a `[-1, 1]` window for numerical stability. If you are starting new code, prefer `numpy.polynomial.Polynomial` over `np.polyfit`/`np.poly1d`.
+
 ```python
 import numpy as np
 from numpy.polynomial import Polynomial
@@ -221,6 +224,29 @@ print(modern_coeffs)  # [1. 1. 1.] → 1 + 1·x + 1·x²
 
 !!! warning "Coefficient Order Matters"
     The legacy and modern APIs use **opposite** coefficient orderings. Passing legacy coefficients to modern functions (or vice versa) produces wrong results. Always check which convention a function expects.
+
+---
+
+## When polyfit Fails but Polynomial.fit Works
+
+Large x-ranges cause `polyfit` to produce garbage while `Polynomial.fit` handles them gracefully thanks to automatic domain mapping:
+
+```python
+import numpy as np
+from numpy.polynomial import Polynomial
+
+x = np.linspace(0, 10000, 50)
+y = np.sin(x / 1000)
+
+# Legacy — ill-conditioned, coefficients are unreliable
+legacy_coeffs = np.polyfit(x, y, 8)
+legacy_pred = np.polyval(legacy_coeffs, x)
+print(f"polyfit max error:        {np.max(np.abs(legacy_pred - y)):.2e}")
+
+# Modern — automatic domain mapping keeps it stable
+p_modern = Polynomial.fit(x, y, 8)
+print(f"Polynomial.fit max error: {np.max(np.abs(p_modern(x) - y)):.2e}")
+```
 
 ---
 

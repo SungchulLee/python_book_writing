@@ -2,6 +2,9 @@
 
 `dumps()` converts Python objects to JSON strings, while `loads()` parses JSON strings into Python objects.
 
+!!! tip "Mental Model"
+    `dumps` and `loads` are a serialization round-trip. `dumps` ("dump string") takes a Python object and produces a JSON-formatted string; `loads` ("load string") takes a JSON string and reconstructs a Python object. They are the in-memory workhorses of the `json` module — no files involved, just strings in and out.
+
 ## dumps - Python to JSON String
 
 Convert Python objects to JSON strings.

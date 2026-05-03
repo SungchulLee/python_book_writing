@@ -3,6 +3,9 @@
 Python provides three levels of string comparison, each appropriate for
 different situations.
 
+!!! tip "Mental Model"
+    String comparison has three levels of strictness: exact (`==`), normalized (same visual form), and case-folded (case-insensitive). Each level handles more real-world variation but requires more processing. Choose the simplest level that matches your requirements -- exact for internal keys, normalized for user input, case-folded for search.
+
 ---
 
 ## Level 1: Exact Comparison

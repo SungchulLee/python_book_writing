@@ -2,6 +2,9 @@
 
 pandas aligns operations by **index labels**, not by position. This powerful feature can also cause subtle bugs when indices don't match as expected.
 
+!!! tip "Mental Model"
+    Pandas always aligns by label before operating. If two Series have different index labels, unmatched labels produce NaN -- even if both Series have the same length. This is a feature, not a bug: it prevents accidental position-based mismatches. Use `.reset_index(drop=True)` or `.values` when you intentionally want position-based alignment.
+
 ## The Alignment Behavior
 
 ```python

@@ -1,5 +1,8 @@
 # Built-in Names
 
+!!! tip "Mental Model"
+    Python ships with roughly 150 names pre-loaded into every module: functions like `len` and `print`, types like `int` and `dict`, and exceptions like `ValueError`. These names live in the `builtins` module and are looked up last in the LEGB chain. Knowing what is built-in helps you avoid accidentally shadowing these names with your own variables.
+
 ## View Built-ins
 
 ### 1. List All

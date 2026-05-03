@@ -1,5 +1,8 @@
 # Single Machine vs Cluster
 
+!!! tip "Mental Model"
+    A single machine is like one strong worker -- simple to manage but limited by what one person can carry. A cluster is a team of workers that can share the load, but now you pay the cost of communication and coordination. Use one machine until you hit a hard wall (RAM, time, or availability), then distribute.
+
 ## When One Computer Isn't Enough
 
 A single machine has hard limits. When you exceed them, you need multiple machines working together.

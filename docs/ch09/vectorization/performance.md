@@ -2,6 +2,9 @@
 
 Vectorization is the single most important performance concept in NumPy.
 
+!!! tip "Mental Model"
+    Every Python `for` loop iteration pays a fixed overhead for type checking, reference counting, and interpreter dispatch. Vectorized NumPy operations pay that overhead once for the entire array and then run a tight C loop internally. The speedup is typically 10-100x, growing with array size because the per-element overhead vanishes.
+
 ## Python Loop Cost
 
 ### 1. Loop Overhead

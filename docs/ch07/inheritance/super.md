@@ -2,6 +2,9 @@
 
 The `super()` function enables cooperative multiple inheritance by following the [Method Resolution Order (MRO)](mro.md). Together with [C3 linearization](c3_linearization.md), it forms the core of Python's method dispatch: C3 computes the order, the MRO stores it, and `super()` walks it.
 
+!!! tip "Mental Model"
+    `super()` does not mean "call my parent." It means "call the next class in the MRO." In single inheritance the next class *is* the parent, so the distinction is invisible. In multiple inheritance, `super()` may call a sibling class you never directly inherited from. This cooperative chain is what makes diamond inheritance work correctly.
+
 ---
 
 ## What `super()` Does
@@ -44,6 +47,20 @@ class D(B, C):
     5. Returns the bound method (which you then call)
 
     This is why `super()` is MRO-aware and not simply "call my parent" — step 2 uses the full MRO of the actual instance, which may include classes the current class knows nothing about.
+
+!!! warning "Do Not Pass `self` to `super().method()`"
+
+    Because step 4 above **binds** the method to the instance, `super().method()` is already a bound method call — `self` is supplied automatically. Writing `super().method(self)` passes `self` **twice**, which typically raises `TypeError` due to an extra argument.
+
+    ```python
+    # ✅ Correct — self is bound automatically
+    super().method()
+
+    # ❌ Wrong — self passed twice
+    super().method(self)
+    ```
+
+    This is the same reason you write `self.method()` and not `self.method(self)` — method binding handles it for you.
 
 ---
 

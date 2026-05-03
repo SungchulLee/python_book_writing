@@ -1,5 +1,8 @@
 # Bad Practices
 
+!!! tip "Mental Model"
+    Every bad naming practice boils down to one mistake: choosing a name that collides with something Python already uses. Shadowing `list`, `type`, or `id` with your own variable hides the built-in silently and causes confusing errors later. If your editor highlights a name as a built-in, pick a different name.
+
 ## Shadowing Built-ins
 
 ### 1. Common Mistakes

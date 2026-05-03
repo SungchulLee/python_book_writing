@@ -2,6 +2,9 @@
 
 Choosing the right package manager depends on your use case. This page compares the major options.
 
+!!! tip "Mental Model"
+    pip installs Python-only packages from PyPI; conda/mamba installs Python *and* non-Python dependencies from conda channels; Homebrew installs system-level tools on macOS. Pick pip for pure-Python projects, conda/mamba for data science with heavy binary dependencies, and Homebrew for the OS-level tools that sit beneath both.
+
 ---
 
 ## Overview

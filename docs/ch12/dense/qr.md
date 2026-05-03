@@ -2,6 +2,9 @@
 
 QR decomposition factors a matrix into orthogonal and upper triangular components.
 
+!!! tip "Mental Model"
+    QR decomposition is the matrix version of Gram-Schmidt orthogonalization: it factors $A = QR$ where $Q$ has orthonormal columns and $R$ is upper triangular. Because orthogonal transformations preserve lengths and angles, QR is numerically more stable than LU for least-squares problems and is the backbone of modern eigenvalue algorithms.
+
 ## Basic Decomposition
 
 ### 1. linalg.qr

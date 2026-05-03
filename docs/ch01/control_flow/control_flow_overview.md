@@ -56,6 +56,9 @@ Together, these tools allow a program to:
 
 This combination is what makes programs responsive rather than static.
 
+!!! tip "Mental Model"
+    Without control flow, a program is a straight line---every statement runs once, in order. Control flow adds three powers: branching (choose which code runs), looping (repeat code), and early exit (stop when done). These three mechanisms turn static scripts into programs that adapt to their inputs.
+
 ## Exercises
 
 **Exercise 1.** Summarize the key concepts introduced in this overview in your own words. Identify which concept you find most important and explain why.

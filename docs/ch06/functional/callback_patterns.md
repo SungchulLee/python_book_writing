@@ -2,6 +2,9 @@
 
 A callback is a function passed as an argument to another function, to be called later. Callbacks are fundamental to event-driven programming, asynchronous operations, and flexible APIs.
 
+!!! tip "Mental Model"
+    A callback is a "call me when you're done" contract: you hand a function to someone else's code, and that code invokes it at the right moment. The caller decides *what* to do; the callee decides *when*. This inversion of control is the foundation of event-driven and asynchronous programming.
+
 ---
 
 ## What is a Callback?

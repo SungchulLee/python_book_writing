@@ -1,5 +1,8 @@
 # add_subplot vs subplots
 
+!!! tip "Mental Model"
+    `fig.add_subplot()` builds a grid one cell at a time -- useful when subplots are added conditionally or in a loop. `plt.subplots()` builds the entire grid in one call and returns all Axes at once -- simpler for fixed layouts. Choose `add_subplot` for dynamic construction and `subplots` for everything else.
+
 ## Overview
 
 Matplotlib provides two main ways to create axes within a figure:

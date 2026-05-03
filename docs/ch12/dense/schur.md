@@ -2,6 +2,9 @@
 
 Schur decomposition factors a matrix into quasi-triangular form.
 
+!!! tip "Mental Model"
+    Schur decomposition writes $A = ZTZ^*$ where $Z$ is unitary and $T$ is upper (quasi-)triangular with eigenvalues on the diagonal. Unlike eigendecomposition, Schur always exists and is numerically stable, making it the reliable workhorse behind matrix functions like `expm` and `logm` that need eigenvalue information without computing eigenvectors explicitly.
+
 ## Basic Decomposition
 
 ### 1. linalg.schur

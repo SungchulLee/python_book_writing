@@ -1,5 +1,8 @@
 # Guarantees vs Details
 
+!!! tip "Mental Model"
+    Draw a sharp line between what the language promises (immutability, identity stability, type semantics) and what CPython happens to do (integer caching, reference counting). Write code that depends only on guarantees, and treat everything else as an optimization you observe but never rely on.
+
 ## Language Guarantees
 
 ### 1. Semantic Behavior

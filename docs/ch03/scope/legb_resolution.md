@@ -1,5 +1,8 @@
 # LEGB Resolution
 
+!!! tip "Mental Model"
+    When Python encounters a name, it searches four scopes in order: Local, Enclosing, Global, Built-in -- the LEGB rule. The first match wins. Reading follows LEGB automatically, but writing always targets the local scope unless you explicitly declare `global` or `nonlocal`.
+
 ## Four Scopes
 
 ### 1. Local (L)

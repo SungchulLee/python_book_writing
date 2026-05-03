@@ -8,6 +8,9 @@ Python has two ways to ask whether things are "the same," and they answer fundam
 
 Two identical twins might look the same (equal) but they are still two different people (different identity). Conversely, the same person seen from two different angles is both equal to and identical with themselves.
 
+!!! tip "Mental Model"
+    Equality (`==`) asks whether two objects carry the same value; identity (`is`) asks whether they are literally the same object in memory. Two objects can be equal without being identical, but every object is always both equal to and identical with itself.
+
 ---
 
 ## 1. The `is` Operator

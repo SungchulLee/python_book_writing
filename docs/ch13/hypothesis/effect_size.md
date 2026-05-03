@@ -2,6 +2,9 @@
 
 A p-value tells you whether an observed effect is statistically significant, but it says nothing about how large or practically important that effect is. Effect size measures fill this gap by quantifying the magnitude of a difference or relationship on a standardized scale. Reporting effect sizes alongside p-values is now required by most major journals and is essential for power analysis and meta-analysis.
 
+!!! tip "Mental Model"
+    A p-value answers "is there an effect?" while effect size answers "how big is it?" With enough data, even a trivially small difference becomes statistically significant. Effect size strips away sample size to reveal the practical magnitude -- Cohen's $d = 0.2$ is a small nudge, $d = 0.8$ is a large shift.
+
 ---
 
 ## Cohen's d

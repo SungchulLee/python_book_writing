@@ -2,6 +2,9 @@
 
 SciPy provides eigenvalue solvers for general (non-symmetric) matrices.
 
+!!! tip "Mental Model"
+    An eigenvalue tells you the factor by which a matrix stretches along a particular direction (the eigenvector). For non-symmetric matrices, eigenvalues can be complex even when the matrix is real, so `linalg.eig` always returns complex arrays. If your matrix is symmetric, use `eigh` instead for guaranteed real eigenvalues and faster computation.
+
 ## linalg.eig
 
 ### 1. Basic Usage

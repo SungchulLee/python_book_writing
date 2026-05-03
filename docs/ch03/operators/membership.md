@@ -2,6 +2,9 @@
 
 Membership operators test whether a value exists in a sequence (string, list, tuple, set, dict).
 
+!!! tip "Mental Model"
+    `in` is a membership question: "is this item in that container?" For lists and tuples it scans linearly (O(n)); for sets and dicts it hashes and jumps (O(1)). For strings, `in` checks substring containment, not just single characters. Choosing the right container type determines how fast `in` runs.
+
 | Operator | Description | Example | Result |
 |----------|-------------|---------|--------|
 | `in` | Value found | `'a' in 'cat'` | `True` |

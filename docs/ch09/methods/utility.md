@@ -1,5 +1,8 @@
 # Utility Functions
 
+!!! tip "Mental Model"
+    Utility functions like `np.round`, `np.clip`, `np.unique`, and `np.diff` handle the small but essential data-wrangling steps that sit between major computations. They are all vectorized, so there is no need to loop. Think of them as the **data cleaning and preprocessing layer** — the stage that converts raw arrays into analysis-ready form by enforcing bounds, removing duplicates, and detecting changes.
+
 ## np.round
 
 ### 1. Basic Usage
@@ -622,3 +625,45 @@ Use `np.diff` to compute the first and second differences of `a = np.array([1, 4
         print(f"First differences: {d1}")   # [3 5 7 9]
         print(f"Second differences: {d2}")  # [2 2 2]
         print(f"All second diffs are 2: {np.all(d2 == 2)}")
+
+---
+
+**Exercise 4.**
+Use `np.unique` with `return_inverse=True` to encode categorical labels. Given `labels = np.array(["cat", "dog", "cat", "bird", "dog", "cat"])`, get the unique categories and the integer encoding. Then reconstruct the original labels from the encoding.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        labels = np.array(["cat", "dog", "cat", "bird", "dog", "cat"])
+        categories, encoded = np.unique(labels, return_inverse=True)
+
+        print(f"Categories: {categories}")  # ['bird' 'cat' 'dog']
+        print(f"Encoded:    {encoded}")     # [1 2 1 0 2 1]
+
+        # Reconstruct
+        reconstructed = categories[encoded]
+        print(f"Reconstructed: {reconstructed}")
+        print(f"Match: {np.array_equal(labels, reconstructed)}")  # True
+
+---
+
+**Exercise 5.**
+Use `np.nan`-safe functions to compute summary statistics of an array with missing values. Given `a = np.array([1, np.nan, 3, np.nan, 5, 6, np.nan, 8])`, compute the mean, max, and count of non-NaN values using `np.nanmean`, `np.nanmax`, and `np.count_nonzero(~np.isnan(a))`.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        a = np.array([1, np.nan, 3, np.nan, 5, 6, np.nan, 8])
+
+        print(f"nanmean: {np.nanmean(a):.2f}")     # 4.60
+        print(f"nanmax:  {np.nanmax(a):.2f}")       # 8.00
+        print(f"nanmin:  {np.nanmin(a):.2f}")       # 1.00
+
+        n_valid = np.count_nonzero(~np.isnan(a))
+        print(f"Valid count: {n_valid}")             # 5
+        print(f"NaN count:   {np.isnan(a).sum()}")  # 3
+
+        # Compare with non-nan-safe versions
+        print(f"np.mean(a): {np.mean(a)}")  # nan — NaN propagates!

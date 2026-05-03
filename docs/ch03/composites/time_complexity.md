@@ -2,6 +2,9 @@
 
 Python data structures have different time complexity characteristics for common operations. Understanding these complexities is crucial for writing efficient code and choosing the right data structure.
 
+!!! tip "Mental Model"
+    Lists are fast at the end (append/pop are O(1)) but slow at the front (insert/delete are O(n) because everything shifts). Dicts and sets are fast everywhere for lookup, insert, and delete (O(1) average) but use more memory. Choosing the right container is choosing the right trade-off between access pattern and memory cost.
+
 ---
 
 ## List Operations

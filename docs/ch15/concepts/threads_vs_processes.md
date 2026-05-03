@@ -2,6 +2,9 @@
 
 Understanding the fundamental differences between threads and processes is essential for choosing the right concurrency model.
 
+!!! tip "Mental Model"
+    Threads are roommates sharing one apartment (memory space) -- communication is easy but they can trip over each other. Processes are neighbors in separate apartments -- they need to pass messages through the mailbox (IPC) but can never accidentally mess with each other's stuff. Choose threads for cheap, fast communication; choose processes for isolation and true CPU parallelism.
+
 ---
 
 ## Fundamental Difference

@@ -2,6 +2,9 @@
 
 Correlation measures linear dependence between two variables, but many important relationships are nonlinear. Mutual information provides a more general measure: it quantifies the total amount of information that one random variable provides about another, capturing all forms of statistical dependence. When two variables are independent, knowing one tells us nothing about the other, and mutual information is zero. This section defines mutual information, derives its equivalent characterizations in terms of entropy, and establishes its key properties.
 
+!!! tip "Mental Model"
+    Mutual information measures how much knowing $X$ reduces your uncertainty about $Y$ (and vice versa). Unlike correlation, it captures all forms of dependence -- linear, nonlinear, or otherwise. It equals zero if and only if $X$ and $Y$ are truly independent, making it a universal detector of statistical relationships.
+
 ## Definition
 
 Let $X$ and $Y$ be discrete random variables with joint distribution $p(x, y)$ and marginal distributions $p(x)$ and $p(y)$. The **mutual information** between $X$ and $Y$ is

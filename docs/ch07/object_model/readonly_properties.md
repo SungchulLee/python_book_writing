@@ -1,5 +1,8 @@
 # Read-Only Properties
 
+!!! tip "Mental Model"
+    A read-only property is a `@property` with no setter -- any attempt to assign to it raises `AttributeError`. Use it for values that should be computed or derived but never overwritten from outside, like a circle's area from its radius. The property enforces the invariant at the language level, so you do not need to rely on naming conventions or documentation.
+
 ## Creating Read-Only
 
 ### 1. Property Without Setter

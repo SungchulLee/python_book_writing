@@ -2,6 +2,9 @@
 
 When writing decorators, `functools.wraps` preserves the original function's metadata. Without it, decorated functions lose their name, docstring, and other attributes.
 
+!!! tip "Mental Model"
+    A decorator replaces your function with a wrapper, and that wrapper has its own `__name__`, `__doc__`, and other attributes. `@wraps(func)` copies the original's metadata onto the wrapper so the outside world still sees the original identity. Think of it as a name tag transfer -- the wrapper wears the original's badge.
+
 ```python
 from functools import wraps
 ```

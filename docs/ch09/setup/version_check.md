@@ -1,5 +1,26 @@
 # Version Check
 
+!!! tip "Mental Model"
+    `np.__version__` is the quickest way to verify which NumPy you are running. Think of the version as a **contract between your code and the library**: your code assumes certain functions exist and behave in certain ways, and the version guarantees those assumptions hold. When the version changes, the contract may change too.
+
+    The critical insight: **version changes behavior, not just features.** A new
+    version may add functions (features), but it may also change default dtypes,
+    random number algorithms, or floating-point edge-case handling (behavior).
+    Code that produces correct results under one version can silently produce
+    different results under another — this is why version pinning is a
+    correctness issue, not just a convenience.
+
+!!! danger "Same Code, Different Version, Different Result"
+    ```python
+    # NumPy < 1.20: np.random.seed(42); np.random.random()
+    # produces 0.3745401188...
+
+    # NumPy >= 1.25 with default_rng:
+    # rng = np.random.default_rng(42); rng.random()
+    # produces 0.7739560485...
+    ```
+    The old and new random APIs produce completely different sequences from the same seed. Code that worked "correctly" under one version silently produces different results under another. This is why version checking and pinning are essential for reproducible computation.
+
 ## Check Version
 
 ### 1. Using __version__
@@ -226,3 +247,38 @@ python -c "import sys; print(sys.executable)"
 
 ??? success "Solution to Exercise 4"
     `np.random.default_rng()` was introduced in NumPy 1.17. Code using newer APIs will fail with `AttributeError` on older versions. Checking the version at startup lets you provide helpful error messages or fall back to older APIs.
+
+---
+
+**Exercise 5.**
+Write a decorator `requires_numpy(min_version)` that checks the NumPy version before running a function. If the version is too old, it should raise `RuntimeError` with a helpful message. Apply it to a function that uses `np.random.default_rng` (requires 1.17+).
+
+??? success "Solution to Exercise 5"
+    ```python
+    import numpy as np
+    import functools
+
+    def requires_numpy(min_version):
+        def decorator(func):
+            @functools.wraps(func)
+            def wrapper(*args, **kwargs):
+                installed = tuple(int(x) for x in np.__version__.split(".")[:3])
+                required = tuple(int(x) for x in min_version.split("."))
+                if installed < required:
+                    raise RuntimeError(
+                        f"{func.__name__} requires NumPy >= {min_version}, "
+                        f"but {np.__version__} is installed"
+                    )
+                return func(*args, **kwargs)
+            return wrapper
+        return decorator
+
+    @requires_numpy("1.17.0")
+    def generate_samples(n, seed=42):
+        rng = np.random.default_rng(seed)
+        return rng.standard_normal(n)
+
+    print(generate_samples(5))
+    ```
+
+    This pattern is useful in libraries that must support multiple NumPy versions. The decorator makes version requirements explicit and produces clear error messages instead of cryptic `AttributeError`s.

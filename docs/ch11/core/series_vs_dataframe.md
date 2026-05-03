@@ -2,6 +2,9 @@
 
 Understanding the relationship between Series and DataFrame is fundamental to working effectively with pandas. This document clarifies when to use each and how they interact.
 
+!!! tip "Mental Model"
+    A Series is one column; a DataFrame is a collection of columns sharing the same row index. Selecting a single column from a DataFrame returns a Series, and combining multiple Series side-by-side creates a DataFrame. The two types are not separate worlds -- they are the 1D and 2D faces of the same design.
+
 ## Structural Comparison
 
 ```

@@ -13,6 +13,9 @@ flowchart TD
     A --> D[hashable when all elements are hashable]
 ```
 
+!!! tip "Mental Model"
+    A tuple is a fixed record: once created, its contents cannot change. This immutability makes tuples safe to use as dictionary keys and set elements, and signals to readers that the data is meant to stay constant. Use a tuple when the structure is the point---like coordinates `(x, y)` or a database row.
+
 ---
 
 ## 1. Creating Tuples

@@ -2,6 +2,9 @@
 
 Many statistical methods — t-tests, ANOVA, linear regression — assume that the underlying data are normally distributed. Before applying these methods, normality tests provide a formal way to check whether this assumption is reasonable. A failed normality test signals that non-parametric alternatives or data transformations may be necessary.
 
+!!! tip "Mental Model"
+    Normality tests ask "could this data plausibly have come from a bell curve?" Shapiro-Wilk is the most powerful for small samples; D'Agostino-Pearson specifically checks skewness and kurtosis; Anderson-Darling emphasizes tail behavior. With large samples, all tests reject even tiny departures from normality, so always pair formal tests with visual diagnostics like QQ plots.
+
 The general hypotheses for all normality tests are
 
 $$

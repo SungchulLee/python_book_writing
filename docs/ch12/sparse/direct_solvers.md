@@ -2,6 +2,9 @@
 
 Direct methods for solving sparse linear systems.
 
+!!! tip "Mental Model"
+    Direct sparse solvers factor the matrix exactly (like LU), then solve by substitution. They give you the answer in a predictable amount of time with no convergence worries, but the factorization can create "fill-in" -- new nonzeros that weren't in the original matrix. For moderate-sized sparse systems, direct solvers are the reliable default; for very large systems, consider iterative methods instead.
+
 ## spsolve
 
 ### 1. Basic Usage

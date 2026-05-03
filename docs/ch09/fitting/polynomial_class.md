@@ -2,12 +2,25 @@
 
 The `numpy.polynomial.Polynomial` class wraps a coefficient array together with domain and window metadata into a single object. This design enables numerically stable fitting, evaluation, and arithmetic without manually managing coordinate transformations. While the sibling page on the np.polynomial module introduces the basics, this page explores the class mechanics in depth — domain and window mapping, weighted fitting, truncation, conversion, and serialization.
 
+!!! tip "Mental Model"
+    A `Polynomial` object bundles three things: coefficients, a domain (your data range), and a window (the numerical range used internally). When you evaluate or fit, the class silently maps between domain and window, keeping computations stable. Think of it as a polynomial that knows where it lives on the number line.
+
 ```python
 import numpy as np
 from numpy.polynomial import Polynomial
 ```
 
 ---
+
+!!! note "When You Need This"
+    You need the `Polynomial` class (beyond basic `Polynomial.fit`) when:
+
+    - **High-degree fits** — domain/window control prevents overflow
+    - **Large x-ranges** — automatic mapping to $[-1, 1]$ keeps computations stable
+    - **Basis conversion** — switching between power, Chebyshev, Legendre representations
+    - **Precision control** — truncation, trimming, and weighted fitting
+
+    For simple low-degree fits with moderate x-values, `Polynomial.fit(x, y, deg)` alone is sufficient.
 
 ## Construction
 

@@ -6,6 +6,9 @@ Parameters define the boundary between a function and its environment, controlli
 Functions become much more useful when they can accept **inputs**.
 Inputs allow the same function to work with different values each time it is called.
 
+!!! tip "Mental Model"
+    Parameters are the input slots of a function. When you define `def greet(name)`, you are declaring that `greet` expects one piece of data to work with. When you call `greet("Alice")`, the argument `"Alice"` is bound to the local name `name` inside the function's scope. Parameters make functions general; arguments make them specific.
+
 ## The Problem
 
 Consider this function from the previous page:

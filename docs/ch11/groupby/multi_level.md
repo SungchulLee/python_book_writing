@@ -2,6 +2,9 @@
 
 Group by multiple columns to create hierarchical aggregations.
 
+!!! tip "Mental Model"
+    Grouping by multiple columns creates a cross-tabulation: each unique combination of values forms one group. The result has a MultiIndex with one level per grouping column. Think of it as nested folders -- region, then city -- where each leaf folder contains the rows for that specific combination.
+
 ## Basic Multi-Level
 
 Group by multiple columns.

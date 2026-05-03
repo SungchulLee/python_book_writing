@@ -2,6 +2,9 @@
 
 Create 3D plotting axes in Matplotlib using projection parameter.
 
+!!! tip "Mental Model"
+    A 3D Axes is a regular Axes with `projection='3d'` that adds a z-axis and perspective rendering. The same Figure/Axes pattern applies -- you just pass the projection keyword when creating the Axes. Once you have a 3D Axes, methods like `plot()`, `scatter()`, and `plot_surface()` accept an extra z argument.
+
 ## Method 1: plt.subplots with subplot_kw
 
 ### Basic 3D Subplot

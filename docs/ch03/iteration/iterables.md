@@ -2,6 +2,9 @@
 
 Iteration is a core concept in Python. Understanding **iterables** and **iterators** explains how `for` loops, comprehensions, and many built-ins work.
 
+!!! tip "Mental Model"
+    An iterable is anything you can loop over; an iterator is the cursor that tracks your position in that loop. Calling `iter()` on an iterable creates an iterator; calling `next()` on that iterator advances it by one step. When there are no more items, the iterator raises `StopIteration` and the `for` loop ends.
+
 ---
 
 ## Iterables

@@ -2,6 +2,9 @@
 
 The `drop_duplicates()` method removes duplicate rows from a DataFrame.
 
+!!! tip "Mental Model"
+    `drop_duplicates()` scans for rows with identical values (across all or specified columns) and keeps only the first (or last) occurrence. The `subset` parameter narrows the uniqueness check to specific columns, and `keep` controls which duplicate survives. It is SQL's `SELECT DISTINCT` for DataFrames.
+
 ## Basic Usage
 
 Remove duplicate rows.

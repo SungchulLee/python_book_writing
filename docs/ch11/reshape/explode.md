@@ -2,6 +2,9 @@
 
 The `explode()` method transforms list-like elements in a column into separate rows, duplicating the index for each element. This is essential for normalizing nested data structures.
 
+!!! tip "Mental Model"
+    `explode` is the inverse of `groupby(...).agg(list)`. If a cell contains a list like `[a, b, c]`, explode creates three rows -- one per element -- duplicating the values in all other columns. It normalizes nested data into a flat, one-value-per-row format suitable for standard pandas operations.
+
 ## Basic Usage
 
 ### Exploding a Single Column

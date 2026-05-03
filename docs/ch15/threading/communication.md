@@ -2,6 +2,9 @@
 
 Threads need to communicate and share data safely. This page covers patterns for passing data between threads.
 
+!!! tip "Mental Model"
+    The safest way for threads to talk is through a `queue.Queue` -- a thread-safe pipe where one side puts data in and the other side takes data out. Queues eliminate the need for manual locking because all synchronization is built in. Think of it as a conveyor belt between workers: producers load items, consumers pick them up, and nobody's hands collide.
+
 ---
 
 ## Thread-Safe Queue

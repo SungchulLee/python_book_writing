@@ -2,6 +2,9 @@
 
 GroupBy objects support various aggregation methods to summarize grouped data.
 
+!!! tip "Mental Model"
+    A GroupBy aggregation is SQL's `GROUP BY` + aggregate function. The data is split into groups, a reduction function collapses each group to one row, and the results are combined into a smaller DataFrame. The output always has one row per unique group key.
+
 ## Basic Aggregations
 
 Apply single aggregation functions.

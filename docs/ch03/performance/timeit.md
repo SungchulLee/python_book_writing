@@ -2,6 +2,9 @@
 
 The timeit module measures execution time of code snippets, useful for benchmarking and performance comparison. It handles timing overhead and runs code multiple times for accurate results.
 
+!!! tip "Mental Model"
+    `timeit` is a stopwatch for code. It disables garbage collection, runs your snippet many times, and reports the total. By running many iterations it averages out noise from OS scheduling and caching. Always compare two approaches with `timeit` side by side rather than relying on intuition about which is faster.
+
 ---
 
 ## Basic Timing

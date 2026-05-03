@@ -2,6 +2,9 @@
 
 Access and modify environment variables through os.environ.
 
+!!! tip "Mental Model"
+    `os.environ` is a dictionary that mirrors the process's environment variables. Reading a key is like asking the operating system for a configuration value; setting a key changes it for the current process and any child processes it spawns. Use it for secrets, paths, and feature flags that should live outside your source code.
+
 ## Reading Environment Variables
 
 Access environment variables.

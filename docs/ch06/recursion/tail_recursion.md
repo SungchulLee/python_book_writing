@@ -2,6 +2,9 @@
 
 Tail recursion is an optimization where the recursive call is the last operation in a function. Some languages optimize tail calls, but Python doesn't support tail call optimization (TCO) by design.
 
+!!! tip "Mental Model"
+    In tail recursion, the recursive call is the very last thing the function does -- there is no pending work after it returns. This means the current stack frame is no longer needed and could, in theory, be reused. Python deliberately does not optimize this away (Guido values clear tracebacks), so in practice you convert tail-recursive Python code into a loop for the same benefit.
+
 ---
 
 ## Tail Recursive Pattern

@@ -2,6 +2,9 @@
 
 SciPy provides linear algebra functionality across multiple modules.
 
+!!! tip "Mental Model"
+    SciPy's linear algebra lives in three places: `scipy.linalg` for dense matrices, `scipy.sparse` for sparse matrix classes, and `scipy.sparse.linalg` for sparse solvers. Knowing which module to import is half the battle -- dense operations assume the full matrix fits in memory, while sparse operations work only with the nonzero entries.
+
 ## Core Modules
 
 ### 1. scipy.linalg

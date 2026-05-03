@@ -2,6 +2,9 @@
 
 # CPU Cores and Threads
 
+!!! tip "Mental Model"
+    A core is a separate worker that can do its own job independently; a thread is a task assigned to a worker. With multiple cores, a CPU can literally do several things at once. The catch in Python is the GIL, which often forces multiple threads to take turns on a single core -- so understanding this hardware-software mismatch is the key to choosing between threads and processes.
+
 Modern processors contain multiple independent execution units called **cores**. Operating systems schedule program execution onto these cores using **threads**.
 
 Understanding how cores, threads, and processes interact is essential for writing efficient concurrent and parallel programs, especially in Python.

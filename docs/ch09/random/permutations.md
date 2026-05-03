@@ -1,6 +1,6 @@
 # Random Permutations
 
-NumPy provides functions for randomly reordering array elements. A permutation is a **random ordering** --- it is the basis for shuffling datasets before training, bootstrap sampling, and randomized algorithms.
+NumPy provides functions for randomly reordering array elements. A permutation is a **random ordering** --- it is the basis for shuffling datasets before training, bootstrap sampling, and randomized algorithms. While distributions generate *new* random values, permutations rearrange *existing* data — a distinct but equally important form of randomization in the [random computation pipeline](uniform.md).
 
 !!! tip "Mental Model"
     `shuffle` rearranges elements in place and returns `None`; `permutation` returns a shuffled copy and leaves the original untouched. For multi-dimensional arrays, both operate only along the first axis (shuffling rows, not individual elements). Use `permutation` when you need to keep the original data intact.

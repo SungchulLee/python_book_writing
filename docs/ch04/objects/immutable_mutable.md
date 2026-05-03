@@ -1,5 +1,8 @@
 # Immutable vs Mutable
 
+!!! tip "Mental Model"
+    Immutable objects are like printed pages -- once created, their content cannot change, so any "modification" produces a brand-new page. Mutable objects are like whiteboards -- you can erase and rewrite freely, and everyone looking at the same whiteboard sees the update instantly.
+
 ## Immutable Objects
 
 ### 1. Cannot Change

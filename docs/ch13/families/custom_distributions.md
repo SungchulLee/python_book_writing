@@ -2,6 +2,9 @@
 
 The built-in distribution families in `scipy.stats` cover a wide range of common models, but real-world data sometimes requires a distribution with a specific functional form not available in the library. The `rv_continuous` base class provides a framework for defining custom continuous distributions that automatically gain access to all standard methods (PDF, CDF, PPF, random sampling, moment computation) once you specify the density.
 
+!!! tip "Mental Model"
+    Subclassing `rv_continuous` is like handing SciPy a formula for your density and getting a full distribution object in return. You provide `_pdf` (and optionally `_cdf`, `_ppf`); SciPy fills in sampling, moment computation, and fitting for free via numerical integration. The more methods you override, the faster and more accurate the result.
+
 ---
 
 ## The rv_continuous Subclass Pattern

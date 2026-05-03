@@ -2,6 +2,9 @@
 
 Resampling changes the frequency of time series data, either downsampling (e.g., daily to monthly) or upsampling (e.g., monthly to daily).
 
+!!! tip "Mental Model"
+    `resample` is `groupby` for time. Downsampling (daily to monthly) groups rows into time buckets and aggregates; upsampling (monthly to daily) creates new time slots and fills them. The frequency string (`'M'`, `'W'`, `'Q'`) defines the bucket size, and the chained aggregation method (`mean`, `sum`, `ohlc`) defines how values are combined.
+
 ## Basic Resampling
 
 Change time series frequency.

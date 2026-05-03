@@ -2,6 +2,9 @@
 
 Entropy quantifies the average amount of surprise or uncertainty in a random variable. A fair coin has maximum entropy because each flip is maximally unpredictable, while a heavily biased coin has lower entropy because one outcome is nearly certain. Introduced by Claude Shannon in 1948, entropy provides the theoretical foundation for data compression: it gives the minimum average number of bits needed to encode samples from a distribution. This section defines Shannon entropy, establishes its key properties, and extends the concept to continuous distributions.
 
+!!! tip "Mental Model"
+    Entropy is the average surprise of a random variable. Rare events are highly surprising ($-\log p$ is large); common events are not. A fair coin maximizes entropy because every outcome is equally uncertain. Entropy sets a hard floor on compression: you cannot encode samples from a distribution using fewer than $H$ bits on average.
+
 ## Definition
 
 Let $X$ be a discrete random variable taking values in a finite set $\mathcal{X}$ with probability mass function $p(x) = P(X = x)$. The **Shannon entropy** of $X$ is

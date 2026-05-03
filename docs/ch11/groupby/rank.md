@@ -2,6 +2,9 @@
 
 The `rank()` method assigns ranks to values within each group, useful for identifying top performers or creating rankings.
 
+!!! tip "Mental Model"
+    `rank()` inside a groupby is SQL's `RANK() OVER (PARTITION BY ...)`. Each group gets its own independent ranking -- the top value in group A is rank 1 regardless of values in group B. The result has the same shape as the original DataFrame, with rank numbers replacing the original values.
+
 ## Basic Ranking
 
 Rank values within groups.

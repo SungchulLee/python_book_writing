@@ -2,6 +2,9 @@
 
 These are specialized dict types for specific use cases.
 
+!!! tip "Mental Model"
+    `OrderedDict` is a dict that treats key order as first-class — you can move keys to either end or compare two dicts by order, not just content. `ChainMap` is a stack of dicts searched top-down: the first dict containing a key wins. Think of it as layered configuration (command-line args shadow environment vars, which shadow defaults) without merging anything.
+
 ---
 
 ## OrderedDict

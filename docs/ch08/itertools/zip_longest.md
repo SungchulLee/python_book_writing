@@ -2,6 +2,9 @@
 
 When combining iterables of unequal length, Python's built-in `zip()` silently truncates to the shortest input — which can cause data loss. `zip_longest()` from the `itertools` module solves this by continuing until every iterable is exhausted, filling in a default value for the shorter ones.
 
+!!! tip "Mental Model"
+    `zip` stops at the shortest input like a zipper that runs out of teeth on one side. `zip_longest` pads the short side with a fill value and keeps going until every iterable is exhausted. Reach for it whenever losing trailing elements would silently corrupt your data — for example, when aligning columns of unequal length.
+
 ## Zipping Different Length Iterables
 
 The following example pairs a 3-element list with a 5-element list. The `fillvalue` parameter specifies what to substitute for the missing entries in the shorter iterable.

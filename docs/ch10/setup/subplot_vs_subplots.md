@@ -2,6 +2,9 @@
 
 Understanding the difference between `plt.subplot` (singular) and `plt.subplots` (plural) is essential for effective Matplotlib usage.
 
+!!! tip "Mental Model"
+    `plt.subplot` (singular, no "s") is the old MATLAB-style way -- you specify one subplot at a time using a 3-digit code. `plt.subplots` (plural, with "s") is the modern way -- it creates the entire grid at once and hands you back all the Axes in an array. Prefer `plt.subplots` for cleaner, more Pythonic code.
+
 ---
 
 ## plt.subplot (MATLAB Style)
@@ -137,6 +140,9 @@ plt.show()
 
 ---
 
+!!! tip "Decision Rule"
+    **Always use `plt.subplots()` unless you have a very specific reason not to.** It returns both the Figure and all Axes at once, supports the OOP interface, and integrates cleanly with `tight_layout()`, `savefig()`, and every other Figure method. The only time `plt.subplot()` makes sense is quick interactive one-liners in the REPL.
+
 ## Key Takeaways
 
 - `plt.subplot`: singular, MATLAB style, 1-based indexing
@@ -149,71 +155,81 @@ plt.show()
 
 ## Exercises
 
-**Exercise 1.** Write the same 2x2 subplot figure using both `plt.subplot()` (singular) and `plt.subplots()` (plural). Which requires fewer lines of code?
+**Exercise 1.** Write the same 2x2 subplot figure using both `plt.subplot()` (singular) and `plt.subplots()` (plural). Plot `sin`, `cos`, `tan`, and `exp` respectively. Which approach requires fewer lines of code?
 
 ??? success "Solution to Exercise 1"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-    np.random.seed(42)
-    # Solution code depends on the specific exercise
-    x = np.linspace(0, 2 * np.pi, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x))
-    ax.set_title('Example Solution')
-    plt.show()
-    ```
+        x = np.linspace(0, 2 * np.pi, 100)
+        funcs = [np.sin, np.cos, np.tan, np.exp]
+        titles = ['sin', 'cos', 'tan', 'exp']
 
-    See the content of this page for the relevant API details to construct the full solution.
+        # --- plt.subplot (singular) ---
+        plt.figure(figsize=(8, 6))
+        for i, (f, t) in enumerate(zip(funcs, titles), start=1):
+            plt.subplot(2, 2, i)
+            plt.plot(x, f(x))
+            plt.title(t)
+        plt.tight_layout()
+        plt.show()
+
+        # --- plt.subplots (plural) ---
+        fig, axes = plt.subplots(2, 2, figsize=(8, 6))
+        for ax, f, t in zip(axes.flat, funcs, titles):
+            ax.plot(x, f(x))
+            ax.set_title(t)
+        plt.tight_layout()
+        plt.show()
+
+        # plt.subplots is more concise: one creation call + flat iteration.
 
 ---
 
 **Exercise 2.** Explain the difference between `plt.subplot(nrows, ncols, index)` and `plt.subplots(nrows, ncols)`. What does each return?
 
 ??? success "Solution to Exercise 2"
-    See the explanation in the main content of this page for the key concepts. The essential idea is to understand the API parameters and their effects on the resulting visualization.
+    `plt.subplot(nrows, ncols, index)` creates **one Axes** at the given position in the grid and returns that single Axes object. You call it repeatedly to build up a figure.
+
+    `plt.subplots(nrows, ncols)` creates the **entire grid at once** and returns a tuple `(fig, axes)` where `fig` is the Figure object and `axes` is a NumPy array of all Axes objects. For a 1x1 grid, `axes` is a single Axes (not an array); for 1xN or Nx1, it is a 1D array; for NxM, it is a 2D array.
 
 ---
 
-**Exercise 3.** Write code that creates a figure with `plt.subplots(2, 2)` and iterates over `axes.flat` to add a plot to each subplot.
+**Exercise 3.** Write code that creates a 2x2 figure with `plt.subplots(2, 2)` and iterates over `axes.flat` to plot `y = x**n` for `n = 1, 2, 3, 4`.
 
 ??? success "Solution to Exercise 3"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
+        import matplotlib.pyplot as plt
+        import numpy as np
 
-    np.random.seed(42)
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        x = np.linspace(0, 3, 50)
+        fig, axes = plt.subplots(2, 2, figsize=(8, 6))
 
-    x = np.linspace(0, 2 * np.pi, 100)
-    axes[0].plot(x, np.sin(x))
-    axes[0].set_title('Left Subplot')
+        for n, ax in enumerate(axes.flat, start=1):
+            ax.plot(x, x**n)
+            ax.set_title(f'y = x^{n}')
+            ax.grid(True)
 
-    axes[1].plot(x, np.cos(x))
-    axes[1].set_title('Right Subplot')
-
-    plt.tight_layout()
-    plt.show()
-    ```
-
-    Adapt this pattern to the specific requirements of the exercise.
+        plt.tight_layout()
+        plt.show()
 
 ---
 
-**Exercise 4.** Demonstrate that `plt.subplot(2, 2, 1)` and `plt.subplot(221)` are equivalent calls.
+**Exercise 4.** Demonstrate that `plt.subplot(2, 2, 1)` and `plt.subplot(221)` are equivalent calls by creating two figures and verifying both produce the same grid position.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
+        import matplotlib.pyplot as plt
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        # Three-argument form
+        fig1 = plt.figure()
+        ax1 = plt.subplot(2, 2, 1)
+        ax1.set_title('subplot(2, 2, 1)')
+        print(f"Position (3-arg): {ax1.get_geometry()}")
 
-    Refer to the code examples in the main content for the specific API calls needed.
+        # Compact integer form
+        fig2 = plt.figure()
+        ax2 = plt.subplot(221)
+        ax2.set_title('subplot(221)')
+        print(f"Position (int):   {ax2.get_geometry()}")
+
+        # Both produce (2, 2, 1) — same grid position
+        plt.show()

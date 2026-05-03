@@ -3,6 +3,9 @@
 
 This section presents three mini-projects that synthesize multiple I/O concepts: `pathlib` for path management, `with` for safe resource handling, error handling for robustness, and `csv`/`json` for structured data.
 
+!!! tip "Mental Model"
+    These examples show how individual I/O skills combine into real programs. Each mini-project follows the same pattern: open input, process data, write output, handle errors. Seeing the full pipeline from reading to writing helps you connect isolated concepts into practical workflows.
+
 ---
 
 ## 1. Config-Driven Text Processing

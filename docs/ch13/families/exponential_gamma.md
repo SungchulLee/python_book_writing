@@ -2,6 +2,9 @@
 
 The exponential and gamma distributions are closely related continuous distributions that model waiting times and event durations. The exponential distribution models the time until a single event, while the gamma distribution generalizes this to the time until multiple events.
 
+!!! tip "Mental Model"
+    The exponential distribution is the "waiting time for one event" in a Poisson process; the gamma distribution is the "waiting time for $k$ events." The exponential's memoryless property means the remaining wait time does not depend on how long you have already waited -- the only continuous distribution with this property.
+
 ---
 
 ## Exponential Distribution

@@ -1,5 +1,11 @@
 # __getattr__
 
+!!! tip "Mental Model"
+    `__getattr__` is the safety net at the bottom of Python's attribute lookup chain -- it only fires when every other lookup mechanism has failed. This makes it perfect for lazy defaults, proxy delegation, and deprecated-attribute warnings, without the performance or recursion risks of intercepting every access via `__getattribute__`.
+
+!!! tip "Core Idea"
+    `__getattr__` is the **fallback of last resort** — called only when the attribute was not found by the normal lookup chain ([`__getattribute__`](dunder_getattribute.md) → instance `__dict__` → class/MRO → descriptors). It is cheaper and safer than `__getattribute__` because it never fires for existing attributes.
+
 ## Fundamentals
 
 ### 1. Definition
@@ -101,20 +107,29 @@ print(obj.exists)   # "value" (__getattr__ NOT called)
 print(obj.missing)  # "default" (__getattr__ IS called)
 ```
 
-### 2. Not Called For
+### 2. When It Fires (and When It Does Not)
 
-`__getattr__` is **not** called when:
-- Attribute exists in `__dict__`
-- Attribute is a descriptor in the class
-- Attribute exists in parent classes
-- Attribute is found through normal lookup
+`__getattr__` is the **fallback of last resort**. It fires only when every other
+lookup mechanism has failed — the instance `__dict__`, class and parent descriptors,
+and `__getattribute__` itself have all come up empty (i.e., raised `AttributeError`).
+If the attribute exists anywhere in the normal chain, `__getattr__` is never called.
 
-### 3. Only Called When
+!!! tip "Interaction with `__dir__`"
+    If your `__getattr__` synthesizes attributes dynamically, also override `__dir__`
+    to list them. Tools like `dir()`, tab completion, and `help()` rely on `__dir__`
+    and will not discover dynamically generated attributes otherwise.
 
-`__getattr__` **is** called when:
-- Attribute doesn't exist anywhere
-- `__getattribute__` raises `AttributeError`
-- No other lookup mechanism found the attribute
+!!! danger "Interaction with `hasattr` — Common Source of Bugs"
+    `hasattr(obj, name)` works by calling `getattr(obj, name)` and returning `False`
+    only if `AttributeError` is raised. If your `__getattr__` returns a default value
+    (like `None`) instead of raising `AttributeError` for unknown names, then
+    `hasattr()` will return `True` for **every** attribute name — even nonsensical ones
+    like `hasattr(obj, 'asdfgh')`. This breaks duck-typing checks, confuses
+    serialization libraries, and makes debugging extremely difficult.
+
+    **Rule:** always raise `AttributeError` for names you do not explicitly handle.
+    Never use a catch-all `return None` unless you genuinely intend every possible
+    attribute name to be valid.
 
 ## Practical Examples
 
@@ -477,3 +492,70 @@ Build a `DeprecatedAttributes` class where `__getattr__` checks a mapping of old
             obj.unknown
         except AttributeError as e:
             print(f"Error: {e}")
+
+---
+
+**Exercise 4.**
+Demonstrate the `hasattr` trap. Create a class `BadDefault` whose `__getattr__` returns `None` for any missing attribute. Show that `hasattr(obj, 'nonexistent_xyz')` returns `True`. Then fix it by creating `SafeDefault` that returns defaults only for a known set of attribute names and raises `AttributeError` for everything else.
+
+??? success "Solution to Exercise 4"
+
+        # BAD — hasattr always returns True
+        class BadDefault:
+            def __getattr__(self, name):
+                return None
+
+        obj = BadDefault()
+        print(hasattr(obj, "nonexistent_xyz"))  # True — broken!
+        print(hasattr(obj, "literally_anything"))  # True — broken!
+
+        # FIXED — only known defaults
+        class SafeDefault:
+            _defaults = {"timeout": 30, "retries": 3, "debug": False}
+
+            def __getattr__(self, name):
+                if name in self._defaults:
+                    return self._defaults[name]
+                raise AttributeError(f"'{type(self).__name__}' has no attribute '{name}'")
+
+        obj = SafeDefault()
+        print(obj.timeout)  # 30
+        print(hasattr(obj, "timeout"))  # True
+        print(hasattr(obj, "nonexistent_xyz"))  # False — correct!
+
+    The fix is simple: explicitly list which attributes have defaults. Raise `AttributeError` for everything else so that `hasattr()`, duck-typing checks, and serialization libraries all work correctly.
+
+---
+
+**Exercise 5.**
+Build a `LazyProperties` class where `__getattr__` computes expensive attributes on first access and caches the result in `__dict__` so that subsequent accesses bypass `__getattr__` entirely. The class should have a `_lazy_specs` dictionary mapping attribute names to zero-argument factory functions. Demonstrate that the factory runs once, then show that the second access goes straight to `__dict__` (no `__getattr__` call).
+
+??? success "Solution to Exercise 5"
+
+        class LazyProperties:
+            _lazy_specs = {
+                "squares": lambda: [x ** 2 for x in range(1000)],
+                "greeting": lambda: "Hello, World!",
+            }
+
+            def __getattr__(self, name):
+                if name in self._lazy_specs:
+                    print(f"Computing '{name}' for the first time...")
+                    value = self._lazy_specs[name]()
+                    # Store in __dict__ — future reads won't trigger __getattr__
+                    self.__dict__[name] = value
+                    return value
+                raise AttributeError(f"'{type(self).__name__}' has no attribute '{name}'")
+
+        obj = LazyProperties()
+
+        # First access — __getattr__ runs, factory computes value
+        print(len(obj.squares))  # Computing 'squares'... 1000
+
+        # Second access — reads from __dict__, __getattr__ NOT called
+        print(len(obj.squares))  # 1000 (no "Computing" message)
+
+        # Verify it's in __dict__
+        print("squares" in obj.__dict__)  # True
+
+    This is the **lazy loading pattern**: `__getattr__` fires only for missing attributes, so storing the result in `__dict__` ensures the computation runs exactly once. This is simpler and cheaper than using `__getattribute__` for the same purpose.

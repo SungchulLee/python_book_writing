@@ -2,6 +2,29 @@
 
 Add text labels and descriptions directly to your plots.
 
+!!! tip "Mental Model"
+    `ax.text(x, y, s)` places a string at a specific point in data coordinates. For position-independent text (e.g., a watermark), use `transform=ax.transAxes` so coordinates are relative to the Axes (0-1 range). Text objects are Artists, so you can style them with `fontsize`, `color`, `fontweight`, and align them with `ha` and `va`.
+
+!!! note "Text Hierarchy in Matplotlib"
+    Matplotlib has four distinct text mechanisms, each with a different purpose:
+
+    | Type | Method | Purpose |
+    |------|--------|---------|
+    | **Title** | `ax.set_title()` | Describe the entire plot |
+    | **Label** | `ax.set_xlabel()` / `ax.set_ylabel()` | Describe an axis |
+    | **Text** | `ax.text()` | Place arbitrary text at a position |
+    | **Annotation** | `ax.annotate()` | Text + arrow pointing to a data feature |
+
+    Use the most specific method available — `set_title` for titles, not
+    `ax.text()`. Reserve `ax.text()` for labels that don't fit the other
+    categories.
+
+!!! tip "Text Design Principles"
+    - **Use text sparingly** — too many labels create clutter that obscures data
+    - **Keep labels concise** — a few words, not sentences
+    - **Use consistent font sizes** — title > labels > annotations > tick labels
+    - **Prefer annotations** for highlighting specific data points over general text
+
 ---
 
 ## ax.text()

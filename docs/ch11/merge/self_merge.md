@@ -2,6 +2,9 @@
 
 A self merge joins a DataFrame with itself, useful for comparing rows within the same table or representing hierarchical relationships.
 
+!!! tip "Mental Model"
+    A self merge treats the same table as both left and right, matching different columns against each other. The classic example is an employee table where `manager_id` references another row's `id`. By merging the table on `manager_id = id`, each employee row gains its manager's details -- a pattern that models any tree or graph stored in a flat table.
+
 ## Basic Concept
 
 Merge a DataFrame with itself using different columns.

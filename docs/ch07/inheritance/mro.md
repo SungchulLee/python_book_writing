@@ -1,10 +1,13 @@
 # Method Resolution Order
 
-The **Method Resolution Order (MRO)** defines how Python resolves methods in inheritance hierarchies, especially with multiple inheritance. The MRO, [C3 linearization](c3_linearization.md), and [`super()`](super.md) form a unified system: C3 computes the order, the MRO stores it, and `super()` walks it at runtime.
+The **Method Resolution Order (MRO)** defines how Python resolves methods in inheritance hierarchies, especially with multiple inheritance. MRO is a **concept** — the idea that there must be a deterministic order in which classes are searched. [C3 linearization](c3_linearization.md) is the **algorithm** Python chose to compute that order. Other algorithms exist (depth-first, breadth-first), but Python adopted C3 because it is the only one that preserves local precedence order, respects parent MRO consistency, and rejects inconsistent hierarchies. Together with [`super()`](super.md), they form a unified system: C3 computes the order, the MRO stores it, and `super()` walks it at runtime.
+
+!!! tip "Mental Model"
+    The MRO is a flat list that Python computes once when the class is created. It answers the question: "if multiple parent classes define the same method, which one wins?" The list always respects two rules -- children before parents, and left-to-right order preserved. Call `MyClass.__mro__` to see the exact sequence Python will search.
 
 !!! note "MRO Governs All Attribute Lookup"
 
-    Despite its name, the Method Resolution Order is not limited to methods. It defines the search order for **all** attribute access on an object. When you write `obj.attr`, Python searches the instance `__dict__` first, then walks the class hierarchy in MRO order looking for `attr` in each class's `__dict__`. Methods, class variables, descriptors, and properties are all found through this same mechanism. Methods are simply attributes that happen to be callable.
+    Despite its name, the Method Resolution Order is not limited to methods. It defines the search order for **all** attribute access on an object. When you write `obj.attr`, Python follows a three-tier lookup: (1) **data descriptors** on the class (via MRO), (2) the instance `__dict__`, (3) **non-data descriptors and class attributes** (via MRO). The instance `__dict__` is the **second** tier, not the first — data descriptors like `@property` take priority. Methods, class variables, descriptors, and properties are all found through this same MRO-driven mechanism. Methods are simply attributes that happen to be callable.
 
 ---
 

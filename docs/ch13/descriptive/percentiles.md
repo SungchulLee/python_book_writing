@@ -2,6 +2,9 @@
 
 Describing a dataset by its mean and standard deviation captures only the center and spread. Percentiles and quantiles reveal the full shape of a distribution by specifying the value below which a given fraction of observations falls. These measures underpin box plots, confidence intervals, and many nonparametric methods. This page defines percentiles and quantiles formally, explains the interpolation methods used to compute them, and demonstrates their use with NumPy and SciPy.
 
+!!! tip "Mental Model"
+    A percentile answers the question "what value separates the bottom $k$% from the top?" Sort your data, walk $k$% of the way through, and read off the value. The median is the 50th percentile, quartiles split the data into fourths, and together these landmarks sketch the distribution's shape without any normality assumption.
+
 ---
 
 ## Definitions

@@ -2,6 +2,9 @@
 
 Python's and and or operators use short-circuit evaluation, stopping evaluation as soon as the result is determined. This behavior is crucial for writing efficient code and preventing errors from evaluating unnecessary expressions.
 
+!!! tip "Mental Model"
+    Think of `and`/`or` as lazy gatekeepers. `and` stops at the first failure because one `False` makes the whole expression `False`. `or` stops at the first success because one `True` makes the whole expression `True`. This laziness is not just an optimization -- it lets you write guard patterns like `x and x.method()` that safely skip the second part when the first is falsy.
+
 ---
 
 ## and Short-Circuiting

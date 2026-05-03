@@ -2,6 +2,18 @@
 
 Compute eigenvalues and eigenvectors using `np.linalg`.
 
+!!! tip "Mental Model"
+    Eigenvalues reveal the natural scaling factors of a linear transformation: each eigenvector points in a direction that the matrix merely stretches (by its eigenvalue) without rotating. Use `np.linalg.eig` for general matrices and `np.linalg.eigh` for symmetric/Hermitian matrices, which is faster and guarantees real eigenvalues.
+
+!!! note "Connection to SVD"
+    For a symmetric matrix $A$, the eigendecomposition $A = V\Lambda V^T$ and the SVD
+    $A = U\Sigma V^T$ coincide — the singular values are the absolute values of the
+    eigenvalues. For non-symmetric matrices, eigenvalues can be complex or may not
+    span the full space, while the SVD always exists and always produces real singular
+    values. When you need a decomposition that works for **any** matrix (including
+    rectangular ones), use [SVD](svd.md); when you need the **intrinsic structure** of
+    a square transformation (stability, oscillation modes), use eigenvalues.
+
 ## np.linalg.eig
 
 ### 1. Basic Usage

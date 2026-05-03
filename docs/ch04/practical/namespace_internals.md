@@ -2,6 +2,9 @@
 
 Understanding Python's namespace system and the Global Interpreter Lock.
 
+!!! tip "Mental Model"
+    `globals()` gives you a live, writable dictionary of the module's namespace; `locals()` gives you a snapshot that is read-only inside functions. The GIL serializes bytecode execution across threads, so pure-Python code is thread-safe at the bytecode level but not at the logic level.
+
 ## Namespace Access
 
 ### `globals()` Function

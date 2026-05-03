@@ -1,5 +1,8 @@
 # String Interning
 
+!!! tip "Mental Model"
+    CPython automatically shares a single copy of short, identifier-like strings so that dictionary lookups and attribute access can use pointer comparison instead of character-by-character comparison. Think of it as a global string cache -- but since the caching rules are implementation-specific, always use `==` for string comparison.
+
 ## What Is Interning
 
 ### 1. Concept

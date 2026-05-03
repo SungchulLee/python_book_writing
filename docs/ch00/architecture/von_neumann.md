@@ -2,6 +2,9 @@
 
 # The von Neumann Architecture
 
+!!! tip "Mental Model"
+    Picture a single notebook that holds both your recipe (instructions) and your ingredient list (data). The cook (CPU) reads one line at a time from this shared notebook, acts on it, and writes results back. This "one shared memory for everything" idea is the defining feature of the von Neumann model -- and the source of its main bottleneck, since instructions and data compete for the same memory bus.
+
 The **von Neumann architecture** describes a model of a stored-program computer in which **program instructions and data share the same memory system**.
 
 In this design, programs are stored in memory as binary instructions. The processor repeatedly fetches these instructions, interprets them, and executes them.

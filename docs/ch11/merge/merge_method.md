@@ -2,6 +2,9 @@
 
 The `merge()` function combines DataFrames based on column values, similar to SQL joins. It is the most flexible method for combining datasets.
 
+!!! tip "Mental Model"
+    `merge()` is SQL JOIN for DataFrames. You specify which columns to match on (`on`, `left_on`, `right_on`), how to handle mismatches (`how`), and what to do with name collisions (`suffixes`). It defaults to an inner join on all shared column names -- always set `on` explicitly to avoid surprises.
+
 ## Basic Syntax
 
 Merge two DataFrames on a common column.

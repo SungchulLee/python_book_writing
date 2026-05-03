@@ -2,6 +2,9 @@
 
 Common real-world decorator patterns for timing, caching, validation, and more.
 
+!!! tip "Mental Model"
+    Decorators shine as cross-cutting concerns -- behavior you want to inject into many functions without modifying any of them. Timing, logging, caching, access control, and retry logic all follow the same shape: do something before/after/around the original call. Once you see a decorator as a reusable "before-and-after" sandwich, every pattern here becomes a variation of filling.
+
 ## Timing Decorator
 
 Measure function execution time without modifying the original code.

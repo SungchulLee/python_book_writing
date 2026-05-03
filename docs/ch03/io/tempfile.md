@@ -2,6 +2,9 @@
 
 The tempfile module creates temporary files and directories with automatic cleanup. It is essential for safe temporary storage without polluting the file system.
 
+!!! tip "Mental Model"
+    `tempfile` is a janitor for scratch files. It creates files and directories in the OS temp folder with unique names (no collisions), and when used as a context manager it automatically deletes them on exit. This means you never have to worry about cleanup paths, name conflicts, or leftover files cluttering the filesystem.
+
 ---
 
 ## Named Temporary Files

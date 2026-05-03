@@ -2,6 +2,9 @@
 
 `TypeGuard` helps type checkers narrow down types within function bodies, improving type safety.
 
+!!! tip "Mental Model"
+    Type narrowing is how a type checker learns more precise types inside conditional branches. After `if isinstance(x, int):`, the checker knows `x` is `int` in that block. `TypeGuard` extends this to custom predicates: you write a function that returns `bool`, annotate it with `TypeGuard[T]`, and the checker treats a `True` result as proof that the argument is of type `T`.
+
 ## Type Narrowing with Isinstance
 
 Use isinstance to narrow types within conditional blocks.

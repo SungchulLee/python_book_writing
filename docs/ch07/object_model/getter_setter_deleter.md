@@ -1,6 +1,66 @@
 # Getter Setter Deleter
 
-The `@property` decorator with `@prop.setter` and `@prop.deleter` provides the three access hooks for an attribute. Under the hood, each `@property` creates a **descriptor object** that intercepts reads, writes, and deletions --- see [Properties as Descriptors](property_descriptor_connection.md) for the full mechanism. For a deeper treatment of property design, see [Property Decorator](property_decorator.md).
+The `@property` decorator with `@<property>.setter` and `@<property>.deleter` provides the three access hooks for an attribute. Under the hood, each `@property` creates a **descriptor object** that intercepts reads, writes, and deletions --- see [Properties as Descriptors](property_descriptor_connection.md) for the full mechanism. For a deeper treatment of property design, see [Property Decorator](property_decorator.md).
+
+!!! tip "Mental Model"
+    A property is a trio of hooks -- getter, setter, deleter -- disguised as a single attribute. The caller writes `obj.x` and has no idea whether they are reading a stored value or triggering a method. Start with a plain attribute; add a property later when you need validation, computation, or access control, without changing the public API.
+
+!!! note "Not a Separate Feature"
+    Getter, setter, and deleter are not separate features — they are the **three hooks** of a single `property` descriptor object. Each `@property` creates a descriptor with up to three callables (`fget`, `fset`, `fdel`). The `@prop.setter` and `@prop.deleter` decorators attach additional hooks to the same descriptor.
+
+## Why Properties Exist
+
+Start with a plain attribute:
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+c = Circle(5)
+print(c.radius)    # 5
+c.radius = 10      # direct access
+```
+
+Later, you need validation. You have two choices:
+
+**Option 1: Introduce a method** --- breaks existing code:
+
+```python
+# Old code: c.radius = 10       ← breaks
+# New code: c.set_radius(10)    ← different API
+```
+
+Every caller that wrote `c.radius` must be rewritten. The public interface changed.
+
+**Option 2: Use `@property`** --- old code still works:
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius        # triggers setter
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("must be positive")
+        self._radius = value
+
+c = Circle(5)
+c.radius = 10      # still works — setter validates silently
+print(c.radius)     # still works — getter returns value
+```
+
+Callers see no change. Validation was added without touching the interface.
+
+!!! tip "The Design Principle"
+    `@property` separates **what users see** (`obj.radius`) from **how it works** (validation, computation, storage). This lets you evolve implementation without breaking existing code --- the same principle Java solves with boilerplate getters/setters, but without the boilerplate.
+
+---
 
 ## Property Decorator
 
@@ -52,14 +112,14 @@ c.radius = 10  # OK
 
 - **Start with plain attributes**. Add `@property` only when you need validation, computation, or read-only access.
 - **Don't use setters for expensive operations** (I/O, network calls). Users expect `obj.x = val` to be fast.
-- **Setter names must match** the property name --- `@radius.setter def radius(self, value)`.
+- **Setter and deleter method names must be identical to the property name** --- `@radius.setter def radius(self, value)`. This is not a convention; it is a requirement. A mismatched name silently creates a separate property instead of attaching a setter to the existing one.
 - **Prefer immutability** when possible: omit the setter to make an attribute read-only.
 
 ## Summary
 
 - `@property` for getter
-- `@prop.setter` for setter
-- `@prop.deleter` for deleter
+- `@<property>.setter` for setter
+- `@<property>.deleter` for deleter
 - All three are backed by a single descriptor object on the class
 
 ---

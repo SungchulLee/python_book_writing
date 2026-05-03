@@ -1,6 +1,9 @@
 # Dataclass vs NamedTuple vs attrs
 
-Python offers multiple ways to create simple classes. Understanding differences helps you choose the right tool.
+Python offers multiple ways to create structured data classes — `dataclass`, `NamedTuple`, and `attrs` — each with distinct tradeoffs around mutability, performance, and validation. Choosing the right one depends on whether your data needs to change after creation, how many instances you will create, and whether you need built-in validation.
+
+!!! tip "Mental Model"
+    Picture three containers: `NamedTuple` is a sealed envelope (immutable, lightweight, tuple-compatible), `dataclass` is a labeled box (mutable by default, standard-library, no dependencies), and `attrs` is a box with a built-in inspector (validation, converters, slots by default). Pick the container whose built-in constraints match your data's requirements.
 
 ---
 
@@ -113,26 +116,54 @@ print(f"Dataclass: {time_dc:.4f}s")
 print(f"NamedTuple: {time_nt:.4f}s")
 ```
 
-## When to Use Each
+## Decision Guide
 
-**Dataclasses:**
-- Mutable objects
-- Complex initialization
-- Need many methods
-- Standard library preferred
+Use this decision tree when choosing between the three approaches:
 
-**NamedTuple:**
-- Immutable records
-- Tuple unpacking needed
-- Dictionary/set keys
-- Lightweight
-- Type hints integration
+```text
+Need immutability + hashing?
+├── Yes, and need tuple unpacking → NamedTuple
+├── Yes, but no unpacking needed  → frozen dataclass
+└── No
+    ├── Need built-in validation or converters → attrs
+    ├── Need standard library only             → dataclass
+    └── Need slots by default + validators     → attrs
+```
 
-**attrs:**
-- Complex validation
-- Custom __init__ behavior
-- Slots by default (memory efficient)
-- Not in standard library
+**Dataclasses** are the right default when you need a general-purpose mutable data container
+in the standard library. They become the clear winner when you need `__post_init__` hooks,
+`field()` customization, or inheritance — features that NamedTuple handles poorly or not at all.
+
+**NamedTuple** wins when you need an immutable, lightweight record that participates in tuple
+protocols (indexing, unpacking, iteration). Because instances are actual tuples, they use less
+memory and are hashable without configuration. The tradeoff is no mutability and limited
+inheritance support.
+
+**attrs** is the strongest choice for production models that need built-in validators,
+converters, and rich field metadata. It generates `__slots__` by default (via `@attrs.define`),
+provides `attrs.validators` for declarative validation, and supports `converter` arguments
+that auto-coerce inputs. The tradeoff is an external dependency.
+
+**Boundary rule**: if data crosses a system boundary (user input, API responses, config
+files), prefer **pydantic** or **attrs** — they validate at the edge. If the data is
+internal (passed between your own functions/classes), a plain `@dataclass` is sufficient.
+
+```python
+# attrs validator + converter example
+import attrs
+
+@attrs.define
+class Temperature:
+    celsius: float = attrs.field(converter=float)
+
+    @celsius.validator
+    def _check_range(self, attribute, value):
+        if value < -273.15:
+            raise ValueError("Below absolute zero")
+
+t = Temperature("36.6")   # converter coerces str → float
+print(t.celsius)           # 36.6
+```
 
 ---
 

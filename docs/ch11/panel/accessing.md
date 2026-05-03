@@ -2,6 +2,9 @@
 
 This document covers techniques for selecting and slicing panel data with MultiIndex.
 
+!!! tip "Mental Model"
+    Accessing panel data is indexing with two keys: entity and time. Use `loc[(entity, time)]` for a specific observation, `loc[entity]` to get all time periods for one entity, or `xs(time, level='date')` to get all entities at one time point. The MultiIndex makes these two-dimensional queries natural on a flat DataFrame.
+
 ## Setup
 
 ```python

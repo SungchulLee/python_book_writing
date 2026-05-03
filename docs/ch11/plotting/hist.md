@@ -2,6 +2,9 @@
 
 The `hist()` method creates histograms for numeric columns in a DataFrame. Unlike `plot(kind='hist')`, this method is specifically designed for histogram creation with additional features.
 
+!!! tip "Mental Model"
+    A histogram chops a continuous variable into bins and counts how many values fall in each bin. The `bins` parameter controls granularity: too few bins hide patterns, too many create noise. Use `density=True` to normalize to a probability distribution, and the `by` parameter to compare distributions across groups.
+
 ## Basic Usage
 
 ### DataFrame.hist()

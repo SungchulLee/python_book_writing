@@ -2,6 +2,9 @@
 
 The `replace()` method substitutes values in a DataFrame or Series. It is more general than `fillna()` and can replace any value, not just NaN.
 
+!!! tip "Mental Model"
+    `replace()` is find-and-replace for DataFrames. Unlike `fillna` which only targets NaN, `replace` swaps any value for any other value. Pass a dict of `{old: new}` pairs, a list of values to replace, or even a regex pattern. It is the right tool for cleaning up sentinel values like -999, "N/A", or typos.
+
 ## Basic Usage
 
 Replace specific values with new values.

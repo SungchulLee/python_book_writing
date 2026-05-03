@@ -2,6 +2,9 @@
 
 Sparse matrices support efficient arithmetic operations.
 
+!!! tip "Mental Model"
+    Sparse arithmetic only touches nonzero entries, so adding two sparse matrices with $k$ nonzeros each costs $O(k)$ rather than $O(n^2)$. However, beware of operations that destroy sparsity -- adding a scalar to a sparse matrix fills in every entry, turning your efficient sparse matrix into a dense one in disguise.
+
 ## Addition and Subtraction
 
 ### 1. Sparse + Sparse

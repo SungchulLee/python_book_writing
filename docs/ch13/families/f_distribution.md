@@ -2,6 +2,9 @@
 
 The F-distribution arises naturally when comparing the variances of two independent normal populations. It is the sampling distribution of the ratio of two scaled chi-square random variables and serves as the foundation for analysis of variance (ANOVA) and F-tests in regression analysis.
 
+!!! tip "Mental Model"
+    The F-distribution is the ratio of two variance estimates. If both estimates measure the same underlying variance, their ratio clusters near 1. A large F-value means the numerator variance is much bigger than the denominator -- in ANOVA, this signals that group means differ more than random noise would predict.
+
 ---
 
 ## Mathematical Definition

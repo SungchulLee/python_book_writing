@@ -1,5 +1,8 @@
 # search, match, findall
 
+!!! tip "Mental Model"
+    `search` scans the entire string for the first match anywhere. `match` only checks at the very beginning of the string. `findall` collects every non-overlapping match into a list. Choosing the right function is the first decision in any regex task: "Do I need the first occurrence, a start-of-string check, or all occurrences?"
+
 ## Overview
 
 Python's `re` module provides several functions for finding patterns in text. The three most commonly used are `search()`, `match()`, and `findall()`, each with distinct behavior.

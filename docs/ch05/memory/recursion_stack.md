@@ -1,5 +1,8 @@
 # Recursion & Stack
 
+!!! tip "Mental Model"
+    Every recursive call adds a new frame to the call stack, like stacking plates. Python enforces a default limit of about 1,000 plates to prevent the program from consuming unbounded memory. If your recursion is too deep, either add a base case, increase the limit with caution, or rewrite the algorithm iteratively.
+
 ## Stack Depth
 
 ### 1. Recursion Limit

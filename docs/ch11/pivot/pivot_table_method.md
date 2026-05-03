@@ -2,6 +2,9 @@
 
 The `pivot_table()` method creates a spreadsheet-style pivot table with aggregation support, handling duplicate entries and providing more flexibility than `pivot()`.
 
+!!! tip "Mental Model"
+    `pivot_table` is `pivot` with a built-in `groupby`. When multiple rows share the same (index, columns) pair, `pivot_table` aggregates them using `aggfunc` (default: mean). Think of it as the pandas equivalent of an Excel pivot table -- specify rows, columns, values, and an aggregation function to get a summary cross-tabulation.
+
 ## Basic Usage
 
 Create a pivot table with aggregation.

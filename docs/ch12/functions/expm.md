@@ -2,6 +2,9 @@
 
 The matrix exponential $e^A$ is fundamental in solving differential equations.
 
+!!! tip "Mental Model"
+    Just as the scalar exponential $e^{at}$ solves $\dot{x} = ax$, the matrix exponential $e^{At}$ solves the system $\dot{\mathbf{x}} = A\mathbf{x}$. It is not computed element-wise -- SciPy uses scaling-and-squaring with Pade approximants to evaluate the infinite series $I + A + A^2/2! + \cdots$ accurately and efficiently.
+
 ## linalg.expm
 
 ### 1. Basic Usage

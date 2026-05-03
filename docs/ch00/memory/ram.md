@@ -2,6 +2,9 @@
 
 # RAM (Main Memory)
 
+!!! tip "Mental Model"
+    RAM is the computer's large scratch pad -- big enough to hold all the programs and data currently in use, but wiped clean the moment power is cut. Every running program lives in RAM: code, variables, stacks, and heap objects all reside here. RAM is fast compared to disk but slow compared to cache, so it often becomes the bottleneck for data-heavy Python workloads.
+
 **RAM (Random Access Memory)** is the main working memory of a computer. It stores the programs currently running on the system as well as the data they operate on.
 
 Unlike registers and caches, which are small and extremely fast, RAM is much larger but significantly slower. Despite this latency, RAM provides the capacity needed for large datasets and complex applications.

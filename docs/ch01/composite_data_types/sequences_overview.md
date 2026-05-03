@@ -44,6 +44,9 @@ flowchart TD
     D --> I[set]
 ```
 
+!!! tip "Mental Model"
+    Choosing a collection type comes down to four questions: Does order matter? Can it change? How do you access elements? Must elements be unique? Sequences (list, tuple, str) organize by position; dicts organize by key; sets organize by membership. Picking the right structure makes your code simpler because the data type does the organizational work for you.
+
 ---
 
 ## 1. What Is a Sequence?

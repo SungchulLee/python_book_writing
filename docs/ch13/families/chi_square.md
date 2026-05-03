@@ -2,6 +2,9 @@
 
 The chi-square ($\chi^2$) distribution arises as the sum of squared standard normal random variables. It plays a central role in hypothesis testing, confidence interval construction, and goodness-of-fit tests.
 
+!!! tip "Mental Model"
+    Square a standard normal variable and you get a chi-square with 1 degree of freedom. Add $k$ such squared normals and you get $\chi^2(k)$. This is why the chi-square appears whenever you measure squared deviations from expected values -- goodness-of-fit tests, variance estimation, and contingency tables all reduce to sums of squared standardized differences.
+
 ---
 
 ## Mathematical Definition

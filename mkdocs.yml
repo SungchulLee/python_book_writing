@@ -469,14 +469,26 @@ nav:
             - Classes and Instances: ch07/foundations/classes_instances.md
             - Constructor and Destructor: ch07/foundations/constructor_destructor.md
 
-        - 7.2 Attributes and Methods:
-            - Instance Attributes: ch07/attributes/instance_attributes.md
-            - Class Attributes: ch07/attributes/class_attributes.md
-            - Attribute Lookup: ch07/attributes/attribute_lookup.md
-            - Instance Methods: ch07/methods/instance_methods.md
-            - Class Methods: ch07/methods/class_methods.md
-            - Static Methods: ch07/methods/static_methods.md
-            - Method Chaining: ch07/methods/method_chaining.md
+        - 7.2 Attribute Access, Methods, and Properties:
+            # Core Mechanism
+            - Attribute Lookup (Pipeline): ch07/object_model/attribute_lookup.md 
+            - Controlling Attribute Access (__getattribute__ vs __getattr__): ch07/object_model/getattribute_vs_getattr.md
+            # Attributes:
+            - Instance Attributes: ch07/object_model/instance_attributes.md 
+            - Class Attributes: ch07/object_model/class_attributes.md 
+            # Descriptors:
+            - Descriptor Protocol: ch07/object_model/descriptors.md
+            - Properties as Descriptors: ch07/object_model/property_descriptor_connection.md 
+            # Methods:
+            - Instance Methods: ch07/object_model/instance_methods.md 
+            - Class Methods: ch07/object_model/class_methods.md 
+            - Static Methods: ch07/object_model/static_methods.md 
+            - Method Chaining: ch07/object_model/method_chaining.md 
+            # Properties:
+            - Property Decorator: ch07/object_model/property_decorator.md 
+            - Getter Setter Deleter: ch07/object_model/getter_setter_deleter.md 
+            - Read-Only Properties: ch07/object_model/readonly_properties.md 
+            - Cached Properties: ch07/object_model/cached_property.md 
 
         - 7.3 Four Pillars of Object-Oriented Programming:
             - Encapsulation: ch07/pillars/encapsulation.md
@@ -512,31 +524,24 @@ nav:
             - Callable Objects: ch07/dunder_advanced/dunder_callable.md
             - Context Managers: ch07/dunder_advanced/dunder_context.md
 
-        - 7.8 Properties:
-            - Property Decorator: ch07/properties/property_decorator.md
-            - Getter Setter Deleter: ch07/properties/getter_setter_deleter.md
-            - Cached Properties: ch07/properties/cached_property.md
-            - Read-Only Properties: ch07/properties/readonly_properties.md
-            - Properties as Descriptors: ch07/properties/property_descriptor_connection.md
-
-        - 7.9 Descriptor Protocol:
+        - 7.8 Descriptor Protocol:
             - Descriptor Introduction: ch07/descriptors/descriptor_intro.md
             - __get__ __set__ __delete__: ch07/descriptors/descriptor_methods.md
             - Data vs Non-Data Descriptors: ch07/descriptors/descriptor_types.md
             - Descriptor Use Cases: ch07/descriptors/descriptor_applications.md
             - Attribute Access Lookup: ch07/descriptors/attribute_access_lookup.md
 
-        - 7.10 Dunder Attribute Hooks:
+        - 7.9 Dunder Attribute Hooks:
             - __getattribute__: ch07/dunder_attrs/dunder_getattribute.md
             - __getattr__: ch07/dunder_attrs/dunder_getattr.md
             - __setattr__: ch07/dunder_attrs/dunder_setattr.md
             - __delattr__: ch07/dunder_attrs/dunder_delattr.md
 
-        - 7.11 Dynamic Attribute Access:
+        - 7.10 Dynamic Attribute Access:
             - getattr setattr delattr: ch07/dynamic/builtin_attr_functions.md
             - Dynamic vs Static Access: ch07/dynamic/dynamic_vs_static.md
 
-        - 7.12 dataclasses:
+        - 7.11 dataclasses:
             - dataclasses Module: ch07/dataclasses/dataclasses.md
             - field() Function: ch07/dataclasses/field.md
             - __post_init__ Method: ch07/dataclasses/post_init.md
@@ -546,7 +551,7 @@ nav:
             - Dataclass vs NamedTuple vs attrs: ch07/dataclasses/comparison.md
             - Practical Patterns: ch07/dataclasses/practical_patterns.md
 
-        - 7.13 Enumerations:
+        - 7.12 Enumerations:
             - Enum Basics: ch07/enum/enum_basics.md
             - Enum Members and Values: ch07/enum/members_values.md
             - IntEnum and StrEnum: ch07/enum/int_str_enum.md
@@ -555,17 +560,17 @@ nav:
             - Enum Methods and Customization: ch07/enum/methods_customization.md
             - Enum Practical Patterns: ch07/enum/practical_patterns.md
 
-        - 7.14 Abstract Base Classes:
+        - 7.13 Abstract Base Classes:
             - Abstract Base Class and abstractmethod: ch07/abc/abstract_base_classes.md
             - typing.Protocol: ch07/abc/typing_protocol.md
             - collections.abc: ch07/abc/collections_abc.md
             - Virtual Subclasses (register): ch07/abc/virtual_subclasses.md
 
-        - 7.15 Metaclasses:
+        - 7.14 Metaclasses:
             - Metaclasses Introduction: ch07/metaclasses/metaclasses_intro.md
             - __init_subclass__: ch07/metaclasses/init_subclass.md
 
-        - 7.16 Object-Oriented Programming Projects:
+        - 7.15 Object-Oriented Programming Projects:
             - Task Management System: ch07/projects/task_management_project.md
             - User Authentication System: ch07/projects/user_auth_project.md
             - Role-Playing Game Character System: ch07/projects/rpg_character_project.md

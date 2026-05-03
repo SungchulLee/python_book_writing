@@ -2,6 +2,15 @@
 
 Loop hoisting moves invariant computations outside inner loops for better performance.
 
+!!! tip "Mental Model"
+    If a computation inside a loop produces the same result every iteration, compute it once before the loop starts. This "hoisting" technique is simple but high-impact: it turns O(n) redundant work into O(1). In NumPy code, hoisting often means precomputing arrays or constants that are reused across iterations.
+
+    In the [optimization hierarchy](vectorization_basics.md), hoisting is a **loop
+    optimization step that precedes full vectorization**. When you cannot eliminate
+    a loop entirely, hoisting invariants out of it is the next best thing — it
+    reduces the cost per iteration, making the remaining loop as cheap as possible
+    before you attempt to replace it with array operations.
+
 ## Concept
 
 ### 1. What is Hoisting

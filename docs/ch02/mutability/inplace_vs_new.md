@@ -11,6 +11,9 @@ document itself changes, and everyone who has a reference to it sees the update.
 operation is like photocopying a document with edits---the original stays untouched, and you
 get a fresh copy.
 
+!!! tip "Mental Model"
+    Every operation either changes an existing object or produces a new one -- never both. In-place methods (like `list.sort()`) modify the object and return `None`; constructive functions (like `sorted()`) leave the original alone and hand you a fresh result. Mixing them up leads to "lost result" bugs or unintended shared-state mutations.
+
 ---
 
 ## 1. In-Place Operations on Lists

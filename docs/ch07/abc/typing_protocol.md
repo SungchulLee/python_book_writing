@@ -1,6 +1,16 @@
 # typing.Protocol — Structural Subtyping
 
-`Protocol` (Python 3.8+) enables structural subtyping (static duck typing). Classes don't need to inherit from a Protocol—they just need to implement the required methods.
+`Protocol` (Python 3.8+) enables structural subtyping (static duck typing). Classes don't need to inherit from a Protocol — they just need to implement the required methods. Think of Protocol as **"duck typing with guardrails"**: you get the flexibility of duck typing (no inheritance required) combined with the safety of static type checking (your editor and `mypy` verify that the right methods exist before you run the code).
+
+!!! tip "Mental Model"
+    An ABC says "you must be in the family to sit at the table" (nominal typing). A Protocol says "anyone who can hold a fork and use a napkin may sit down" (structural typing). The class never needs to know the Protocol exists -- it just needs to have the right shape, and the type checker confirms it at compile time.
+
+!!! warning "Protocol requires a type checker to be useful"
+    Protocol is a **static typing** construct. Without a type checker like `mypy` or
+    `pyright`, Protocol definitions are just documentation — Python itself performs
+    no verification at runtime (unless you add `@runtime_checkable`, which only
+    checks method existence, not signatures). If your project does not use a type
+    checker, Protocol offers no safety beyond what plain duck typing provides.
 
 ```python
 from typing import Protocol
@@ -323,6 +333,16 @@ print(box.get())  # 10
 
 ### Covariant and Contravariant
 
+Variance describes how subtyping of the type parameter relates to subtyping of the
+generic Protocol. The intuition:
+
+- **Covariant** (`T_co`): the Protocol only *produces* values of type `T`. A
+  `Readable[Dog]` can be used where `Readable[Animal]` is expected (because a `Dog`
+  is an `Animal`).
+- **Contravariant** (`T_contra`): the Protocol only *consumes* values of type `T`. A
+  `Writable[Animal]` can be used where `Writable[Dog]` is expected (because it can
+  accept any `Animal`, including `Dog`).
+
 ```python
 from typing import Protocol, TypeVar
 
@@ -464,6 +484,22 @@ def timed_operation(cm: ContextManager[Timer]):
 - You want to share implementation (concrete methods)
 - Building class hierarchies
 - Need `isinstance()` checks without decorator
+
+!!! note "What happens without a type checker?"
+    Without `mypy` or `pyright`, a function typed as `def f(x: Drawable)` accepts
+    **any** argument at runtime — Python does not enforce type hints. A class missing
+    the `draw()` method will only fail when `draw()` is actually called, just like
+    plain duck typing. This is why Protocol is most valuable in projects that run a
+    type checker as part of their CI pipeline.
+
+    Example `mypy` error for a missing method:
+
+    ```text
+    error: Argument 1 to "render" has incompatible type "Triangle";
+           expected "Drawable"
+    note:  "Triangle" is missing following "Drawable" protocol member:
+    note:      draw
+    ```
 
 ---
 
@@ -611,3 +647,70 @@ Define two Protocols: `Readable` with a `read() -> str` method, and `Writable` w
         buf = StringBuffer()
         result = process(buf)
         print(result)  # Hello, World!
+
+---
+
+**Exercise 4.**
+Explain the difference between these two approaches to defining a `Closeable` interface. Which one requires the implementing class to inherit? Which one would catch a missing `close()` method at type-checking time without `@runtime_checkable`? When would you choose one over the other?
+
+```python
+# Approach A
+from abc import ABC, abstractmethod
+
+class CloseableABC(ABC):
+    @abstractmethod
+    def close(self) -> None:
+        pass
+
+# Approach B
+from typing import Protocol
+
+class CloseableProtocol(Protocol):
+    def close(self) -> None:
+        ...
+```
+
+??? success "Solution to Exercise 4"
+
+    **Approach A (ABC)** requires explicit inheritance. Any class that wants to be `CloseableABC` must write `class MyClass(CloseableABC):`. If `close()` is missing, Python raises `TypeError` at instantiation time — no type checker needed.
+
+    **Approach B (Protocol)** does **not** require inheritance. Any class with a `close(self) -> None` method is structurally compatible. A type checker like `mypy` will flag a missing or mismatched `close()` at analysis time. Without `@runtime_checkable`, `isinstance()` checks will not work.
+
+    **When to choose each:**
+
+    - Use **ABC** when you need runtime enforcement, want to share concrete method implementations, or are building a class hierarchy you fully control.
+    - Use **Protocol** when working with code you cannot modify (third-party libraries), when you want lightweight interfaces without coupling, or when structural compatibility is more important than a strict hierarchy.
+
+    In modern Python, Protocol is the default choice for defining interfaces. Reserve ABCs for cases where you need concrete shared methods or runtime `isinstance()` enforcement without decorators.
+
+---
+
+**Exercise 5.**
+A colleague argues that `@runtime_checkable` makes Protocol equivalent to ABC for runtime safety. Write a concrete example that disproves this claim: define a `@runtime_checkable` Protocol with a method `process(self, data: list) -> dict`, create a class whose `process` method has an incompatible signature (e.g., takes no arguments), and show that `isinstance()` still returns `True`. What does this tell you about the guarantees of `@runtime_checkable`?
+
+??? success "Solution to Exercise 5"
+
+        from typing import Protocol, runtime_checkable
+
+        @runtime_checkable
+        class Processor(Protocol):
+            def process(self, data: list) -> dict:
+                ...
+
+        class BadProcessor:
+            def process(self):  # Wrong signature: missing 'data' parameter
+                return 42       # Wrong return type too
+
+        bp = BadProcessor()
+        print(isinstance(bp, Processor))  # True!
+
+        # But calling it as expected fails:
+        try:
+            bp.process([1, 2, 3])
+        except TypeError as e:
+            print(e)
+        # TypeError: BadProcessor.process() takes 1 positional argument but 2 were given
+
+    `@runtime_checkable` only verifies that an attribute with the name `process` **exists** — it does not check the number of parameters, their types, or the return type. This means `isinstance()` can return `True` for a class that will fail at call time.
+
+    The takeaway: `@runtime_checkable` is a quick structural check, not a behavioral guarantee. For full signature verification, rely on a static type checker like `mypy`. ABCs, by contrast, at least enforce that the method is *overridden* (though they also do not check signatures).

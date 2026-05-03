@@ -2,6 +2,9 @@
 
 Understanding the evolution from functions → closures → classes reveals Python's design philosophy.
 
+!!! tip "Mental Model"
+    Functions bundle logic, closures bundle logic with captured state, and classes bundle logic with state *and* a public interface. Each step adds structure: a closure is a function that remembers its environment; a class is a closure that names its variables (attributes) and exposes multiple entry points (methods). When a closure starts feeling cramped, it is time for a class.
+
 ---
 
 ## The Evolution
@@ -221,6 +224,21 @@ class Point:
 
 ---
 
+## Why Classes Scale Better
+
+Closures work well for simple cases but hit limits as complexity grows:
+
+!!! tip "Closures vs Classes at Scale"
+    | Dimension | Closure | Class |
+    |---|---|---|
+    | State visibility | Implicit (hidden in `__closure__`) | Explicit (`self.attr`, `vars()`) |
+    | Number of behaviors | Usually one function | Multiple methods |
+    | Extensibility | Cannot inherit or compose | Inheritance, composition, protocols |
+    | Introspection | `__closure__[0].cell_contents` | `vars(obj)`, `dir(obj)`, `isinstance()` |
+    | Testing | Hard to mock or inspect | Easy to subclass, mock, inject |
+
+    When you find yourself returning multiple functions from a closure, passing mutable containers as shared state, or wishing you could add a method — it is time to switch to a class.
+
 ## Closure Limitations
 
 ### 1. Single Function
@@ -287,6 +305,17 @@ Encapsulate simple state with single behavior.
 
 ---
 
+## The Unified Model
+
+!!! tip "Functions, Closures, and Classes Are All Objects"
+    In Python, functions, closures, and classes are not different paradigms — they are different layers of the same object model:
+
+    - **Function** → object with code + reference to globals
+    - **Closure** → function + captured state (`__closure__`)
+    - **Class** → object that creates objects (via `__new__` + `__init__`)
+
+    All behavior ultimately comes from attribute access, method calls, and object protocols. OOP is not separate from Python — it is built on the same data model that powers everything else.
+
 ## Key Takeaways
 
 - Functions → Closures → Classes progression.
@@ -294,6 +323,7 @@ Encapsulate simple state with single behavior.
 - Classes provide explicit attributes.
 - Classes offer more features (methods, inheritance).
 - Choose based on complexity needs.
+- All three are objects in Python's data model — different layers of the same system.
 
 ---
 
@@ -421,3 +451,101 @@ Create three implementations of a simple accumulator (stores and sums numbers): 
         print(a.add(20))  # 30
         print(a.total())  # 30
         # Class: inspectable, testable, extensible, multiple instances
+
+---
+
+**Exercise 4.**
+Using the function object structure shown in the "Free Variables" section, inspect a closure's internals. Create a closure `make_adder(n)` that returns a function adding `n` to its argument. Then print `__code__.co_freevars`, `__closure__[0].cell_contents`, and `__code__.co_varnames` on the returned function. Explain what each reveals.
+
+??? success "Solution to Exercise 4"
+
+        def make_adder(n):
+            def add(x):
+                return x + n
+            return add
+
+        add5 = make_adder(5)
+
+        print(add5.__code__.co_freevars)          # ('n',)
+        print(add5.__closure__[0].cell_contents)  # 5
+        print(add5.__code__.co_varnames)          # ('x',)
+
+        # co_freevars: names of variables captured from the enclosing scope.
+        #   Here 'n' is free — used inside add() but defined in make_adder().
+        #
+        # __closure__[0].cell_contents: the actual value captured for 'n'.
+        #   This is how the closure retains state after make_adder() returns.
+        #
+        # co_varnames: names of local variables (parameters + locals).
+        #   Here 'x' is the parameter of add().
+        #
+        # Together these map to LEGB:
+        #   L = co_varnames (locals)
+        #   E = co_freevars + __closure__ (enclosing)
+        #   G = __globals__ (module-level)
+
+---
+
+**Exercise 5.**
+A colleague writes the following closure-based "counter" that returns three functions. Explain why this design becomes awkward as requirements grow, and refactor it into a class. Add a `reset()` method and a `history` attribute that tracks all values — features that would be painful to add to the closure version.
+
+```python
+def make_counter(start=0):
+    count = [start]  # mutable container to work around nonlocal
+    def increment():
+        count[0] += 1
+        return count[0]
+    def decrement():
+        count[0] -= 1
+        return count[0]
+    def value():
+        return count[0]
+    return increment, decrement, value
+```
+
+??? success "Solution to Exercise 5"
+
+    The closure returns three separate functions sharing a mutable list. This works but is fragile:
+
+    - Adding `reset()` requires returning a fourth function.
+    - Adding `history` requires sharing another mutable container across all functions.
+    - The caller must unpack and track three (or more) unrelated variables: `inc, dec, val = make_counter()`.
+    - There is no `isinstance()` check, no `repr`, and no way to inspect state cleanly.
+
+    **Refactored as a class:**
+
+        class Counter:
+            def __init__(self, start=0):
+                self._count = start
+                self.history = [start]
+
+            def increment(self):
+                self._count += 1
+                self.history.append(self._count)
+                return self._count
+
+            def decrement(self):
+                self._count -= 1
+                self.history.append(self._count)
+                return self._count
+
+            def value(self):
+                return self._count
+
+            def reset(self):
+                self._count = 0
+                self.history.append(0)
+
+            def __repr__(self):
+                return f"Counter({self._count})"
+
+        c = Counter()
+        c.increment()
+        c.increment()
+        c.decrement()
+        print(c)           # Counter(1)
+        print(c.history)   # [0, 1, 2, 1]
+        c.reset()
+        print(c.history)   # [0, 1, 2, 1, 0]
+
+    The class version is a single object with a clear API, inspectable state, and easy extensibility. This is the moment when closures stop scaling and classes become the right tool.

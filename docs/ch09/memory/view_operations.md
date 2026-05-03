@@ -2,6 +2,19 @@
 
 These operations return views that share memory with the original array.
 
+!!! tip "Mental Model"
+    View operations -- slicing, reshape, transpose -- give you a new array object that points to the same underlying data. They are O(1) in time and use zero extra memory, but any mutation through the view changes the original. Recognizing which operations return views is essential for writing both fast and correct NumPy code.
+
+!!! note "View Operations at a Glance"
+    All view operations share one property: they return a new array object with different shape or strides but pointing to the **same data buffer**. No data is copied.
+
+    | Operation | What changes | Data copied? |
+    |---|---|---|
+    | Slicing (`a[1:5]`) | Shape, offset | No |
+    | Reshape (`a.reshape(...)`) | Shape, strides | No (if contiguous) |
+    | Transpose (`a.T`) | Strides, axis order | No |
+    | Ravel (`a.ravel()`) | Shape | No (if contiguous) |
+
 
 ## Slicing
 

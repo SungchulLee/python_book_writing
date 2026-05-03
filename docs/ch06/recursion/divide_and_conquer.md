@@ -2,6 +2,9 @@
 
 Divide and Conquer is a recursive algorithm pattern that solves problems by breaking them into smaller subproblems, solving each independently, then combining results.
 
+!!! tip "Mental Model"
+    Divide and conquer splits a big problem into independent smaller copies of itself, solves each recursively, and merges the answers. The key insight is that the subproblems don't overlap -- each piece is solved exactly once. This independence is what separates divide-and-conquer from dynamic programming.
+
 ---
 
 ## The Divide and Conquer Pattern

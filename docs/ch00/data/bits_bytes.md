@@ -2,6 +2,9 @@
 
 # Bits and Bytes
 
+!!! tip "Mental Model"
+    A bit is a single yes-or-no answer; a byte is a group of eight such answers bundled together. Every piece of data a computer handles -- numbers, text, images, programs -- is just a pattern of bits given meaning by context. Understanding bits and bytes is understanding the alphabet that all digital information is written in.
+
 All information in a computer—numbers, text, images, sound, and programs—is ultimately represented as patterns of **bits**. To understand how computers store and process information, we begin with the most basic building blocks: **bits** and **bytes**.
 
 This section explains what bits and bytes are, how binary numbers work, how negative integers are represented, how bitwise operations manipulate data, and how multi-byte values are laid out in memory.

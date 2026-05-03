@@ -2,6 +2,9 @@
 
 One of the most common sources of bugs in pandas is confusion between views and copies. Understanding when pandas returns a view (reference to original data) vs a copy (independent duplicate) is essential for avoiding silent data corruption.
 
+!!! tip "Mental Model"
+    A view shares memory with the original -- modifying the view modifies the original. A copy is independent -- modifying it leaves the original untouched. The problem is that pandas does not guarantee which one you get from slicing. The safe rule: call `.copy()` explicitly when you want independence, and use `.loc` for in-place assignment on the original.
+
 ## The Problem
 
 ```python

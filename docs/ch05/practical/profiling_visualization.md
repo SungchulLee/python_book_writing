@@ -2,6 +2,9 @@
 
 Visualizing profiling data makes it easier to understand performance characteristics. `snakeviz` provides interactive flame graphs for cProfile output.
 
+!!! tip "Mental Model"
+    Raw profiling output is a wall of numbers. Visualization tools like `snakeviz` turn that data into interactive flame graphs where wide bars mean slow functions and nested bars show call hierarchy. Your eyes can spot the dominant bar in a flame graph far faster than scanning a sorted text table.
+
 ---
 
 ## Installation and Basic Usage

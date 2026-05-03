@@ -2,6 +2,9 @@
 
 pandas is built for **vectorized operations**. Using Python loops or incorrect patterns can make code orders of magnitude slower.
 
+!!! tip "Mental Model"
+    The performance hierarchy is: vectorized ops > `apply()` > `itertuples()` > `iterrows()` > Python loops. Every time you write a loop over DataFrame rows, ask "can I express this as a column operation instead?" Other common traps include growing a DataFrame row-by-row (use a list of dicts then construct once) and calling `.apply()` when a built-in method exists.
+
 ## The Golden Rule
 
 **Vectorized operations > apply() > itertuples() > iterrows() > for loops**

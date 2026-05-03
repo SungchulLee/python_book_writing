@@ -2,6 +2,9 @@
 
 Customize how tick labels appear on your axes.
 
+!!! tip "Mental Model"
+    Tick labels are the text strings displayed at each tick mark. By default, Matplotlib formats numbers automatically, but you can override them with custom strings (e.g., month names), rotate them for readability, or use `FuncFormatter` for computed labels. Always set tick positions with `set_xticks` before setting tick labels with `set_xticklabels` to keep them aligned.
+
 ---
 
 ## set_xticklabels and set_yticklabels

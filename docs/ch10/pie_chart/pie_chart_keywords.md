@@ -2,6 +2,20 @@
 
 Reference for `ax.pie()` keyword arguments.
 
+!!! tip "Mental Model"
+    `ax.pie()` has many keywords, but they group logically: slice data (`x`, `explode`, `labels`, `colors`), text formatting (`autopct`, `pctdistance`, `labeldistance`, `textprops`), and layout (`startangle`, `radius`, `counterclock`, `center`). Use `wedgeprops` to style individual slices just as you would use `boxprops` in box plots.
+
+!!! tip "Priority: The 5 Parameters That Matter Most"
+    For 90% of pie charts, you only need these:
+
+    1. **`x`** — the data values
+    2. **`labels`** — category names
+    3. **`autopct`** — percentage format string or callable
+    4. **`startangle`** — typically `90` for 12-o'clock start
+    5. **`colors`** — explicit color list for clarity
+
+    Everything else (`shadow`, `frame`, `hatch`, `rotatelabels`) is secondary styling that you can ignore until you have a specific design need.
+
 ## Signature
 
 ```python
@@ -361,16 +375,41 @@ plt.show()
 **Exercise 4.** Write code that uses `colors` from a Matplotlib colormap (e.g., `plt.cm.Set3`) to color the wedges of a pie chart.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        import matplotlib.pyplot as plt
 
-    Refer to the code examples in the main content for the specific API calls needed.
+        sizes = [30, 25, 20, 15, 10]
+        labels = ['A', 'B', 'C', 'D', 'E']
+        cmap = plt.cm.Set3
+        colors = [cmap(i / len(sizes)) for i in range(len(sizes))]
+
+        fig, ax = plt.subplots()
+        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.0f%%',
+               startangle=90)
+        ax.set_title('Pie Chart with Colormap Colors')
+        plt.show()
+
+---
+
+**Exercise 5.** Using `wedgeprops` and `textprops`, create a pie chart where all wedge edges are white (creating visual separation) and all text is bold. Explain why white edges are often better than `explode` for separating slices.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+
+        sizes = [35, 25, 20, 12, 8]
+        labels = ['Core', 'Growth', 'Stable', 'Risk', 'Cash']
+        colors = ['#2ecc71', '#3498db', '#9b59b6', '#e74c3c', '#f39c12']
+
+        fig, ax = plt.subplots()
+        ax.pie(sizes, labels=labels, colors=colors, autopct='%1.0f%%',
+               startangle=90,
+               wedgeprops=dict(edgecolor='white', linewidth=2),
+               textprops=dict(fontweight='bold'))
+        ax.set_title('Portfolio Allocation', fontweight='bold')
+        plt.show()
+
+        # White edges create clean visual separation without pulling slices
+        # apart (explode distorts the circular shape and makes it harder to
+        # compare sizes). This is the professional technique used in
+        # dashboards and presentations.

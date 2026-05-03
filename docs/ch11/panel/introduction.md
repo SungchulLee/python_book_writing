@@ -2,6 +2,9 @@
 
 **Panel data** (also called **longitudinal data**) combines cross-sectional and time-series dimensions. Each observation is identified by two keys: an entity (individual, firm, country) and a time point.
 
+!!! tip "Mental Model"
+    Panel data is a 3D cube flattened into a 2D table. The three dimensions are entity, time, and variable. In pandas, entity and time go into a MultiIndex and variables become columns. This lets you ask both "how does entity X change over time?" and "how do all entities compare at time T?" from a single DataFrame.
+
 ## What is Panel Data?
 
 Panel data has two dimensions:

@@ -2,6 +2,9 @@
 
 The choice between a one-sided and two-sided test determines how the rejection region is allocated and directly affects the p-value. A two-sided test checks whether the parameter differs from the null value in either direction, while a one-sided test concentrates all rejection probability in one tail. This choice must be made before looking at the data, based on the research question.
 
+!!! tip "Mental Model"
+    A two-sided test guards against surprises in either direction (the parameter could be higher or lower); a one-sided test bets everything on one direction and gains statistical power in exchange. The rule is simple: choose one-sided only when the opposite direction is scientifically meaningless, and always decide before looking at the data.
+
 ---
 
 ## Two-Sided Tests

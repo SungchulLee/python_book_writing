@@ -12,6 +12,9 @@ flowchart LR
     B --> C[Caller handles exception]
 ````
 
+!!! tip "Mental Model"
+    `raise` is how a function says "I cannot do what you asked." Instead of returning a special error value that callers might ignore, raising an exception forces the issue---execution stops immediately and unwinds the call stack until something handles it. This makes failures impossible to silently overlook.
+
 ---
 
 ## 1. Basic raise

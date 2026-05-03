@@ -2,6 +2,9 @@
 
 The `fillna()` method accepts several keyword arguments that control how missing values are filled.
 
+!!! tip "Mental Model"
+    `method='ffill'` carries the last known value forward; `method='bfill'` pulls the next known value backward. `limit` caps how many consecutive NaN cells get filled. These keywords turn `fillna` from a simple constant-fill into a directional propagation tool, ideal for time series where "no new data means the old value still holds."
+
 ## method Keyword
 
 Propagate non-null values forward or backward.

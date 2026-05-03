@@ -23,6 +23,9 @@ This section covers:
 * dynamic typing
 * common variable operations
 
+!!! tip "Mental Model"
+    A variable in Python is a sticky note, not a box. Assignment attaches a name to an object that already exists in memory---it does not copy the object. Two names can point to the same object, which is why changing one "variable" can seem to change another.
+
 ---
 
 ## 1. Variables as Names Bound to Objects

@@ -2,6 +2,9 @@
 
 The `isin()` method filters rows where column values are in a specified list or set.
 
+!!! tip "Mental Model"
+    `isin()` is the pandas equivalent of SQL's `IN` clause. It checks each value against a set of allowed values and returns a boolean mask. Instead of chaining `(x == 'a') | (x == 'b') | (x == 'c')`, write `x.isin(['a', 'b', 'c'])` -- cleaner, faster, and scales to any number of values.
+
 ## Basic Usage
 
 Check membership in a list.

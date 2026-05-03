@@ -1,5 +1,8 @@
 # re Module Overview
 
+!!! tip "Mental Model"
+    A regular expression is a mini-language for describing text patterns. Python's `re` module compiles that pattern into a state machine and runs it against your string to search, match, extract, or replace. Learning regex is like learning to use wildcards on steroids — a single pattern can replace dozens of lines of string-manipulation code.
+
 ## What Are Regular Expressions?
 
 A **regular expression** (regex) is a sequence of characters that defines a search pattern. Regular expressions let you match, search, extract, and replace text based on patterns rather than fixed strings. Python's built-in `re` module provides full support for Perl-style regular expressions.

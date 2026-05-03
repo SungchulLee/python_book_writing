@@ -2,6 +2,9 @@
 
 The `suffixes` parameter specifies strings to append to overlapping column names when both DataFrames have columns with the same name.
 
+!!! tip "Mental Model"
+    When both tables have a column with the same name (and it is not the join key), pandas must disambiguate. `suffixes=('_left', '_right')` appends these tags to the conflicting names. Choose descriptive suffixes like `('_2023', '_2024')` so the resulting columns are self-documenting.
+
 ## Default Suffixes
 
 Default suffixes are `_x` and `_y`.

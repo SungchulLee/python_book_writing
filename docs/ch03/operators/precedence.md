@@ -2,6 +2,8 @@
 
 Operator precedence determines which operations are performed first. Associativity determines the order when operators have the same precedence.
 
+!!! tip "Mental Model"
+    Precedence is the invisible parentheses Python adds to your expression. `2 + 3 * 4` becomes `2 + (3 * 4)` because `*` binds tighter than `+`. When in doubt, add explicit parentheses -- they cost nothing at runtime and make intent unambiguous. The one surprise: `**` is right-associative, so `2 ** 3 ** 2` means `2 ** (3 ** 2) = 512`, not `(2 ** 3) ** 2 = 64`.
 
 ## Precedence Table
 

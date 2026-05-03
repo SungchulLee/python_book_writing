@@ -2,6 +2,9 @@
 
 # Integer Representation
 
+!!! tip "Mental Model"
+    In hardware, an integer is a fixed-width row of bits -- like an odometer with a set number of digits. Once all digits roll over, the value wraps around (overflow). Two's complement cleverly uses the highest bit as a sign indicator, letting the same addition circuitry handle both positive and negative numbers. Python sidesteps the overflow problem entirely by using arbitrary-precision integers that grow as large as memory allows.
+
 Computers represent integers using **binary numbers stored in fixed-width memory**. The exact representation depends on the programming environment.
 
 Most programming languages and hardware systems use **fixed-width two’s complement integers**, while Python uses **arbitrary-precision integers** that grow dynamically as needed.

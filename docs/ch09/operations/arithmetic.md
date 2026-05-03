@@ -2,6 +2,25 @@
 
 NumPy arrays support element-wise arithmetic operations.
 
+!!! tip "Mental Model"
+    Every arithmetic operator (`+`, `-`, `*`, `/`, `**`) in NumPy works element-by-element, not as matrix algebra. `A * B` multiplies corresponding elements, not rows-by-columns. This element-wise default, combined with broadcasting, lets you write compact formulas that look like scalar math but operate on entire arrays at C speed.
+
+    Under the hood, **all arithmetic is ufuncs**: `a + b` dispatches to `np.add(a, b)`,
+    `a * b` to `np.multiply(a, b)`, and so on. This means arithmetic inherits every
+    ufunc feature — broadcasting, `out=` parameter, `reduce`, `accumulate` — for free.
+
+!!! note "Array Computation Model"
+    All NumPy operations in this section follow a single pattern:
+
+    1. Take input arrays
+    2. Align shapes via **broadcasting**
+    3. Apply a scalar function **element-wise** (ufunc)
+    4. Produce output array
+
+    This pattern covers arithmetic (`+`, `*`), comparisons (`<`, `==`), math
+    functions (`exp`, `log`), and rounding (`floor`, `ceil`). The sections that
+    follow are variations on this one mechanism.
+
 ## Addition
 
 ### 1. Array Addition

@@ -2,6 +2,9 @@
 
 Parametric tests such as the t-test and ANOVA assume that data follow a specific distribution, typically normal. When these assumptions are violated — due to heavy tails, skewness, or small sample sizes — non-parametric tests provide valid alternatives. These tests make minimal distributional assumptions, often relying on ranks rather than raw values, which makes them robust to outliers and applicable to ordinal data.
 
+!!! tip "Mental Model"
+    Non-parametric tests replace raw values with ranks, making them immune to outliers and valid for any continuous distribution. The Mann-Whitney U test is the rank-based counterpart of the two-sample t-test; the Wilcoxon signed-rank test replaces the paired t-test; and the Kruskal-Wallis test replaces one-way ANOVA. The trade-off is slightly less power when the parametric assumptions actually hold.
+
 ## Mann-Whitney U Test
 
 The Mann-Whitney U test is the non-parametric counterpart of the independent two-sample t-test. It compares two independent groups to determine whether one tends to produce larger values than the other.

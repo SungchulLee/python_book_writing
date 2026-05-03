@@ -2,6 +2,37 @@
 
 The `np.array` function converts Python sequences into NumPy arrays. Understanding array dimensions is fundamental to working with NumPy.
 
+!!! tip "Mental Model"
+    `np.array` is the front door to NumPy: hand it a Python list and it gives back a typed, contiguous block of memory that supports fast vectorized operations. The nesting depth of your input list determines the number of dimensions -- a flat list becomes 1D, a list of lists becomes 2D, and so on.
+
+    Every array is fully described by three things: **data** (the values),
+    **dtype** (how bytes are interpreted), and **shape** (how the flat buffer is
+    folded into dimensions). `np.array` infers all three from your input, but you
+    can override dtype explicitly.
+
+!!! note "Array Creation System"
+    NumPy arrays enter the system through four creation patterns:
+
+    ```text
+    1. From data       → np.array          (convert existing values)
+    2. From constants  → zeros, ones, full, empty  (initialize to a value)
+    3. From structure  → diag, eye, identity       (mathematical matrices)
+    4. From intervals  → arange, linspace          (sampling grids)
+    ```
+
+    Each pattern serves a different computational intent: data import, buffer
+    allocation, linear algebra setup, or domain discretization.
+
+!!! note "Why Arrays Matter"
+    NumPy arrays are the foundation for everything that follows in scientific Python:
+
+    - **Vectorized operations** — element-wise math runs in compiled C, not Python loops, giving 10–100x speedups.
+    - **Memory efficiency** — arrays store data in a contiguous typed block, not as scattered Python objects.
+    - **Broadcasting** — arrays of different shapes can be combined without explicit loops or copies.
+    - **Ecosystem integration** — pandas, scikit-learn, matplotlib, and SciPy all build on NumPy arrays.
+
+    Every topic in later chapters — broadcasting, FFT, linear algebra, machine learning — starts with array creation.
+
 
 ## Dimension Concepts
 

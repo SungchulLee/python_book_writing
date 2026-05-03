@@ -2,6 +2,15 @@
 
 Create multi-series bar charts to compare categories across groups or show composition of totals.
 
+!!! tip "Mental Model"
+    Grouped bars place multiple series side by side by offsetting their x-positions, while stacked bars pile series on top of each other using the `bottom` parameter. Grouped bars make it easy to compare values within a category; stacked bars make it easy to see each category's total and its composition.
+
+!!! tip "Grouped vs Stacked = Different Questions"
+    **Grouped bars** → "How do the components compare within each category?"
+    **Stacked bars** → "What is each category's total, and how is it composed?"
+
+    Choose grouped when the reader needs to compare individual series values. Choose stacked when the total and its breakdown matter more than precise per-series comparison.
+
 ## Grouped Bar Chart
 
 Place bars side by side to compare multiple series.

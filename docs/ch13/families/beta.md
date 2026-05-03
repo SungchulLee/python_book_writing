@@ -2,6 +2,9 @@
 
 The beta distribution is the most natural continuous distribution for modeling random variables that represent probabilities, proportions, or rates confined to the interval $[0, 1]$. It arises as the conjugate prior for the Bernoulli and binomial likelihoods in Bayesian statistics, and it appears in the theory of order statistics. Its two shape parameters allow a remarkably flexible family of density shapes on $[0, 1]$.
 
+!!! tip "Mental Model"
+    The beta distribution is the Swiss army knife for modeling proportions on $[0, 1]$. Its two shape parameters $\alpha$ and $\beta$ act like vote counts: $\alpha$ votes for values near 1 and $\beta$ votes for values near 0. More votes overall means a more concentrated (confident) distribution; equal votes produce symmetry.
+
 ---
 
 ## Mathematical Definition

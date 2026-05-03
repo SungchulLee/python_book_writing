@@ -2,6 +2,9 @@
 
 This document covers common operations on categorical data, including groupby performance, merging, and manipulation patterns.
 
+!!! tip "Mental Model"
+    Because categoricals store integer codes internally, operations like groupby and merge can work on integers instead of strings, which is dramatically faster. Think of categoricals as pre-indexed data: the expensive string-comparison work is done once at creation time, and every subsequent operation benefits.
+
 ## GroupBy Performance
 
 Categorical columns provide significant speedup for groupby operations.

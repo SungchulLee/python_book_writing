@@ -2,6 +2,9 @@
 
 Since integers are stored in binary, Python allows bitwise operations to manipulate individual bits.
 
+!!! tip "Mental Model"
+    Bitwise operators treat an integer as a row of independent on/off switches. `&` keeps a switch on only if both inputs are on, `|` turns it on if either is, `^` toggles it when the inputs differ, and `~` flips every switch. Shifts (`<<`, `>>`) slide the entire row left or right, which is equivalent to multiplying or dividing by powers of two.
+
 ---
 
 ## Basic Operators

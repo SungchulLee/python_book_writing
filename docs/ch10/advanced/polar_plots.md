@@ -2,6 +2,12 @@
 
 Polar plots display data in circular coordinates (angle and radius), useful for directional data, periodic phenomena, and radar charts.
 
+!!! tip "Mental Model"
+    A polar plot replaces the x-y grid with an angle-radius grid: the angle goes around the circle (in radians) and the radius goes outward from the center. Create polar axes with `projection='polar'` and then use the same `ax.plot()` and `ax.fill()` calls — only the coordinate interpretation changes.
+
+!!! warning "When to Use Polar (and When Not To)"
+    Use polar coordinates when the variable is **inherently cyclic** — wind direction, time of day, phase angles, or any quantity that wraps around. If the data is not cyclic, a polar plot distorts distances and makes comparison harder than a Cartesian plot. Do not use polar just because it looks interesting — use it because the circular structure reveals a pattern that Cartesian coordinates would hide.
+
 ## Creating Polar Axes
 
 ### Method 1: subplot with projection
@@ -520,4 +526,59 @@ Plot the Archimedean spiral $r = \theta$ for $\theta \in [0, 6\pi]$ in polar coo
         sc = ax.scatter(theta, r, c=theta, cmap='viridis', s=2)
         ax.set_title('Archimedean Spiral: r = θ', pad=20)
         plt.colorbar(sc, ax=ax, label='Angle (radians)', pad=0.1)
+
+---
+
+**Exercise 4.**
+Create a radar chart (spider plot) comparing three students across 5 subjects. Each student has scores from 0–100 for Math, Science, English, History, and Art. Plot all three students on the same polar axes with different colors and use `ax.fill()` with low alpha. Explain why polar coordinates are natural for this comparison.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        categories = ['Math', 'Science', 'English', 'History', 'Art']
+        n = len(categories)
+        angles = np.linspace(0, 2 * np.pi, n, endpoint=False).tolist()
+        angles += angles[:1]  # close the polygon
+
+        students = {
+            'Alice': [90, 85, 70, 65, 80],
+            'Bob':   [60, 75, 85, 90, 70],
+            'Carol': [80, 80, 80, 80, 80],
+        }
+
+        fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+        for name, scores in students.items():
+            values = scores + scores[:1]
+            ax.plot(angles, values, label=name)
+            ax.fill(angles, values, alpha=0.1)
+
+        ax.set_xticks(angles[:-1])
+        ax.set_xticklabels(categories)
+        ax.legend(loc='upper right')
+        ax.set_title('Student Comparison')
+        plt.show()
+
+        # Polar is natural here because each category is equidistant around
+        # a circle — there is no inherent ordering (Math is not "before"
+        # Science). The circular layout treats all subjects equally and makes
+        # shape comparison intuitive: a balanced student is a regular polygon.
+
+---
+
+**Exercise 5.**
+Explain why plotting `y = sin(x)` for `x` in `[0, 10]` in polar coordinates looks strange and misleading. What kind of data is polar appropriate for? Give one example of data that should NEVER be plotted in polar and explain why.
+
+??? success "Solution to Exercise 5"
+
+    `sin(x)` for `x in [0, 10]` in polar interprets `x` as an angle (radians) and `sin(x)` as a radius. The result is a looping curve that does not convey the periodic nature of sine — it distorts the familiar wave into an unrecognizable shape. The problem: `x` here represents a continuous independent variable, not a cyclic angle.
+
+    **Polar is appropriate for:**
+    - Wind direction frequency (angle = compass bearing, radius = frequency)
+    - Time-of-day activity (angle = hour, radius = count)
+    - Phase angles in signal processing
+
+    **Never use polar for:**
+    - Time series where time is linear (not cyclic) — e.g., stock prices over 5 years. Plotting this in polar wraps the time axis into a circle, destroying the chronological structure and making trends impossible to read. If the x-axis has a natural start and end (not a cycle), use Cartesian coordinates.
         plt.show()

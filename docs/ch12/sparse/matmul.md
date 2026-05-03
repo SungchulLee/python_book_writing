@@ -2,6 +2,9 @@
 
 Sparse matrix-matrix multiplication and its considerations.
 
+!!! tip "Mental Model"
+    Sparse matrix multiplication skips all the zero-times-anything work, making it dramatically faster than dense multiplication when both matrices are sparse. However, the product of two sparse matrices can be much denser than either input -- each nonzero can contribute to multiple output entries. Always check the output sparsity to avoid unexpected memory blowup.
+
 ## Sparse @ Sparse
 
 ### 1. Basic Usage

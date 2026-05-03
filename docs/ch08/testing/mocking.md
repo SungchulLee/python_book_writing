@@ -2,6 +2,9 @@
 
 Mock external dependencies to isolate tests and control behavior.
 
+!!! tip "Mental Model"
+    A mock is a stunt double for a real object. It stands in for an external dependency — a database, an API, the filesystem — so your test exercises only the logic you care about, not the infrastructure behind it. You tell the mock what to return, run the code, then ask the mock whether it was called correctly.
+
 ## Basic Mocking
 
 Replace objects with mocks.

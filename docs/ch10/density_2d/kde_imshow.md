@@ -2,6 +2,15 @@
 
 Kernel Density Estimation (KDE) provides a smooth estimate of the probability density function from sample data. This document covers how to visualize 2D KDE using `imshow`.
 
+!!! tip "Mental Model"
+    KDE turns scattered data points into a smooth density surface by placing a bell curve (kernel) at each point and summing them up. The result is like a soft-focus photograph of your scatter plot -- dense clusters glow brightly while sparse regions fade. Visualize the 2D density with `imshow` to reveal the underlying probability landscape.
+
+    In the [density estimation spectrum](hist2d.md), KDE is the **continuous**
+    end: where `hist2d` and `hexbin` produce piecewise-constant approximations,
+    KDE produces a smooth function that can be evaluated at any point and
+    integrated analytically. The cost is computation — KDE scales with the number
+    of data points, while binning methods scale with the number of bins.
+
 ## What is KDE?
 
 KDE estimates the probability density function by placing a kernel (typically Gaussian) at each data point and summing them:

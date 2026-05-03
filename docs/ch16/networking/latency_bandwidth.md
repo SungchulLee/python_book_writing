@@ -1,5 +1,8 @@
 # Latency and Bandwidth
 
+!!! tip "Mental Model"
+    Latency is how long it takes for the first drop of water to travel through a pipe; bandwidth is how wide the pipe is. For many small requests, latency dominates -- you wait for each round trip. For large transfers, bandwidth dominates -- you wait for the pipe to drain. Knowing which one is your bottleneck tells you what to optimize.
+
 ## Two Dimensions of Network Performance
 
 Network performance has two key metrics that are often confused:

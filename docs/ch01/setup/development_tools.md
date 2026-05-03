@@ -21,6 +21,9 @@ flowchart TD
 
 Each tool plays a different role in the Python development workflow.
 
+!!! tip "Mental Model"
+    Development tools sit between you and the Python interpreter. A code editor helps you write code, a terminal lets you run it, and an IDE combines both with debugging and project management. Start with whatever feels comfortable---the tool matters less than the habit of writing and running code regularly.
+
 ---
 
 ## 1. Code Editors

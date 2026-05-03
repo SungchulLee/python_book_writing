@@ -2,6 +2,9 @@
 
 Type hints define a function's expected interface, forming a contract between the function and its callers. They make the expected types of inputs and outputs explicit.
 
+!!! tip "Mental Model"
+    Type hints are labels on a function's inputs and outputs. Python does not enforce them at runtime---they are documentation that tools like `mypy` can check statically. Think of them as a contract: "I expect a `float` in and promise a `float` out." They make code self-documenting and catch type mismatches before the program runs.
+
 ## The Problem
 
 Consider this function:

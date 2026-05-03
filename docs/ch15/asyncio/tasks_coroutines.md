@@ -1,5 +1,8 @@
 # Tasks and Coroutines
 
+!!! tip "Mental Model"
+    A coroutine is a recipe -- calling it creates an object that describes what to do, but doesn't do it yet. A Task is what actually runs that recipe by scheduling it on the event loop. You need `create_task()` to get true concurrency: without it, `await`-ing coroutines one by one runs them sequentially.
+
 ## Coroutines
 
 A **coroutine** is a function defined with `async def`. When called, it returns a coroutine object that must be awaited or scheduled.

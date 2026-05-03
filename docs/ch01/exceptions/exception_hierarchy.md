@@ -22,6 +22,9 @@ flowchart TD
     B --> G[RuntimeError]
 ````
 
+!!! tip "Mental Model"
+    Python's exceptions form a family tree. Catching a parent class (like `LookupError`) also catches all its children (`KeyError`, `IndexError`). This hierarchy lets you write broad handlers when you want to catch a category of errors, or narrow handlers when you need to respond to a specific failure.
+
 ---
 
 ## 1. What Is an Exception?

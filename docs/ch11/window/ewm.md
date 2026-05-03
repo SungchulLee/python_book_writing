@@ -2,6 +2,9 @@
 
 The `ewm()` method computes exponentially weighted statistics, where recent observations have more influence than older ones.
 
+!!! tip "Mental Model"
+    EWM applies exponentially decaying weights: yesterday's value matters more than last week's, which matters more than last month's. The `span` parameter controls how fast the weights decay -- a larger span means a longer memory. Unlike rolling windows with a hard cutoff, EWM uses all past data but down-weights older observations smoothly.
+
 ## Basic EWM
 
 Create exponentially weighted calculations.

@@ -2,6 +2,18 @@
 
 Markers highlight individual data points on a line plot.
 
+!!! tip "Mental Model"
+    A marker stamps a symbol at each data point. Without markers, `plot()` shows only the connecting lines; with markers, each (x, y) value gets a visible dot, square, triangle, or other shape.
+
+!!! note "When to Use Markers"
+    | Data characteristic | Markers? | Why |
+    |--------------------|----------|-----|
+    | Sparse (< ~50 points) | **Yes** | Individual observations matter |
+    | Experimental / measured | **Yes** | Shows actual data vs interpolated line |
+    | Dense (> ~200 points) | **No** | Markers overlap and clutter the plot |
+    | Smooth mathematical curve | **No** | The function is the focus, not samples |
+    | Dense with `markevery` | **Selective** | Show trend + occasional data points |
+
 ---
 
 ## Basic Marker Usage

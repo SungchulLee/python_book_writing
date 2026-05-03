@@ -2,6 +2,9 @@
 
 The `join()` method combines DataFrames based on their index. It provides a simpler syntax than merge for index-based operations.
 
+!!! tip "Mental Model"
+    `join()` is `merge()` with a narrower scope: it matches on the index by default and uses a left join. If your DataFrames already share a meaningful index (like dates or ticker symbols), `join` is the shortest path to combining them -- one call, no key specification needed.
+
 ## Basic Usage
 
 Join two DataFrames by index.

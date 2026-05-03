@@ -2,6 +2,9 @@
 
 Understanding whether your task is CPU-bound or I/O-bound is crucial for choosing the right concurrency strategy.
 
+!!! tip "Mental Model"
+    Ask yourself: "Is my program slow because the CPU is busy computing, or because it is sitting idle waiting for something external?" CPU-bound tasks need more cores (use processes); I/O-bound tasks need something to do while waiting (use threads or asyncio). Getting this distinction right is the single most important decision in concurrent Python.
+
 ---
 
 ## Definitions

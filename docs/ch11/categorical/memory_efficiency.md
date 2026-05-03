@@ -2,6 +2,9 @@
 
 One of the primary benefits of categorical data is dramatic memory savings. This document demonstrates the memory characteristics and optimization strategies.
 
+!!! tip "Mental Model"
+    Object-dtype columns store a full Python string per cell -- a million rows of "Technology" means a million copies. Categorical dtype stores the string once in a lookup table and keeps only a small integer code per row. The fewer unique values relative to total rows, the larger the memory savings.
+
 ## How Memory is Saved
 
 ### String Storage (object dtype)

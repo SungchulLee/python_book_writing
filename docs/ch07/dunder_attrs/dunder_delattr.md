@@ -1,5 +1,14 @@
 # __delattr__
 
+`__delattr__` is the least commonly overridden of the four attribute hooks. In most
+codebases, the default behavior (remove the attribute from `__dict__`) is sufficient.
+Override it only when you need to **protect** attributes from deletion, **clean up**
+associated resources, or **audit** deletions. For simple cases, a `@property` deleter
+on a specific attribute is usually clearer.
+
+!!! tip "Mental Model"
+    `__delattr__` is the gatekeeper for `del obj.attr`. Every attribute deletion passes through it, giving you a single choke point to block protected attributes, log deletions, or cascade cleanup. Like `__setattr__`, always call `super().__delattr__(name)` for attributes you do want to actually remove -- otherwise the deletion never happens.
+
 ## Fundamentals
 
 ### 1. Definition
@@ -28,6 +37,18 @@ del self.x      # Calls __delattr__('x')
 del self.name   # Calls __delattr__('name')
 del self.data   # Calls __delattr__('data')
 ```
+
+!!! note "Attribute Operations Symmetry"
+
+    `__delattr__` completes the three-operation system for attribute mutation:
+
+    ```text
+    obj.attr        → __getattribute__  (read)
+    obj.attr = val  → __setattr__       (write)
+    del obj.attr    → __delattr__        (delete)
+    ```
+
+    Like `__setattr__`, `__delattr__` runs unconditionally for every deletion — there is no "fallback" variant. Together, these three hooks give you complete control over the attribute lifecycle. Override only the hooks you need; the defaults (inherited from `object`) handle the common cases correctly.
 
 ## Basic Implementation
 
@@ -161,6 +182,12 @@ del obj.connection
 ```
 
 ### 2. Cascade Deletion
+
+!!! warning "Risk of unintended side effects"
+    Cascade deletion can silently destroy attributes the caller did not intend to
+    remove. Use this pattern only when the relationship between attributes is
+    well-documented and callers expect the cascade. Prefer explicit cleanup methods
+    (e.g., `obj.reset()`) over implicit magic in `__delattr__`.
 
 ```python
 class Parent:
@@ -399,6 +426,13 @@ class GracefulDelete:
 
 ### 1. Soft Delete
 
+!!! warning "Breaks caller expectations"
+    Soft delete makes `del obj.attr` appear to work while secretly keeping the data.
+    This violates the principle of least surprise — code that checks `hasattr()` or
+    catches `AttributeError` after deletion may behave incorrectly. Reserve this
+    pattern for audit/compliance scenarios where data retention is an explicit
+    requirement, and document the behavior prominently.
+
 ```python
 class SoftDelete:
     def __init__(self):
@@ -465,6 +499,15 @@ class RefCounted:
                 print(f"Last reference to '{name}' deleted")
         super().__delattr__(name)
 ```
+
+## When NOT to Use __delattr__
+
+!!! warning "Avoid When"
+    - **Controlling deletion of a specific named attribute** — use a `@property` deleter instead. It is self-contained and easier to understand.
+    - **The default behavior is sufficient** — if you just want `del obj.attr` to remove the attribute from `__dict__`, you don't need to override anything.
+    - **You are tempted to add cascade deletes** — prefer an explicit `reset()` or `clear()` method that makes the intent visible to the caller.
+
+    Override `__delattr__` only when you need a **blanket policy** (protect all underscore attributes, audit all deletions, enforce immutability across the board).
 
 ## Common Mistakes
 
@@ -582,3 +625,98 @@ Build a class `Immutable` where `__delattr__` always raises `AttributeError` wit
         except AttributeError as e:
             print(f"Error: {e}")
             # Error: Cannot delete attributes from immutable object
+
+---
+
+**Exercise 4.**
+Explain why you would use a `@property` deleter instead of `__delattr__` for controlling deletion of a single attribute. Implement a `User` class with a `session` property that, when deleted, also prints a logout message. Then show what the equivalent `__delattr__` implementation would look like and explain why the property version is simpler.
+
+??? success "Solution to Exercise 4"
+
+        # Property deleter — simple, self-contained
+        class UserProperty:
+            def __init__(self, name):
+                self.name = name
+                self._session = None
+
+            @property
+            def session(self):
+                return self._session
+
+            @session.setter
+            def session(self, value):
+                self._session = value
+
+            @session.deleter
+            def session(self):
+                print(f"Logging out {self.name}")
+                self._session = None
+
+        u = UserProperty("Alice")
+        u.session = "token_abc"
+        del u.session  # Logging out Alice
+
+        # __delattr__ equivalent — more complex
+        class UserDelattr:
+            def __init__(self, name):
+                self.name = name
+                self._session = None
+
+            def __delattr__(self, name):
+                if name == "session":
+                    print(f"Logging out {self.name}")
+                    object.__setattr__(self, '_session', None)
+                    return  # Don't actually delete the property
+                super().__delattr__(name)
+
+    The property version is simpler because: (1) the logic is co-located with the getter and setter, (2) no risk of accidentally affecting other attribute deletions, and (3) no need to handle the asymmetry between `session` (the property name) and `_session` (the backing attribute). `__delattr__` is the right tool when you need a blanket policy across many attributes.
+
+---
+
+**Exercise 5.**
+Build a `ResourceManager` class that holds `connection`, `cache`, and `logger` attributes. Override `__delattr__` so that deleting any of these three prints a cleanup message and calls a corresponding private `_close_*` method before deletion. Deleting any other attribute should work normally. Demonstrate deleting each resource.
+
+??? success "Solution to Exercise 5"
+
+        class ResourceManager:
+            def __init__(self):
+                self.connection = "db://localhost"
+                self.cache = {"key": "value"}
+                self.logger = "file_logger"
+                self.name = "manager_1"  # Non-resource attribute
+
+            def _close_connection(self):
+                print(f"  Closing connection: {self.connection}")
+
+            def _close_cache(self):
+                print(f"  Clearing cache: {len(self.cache)} entries")
+
+            def _close_logger(self):
+                print(f"  Shutting down logger: {self.logger}")
+
+            def __delattr__(self, name):
+                cleanups = {
+                    "connection": self._close_connection,
+                    "cache": self._close_cache,
+                    "logger": self._close_logger,
+                }
+                if name in cleanups:
+                    print(f"Cleaning up '{name}':")
+                    cleanups[name]()
+                super().__delattr__(name)
+
+        rm = ResourceManager()
+
+        del rm.connection
+        # Cleaning up 'connection':
+        #   Closing connection: db://localhost
+
+        del rm.cache
+        # Cleaning up 'cache':
+        #   Clearing cache: 1 entries
+
+        del rm.name  # No cleanup — just deleted normally
+
+        print(hasattr(rm, "connection"))  # False
+        print(hasattr(rm, "name"))        # False
+        print(hasattr(rm, "logger"))      # True — not deleted yet

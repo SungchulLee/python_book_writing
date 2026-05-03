@@ -2,6 +2,9 @@
 
 The `map()` method applies a function or mapping to each element of a Series. It is useful for element-wise transformations and value substitutions.
 
+!!! tip "Mental Model"
+    `map()` is a lookup table applied to every element: pass a dict and each value is replaced by its corresponding entry, pass a function and it runs on each element. Unlike `apply`, `map` is strictly element-wise and works only on Series. It is the fastest way to do value substitution or simple per-element transforms.
+
 ## Basic Mapping
 
 Map values using a function.

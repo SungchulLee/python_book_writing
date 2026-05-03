@@ -2,6 +2,9 @@
 
 Text encoding mismatches are a common source of errors. Understanding character encodings and Python text handling prevents encoding-related bugs.
 
+!!! tip "Mental Model"
+    Encoding errors happen when the decoder guesses wrong about which encoding was used to write the bytes. The fix is always the same: know your encoding, specify it explicitly (`open(f, encoding='utf-8')`), and never rely on the platform default. When in doubt, UTF-8 is the right choice for nearly all modern text.
+
 ---
 
 ## UTF-8 Basics

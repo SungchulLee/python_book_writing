@@ -2,6 +2,9 @@
 
 DataFrame methods for computing statistical measures.
 
+!!! tip "Mental Model"
+    Statistical methods reduce a column to a single number: `mean()` for center, `std()` for spread, `median()` for a robust center, `corr()` for pairwise relationships. `describe()` bundles the most common statistics into one call. All of these skip NaN by default.
+
 ## Central Tendency
 
 Measures of central location.

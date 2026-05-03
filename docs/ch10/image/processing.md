@@ -2,6 +2,20 @@
 
 This document covers colormaps and image manipulation techniques in matplotlib.
 
+!!! tip "Mental Model"
+    Image processing in Matplotlib means manipulating the underlying NumPy array and redisplaying it. Convert to grayscale by averaging channels, adjust brightness by scaling values, apply colormaps to single-channel images, and crop by slicing the array. Matplotlib is the visualization layer; NumPy does the actual pixel math.
+
+!!! note "The Deeper Model: Images as Matrices"
+    Every image operation has a mathematical interpretation:
+
+    - **Grayscale conversion** — weighted sum of RGB channels (a linear combination)
+    - **Brightness/contrast** — scaling and shifting pixel values (affine transformation)
+    - **Cropping** — array slicing (selecting a submatrix)
+    - **Blurring** — convolution with an averaging kernel (each pixel becomes the mean of its neighbors)
+    - **Edge detection** — convolution with a derivative kernel (highlights rapid intensity changes)
+
+    Thinking of pixels as matrix elements connects image processing to linear algebra and signal processing. The colormap section below maps scalar matrices to visual color; the manipulation section transforms the matrix itself.
+
 ## Colormaps (cmap)
 
 The `cmap` parameter specifies the colormap used to map scalar data to colors.

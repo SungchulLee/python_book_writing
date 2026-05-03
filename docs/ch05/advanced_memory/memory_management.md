@@ -2,6 +2,9 @@
 
 Understanding copy semantics, memory views, and `__slots__` for efficient memory usage.
 
+!!! tip "Mental Model"
+    Shallow copy is like photocopying a page of links -- you get a new page, but the links still point to the same websites. Deep copy recreates the entire website tree. Choose shallow when shared sub-objects are fine; choose deep when each copy must be fully independent.
+
 ## Copy vs Deepcopy
 
 ### Shallow Copy

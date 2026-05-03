@@ -1,5 +1,8 @@
 # Frame Objects
 
+!!! tip "Mental Model"
+    Each function call creates a frame -- a snapshot of the function's local world containing its variables, the code it is running, and a pointer back to the caller's frame. Frames stack on top of each other like trays in a cafeteria; when a function returns, its tray is removed and you are back to the caller's context.
+
 ## Call Stack
 
 ### 1. Function Calls

@@ -1,5 +1,8 @@
 # PyObject Structure
 
+!!! tip "Mental Model"
+    In CPython, every object starts with the same two-field header: a reference count and a type pointer. The reference count tracks how many names point to the object (reaching zero means deletion), and the type pointer tells Python what operations the object supports. Everything else is type-specific payload.
+
 ## CPython Internal
 
 ### 1. Base Structure

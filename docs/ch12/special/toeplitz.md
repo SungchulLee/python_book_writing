@@ -2,6 +2,9 @@
 
 Toeplitz and circulant matrices appear throughout signal processing, time series analysis, and numerical methods for differential equations. A Toeplitz matrix has constant values along each diagonal, which means the entire matrix is determined by its first row and first column. A circulant matrix is a special case where each row is a cyclic shift of the previous one, enabling fast $O(n \log n)$ matrix-vector multiplication via the FFT. SciPy provides dedicated constructors for both.
 
+!!! tip "Mental Model"
+    A Toeplitz matrix is constant along every diagonal -- it is fully determined by just $2n - 1$ values instead of $n^2$. A circulant matrix goes one step further: it wraps around cyclically, which means it is diagonalized by the DFT matrix. This connection to the Fourier transform is why convolution (a circulant operation) can be computed in $O(n \log n)$ time via the FFT.
+
 ```python
 import numpy as np
 from scipy import linalg

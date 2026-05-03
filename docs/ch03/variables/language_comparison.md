@@ -1,5 +1,8 @@
 # Language Models
 
+!!! tip "Mental Model"
+    Different languages use different mental pictures for variables. C variables are labeled boxes that hold values directly. Java splits: primitives are boxes, objects are references. Python is pure reference semantics: every variable is a name tag attached to a heap object. Understanding which model your language uses prevents entire categories of aliasing and copying bugs.
+
 ## Python Model
 
 ### 1. Reference Semantics

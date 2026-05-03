@@ -2,6 +2,9 @@
 
 Create and manage processes using os module functions.
 
+!!! tip "Mental Model"
+    Every running Python script is a process with a PID, a parent, and an environment. The `os` module lets you inspect your own process (`os.getpid()`), spawn new ones (`os.fork()`, `os.exec*()`), and send signals to others (`os.kill()`). For most use cases, prefer `subprocess.run()` — but understanding the underlying `os`-level primitives explains what `subprocess` does under the hood.
+
 ## Process Information
 
 Get information about the current process.

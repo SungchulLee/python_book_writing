@@ -12,6 +12,9 @@ flowchart TD
     B --> C[file automatically closed]
 ````
 
+!!! tip "Mental Model"
+    A context manager is a guarantee: "I will clean up after myself, no matter what." The `with` statement acquires a resource (like opening a file), runs your code, and automatically releases the resource when the block ends---even if an exception occurs. It replaces the fragile pattern of manual open/try/finally/close with a single, foolproof construct.
+
 ---
 
 ## 1. Basic Syntax

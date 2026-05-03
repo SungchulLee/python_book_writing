@@ -2,6 +2,18 @@
 
 NumPy provides efficient functions for creating arrays initialized with specific values or uninitialized memory.
 
+!!! tip "Mental Model"
+    `zeros` and `ones` give you a clean slate filled with a known value; `empty` skips initialization entirely for speed, leaving whatever garbage was in memory. Use `zeros`/`ones` when correctness matters and `empty` only when you are certain every element will be overwritten before it is read.
+
+!!! note "Common Use Patterns"
+    Each function has a natural role:
+
+    - `zeros` — accumulators, result buffers, zero-initialized state (e.g., confusion matrices, gradient accumulators in ML)
+    - `ones` — scaling factors, masks, initial weights, bias terms
+    - `empty` — performance-critical inner loops where every element will be written before it is read (e.g., simulation buffers)
+
+    If in doubt, use `zeros`. The initialization cost is negligible for most workloads, and uninitialized memory from `empty` is a common source of silent bugs.
+
 
 ## np.zeros Function
 

@@ -2,6 +2,9 @@
 
 pandas supports loading data from Excel spreadsheets, JSON files, and other formats.
 
+!!! tip "Mental Model"
+    `read_excel` and `read_json` follow the same philosophy as `read_csv`: one function call turns a file into a DataFrame. Excel adds sheet selection and header-row options; JSON adds orientation (records, columns, index) because JSON can nest data in multiple ways. The output is always the same familiar DataFrame.
+
 ## pd.read_excel
 
 Load Excel files (.xlsx, .xls).

@@ -2,6 +2,29 @@
 
 The `ax.hist2d()` method creates 2D histograms with rectangular bins.
 
+!!! tip "Mental Model"
+    `hist2d()` divides the x-y plane into a grid of rectangular cells and colors each cell by how many data points fall inside it. It is the 2D extension of a 1D histogram -- instead of binning along one axis, you bin along two simultaneously. The result is a heatmap of point density.
+
+!!! note "2D Density Visualization Model"
+    When scatter plots break down due to overplotting, you need **density estimation**.
+    All three methods in this section approximate the same underlying density
+    $f(x, y)$ — they differ in how they discretize and smooth:
+
+    | Method | Approximation | Resolution parameter | Tradeoff |
+    |--------|--------------|---------------------|----------|
+    | `hist2d` | Piecewise constant (rectangles) | `bins` | Fast + simple, but blocky |
+    | `hexbin` | Piecewise constant (hexagons) | `gridsize` | Better tiling geometry |
+    | KDE | Smooth continuous function | `bandwidth` | Smooth + analytical, but expensive |
+
+    The resolution parameter (bins / gridsize / bandwidth) controls the same
+    tradeoff in all three: **too small → noisy, too large → oversmoothed.**
+
+    **Decision guide:**
+
+    - Fast exploration → `hist2d`
+    - Publication-quality density → `hexbin`
+    - Smooth probability surface / contour integration → KDE
+
 [Official Documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist2d.html)
 
 ## Basic Usage

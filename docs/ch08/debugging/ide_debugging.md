@@ -2,6 +2,9 @@
 
 Overview of debugging capabilities in popular Python IDEs.
 
+!!! tip "Mental Model"
+    IDE debuggers wrap pdb's power in a visual interface — you click in the gutter to set breakpoints, hover over variables to see values, and step through code with toolbar buttons instead of typing commands. The underlying mechanics are the same as pdb, but the graphical layer makes it easier to navigate complex call stacks and watch many variables at once.
+
 ## IDE Debugging Features
 
 Most IDEs provide visual debuggers.

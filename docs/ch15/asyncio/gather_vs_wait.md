@@ -2,6 +2,9 @@
 
 Both functions run multiple coroutines concurrently, but with different behaviors and use cases.
 
+!!! tip "Mental Model"
+    `gather()` is "run all and give me all results in order" -- simple and clean for the common case. `wait()` is "run all but let me react as they finish" -- useful when you need early cancellation, timeouts, or want to process results in completion order. Choose `gather` for simplicity, `wait` for control.
+
 ## Quick Comparison
 
 | Feature | `gather()` | `wait()` |

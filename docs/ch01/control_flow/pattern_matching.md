@@ -8,6 +8,9 @@ Traditional conditionals ask: "Does this condition evaluate to true?" Pattern ma
 
 Pattern matching allows programs to dispatch behavior based on the **structure of data**. While `if/elif` chains test conditions one by one, `match/case` can simultaneously check a value's type, structure, and contents in a single pattern. This makes `match` particularly powerful when working with structured data like tuples, lists, or objects.
 
+!!! tip "Mental Model"
+    Pattern matching is like a mail sorter: it examines the shape and contents of a value and routes it to the matching handler. Unlike `if/elif` which tests conditions sequentially, `match/case` decomposes data---it can simultaneously check type, extract fields, and bind variables in one step.
+
 ---
 
 ## Basic Syntax

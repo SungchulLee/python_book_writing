@@ -7,6 +7,9 @@ The `else` block runs **only if the loop completes normally** (without hitting `
 
 If a `break` statement occurs, the `else` block is skipped. A useful way to read `for...else` is: "for each item, do this; if no `break` occurred, then do that."
 
+!!! tip "Mental Model"
+    Read `for...else` as "search...not found." The `else` block fires only when the loop ends naturally without `break`. This makes it a clean pattern for search-and-report: loop through items looking for a match, and if no `break` occurs, the `else` block handles the "not found" case.
+
 ## Example
 
 ```python

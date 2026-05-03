@@ -1,5 +1,8 @@
 # Key Terms
 
+!!! tip "Mental Model"
+    Python's core vocabulary -- binding, namespace, scope, closure -- all describe one underlying mechanism: names are entries in dictionaries, and those dictionaries are organized in a chain. Mastering the terminology is mastering the lookup rules.
+
 ## Core Concepts
 
 ### 1. Binding

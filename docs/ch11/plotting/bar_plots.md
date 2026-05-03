@@ -2,6 +2,9 @@
 
 Bar plots visualize categorical data by displaying rectangular bars with heights proportional to the values they represent. Pandas provides multiple ways to create bar plots.
 
+!!! tip "Mental Model"
+    A bar plot maps categories to bar heights. Use `kind='bar'` for vertical bars and `kind='barh'` for horizontal bars when labels are long. Stacked bars show composition within each category; grouped bars show side-by-side comparison. The input is typically `value_counts()` or a groupby result.
+
 ## Basic Bar Plot
 
 ### Using plot(kind='bar')

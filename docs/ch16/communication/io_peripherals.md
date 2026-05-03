@@ -1,5 +1,8 @@
 # I/O and Peripherals
 
+!!! tip "Mental Model"
+    Every time your program reads a file or sends a network packet, it is asking an external device that is thousands to millions of times slower than the CPU. The CPU's job during I/O is mostly waiting, which is why I/O-bound programs benefit from concurrency (threads or async) rather than raw speed.
+
 ## Input/Output Overview
 
 **I/O (Input/Output)** refers to communication between the computer and external devices:

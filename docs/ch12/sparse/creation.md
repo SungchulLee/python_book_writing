@@ -2,6 +2,9 @@
 
 Methods for constructing sparse matrices in SciPy.
 
+!!! tip "Mental Model"
+    There are two main paths to building a sparse matrix: convert from dense (convenient but defeats the purpose for large matrices) or construct directly from coordinate data (row indices, column indices, values). For incremental construction, use LIL or DOK format; for batch construction from known coordinates, use COO format -- then convert to CSR/CSC for computation.
+
 ## From Dense Array
 
 ### 1. Direct Conversion

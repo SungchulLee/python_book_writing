@@ -2,6 +2,32 @@
 
 The Axes object is the core component for plotting in Matplotlib. It contains most plot elements including the data, axes, ticks, labels, and title.
 
+!!! tip "Mental Model"
+    An Axes is a single coordinate system -- the rectangle where data gets drawn. Every call like `ax.plot()`, `ax.set_title()`, or `ax.set_xlim()` targets one specific Axes. A Figure can hold many Axes, but each Axes is self-contained with its own ticks, labels, and data.
+
+!!! note "Matplotlib Layout Model"
+    All visualization in Matplotlib follows a five-layer system:
+
+    ```text
+    1. Figure       → the canvas (one per image/window)
+    2. Axes         → independent coordinate systems (one per subplot)
+    3. Layout       → how Axes are arranged (grid, freeform, flexible)
+    4. Access       → how you reference each Axes (index, unpack, name)
+    5. Encoding     → how data maps to visual elements (lines, bars, color)
+    ```
+
+    This section covers layers 1--4. The key insight: **layout is a semantic
+    decision, not a cosmetic one** — the number and arrangement of Axes
+    determines how many perspectives on the data the reader sees:
+
+    | Layout | Meaning |
+    |--------|---------|
+    | 1 Axes | Single perspective |
+    | 2 Axes side-by-side | Comparison |
+    | Grid of Axes | Multiple scenarios / variables |
+    | Inset Axes | Detail zoom |
+    | Twin Axes | Same data, different units |
+
 ---
 
 ## What is an Axes Object

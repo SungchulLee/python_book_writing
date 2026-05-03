@@ -2,6 +2,9 @@
 
 The `unstack()` method pivots rows into columns, moving an index level to become a column level. This is useful for converting long-format data to wide-format.
 
+!!! tip "Mental Model"
+    `unstack` pulls an index level out of the row axis and spreads its unique values across as new column headers. The result is wider and shorter -- more columns, fewer rows. It is the inverse of `stack` and the index-based counterpart of `pivot`.
+
 ## Basic Concept
 
 ```

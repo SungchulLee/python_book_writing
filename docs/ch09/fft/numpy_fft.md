@@ -2,6 +2,42 @@
 
 The `np.fft` module provides functions for computing the discrete Fourier transform (DFT) and its inverse. Fourier transforms decompose signals into their frequency components.
 
+!!! tip "Mental Model"
+    The FFT answers the question "which frequencies are present and how strong are they?" It converts a time-domain signal into a list of sine-wave amplitudes and phases. `np.fft.fft` goes forward (time to frequency), `np.fft.ifft` goes back, and the process is lossless -- no information is created or destroyed.
+
+!!! note "The Unified FFT Pipeline"
+    Every topic in this section fits into a single system:
+
+    ```text
+    Signal → FFT → Frequency Domain
+                        │
+                ┌───────┴───────┐
+            Problems        Applications
+            │                   │
+        ┌───┴───┐         ┌────┼────┐
+     Leakage  No time   Filter  FFT2  Convolution
+        │     info         │     │       │
+    Windowing  STFT    denoise  images  fast blur
+    ```
+
+    **Decision guide:**
+
+    | Question | Tool |
+    |----------|------|
+    | Global frequency content? | `fft` / `rfft` |
+    | Time-varying frequencies? | STFT / spectrogram |
+    | Spectral leakage? | Apply a window function first |
+    | 2D signal (image)? | `fft2` / `ifft2` |
+    | Large-kernel convolution? | `fftconvolve` |
+
+!!! tip "If You Only Remember Three Things"
+    ```python
+    fft_result = np.fft.rfft(signal)          # 1. Transform
+    magnitudes = np.abs(fft_result)            # 2. Get amplitudes
+    frequencies = np.fft.rfftfreq(n, 1/fs)     # 3. Get frequency axis
+    ```
+    This is the minimal path from a time-domain signal to "which frequencies are present."
+
 ```python
 import numpy as np
 ```

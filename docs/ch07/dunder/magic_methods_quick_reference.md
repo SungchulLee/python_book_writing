@@ -1,5 +1,12 @@
 # Python Magic Methods Quick Reference
 
+!!! tip "Mental Model"
+    Every row in these tables maps a piece of Python syntax to the dunder method Python calls behind the scenes. When you see `a + b`, think `a.__add__(b)`. When you see `len(x)`, think `x.__len__()`. This reference is the Rosetta Stone between Python's surface syntax and the protocol methods your classes can implement.
+
+!!! info "How to Use This Page"
+
+    This is a **quick reference**, not a tutorial. Use it to recall method names, signatures, and protocols when you already understand the concepts. To learn how each method works, see the dedicated pages: [Introduction](dunder_intro.md), [Arithmetic](dunder_arithmetic.md), [Comparison](dunder_comparison.md), [String Representation](dunder_string.md), [Object Lifecycle](dunder_lifecycle.md).
+
 ## Most Commonly Used Magic Methods
 
 ### Initialization & Representation
@@ -155,6 +162,16 @@ Only implement dunder methods when they match user expectations:
 3. **What about other types?** Always return `NotImplemented` for unsupported types --- never raise `TypeError` directly in the method.
 4. **Mutable or immutable?** Decide upfront. If immutable, implement `__hash__`. If mutable, set `__hash__ = None`.
 5. **Does `__eq__` exist?** Then `__hash__` must too (or be explicitly `None`).
+
+!!! warning "When NOT to Implement Dunder Methods"
+
+    Dunder methods should make code **more intuitive**, not clever. Avoid implementing them when:
+
+    - The operation's meaning is unclear --- if `User + User` requires explanation, use a named method instead.
+    - It reduces readability --- operators should be immediately obvious to someone reading the code.
+    - A normal method would be clearer --- `account.merge(other)` is better than `account + other` if "addition" does not describe the operation.
+
+    The test: would a new team member understand `a + b` without reading the class definition? If not, use a regular method.
 
 ---
 

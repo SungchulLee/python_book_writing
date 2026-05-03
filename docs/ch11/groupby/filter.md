@@ -2,6 +2,9 @@
 
 The `filter()` method removes groups that do not satisfy a condition, keeping or excluding entire groups.
 
+!!! tip "Mental Model"
+    `filter()` is a group-level WHERE clause: it tests a condition on each group as a whole and keeps or drops the entire group. Unlike boolean indexing which tests row by row, `filter` asks "does this group meet the criterion?" and returns all rows of qualifying groups unchanged.
+
 ## Basic Usage
 
 Filter groups based on a condition.

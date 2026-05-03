@@ -2,6 +2,9 @@
 
 Real-world datasets often have composite keys — for example, (date, ticker) for financial data or (year, quarter, region) for sales data. Pandas represents composite keys as a MultiIndex, and joining DataFrames on these multi-level indices requires understanding how index levels are matched. This page covers the mechanics of joining and merging when one or both DataFrames have a MultiIndex.
 
+!!! tip "Mental Model"
+    A MultiIndex join matches on all shared index levels simultaneously -- like a SQL join on a composite primary key. If one DataFrame has levels `(date, ticker)` and the other has only `(ticker)`, pandas matches on the shared level and broadcasts across the unshared one. Keeping level names consistent across DataFrames is the key to making these joins work seamlessly.
+
 ```python
 import pandas as pd
 import numpy as np

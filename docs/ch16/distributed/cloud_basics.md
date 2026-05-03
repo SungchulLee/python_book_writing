@@ -1,5 +1,8 @@
 # Cloud Computing Basics
 
+!!! tip "Mental Model"
+    Cloud computing is renting someone else's computers by the hour instead of buying your own. You trade upfront cost and maintenance for on-demand flexibility, paying only for what you use. The key decision is how much control you need: full machines (IaaS), just a platform (PaaS), or a finished product (SaaS).
+
 ## What is Cloud Computing?
 
 **Cloud computing** provides on-demand access to computing resources over the internet, without owning physical hardware.

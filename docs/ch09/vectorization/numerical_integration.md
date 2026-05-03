@@ -2,6 +2,9 @@
 
 Vectorization enables efficient numerical integration via Riemann sums.
 
+!!! tip "Mental Model"
+    Numerical integration approximates the area under a curve by summing thin rectangles (Riemann) or trapezoids. With NumPy, you evaluate the function at all grid points in one vectorized call, then `np.sum` the areas. The finer the grid, the better the approximation -- and vectorization makes even millions of rectangles fast.
+
 ## Riemann Sum
 
 ### 1. Mathematical Form

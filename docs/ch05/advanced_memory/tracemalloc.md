@@ -2,6 +2,9 @@
 
 The `tracemalloc` module tracks memory allocations in Python, helping you find memory leaks and identify which code is consuming the most memory.
 
+!!! tip "Mental Model"
+    Think of `tracemalloc` as a security camera for your program's memory. You press record at the start, take snapshots at key moments, then compare the footage to see exactly which lines of code are hoarding memory. It tells you not just how much memory grew, but who allocated it.
+
 ```python
 import tracemalloc
 ```

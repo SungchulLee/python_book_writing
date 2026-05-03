@@ -1,5 +1,8 @@
 # Simultaneous Assign
 
+!!! tip "Mental Model"
+    `a, b = 1, 2` first builds the tuple `(1, 2)` on the right side, then unpacks it into `a` and `b` on the left. Because the right side is fully evaluated before any assignment, `a, b = b, a` swaps values without a temporary variable. The starred expression (`*rest`) captures any leftovers into a list.
+
 ## Basic Unpacking
 
 ### 1. Simple Case

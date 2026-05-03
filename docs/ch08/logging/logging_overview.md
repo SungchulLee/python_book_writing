@@ -2,6 +2,9 @@
 
 The `logging` module provides a flexible framework for emitting log messages from Python programs.
 
+!!! tip "Mental Model"
+    The `logging` module replaces `print()` debugging with a structured pipeline: your code emits messages at a severity level, loggers filter by that level, handlers route surviving messages to destinations (console, file, network), and formatters stamp each line with context (time, module, line number). Once set up, you change *where* and *how much* you log without touching any application code.
+
 ## Basic Logging
 
 Start logging with minimal configuration.

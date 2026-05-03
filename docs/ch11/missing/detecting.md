@@ -2,6 +2,9 @@
 
 Missing data is inevitable in real-world datasets. pandas provides methods to detect and identify missing values.
 
+!!! tip "Mental Model"
+    `isnull()` (and its alias `isna()`) returns a boolean mask the same shape as your data, with True wherever a value is NaN or None. `notnull()` is the inverse. Use `isnull().sum()` for a quick count of missing values per column -- it is the first diagnostic step before deciding whether to drop, fill, or interpolate.
+
 ## isnull Method
 
 The `isnull()` method returns a boolean mask indicating missing values.

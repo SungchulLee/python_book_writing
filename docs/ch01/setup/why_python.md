@@ -25,6 +25,9 @@ flowchart TD
 
 Because of these characteristics, Python is often recommended as a first programming language while also remaining powerful enough for professional software development.
 
+!!! tip "Mental Model"
+    Python optimizes for human readability over machine efficiency. Its syntax reads close to English, its standard library covers most common tasks, and its ecosystem spans nearly every domain. This combination of simplicity and breadth is why Python works equally well as a first language and as a professional tool.
+
 ---
 
 ## 1. Readable Syntax

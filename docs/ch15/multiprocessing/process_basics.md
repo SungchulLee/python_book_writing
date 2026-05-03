@@ -2,6 +2,9 @@
 
 The `multiprocessing` module enables true parallel execution by running code in separate processes, each with its own Python interpreter and GIL.
 
+!!! tip "Mental Model"
+    Creating a `Process` is like launching a completely independent Python program that happens to run your function. The child gets a copy of all data at the moment of creation, but from then on parent and child live in separate memory worlds. Always guard process creation behind `if __name__ == "__main__":` to prevent infinite recursive spawning on platforms that re-import the module.
+
 ---
 
 ## Creating Processes

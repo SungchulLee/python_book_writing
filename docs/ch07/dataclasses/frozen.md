@@ -2,6 +2,9 @@
 
 The `frozen=True` parameter makes a dataclass immutable, preventing modifications after creation. Frozen dataclasses can be hashed and used in sets/dicts.
 
+!!! tip "Mental Model"
+    A frozen dataclass is like a notarized document -- once signed, no field can be altered. This guarantee makes instances safe to use as dictionary keys and set members, because their hash can never change. When you need to "modify" a frozen instance, you create a new one with `replace()`, leaving the original untouched.
+
 ---
 
 ## Creating Frozen Dataclasses
@@ -124,12 +127,58 @@ print(hash(frozen))
 # But hashing is faster for frozen (cached)
 ```
 
+## Updating Frozen Instances with replace()
+
+Since frozen instances cannot be modified, use `dataclasses.replace()` to create a
+new instance with selected fields changed — a "copy and modify" pattern:
+
+```python
+from dataclasses import dataclass, replace
+
+@dataclass(frozen=True)
+class Config:
+    host: str
+    port: int
+    debug: bool = False
+
+prod = Config("db.example.com", 5432)
+dev = replace(prod, debug=True, port=5433)
+
+print(prod)  # Config(host='db.example.com', port=5432, debug=False)
+print(dev)   # Config(host='db.example.com', port=5433, debug=True)
+```
+
+!!! warning "Frozen does not mean deeply immutable"
+    `frozen=True` prevents reassignment of fields, but if a field holds a mutable
+    object (e.g., a list), the contents of that object can still be modified:
+
+    ```python
+    @dataclass(frozen=True)
+    class Team:
+        name: str
+        members: list
+
+    t = Team("Alpha", ["Alice", "Bob"])
+    # t.name = "Beta"        # FrozenInstanceError
+    t.members.append("Eve")  # Works! The list itself is mutable
+    print(t.members)          # ['Alice', 'Bob', 'Eve']
+    ```
+
+    For true deep immutability, use tuples or frozensets for collection fields.
+
 ## When to Use Frozen
 
-- Use when data should be immutable (coordinates, colors, etc.)
+Frozen dataclasses are **value objects** — their identity is defined entirely by
+their field values, not by an `id` or reference. Two frozen instances with the same
+fields are equal, hashable, and safely shareable across threads or data structures.
+
+- Use when data should be immutable (coordinates, colors, config snapshots)
 - Use when storing in sets or as dictionary keys
 - Use for function parameters that shouldn't be modified
 - Use for thread-safe data sharing
+- **Tradeoff**: frozen instances have a small performance overhead on creation (the
+  generated `__init__` uses `object.__setattr__` instead of direct assignment), and
+  every "update" requires creating a new object via `replace()`
 
 ---
 

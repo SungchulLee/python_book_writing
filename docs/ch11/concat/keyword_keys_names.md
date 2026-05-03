@@ -2,6 +2,9 @@
 
 After concatenating multiple DataFrames, it is often necessary to trace which original DataFrame each row came from. The `keys` parameter of `pd.concat` creates a hierarchical MultiIndex that labels each group, while the `names` parameter assigns meaningful names to the MultiIndex levels. Together, they provide structured provenance tracking in the concatenated result.
 
+!!! tip "Mental Model"
+    `keys` stamps each source DataFrame with a label before stacking, creating a MultiIndex that preserves provenance. `names` then gives that outer index level a meaningful column-like name. Together they answer "which original table did this row come from?" at any point downstream.
+
 ```python
 import pandas as pd
 ```

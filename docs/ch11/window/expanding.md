@@ -2,6 +2,9 @@
 
 The `expanding()` method computes statistics over all data from the start up to each point, with a window that grows over time.
 
+!!! tip "Mental Model"
+    An expanding window starts at the first row and grows by one row at each step -- it computes a cumulative statistic. At row 10, it uses rows 1-10; at row 100, it uses rows 1-100. This is useful for running averages, cumulative returns, and any "so far" metric that incorporates all prior history.
+
 ## Basic Expanding
 
 Create expanding window calculations.

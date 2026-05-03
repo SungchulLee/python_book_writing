@@ -2,6 +2,9 @@
 
 Boolean logic has extensive practical applications in real-world programming scenarios.
 
+!!! tip "Mental Model"
+    Booleans are the steering wheel of your program. Every `if`, `while`, and `filter` ultimately reduces to a `True`/`False` decision. Once you recognize that any Python object can act as a boolean (truthy or falsy), you can use boolean logic everywhere -- from controlling loops with flags to compressing conditional chains into single expressions.
+
 ---
 
 ## Conditional Execution

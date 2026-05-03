@@ -2,6 +2,9 @@
 
 Python integers (`int`) differ fundamentally from integers in low-level languages like C. Understanding this difference prevents many bugs and misconceptions.
 
+!!! tip "Mental Model"
+    C integers are fixed-width registers (32 or 64 bits) that silently overflow. Python integers are arbitrary-precision: they grow as large as memory allows, with no overflow. The trade-off is that Python integers are heap-allocated objects with higher memory overhead and slower arithmetic than raw machine integers.
+
 ---
 
 ## Fixed-size vs

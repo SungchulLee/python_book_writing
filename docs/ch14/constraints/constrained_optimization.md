@@ -2,6 +2,9 @@
 
 Real-world problems often come with constraints. You might need to minimize cost while keeping all parameters within valid ranges, or ensure that parameters satisfy certain physical laws or business requirements. Constrained optimization handles these scenarios.
 
+!!! tip "Mental Model"
+    Think of unconstrained optimization as rolling a ball downhill on open terrain, while constrained optimization is rolling that ball inside a fenced area. The fence (constraints) may prevent you from reaching the absolute lowest point, so the optimizer finds the best spot you can actually stand on. The tighter the fence, the more the solution is shaped by the constraints rather than the objective.
+
 ---
 
 ## Types of Constraints

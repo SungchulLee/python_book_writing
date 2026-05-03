@@ -3,6 +3,9 @@
 
 These are **introspection tools**---they let you examine Python objects at runtime. `help()` displays an object's documentation; `dir()` lists its available attributes and methods. They are especially useful when working with unfamiliar objects or libraries, allowing you to explore without leaving the interpreter.
 
+!!! tip "Mental Model"
+    `dir()` is the table of contents---it shows what an object can do. `help()` is the manual---it explains how each capability works. When you encounter an unfamiliar object, use `dir()` to discover its interface and `help()` to understand the details.
+
 ## help()
 
 Displays the built-in documentation for any Python object, including functions, modules, and classes.

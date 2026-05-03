@@ -2,6 +2,9 @@
 
 Both recursion and iteration solve repetitive problems, but they differ in clarity, efficiency, and use cases. Understanding trade-offs helps you choose correctly.
 
+!!! tip "Mental Model"
+    Recursion uses the call stack as implicit state; iteration uses explicit variables. Recursion is often clearer for problems with natural self-similar structure (trees, nested data), while iteration is more memory-efficient and avoids Python's recursion limit. When in doubt, write it recursively for clarity, then convert to iteration if performance demands it.
+
 ---
 
 ## Sum Calculation: Both Approaches

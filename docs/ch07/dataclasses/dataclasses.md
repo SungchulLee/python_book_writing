@@ -2,6 +2,17 @@
 
 The `dataclasses` module (Python 3.7+) automatically generates boilerplate code for classes that primarily store data. It reduces repetitive `__init__`, `__repr__`, `__eq__`, and other methods.
 
+!!! tip "Dataclass Design Workflow"
+    ```text
+    1. Start with @dataclass
+    2. Decide mutability     → immutable? add frozen=True
+    3. Handle defaults       → mutable default? use field(default_factory=...)
+    4. Add validation        → use __post_init__
+    5. Need performance?     → add slots=True
+    6. Need API safety?      → add kw_only=True
+    7. Complex validation?   → consider attrs or pydantic instead
+    ```
+
 ```python
 from dataclasses import dataclass, field
 ```
@@ -35,6 +46,12 @@ class Point:
 ---
 
 ## The Solution: @dataclass
+
+!!! note "Mental Model"
+    Think of a dataclass as **fields + generated methods + optional constraints**.
+    You declare the data; the decorator writes the boilerplate. Every other feature
+    (`frozen`, `order`, `slots`, `field()`, `__post_init__`) layers on top of this
+    core idea.
 
 ```python
 from dataclasses import dataclass
@@ -458,6 +475,15 @@ class User:
 - Use `__post_init__` for validation and computed fields
 - Python 3.10+ adds `slots=True` for memory efficiency
 - `asdict()` and `astuple()` for easy serialization
+
+!!! warning "Common Mistakes"
+    - **Mutable defaults**: Writing `items: list = []` shares one list across all
+      instances. Always use `field(default_factory=list)`.
+    - **Forgetting field ordering**: Fields with defaults must come after fields
+      without defaults — this also applies across inheritance hierarchies.
+    - **Assuming `frozen` means deeply immutable**: A frozen dataclass prevents
+      reassignment of its fields, but mutable objects inside those fields (lists,
+      dicts) can still be modified in place.
 
 ---
 

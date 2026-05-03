@@ -13,6 +13,8 @@ Python supports comprehensions for:
 
 They provide a concise alternative to loops. In each case, the pattern is the same: apply an expression to each element and optionally filter with a condition.
 
+!!! tip "Mental Model"
+    A comprehension reads like a sentence: "give me `expr` for each `x` in `iterable` (optionally, only if `condition`)." It replaces the loop-accumulate pattern---create empty collection, loop, append---with a single declarative expression. The bracket style determines the output type: `[]` for list, `{}` for set or dict, `()` for generator.
 
 ## 1. List Comprehensions
 

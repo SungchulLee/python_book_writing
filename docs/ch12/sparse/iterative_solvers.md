@@ -2,6 +2,9 @@
 
 Iterative methods for large sparse linear systems.
 
+!!! tip "Mental Model"
+    Iterative solvers never factor the matrix -- they only need to multiply it by vectors, refining an approximate solution at each step. This makes them ideal for very large sparse systems where even the factorization would be too expensive. The tradeoff is that convergence depends on the matrix's condition number, and a poor condition number may require preconditioning to get a useful answer.
+
 ## Conjugate Gradient (CG)
 
 ### 1. For SPD Matrices

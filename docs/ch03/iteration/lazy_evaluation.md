@@ -2,6 +2,9 @@
 
 Lazy evaluation defers computation until values are actually needed. Generators and iterators enable lazy evaluation, reducing memory usage and enabling infinite sequences.
 
+!!! tip "Mental Model"
+    Lazy evaluation is "pay as you go" -- no value is computed until something asks for it. A generator sitting idle consumes no CPU; it only does work when you call `next()`. This means you can define an infinite sequence and safely consume just the first ten items, because the rest are never computed.
+
 ---
 
 ## Generator Laziness

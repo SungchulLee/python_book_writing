@@ -1,5 +1,8 @@
 # Data Normalization and Preprocessing
 
+!!! tip "Mental Model"
+    Normalization forces different samples onto a common scale so that you compare biology, not batch effects. Quantile normalization goes further by making the entire distribution of values identical across samples -- if the same genes are active in each sample, their measurements should have the same distribution after removing technical artifacts.
+
 ## Why Normalize Data?
 
 Real-world data rarely comes in a pristine, analysis-ready form. When working with biological datasets—such as gene expression measurements from RNA-sequencing—technical variation often obscures the signal you're trying to detect. Normalization techniques separate **technical variation** from **biological variation**, making your downstream analysis more reliable.

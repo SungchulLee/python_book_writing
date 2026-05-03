@@ -19,6 +19,9 @@ flowchart TD
     A --> C[single special object]
 ````
 
+!!! tip "Mental Model"
+    `None` is Python's way of saying "nothing here." It is not zero, not an empty string, not `False`---it is the explicit absence of any value. There is only one `None` object in all of Python, which is why you check for it with `is None` (identity) rather than `== None` (equality).
+
 ---
 
 ## 1. What is `None`?

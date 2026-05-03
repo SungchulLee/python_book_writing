@@ -1,5 +1,8 @@
 # Pattern Syntax Basics
 
+!!! tip "Mental Model"
+    A regex pattern is read left to right, one token at a time. Most characters match themselves literally; special characters (`.` `*` `+` `?` `^` `$` `|` `\` `[` `]` `(` `)`) have meta-meaning. If you need a special character to match literally, escape it with a backslash. Master these few meta-characters and you can read any regex.
+
 ## Literal Characters
 
 The simplest regex patterns are literal characters that match themselves exactly:

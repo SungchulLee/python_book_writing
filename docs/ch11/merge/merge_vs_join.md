@@ -2,6 +2,9 @@
 
 pandas provides two methods for combining DataFrames: `merge()` and `join()`. Understanding their differences is essential for data wrangling.
 
+!!! tip "Mental Model"
+    `merge` and `join` do the same thing under the hood -- they differ in defaults. `merge` matches on columns (inner join). `join` matches on the index (left join). Pick whichever matches where your keys live: columns for `merge`, index for `join`.
+
 ## Key Differences
 
 merge and join serve different purposes.

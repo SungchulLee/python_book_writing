@@ -2,6 +2,9 @@
 
 클로저는 자신이 정의된 스코프의 변수를 캡처하는 함수입니다.
 
+!!! tip "Mental Model"
+    A closure is a function that remembers the room it was born in. Even after the enclosing function finishes and its local scope is gone, the inner function keeps a living reference to the variables it captured. This is what lets factory functions produce customized workers that each carry their own private state.
+
 ## What is a Closure?
 
 ### Definition

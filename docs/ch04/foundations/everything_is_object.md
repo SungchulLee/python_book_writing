@@ -1,6 +1,9 @@
 # Everything is an Object
 
-Python is an object-oriented language where **everything is an object** — integers, floats, strings, lists, functions, and even classes themselves.
+Python is an object-oriented language where **everything is an object** -- integers, floats, strings, lists, functions, and even classes themselves.
+
+!!! tip "Mental Model"
+    In Python there is no distinction between "primitive values" and "objects." The integer `42`, the function `len`, and the class `list` all live on the heap with an identity, a type, and a value. Operators like `+` are just method calls dispatched through each object's type.
 
 ---
 

@@ -23,6 +23,9 @@ int("abc")  # ValueError: invalid literal for int() with base 10: 'abc'
 
 This makes type conversion both a **transformation** and a **validation boundary**---it connects directly to exception handling.
 
+!!! tip "Mental Model"
+    Type conversion functions are translators between representations. `int("42")` does not just relabel the string---it parses the text and builds a new integer object. Conversion can fail when the input has no valid interpretation in the target type, which is why conversion and error handling often go hand in hand.
+
 ---
 
 ## Conversion vs Interpretation

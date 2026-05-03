@@ -4,6 +4,9 @@ Many quantities in statistics --- expectations, probabilities, integrals, sampli
 
 This page introduces the Monte Carlo principle, derives the standard error of Monte Carlo estimates, and shows how simulation is used to approximate expectations, probabilities, and sampling distributions.
 
+!!! tip "Mental Model"
+    Monte Carlo replaces integrals with averages of random samples. If you cannot compute $E[g(X)]$ analytically, draw $N$ samples from $X$, evaluate $g$ on each, and average. The law of large numbers guarantees convergence, and the standard error shrinks as $1/\sqrt{N}$ regardless of the problem's dimensionality.
+
 ---
 
 ## The Monte Carlo Principle

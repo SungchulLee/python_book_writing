@@ -1,5 +1,13 @@
 # UFuncs and Vectorization
 
+!!! tip "Mental Model"
+    A ufunc is a C-compiled function that operates element-by-element on arrays with automatic broadcasting, type casting, and output allocation. Every arithmetic operator (`+`, `*`, `**`) and math function (`np.sin`, `np.exp`) in NumPy is a ufunc. Understanding ufuncs means understanding why NumPy code runs at near-C speed without explicit loops.
+
+    The one-line abstraction: **ufunc = elementwise operator on arrays**. It takes
+    one or more arrays, applies a scalar operation to each corresponding element
+    (in compiled C, not Python), and returns a new array. Broadcasting extends this
+    to arrays of different shapes by aligning dimensions automatically.
+
 ## Universal Functions
 
 ### 1. Definition

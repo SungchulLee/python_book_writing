@@ -2,6 +2,9 @@
 
 The `calendar` module provides functions for calendar-related operations and generating formatted calendars.
 
+!!! tip "Mental Model"
+    The `calendar` module is a virtual wall calendar you can query programmatically. Ask it which day of the week a date falls on, whether a year is a leap year, or print an entire month grid. It handles the tedious arithmetic of varying month lengths and weekday offsets so you don't have to.
+
 ## Basic Calendar Operations
 
 Get calendar information for dates.

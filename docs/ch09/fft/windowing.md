@@ -1,5 +1,8 @@
 # Window Functions and Spectral Leakage
 
+!!! tip "Mental Model"
+    The FFT assumes your signal repeats forever. When the signal's start and end don't match, the discontinuity smears energy across all frequencies -- this is spectral leakage. A window function tapers the signal to zero at both ends, removing the discontinuity and concentrating each frequency peak where it belongs.
+
 ## The Spectral Leakage Problem
 
 The DFT (and FFT) assumes the input signal is **periodic**—it treats your signal as if it repeats infinitely. This works well when your signal truly is periodic or when you capture an integer number of cycles.
@@ -239,6 +242,18 @@ print(f"Kaiser window for -80 dB: β ≈ {0.1102 * (80 - 8.7):.1f}")
     - $\beta = 0.5842(A - 21)^{0.4} + 0.07886(A - 21)$ for $21 < A < 50$ dB
 
     where A is the desired sidelobe attenuation in dB.
+
+## When to Use Which Window
+
+!!! tip "Quick Reference"
+    | Scenario | Window | Why |
+    |----------|--------|-----|
+    | General-purpose / default | **Hann** | Best balance of resolution and leakage suppression |
+    | Audio and speech processing | **Hann** or **Hamming** | Standard in librosa, scipy defaults |
+    | Detecting weak signals near strong ones | **Kaiser** (high $\beta$) or **Blackman** | Low sidelobes reveal hidden peaks |
+    | Maximum frequency resolution | **Rectangular** | Narrowest main lobe (only if integer periods) |
+    | Radar / sonar | **Blackman** or **Kaiser** | Very low sidelobe floor required |
+    | Unsure / experimenting | **Hann** first, then compare **Kaiser** ($\beta = 10$) | Covers most trade-off space |
 
 ## Trade-offs: Sidelobe Reduction vs. Main Lobe Width
 

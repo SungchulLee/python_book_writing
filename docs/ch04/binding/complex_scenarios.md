@@ -1,5 +1,8 @@
 # Complex Scenarios
 
+!!! tip "Mental Model"
+    When closures, classes, and nested scopes interact, the key question is always the same: which namespace does this name resolve in, and when? Tracing the LEGB chain at call time -- not definition time -- reveals why late binding and `nonlocal`/`global` behave the way they do.
+
 ## Nested Functions
 
 ### 1. Closure Binding

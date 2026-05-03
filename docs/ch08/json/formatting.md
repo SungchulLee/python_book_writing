@@ -2,6 +2,9 @@
 
 Control JSON output formatting with indentation, sorting, and separators.
 
+!!! tip "Mental Model"
+    By default `json.dumps` produces compact, single-line output optimized for machines. The `indent`, `sort_keys`, and `separators` parameters let you trade compactness for human readability. Think of formatting as a presentation layer — the data is identical; only the whitespace and key order change.
+
 ## Pretty Printing with Indentation
 
 Format JSON for readability with indentation.

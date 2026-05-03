@@ -2,6 +2,25 @@
 
 NumPy's handling of views and copies differs significantly from Python lists and other languages like MATLAB and R. Understanding this is crucial for memory efficiency and avoiding unexpected bugs.
 
+!!! tip "Mental Model"
+    A view is a different window into the same memory buffer; a copy is a completely separate buffer. Slicing returns views (cheap, but mutations propagate), while fancy indexing and most dtype conversions return copies (safe, but use extra memory). When in doubt, check `b.base is a` -- if it returns `True`, `b` is a view of `a`.
+
+!!! note "The NumPy Array Model"
+    Every NumPy array is three things: a **data buffer** (contiguous block of typed memory), a **shape** (dimensions), and **strides** (byte jumps per axis). A view shares the same data buffer but may have different shape and strides. A copy allocates a new data buffer. Contiguity determines whether a view is possible for a given reshaping.
+
+    Every operation maps onto this model:
+
+    | Operation | What changes | Buffer copied? |
+    |-----------|-------------|----------------|
+    | **View** (slice, reshape, transpose) | shape and/or strides | No — same buffer |
+    | **Copy** (`.copy()`, fancy index, arithmetic) | everything | Yes — new buffer |
+    | **Transpose** | swaps strides | No |
+    | **Reshape** | reinterprets strides | No (if contiguous) |
+    | **Slice** | adjusts offset + strides | No |
+    | **ravel** | flattens via strides | No (if contiguous) |
+
+    This single model — buffer + shape + strides — explains everything in this section.
+
 ---
 
 ## Core Concept

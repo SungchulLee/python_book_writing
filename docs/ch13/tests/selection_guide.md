@@ -2,6 +2,9 @@
 
 Choosing the right statistical test depends on the research question, the type of data, and whether the underlying assumptions are met. A mismatched test can produce misleading p-values and invalid conclusions. This guide provides a structured approach to selecting among the tests covered in this chapter.
 
+!!! tip "Mental Model"
+    Choosing a test is a decision tree: first ask what you are comparing (means, variances, distributions, or categorical counts), then how many groups, then whether parametric assumptions hold. If assumptions are met, use the parametric test for maximum power; if not, switch to the non-parametric counterpart that makes fewer assumptions.
+
 ## Decision Criteria
 
 Before selecting a test, answer these four questions:

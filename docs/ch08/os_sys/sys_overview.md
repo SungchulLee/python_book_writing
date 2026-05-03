@@ -2,6 +2,9 @@
 
 The `sys` module provides access to interpreter variables and system-specific parameters.
 
+!!! tip "Mental Model"
+    If `os` talks to the operating system, `sys` talks to the Python interpreter itself. It exposes the version you are running, the module search path, the recursion limit, reference counts, and the command-line arguments that started the process. Reach for `sys` when you need to introspect or configure the interpreter rather than the OS.
+
 ## Python Information
 
 Access Python version and implementation details.

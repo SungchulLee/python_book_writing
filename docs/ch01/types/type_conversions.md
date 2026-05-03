@@ -20,6 +20,9 @@ flowchart TD
     B --> C
 ````
 
+!!! tip "Mental Model"
+    Numeric conversions move values along the precision ladder: `int` to `float` adds a decimal point, `float` to `int` truncates it, and both can promote to `complex`. Going "up" the ladder (int to float to complex) is always safe; going "down" may lose information. Python handles mixed-type arithmetic automatically by promoting the less-precise operand.
+
 ---
 
 ## 1. Converting int to float

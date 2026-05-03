@@ -2,6 +2,9 @@
 
 Once a kernel density estimate has been fitted, the two primary operations are **evaluation** (computing the estimated density at new points) and **resampling** (generating new synthetic observations from the estimated distribution). SciPy's `gaussian_kde` object supports both operations, along with integration methods for computing probabilities over intervals. This page covers each of these capabilities with their mathematical basis and practical usage.
 
+!!! tip "Mental Model"
+    A fitted KDE is a full generative model of your data. You can query it at any point to get a density value (evaluation), draw new synthetic samples from it (resampling), or integrate over a region to get probabilities. Think of the KDE object as a smooth, continuous replacement for the histogram that supports all the operations of a parametric distribution.
+
 ## Evaluating the Density
 
 A fitted `gaussian_kde` object is callable. Given query points $x_1, \ldots, x_m$, calling `kde(x)` computes the density estimate at each point:

@@ -1,5 +1,8 @@
 # CPU-GPU Communication
 
+!!! tip "Mental Model"
+    Think of the CPU and GPU as two offices in different buildings connected by a narrow hallway (PCIe bus). Each office is fast internally, but passing documents between them is slow. The key to performance is minimizing trips through the hallway and carrying as much as possible each time.
+
 ## The CPU-GPU Boundary
 
 CPUs and GPUs have separate memory spaces connected by the PCIe bus:

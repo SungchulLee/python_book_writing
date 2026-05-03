@@ -5,6 +5,9 @@ In Python, variables are **names** that refer to objects, not containers that ho
 
 Think of it this way: an object is a physical book sitting on a shelf. A variable is a sticky note with a name written on it, attached to the book. If you attach two sticky notes to the same book, you have two aliases. Anything you do to the book through one sticky note is visible through the other, because there is only one book.
 
+!!! tip "Mental Model"
+    Two variables are aliases when they point to the same object, not merely to equal values. Mutating through one alias changes what every alias sees, because there is only one underlying object. Recognizing aliasing is the key to predicting when a change in one part of your code unexpectedly appears somewhere else.
+
 ---
 
 ## 1. Creating Aliases with Assignment

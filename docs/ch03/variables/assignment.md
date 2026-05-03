@@ -1,5 +1,8 @@
 # Variable Assignment
 
+!!! tip "Mental Model"
+    Assignment in Python does not put a value into a box. It attaches a name tag to an object that already exists on the heap. `a = 543` creates the integer object `543` and sticks the label `a` on it. Reassigning `a = "boy"` just moves the label to a different object -- the old integer is untouched and may be garbage-collected.
+
 ## Basic Assignment
 
 ### 1. Simple Assignment

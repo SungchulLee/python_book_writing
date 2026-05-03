@@ -13,6 +13,9 @@ flowchart TD
     A --> D[fast membership testing]
 ```
 
+!!! tip "Mental Model"
+    A set is a bag of unique items with no particular order. You cannot access elements by position, but you can ask "is this item in the bag?" extremely fast. Sets also support mathematical operations like union, intersection, and difference, making them ideal for comparing groups of items.
+
 ---
 
 ## 1. Creating Sets

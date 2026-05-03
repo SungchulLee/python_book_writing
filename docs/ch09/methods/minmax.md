@@ -1,5 +1,8 @@
 # Min Max Argmin Argmax
 
+!!! tip "Mental Model"
+    `min`/`max` tell you the extreme values; `argmin`/`argmax` tell you where those extremes live. Both accept an `axis` parameter to reduce along a specific dimension. Remember that `argmin`/`argmax` return flat indices by default -- use `np.unravel_index` to convert back to multi-dimensional coordinates.
+
 ## min and max
 
 ### 1. Basic Usage
@@ -441,3 +444,37 @@ Compute the range (max - min) of each row in a `(100, 5)` array using `axis=1` i
         ranges = a.max(axis=1) - a.min(axis=1)
         ranges_manual = np.array([row.max() - row.min() for row in a])
         print(f"Match: {np.allclose(ranges, ranges_manual)}")
+
+---
+
+**Exercise 4.**
+Use `np.argmax` with `np.unravel_index` to find the location of the maximum value in a 3D array of shape `(4, 5, 6)`. Print the flat index, the 3D index, and the value at that location.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        a = np.random.randn(4, 5, 6)
+        flat_idx = np.argmax(a)
+        idx_3d = np.unravel_index(flat_idx, a.shape)
+        print(f"Flat index: {flat_idx}")
+        print(f"3D index:   {idx_3d}")
+        print(f"Value:      {a[idx_3d]}")
+        print(f"Matches max: {a[idx_3d] == a.max()}")  # True
+
+---
+
+**Exercise 5.**
+Given a matrix of exam scores `scores` with shape `(30, 4)` (30 students, 4 exams), use `argmax(axis=1)` to find which exam each student scored highest on. Then count how many students scored highest on each exam using `np.bincount`.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        scores = np.random.randint(50, 100, size=(30, 4))
+        best_exam = np.argmax(scores, axis=1)  # (30,)
+        counts = np.bincount(best_exam, minlength=4)
+
+        for exam in range(4):
+            print(f"Exam {exam}: {counts[exam]} students scored highest")
+        print(f"Total: {counts.sum()}")  # 30

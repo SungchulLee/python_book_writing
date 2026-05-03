@@ -2,6 +2,9 @@
 
 `linalg.eigh` computes eigenvalues for symmetric (Hermitian) matrices efficiently.
 
+!!! tip "Mental Model"
+    Symmetric matrices have a superpower: their eigenvalues are always real and their eigenvectors are always orthogonal. `eigh` exploits this structure to run roughly twice as fast as `eig` and returns eigenvalues sorted in ascending order, making it the right choice whenever your matrix is symmetric or Hermitian.
+
 ## linalg.eigh
 
 ### 1. Basic Usage

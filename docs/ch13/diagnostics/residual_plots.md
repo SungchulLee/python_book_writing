@@ -2,6 +2,9 @@
 
 After fitting a regression model, the predicted values alone do not reveal whether the model's assumptions hold. **Residual plots** expose violations of linearity, constant variance (homoscedasticity), and normality that summary statistics like $R^2$ can miss. Diagnosing these violations is essential before trusting inference results such as confidence intervals and $p$-values.
 
+!!! tip "Mental Model"
+    Residuals are what the model could not explain. If the model is correct, residuals should look like structureless noise -- no patterns when plotted against fitted values, no trend over time, no fan-shaped spread. Any visible pattern in the residuals is a clue that the model is missing something.
+
 ---
 
 ## Residual Definition

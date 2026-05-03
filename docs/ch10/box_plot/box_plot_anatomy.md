@@ -2,6 +2,9 @@
 
 Understanding the visual components of a box plot is essential for proper interpretation of distributional data.
 
+!!! tip "Mental Model"
+    Read a box plot from inside out: the median line shows center, the box shows where the middle half of data lives (IQR), the whiskers reach to the farthest non-outlier points, and individual dots beyond the whiskers flag unusual values. Each component maps to a specific statistical summary, so one glance tells you center, spread, and skewness.
+
 ## Visual Components
 
 A box plot consists of five primary visual elements that summarize the distribution.

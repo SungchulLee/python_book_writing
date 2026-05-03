@@ -2,6 +2,9 @@
 
 Handle timezones with `timezone` for fixed offsets and `zoneinfo` for named timezones.
 
+!!! tip "Mental Model"
+    A "naive" datetime is like a clock with no label — you know the time, but not *where*. Attaching a timezone makes it "aware," anchoring it to a specific point on Earth. Use `timezone` for simple fixed offsets (UTC+5) and `zoneinfo` for real-world zones (America/New_York) that handle daylight saving automatically.
+
 ## Fixed Timezones with timezone
 
 Create fixed timezone offsets.

@@ -2,6 +2,9 @@
 
 Accessing elements and submatrices in sparse matrices.
 
+!!! tip "Mental Model"
+    Slicing a sparse matrix is format-dependent: CSR makes row slicing fast because rows are stored contiguously, while CSC makes column slicing fast for the same reason. Single-element access is slow in any format because it requires a search through compressed indices. If you need to read many individual elements, convert to dense first or restructure your algorithm to use row/column slices.
+
 ## Element Access
 
 ### 1. Single Element

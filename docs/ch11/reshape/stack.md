@@ -2,6 +2,9 @@
 
 The `stack()` method pivots columns into rows, moving the innermost column level to become the innermost row index level. This is useful for converting wide-format data to long-format.
 
+!!! tip "Mental Model"
+    `stack` takes column headers and pushes them down into the row index, creating a MultiIndex. The result is longer and narrower -- fewer columns, more rows. It is the index-based counterpart of `melt`, and its inverse is `unstack`.
+
 ## Basic Concept
 
 ```

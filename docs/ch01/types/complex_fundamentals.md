@@ -31,6 +31,9 @@ flowchart LR
     A --> C[imaginary part]
 ```
 
+!!! tip "Mental Model"
+    A complex number is a pair of floats bundled together: a real part and an imaginary part. Python uses `j` (not `i`) for the imaginary unit. You access the components with `.real` and `.imag`, and all the standard arithmetic operators work on complex numbers just as they do on floats.
+
 ---
 
 ## 1. Creating Complex Numbers

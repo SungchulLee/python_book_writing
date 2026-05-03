@@ -1,5 +1,14 @@
 # Statistics Methods
 
+!!! tip "Mental Model"
+    NumPy's statistics functions (`mean`, `std`, `var`, `median`, `percentile`) all follow the same pattern: pass an array and optionally an `axis` to reduce along. Watch the `ddof` parameter for `std` and `var` -- NumPy defaults to population statistics (`ddof=0`), while Pandas and most textbooks default to sample statistics (`ddof=1`).
+
+    At a deeper level, **statistics are reductions on transformed data**:
+    `mean = sum / N`, `var = mean((x - μ)²)`, `std = sqrt(var)`. Each statistic
+    first transforms the array (centering, squaring) and then reduces it. This
+    is why the `axis` and `keepdims` parameters work identically across all
+    statistical functions — they all share the same reduction machinery.
+
 ## mean and np.mean
 
 ### 1. Basic Usage
@@ -483,3 +492,40 @@ Compute the 25th, 50th (median), and 75th percentiles of `a = np.random.randn(10
         print(f"25th: {p25:.4f}, 50th: {p50:.4f}, 75th: {p75:.4f}")
         print(f"Median: {np.median(a):.4f}")
         print(f"50th == median: {np.allclose(p50, np.median(a))}")
+
+---
+
+**Exercise 4.**
+Explain the difference between `np.std(a)` and `np.std(a, ddof=1)`. Compute both for `a = np.array([2, 4, 4, 4, 5, 5, 7, 9])` and explain when to use each.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        a = np.array([2, 4, 4, 4, 5, 5, 7, 9])
+        pop_std = np.std(a)           # ddof=0 — population std
+        samp_std = np.std(a, ddof=1)  # ddof=1 — sample std
+
+        print(f"Population std (ddof=0): {pop_std:.4f}")   # 2.0000
+        print(f"Sample std (ddof=1):     {samp_std:.4f}")  # 2.1381
+
+        # ddof=0 divides by N — correct when a IS the entire population
+        # ddof=1 divides by N-1 (Bessel's correction) — unbiased when a
+        # is a sample from a larger population (the common case)
+
+---
+
+**Exercise 5.**
+Compute the z-scores of each column in a `(200, 3)` matrix using `mean` and `std` with `axis=0`. Verify that each column of the result has mean approximately 0 and std approximately 1.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        X = np.random.randn(200, 3) * 10 + 50
+        mu = X.mean(axis=0)
+        sigma = X.std(axis=0)
+        Z = (X - mu) / sigma
+
+        print(f"Column means: {np.round(Z.mean(axis=0), 10)}")  # ~[0, 0, 0]
+        print(f"Column stds:  {np.round(Z.std(axis=0), 10)}")   # ~[1, 1, 1]

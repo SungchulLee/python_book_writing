@@ -2,6 +2,9 @@
 
 `takewhile()` returns elements while a condition is True, while `dropwhile()` skips elements while a condition is True, then yields all remaining elements. These functions operate on the leading portion of a sequence based on a predicate, making them especially useful for sorted or ordered data and for lazy evaluation over potentially infinite iterators.
 
+!!! tip "Mental Model"
+    Think of `takewhile` as reading lines until you hit a blank — it consumes from the front while the predicate holds, then stops forever. `dropwhile` is the opposite: it skips the leading run of matching elements and then yields everything remaining, regardless of whether later elements match. Together they split a sequence at the first boundary where the predicate changes.
+
 ## takewhile() - Take While Condition is True
 
 `takewhile()` yields elements from the start of the iterable as long as the predicate returns `True`. It stops permanently at the first element that fails the predicate, even if later elements would pass.

@@ -2,6 +2,9 @@
 
 Pandas provides two overlapping methods for combining DataFrames by matching key values: `DataFrame.join` and `pd.merge` (or equivalently `DataFrame.merge`). Both perform database-style joins, but they differ in their defaults and typical use cases. Understanding the distinction avoids confusion when choosing between them.
 
+!!! tip "Mental Model"
+    `join` defaults to index-on-index with a left join; `merge` defaults to column-on-column with an inner join. Both produce the same result when configured identically. Use `join` when your keys live in the index, and `merge` when they live in columns.
+
 ```python
 import pandas as pd
 ```

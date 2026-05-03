@@ -2,6 +2,9 @@
 
 Many statistical procedures assume that data follows a specific probability distribution. Before relying on these assumptions, a goodness-of-fit test quantifies whether the observed data are consistent with a hypothesized distribution. These tests formalize the question: does my sample plausibly come from distribution $F_0$?
 
+!!! tip "Mental Model"
+    A goodness-of-fit test compares the shape of your data to a candidate distribution. The KS test measures the maximum gap between the empirical and theoretical CDFs; the Anderson-Darling test does the same but weights the tails more heavily; the chi-square test bins the data and compares observed to expected counts. Each emphasizes different types of departures.
+
 The general hypotheses are
 
 $$

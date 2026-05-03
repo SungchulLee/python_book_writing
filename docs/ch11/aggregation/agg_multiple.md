@@ -2,6 +2,9 @@
 
 The `agg()` method excels at applying multiple aggregation functions simultaneously, producing comprehensive summary statistics.
 
+!!! tip "Mental Model"
+    Passing a list of functions to `agg()` is like asking multiple analysts to summarize the same column -- each returns one number, and the results stack into a multi-row or multi-column table. A dict of `{column: [functions]}` extends this to different questions per column, all computed in one call.
+
 ## Multiple Functions per Column
 
 Apply several functions to each column.

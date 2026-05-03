@@ -2,6 +2,9 @@
 
 # Storage (SSD and HDD)
 
+!!! tip "Mental Model"
+    Storage is the computer's permanent filing cabinet -- it survives power loss but is orders of magnitude slower than RAM. An HDD is like a record player that must physically move a needle to find data; an SSD is like a flash drive with no moving parts, making random reads far faster. For data-heavy Python programs, the choice of storage and file format often determines whether data loading takes seconds or minutes.
+
 Storage devices provide **persistent data storage** for computers. Unlike RAM, which loses its contents when power is removed, storage retains data permanently.
 
 However, storage is much slower than main memory. Accessing data from disk may take **thousands to hundreds of thousands of times longer** than accessing RAM.

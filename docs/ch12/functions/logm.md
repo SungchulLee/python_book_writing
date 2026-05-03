@@ -2,6 +2,9 @@
 
 The matrix logarithm is the inverse of matrix exponential.
 
+!!! tip "Mental Model"
+    If the matrix exponential answers "where does this system end up after time $t$?", the matrix logarithm asks the reverse: "what generator produced this transformation?" Given a matrix $M$, its logarithm $L = \log(M)$ satisfies $e^L = M$. This is essential in control theory and Lie group computations where you need to recover continuous-time dynamics from a discrete-time transition matrix.
+
 ## linalg.logm
 
 ### 1. Basic Usage

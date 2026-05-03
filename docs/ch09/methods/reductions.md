@@ -1,5 +1,21 @@
 # Reductions with axis
 
+!!! tip "Mental Model"
+    A reduction collapses one axis of an array into a single value by applying an aggregation (sum, mean, max, etc.). Setting `axis=0` collapses rows, `axis=1` collapses columns, and omitting `axis` collapses everything to a scalar. The output shape is the input shape with the reduced axis removed.
+
+!!! note "Array Analysis Pipeline"
+    Reductions are the first stage of a five-step analysis pattern that runs through this entire section:
+
+    ```text
+    1. AGGREGATE  — sum, mean, var, std         (this page + sum_prod + statistics)
+    2. COMPARE    — min, max                     (minmax + elementwise_minmax)
+    3. LOCATE     — argmin, argmax, where         (minmax + searching + where)
+    4. ORDER      — sort, argsort                 (sorting)
+    5. CLEAN      — unique, nan handling, diff    (utility)
+    ```
+
+    Each stage consumes arrays and produces smaller, more informative arrays. Together they form the toolkit for extracting information from numerical data.
+
 ## Concept
 
 Reduction operations collapse one or more dimensions of an array by applying an aggregation function. The `axis` parameter specifies which dimension to reduce.
@@ -424,3 +440,50 @@ Use `np.prod(axis=1)` to compute the row-wise product of a 4x3 matrix. Then use 
 
         col_cumsum = np.cumsum(a, axis=0)
         print(f"Column cumsum:\n{col_cumsum}")
+
+---
+
+**Exercise 4.**
+Given a 3D array of shape `(4, 3, 5)`, predict the output shape of `a.sum(axis=1)` and `a.sum(axis=1, keepdims=True)`. Verify with NumPy. Explain why `keepdims=True` is essential when the result will be broadcast back against the original array.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        a = np.random.randn(4, 3, 5)
+        r1 = a.sum(axis=1)
+        r2 = a.sum(axis=1, keepdims=True)
+        print(f"Without keepdims: {r1.shape}")  # (4, 5) — axis 1 removed
+        print(f"With keepdims:    {r2.shape}")  # (4, 1, 5) — axis 1 kept as 1
+
+        # Why keepdims matters: subtracting the sum from the original
+        # a - r1  → (4, 3, 5) - (4, 5) → broadcasts along axis 1? No:
+        #   (4, 3, 5) vs (4, 5) → right-align: 5==5, 3 vs 4 → FAIL
+        # a - r2  → (4, 3, 5) - (4, 1, 5) → axis 1: 3 vs 1 → OK
+        centered = a - r2
+        print(f"Centered shape: {centered.shape}")  # (4, 3, 5)
+
+---
+
+**Exercise 5.**
+Use `np.all` and `np.any` as reductions to check properties of a matrix. Given `M = np.random.randn(100, 5)`, verify (a) that at least one element per row is positive (`np.any(M > 0, axis=1)`), and (b) that no row has all negative values. Explain why these are reductions.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        M = np.random.randn(100, 5)
+
+        # (a) At least one positive per row
+        any_positive = np.any(M > 0, axis=1)  # (100,) boolean
+        print(f"All rows have a positive: {np.all(any_positive)}")
+
+        # (b) No row is all-negative
+        all_negative = np.all(M < 0, axis=1)  # (100,) boolean
+        print(f"Any all-negative row: {np.any(all_negative)}")
+
+        # These are reductions because:
+        # np.any(axis=1) collapses 5 columns into 1 boolean per row
+        # np.all(axis=1) does the same — both remove axis 1
+        # Input: (100, 5) → Output: (100,)
+        # The "aggregation" is logical OR (any) or logical AND (all)

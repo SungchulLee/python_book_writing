@@ -7,6 +7,9 @@ Like `print()` and `input()`, file I/O functions primarily produce **side effect
 
 `open()` handles reading from and writing to **files on disk**. Unlike console I/O which is immediate and transient, file I/O persists data beyond program execution. The `with` statement ensures that files are properly closed after use, even if an exception occurs.
 
+!!! tip "Mental Model"
+    File I/O is a bridge between your program's memory and the outside world. `open()` creates the bridge, read/write operations cross it, and `close()` (or `with`) tears it down. Always use `with` so the bridge is cleaned up automatically, even if something goes wrong mid-crossing.
+
 ## Writing Files
 
 ```python

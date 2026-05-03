@@ -2,6 +2,30 @@
 
 External libraries provide additional speedups beyond pure NumPy.
 
+!!! tip "Mental Model"
+    When NumPy alone is not fast enough, acceleration libraries extend the
+    [optimization hierarchy](vectorization_basics.md) with a **scaling layer** that
+    pushes computation closer to hardware. Each library targets a different
+    bottleneck in the execution pipeline:
+
+    ```text
+    Python loop → NumPy (C loops) → Acceleration
+                                        │
+                                ┌───────┼───────┐
+                            Numba    numexpr    CuPy / Dask
+                           compile    fuse      offload
+                           loops    expressions  to GPU/cluster
+    ```
+
+!!! note "Decision Framework — When to Use Which"
+    | Bottleneck | Tool | What it does |
+    |-----------|------|-------------|
+    | Python loops that resist vectorization | **Numba** | JIT-compiles Python to machine code |
+    | Large expressions with temporaries | **numexpr** | Fuses element-wise ops, avoids intermediate arrays |
+    | Data too large for one CPU | **Dask** | Parallelizes across cores or a cluster |
+    | Need GPU acceleration | **CuPy** | Drop-in NumPy replacement on NVIDIA GPUs |
+    | Already vectorized, still slow | **Profile first** | The bottleneck may be I/O or algorithm, not execution |
+
 ## numexpr
 
 Optimized evaluation of array expressions.

@@ -2,6 +2,9 @@
 
 Iterator chaining combines multiple iterators or transformation functions into a pipeline. The itertools module provides powerful tools for creating complex iteration patterns with minimal memory overhead.
 
+!!! tip "Mental Model"
+    Think of chained iterators as an assembly line: each stage takes one item at a time from the previous stage, transforms it, and passes it along. No stage needs to see the full dataset at once. This pipeline approach composes naturally -- you build complex transformations by snapping simple stages together.
+
 ---
 
 ## Basic Chaining

@@ -2,6 +2,9 @@
 
 Root finding is the problem of determining where a function equals zero: find $x$ such that $f(x) = 0$. This is one of the most fundamental problems in numerical computing with applications in solving equations, finding equilibrium points, and many other areas.
 
+!!! tip "Mental Model"
+    Root finding is like searching for sea level on a function's landscape -- the exact point where the curve crosses the horizontal axis. Bracketing methods (Brent, bisection) work like a binary search: they trap the crossing between two points of opposite sign and squeeze inward. Open methods (Newton, secant) are faster but riskier -- they extrapolate where the crossing should be and jump there, which can overshoot if the function is poorly behaved.
+
 ---
 
 ## Scalar Root Finding: scipy.optimize.root_scalar()

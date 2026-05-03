@@ -2,6 +2,9 @@
 
 Many statistical methods and machine learning algorithms assume that the input data satisfies certain distributional properties -- approximate normality, constant scale, or absence of extreme outliers. When raw data violates these assumptions, statistical preprocessing transforms it into a form better suited for downstream analysis. This section covers the key transformations available in `scipy.stats`.
 
+!!! tip "Mental Model"
+    Raw data is like ingredients before cooking -- different units, different scales, different shapes. Preprocessing transforms (z-scoring, Box-Cox, rank transforms) are recipes that reshape data into a form that statistical methods can digest. The right transform depends on what your downstream method assumes about the input.
+
 ## Standardization (Z-Score)
 
 Standardization centers data at zero and scales it to unit variance. For a sample $x_1, \ldots, x_n$, the z-score of each observation is

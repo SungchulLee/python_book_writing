@@ -2,6 +2,9 @@
 
 In Python, functions are **first-class objects**. This means functions can be treated like any other value — assigned to variables, passed as arguments, returned from other functions, and stored in data structures.
 
+!!! tip "Mental Model"
+    A function in Python is just an object that happens to be callable. You can assign it to a variable, toss it into a list, or hand it to another function the same way you would an integer or a string. Once you stop thinking of functions as special and start thinking of them as values, patterns like callbacks, decorators, and higher-order functions become natural.
+
 
 ## Functions Are Objects
 

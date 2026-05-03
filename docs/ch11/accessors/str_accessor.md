@@ -2,6 +2,9 @@
 
 The `str` accessor in pandas provides vectorized string operations on Series containing string data. This allows you to apply string methods to entire columns without explicit loops.
 
+!!! tip "Mental Model"
+    Python's built-in string methods work on one string at a time. The `.str` accessor broadcasts those same methods over an entire column, automatically skipping NaN values. Think of it as lifting `str.upper()`, `str.contains()`, and friends from scalar operations to column-wide operations.
+
 ## Overview
 
 ```python

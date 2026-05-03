@@ -2,6 +2,9 @@
 
 Use object_hook to transform JSON objects during deserialization.
 
+!!! tip "Mental Model"
+    By default, `json.loads` turns every JSON object into a plain Python dict. An `object_hook` intercepts each dict as it is created and lets you return something richer — a dataclass, a namedtuple, or a domain object. Think of it as a post-processing filter on the JSON parser's output, converting raw dicts into typed objects automatically.
+
 ## Basic object_hook Usage
 
 Transform JSON objects with a custom function.

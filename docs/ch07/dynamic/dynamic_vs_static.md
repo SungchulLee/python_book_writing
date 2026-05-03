@@ -2,6 +2,9 @@
 
 Programming languages differ fundamentally in when they check types. Statically typed languages like Java and C++ verify types at compile time and require every attribute to be declared before use. Python, by contrast, is dynamically typed: objects can receive new attributes at any point during execution without prior declaration. Python is also **strongly typed**, meaning it does not silently coerce between unrelated types — for example, `"3" + 5` raises a `TypeError` rather than guessing what the programmer intended. This flexibility is a core part of Python's design, but it requires discipline to avoid runtime errors from typos or unexpected attribute additions.
 
+!!! tip "Mental Model"
+    Static typing is a pre-flight checklist -- the compiler verifies everything before takeoff. Dynamic typing is an in-flight adjustment -- Python figures out types as the code runs. Python is dynamically typed but strongly typed: you can attach any attribute at any time, but `"3" + 5` is still a `TypeError`. The freedom is in *when* types are checked, not in *whether* they are enforced.
+
 ## Dynamic Typing
 
 ### 1. Python

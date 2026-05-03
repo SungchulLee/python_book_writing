@@ -1,7 +1,9 @@
 # Sequence Comparison
 
-Python compares sequences (strings, lists, tuples) **lexicographically** — element by element from left to right.
+Python compares sequences (strings, lists, tuples) **lexicographically** -- element by element from left to right.
 
+!!! tip "Mental Model"
+    Lexicographic comparison works like dictionary ordering: compare the first elements; if equal, move to the second, and so on. The first difference decides the result. If one sequence is a prefix of the other, the shorter one is "less than." For strings, comparison uses Unicode code point values, so uppercase letters sort before lowercase.
 
 ## String Comparison
 

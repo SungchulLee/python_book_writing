@@ -2,6 +2,9 @@
 
 The binomial and Poisson distributions are the two most important discrete distributions in statistics and financial mathematics. The binomial counts successes in a fixed number of trials, while the Poisson counts events occurring at a constant average rate.
 
+!!! tip "Mental Model"
+    The binomial counts successes in a fixed number of coin flips; the Poisson counts events arriving randomly over time. When the number of trials $n$ is large and the success probability $p$ is small, the binomial converges to the Poisson with rate $\lambda = np$ -- this is the "rare events" approximation.
+
 ---
 
 ## Binomial Distribution

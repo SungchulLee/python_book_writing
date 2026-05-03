@@ -42,6 +42,9 @@ This section introduces each type in detail:
 
 These types form the foundation of nearly all Python programs. 
 
+!!! tip "Mental Model"
+    Think of a type as a contract: it tells Python what operations are valid and what they mean. The same operator like `+` behaves differently depending on the type because each type defines its own rules. Knowing the type of an object is knowing what you can do with it.
+
 ---
 
 ## 1. Objects and Types in Python

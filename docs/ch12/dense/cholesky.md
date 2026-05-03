@@ -2,6 +2,9 @@
 
 Cholesky decomposition factors symmetric positive definite matrices.
 
+!!! tip "Mental Model"
+    Think of Cholesky as taking the "square root" of a symmetric positive definite matrix: it finds a lower triangular $L$ such that $A = LL^T$. Because it exploits symmetry, Cholesky is roughly twice as fast as LU and is the go-to factorization whenever your matrix is symmetric positive definite.
+
 ## Basic Decomposition
 
 ### 1. linalg.cholesky

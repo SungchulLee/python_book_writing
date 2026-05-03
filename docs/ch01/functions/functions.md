@@ -19,6 +19,9 @@ inputs ──►│   function  ├──► output
 For now our examples use no inputs and no output.
 We will add those in [Parameters](parameters.md) and [Return Values](return_values.md).
 
+!!! tip "Mental Model"
+    A function is a named, reusable block of code with its own private workspace. Defining a function does nothing by itself---it just saves the recipe. Calling the function runs the recipe, creates a fresh local scope for its variables, and optionally returns a result to the caller.
+
 ## Why Functions
 
 Consider the following code:

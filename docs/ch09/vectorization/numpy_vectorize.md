@@ -2,6 +2,9 @@
 
 `np.vectorize` converts a scalar function into a function that works element-wise on arrays. While convenient, it's **not** a performance optimization—it's primarily a convenience wrapper.
 
+!!! tip "Mental Model"
+    `np.vectorize` wraps a scalar Python function so it can accept array inputs, but under the hood it still calls your function once per element -- there is no C-level speedup. Use it for convenience (clean syntax, broadcasting support) when performance does not matter, but never as a substitute for true vectorization with NumPy ufuncs.
+
 ```python
 import numpy as np
 ```

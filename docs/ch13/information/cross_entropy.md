@@ -2,6 +2,9 @@
 
 Suppose we have data drawn from a true distribution $p$, but we use a model $q$ to encode or predict that data. Cross-entropy measures the average number of bits (or nats) needed per symbol when using the code optimized for $q$ instead of the true distribution $p$. Because any mismatch between $p$ and $q$ incurs extra cost, cross-entropy is always at least as large as the entropy of $p$ itself. This property makes cross-entropy a natural loss function for classification and density estimation.
 
+!!! tip "Mental Model"
+    Cross-entropy $H(p, q)$ is the total cost of encoding data from $p$ using a code designed for $q$. It equals the intrinsic entropy $H(p)$ plus the KL divergence penalty for using the wrong code. Minimizing cross-entropy is therefore equivalent to minimizing KL divergence, which is why it serves as the standard classification loss.
+
 ## Definition
 
 Let $p$ and $q$ be two probability distributions over the same discrete sample space $\mathcal{X}$. The **cross-entropy** of $q$ relative to $p$ is

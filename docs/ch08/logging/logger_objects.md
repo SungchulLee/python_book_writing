@@ -2,6 +2,9 @@
 
 Create and configure logger objects for modular logging throughout your application.
 
+!!! tip "Mental Model"
+    Loggers form a tree rooted at the root logger. Each module creates its own logger with `logging.getLogger(__name__)`, and the dot-separated name mirrors the package hierarchy. A message propagates up the tree until a handler catches it, so configuring a parent logger automatically covers all its children.
+
 ## Creating Loggers
 
 Create named loggers for different modules.

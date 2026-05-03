@@ -1,5 +1,8 @@
 # GIL and Hardware
 
+!!! tip "Mental Model"
+    The GIL is a single key to the Python interpreter room -- only one thread can hold it at a time. This means your 8-core CPU sits mostly idle when running multi-threaded Python code. The workaround is simple: use threads for I/O waits (the key is released during I/O), and use separate processes for CPU-bound work (each gets its own key).
+
 ## What is the GIL?
 
 The **Global Interpreter Lock (GIL)** is a mutex that protects access to Python objects, preventing multiple threads from executing Python bytecode simultaneously.

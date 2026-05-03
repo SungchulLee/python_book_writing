@@ -1,6 +1,26 @@
 # Concatenation
 
-NumPy provides several functions to join arrays together.
+NumPy provides several functions to join arrays together. Concatenation is part of a broader system of **structure operations** — ways to rearrange data without changing the values themselves:
+
+| Category | Operations | What it does |
+|---|---|---|
+| Combine | `concatenate`, `stack` | Join arrays along an axis |
+| Divide | `split`, `array_split` | Partition an array into pieces |
+| Reorder | `transpose`, `swapaxes`, `moveaxis` | Permute axis order |
+| Shift | `roll` | Circular element shift |
+| Traverse | iteration (`nditer`, `ndenumerate`) | Walk elements (last resort) |
+
+!!! tip "Mental Model"
+    `np.concatenate` glues arrays end-to-end along an existing axis, while `np.stack` creates a new axis and stacks arrays along it. The key rule: all arrays must have matching shapes on every axis except the one being joined. Think of concatenation as appending rows or columns, and stacking as adding a new "batch" dimension.
+
+!!! note "Function Hierarchy"
+    NumPy's joining functions form three layers:
+
+    - **Core** — `np.concatenate` (existing axis) and `np.stack` (new axis)
+    - **Convenience** — `np.vstack`, `np.hstack`, `np.dstack` (axis-specific shortcuts)
+    - **Syntactic sugar** — `np.r_`, `np.c_` (index-expression shorthand)
+
+    Start with core, reach for convenience when the axis is obvious, use sugar in interactive work.
 
 ## np.concatenate
 

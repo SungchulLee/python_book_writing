@@ -2,6 +2,9 @@
 
 Aggregation functions summarize data by computing statistics like sum, mean, and count. They reduce multiple values to a single result.
 
+!!! tip "Mental Model"
+    An aggregation collapses many values into one -- a column of 1000 numbers becomes a single mean, sum, or count. Picture a funnel: data flows in at the top, and a single summary number comes out at the bottom. Every built-in aggregation method (`mean`, `sum`, `std`, ...) is just a different funnel shape.
+
 ## Column Aggregations
 
 Apply aggregations to DataFrame columns.

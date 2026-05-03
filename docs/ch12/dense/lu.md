@@ -2,6 +2,9 @@
 
 LU decomposition factors a matrix into lower and upper triangular matrices.
 
+!!! tip "Mental Model"
+    LU decomposition is Gaussian elimination captured in matrix form: factor $A = PLU$ once, then solve $Ax = b$ cheaply for any right-hand side by forward and back substitution. The upfront factorization cost pays for itself whenever you need to solve the same system with multiple different $b$ vectors.
+
 ## Basic LU Factorization
 
 ### 1. linalg.lu

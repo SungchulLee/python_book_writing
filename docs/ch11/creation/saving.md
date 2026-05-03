@@ -2,6 +2,9 @@
 
 Export DataFrames to various file formats for storage and sharing.
 
+!!! tip "Mental Model"
+    Every `to_*` method is the mirror of a `read_*` function. `to_csv` serializes to text, `to_parquet` serializes to efficient binary, `to_excel` writes spreadsheets. The key decision is whether you need human-readable output (CSV) or fast, type-preserving storage (Parquet). Always check `index=False` if you do not want the index written as a column.
+
 ## to_csv
 
 Save DataFrame to CSV file.

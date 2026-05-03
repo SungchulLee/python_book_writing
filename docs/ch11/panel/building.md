@@ -2,6 +2,9 @@
 
 This document covers how to construct panel data structures in pandas using MultiIndex.
 
+!!! tip "Mental Model"
+    Building a panel means creating a DataFrame with a MultiIndex of (entity, time) pairs. `MultiIndex.from_product` generates a balanced panel (all entities at all times); `from_tuples` or `from_arrays` handle unbalanced panels where some entity-time combinations are missing. The construction method determines whether you start with a complete grid or a sparse one.
+
 ## Using MultiIndex.from_product
 
 Creates a panel with all combinations of entities and time periods (balanced panel).

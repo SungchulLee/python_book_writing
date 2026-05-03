@@ -3,6 +3,9 @@
 
 **Method chaining** is a programming pattern where multiple methods are called sequentially on an object, with each method returning an object that supports the next method call.
 
+!!! tip "Mental Model"
+    Method chaining works because each method returns an object, and the next method call is invoked on that returned object. For mutating methods on your own classes, the trick is to `return self` at the end -- this lets callers write `builder.set_x(1).set_y(2).build()` in a single fluent expression instead of three separate statements.
+
 ```python
 name.strip().lower().title()
 ```
@@ -158,6 +161,16 @@ print(result.value)  # >> HELLO
 The mutable pattern is called a **fluent interface** and is common in configuration builders, query builders, and testing frameworks. The immutable pattern mirrors how built-in string methods work.
 
 ---
+
+## Design Rule
+
+Pick one style and be consistent within a class:
+
+- **Mutable class** → return `self` (fluent interface)
+- **Immutable class** → return a new object of the same type
+
+Mixing styles within the same class leads to bugs — callers cannot predict whether
+a method mutated the original or created a copy.
 
 ## Best Practices
 

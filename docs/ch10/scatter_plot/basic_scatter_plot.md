@@ -2,6 +2,29 @@
 
 Scatter plots display individual data points using markers, revealing relationships, clusters, and patterns between two variables.
 
+!!! tip "Mental Model"
+    Unlike `plot()` which connects points with lines, `scatter()` draws each point independently. This lets you vary marker size, color, and shape per point, encoding up to four dimensions in a 2D plot (x, y, size, color). Use scatter plots when the relationship between points matters more than their ordering.
+
+!!! note "Visual Encoding Channels"
+    A scatter plot maps data to **visual channels** — perceptual properties
+    the eye can distinguish:
+
+    | Channel | Parameter | Perceptual accuracy |
+    |---------|-----------|-------------------|
+    | Position (x, y) | `x`, `y` | Most accurate |
+    | Color | `c` + `cmap` | Moderate (use perceptually uniform maps) |
+    | Size | `s` | Less accurate (area perception is nonlinear) |
+    | Shape | `marker` | Categorical only (no ordering) |
+
+    Use at most 2--3 encodings clearly. Combining all four channels creates
+    cognitive overload — the reader cannot decode everything at once.
+
+!!! warning "Correlation is Not Causation"
+    A visible trend or cluster in a scatter plot shows **association**, not cause
+    and effect. Adding a regression line (`np.polyfit`) quantifies the linear
+    relationship, but a linear fit only makes sense if the relationship is
+    genuinely linear — always inspect the residuals before interpreting.
+
 ## Simple Scatter Plot
 
 Create a basic scatter plot with `ax.scatter()`.

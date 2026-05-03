@@ -2,6 +2,8 @@
 
 Python identifiers (variable names, function names, class names) must follow specific rules.
 
+!!! tip "Mental Model"
+    A valid Python name starts with a letter or underscore, followed by any combination of letters, digits, and underscores. No spaces, no hyphens, no leading digits. Python 3 extends "letter" to include Unicode, so `cafe` and `nombre` are valid, but sticking to ASCII keeps code portable and readable.
 
 ## Basic Rules
 

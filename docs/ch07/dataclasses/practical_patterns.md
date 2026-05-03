@@ -1,6 +1,12 @@
 # Practical Patterns
 
-Real-world dataclass patterns that solve common problems: configuration objects, API models, and domain entities.
+Real-world dataclass patterns that solve common problems: configuration objects, API models,
+and domain entities. These patterns show dataclasses as engineering tools, not just syntax
+sugar — they replace boilerplate while remaining fully compatible with the rest of the Python
+ecosystem.
+
+!!! tip "Mental Model"
+    A dataclass is a structured bag of data with batteries included -- `__init__`, `__repr__`, `__eq__`, and more are generated for free. The practical patterns on this page show how to combine that foundation with properties, `__post_init__`, and `field()` to build production-ready configuration objects, API models, and domain entities without writing boilerplate.
 
 ---
 
@@ -166,6 +172,33 @@ query = (QueryBuilder("users")
 
 print(query)
 ```
+
+## Ecosystem Context: dataclass vs pydantic vs attrs
+
+For simple internal data containers, `@dataclass` from the standard library is
+sufficient. When your models sit at a system boundary — parsing JSON from an API,
+reading user config files, or feeding data into an ORM — consider these alternatives:
+
+| Concern | dataclass | pydantic | attrs |
+|---------|-----------|----------|-------|
+| Validation | Manual (`__post_init__`) | Declarative, automatic | Declarative (`@validator`) |
+| Type coercion | None | Automatic | Via `converter` |
+| Serialization | `asdict()` (shallow) | `.model_dump()` / `.model_dump_json()` | `attrs.asdict()` |
+| Dependency | Standard library | External (`pip install pydantic`) | External (`pip install attrs`) |
+| Performance | Fast creation | Slower (validation overhead) | Fast (slots by default) |
+
+Use `@dataclass` when validation is simple or unnecessary. Reach for pydantic when
+you need schema validation at API boundaries, and attrs when you want rich validators
+without pydantic's heavier runtime.
+
+!!! danger "Anti-patterns to avoid"
+    - **Business-logic-heavy dataclasses**: A dataclass that grows dozens of methods
+      and complex state transitions is no longer a data container — it is a
+      domain object pretending to be one. Extract behavior into separate service
+      classes and keep the dataclass as a plain data carrier.
+    - **God objects**: A single dataclass with 20+ fields that represents an entire
+      domain (user + preferences + billing + permissions) should be decomposed into
+      smaller, focused dataclasses composed together.
 
 ## Data Validation with __post_init__
 

@@ -2,6 +2,26 @@
 
 Spines are the lines that form the borders of the plotting area. This document covers spine basics, visibility control, and positioning.
 
+!!! tip "Mental Model"
+    Spines are the four border lines of the plot rectangle. By default all four are visible, but hiding the top and right spines instantly gives your plots a cleaner, more modern look. You can also reposition spines -- moving the bottom spine to `y=0` creates a traditional math-textbook axis through the origin.
+
+    Spines, [ticks](tick_control.md), and labels together form the **axis system**
+    — the visual frame that gives meaning to the data region. Customizing this
+    frame is the **refinement layer** of the visualization pipeline (after data,
+    plot type, and layout are decided).
+
+!!! note "When to Customize Spines"
+    | Goal | Technique |
+    |------|-----------|
+    | Cleaner modern look | Remove top + right spines |
+    | Mathematical axes through origin | Position bottom/left at `'zero'` |
+    | Image / heatmap display | Remove all spines |
+    | Bounded axis range | Set spine bounds to data range |
+
+    The design principle: **remove unnecessary visual elements to emphasize the
+    data, not the frame.** Every spine, tick, or gridline that doesn't aid
+    interpretation is clutter.
+
 ## What are Spines?
 
 A plot has four spines:

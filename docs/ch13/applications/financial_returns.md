@@ -2,6 +2,9 @@
 
 Financial asset prices change over time, and the statistical properties of their returns determine risk, inform portfolio construction, and underpin derivative pricing models. This section applies `scipy.stats` tools to analyze return distributions, test for normality, and fit parametric models to return data.
 
+!!! tip "Mental Model"
+    Financial returns are the language of risk. Converting raw prices to returns reveals the statistical fingerprint of an asset -- its volatility, skewness, and tail behavior. The key insight is that real returns are not normal: they have fat tails and occasional extreme moves that simple Gaussian models dangerously underestimate.
+
 ## Return Definitions
 
 Let $P_t$ denote the price of an asset at time $t$. Two common return measures are:

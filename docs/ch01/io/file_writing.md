@@ -17,6 +17,9 @@ flowchart TD
     C --> D["data stored on disk"]
 ```
 
+!!! tip "Mental Model"
+    Writing a file is the mirror of reading: you open it in a write mode, send data through the file object, and close it. The critical distinction is between write mode (`"w"`), which erases existing content, and append mode (`"a"`), which adds to the end. Choosing the wrong mode can destroy data, so always pause to consider which one you need.
+
 ---
 
 ## 1. Opening Files for Writing

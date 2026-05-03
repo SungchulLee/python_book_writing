@@ -20,6 +20,9 @@ flowchart TD
     A --> F[ZeroDivisionError]
 ````
 
+!!! tip "Mental Model"
+    Every runtime error is a violated assumption: you assumed the type was right (`TypeError`), the value was valid (`ValueError`), the element existed (`KeyError`, `IndexError`), or the operation was legal (`ZeroDivisionError`). Reading the exception name tells you which assumption broke, which points you directly to the fix.
+
 ---
 
 ## 1. TypeError

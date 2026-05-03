@@ -1,5 +1,8 @@
 # Sorting Arrays
 
+!!! tip "Mental Model"
+    `.sort()` sorts in place and returns `None`; `np.sort()` returns a sorted copy. `np.argsort()` returns the indices that would sort the array, which is invaluable when you need to reorder multiple arrays in sync. All three accept an `axis` parameter to sort along rows, columns, or any other dimension.
+
 ## Method sort
 
 ### 1. In-Place Sorting
@@ -375,3 +378,48 @@ Use `np.argsort` to rank elements in an array. Given scores `s = np.array([88, 7
         ranks[order] = np.arange(1, len(scores) + 1)
         print(f"Scores: {scores}")
         print(f"Ranks:  {ranks}")
+
+---
+
+**Exercise 4.**
+Use `np.argsort` to reorder multiple related arrays by a single key. Given `names = np.array(["Charlie", "Alice", "Bob"])` and `scores = np.array([85, 95, 72])`, sort both arrays by score in descending order using argsort.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        names = np.array(["Charlie", "Alice", "Bob"])
+        scores = np.array([85, 95, 72])
+        order = np.argsort(-scores)  # Descending
+
+        print(f"Sorted names:  {names[order]}")   # ['Alice' 'Charlie' 'Bob']
+        print(f"Sorted scores: {scores[order]}")  # [95 85 72]
+
+---
+
+**Exercise 5.**
+Use `np.partition` to find the top-3 values in a large array without fully sorting it. Given `a = np.random.randn(10000)`, use `np.partition` to efficiently extract the 3 largest values. Compare the wall-clock time with `np.sort` for the same task.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+        import time
+
+        a = np.random.randn(10000)
+
+        # np.partition: O(n) — partially sorts
+        start = time.perf_counter()
+        for _ in range(1000):
+            top3 = np.partition(a, -3)[-3:]
+        t_part = time.perf_counter() - start
+
+        # np.sort: O(n log n) — fully sorts
+        start = time.perf_counter()
+        for _ in range(1000):
+            top3_sort = np.sort(a)[-3:]
+        t_sort = time.perf_counter() - start
+
+        print(f"Top 3: {np.sort(top3)[::-1]}")
+        print(f"Partition: {t_part:.4f}s")
+        print(f"Sort:      {t_sort:.4f}s")
+        print(f"Speedup:   {t_sort / t_part:.1f}x")

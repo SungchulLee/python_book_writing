@@ -2,6 +2,9 @@
 
 The normal (Gaussian) distribution is the most fundamental continuous probability distribution in statistics and financial mathematics. It arises naturally from the Central Limit Theorem and underpins much of quantitative finance, from asset return modeling to option pricing.
 
+!!! tip "Mental Model"
+    The normal distribution is the "default" bell curve that emerges whenever many small, independent effects add up (the Central Limit Theorem). Two parameters tell the whole story: $\mu$ shifts the center and $\sigma$ controls the width. Roughly 68% of values fall within one $\sigma$ of the mean, 95% within two, and 99.7% within three.
+
 ---
 
 ## Mathematical Definition

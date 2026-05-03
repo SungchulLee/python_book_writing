@@ -2,6 +2,9 @@
 
 # Memory Access Patterns
 
+!!! tip "Mental Model"
+    Imagine reading a book page by page versus flipping to random pages each time. Sequential access lets the hardware prefetch the next page before you need it; random access forces a slow lookup every time. The same arithmetic on the same data can run 10-100x faster or slower depending purely on the order in which memory is touched.
+
 The **order in which a program accesses memory** strongly influences performance. Even when performing the same arithmetic operations on the same data, different memory access patterns can produce **10× to 100× differences in execution time**.
 
 These differences arise because modern processors rely heavily on **caches and hardware prefetching**. Programs that access memory in predictable patterns allow the hardware to load data efficiently, while irregular access patterns cause frequent cache misses and slow memory operations.

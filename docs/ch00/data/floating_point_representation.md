@@ -2,6 +2,9 @@
 
 # Floating-Point Representation
 
+!!! tip "Mental Model"
+    Floating-point is binary scientific notation: a sign, a fixed number of significant digits (the mantissa), and an exponent that slides the decimal point. Because only finitely many bit patterns exist, most real numbers get rounded to the nearest representable value. This is why `0.1 + 0.2 != 0.3` -- it is not a bug but a fundamental consequence of representing infinite real numbers with finite bits.
+
 Real numbers form a **continuous set**, but computers store numbers using **finite binary representations**. As a result, most real numbers cannot be represented exactly in memory.
 
 To balance **range, precision, and performance**, modern computers use the **IEEE 754 floating-point standard**. This representation underlies floating-point arithmetic in languages such as C, Python, Java, and many scientific libraries.

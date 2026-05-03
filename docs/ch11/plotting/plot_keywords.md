@@ -2,6 +2,9 @@
 
 The pandas `plot()` method accepts many keyword arguments to customize visualizations. This document covers the most commonly used parameters.
 
+!!! tip "Mental Model"
+    The `plot()` keywords fall into three groups: layout (`ax`, `figsize`, `subplots`), data presentation (`kind`, `x`, `y`, `secondary_y`), and styling (`color`, `alpha`, `title`, `grid`). The `ax` parameter is the most important -- it lets you place plots on pre-created matplotlib axes for multi-panel figures.
+
 ## ax - Specify Axes
 
 The `ax` parameter allows plotting on an existing matplotlib axes object, enabling complex layouts.

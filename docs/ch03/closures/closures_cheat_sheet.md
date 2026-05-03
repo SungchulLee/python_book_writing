@@ -1,5 +1,8 @@
 # Python Closures - Quick Reference Cheat Sheet
 
+!!! tip "Mental Model"
+    Closures follow a simple recipe: an outer function defines state, an inner function uses it, and the outer function returns the inner one. The returned function "closes over" the enclosing variables, bundling code and data into a single callable. This cheat sheet gives you the patterns to recognize and apply that recipe quickly.
+
 ## Definition
 
 A **closure** is a function that:

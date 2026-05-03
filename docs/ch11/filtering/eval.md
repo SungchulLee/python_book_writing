@@ -2,6 +2,9 @@
 
 The `eval()` method provides fast, memory-efficient expression evaluation for column operations. It uses NumExpr under the hood when available, enabling optimized computation.
 
+!!! tip "Mental Model"
+    `eval()` takes a string expression like `"A + B * C"` and evaluates it without creating intermediate arrays. For large DataFrames this saves memory because the NumExpr engine fuses operations into a single pass. Think of it as a compiled calculator for column arithmetic -- same result as normal pandas math, but more memory-efficient at scale.
+
 ## Basic Syntax
 
 ```python

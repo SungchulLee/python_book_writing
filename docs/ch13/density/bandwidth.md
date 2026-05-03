@@ -2,6 +2,9 @@
 
 The bandwidth parameter is the single most important choice in kernel density estimation. It controls the width of the kernel placed at each data point and determines the smoothness of the resulting density estimate. Too small a bandwidth produces a noisy, spiky curve that overfits the data; too large a bandwidth produces an overly smooth curve that obscures important features like modes and skewness. This page covers the theory behind bandwidth selection and the practical methods available in SciPy.
 
+!!! tip "Mental Model"
+    Bandwidth is the "blur radius" of your density estimate. Too narrow and you see every bump from individual data points; too wide and you smear away real features like separate modes. The optimal bandwidth balances these two errors, and rules like Scott's and Silverman's provide good starting points for unimodal data.
+
 ## Role of Bandwidth in KDE
 
 Recall that the kernel density estimator with kernel $K$ and bandwidth $h > 0$ is

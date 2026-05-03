@@ -2,6 +2,9 @@
 
 Compare the traditional os.path module with the modern pathlib module for path operations.
 
+!!! tip "Mental Model"
+    `os.path` treats paths as plain strings and manipulates them with standalone functions (`os.path.join`, `os.path.exists`). `pathlib` wraps paths in `Path` objects with methods and operator overloads (`path / "subdir"`, `path.exists()`). The result is the same — `pathlib` is just more readable and composable. New code should prefer `pathlib`; use `os.path` when interfacing with older APIs that expect strings.
+
 ## os.path Approach
 
 Traditional string-based path manipulation.

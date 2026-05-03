@@ -2,6 +2,9 @@
 
 Guidelines for effective logging in production applications.
 
+!!! tip "Mental Model"
+    Good logging is like a flight recorder: it captures just enough detail at each level so you can reconstruct what happened after the fact. Use named loggers per module, log at the right level, never log sensitive data, and configure output in one place. These habits turn logs from noisy clutter into a reliable debugging tool.
+
 ## Use Named Loggers
 
 Create loggers for each module using __name__.

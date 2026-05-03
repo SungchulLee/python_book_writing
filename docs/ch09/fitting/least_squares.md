@@ -2,7 +2,42 @@
 
 When `np.polyfit` fits a polynomial to data, it solves a least squares problem under the hood. Understanding this connection reveals why polynomial fitting works, when it fails, and how to control the numerical behavior. The same least squares machinery underlies linear regression, spline fitting, and many other approximation techniques.
 
+!!! tip "Mental Model"
+    Polynomial fitting is really matrix algebra in disguise. You build a Vandermonde matrix from your x-values, then solve an overdetermined system in the least-squares sense. The coefficients that minimize the sum of squared residuals are the same ones that `np.polyfit` returns -- understanding this connection lets you diagnose ill-conditioning and choose the right degree.
+
 ---
+
+!!! info "Big Picture"
+    All polynomial fitting reduces to one equation: $V \mathbf{c} \approx \mathbf{y}$, where $V$ is the Vandermonde matrix built from x-values and $\mathbf{c}$ are the unknown coefficients. Everything else — normal equations, QR, SVD, scaling — is about *how* we solve that system stably.
+
+!!! note "Unified Approximation Map"
+    Every topic in this section connects through a single pipeline:
+
+    ```text
+    Data (x, y)
+        │
+        ▼
+    Vandermonde Matrix V
+        │
+        ▼
+    Least Squares: V c ≈ y
+        │
+        ├──→ polyfit / poly1d       (legacy API, power basis)
+        │
+        ├──→ Polynomial.fit         (modern API, domain scaling)
+        │         │
+        │         ▼
+        │    Polynomial class       (coefficients + domain + window)
+        │
+        └──→ Problems
+              │
+              ├── Ill-conditioning  → fix with domain mapping (Polynomial.fit)
+              └── Oscillation       → fix with splines (scipy.interpolate)
+    ```
+
+    At the deepest level, this is the same $A\mathbf{x} \approx \mathbf{b}$
+    that appears in linear regression, signal processing (FFT is a linear
+    transform), and every other least-squares problem in the book.
 
 ## The Fitting Problem
 

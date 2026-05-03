@@ -2,6 +2,9 @@
 
 Lifecycle dunder methods control how objects are created, initialized, and destroyed.
 
+!!! tip "Mental Model"
+    Object creation is a two-phase process: `__new__` allocates the blank object (like pouring a foundation), and `__init__` furnishes it with state (like moving in the furniture). Destruction via `__del__` is unreliable -- think of it as a "maybe" cleanup. For deterministic resource management, use context managers instead.
+
 ## Overview: Object Creation Flow
 
 ```
@@ -119,6 +122,10 @@ print(a is b)      # True
 print(a.value)     # 2 (overwritten by second __init__)
 print(id(a), id(b))  # Same id
 ```
+
+!!! warning "__init__ Runs Every Time"
+
+    A common singleton bug: `__init__` runs **every time** you call the class, even when `__new__` returns the existing instance. In the example above, `Singleton(2)` does not create a new object, but it still executes `__init__`, overwriting `value` from `1` to `2`. The `BetterSingleton` pattern below guards against this with an `_initialized` flag. Always consider whether repeated `__init__` calls could corrupt your singleton's state.
 
 ### Singleton with Init Guard
 

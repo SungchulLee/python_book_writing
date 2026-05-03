@@ -2,6 +2,9 @@
 
 Two variables may exhibit a strong correlation not because of a direct relationship, but because both are driven by a common third variable. For example, ice cream sales and drowning incidents are positively correlated, yet neither causes the other; temperature drives both. Partial correlation addresses this confounding problem by measuring the linear association between two variables after removing the linear effect of one or more controlling variables.
 
+!!! tip "Mental Model"
+    Partial correlation strips away the influence of confounding variables before measuring association. Imagine regressing both $X$ and $Y$ on the confounders, then correlating the leftover residuals. What remains is the direct relationship between $X$ and $Y$ that cannot be explained by the variables you controlled for.
+
 ## First-Order Partial Correlation
 
 The **partial correlation** of $X$ and $Y$ given $Z$, denoted $r_{XY \cdot Z}$, measures the linear association between $X$ and $Y$ after removing the linear influence of $Z$ from both. It is defined as

@@ -2,6 +2,9 @@
 
 Choose the right sparse format for your use case.
 
+!!! tip "Mental Model"
+    Choosing a sparse format is like choosing the right data structure: COO and LIL are for building, CSR is for row-wise operations and matrix-vector products, CSC is for column-wise access and direct solvers, and DIA is for banded matrices. Pick the format that matches your dominant operation, and convert only once.
+
 ## Decision Tree
 
 ### 1. Building a Matrix?

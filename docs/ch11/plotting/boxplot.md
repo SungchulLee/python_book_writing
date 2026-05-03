@@ -2,6 +2,9 @@
 
 The `boxplot()` method creates box-and-whisker plots that summarize the distribution of numeric data, showing median, quartiles, and outliers.
 
+!!! tip "Mental Model"
+    A box plot is a five-number summary in visual form: minimum, Q1, median, Q3, maximum, with dots for outliers beyond 1.5 x IQR. It reveals center, spread, skew, and outliers at a glance. Use the `by` parameter to compare distributions across categories side-by-side.
+
 ## Anatomy of a Box Plot
 
 ```

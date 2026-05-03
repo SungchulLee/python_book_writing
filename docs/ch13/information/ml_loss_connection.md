@@ -2,6 +2,9 @@
 
 The loss functions used in machine learning are not arbitrary choices. They arise from principled information-theoretic and statistical foundations. In particular, the most common losses -- cross-entropy for classification and mean squared error for regression -- can both be derived from maximum likelihood estimation, which in turn is equivalent to minimizing KL divergence between the data distribution and the model. This section makes these connections explicit.
 
+!!! tip "Mental Model"
+    MLE, cross-entropy minimization, and KL divergence minimization are three views of the same optimization. Cross-entropy loss in classification is just negative log-likelihood; MSE loss in regression is negative log-likelihood under Gaussian errors. Understanding this unification reveals that "choosing a loss function" is really "choosing a probabilistic model."
+
 ## MLE as Cross-Entropy Minimization
 
 Suppose we observe i.i.d. data $x_1, x_2, \ldots, x_n$ drawn from an unknown true distribution $p$. We fit a parametric model $q_\theta$ by maximizing the log-likelihood:

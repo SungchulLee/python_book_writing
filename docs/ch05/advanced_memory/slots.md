@@ -2,6 +2,9 @@
 
 By default, Python stores instance attributes in a dictionary (`__dict__`). The `__slots__` declaration lets you explicitly define which attributes an instance can have, resulting in significant memory savings and faster attribute access.
 
+!!! tip "Mental Model"
+    Without `__slots__`, every instance carries a full dictionary -- like giving each person a filing cabinet when they only need two index cards. Declaring `__slots__` replaces that cabinet with fixed-size slots, saving memory per instance and making attribute lookup faster through direct offset access.
+
 ---
 
 ## The Problem: Memory Overhead

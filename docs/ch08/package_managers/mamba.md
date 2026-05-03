@@ -2,6 +2,9 @@
 
 **mamba** is a fast, drop-in replacement for conda. It uses the same commands but resolves dependencies much faster.
 
+!!! tip "Mental Model"
+    mamba is conda rewritten in C++ for speed. Every `conda` command you know works identically with `mamba` — just swap the word. The dramatic speedup comes from a faster dependency solver (libmamba), which matters most when you have large environments with many packages competing for compatible versions.
+
 ---
 
 ## Why mamba?

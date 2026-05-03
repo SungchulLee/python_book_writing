@@ -2,6 +2,9 @@
 
 The Strategy Pattern lets you define a family of algorithms, encapsulate each one, and make them interchangeable at runtime. In Python, first-class functions replace the strategy classes required in traditional OOP implementations.
 
+!!! tip "Mental Model"
+    Instead of hard-coding an algorithm inside a class, pass it in as a function. The class becomes a shell that delegates the "how" to whatever function it receives, so you can swap algorithms at runtime without touching the class itself. In Python, first-class functions make this pattern almost invisible -- no strategy interface needed.
+
 **Key Insight**: "Encapsulate what varies" — the algorithm varies, so pass it as a function parameter. The context class remains algorithm-agnostic.
 
 ---

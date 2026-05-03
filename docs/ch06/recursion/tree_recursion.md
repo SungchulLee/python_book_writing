@@ -2,6 +2,9 @@
 
 Tree recursion occurs when a function calls itself multiple times per invocation, creating a tree-like call pattern. This is common in problems with overlapping subproblems.
 
+!!! tip "Mental Model"
+    Tree recursion branches at every call -- each invocation spawns two or more recursive calls, forming a tree of computation. Without memoization, the same subproblems are recomputed many times, leading to exponential time. Recognizing tree recursion is the first step toward applying memoization or converting to bottom-up dynamic programming.
+
 ---
 
 ## Fibonacci: Classic Tree Recursion

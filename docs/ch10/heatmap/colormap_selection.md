@@ -2,6 +2,15 @@
 
 Choosing the right colormap is critical for effective data visualization. This guide covers colormap categories, selection criteria, and best practices.
 
+!!! tip "Mental Model"
+    Match your colormap to your data type: sequential (e.g., `viridis`) for ordered values like temperature, diverging (e.g., `coolwarm`) for values centered around zero like profit/loss, and qualitative (e.g., `Set1`) for unordered categories. A wrong choice can mislead readers -- the default `viridis` is perceptually uniform and colorblind-safe, making it a reliable default.
+
+!!! tip "Default Strategy"
+    **Use `viridis` unless you have a specific reason not to.** It is perceptually uniform (equal steps in data produce equal perceived color changes), prints well in grayscale, and is accessible to colorblind readers. Switch to a diverging map (`coolwarm`, `RdBu`) only when your data has a meaningful center, and to qualitative (`Set1`, `tab10`) only for unordered categories.
+
+!!! warning "Why Jet and Rainbow Are Harmful"
+    Human vision perceives brightness non-uniformly — we are far more sensitive to changes in yellow-green than in blue or red. Non-uniform colormaps like `jet` create false boundaries and hide real gradients. A smooth gradient in data can appear as sharp bands in `jet`, leading readers to see structure that does not exist. Perceptually uniform colormaps (`viridis`, `plasma`, `inferno`) eliminate this distortion.
+
 ## Colormap Categories
 
 Matplotlib provides several categories of colormaps:

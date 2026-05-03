@@ -2,6 +2,9 @@
 
 A **quantile-quantile (QQ) plot** compares the quantiles of observed data against the quantiles of a theoretical distribution. If the data follow that distribution, the points fall approximately along a straight reference line. This visual diagnostic often reveals departures from normality — heavy tails, skewness, or outliers — more clearly than summary statistics or formal hypothesis tests alone.
 
+!!! tip "Mental Model"
+    Sort your data and pair each value with the theoretical quantile it "should" be if the assumed distribution were correct. Plot these pairs: a straight line means the distribution fits, upward-curving tails mean heavy tails, and S-shapes indicate skewness. The QQ plot is the single most informative diagnostic for distributional fit.
+
 ---
 
 ## Theoretical Basis

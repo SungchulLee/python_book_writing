@@ -2,6 +2,9 @@
 
 The `sys.getsizeof()` function returns the size of an object in bytes. It's essential for understanding Python's memory usage and optimizing memory-critical applications.
 
+!!! tip "Mental Model"
+    `sys.getsizeof()` is like weighing a shipping box on a scale -- it tells you the weight of the box itself, but not the weight of the items packed inside it. For containers like lists and dicts, you get the shallow size of the container structure, not the total size including all referenced objects.
+
 ```python
 import sys
 ```

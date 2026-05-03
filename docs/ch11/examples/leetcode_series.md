@@ -2,6 +2,9 @@
 
 This document covers common LeetCode patterns involving pandas Series operations. These problems demonstrate practical applications of Series methods for data manipulation and analysis.
 
+!!! tip "Mental Model"
+    Series-level LeetCode problems focus on single-column transformations: mapping values, filtering with boolean masks, and computing rolling or cumulative statistics. The key insight is that almost every operation stays within one Series and returns another Series of the same length, keeping the solution vectorized and loop-free.
+
 ## Pattern 1: Value Replacement with astype
 
 ### LeetCode 262: Trips and Users

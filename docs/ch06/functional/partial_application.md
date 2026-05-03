@@ -1,5 +1,8 @@
 # Partial Application
 
+!!! tip "Mental Model"
+    Partial application freezes some arguments of a function, producing a new function that needs fewer arguments. Think of it as pre-filling a form: you lock in the fields you already know, and the resulting simpler form only asks for what's left. The original function stays unchanged.
+
 ## functools.partial
 
 ### 1. Fix Arguments

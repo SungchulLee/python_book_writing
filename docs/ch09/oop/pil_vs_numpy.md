@@ -1,5 +1,13 @@
 # PIL vs NumPy Images
 
+!!! tip "Mental Model"
+    PIL gives you a high-level Image object with methods like `resize` and `crop`; NumPy gives you a raw `(H, W, C)` array you can manipulate with indexing and math. Convert between them freely with `np.array(img)` and `Image.fromarray(arr)`. Use PIL for I/O and standard transformations, NumPy for custom pixel-level computation.
+
+    The key insight: **images are arrays.** A color image is a 3D array
+    `(height, width, channels)` of uint8 values. Once you see this, every NumPy
+    technique — slicing, broadcasting, ufuncs, linear algebra — applies directly
+    to image data. PIL handles the file format layer; NumPy handles the math.
+
 ## Image Representation
 
 ### 1. PIL Image Object

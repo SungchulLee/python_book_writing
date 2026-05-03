@@ -2,6 +2,69 @@
 
 Structured arrays (also called record arrays) allow you to store heterogeneous data types in a single array, similar to a database table or spreadsheet row.
 
+!!! tip "Mental Model"
+    A structured array is NumPy's version of a database table: each element is a "row" containing named fields of potentially different types (e.g., a string name, an int age, a float score). Access a column by field name (`arr['age']`), a row by index (`arr[0]`). For most tabular data work, Pandas is more convenient, but structured arrays shine when you need tight memory control or C-level interop.
+
+    At the memory level, a structured array stores different fields in a **single
+    contiguous memory block** with byte offsets — the dtype acts as a schema that
+    tells NumPy where each field starts within each record.
+
+!!! warning "Array of Structs vs Struct of Arrays"
+    There are two ways to store tabular data in memory, and the choice has real
+    performance consequences:
+
+    **Array of Structs (AoS)** — what structured arrays use:
+    ```text
+    [row1: name, age, score] [row2: name, age, score] ...
+    ```
+    Each record's fields are contiguous. Good for record-at-a-time access and
+    C struct interop, but column operations (e.g., `arr['score'].mean()`) must
+    skip over interleaved fields, reducing cache efficiency.
+
+    **Struct of Arrays (SoA)** — what separate NumPy arrays / Pandas use:
+    ```text
+    names:  [name1, name2, ...]
+    ages:   [age1,  age2,  ...]
+    scores: [score1, score2, ...]
+    ```
+    Each column is contiguous. Vectorized column operations are cache-friendly
+    and fast, but accessing a full record requires gathering from multiple arrays.
+
+    | Concern | AoS (structured) | SoA (separate arrays) |
+    |---------|------------------|----------------------|
+    | Record access | Fast (contiguous) | Slow (scattered) |
+    | Column vectorization | Slower (interleaved) | Fast (contiguous) |
+    | C interop | Natural (`memcpy` a struct) | Requires packing |
+    | Cache locality | Per-record | Per-column |
+
+    **Rule of thumb:** use structured arrays (AoS) for binary I/O and C interop;
+    use separate arrays or Pandas (SoA) for analytical computation.
+
+!!! note "Structured Data Model"
+    ```text
+    A structured array is:
+      - a contiguous block of memory
+      - interpreted as records with named fields
+      - defined by a dtype schema (field names + types + offsets)
+
+    It allows:
+      - heterogeneous data in a single array
+      - vectorized operations across fields
+      - memory-efficient tabular storage
+      - direct interop with C structs and binary formats
+    ```
+
+!!! tip "Decision Guide"
+    | Use case | Tool |
+    |----------|------|
+    | Memory-critical tabular data | **Structured arrays** |
+    | Binary file formats / C interop | **Structured arrays** |
+    | Data analysis (groupby, joins, missing values) | **Pandas** |
+    | Heavy analytics / exploratory work | **Pandas** |
+
+    Avoid structured arrays for operations that Pandas handles natively (groupby,
+    pivot, merge) — the ergonomic cost is not worth the memory savings.
+
 ```python
 import numpy as np
 ```
@@ -28,6 +91,10 @@ structured = np.array([
 ---
 
 ## Creating Structured Arrays
+
+The dtype is the **schema definition** for your structured array — it specifies
+field names, types, and (implicitly) byte offsets, just as a `CREATE TABLE`
+statement defines column names and types in SQL.
 
 ### Method 1: dtype with List of Tuples
 
@@ -192,6 +259,12 @@ print(students[0]['grades'].mean())  # 91.33
 ---
 
 ## Record Arrays (recarray)
+
+A `recarray` is **syntactic sugar** over a structured array — the underlying data
+and dtype are identical, but you can write `rec.name` instead of `rec['name']`.
+The convenience comes at a small performance cost (attribute access is slower than
+item access), so use recarrays for interactive exploration and structured arrays
+for production code.
 
 Record arrays allow attribute-style access:
 

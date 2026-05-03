@@ -2,6 +2,12 @@
 
 These operations create independent copies with separate memory.
 
+!!! tip "Mental Model"
+    A copy is an entirely new array with its own memory -- modifying the copy never affects the original. Use `.copy()` when you need to detach from shared memory, especially after slicing. The cost is double the memory and an O(n) data transfer, so copy only when you truly need independence.
+
+!!! note "Copy = New Buffer (O(n))"
+    Every copy operation allocates a **new data buffer** and transfers all elements — an O(n) operation in both time and memory. This is the fundamental cost: views are O(1) because they reuse the existing buffer; copies are O(n) because they duplicate it. Knowing which operations trigger copies lets you avoid unnecessary allocations in performance-sensitive code.
+
 
 ## Method copy
 

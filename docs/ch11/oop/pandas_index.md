@@ -1,5 +1,8 @@
 # Index Objects
 
+!!! tip "Mental Model"
+    An Index is an immutable, hashable array that provides O(1) label lookups via an internal hash table. It is shared between a DataFrame and its columns, ensuring that label-based access and alignment are always consistent. Immutability guarantees that the hash table stays valid throughout the object's lifetime.
+
 ## Index Purpose
 
 ### 1. Label Container

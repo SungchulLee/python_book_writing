@@ -2,6 +2,12 @@
 
 Twin axes allow plotting data with different scales on the same figure.
 
+!!! tip "Mental Model"
+    `ax.twinx()` creates a second invisible Axes layered on top of the first, sharing the same x-axis but with its own independent y-axis on the right. Each Axes has its own scale, so you can plot temperature on the left and precipitation on the right. Color-code the lines to match their respective y-axis labels for clarity.
+
+!!! warning "Twin Axes Can Mislead"
+    Twin axes are powerful but dangerous. Because the two y-scales are independent, it is easy to choose scales that make unrelated variables appear correlated (or mask a real correlation). Always ask: would a reader misinterpret the crossing point of two lines that are on completely different scales? If the answer is yes, consider using two separate subplots instead. Twin axes work best when the two variables have a genuine relationship (e.g., temperature and energy consumption) and the scales are chosen honestly.
+
 ---
 
 ## twinx()
@@ -276,3 +282,79 @@ Use `twiny` to show two different x-axis scales. Plot a function `y = sin(x)` wh
 
         ax1.set_title('sin(x) with Radian and Degree Axes', pad=30)
         plt.show()
+
+---
+
+**Exercise 4.**
+Create a twin-axis plot showing monthly sales revenue (left y-axis, in thousands) and customer count (right y-axis). Use bar chart for revenue and line plot for customers. Color-code each y-axis label to match its data. Add a combined legend.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        months = np.arange(1, 13)
+        revenue = np.array([45, 52, 48, 61, 55, 68, 72, 78, 65, 59, 70, 85])
+        customers = np.array([120, 135, 128, 150, 142, 165, 180, 195, 170, 155, 175, 210])
+
+        fig, ax1 = plt.subplots(figsize=(10, 5))
+
+        bars = ax1.bar(months, revenue, color='steelblue', alpha=0.7, label='Revenue ($K)')
+        ax1.set_xlabel('Month')
+        ax1.set_ylabel('Revenue ($K)', color='steelblue')
+        ax1.tick_params(axis='y', labelcolor='steelblue')
+
+        ax2 = ax1.twinx()
+        line = ax2.plot(months, customers, 'r-o', linewidth=2, label='Customers')
+        ax2.set_ylabel('Customers', color='red')
+        ax2.tick_params(axis='y', labelcolor='red')
+
+        # Combined legend
+        lines = [bars, line[0]]
+        labels = [l.get_label() for l in lines]
+        ax1.legend(lines, labels, loc='upper left')
+        ax1.set_title('Monthly Revenue and Customer Growth')
+        fig.tight_layout()
+        plt.show()
+
+---
+
+**Exercise 5.**
+Demonstrate how twin axes can mislead. Plot two unrelated random walks on twin axes and show that their apparent "correlation" is entirely an artifact of scale choice. Then change the y-limits on one axis to make the correlation disappear. Explain the lesson.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        np.random.seed(42)
+        x = np.arange(100)
+        series_a = np.cumsum(np.random.randn(100))  # Random walk
+        series_b = np.cumsum(np.random.randn(100))  # Independent random walk
+
+        fig, (ax1, ax3) = plt.subplots(1, 2, figsize=(14, 5))
+
+        # Left: misleading — scales chosen to make them look correlated
+        ax1.plot(x, series_a, 'b-', label='Series A')
+        ax1.set_ylabel('Series A', color='blue')
+        ax2 = ax1.twinx()
+        ax2.plot(x, series_b, 'r-', label='Series B')
+        ax2.set_ylabel('Series B', color='red')
+        ax1.set_title('Misleading: looks correlated')
+
+        # Right: honest — same data, wider scale reveals independence
+        ax3.plot(x, series_a, 'b-', label='Series A')
+        ax3.set_ylabel('Series A', color='blue')
+        ax4 = ax3.twinx()
+        ax4.plot(x, series_b, 'r-', label='Series B')
+        ax4.set_ylabel('Series B', color='red')
+        ax4.set_ylim(-30, 30)  # Honest scale
+        ax3.set_title('Honest: independence visible')
+
+        plt.tight_layout()
+        plt.show()
+
+        # Lesson: twin axes with auto-scaled y-limits will stretch any two
+        # time series to fill the same visual space, making them appear
+        # correlated regardless of actual relationship. Always ask: "would
+        # two subplots tell a different story?" If yes, use subplots.

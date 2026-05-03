@@ -2,6 +2,9 @@
 
 Use parametrize to test multiple input/output combinations efficiently.
 
+!!! tip "Mental Model"
+    `@pytest.mark.parametrize` turns one test function into many — each set of arguments becomes a separate test case with its own pass/fail status. Instead of copying the same test with different inputs, you list the cases in a table and let pytest expand them. It keeps your test suite DRY while making every edge case individually visible in the output.
+
 ## Basic Parametrization
 
 Test multiple inputs with a single test function.

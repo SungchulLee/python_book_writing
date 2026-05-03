@@ -2,6 +2,25 @@
 
 This document consolidates the key customization parameters for pie charts: `startangle`, `shadow`, `counterclock`, `explode`, `radius`, and `autopct`.
 
+!!! tip "Mental Model"
+    Pie chart customization controls two things: geometry (where slices start, which direction they go, how far they explode outward) and labeling (percentage format via `autopct`, label distance via `labeldistance`). The `startangle=90` convention puts the first slice at 12 o'clock, which is the most natural orientation for Western readers.
+
+!!! note "Design Principles: Clarity Over Decoration"
+    ```text
+    Visualization priority order:
+    1. Accuracy — correct data mapping
+    2. Clarity — easy to read
+    3. Efficiency — fast to interpret
+    4. Aesthetics — last priority
+    ```
+
+    Guidelines for professional pie charts:
+
+    - **Explode sparingly** — offset 1–2 key slices at most. Exploding everything defeats the purpose.
+    - **Avoid shadow** in publication-quality figures — shadows distort perceived slice sizes.
+    - **Prefer clean color palettes** — high-contrast, colorblind-friendly, no gradients.
+    - **Use labels or legend, not both** — redundant labeling clutters.
+
 ## Parameter Overview
 
 | Parameter | Type | Default | Description |
@@ -539,16 +558,51 @@ ax.pie(
 **Exercise 4.** Write code that creates a nested pie chart (ring chart) by calling `ax.pie()` twice with different `radius` and `width` values.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        import matplotlib.pyplot as plt
 
-    Refer to the code examples in the main content for the specific API calls needed.
+        outer_sizes = [40, 30, 30]
+        outer_labels = ['Product', 'Service', 'Other']
+        outer_colors = ['#ff6b6b', '#4ecdc4', '#45b7d1']
+
+        inner_sizes = [20, 20, 15, 15, 10, 20]
+        inner_colors = ['#ff8a8a', '#ff4d4d', '#6fd6c8', '#3dbfa7',
+                        '#5cc4d4', '#3aabc0']
+
+        fig, ax = plt.subplots()
+        ax.pie(outer_sizes, labels=outer_labels, colors=outer_colors,
+               radius=1.0, wedgeprops=dict(width=0.3), autopct='%1.0f%%',
+               pctdistance=0.85)
+        ax.pie(inner_sizes, colors=inner_colors,
+               radius=0.7, wedgeprops=dict(width=0.3))
+        ax.set_title('Nested Pie (Ring Chart)')
+        plt.show()
+
+---
+
+**Exercise 5.** Create a pie chart with 5 slices of sizes 22%, 21%, 20%, 19%, 18%. Then create a bar chart of the same data side-by-side. Explain the perceptual problem: why are differences invisible in the pie but obvious in the bar chart?
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+
+        labels = ['A', 'B', 'C', 'D', 'E']
+        sizes = [22, 21, 20, 19, 18]
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+        ax1.pie(sizes, labels=labels, autopct='%1.0f%%', startangle=90)
+        ax1.set_title('Pie: Can you rank these?')
+
+        ax2.bar(labels, sizes, color='steelblue')
+        ax2.set_ylabel('Percentage')
+        ax2.set_ylim(0, 30)
+        ax2.set_title('Bar: Ranking is immediate')
+
+        plt.tight_layout()
+        plt.show()
+
+        # The pie slices look nearly identical because angles that differ
+        # by only 1-2 degrees are below human perceptual threshold.
+        # The bar chart encodes the same data as length — a channel that
+        # humans compare with much higher precision.

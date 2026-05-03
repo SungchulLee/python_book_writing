@@ -2,6 +2,9 @@
 
 Techniques for writing efficient Python code with optimal memory usage.
 
+!!! tip "Mental Model"
+    Performance and memory are two sides of the same coin. Using more memory (caching, pre-computation) often buys speed; using less memory (generators, lazy evaluation) sometimes costs speed. The art is profiling both dimensions and finding the sweet spot for your specific workload.
+
 ## Measuring Performance
 
 ### Using `timeit`

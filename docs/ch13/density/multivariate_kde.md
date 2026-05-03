@@ -2,6 +2,9 @@
 
 Real-world data is often multivariate: financial returns involve multiple assets, sensor measurements record multiple channels, and scientific experiments produce vector-valued observations. Understanding the joint density structure of multivariate data requires extending kernel density estimation beyond one dimension. SciPy's `gaussian_kde` handles multivariate data natively, using a multivariate Gaussian kernel with an automatically estimated bandwidth matrix.
 
+!!! tip "Mental Model"
+    In one dimension, each data point gets a bell curve; in $d$ dimensions, each data point gets a multivariate Gaussian ellipsoid. The bandwidth matrix controls both the size and orientation of these ellipsoids, automatically adapting to the covariance structure of the data so that correlated dimensions are smoothed together.
+
 ## Multivariate KDE Formula
 
 Given $n$ observations $\mathbf{x}_1, \ldots, \mathbf{x}_n$ in $\mathbb{R}^d$, the multivariate kernel density estimator is

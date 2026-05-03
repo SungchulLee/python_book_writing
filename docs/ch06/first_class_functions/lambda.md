@@ -1,5 +1,8 @@
 # Lambda Expressions
 
+!!! tip "Mental Model"
+    A lambda is a throwaway function you define inline -- one expression, no name, no ceremony. Use it when a full `def` would be overkill, like passing a quick sorting key or a simple callback. If your lambda needs more than one line or a descriptive name, switch to `def`.
+
 ## What Is a Lambda Expression
 
 A **lambda expression** creates a small, anonymous function in a single line. It uses the `lambda` keyword instead of `def`:

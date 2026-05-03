@@ -2,6 +2,9 @@
 
 Efficient programs balance **time complexity** and **space complexity**. Understanding this trade-off is essential for writing performant Python code.
 
+!!! tip "Mental Model"
+    Most optimizations trade memory for speed or speed for memory. Caching (memoization) spends memory to avoid recomputation. Generators spend CPU to avoid storing all values at once. There is rarely a free lunch -- the art is choosing which resource matters more for your specific workload.
+
 ---
 
 ## Time complexity

@@ -1,5 +1,10 @@
 # Installation
 
+!!! tip "Mental Model"
+    NumPy is a single `pip install numpy` away. It ships pre-compiled wheels for all major platforms, so there is no need to compile C code yourself. If you use Anaconda, NumPy is already included. Pin the version in your `requirements.txt` to ensure reproducible environments across machines.
+
+    **Key insight:** installing NumPy is not just setup — it is defining a **reproducible computational environment**. The same code can produce different results under different NumPy versions (default dtypes, random number generators, and numerical precision have all changed between releases). Pinning versions and using virtual environments ensures that your computations are repeatable.
+
 ## pip Install
 
 ### 1. Basic Install
@@ -166,3 +171,28 @@ python --version
     print(arr)        # [1 2 3]
     print(type(arr))  # <class 'numpy.ndarray'>
     ```
+
+---
+
+**Exercise 5.**
+Create a `requirements.txt` file that pins NumPy to a specific version (e.g., `numpy==1.26.0`). Then write a Python script that reads this file, extracts the pinned NumPy version, and compares it to the currently installed version. Print whether they match.
+
+??? success "Solution to Exercise 5"
+    ```python
+    import numpy as np
+
+    # Simulate reading requirements.txt
+    pinned = "1.26.0"  # In real code: parse from file
+    installed = np.__version__
+
+    print(f"Pinned:    {pinned}")
+    print(f"Installed: {installed}")
+    print(f"Match: {installed.startswith(pinned)}")
+
+    # In practice, create a requirements.txt with:
+    #   numpy==1.26.0
+    # and install with:
+    #   pip install -r requirements.txt
+    ```
+
+    Pinning versions ensures that every developer, CI server, and deployment machine uses the same NumPy version. Without pinning, `pip install numpy` installs the latest release, which may change behavior (e.g., `np.random.seed` vs `default_rng`, default integer dtype changes).

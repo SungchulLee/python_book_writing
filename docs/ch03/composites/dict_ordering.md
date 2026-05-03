@@ -2,6 +2,9 @@
 
 Since Python 3.7, dictionaries guarantee insertion order preservation as a language feature (not just implementation detail). This makes dicts suitable for ordered key-value collections and simplifies many programming patterns.
 
+!!! tip "Mental Model"
+    A Python dict remembers the order in which you inserted keys, much like a guest book that records arrivals in sequence. Updating an existing key changes its value but keeps its position; only deleting and re-inserting moves a key to the end. Since Python 3.7, this order guarantee is part of the language specification.
+
 ---
 
 ## Insertion Order Preservation

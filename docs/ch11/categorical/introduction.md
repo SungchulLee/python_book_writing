@@ -2,6 +2,9 @@
 
 In real-world datasets, many columns take on only a limited number of unique values, even if stored as strings or numbers. Such columns are ideal candidates for **categorical encoding**.
 
+!!! tip "Mental Model"
+    A categorical column is like a dropdown menu: the data can only take values from a fixed list. Pandas stores an integer code for each row and a separate table of unique labels, so repeated strings are stored once instead of millions of times. This insight drives both memory savings and faster groupby operations.
+
 ## What is Categorical Data?
 
 Categorical data represents variables that can take on a limited, fixed number of possible values. Examples include:

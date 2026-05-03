@@ -29,6 +29,9 @@ flowchart TD
     A --> D[immutable object]
 ```
 
+!!! tip "Mental Model"
+    A string is an immutable sequence of characters. "Immutable" means you cannot change a character in place---every operation that appears to modify a string actually creates a new one. "Sequence" means strings support indexing, slicing, and iteration, just like lists and tuples.
+
 ---
 
 ## 1. Strings as Sequences

@@ -2,6 +2,9 @@
 
 Python optimizes memory usage by reusing identical immutable objects through interning and caching.
 
+!!! tip "Mental Model"
+    Interning is a space-time trade-off: instead of creating duplicate immutable objects, Python keeps a single canonical copy and hands out references to it. This makes identity checks (`is`) fast and saves memory, but the rules for when interning happens are CPython-specific and should never be relied upon for correctness.
+
 ## String Interning
 
 ### Concept

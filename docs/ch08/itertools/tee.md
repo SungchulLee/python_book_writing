@@ -2,6 +2,9 @@
 
 `tee()` creates multiple independent iterators from a single iterable, useful when you need to iterate over the same data multiple times. Python iterators can only be traversed once — once exhausted, their data is gone. `tee()` solves this by creating independent copies that each maintain their own position, though it buffers consumed elements in memory until all copies have advanced past them.
 
+!!! tip "Mental Model"
+    `tee` is a Y-splitter for an iterator stream — one input pipe feeds two (or more) independent output pipes. Each copy advances independently, but any elements that one copy has consumed while another hasn't yet must be buffered in memory. If the copies advance at very different rates, that buffer grows without bound, so `tee` works best when the copies are consumed roughly in lockstep.
+
 ## Creating Independent Iterators
 
 After calling `tee()`, the original iterator should no longer be used directly. Each returned iterator independently yields all elements from the original source.

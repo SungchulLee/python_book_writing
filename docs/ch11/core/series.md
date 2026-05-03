@@ -2,6 +2,9 @@
 
 A **Series** is a one-dimensional labeled array capable of holding any data type. It is the fundamental building block of pandas, representing a single column of data with an associated index.
 
+!!! tip "Mental Model"
+    A Series is a NumPy array with a label taped to each element. The labels (index) let you look up values by name instead of position, and they automatically align when you combine two Series. Every DataFrame column is secretly a Series.
+
 ## Conceptual Overview
 
 ```

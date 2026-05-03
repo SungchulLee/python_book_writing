@@ -2,6 +2,9 @@
 
 Generalized eigenvalue problems solve $Av = \lambda Bv$.
 
+!!! tip "Mental Model"
+    The standard eigenvalue problem asks "which vectors does $A$ merely scale?" The generalized problem asks "which vectors does $A$ scale relative to $B$?" This arises naturally in physics and engineering when the mass matrix $B$ and stiffness matrix $A$ define vibration modes, and in statistics where it underpins Fisher's discriminant analysis.
+
 ## linalg.eig with Two Matrices
 
 ### 1. Basic Usage

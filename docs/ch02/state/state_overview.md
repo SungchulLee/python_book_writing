@@ -6,6 +6,9 @@ At any point during a program's execution, there exists a collection of names an
 
 State is not a single variable or a single value. It is the complete snapshot of all name-to-object bindings that exist at a given moment. When you read a line of code and ask "what would `x` be right now?"---you are reasoning about state.
 
+!!! tip "Mental Model"
+    A program's state is the complete set of name-to-object bindings at a given moment. Every assignment changes the state by creating or updating a binding, and every expression reads from the state as it exists right now. Tracing how state evolves line by line is the most reliable way to predict what code will do.
+
 ---
 
 ## State as Snapshot

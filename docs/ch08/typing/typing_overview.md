@@ -2,6 +2,9 @@
 
 Python is dynamically typed — variables can hold any type, and type errors only surface at runtime. As codebases grow, this flexibility becomes a liability: a function may receive an unexpected type and fail deep in its execution. The `typing` module lets you declare expected types so that tools like `mypy` can catch mismatches before the code runs, while Python itself remains dynamically typed.
 
+!!! tip "Mental Model"
+    Type hints are a contract layer on top of dynamic Python. You write annotations that say "this function takes a `str` and returns an `int`," and a static checker like mypy verifies the contract at analysis time — without slowing down your program at runtime. Think of them as machine-readable documentation that catches bugs before the code ever runs.
+
 ## What is Type Hinting?
 
 Type hints annotate the expected types of variables, function parameters, and return values. Python does not enforce these annotations at runtime — passing the wrong type will not raise a `TypeError` from the hint itself. Instead, type hints serve as machine-readable documentation that static analysis tools can verify.

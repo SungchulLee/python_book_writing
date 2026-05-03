@@ -2,6 +2,9 @@
 
 NaN (Not a Number) values can appear unexpectedly in pandas operations. Understanding the common causes helps prevent and debug data quality issues.
 
+!!! tip "Mental Model"
+    NaN is pandas' way of saying "I do not have a value here." It appears in three main situations: outer joins with missing keys, arithmetic between misaligned indices, and type coercion of non-numeric strings. Whenever NaN appears unexpectedly, check these three sources first -- the root cause is almost always an alignment or key-matching issue.
+
 ## Common Sources of Unexpected NaN
 
 ### 1. Merge/Join with Missing Keys

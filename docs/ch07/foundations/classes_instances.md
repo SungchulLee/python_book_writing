@@ -2,6 +2,9 @@
 
 Understanding the building blocks of OOP: classes define structure, instances carry data.
 
+!!! tip "Mental Model"
+    A class is a cookie cutter; an instance is a cookie. The cutter defines the shape (attributes and methods), but each cookie carries its own filling (instance data). Many cookies can come from the same cutter, yet each one is independent -- changing the frosting on one does not affect the others.
+
 !!! tip "Core Insight"
     A class couples state and behavior — the data and the operations on it live together, so each object controls its own state.
 
@@ -99,6 +102,18 @@ print(obj1.instance_var)   # unique
 ```
 
 ### 3. Lookup Order and Shadowing
+
+When you write `obj.attr`, Python follows a lookup chain:
+
+!!! note "Attribute Lookup Mechanism"
+    ```text
+    obj.attr →
+        1. obj.__dict__          (instance namespace)
+        2. type(obj).__dict__    (class namespace)
+        3. base classes          (via MRO)
+        4. descriptors           (methods, properties)
+    ```
+    This is why methods are found on the class (step 2), instance attributes override class attributes (step 1 wins), and `self` is automatically passed — because `type(obj).__dict__['method'].__get__(obj, type(obj))` creates a **bound method** that injects `obj` as the first argument.
 
 Python searches the instance namespace first, then the class namespace. Assigning to an instance attribute with the same name as a class attribute creates a shadow — the class attribute remains unchanged for other instances.
 
@@ -298,3 +313,40 @@ Explain the difference between class attributes and instance attributes. What ha
         # is not modified — it is merely hidden (shadowed) for that
         # specific instance. Other instances and the class itself
         # continue to see the original class attribute.
+
+---
+
+**Exercise 5.**
+Explain how `self` gets passed automatically when you call `dog.bark()`. Using what you know about attribute lookup and method binding, describe the steps Python takes from `dog.bark()` to executing the `bark` function with `dog` as the first argument. Verify your explanation by calling `Dog.bark(dog)` directly and showing it produces the same result.
+
+??? success "Solution to Exercise 5"
+
+        class Dog:
+            def __init__(self, name):
+                self.name = name
+
+            def bark(self):
+                return f"{self.name} says woof!"
+
+        dog = Dog("Rex")
+
+        # Normal call — self is passed automatically
+        print(dog.bark())  # Rex says woof!
+
+        # Manual call — equivalent to what Python does internally
+        print(Dog.bark(dog))  # Rex says woof!
+
+        # What happens step by step:
+        # 1. Python looks up 'bark' in dog.__dict__ — not found
+        # 2. Python looks up 'bark' in type(dog).__dict__ (Dog.__dict__) — found
+        # 3. Dog.bark is a function, so the descriptor protocol kicks in:
+        #      Dog.bark.__get__(dog, Dog) → bound method
+        # 4. The bound method wraps the function with dog as the first argument
+        # 5. Calling the bound method passes dog as 'self'
+        #
+        # This is why dog.bark() and Dog.bark(dog) produce the same result.
+        # 'self' is not magic — it is the result of method binding through
+        # the descriptor protocol.
+
+        # Verify they are the same
+        assert dog.bark() == Dog.bark(dog)

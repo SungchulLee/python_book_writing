@@ -1,5 +1,8 @@
 # Filtering with where
 
+!!! tip "Mental Model"
+    `np.where` has two modes: with one argument it returns the indices where a condition is True (like `np.nonzero`); with three arguments it acts as a vectorized if-else, choosing from two arrays element-by-element. The three-argument form is the NumPy replacement for `[a if c else b for c, a, b in zip(...)]`.
+
 ## np.where Basics
 
 ### 1. Find Indices
@@ -382,3 +385,36 @@ Create a 4x4 matrix of random integers from 0 to 9. Use `np.where` to create a n
         result = np.where(M % 2 == 0, -1, M)
         print(f"Original:\n{M}")
         print(f"Evens replaced:\n{result}")
+
+---
+
+**Exercise 4.**
+Use `np.where` as a vectorized if-else to implement a piecewise function: `f(x) = x^2` for `x >= 0` and `f(x) = -x` for `x < 0`. Apply it to `x = np.linspace(-3, 3, 7)` and print the result.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        x = np.linspace(-3, 3, 7)
+        result = np.where(x >= 0, x ** 2, -x)
+        print(f"x:    {x}")
+        print(f"f(x): {result}")
+        # x < 0: f(x) = -x → [3, 2, 1]
+        # x ≥ 0: f(x) = x² → [0, 1, 4, 9]
+
+---
+
+**Exercise 5.**
+Use `np.select` (which generalizes `np.where` to multiple conditions) to classify array values into categories: "negative" for `x < 0`, "small" for `0 <= x < 1`, and "large" for `x >= 1`. Apply to `x = np.array([-2, 0.5, 3, -0.1, 1.5, 0])`.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        x = np.array([-2, 0.5, 3, -0.1, 1.5, 0])
+        conditions = [x < 0, (x >= 0) & (x < 1), x >= 1]
+        choices = ["negative", "small", "large"]
+        result = np.select(conditions, choices, default="unknown")
+        print(f"x:      {x}")
+        print(f"labels: {result}")
+        # ['negative' 'small' 'large' 'negative' 'large' 'small']

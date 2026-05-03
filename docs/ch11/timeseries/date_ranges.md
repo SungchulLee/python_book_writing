@@ -2,6 +2,9 @@
 
 The `pd.date_range()` function generates sequences of dates with various frequencies and options.
 
+!!! tip "Mental Model"
+    `pd.date_range` is `range()` for dates. Specify any two of three: start, end, and periods, plus a frequency string like `'D'` (daily), `'B'` (business days), `'M'` (month-end), or `'H'` (hourly). The result is a DatetimeIndex ready to serve as a DataFrame index for time series data.
+
 ## Basic date_range
 
 Generate date sequences.

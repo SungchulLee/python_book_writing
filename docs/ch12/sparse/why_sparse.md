@@ -2,6 +2,9 @@
 
 Sparse matrices efficiently represent matrices with mostly zero entries.
 
+!!! tip "Mental Model"
+    A 10,000 x 10,000 matrix has 100 million entries, but if only 0.1% are nonzero, storing all of them wastes 99.9% of your memory. Sparse formats store only the nonzero values and their positions, collapsing storage from $O(n^2)$ to $O(\text{nnz})$. The speedup follows the same logic: algorithms that skip zero entries can be orders of magnitude faster.
+
 ## Memory Efficiency
 
 ### 1. Dense vs Sparse Storage

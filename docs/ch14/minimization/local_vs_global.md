@@ -2,6 +2,9 @@
 
 One of the fundamental challenges in optimization is that local minimization methods can get trapped in local minima — points that are lower than nearby points but not the global minimum. Understanding this problem and how to avoid it is crucial for real-world optimization.
 
+!!! tip "Mental Model"
+    Picture a hilly landscape with many valleys. A local optimizer is a hiker who always walks downhill and stops at the bottom of whichever valley they start in. A global optimizer is a helicopter that surveys the entire terrain before dropping the hiker into the deepest valley. The trade-off is simple: the helicopter costs more fuel (computation), but it finds the true lowest point.
+
 ---
 
 ## The Local Minima Problem

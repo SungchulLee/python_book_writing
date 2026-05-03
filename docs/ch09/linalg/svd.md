@@ -2,6 +2,21 @@
 
 SVD factorizes any matrix into orthogonal components.
 
+!!! tip "Mental Model"
+    SVD decomposes any matrix $A$ into $U \Sigma V^T$, where $U$ and $V$ are rotations and $\Sigma$ is a diagonal of scaling factors (singular values). The singular values tell you how much "signal" each component carries. Truncating to the top $k$ singular values gives the best rank-$k$ approximation -- the basis of PCA, image compression, and noise reduction.
+
+!!! note "SVD in Machine Learning and Data Science"
+    SVD is the computational backbone behind many ML techniques:
+
+    - **PCA**: projecting data onto the top singular vectors
+    - **Linear regression**: `lstsq` uses SVD internally for numerical stability
+    - **Recommender systems**: low-rank matrix factorization of user-item matrices
+    - **Natural language processing**: latent semantic analysis (LSA)
+    - **Neural networks**: weight initialization and analyzing layer Jacobians
+
+    If you learn one decomposition deeply, make it SVD — it is the most general
+    factorization and the one you will encounter most often in practice.
+
 ## np.linalg.svd
 
 ### 1. Basic Usage

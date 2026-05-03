@@ -2,6 +2,9 @@
 
 Generators provide a concise way to create iterators using the `yield` keyword. They are central to Python's lazy evaluation model.
 
+!!! tip "Mental Model"
+    A generator function is a function that can pause. Each `yield` freezes the function's state and hands a value to the caller; the next `next()` call thaws it and resumes right where it left off. This pause-and-resume mechanism produces values one at a time, keeping memory usage constant regardless of how many values are generated.
+
 ---
 
 ## Generator Functions

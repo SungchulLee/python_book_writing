@@ -2,6 +2,9 @@
 
 Panel data often needs reshaping between long and wide formats for different analyses. This document covers common reshaping operations.
 
+!!! tip "Mental Model"
+    Long format has one row per (entity, time) observation -- best for storage and groupby. Wide format spreads entities or time periods across columns -- best for correlation analysis and plotting. `unstack` goes long-to-wide, `stack` goes wide-to-long, and `pivot`/`melt` offer column-based alternatives. Choose the shape that fits your next operation.
+
 ## Long vs Wide Format
 
 ### Long Format (Standard Panel)

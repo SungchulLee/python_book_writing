@@ -2,6 +2,9 @@
 
 Instance methods are functions defined inside a class that operate on instance-specific data via `self`. They are the most common method type --- for alternatives that operate on the class or neither, see [Class Methods](class_methods.md) and [Static Methods](static_methods.md).
 
+!!! tip "Mental Model"
+    An instance method is just a regular function that lives on a class. When you call `obj.method()`, Python's descriptor protocol binds `obj` as the first argument (`self`), turning a plain function into a bound method. There is no special "method" type in Python -- it is functions plus attribute lookup all the way down.
+
 !!! note "Core Idea — Methods Are Not Special Syntax"
     Instance methods are just **functions stored on the class**. When you access one
     through an instance, Python's descriptor protocol runs:

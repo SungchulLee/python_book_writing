@@ -2,6 +2,9 @@
 
 Understanding how Python executes assignment statements and binds names to objects.
 
+!!! tip "Mental Model"
+    Think of assignment as a two-phase operation: first Python evaluates the right side to produce an object, then it attaches a name tag to that object. The name never "holds" the value -- it only points to where the object lives in memory.
+
 ## Assignment Steps
 
 When Python executes an assignment statement, it follows these steps:

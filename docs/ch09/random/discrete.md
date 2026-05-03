@@ -1,6 +1,14 @@
 # Discrete Distributions
 
-NumPy provides functions for generating samples from discrete probability distributions.
+NumPy provides functions for **sampling from probability mass functions** — distributions where outcomes are countable (integers, categories, labels) rather than continuous.
+
+!!! tip "Mental Model"
+    Discrete random generators produce integer-valued samples. `randint` draws from a uniform range (like rolling a die), while `choice` draws from an arbitrary set with optional probability weights. Both support the `size` parameter to generate arrays of samples in one fast call.
+
+    The unifying concept: every discrete distribution assigns a **probability to
+    each possible outcome** (a probability mass function). `randint` assumes equal
+    probabilities; `choice` with `p=` lets you specify arbitrary weights;
+    `multinomial` draws counts from multiple categories simultaneously.
 
 ## np.random.randint
 

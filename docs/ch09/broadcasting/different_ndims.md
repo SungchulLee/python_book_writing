@@ -1,6 +1,12 @@
 # Broadcasting with Different ndims
 
+!!! note "Advanced: Dimension Alignment"
+    This page is a deep dive into Step 1 of the [broadcasting algorithm](broadcasting.md#the-complete-algorithm): left-padding with ones. If you are comfortable with same-rank broadcasting, this page explains the additional mechanics that kick in when arrays have different numbers of dimensions.
+
 When two arrays have a different number of dimensions, NumPy automatically prepends size-1 dimensions to the smaller array until both shapes have the same length. This implicit alignment is the key mechanism that allows scalars, vectors, and matrices to interact seamlessly. Understanding exactly how this prepending works prevents shape-mismatch errors and clarifies which axis gets expanded.
+
+!!! tip "Mental Model"
+    When array dimensions don't match, NumPy pads the shorter shape with ones on the left until both shapes are the same length. A vector of shape `(4,)` paired with a matrix of shape `(3, 4)` becomes `(1, 4)` first, then broadcasts row-wise. The padding is always on the left -- if you need it on the right, you must add the axis yourself.
 
 ---
 
@@ -449,3 +455,65 @@ A batch of 16 RGB images is stored as a 4D array of shape `(16, 3, 32, 32)` (bat
         mu_reshaped = mu[np.newaxis, :, np.newaxis, np.newaxis]  # (1, 3, 1, 1)
         result = images - mu_reshaped
         print(result.shape)  # (16, 3, 32, 32)
+
+---
+
+**Exercise 4.**
+A 3D array `A` has shape `(batch, rows, cols) = (8, 5, 10)`. You want to add a bias vector `b` of shape `(5,)` to each row of each batch (axis 1). Show that `A + b` fails, explain why, and fix it by reshaping `b`. Verify the result shape.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        A = np.ones((8, 5, 10))
+        b = np.array([1, 2, 3, 4, 5])  # (5,)
+
+        # A + b fails because:
+        # A: (8, 5, 10)
+        # b:       (5,) → padded to (1, 1, 5)
+        # axis 2: 10 vs 5 → FAIL (neither is 1)
+
+        try:
+            A + b
+        except ValueError as e:
+            print(f"Error: {e}")
+
+        # Fix: reshape b to align with axis 1
+        b_fixed = b[np.newaxis, :, np.newaxis]  # (1, 5, 1)
+        result = A + b_fixed
+        print(result.shape)  # (8, 5, 10)
+
+        # Verification: each "row" (axis 1) gets a different bias
+        print(result[0, :, 0])  # [2. 3. 4. 5. 6.]
+
+---
+
+**Exercise 5.**
+Explain the difference between `v[:, np.newaxis]` and `v[np.newaxis, :]` for a 1D array `v` of shape `(4,)`. Show how each produces a different result when added to a `(3, 4)` matrix. Connect this to the "prepending is left-only" rule.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        v = np.array([10, 20, 30, 40])  # (4,)
+        M = np.zeros((3, 4))
+
+        # v[:, np.newaxis] → (4, 1): column vector
+        # M + v[:, np.newaxis] → (3, 4) + (4, 1) → axis 0: 3 vs 4 → FAIL
+        try:
+            M + v[:, np.newaxis]
+        except ValueError as e:
+            print(f"Column vector fails: {e}")
+
+        # v[np.newaxis, :] → (1, 4): row vector
+        # M + v[np.newaxis, :] → (3, 4) + (1, 4) → (3, 4) ✓
+        result = M + v[np.newaxis, :]
+        print(f"Row vector works: {result.shape}")  # (3, 4)
+
+        # But actually v alone (shape (4,)) also works:
+        result2 = M + v  # (3, 4) + (4,) → pad to (1, 4) → (3, 4) ✓
+        print(np.array_equal(result, result2))  # True
+
+        # The "left-only" rule: NumPy pads (4,) to (1, 4), never to (4, 1).
+        # If you WANT (4, 1) behavior, you must add the axis yourself.
+        # This is why np.newaxis placement matters.

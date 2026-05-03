@@ -14,6 +14,9 @@ flowchart TD
     A --> C[filesystem queries]
 ````
 
+!!! tip "Mental Model"
+    `pathlib.Path` treats file paths as objects, not raw strings. Instead of gluing strings together with `/` or `\\`, you build paths with the `/` operator and ask the Path object questions like "do you exist?" or "what is your extension?" This eliminates platform-specific bugs and makes path manipulation readable and safe.
+
 ---
 
 ## 1. Creating Paths

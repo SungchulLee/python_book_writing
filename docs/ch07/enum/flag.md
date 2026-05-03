@@ -2,6 +2,23 @@
 
 Flag and IntFlag are specialized enums for bit flags, supporting bitwise operations like OR, AND, and NOT.
 
+!!! tip "Mental Model"
+    A regular `Enum` is a radio button -- exactly one option selected at a time. A `Flag` is a row of checkboxes -- multiple options can be active simultaneously. Each flag member occupies a unique bit position, so combining them with `|` and testing them with `in` is fast, unambiguous, and type-safe.
+
+!!! note "Flag vs Enum"
+    A regular `Enum` represents **one value at a time** — a status is either `PENDING` or `ACTIVE`, never both. A `Flag` represents a **combination of values** (a bitmask) — a user can have `READ` and `WRITE` and `EXECUTE` permissions simultaneously. Use `Flag` when multiple options can be active at the same time; use `Enum` when exactly one option is selected.
+
+!!! tip "Why Powers of 2?"
+    Each flag member must be a distinct power of 2 (`1, 2, 4, 8, ...`). This works because in binary, each power of 2 sets exactly **one unique bit**:
+
+    ```
+    READ    = 1  →  001
+    WRITE   = 2  →  010
+    EXECUTE = 4  →  100
+    ```
+
+    Combining flags with `|` (OR) sets multiple bits: `READ | WRITE = 011 = 3`. Testing with `in` (AND) checks whether a specific bit is set. If you used consecutive integers (1, 2, 3) instead, the bit patterns would overlap and combinations would be ambiguous — `3` could mean "EXECUTE" or "READ + WRITE."
+
 ---
 
 ## Flag Basics
@@ -258,3 +275,65 @@ Create an `IntFlag` called `StatusCode` with `RUNNING = 1`, `PAUSED = 2`, `ERROR
         # Extract individual flags
         print(status & StatusCode.RUNNING)  # StatusCode.RUNNING
         print(status & StatusCode.PAUSED)   # StatusCode(0) — not set
+
+---
+
+**Exercise 4.**
+Explain why the following `Flag` definition is broken. What value does `ADMIN` get, and why does combining `READ | WRITE` produce an ambiguous result?
+
+```python
+from enum import Flag
+
+class BadPermission(Flag):
+    READ = 1
+    WRITE = 2
+    EXECUTE = 3   # NOT a power of 2!
+    ADMIN = 4
+```
+
+??? success "Solution to Exercise 4"
+
+    `EXECUTE = 3` is `011` in binary — the same bit pattern as `READ | WRITE` (`001 | 010 = 011`). This means there is no way to tell whether a combined value of `3` means "EXECUTE alone" or "READ + WRITE together."
+
+    `ADMIN = 4` (`100`) is fine because it is a power of 2 and occupies its own unique bit.
+
+    The fix is to use powers of 2 for every member:
+
+        class Permission(Flag):
+            READ = 1       # 001
+            WRITE = 2      # 010
+            EXECUTE = 4    # 100
+            ADMIN = 8      # 1000
+
+    Alternatively, use `auto()` which assigns powers of 2 automatically for `Flag` enums. The rule is simple: every flag member must set **exactly one bit** that no other member sets.
+
+---
+
+**Exercise 5.**
+Create a `Flag` enum `Weekday` with members for each day of the week (MON through SUN). Define composite members `WEEKDAYS = MON | TUE | WED | THU | FRI` and `WEEKEND = SAT | SUN`. Write a function `is_workday(day: Weekday) -> bool` that checks whether a single day is in `WEEKDAYS`. Demonstrate with several days.
+
+??? success "Solution to Exercise 5"
+
+        from enum import Flag, auto
+
+        class Weekday(Flag):
+            MON = auto()
+            TUE = auto()
+            WED = auto()
+            THU = auto()
+            FRI = auto()
+            SAT = auto()
+            SUN = auto()
+            WEEKDAYS = MON | TUE | WED | THU | FRI
+            WEEKEND = SAT | SUN
+
+        def is_workday(day: Weekday) -> bool:
+            return day in Weekday.WEEKDAYS
+
+        print(is_workday(Weekday.MON))  # True
+        print(is_workday(Weekday.SAT))  # False
+        print(is_workday(Weekday.FRI))  # True
+        print(is_workday(Weekday.SUN))  # False
+
+        # Composite members work too
+        print(Weekday.WEEKEND)  # Weekday.SAT|SUN

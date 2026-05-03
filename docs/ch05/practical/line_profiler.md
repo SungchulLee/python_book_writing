@@ -2,6 +2,9 @@
 
 The `line_profiler` tool profiles code at the line level, showing exactly which lines consume the most time. It requires installation via pip.
 
+!!! tip "Mental Model"
+    While `cProfile` tells you which function is slow, `line_profiler` tells you which line inside that function is slow. It is the microscope you reach for after the telescope has pointed you to the right function. Decorate the suspect function with `@profile`, run with `kernprof`, and read the per-line time percentages.
+
 ---
 
 ## Installation and Setup

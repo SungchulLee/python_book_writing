@@ -2,6 +2,9 @@
 
 Introduction to pytest, a simpler and more powerful testing framework.
 
+!!! tip "Mental Model"
+    pytest strips testing down to plain `assert` statements and free functions — no class boilerplate, no `self.assertEqual`. Write a function whose name starts with `test_`, use `assert` to check results, and run `pytest`. Its automatic test discovery, rich failure messages, and plugin ecosystem make it the de facto standard for Python testing.
+
 ## Simple pytest Tests
 
 Write tests without unittest boilerplate.

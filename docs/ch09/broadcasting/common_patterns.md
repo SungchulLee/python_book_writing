@@ -2,6 +2,9 @@
 
 Once the broadcasting rules are understood, a small set of recurring patterns covers most practical use cases. These patterns eliminate explicit loops and temporary arrays, making numerical code both faster and more readable. This page collects the patterns that appear most frequently in data analysis and scientific computing.
 
+!!! tip "Mental Model"
+    Most broadcasting use cases fall into a handful of recipes: subtract a row mean, divide by a column norm, or add a bias vector. Learn these few patterns and you will recognize them everywhere -- centering, normalizing, and outer-product-style operations are the building blocks of nearly all vectorized NumPy code.
+
 ---
 
 ## Centering Data
@@ -346,15 +349,15 @@ if __name__ == "__main__":
 
 The most common broadcasting patterns share the same underlying mechanism: aligning a smaller array against a larger one along a specific axis.
 
-| Pattern | Typical Shapes | Key Technique |
-|---|---|---|
-| Column centering | `(m, n) - (n,)` | `mean(axis=0)` |
-| Row centering | `(m, n) - (m, 1)` | `mean(axis=1, keepdims=True)` |
-| Standardization | `(m, n) - (n,)` then `/ (n,)` | Two broadcasts in sequence |
-| Outer product | `(m, 1) * (1, n)` | `np.newaxis` |
-| Pairwise distance | `(m, 1, d) - (1, n, d)` | 3D broadcasting |
-| Row/column scaling | `(m, n) * (n,)` or `(m, 1)` | Weight vector alignment |
-| Boolean masking | `(m, n) > (n,)` | Threshold per column |
+| Pattern | Typical Shapes | Why It Works (Rule) | Key Technique |
+|---|---|---|---|
+| Column centering | `(m, n) - (n,)` | `(n,)` pads to `(1, n)`, axis 0: `1→m` | `mean(axis=0)` |
+| Row centering | `(m, n) - (m, 1)` | axis 1: `1→n` | `mean(axis=1, keepdims=True)` |
+| Standardization | `(m, n) - (n,)` then `/ (n,)` | Same rule, applied twice | Two broadcasts in sequence |
+| Outer product | `(m, 1) * (1, n)` | axis 0: `1→m`, axis 1: `1→n` | `np.newaxis` |
+| Pairwise distance | `(m, 1, d) - (1, n, d)` | axes 0-1: `1→m` and `1→n`, axis 2: `d==d` | 3D broadcasting |
+| Row/column scaling | `(m, n) * (n,)` or `(m, 1)` | Same as centering | Weight vector alignment |
+| Boolean masking | `(m, n) > (n,)` | `(n,)` pads to `(1, n)`, axis 0: `1→m` | Threshold per column |
 
 ---
 
@@ -407,3 +410,46 @@ Given a set of 6 points in 2D stored as `points = np.random.randn(6, 2)`, comput
         dist = np.sqrt((diff ** 2).sum(axis=2))                     # (6, 6)
         print("Diagonal all zero:", np.allclose(np.diag(dist), 0))
         print("Symmetric:", np.allclose(dist, dist.T))
+
+---
+
+**Exercise 4.**
+Given a matrix `X` of shape `(1000, 10)`, compute the L2 norm of each row and then normalize each row to unit length using broadcasting. Verify by checking that each row's norm is approximately 1.0 after normalization.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        X = np.random.randn(1000, 10)
+        norms = np.sqrt((X ** 2).sum(axis=1, keepdims=True))  # (1000, 1)
+        X_normalized = X / norms  # (1000, 10) / (1000, 1)
+
+        # Verify: each row should have norm ~1.0
+        row_norms = np.sqrt((X_normalized ** 2).sum(axis=1))
+        print(np.allclose(row_norms, 1.0))  # True
+
+---
+
+**Exercise 5.**
+Create a boolean mask of shape `(5, 5)` that is `True` for elements below the diagonal, using only broadcasting. Hint: compare a column vector `np.arange(5)[:, None]` with a row vector `np.arange(5)[None, :]`. Explain which broadcasting rule makes this work.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        rows = np.arange(5)[:, np.newaxis]  # (5, 1)
+        cols = np.arange(5)[np.newaxis, :]  # (1, 5)
+        below_diagonal = rows > cols         # (5, 5)
+        print(below_diagonal)
+        # [[False False False False False]
+        #  [ True False False False False]
+        #  [ True  True False False False]
+        #  [ True  True  True False False]
+        #  [ True  True  True  True False]]
+
+        # This works because:
+        # rows: (5, 1) — axis 1 is 1, expands to 5
+        # cols: (1, 5) — axis 0 is 1, expands to 5
+        # Both axes have size 1 vs 5 → expand → (5, 5)
+        # This is the outer-product broadcasting pattern applied
+        # to a comparison operator instead of arithmetic.

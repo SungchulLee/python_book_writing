@@ -2,6 +2,20 @@
 
 The Figure object provides methods for managing subplots, layout, and overall figure properties.
 
+!!! tip "Mental Model"
+    Figure methods operate on the whole canvas, not individual plots. Use `fig.suptitle()` for a master title above all subplots, `fig.tight_layout()` to fix overlapping labels, and `fig.savefig()` to export. If you want to change something inside one subplot, use Axes methods instead.
+
+    The typical workflow order: **create → populate → layout → export.**
+
+!!! tip "Layout Methods: When to Use Each"
+    | Method | Use when |
+    |---|---|
+    | `fig.tight_layout()` | Quick fix for overlapping labels (call after plotting) |
+    | `fig.subplots_adjust(...)` | Manual control over spacing (margins, gaps) |
+    | `constrained_layout=True` | Modern automatic layout that handles colorbars and legends (set at figure creation: `plt.subplots(..., layout='constrained')`) |
+
+    **Prefer `constrained_layout`** for new code — it handles more edge cases than `tight_layout` and does not require a separate function call. Use `subplots_adjust` only when you need pixel-precise manual control.
+
 ---
 
 ## suptitle
@@ -281,3 +295,37 @@ plt.show()
 
     plt.show()
     ```
+
+---
+
+**Exercise 5.** Compare `fig.tight_layout()` and `constrained_layout=True`. Create a 2x2 subplot grid with long axis labels that overlap. Fix it first with `tight_layout()`, then recreate and fix it with `plt.subplots(..., layout='constrained')`. Which approach handles colorbars better?
+
+??? success "Solution to Exercise 5"
+
+    ```python
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    x = np.linspace(0, 10, 50)
+
+    # Approach 1: tight_layout
+    fig1, axes1 = plt.subplots(2, 2, figsize=(8, 6))
+    for ax in axes1.flat:
+        ax.plot(x, np.random.randn(50))
+        ax.set_xlabel('Long X-axis Label Here')
+        ax.set_ylabel('Long Y-axis Label')
+    fig1.tight_layout()
+    fig1.suptitle('tight_layout', y=1.02)
+
+    # Approach 2: constrained_layout
+    fig2, axes2 = plt.subplots(2, 2, figsize=(8, 6), layout='constrained')
+    for ax in axes2.flat:
+        ax.plot(x, np.random.randn(50))
+        ax.set_xlabel('Long X-axis Label Here')
+        ax.set_ylabel('Long Y-axis Label')
+    fig2.suptitle('constrained_layout')
+
+    plt.show()
+    ```
+
+    `constrained_layout` handles colorbars better because it reserves space for them during layout computation. With `tight_layout`, adding a colorbar after the layout call can re-introduce overlaps. `constrained_layout` is the modern recommended approach.

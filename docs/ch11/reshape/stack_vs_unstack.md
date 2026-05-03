@@ -2,6 +2,9 @@
 
 `stack()` and `unstack()` are inverse operations for reshaping data between wide and long formats. Understanding when to use each is essential for data manipulation.
 
+!!! tip "Mental Model"
+    `stack` moves columns into the index (wide to long); `unstack` moves an index level into columns (long to wide). They are perfect inverses: `unstack(stack(df))` returns the original shape. The `level` parameter controls which index level or column level participates in the swap.
+
 ## Conceptual Overview
 
 ```

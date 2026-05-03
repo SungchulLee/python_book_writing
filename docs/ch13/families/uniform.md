@@ -2,6 +2,9 @@
 
 The uniform distribution is the simplest continuous probability distribution, assigning equal probability density to every point in an interval $[a, b]$. Despite its simplicity, it plays a foundational role in probability theory and computational statistics. The probability integral transform states that applying the CDF of any continuous distribution to a random variable from that distribution yields a uniform random variable, making the uniform distribution the starting point for all random variate generation methods.
 
+!!! tip "Mental Model"
+    The uniform distribution is "maximum ignorance" on an interval -- every value is equally likely. Its deeper importance is the probability integral transform: feed any continuous random variable through its own CDF and the result is $U(0,1)$. This transform is why computers can generate samples from any distribution starting from uniform random numbers.
+
 ---
 
 ## Mathematical Definition

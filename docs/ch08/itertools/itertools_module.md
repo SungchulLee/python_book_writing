@@ -2,6 +2,9 @@
 
 The `itertools` module provides a collection of fast, memory-efficient tools for working with iterators. These functions create iterators for efficient looping, combining, and filtering data.
 
+!!! tip "Mental Model"
+    `itertools` is a LEGO set for iterators — each function is a small, composable brick (chain, filter, group, slice, combine) that snaps together with others to build sophisticated data pipelines. Because every tool yields items lazily, you can process millions of elements without loading them all into memory at once.
+
 ```python
 import itertools
 ```

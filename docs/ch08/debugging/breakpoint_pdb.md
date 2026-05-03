@@ -2,6 +2,9 @@
 
 Use breakpoint() to start the debugger and understand pdb for interactive debugging.
 
+!!! tip "Mental Model"
+    Calling `breakpoint()` is like pressing pause on a running program. Execution freezes at that line and drops you into an interactive shell where you can inspect variables, step through code one line at a time, and test expressions live. It is the fastest way to see what your code is actually doing versus what you think it is doing.
+
 ## breakpoint() Function
 
 Add breakpoints to pause execution for inspection.

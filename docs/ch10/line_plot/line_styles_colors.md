@@ -2,6 +2,22 @@
 
 Matplotlib provides extensive control over line appearance through style and color parameters.
 
+!!! tip "Mental Model"
+    Every Line2D artist has three visual knobs: `linestyle` (solid, dashed, dotted), `color` (any CSS name, hex code, or RGB tuple), and `linewidth` (thickness in points). You can set them as keyword arguments in `plot()` or combine all three in a format string like `'r--'` for a red dashed line.
+
+!!! note "Design Guidelines"
+    Line style and color are **semantic signals**, not just decoration:
+
+    | Style | Use for |
+    |-------|---------|
+    | Solid | Primary data / main result |
+    | Dashed | Comparison, reference, or theoretical |
+    | Dotted | Thresholds, baselines, secondary |
+    | Lighter color / thinner line | Background or less important data |
+
+    Choose high-contrast colors for overlaid lines. Avoid relying on color alone
+    — add different line styles for colorblind accessibility.
+
 ---
 
 ## Line Style (linestyle / ls)

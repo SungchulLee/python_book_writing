@@ -2,6 +2,9 @@
 
 Infinite iterators generate an endless sequence of values. These are useful for creating infinite streams or repeating patterns that can be sliced or combined with other tools.
 
+!!! tip "Mental Model"
+    Infinite iterators are faucets that never run dry — `count` produces an endless number line, `cycle` loops a sequence forever, and `repeat` echoes a single value indefinitely. They are safe because they are lazy: no memory is consumed until you pull the next value. Pair them with `islice`, `zip`, or `takewhile` to draw exactly as many items as you need.
+
 ## count() - Infinite Counter
 
 The `count()` function returns an iterator that generates numbers indefinitely starting from a given value and incrementing by a step.

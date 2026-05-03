@@ -2,6 +2,9 @@
 
 `pivot` and `melt` are inverse operations for reshaping DataFrames between wide and long formats.
 
+!!! tip "Mental Model"
+    `pivot` spreads long data into wide columns; `melt` gathers wide columns back into long rows. They are inverses: `melt(pivot(df))` recovers the original shape (up to sorting). If your data is too wide for plotting or groupby, melt it; if it is too long for correlation or comparison, pivot it.
+
 ## Conceptual Relationship
 
 pivot and melt transform data in opposite directions.

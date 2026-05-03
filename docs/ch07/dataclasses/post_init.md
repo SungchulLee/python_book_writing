@@ -2,6 +2,9 @@
 
 The `__post_init__()` method is called after the generated `__init__()` completes, allowing you to perform additional initialization or validation.
 
+!!! tip "Mental Model"
+    The generated `__init__` handles the mechanical work of assigning arguments to fields. `__post_init__` is your callback -- the moment right after the scaffolding is up, where you can validate invariants, compute derived fields, or transform raw inputs into their final form. It separates "what the user passes in" from "what the object actually stores."
+
 ---
 
 ## Basic __post_init__ Usage
@@ -119,12 +122,22 @@ container = Container((3, 1, 2))
 print(container.items)  # [1, 2, 3]
 ```
 
-## Performance Notes
+## Performance and Side-Effect Considerations
 
-- `__post_init__()` adds overhead to object creation
-- Keep it lightweight for frequently created objects
-- Use for validation, derived fields, and conversions
-- Alternative: Use custom `__init__` if complex logic needed
+- `__post_init__()` runs on **every** instantiation, including copies via
+  `dataclasses.replace()`. Heavy logic (file I/O, network calls, expensive
+  computation) directly impacts object creation throughput.
+- Keep it lightweight for frequently created objects. If you need to create
+  thousands of instances in a loop, move expensive work to an explicit method
+  the caller invokes after construction.
+- Avoid **side effects** (writing files, sending requests, modifying global state)
+  in `__post_init__`. Code that creates a dataclass does not expect I/O to happen
+  as a side effect, and it makes testing harder.
+- Use `__post_init__` for: validation, derived fields, and type conversions.
+- **When NOT to use `__post_init__`**: if your initialization logic requires
+  conditional field assignment, complex branching, or multiple construction paths,
+  write a custom `__init__` instead (set `@dataclass(init=False)`) — forcing
+  complex logic into `__post_init__` produces fragile, hard-to-read code.
 
 ---
 

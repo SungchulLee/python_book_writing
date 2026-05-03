@@ -1,5 +1,8 @@
 # Why Python is Slow
 
+!!! tip "Mental Model"
+    In a tight Python loop, less than 1% of CPU time goes to actual arithmetic -- the rest is spent on type checking, object creation, dictionary lookups, and reference counting. Python is not slow because your CPU is slow; it is slow because it does enormous bookkeeping for every operation. The fix is to push hot loops into compiled code (NumPy, C extensions) and let Python orchestrate.
+
 ## The Performance Gap
 
 Python is often 10-100x slower than C for computational tasks. Understanding why helps you write faster Python code.

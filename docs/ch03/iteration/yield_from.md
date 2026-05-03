@@ -2,6 +2,9 @@
 
 The yield from statement delegates to a sub-generator, combining value iteration and exception handling. It's a powerful tool for building complex generator hierarchies and simplifying generator composition.
 
+!!! tip "Mental Model"
+    `yield from sub` is shorthand for "step aside and let `sub` yield directly to my caller." Instead of writing a loop that manually forwards each value, `yield from` creates a transparent pipe between the sub-generator and the outer consumer. It also forwards `send()`, `throw()`, and `close()` calls automatically.
+
 ---
 
 ## Basic yield from

@@ -2,6 +2,9 @@
 
 When comparing two probability distributions, we often need a way to quantify how much one distribution differs from another. The Kullback-Leibler (KL) divergence provides exactly this measure: it captures the expected extra cost of encoding data from a true distribution $p$ using a code optimized for an approximate distribution $q$. KL divergence arises naturally in model selection, variational inference, and maximum likelihood estimation. This section defines KL divergence, proves its non-negativity, and highlights its key properties.
 
+!!! tip "Mental Model"
+    KL divergence measures the "wasted bits" when you use the wrong code. If data comes from $p$ but you encode it assuming $q$, you pay $D_{\mathrm{KL}}(p \| q)$ extra bits per symbol compared to the optimal code. It is always non-negative (you can never do better than the true code) and asymmetric ($D_{\mathrm{KL}}(p \| q) \neq D_{\mathrm{KL}}(q \| p)$).
+
 ## Definition
 
 Let $p$ and $q$ be two probability distributions over the same discrete sample space $\mathcal{X}$. The **Kullback-Leibler divergence** (or relative entropy) of $q$ from $p$ is

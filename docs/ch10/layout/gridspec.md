@@ -2,6 +2,21 @@
 
 GridSpec provides fine-grained control over subplot layout, enabling complex arrangements with varying cell sizes and spans.
 
+!!! tip "Mental Model"
+    GridSpec defines an invisible grid on the Figure, then you assign each subplot to one or more cells using slice notation (e.g., `gs[0, :]` for the entire first row). Think of it as a spreadsheet grid where you merge cells to create subplots of different sizes. It is the most powerful layout tool when `plt.subplots()` is too rigid.
+
+!!! note "When to Use GridSpec"
+    | Need | Tool |
+    |------|------|
+    | Simple uniform grid | `plt.subplots()` |
+    | Panels of different sizes / spanning rows or columns | **GridSpec** |
+    | Readable ASCII-style layout | `subplot_mosaic` |
+    | Nested grids (grid inside a grid) | **GridSpec** (with `SubGridSpec`) |
+    | Programmatic dynamic layouts | **GridSpec** (generated from data) |
+
+    Use GridSpec when you need precise control over cell spanning and size ratios
+    that `subplots()` cannot express.
+
 ## Basic GridSpec
 
 Create a grid and add subplots to each cell.

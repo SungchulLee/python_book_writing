@@ -2,6 +2,9 @@
 
 `partial` freezes some arguments of a function, creating a new callable with fewer parameters. It's the standard way to do **partial function application** in Python.
 
+!!! tip "Mental Model"
+    `partial` is like setting default values from the outside: you take a general function, lock in one or more arguments, and get back a simpler, specialized version. Unlike `lambda`, the resulting `partial` object preserves the original function's identity and is easier to inspect and pickle.
+
 ```python
 from functools import partial
 ```

@@ -2,6 +2,9 @@
 
 Function optimization is fundamental to scientific computing. Whether fitting a model to data, finding equilibrium points, or tuning parameters to minimize error, optimization algorithms are indispensable tools. The `scipy.optimize` module provides a comprehensive set of methods for solving these problems across a wide range of complexity levels.
 
+!!! tip "Mental Model"
+    The `scipy.optimize` module answers one core question in several forms: "What input makes this function's output as small (or zero) as possible?" Minimization finds the lowest valley, root finding locates where the function crosses zero, and curve fitting minimizes the gap between a model and data. Every tool in the module is a variation on this theme, differing only in what constraints you impose and how the search is conducted.
+
 ---
 
 ## What is Optimization?

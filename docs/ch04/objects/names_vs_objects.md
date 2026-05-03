@@ -1,5 +1,8 @@
 # Names vs Objects
 
+!!! tip "Mental Model"
+    A Python name is a sticky note, not a box. You stick it on an object that lives on the heap; you can peel it off and stick it on a different object at any time. Multiple sticky notes can point to the same object, which is why changes through one name are visible through another.
+
 ## Core Distinction
 
 ### 1. Python Model

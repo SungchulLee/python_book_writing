@@ -2,6 +2,9 @@
 
 SciPy's `minimize()` function supports numerous optimization algorithms. Each has different strengths, weaknesses, and computational costs. Understanding these differences is crucial for solving optimization problems efficiently.
 
+!!! tip "Mental Model"
+    Optimization methods sit on a spectrum: at one end, gradient-free methods (Nelder-Mead, Powell) treat the function as a black box and poke around to find lower values. At the other end, Newton-type methods use first and second derivatives to take precise, large steps. More information about the function means fewer steps to the answer, but each step costs more to compute. Pick your method based on what you know about your function and how expensive it is to evaluate.
+
 ---
 
 ## Gradient-Free Methods

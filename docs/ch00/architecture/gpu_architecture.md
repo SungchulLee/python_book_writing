@@ -2,6 +2,9 @@
 
 # GPU Architecture
 
+!!! tip "Mental Model"
+    A CPU is like a team of a few expert chefs who can each prepare any dish quickly; a GPU is like a kitchen with thousands of line cooks, each handling one simple step. When the same operation must be applied to millions of data points -- as in deep learning or numerical simulation -- the GPU's army of simple cores overwhelms the CPU's small team of complex ones.
+
 Graphics Processing Units (GPUs) are specialized processors designed to execute **massively parallel workloads**.
 
 They power many modern computational tasks including:

@@ -1,5 +1,8 @@
 # Financial Data Workflow
 
+!!! tip "Mental Model"
+    The yfinance workflow is a three-stage pipeline: download raw OHLCV data, transform it with pandas (compute returns, resample, merge tickers), and visualize the results. Each stage maps directly to pandas operations you already know -- the financial domain just provides the context.
+
 ## Data Download
 
 ### 1. Single Ticker

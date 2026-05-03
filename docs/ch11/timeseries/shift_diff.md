@@ -2,6 +2,9 @@
 
 The `shift()` and `diff()` methods are essential for time series analysis, computing lagged values and differences.
 
+!!! tip "Mental Model"
+    `shift(n)` slides the data up or down by n positions without changing the index -- it creates lagged or lead columns. `diff(n)` computes `value - value_shifted_by_n`, giving the absolute change. Together they are the building blocks for returns, growth rates, and any "compare this period to the previous" analysis.
+
 ## shift Method
 
 Move data by specified number of periods.

@@ -2,6 +2,9 @@
 
 **conda-forge** is a community-driven collection of conda packages. **Miniforge** is a minimal installer that uses conda-forge by default — free for all uses, including commercial.
 
+!!! tip "Mental Model"
+    conda-forge is to conda what PyPI is to pip — a community-maintained channel with thousands of packages, often more up-to-date than the default Anaconda channel. Miniforge bundles conda with conda-forge pre-configured and carries no commercial license restrictions, making it the recommended starting point for new conda users.
+
 ---
 
 ## Why conda-forge?

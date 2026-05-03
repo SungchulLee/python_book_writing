@@ -2,6 +2,9 @@
 
 Techniques for reducing memory usage and tools for profiling memory consumption.
 
+!!! tip "Mental Model"
+    Memory optimization is about choosing the right container for the job. A generator is a faucet (produces water on demand), while a list is a water tank (stores everything at once). Use `__slots__` to swap a flexible dictionary for a compact fixed-size struct, and prefer lazy iteration whenever you don't need all items simultaneously.
+
 ## Optimization Techniques
 
 ### Use `__slots__`

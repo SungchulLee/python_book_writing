@@ -2,6 +2,9 @@
 
 `np.einsum` provides a powerful notation for tensor contractions and array operations.
 
+!!! tip "Mental Model"
+    `einsum` uses Einstein summation convention: label each axis with a letter, and any letter that appears in the inputs but not the output is summed over. `'ij,jk->ik'` is matrix multiplication, `'ii->'` is a trace, `'ij->ji'` is a transpose. Once you learn the notation, `einsum` can express almost any array operation in a single, readable call.
+
 ## Basic Syntax
 
 ### 1. Subscript Notation

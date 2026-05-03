@@ -2,6 +2,9 @@
 
 Correlation coefficients are among the most frequently computed and most frequently misinterpreted statistics. A single number summarizing the relationship between two variables inevitably discards information, and users who rely on that number without checking the underlying assumptions risk drawing seriously wrong conclusions. This page catalogs the most common pitfalls and shows how to recognize and avoid each one.
 
+!!! tip "Mental Model"
+    A correlation coefficient is a lossy compression of a scatter plot into a single number. It can miss nonlinear patterns, be hijacked by outliers, or reflect a confounding variable rather than a real relationship. Always plot the data first -- Anscombe's quartet is the classic reminder that very different datasets can share the same $r$.
+
 ## Correlation Does Not Imply Causation
 
 The most fundamental pitfall is interpreting a correlation as evidence of a causal relationship. Two variables $X$ and $Y$ can be highly correlated for several reasons that have nothing to do with $X$ causing $Y$:

@@ -2,6 +2,9 @@
 
 Many parametric procedures — the pooled t-test, one-way ANOVA, and linear regression — assume that the groups being compared share the same variance (homoscedasticity). Before running these tests, variance tests verify whether this assumption is reasonable. When it fails, alternatives such as Welch's t-test or robust standard errors should be used instead.
 
+!!! tip "Mental Model"
+    Variance tests check whether groups have the same spread before you compare their centers. Bartlett's test is the most powerful but breaks down if data are not normal; Levene's test is robust to non-normality because it works with absolute deviations from the group medians instead of squared deviations from the mean.
+
 ## Hypotheses
 
 Variance tests share the same hypothesis structure. Given $k$ groups with variances $\sigma_1^2, \sigma_2^2, \ldots, \sigma_k^2$, the hypotheses are

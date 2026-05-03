@@ -2,6 +2,9 @@
 
 Many financial quantities -- option prices, risk measures, portfolio values -- lack closed-form solutions but can be estimated by simulating random scenarios and averaging the outcomes. Monte Carlo simulation leverages the law of large numbers to convert a probabilistic pricing problem into a computational one. This section demonstrates Monte Carlo methods in finance using `scipy.stats` for distribution sampling and statistical analysis of the results.
 
+!!! tip "Mental Model"
+    When you cannot solve a pricing equation on paper, simulate thousands of possible futures and average the payoffs. Each simulated path is one "what if" scenario; the law of large numbers guarantees that enough scenarios converge to the true price, turning an intractable integral into a counting exercise.
+
 ## Geometric Brownian Motion
 
 The standard model for stock price dynamics under the risk-neutral measure is geometric Brownian motion (GBM):

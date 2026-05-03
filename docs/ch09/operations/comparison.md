@@ -2,6 +2,15 @@
 
 NumPy supports element-wise comparison operations that return boolean arrays.
 
+!!! tip "Mental Model"
+    Comparing two arrays with `<`, `>`, `==`, etc. produces a boolean array of the same shape, where each element records whether that position's comparison was True or False. These boolean arrays are the masks you feed into boolean indexing, `np.where`, and logical combinators (`&`, `|`, `~`).
+
+    The deeper role: **comparison = data selection mechanism.** The boolean mask
+    produced by a comparison is the bridge between "which elements satisfy a
+    condition?" and "operate only on those elements" — the `mask → indexing →
+    transformation` pipeline that underlies filtering, validation, and conditional
+    assignment throughout NumPy.
+
 ## Basic Comparisons
 
 ### 1. Less Than

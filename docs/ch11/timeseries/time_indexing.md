@@ -2,6 +2,9 @@
 
 Time-based indexing allows powerful selection and filtering of time series data using date strings.
 
+!!! tip "Mental Model"
+    With a DatetimeIndex, `loc` accepts partial date strings as slicing keys. `df.loc['2024']` selects all of 2024, `df.loc['2024-03']` selects March 2024, and `df.loc['2024-03-15']` selects a single day. Pandas automatically matches the precision of your string to the appropriate range -- no manual date arithmetic needed.
+
 ## Date-based Selection
 
 Select data using date strings.

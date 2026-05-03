@@ -2,6 +2,14 @@
 
 Decompose a matrix into orthogonal and triangular components.
 
+!!! tip "Mental Model"
+    QR splits any matrix into an orthogonal matrix $Q$ (whose columns are perpendicular unit vectors) and an upper-triangular matrix $R$. This is the numerically stable way to solve least-squares problems: instead of forming the normal equations, factor $A = QR$ and back-substitute. It is also the foundation of the QR algorithm for eigenvalues.
+
+    In the [factorization landscape](matrix_multiply.md), QR occupies the
+    middle ground: more general than Cholesky (works on any matrix, not just SPD)
+    but more structured than SVD (faster when you only need least squares, not
+    rank analysis).
+
 ## np.linalg.qr
 
 ### 1. Basic Usage

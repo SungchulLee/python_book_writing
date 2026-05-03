@@ -2,6 +2,9 @@
 
 Composition models a "has-a" relationship where one object owns another as an integral part. The owner creates the part during its own initialization, and the part's lifetime is tied to the owner. When the owner is destroyed, its parts go with it. Composition is often preferred over inheritance for building flexible, modular systems because it avoids the tight coupling that deep class hierarchies introduce.
 
+!!! tip "Mental Model"
+    Think of composition as building with LEGO bricks that are glued together -- the whole creates its parts, owns them exclusively, and when you break the whole, the parts go with it. The owner delegates work to its parts rather than inheriting behavior, which keeps each piece simple and replaceable.
+
 ## What Is Composition
 
 ### 1. Has-A Relationship
@@ -30,21 +33,23 @@ The `Car` creates its own `Engine` inside `__init__`. Outside code interacts wit
 
 ### 1. Strong Relationship
 
-Strong ownership means the part's lifetime is tied to the container. The part is created when the container is created, and Python's garbage collector automatically destroys the part when the container is collected. There is no need for manual cleanup.
+Strong ownership means the part's lifetime is tied to the container. The part is created when the container is created, and it becomes **unreachable** when the container becomes unreachable — at which point Python's garbage collector reclaims it. There is no need for manual cleanup.
 
 ```python
 class Car:
     def __init__(self):
         self.engine = Engine()  # Engine created with Car
 
-# When car goes out of scope and is garbage-collected,
-# the Engine is also collected automatically because
-# no other references to it exist.
+# When car becomes unreachable (no more references), the Engine
+# also becomes unreachable and is eventually garbage-collected.
 car = Car()
-del car  # Engine is cleaned up along with Car
+del car  # Removes the last reference; Engine is now unreachable
 ```
 
-Because the `Engine` was created inside `Car.__init__` and no external variable holds a reference to it, deleting the `Car` removes the last reference to the `Engine`, and Python's garbage collector reclaims it.
+!!! note "GC Nuance"
+    Python does not guarantee *when* an unreachable object is destroyed — only that it will be collected eventually. In CPython (the standard interpreter), reference counting usually reclaims objects immediately when the last reference is removed, but this is an implementation detail, not a language guarantee. The important design point is that the part **cannot be accessed** once the container is gone, because no external reference to it exists.
+
+Because the `Engine` was created inside `Car.__init__` and no external variable holds a reference to it, deleting the `Car` removes the last reference to the `Engine`, making it unreachable.
 
 ## When Composition Goes Too Far
 
@@ -186,3 +191,92 @@ Design a `Document` class that owns a `Header`, `Body`, and `Footer` (all create
         print(doc.render())
         doc.update_body("Updated content.")
         print(doc.render())
+
+---
+
+**Exercise 4.**
+Explain why the following design is **over-composition** and refactor it into a simpler version that keeps the same functionality. What is the rule of thumb for when composition adds complexity without benefit?
+
+```python
+class NameValidator:
+    def validate(self, name):
+        return len(name) > 0
+
+class NameFormatter:
+    def format(self, name):
+        return name.strip().title()
+
+class NameProcessor:
+    def __init__(self):
+        self._validator = NameValidator()
+        self._formatter = NameFormatter()
+
+    def process(self, name):
+        if self._validator.validate(name):
+            return self._formatter.format(name)
+        raise ValueError("Invalid name")
+```
+
+??? success "Solution to Exercise 4"
+
+    This is over-composition because `NameValidator` and `NameFormatter` each contain a single trivial method that will never be reused or swapped. Creating separate classes for one-line operations adds indirection without benefit.
+
+    **Refactored:**
+
+        class NameProcessor:
+            def process(self, name):
+                if not name:
+                    raise ValueError("Invalid name")
+                return name.strip().title()
+
+    **Rule of thumb:** don't create a class for something that a function (or even a single expression) can handle. Composition should simplify your design by separating *genuinely independent* concerns — not by wrapping every line of code in its own object. If the "component" has no state, no alternative implementations, and no independent tests, it doesn't need to be a class.
+
+---
+
+**Exercise 5.**
+A `Logger` class composes a `Formatter` and a `Writer`. The `Formatter` formats the message, and the `Writer` writes it to output. Show how this composition design connects to real-world patterns like dependency injection: make `Logger.__init__` accept formatter and writer as parameters (instead of creating them internally), so that tests can inject mocks and production code can inject real implementations.
+
+??? success "Solution to Exercise 5"
+
+        class Formatter:
+            def format(self, message):
+                from datetime import datetime
+                return f"[{datetime.now():%H:%M:%S}] {message}"
+
+        class ConsoleWriter:
+            def write(self, text):
+                print(text)
+
+        class FileWriter:
+            def __init__(self, path):
+                self.path = path
+
+            def write(self, text):
+                print(f"(would write to {self.path}: {text})")
+
+        class Logger:
+            def __init__(self, formatter, writer):
+                self._formatter = formatter  # Injected — not created here
+                self._writer = writer
+
+            def log(self, message):
+                self._writer.write(self._formatter.format(message))
+
+        # Production usage
+        logger = Logger(Formatter(), FileWriter("app.log"))
+        logger.log("Server started")
+
+        # Test usage — inject mocks
+        class MockWriter:
+            def __init__(self):
+                self.messages = []
+
+            def write(self, text):
+                self.messages.append(text)
+
+        mock = MockWriter()
+        test_logger = Logger(Formatter(), mock)
+        test_logger.log("test message")
+        assert len(mock.messages) == 1
+
+    This is **dependency injection** — the `Logger` declares what it needs (a formatter and a writer) but does not decide which specific implementations to use. The caller makes that choice. This is composition at its most powerful: the `Logger` is fully testable, the components are interchangeable, and no subclass is needed to change behavior.

@@ -21,6 +21,9 @@ flowchart TD
     A --> F[escape sequences]
 ````
 
+!!! tip "Mental Model"
+    String literals are how you write text in source code. Single and double quotes are interchangeable---choose whichever avoids internal escaping. Backslash `\` is the escape character that gives special meaning to the next character (`\n` for newline, `\t` for tab). Raw strings (`r"..."`) disable escaping entirely, which is invaluable for regex patterns and Windows file paths.
+
 ---
 
 ## 1. Single and Double Quotes

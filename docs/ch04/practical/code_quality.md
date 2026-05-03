@@ -2,6 +2,9 @@
 
 Best practices for writing correct, maintainable, and well-styled Python code.
 
+!!! tip "Mental Model"
+    Good Python code makes the object model work for you rather than against you. Use immutable defaults, compare with `==` instead of `is`, and let Python's built-in idioms (context managers, unpacking, comprehensions) express intent clearly. Correctness comes from respecting how names, scopes, and mutability actually behave.
+
 ## Correctness
 
 ### Avoid Mutable Default Arguments

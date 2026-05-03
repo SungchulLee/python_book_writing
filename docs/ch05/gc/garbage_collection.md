@@ -2,6 +2,9 @@
 
 순환 참조를 처리하는 Python의 가비지 컬렉터입니다.
 
+!!! tip "Mental Model"
+    Reference counting handles most cleanup instantly, but it cannot break cycles where objects point to each other. The garbage collector is the backup janitor that periodically walks through objects, finds groups that reference only each other with no outside connections, and reclaims them.
+
 ## Generational GC
 
 Python은 세대별 가비지 컬렉션을 사용합니다. "대부분의 객체는 일찍 죽는다"는 약한 세대 가설(Weak Generational Hypothesis)에 기반합니다.

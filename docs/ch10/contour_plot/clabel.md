@@ -2,6 +2,9 @@
 
 The `plt.clabel()` or `ax.clabel()` method adds labels to contour lines.
 
+!!! tip "Mental Model"
+    Contour lines without labels are like elevation lines on a map with no numbers -- you can see the shape but not the values. `clabel()` stamps numeric values directly onto the contour lines, turning your plot into a self-documenting map. Pass the contour set returned by `contour()` and Matplotlib places labels at readable positions automatically.
+
 ## Basic Usage
 
 ### Adding Labels to Contours

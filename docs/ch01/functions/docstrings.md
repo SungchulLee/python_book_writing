@@ -10,6 +10,9 @@ def celsius_to_fahrenheit(c: float) -> float:
 
 Python stores the docstring on the function object and makes it available at runtime. Type hints say *what* the types are; the docstring says *why* the function exists and what it does.
 
+!!! tip "Mental Model"
+    A docstring is a built-in user manual attached to every function. Python stores it as the `__doc__` attribute, so `help()` can display it at runtime. Type hints tell the reader *what goes in and out*; the docstring tells the reader *why the function exists and how to use it*.
+
 ## Single-Line Docstrings
 
 Use a single line for simple functions. The string sits on one line, inside triple quotes:

@@ -2,6 +2,9 @@
 
 Summary statistics provide concise descriptions of data distributions using measures of central tendency, spread, and shape computed efficiently with scipy.stats functions.
 
+!!! tip "Mental Model"
+    Summary statistics compress an entire dataset into a handful of numbers. The mean, median, and mode tell you where the data clusters; the variance and IQR tell you how far it spreads; and skewness and kurtosis tell you how its shape deviates from a symmetric bell curve.
+
 ---
 
 ## Central Tendency

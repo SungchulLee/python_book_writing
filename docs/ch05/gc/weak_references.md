@@ -2,6 +2,9 @@
 
 Weak references allow referencing objects without preventing garbage collection.
 
+!!! tip "Mental Model"
+    A normal reference is like holding an object's hand -- as long as you hold on, it cannot be collected. A weak reference is like watching the object from across the room: you can see it and interact with it while it exists, but you are not preventing it from leaving. When the object is collected, your weak reference simply returns `None`.
+
 ## Basic Weak References
 
 ```python

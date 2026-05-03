@@ -2,6 +2,17 @@
 
 NumPy provides several functions for rounding floating-point numbers.
 
+!!! tip "Mental Model"
+    `np.round` rounds to the nearest value (with banker's rounding for .5 cases), `np.floor` always rounds down, and `np.ceil` always rounds up. Choose based on the direction you need: `floor` for safe lower bounds, `ceil` for safe upper bounds, and `round` for minimum overall error.
+
+    At its core, **rounding is a discretization operator** — it maps continuous
+    values onto a discrete grid. This framing explains why rounding matters beyond
+    formatting: binning sensor data, quantizing weights in neural networks, and
+    snapping coordinates to pixel grids are all discretization.
+
+!!! info "Rounding in the Ufunc System"
+    `np.round`, `np.floor`, `np.ceil`, and `np.trunc` are all ufuncs — they follow the same broadcast-then-apply-elementwise pattern as `+` and `np.exp`. They are a specialized subset: unary ufuncs that map floats to floats while enforcing integer-like semantics. Understanding them as ufuncs means you get `out=`, `where=`, and in-place operations for free.
+
 ## np.round
 
 ### 1. Basic Usage

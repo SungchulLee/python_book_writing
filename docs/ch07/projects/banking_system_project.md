@@ -1,5 +1,8 @@
 # Banking System Project
 
+!!! tip "Mental Model"
+    This project models a real banking domain where every account type shares a common interface (`deposit`, `withdraw`, `calculate_interest`) but implements the details differently. The key design insight: inheritance defines the shared contract, and polymorphism lets the bank process any account type without knowing which specific type it is.
+
 ## Overview
 Build a complete banking system with different account types using inheritance and polymorphism.
 
@@ -32,6 +35,12 @@ Implement these account types:
 - Interest rate: 2% annual (compounded monthly)
 - Withdrawal limit: 6 per month
 - Penalty: \$5 fee if minimum balance not maintained
+
+!!! note "Compounding Details"
+    Monthly compounding means dividing the annual rate by 12 and applying it each
+    month to the current balance. Edge cases to handle: what if interest is applied
+    mid-month? What if the balance changes during the month? A simple approach is to
+    compound based on the balance at the time `apply_interest()` is called.
 
 **CheckingAccount**
 - Minimum balance: \$25
@@ -78,6 +87,15 @@ Create a `Bank` class that:
   - `get_total_assets()` - sum of all balances
   - `generate_report()` - display bank statistics
 
+!!! warning "Avoid a God Object"
+    The `Bank` class risks becoming a "god object" that handles customer management,
+    account creation, monthly maintenance, and reporting all in one class. This is the
+    most common design mistake in projects like this. Apply the Single Responsibility
+    Principle: extract reporting into `BankReporter`, monthly maintenance into
+    `MaintenanceProcessor`, and keep `Bank` focused on coordinating these collaborators.
+    A good test: if a method doesn't need most of the class's attributes, it probably
+    belongs in a separate class.
+
 ### 5. Transaction Class
 Create a `Transaction` class to track:
 - Transaction ID
@@ -85,6 +103,12 @@ Create a `Transaction` class to track:
 - Transaction type (deposit, withdrawal, transfer, fee, interest)
 - Amount
 - Balance after transaction
+
+!!! warning "Data Integrity"
+    A production banking system requires atomic transactions: if a transfer debits
+    one account but fails to credit the other, the debit must be rolled back.
+    Consider implementing a simple rollback mechanism (e.g., wrap the pair of
+    operations in a try/except block and undo the debit on failure).
 
 ## Sample Usage
 ```python
@@ -122,6 +146,7 @@ bank.process_monthly_maintenance()
 - Add fraud detection
 - Implement direct deposit
 - Add bill payment system
+- Implement simple transaction rollback for failed transfers
 
 ## Testing Requirements
 Your implementation should:
@@ -144,19 +169,97 @@ Your implementation should:
 - `main.py` - Demo program
 - `README.md` - This file
 
-Good luck building your bank! 💰
+Good luck building your bank!
 
 ## Exercises
 
-**Exercise 1.** Identify the key classes and their responsibilities in this project. Draw a simple class diagram showing the inheritance and composition relationships.
+**Exercise 1.**
+List all the inheritance and composition relationships in this project. For each, state whether it is "is-a" or "has-a" and justify why that relationship type is appropriate.
 
 ??? success "Solution to Exercise 1"
-    Answers will vary based on the specific project. A good answer should identify 3-5 core classes, their primary methods, and how they interact (e.g., "BankAccount has a list of Transaction objects" or "SavingsAccount inherits from BankAccount").
+
+    **Inheritance (is-a):**
+
+    - `SavingsAccount` is-a `BankAccount` — it is a specialized account type with a specific interest rate and withdrawal limit.
+    - `CheckingAccount` is-a `BankAccount` — same interface, different rules (overdraft, monthly fee).
+    - `BusinessAccount` is-a `BankAccount` — same interface, different fee structure.
+    - `StudentAccount` is-a `SavingsAccount` — a more restricted savings account with relaxed minimums.
+
+    **Composition (has-a):**
+
+    - `BankAccount` has-a list of `Transaction` objects — transactions are created by the account and have no meaning outside it.
+    - `Customer` has-a list of `BankAccount` objects — a customer owns accounts.
+    - `Bank` has-a collection of `Customer` objects — the bank manages customers.
+
+    Inheritance is appropriate here because account types genuinely specialize a common interface (`deposit`, `withdraw`, `calculate_interest`). Composition is appropriate because customers and transactions are independently meaningful entities that are owned or referenced by their containers.
 
 ---
 
-**Exercise 2.** Extend the project by adding one new feature that requires creating at least one new class. Describe the class, its methods, and how it integrates with the existing code.
+**Exercise 2.**
+The `Bank.process_monthly_maintenance()` method applies fees and interest to every account. Explain why this method risks making `Bank` a "god object." Sketch a refactored design that extracts this logic into a separate class.
 
 ??? success "Solution to Exercise 2"
-    Answers will vary. A good extension should demonstrate understanding of the existing architecture, use appropriate OOP patterns (inheritance, composition, or interfaces), and include proper error handling.
 
+    `process_monthly_maintenance()` combines two concerns: fee processing and interest calculation. As the system grows (adding statements, compliance checks, notifications), more logic accumulates in `Bank`, violating the Single Responsibility Principle.
+
+    **Refactored design:**
+
+        class MaintenanceProcessor:
+            def process(self, accounts):
+                for account in accounts:
+                    account.apply_fees()
+                    interest = account.calculate_interest()
+                    if interest > 0:
+                        account.deposit(interest)
+
+        class Bank:
+            def __init__(self, name):
+                self.name = name
+                self._customers = {}
+                self._maintenance = MaintenanceProcessor()
+
+            def process_monthly_maintenance(self):
+                all_accounts = []
+                for customer in self._customers.values():
+                    all_accounts.extend(customer.get_all_accounts())
+                self._maintenance.process(all_accounts)
+
+    Now `Bank` delegates to `MaintenanceProcessor`. Adding a `BankReporter` for `generate_report()` follows the same pattern. Each class has one reason to change.
+
+---
+
+**Exercise 3.**
+Implement a simple rollback mechanism for `Customer.transfer()`. If the deposit into the target account fails after the withdrawal from the source account succeeds, the withdrawal must be reversed. Write pseudocode or Python code showing the try/except structure.
+
+??? success "Solution to Exercise 3"
+
+        class Customer:
+            def transfer(self, from_account, to_account, amount):
+                # Step 1: Withdraw from source
+                from_account.withdraw(amount)
+
+                # Step 2: Deposit to target — may fail
+                try:
+                    to_account.deposit(amount)
+                except Exception:
+                    # Rollback: reverse the withdrawal
+                    from_account.deposit(amount)
+                    raise ValueError(
+                        f"Transfer failed: could not deposit into "
+                        f"{to_account.account_number}. Withdrawal reversed."
+                    )
+
+    This ensures that the two accounts stay consistent even when the second operation fails. Production systems use database transactions for atomicity, but this try/except pattern captures the same principle at the application level.
+
+---
+
+**Exercise 4.**
+`StudentAccount` inherits from `SavingsAccount`. Explain one scenario where this inheritance could cause a problem (hint: Liskov Substitution Principle). Then propose an alternative design that avoids the issue.
+
+??? success "Solution to Exercise 4"
+
+    **Problem:** `SavingsAccount` enforces a minimum balance of \$100. `StudentAccount` overrides this to \$0. If code expects a `SavingsAccount` and relies on the \$100 minimum (e.g., a function that assumes `withdraw` will reject amounts that leave the balance below \$100), passing a `StudentAccount` may violate that assumption — the student account allows balances that a savings account would reject.
+
+    This is an LSP violation: `StudentAccount` weakens a postcondition (minimum balance guarantee) of its parent class.
+
+    **Alternative design:** Make `StudentAccount` inherit directly from `BankAccount` instead of `SavingsAccount`. Both `SavingsAccount` and `StudentAccount` are siblings with different rules, not parent-child. Shared logic (like withdrawal limit checking) can be extracted into a mixin or utility method rather than forcing an inheritance relationship.

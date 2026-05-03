@@ -2,6 +2,9 @@
 
 Window functions apply operations over subsets of data, enabling rolling, expanding, and exponentially weighted calculations.
 
+!!! tip "Mental Model"
+    All three window types slide through your data and compute a statistic at each position. Rolling uses a fixed-size window that moves forward. Expanding uses a window that starts at row 1 and grows. EWM uses all data but weights recent observations more heavily. The choice depends on whether you want a local snapshot (rolling), a cumulative history (expanding), or a decay-weighted memory (EWM).
+
 ## Three Window Types
 
 pandas provides three core window function types.

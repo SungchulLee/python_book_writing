@@ -2,6 +2,9 @@
 
 Instance attributes are variables that belong to individual object instances, storing unique state for each object. While [class attributes](class_attributes.md) are shared across all instances, instance attributes give each object its own independent data. For how Python resolves which attribute you get, see [Attribute Lookup](attribute_lookup.md).
 
+!!! tip "Mental Model"
+    Each instance carries a personal dictionary (`__dict__`) where its attributes live. When you write `self.x = 10` inside `__init__`, you are inserting a key into that dictionary. Two instances of the same class can have completely different keys -- Python does not enforce a fixed schema unless you use `__slots__`.
+
 !!! note "Role in the Lookup Chain"
     In Python's [attribute lookup model](attribute_lookup.md), instance attributes sit at **tier 2** — after data descriptors but before class attributes. This means a `@property` (a data descriptor) can intercept access to an attribute name even if that name exists in the instance's `__dict__`. When no descriptor is involved, instance attributes take precedence over class attributes of the same name.
 

@@ -2,6 +2,9 @@
 
 CPython의 기본 메모리 관리 메커니즘입니다.
 
+!!! tip "Mental Model"
+    Every Python object carries a hidden counter that tracks how many names or containers point to it. Each new reference increments the counter; each deleted reference decrements it. The instant the counter hits zero, the object is freed immediately -- no waiting, no scanning. This is why most Python memory cleanup is instantaneous and predictable.
+
 ## CPython Mechanism
 
 ### 1. Every Object Has a Reference Count

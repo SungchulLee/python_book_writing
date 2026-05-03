@@ -10,6 +10,9 @@ flowchart LR
     A --> C[all()]
 ```
 
+!!! tip "Mental Model"
+    `any()` is a logical OR across a collection; `all()` is a logical AND. Both short-circuit---`any()` stops at the first truthy value, `all()` stops at the first falsy one. They replace the pattern of looping with a flag variable and are the idiomatic way to ask yes/no questions about entire sequences.
+
 ## any()
 
 Returns True if **any element is True**.

@@ -2,6 +2,9 @@
 
 A decorator is a function that takes another function as input and returns a modified version of it. Decorators provide a clean syntax for wrapping functions with additional behavior.
 
+!!! tip "Mental Model"
+    Think of a decorator as gift-wrapping a function: the original function is still inside, but the wrapper adds behavior before and after each call. The `@decorator` syntax is just shorthand for `func = decorator(func)` -- it replaces the name with the wrapped version.
+
 ## Basic Syntax
 
 ### The `@` Syntax

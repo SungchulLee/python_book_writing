@@ -2,6 +2,9 @@
 
 These functions are **iteration transformers**---they restructure how you loop over data. `enumerate()` adds indices to an iterable; `zip()` combines multiple iterables element-by-element. Both yield tuples.
 
+!!! tip "Mental Model"
+    `enumerate()` answers "which position am I at?" while iterating; `zip()` answers "what goes together?" across parallel sequences. Both wrap an existing iteration with extra structure, so you never need to manually track indices or align multiple lists by position.
+
 ## enumerate()
 
 `enumerate()` adds an index counter to any iterable. It is the idiomatic replacement for `range(len(sequence))`:

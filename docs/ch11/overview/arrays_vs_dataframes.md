@@ -1,5 +1,8 @@
 # Arrays vs DataFrames
 
+!!! tip "Mental Model"
+    NumPy arrays are homogeneous grids optimized for numerical computation -- every element shares one dtype. DataFrames are heterogeneous tables where each column can have a different dtype, plus labeled axes for alignment. Choose NumPy when all data is the same type and speed matters most; choose pandas when you need mixed types, labels, or missing-value handling.
+
 ## Data Structure
 
 ### 1. NumPy Array

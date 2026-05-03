@@ -25,6 +25,9 @@ print(f"{value:.1f}")   # 42.5
 | `:`     | begins the format specifier |
 | `.1f`   | formatting instructions     |
 
+!!! tip "Mental Model"
+    A format specifier is a mini-language packed after the colon: `{value:fill align width .precision type}`. Each field is optional. `<` left-aligns, `>` right-aligns, `^` centers. `.2f` means two decimal places as a fixed-point float. Once you internalize this template, you can format any value without string concatenation or manual padding.
+
 ---
 
 ## Basic Alignment

@@ -2,6 +2,9 @@
 
 When comparing means across more than two groups, running multiple pairwise t-tests inflates the overall Type I error rate. For example, with five groups there are ten pairwise comparisons, and even at $\alpha = 0.05$ per test the probability of at least one false rejection grows substantially. Analysis of Variance (ANOVA) solves this by testing all group means simultaneously in a single F-test, controlling the family-wise error rate.
 
+!!! tip "Mental Model"
+    ANOVA compares the variance between group means to the variance within groups. If the groups truly share the same mean, between-group variance should be similar to within-group variance and the F-ratio clusters near 1. A large F-ratio means the group means are more spread out than random noise would explain -- evidence that at least one group differs.
+
 ## One-Way ANOVA Model
 
 The one-way ANOVA model assumes $k$ independent groups, where observations in group $i$ follow

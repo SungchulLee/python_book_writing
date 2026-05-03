@@ -2,6 +2,9 @@
 
 `dump()` writes JSON to a file, while `load()` reads JSON from a file.
 
+!!! tip "Mental Model"
+    `dump` and `load` are the file-based siblings of `dumps` and `loads`. The "s" stands for "string" — without it, the functions read from and write to file-like objects directly. Use `dump`/`load` when you want to persist JSON to disk or read it back, and `dumps`/`loads` when you are working with strings in memory.
+
 ## dump - Write JSON to File
 
 Write JSON data directly to a file.

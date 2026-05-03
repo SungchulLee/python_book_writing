@@ -1,5 +1,8 @@
 # Python vs C Memory
 
+!!! tip "Mental Model"
+    In C, a variable is a named box that directly holds a value -- an `int` lives right there on the stack. In Python, a variable is a name tag attached to an object that always lives on the heap. Python trades the raw speed of direct stack storage for safety and flexibility: no manual `malloc`/`free`, no dangling pointers, but more memory overhead per value.
+
 ## Memory Model
 
 ### 1. Python

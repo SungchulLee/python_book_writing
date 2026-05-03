@@ -2,6 +2,9 @@
 
 Ordered categoricals allow logical comparisons between categories. This is essential when categories have a natural hierarchy, such as ratings, sizes, or priority levels.
 
+!!! tip "Mental Model"
+    An unordered categorical is like a set of labels with no ranking -- "red" is not greater than "blue." Setting `ordered=True` and specifying an order turns the labels into a ranked scale, so comparisons like `"medium" < "large"` become meaningful. This is essential for any column that represents a natural hierarchy.
+
 ## Why Ordered Matters
 
 Without ordering, comparisons between categories are meaningless:

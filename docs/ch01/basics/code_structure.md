@@ -10,6 +10,9 @@ This chapter explains:
 * comments
 * the `pass` statement
 
+!!! tip "Mental Model"
+    In Python, what you see is what runs. Indentation is not decoration---it is the structure of your program. If two lines are at the same indentation level, they belong to the same block. Visual alignment and logical grouping are the same thing.
+
 ---
 
 ## 1. Indentation and Blocks

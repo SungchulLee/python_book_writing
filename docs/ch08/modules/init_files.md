@@ -2,6 +2,9 @@
 
 The `__init__.py` file marks a directory as a Python package and serves as the package's entry point.
 
+!!! tip "Mental Model"
+    `__init__.py` is the front door of a package. When someone writes `import mypackage`, Python executes `__init__.py` first. Use it to expose a clean public API (re-exporting key names), run package-level setup, or simply leave it empty to signal "this directory is a package." Everything importable from the package at the top level is decided here.
+
 ---
 
 ## Historical Context

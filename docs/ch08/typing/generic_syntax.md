@@ -2,6 +2,9 @@
 
 Generic types can be specified using either typing module classes (List[int]) or built-in types (list[int], available in Python 3.9+).
 
+!!! tip "Mental Model"
+    Before Python 3.9, you had to import capitalized generics from `typing` (`List[int]`, `Dict[str, int]`). From 3.9 onward, the built-in types themselves accept subscripts (`list[int]`, `dict[str, int]`). The two forms mean exactly the same thing — prefer the lowercase built-in syntax in new code and use the `typing` imports only when supporting older Python versions.
+
 ## Legacy Typing Module Syntax
 
 Before Python 3.9, use types from the typing module for generic annotations.

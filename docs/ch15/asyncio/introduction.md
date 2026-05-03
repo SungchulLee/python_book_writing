@@ -1,5 +1,8 @@
 # Asyncio Introduction
 
+!!! tip "Mental Model"
+    Asyncio is a single-threaded concurrency framework: one worker, many tasks. Like a receptionist who handles hundreds of phone calls by putting each on hold while waiting for a response, asyncio never truly does two things at once -- it just switches between tasks at `await` points so no time is wasted waiting.
+
 ## What is Asyncio?
 
 **asyncio** is Python's built-in library for writing concurrent code using the **async/await** syntax. It provides a framework for managing asynchronous I/O operations, enabling thousands of concurrent connections with a single thread.

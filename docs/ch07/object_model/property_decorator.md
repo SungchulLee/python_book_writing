@@ -1,5 +1,8 @@
 # Property Decorator
 
+!!! tip "Mental Model"
+    A property is a method masquerading as an attribute. The caller writes `obj.x` and gets clean attribute syntax, while behind the scenes a getter method runs -- optionally validating, computing, or logging. The power is in the invisible upgrade path: start with a plain attribute, add a property later, and no calling code needs to change.
+
 ## What Are Properties?
 
 ### 1. Definition

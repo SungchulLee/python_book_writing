@@ -2,6 +2,9 @@
 
 The `astype()` method converts Series or DataFrame columns to a specified data type. This is essential for data cleaning, memory optimization, and ensuring correct operations.
 
+!!! tip "Mental Model"
+    `astype()` is an explicit type cast for an entire column. It tells pandas "reinterpret every value under this new dtype." Common uses include converting strings to numbers after cleaning, shrinking int64 to int8 for memory savings, and switching to categorical. If a value cannot be converted, it raises an error -- use `pd.to_numeric(errors='coerce')` for graceful handling.
+
 ## Basic Usage
 
 ### Series Conversion

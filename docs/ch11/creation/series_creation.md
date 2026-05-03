@@ -2,6 +2,9 @@
 
 This document covers all methods for creating pandas Series objects, from basic list conversion to extracting columns from DataFrames.
 
+!!! tip "Mental Model"
+    A Series is created by pairing values with an index. Pass a list and you get auto-numbered labels `[0, 1, 2, ...]`. Pass a dict and the keys become the index. Extract a DataFrame column and you inherit that DataFrame's index. Every creation method is just a different way to specify the value-label pairs.
+
 ## From a List
 
 The simplest way to create a Series is from a Python list.

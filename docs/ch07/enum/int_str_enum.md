@@ -2,6 +2,12 @@
 
 IntEnum and StrEnum are specialized enum types that behave like their base types, enabling easier comparisons and operations.
 
+!!! tip "Mental Model"
+    `IntEnum` and `StrEnum` are enums that double as their base type -- an `IntEnum` member *is* an `int`, and a `StrEnum` member *is* a `str`. This makes them drop-in compatible with APIs expecting plain ints or strings, but it sacrifices the type isolation that makes enums safe. Use them for interop with external systems; prefer plain `Enum` for new internal designs.
+
+!!! warning "IntEnum Trades Type Safety for Convenience"
+    `IntEnum` members are **actual integers** — they compare equal to plain `int` values, participate in arithmetic, and can be used anywhere an `int` is expected. This convenience comes at a cost: you lose the type safety that makes enums valuable in the first place. A function expecting `Priority.HIGH` will silently accept `3`, and `Priority.HIGH + Priority.LOW` returns `4` (a plain `int`, not an enum member). Use `IntEnum` only when interoperability with integer APIs is genuinely required (e.g., HTTP status codes, C library bindings). For new designs, prefer regular `Enum` with explicit `.value` access.
+
 ---
 
 ## IntEnum
@@ -183,6 +189,10 @@ except TypeError as e:
 - No numeric/string compatibility needed
 - Mixed value types
 
+!!! tip "Default Rule"
+
+    Start with regular `Enum` unless you have a specific reason to use `IntEnum` or `StrEnum`. The type safety of regular `Enum` (refusing `Status.ACTIVE == 1`) prevents an entire class of bugs. Reach for `IntEnum` only when you need integer interop (array indexing, numeric comparison, C library bindings). Reach for `StrEnum` only when you need string interop (JSON serialization, HTTP headers, string-based APIs).
+
 ---
 
 ## Exercises
@@ -268,3 +278,73 @@ Create an `IntEnum` called `HTTPStatus` with common codes (200, 201, 400, 404, 5
         print(categorize(HTTPStatus.NOT_FOUND))   # client error
         print(categorize(HTTPStatus.SERVER_ERROR)) # server error
         print(categorize(301))                     # redirect (plain int works)
+
+---
+
+**Exercise 4.**
+Demonstrate the type safety difference between `Enum` and `IntEnum`. Create a regular `Enum` called `Color` and an `IntEnum` called `Priority`, both with values 1, 2, 3. Show that `Color.RED == 1` is `False` but `Priority.LOW == 1` is `True`. Then show that `Priority.LOW + Priority.HIGH` produces a plain `int`, not an enum member. Explain why this can lead to bugs.
+
+??? success "Solution to Exercise 4"
+
+        from enum import Enum, IntEnum
+
+        class Color(Enum):
+            RED = 1
+            GREEN = 2
+            BLUE = 3
+
+        class Priority(IntEnum):
+            LOW = 1
+            MEDIUM = 2
+            HIGH = 3
+
+        # Regular Enum: identity comparison
+        print(Color.RED == 1)           # False — type-safe
+        print(Color.RED == Color.RED)   # True
+
+        # IntEnum: value comparison
+        print(Priority.LOW == 1)        # True — interoperable
+        print(Priority.LOW + Priority.HIGH)  # 4 — plain int!
+        print(type(Priority.LOW + Priority.HIGH))  # <class 'int'>
+
+    The bug risk: `Priority.LOW + Priority.HIGH` returns `4`, which is a plain `int` — not a `Priority` member. If code passes this result to a function expecting a `Priority`, no error is raised, but the value `4` has no meaning in the enum. This kind of silent type leakage is exactly what regular `Enum` prevents by refusing to compare with raw values.
+
+---
+
+**Exercise 5.**
+A legacy system sends status codes as strings (`"200"`, `"404"`, etc.) and you need to convert them to an enum. Create a `StrEnum` called `StatusLabel` with values `"ok"`, `"not_found"`, `"error"`. Then create an `IntEnum` called `StatusCode` with values `200`, `404`, `500`. Write a mapping function that converts a `StatusCode` to its corresponding `StatusLabel`. Explain when `StrEnum` is a better fit than `IntEnum` and vice versa.
+
+??? success "Solution to Exercise 5"
+
+        from enum import IntEnum, StrEnum
+
+        class StatusCode(IntEnum):
+            OK = 200
+            NOT_FOUND = 404
+            ERROR = 500
+
+        class StatusLabel(StrEnum):
+            OK = "ok"
+            NOT_FOUND = "not_found"
+            ERROR = "error"
+
+        def code_to_label(code: StatusCode) -> StatusLabel:
+            mapping = {
+                StatusCode.OK: StatusLabel.OK,
+                StatusCode.NOT_FOUND: StatusLabel.NOT_FOUND,
+                StatusCode.ERROR: StatusLabel.ERROR,
+            }
+            return mapping[code]
+
+        print(code_to_label(StatusCode.OK))       # ok
+        print(code_to_label(StatusCode(404)))      # not_found
+
+        # StrEnum interop with strings
+        print(StatusLabel.OK == "ok")              # True
+        print(f"Status: {StatusLabel.ERROR}")      # Status: StatusLabel.ERROR
+
+    **When to use each:**
+
+    - `IntEnum`: when the domain is inherently numeric (HTTP codes, exit codes, hardware registers) and you need to pass values to APIs expecting `int`.
+    - `StrEnum`: when values are human-readable labels used in output, serialization (JSON keys/values), or string-based APIs.
+    - `Enum`: when neither numeric nor string interop is needed — the safest default.

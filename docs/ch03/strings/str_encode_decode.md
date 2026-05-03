@@ -9,6 +9,9 @@ Python converts between text (`str`) and binary data (`bytes`) using `encode()` 
 
 Text must be **encoded into bytes** before it can be written to files, sent over networks, or stored in binary formats.
 
+!!! tip "Mental Model"
+    `str` is human-readable text (Unicode); `bytes` is machine-readable data (raw octets). `encode()` translates text into bytes using a codec (usually UTF-8); `decode()` translates bytes back into text. Every time data crosses a boundary -- file, network, database -- this encode/decode step happens, whether explicitly or behind the scenes.
+
 ---
 
 ## Text and Bytes Model

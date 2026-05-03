@@ -2,6 +2,9 @@
 
 Processes have isolated memory spaces. To share data between processes, you need special mechanisms provided by the `multiprocessing` module.
 
+!!! tip "Mental Model"
+    Because each process has its own memory, modifying a global variable in one process has no effect on another. To share state you must use explicitly shared objects -- `Value` and `Array` for simple data in shared memory, `Manager` for complex data structures proxied over a connection. The harder sharing is, the safer your program -- treat shared state as a last resort, not the default.
+
 ---
 
 ## The Challenge: Memory Isolation

@@ -2,6 +2,9 @@
 
 `starmap()` applies a function to unpacked tuples from an iterable, similar to `map()` but with automatic argument unpacking. This is useful when your data arrives as pre-packed argument tuples — for example, from `zip()`, a database query, or a CSV reader — and you want to apply a multi-argument function to each without writing an explicit loop or lambda wrapper.
 
+!!! tip "Mental Model"
+    `starmap` is `map` with a star — literally. Where `map(f, items)` calls `f(item)` for each item, `starmap(f, items)` calls `f(*item)`, unpacking each tuple into separate arguments. Whenever your data is already packed as argument tuples (e.g., pairs of coordinates), `starmap` eliminates the lambda that `map` would require.
+
 ## Using starmap
 
 Each element in the input iterable is unpacked as positional arguments to the function. This is equivalent to calling `func(*args)` for each `args` tuple in the iterable.

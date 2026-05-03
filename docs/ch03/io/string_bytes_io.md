@@ -2,6 +2,9 @@
 
 StringIO and BytesIO create in-memory file-like objects for text and binary data respectively. They are useful for testing, temporary buffers, and situations where file system I/O should be avoided.
 
+!!! tip "Mental Model"
+    `StringIO` and `BytesIO` are fake files that live in memory. They support the same `.read()`, `.write()`, and `.seek()` interface as real files, so any code that expects a file-like object works with them unchanged. This makes them perfect for testing I/O code without touching the filesystem.
+
 ---
 
 ## StringIO for Text

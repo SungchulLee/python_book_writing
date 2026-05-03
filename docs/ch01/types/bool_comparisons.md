@@ -23,6 +23,9 @@ flowchart TD
     B --> C[Boolean result]
 ````
 
+!!! tip "Mental Model"
+    A comparison is a question that always returns `True` or `False`. `==` asks "are these values equal?" while `is` asks "are these the exact same object in memory?" Most of the time you want `==` for value equality. Comparisons are the inputs that drive `if` statements, loops, and every other decision your program makes.
+
 ---
 
 ## 1. Equality and Inequality

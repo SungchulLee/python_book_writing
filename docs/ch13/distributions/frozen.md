@@ -2,6 +2,9 @@
 
 A **frozen distribution** in `scipy.stats` is a distribution object with its parameters fixed (frozen) at creation time. This allows you to call methods like `.rvs()`, `.pdf()`, `.cdf()`, and `.ppf()` without repeatedly passing the distribution parameters.
 
+!!! tip "Mental Model"
+    A frozen distribution is a distribution with its parameters baked in. Instead of saying "give me the PDF of a normal with mean 3 and std 1 at $x$" every time, you create the object once and then just ask "give me the PDF at $x$." It is the difference between a recipe and a pre-made dish -- the frozen object is ready to use.
+
 ---
 
 ## Creating a Frozen Distribution

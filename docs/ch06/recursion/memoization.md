@@ -2,6 +2,9 @@
 
 Memoization caches function results to avoid redundant computations. It transforms exponential-time recursive algorithms into polynomial-time solutions.
 
+!!! tip "Mental Model"
+    Memoization is a lookup table for function calls: before computing, check whether you've already solved this exact subproblem. If yes, return the cached answer; if no, compute it, store it, then return it. This single optimization can turn an exponential algorithm into a linear one by ensuring each unique subproblem is solved only once.
+
 ---
 
 ## The Problem: Redundant Computation

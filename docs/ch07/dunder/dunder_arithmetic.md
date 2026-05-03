@@ -2,6 +2,9 @@
 
 Arithmetic dunder methods enable mathematical operations on custom objects through operator overloading. Before implementing them, ask: **does this operation make semantic sense for the class?** `Vector + Vector` is natural; `User + User` is not. If the meaning of `+` is not immediately obvious without reading the source, use a named method instead.
 
+!!! tip "Mental Model"
+    Every operator in Python is a method call in disguise: `a + b` becomes `a.__add__(b)`. When you define `__add__` on your class, you are teaching Python what `+` means for your objects. The key protocol rule is to return `NotImplemented` (not raise an error) for unsupported types -- this lets Python try the other operand's `__radd__` before giving up.
+
 ## Basic Arithmetic Operations
 
 ### Addition: `__add__`

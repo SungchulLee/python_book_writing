@@ -2,6 +2,9 @@
 
 The `left_on` and `right_on` parameters specify join columns when they have different names in each DataFrame.
 
+!!! tip "Mental Model"
+    `left_on` and `right_on` solve the "same concept, different name" problem. When the left table calls it `city` and the right calls it `town`, you tell pandas to match `city` against `town`. Both columns survive in the result, so you may want to drop the redundant one afterward.
+
 ## Basic Usage
 
 Join DataFrames with differently named columns.

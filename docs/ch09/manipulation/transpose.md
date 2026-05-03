@@ -2,6 +2,9 @@
 
 NumPy provides several ways to rearrange array axes.
 
+!!! tip "Mental Model"
+    Transposing swaps the axes of an array -- rows become columns and vice versa. For 2D arrays, `.T` is all you need. For higher dimensions, `np.transpose` with an axis order or `np.swapaxes` gives precise control over which axes are exchanged. Transposing returns a view, so no data is copied.
+
 ## .T Attribute
 
 ### 1. Basic Transpose
@@ -490,6 +493,9 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+!!! tip "Unifying Idea"
+    All axis operations — `.T`, `transpose`, `swapaxes`, `moveaxis` — are **permutations of dimensions**. They rearrange which axis is which without touching the underlying data (they return views). Once you see axis manipulation as dimension permutation, the entire API collapses to one concept.
 
 ## Summary Table
 

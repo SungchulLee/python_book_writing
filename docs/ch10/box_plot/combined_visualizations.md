@@ -2,6 +2,20 @@
 
 Combine box plots with other chart types for comprehensive data analysis and presentation.
 
+!!! tip "Mental Model"
+    Box plots summarize but hide detail; histograms reveal shape but are hard to compare across groups. Combining them -- a box plot beside a histogram, or overlaid with a strip plot -- gives readers both the quick summary and the full picture. Use subplots side by side or overlay techniques to get the best of both worlds.
+
+    The core principle: **different plots reveal different aspects of the same
+    distribution.** A box plot shows center and spread; a histogram shows shape;
+    a scatter/strip shows individual points. Combining them is not decoration — it
+    is choosing the right **resolution** for each aspect of the data:
+
+    | Combination | What you gain |
+    |-------------|--------------|
+    | Box + histogram | Summary + shape |
+    | Box + scatter/strip | Summary + raw data |
+    | Violin + box | Density shape + quartile markers |
+
 ## Box Plot with Histogram
 
 Pair box plots with histograms to show both summary statistics and distributional shape.

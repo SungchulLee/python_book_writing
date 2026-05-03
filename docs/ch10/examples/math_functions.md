@@ -2,6 +2,9 @@
 
 Create publication-quality mathematical function plots.
 
+!!! tip "Mental Model"
+    Plotting a math function means sampling it at many x-values and connecting the dots. Use `np.linspace` for smooth curves (100-1000 points), LaTeX labels for professional notation, and spine repositioning to place axes at the origin. The recipe is always: define x, compute y = f(x), then `ax.plot(x, y)`.
+
 ---
 
 ## Basic Function Plot
@@ -59,6 +62,17 @@ plt.show()
 ---
 
 ## Riemann Sum Visualization
+
+A Riemann sum approximates the integral $\int_a^b f(x)\,dx$ by summing rectangles.
+The choice of evaluation point within each rectangle matters:
+
+- **Left Riemann sum**: evaluates $f$ at the left edge of each sub-interval — underestimates for increasing functions
+- **Right Riemann sum**: evaluates $f$ at the right edge — overestimates for increasing functions
+- **Midpoint rule**: evaluates at the center — typically more accurate for the same number of rectangles
+
+As the number of rectangles $n \to \infty$, all three converge to the true integral
+(for any Riemann-integrable function). The rate of convergence is $O(1/n)$ for
+left/right and $O(1/n^2)$ for midpoint.
 
 ```python
 import matplotlib.pyplot as plt

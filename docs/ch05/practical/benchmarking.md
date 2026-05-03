@@ -2,6 +2,9 @@
 
 Proper benchmarking requires careful methodology to get accurate, reproducible results. Learn best practices for performance testing.
 
+!!! tip "Mental Model"
+    Benchmarking is the scientific method applied to code performance. A single timing run is an anecdote, not data. Use `timeit` for micro-benchmarks with many repetitions, collect statistics across runs, and control for noise -- just as you would control variables in an experiment. Measure, don't guess.
+
 ---
 
 ## Using timeit Module

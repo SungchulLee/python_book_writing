@@ -2,6 +2,9 @@
 
 Concurrency is about dealing with multiple things at once. This chapter covers Python's tools for concurrent and parallel execution.
 
+!!! tip "Mental Model"
+    Concurrency means structuring a program to handle multiple tasks that overlap in time. Parallelism means actually executing them at the same instant on different cores. Python gives you both: threads and asyncio for concurrency (interleaving work), and processes for true parallelism (simultaneous computation).
+
 ---
 
 ## Why Concurrency?

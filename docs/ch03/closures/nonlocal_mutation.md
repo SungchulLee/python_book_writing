@@ -2,6 +2,9 @@
 
 클로저에서 외부 변수를 수정하는 방법입니다.
 
+!!! tip "Mental Model"
+    A closure can freely mutate a captured mutable object (like appending to a list), but it cannot rebind the name without `nonlocal`. Think of `nonlocal` as a permission slip that says "when I write `x = ...`, update the existing name in the enclosing scope instead of creating a new local one."
+
 ## Rebinding vs Mutation
 
 ### The Core Difference

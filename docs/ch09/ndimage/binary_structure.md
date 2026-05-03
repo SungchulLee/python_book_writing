@@ -2,6 +2,15 @@
 
 Binary structures define connectivity patterns for segmentation and morphological operations. They answer the question: "Which neighboring pixels are considered connected?"
 
+!!! tip "Mental Model"
+    A binary structure element is a small True/False mask that defines which neighbors count as "connected." Morphological operations like erosion, dilation, and labeling slide this mask across the image. The structure shape determines whether diagonal pixels are neighbors (8-connectivity) or only horizontal/vertical ones (4-connectivity).
+
+    Morphology is **geometry-based filtering**: where [convolution](convolution_filtering.md)
+    computes weighted sums (a linear operation), morphology applies set operations
+    (union, intersection) defined by the structure element's shape. Both slide a
+    small neighborhood across the array — they differ only in what they compute at
+    each position.
+
 ## Connectivity Definitions
 
 In digital images, we must formally define what "neighboring" means. A pixel can have neighbors in different patterns:

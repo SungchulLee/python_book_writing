@@ -1,5 +1,8 @@
 # System Bus
 
+!!! tip "Mental Model"
+    A bus is the highway system inside your computer. The address bus names the destination, the data bus carries the cargo, and the control bus acts as the traffic signals. Just like a real highway, bandwidth is finite and congestion creates bottlenecks -- understanding bus speeds tells you why some operations are inherently slower than others.
+
 ## What is a Bus?
 
 A **bus** is a communication pathway that transfers data between computer components. Think of it as a highway system connecting different parts of the computer.

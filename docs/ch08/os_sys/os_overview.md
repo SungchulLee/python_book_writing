@@ -2,6 +2,9 @@
 
 The `os` module provides a portable way to interact with the operating system, including file operations, environment variables, and process management.
 
+!!! tip "Mental Model"
+    The `os` module is Python's bridge to the operating system. It wraps platform-specific system calls behind a single, portable API so your code works on Linux, macOS, and Windows without `#ifdef` gymnastics. Think of it as three toolkits in one: filesystem operations, environment variable access, and process management.
+
 ## os Module Basics
 
 Access operating system functionality.

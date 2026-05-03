@@ -2,6 +2,9 @@
 
 Understanding how `plt.subplots` returns different shaped arrays is crucial for writing robust plotting code.
 
+!!! tip "Mental Model"
+    `plt.subplots(r, c)` returns axes shaped like the grid: a single object for 1x1, a 1D array for a single row or column, and a 2D array for multi-row, multi-column grids. Use `squeeze=False` to always get a 2D array, which makes indexing uniform and avoids shape-related bugs.
+
 ---
 
 ## Single Axes

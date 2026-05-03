@@ -1,5 +1,8 @@
 # Practical Examples
 
+!!! tip "Mental Model"
+    Regex shines in four everyday tasks: *validating* input format, *extracting* structured fields from messy text, *cleaning* data by replacing or removing unwanted patterns, and *splitting* text on flexible delimiters. Each recipe here maps to one of those four tasks — once you recognize which category your problem falls in, the pattern almost writes itself.
+
 ## Data Cleaning
 
 ### Normalizing Whitespace

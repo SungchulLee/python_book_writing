@@ -2,6 +2,9 @@
 
 # Memory Overview
 
+!!! tip "Mental Model"
+    Think of the memory hierarchy as a series of progressively larger but slower warehouses. Registers are the supplies on your desk (instant access), cache is the cabinet across the room, RAM is the stockroom down the hall, and disk is a warehouse across town. Programs run fast when the data they need is already close; they stall when they must wait for a delivery from a distant level.
+
 Modern processors can execute **billions of instructions per second**, but accessing main memory is far slower than executing arithmetic operations. This large gap between CPU speed and memory speed is known as the **memory wall**.
 
 To bridge this gap, computers use a **memory hierarchy**: multiple layers of storage with different speeds and capacities. Data moves between these layers automatically, allowing frequently used data to be accessed quickly while still supporting large datasets.

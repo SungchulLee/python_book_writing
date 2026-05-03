@@ -2,6 +2,9 @@
 
 Secondary axes display an alternative scale or transformation of the same data, useful for showing different units or transformations.
 
+!!! tip "Mental Model"
+    Secondary axes add a second ruler on the opposite side that shows the same data in different units (e.g., Celsius on the left, Fahrenheit on the right). Unlike twin axes, they do not plot new data -- they just relabel the existing scale through a forward and inverse transform function. Use them when readers need to read values in two unit systems.
+
 ## secondary_xaxis / secondary_yaxis
 
 Unlike `twinx()`/`twiny()` which create independent axes for different data, secondary axes transform the same data to a different scale.
@@ -319,3 +322,53 @@ Create a plot showing distance in kilometers over time in hours. Add a secondary
 
         ax.set_title('Distance over Time with Unit Conversions')
         plt.show()
+
+---
+
+**Exercise 4.**
+Create a plot of temperature in Celsius over 24 hours. Add a secondary y-axis showing Fahrenheit using the conversion `F = C * 9/5 + 32`. Verify that the two axes stay synchronized by checking that 0°C aligns with 32°F.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        hours = np.arange(24)
+        temp_c = 10 + 8 * np.sin((hours - 6) * np.pi / 12)
+
+        fig, ax = plt.subplots(figsize=(10, 5))
+        ax.plot(hours, temp_c, 'b-o', markersize=4)
+        ax.set_xlabel('Hour of Day')
+        ax.set_ylabel('Temperature (°C)')
+
+        secax = ax.secondary_yaxis('right',
+                                    functions=(lambda c: c * 9/5 + 32,
+                                              lambda f: (f - 32) * 5/9))
+        secax.set_ylabel('Temperature (°F)')
+        ax.set_title('Daily Temperature with Dual Units')
+        ax.axhline(0, color='gray', linestyle=':', alpha=0.5, label='0°C = 32°F')
+        ax.legend()
+        plt.show()
+
+---
+
+**Exercise 5.**
+Explain the difference between `secondary_yaxis` and `twinx`. When should you use each? Give a concrete example where using `twinx` for a unit conversion would be incorrect.
+
+??? success "Solution to Exercise 5"
+
+    **`secondary_yaxis`** shows the **same data** in different units (e.g., km and miles, °C and °F). The two axes are mathematically linked by a conversion function — every point on one axis maps to exactly one point on the other.
+
+    **`twinx`** shows **different data** that share the same x-axis but have unrelated y-scales (e.g., temperature and precipitation).
+
+    **Incorrect use of `twinx` for unit conversion:**
+
+        # WRONG — manually plotting the same data twice
+        fig, ax1 = plt.subplots()
+        ax1.plot(time, temp_c, 'b-')
+        ax1.set_ylabel('°C')
+        ax2 = ax1.twinx()
+        ax2.plot(time, temp_c * 9/5 + 32, 'r-')  # Same data, duplicated!
+        ax2.set_ylabel('°F')
+
+    This draws two independent lines that can drift apart if axis limits are changed manually. `secondary_yaxis` guarantees the conversion is always correct because it is computed from the primary axis — no data duplication, no drift.

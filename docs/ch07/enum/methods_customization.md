@@ -2,6 +2,9 @@
 
 Add methods to enums and customize their behavior to create powerful, expressive types.
 
+!!! tip "Mental Model"
+    An enum is not just a bag of constants -- it is a class, and its members are instances. This means you can add methods, properties, and even `__init__` to give each member domain-specific behavior. Instead of scattering `if status == ...` checks across your codebase, put the logic on the enum itself: `status.next_state()`.
+
 ---
 
 ## Adding Methods to Enums
@@ -37,6 +40,9 @@ small = Size.SMALL
 print(small.get_next_size())        # Size.MEDIUM
 print(small.get_price_multiplier()) # 1.0
 ```
+
+!!! note "Closed Polymorphism"
+    Enums with methods are a form of **closed polymorphism** — the set of variants is fixed at definition time, and each member can carry its own behavior. This is similar to algebraic data types in functional languages. Unlike open polymorphism (class inheritance, where anyone can add new subclasses), enum polymorphism is **exhaustive** — you can handle every case and be certain you haven't missed one. This makes enums ideal for state machines, command patterns, and any domain where the set of options is known and complete.
 
 ## Properties in Enums
 
@@ -213,6 +219,15 @@ print(f"{error.code}: {error.get_message()}")  # 404: Resource not found
 - Display formatting
 - Lookup functionality
 
+!!! warning "When NOT to Add Methods"
+    Enums with methods are powerful, but not every enum needs them. Avoid adding methods when:
+
+    - The logic doesn't depend on the enum member itself — use a standalone function instead.
+    - The method grows complex enough to warrant its own class — this is a sign you need a full class hierarchy, not a method-heavy enum.
+    - The enum is used purely as a set of constants (e.g., configuration keys) — methods add complexity without value.
+
+    A good rule of thumb: if your enum has more method lines than member definitions, consider whether a class with an enum attribute would be clearer.
+
 ---
 
 ## Exercises
@@ -292,3 +307,84 @@ Create a `Direction` enum with a `opposite` property that returns the opposite d
         print(Direction.EAST.opposite)     # Direction.WEST
         print(Direction.NORTH.rotate(1))   # Direction.EAST
         print(Direction.NORTH.rotate(3))   # Direction.WEST
+
+---
+
+**Exercise 4.**
+An enum has grown to include a complex `process()` method with 20+ lines of logic. A colleague argues this is fine because "enums can have methods." Explain why this is a design smell and propose a refactored design that keeps the enum simple. Illustrate with a before/after sketch.
+
+??? success "Solution to Exercise 4"
+
+    **Why it's a smell:** Enums are meant to be lightweight symbolic constants. When methods grow complex, the enum takes on responsibilities that belong to a separate class. This makes the enum harder to test, harder to extend, and harder to read.
+
+    **Before (design smell):**
+
+        class TaskStatus(Enum):
+            PENDING = "pending"
+            RUNNING = "running"
+            DONE = "done"
+
+            def process(self, task, db, logger, notifier):
+                if self == TaskStatus.PENDING:
+                    # 20 lines of scheduling logic...
+                    pass
+                elif self == TaskStatus.RUNNING:
+                    # 20 lines of monitoring logic...
+                    pass
+                elif self == TaskStatus.DONE:
+                    # 20 lines of cleanup logic...
+                    pass
+
+    **After (clean separation):**
+
+        class TaskStatus(Enum):
+            PENDING = "pending"
+            RUNNING = "running"
+            DONE = "done"
+
+        class TaskProcessor:
+            def process(self, status: TaskStatus, task):
+                handler = {
+                    TaskStatus.PENDING: self._schedule,
+                    TaskStatus.RUNNING: self._monitor,
+                    TaskStatus.DONE: self._cleanup,
+                }
+                return handler[status](task)
+
+    **Rule of thumb:** if a method needs dependencies beyond `self` (databases, loggers, external services), it belongs in a service class, not the enum.
+
+---
+
+**Exercise 5.**
+Create a `Temperature` enum with members `FREEZING = 0`, `COLD = 10`, `WARM = 20`, `HOT = 30` (values in Celsius). Add a `to_fahrenheit` property, a `__str__` that shows both units, and a class method `from_celsius(temp)` that returns the closest matching member. Demonstrate all three.
+
+??? success "Solution to Exercise 5"
+
+        from enum import Enum
+
+        class Temperature(Enum):
+            FREEZING = 0
+            COLD = 10
+            WARM = 20
+            HOT = 30
+
+            @property
+            def to_fahrenheit(self):
+                return self.value * 9 / 5 + 32
+
+            def __str__(self):
+                return f"{self.name}: {self.value}°C / {self.to_fahrenheit:.0f}°F"
+
+            @classmethod
+            def from_celsius(cls, temp):
+                return min(cls, key=lambda m: abs(m.value - temp))
+
+        # Property
+        print(Temperature.FREEZING.to_fahrenheit)  # 32.0
+
+        # __str__
+        print(Temperature.HOT)  # HOT: 30°C / 86°F
+
+        # Class method
+        print(Temperature.from_celsius(15))  # Temperature.COLD (closest to 15)
+        print(Temperature.from_celsius(28))  # Temperature.HOT (closest to 28)

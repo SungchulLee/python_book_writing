@@ -2,6 +2,9 @@
 
 Customize box plot appearance through color schemes, line styles, and component-specific properties.
 
+!!! tip "Mental Model"
+    By default, `boxplot()` draws unfilled outlines. Set `patch_artist=True` to get filled rectangles, then use `boxprops`, `medianprops`, `whiskerprops`, `capprops`, and `flierprops` dictionaries to style each component independently. Think of each dictionary as a CSS rule targeting one part of the box plot anatomy.
+
 ## Box Colors
 
 Use `patch_artist=True` to enable box filling with colors.

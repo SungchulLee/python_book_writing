@@ -2,6 +2,8 @@
 
 Operators are special symbols that perform operations on values (operands). Python provides several categories of operators.
 
+!!! tip "Mental Model"
+    Every Python operator is syntactic sugar for a method call: `a + b` calls `a.__add__(b)`, `a == b` calls `a.__eq__(b)`, and so on. This means operators work with any type that defines the right dunder method. Understanding this connection explains why `+` can add numbers, concatenate strings, and merge lists -- each type defines its own `__add__`.
 
 ## Operators and Operands
 

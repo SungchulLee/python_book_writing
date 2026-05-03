@@ -2,6 +2,9 @@
 
 Machine precision (or machine epsilon) quantifies the smallest relative difference between consecutive floating-point numbers. This fundamental limit determines the accuracy achievable in numerical computations.
 
+!!! tip "Mental Model"
+    Machine epsilon is the width of the "blind spot" around 1.0: any value smaller than epsilon gets rounded away when added to 1.0. Since floats use a fixed number of mantissa bits, this blind spot scales with the magnitude of the number -- larger numbers have larger gaps between representable neighbors.
+
 ## Machine Epsilon
 
 The machine epsilon $\epsilon$ is the smallest value such that $1 + \epsilon \neq 1$ in floating-point arithmetic.

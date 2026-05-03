@@ -2,6 +2,9 @@
 
 The `between()` method filters values within a range, inclusive of both endpoints.
 
+!!! tip "Mental Model"
+    `between(a, b)` is shorthand for `(x >= a) & (x <= b)`. It returns a boolean mask that is True for values inside the interval. Use it whenever you need a range filter -- it is cleaner than a double inequality and supports an `inclusive` parameter for open or half-open ranges.
+
 ## Basic Usage
 
 Filter values in a range.

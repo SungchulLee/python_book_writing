@@ -2,6 +2,9 @@
 
 Debug a program after it crashes using post-mortem debugging.
 
+!!! tip "Mental Model"
+    Post-mortem debugging is an autopsy for crashed programs. Instead of adding breakpoints and re-running, you examine the program's state at the exact moment it died — the exception, the call stack, and every local variable in each frame. It is invaluable when a bug is hard to reproduce or occurs deep in a call chain.
+
 ## Post-Mortem Debugging with pdb
 
 Debug exceptions after they occur.

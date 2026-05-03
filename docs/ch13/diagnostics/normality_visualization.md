@@ -2,6 +2,9 @@
 
 Many statistical methods -- $t$-tests, ANOVA, linear regression -- assume that data or residuals follow a normal distribution. While formal tests like Shapiro-Wilk provide a binary decision, visual methods reveal the nature and severity of departures from normality. A histogram might show skewness, a QQ plot might show heavy tails, and these patterns inform which remedies (transformations, nonparametric alternatives) are appropriate. This page demonstrates the primary visual techniques for assessing normality.
 
+!!! tip "Mental Model"
+    A normality check is like fitting a template over your data. The histogram reveals gross shape mismatches (skewness, bimodality), while the QQ plot magnifies subtle tail deviations that the histogram hides. Use both together: the histogram for the big picture, the QQ plot for the fine details.
+
 ---
 
 ## Histogram with Normal Overlay

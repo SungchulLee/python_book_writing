@@ -2,6 +2,9 @@
 
 The `groupby()` method creates a GroupBy object that represents a collection of DataFrame groups. It enables split-apply-combine operations.
 
+!!! tip "Mental Model"
+    `groupby()` does not compute anything immediately -- it creates a lazy object that remembers how to partition the DataFrame. The actual work happens when you call an aggregation, transformation, or filter on it. Think of the GroupBy object as a set of labeled envelopes, each containing the rows that share a key, waiting to be opened by the next method call.
+
 ## Creating GroupBy
 
 Group a DataFrame by one or more columns.

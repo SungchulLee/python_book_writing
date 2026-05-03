@@ -2,6 +2,9 @@
 
 `Callable` annotates functions or callable objects, while `TypeAlias` creates named type aliases for complex type annotations.
 
+!!! tip "Mental Model"
+    `Callable[[ArgTypes], ReturnType]` is the type hint for "anything you can call like a function." Use it to annotate callbacks, strategy parameters, or decorator arguments. `TypeAlias` gives a name to a long or complex type expression so you can reuse it without repeating the full definition — like a variable for types.
+
 ## Callable - Function Type Hints
 
 Use `Callable` to annotate functions and callbacks.

@@ -1,5 +1,8 @@
 # Chained Assignment
 
+!!! tip "Mental Model"
+    `a = b = c = value` evaluates `value` once and binds all three names to that single object. With immutables like integers this is harmless, but with mutables like lists it means all names share the same object -- mutating through one name is visible through all of them.
+
 ## Basic Chaining
 
 ### 1. Simple Case

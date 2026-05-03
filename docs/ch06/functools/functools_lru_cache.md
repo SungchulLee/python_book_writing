@@ -2,6 +2,9 @@
 
 The `@lru_cache` decorator provides memoization with a **Least Recently Used** eviction policy. It caches function results and automatically removes the oldest entries when the cache reaches its size limit.
 
+!!! tip "Mental Model"
+    `@lru_cache` is memoization with a memory budget. It stores results in a dictionary keyed by arguments, but when the cache is full, it evicts the least recently used entry. Think of it as a fixed-size notepad: you jot down answers to save work, but when the notepad is full, you erase the oldest note you haven't looked at recently.
+
 ```python
 from functools import lru_cache
 ```

@@ -2,6 +2,9 @@
 
 **Homebrew** is a package manager for **macOS** (and Linux). It installs system-level software, including Python itself.
 
+!!! tip "Mental Model"
+    Homebrew operates one layer below pip and conda — it installs *system-level* software (Git, PostgreSQL, Python itself) rather than Python packages. Think of it as macOS's missing package manager: `brew install python` gives you the interpreter, then you use pip or conda inside it to install Python libraries.
+
 ---
 
 ## What is Homebrew?

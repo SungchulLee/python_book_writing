@@ -2,6 +2,9 @@
 
 Python floats include special values for infinity and undefined results. Understanding these values is essential for robust numerical code.
 
+!!! tip "Mental Model"
+    IEEE 754 reserves special bit patterns for three edge cases: positive infinity, negative infinity, and NaN ("not a number"). Infinity behaves like a mathematical limit -- it is greater than every finite number. NaN is the toxic value: any arithmetic with NaN produces NaN, and `NaN != NaN` is `True`, making it the only Python value not equal to itself.
+
 ## Infinity
 
 Representing unbounded values.

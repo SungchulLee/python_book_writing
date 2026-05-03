@@ -2,6 +2,9 @@
 
 A **deadlock** occurs when two or more threads are blocked forever, each waiting for resources held by the other.
 
+!!! tip "Mental Model"
+    Imagine two people meeting in a narrow hallway, each insisting the other step aside first -- neither can move. Deadlocks happen when threads acquire locks in different orders. The universal fix is to always acquire locks in the same global order, so circular waiting becomes impossible.
+
 ## Classic Deadlock Example
 
 ### Two Threads, Two Locks

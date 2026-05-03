@@ -2,6 +2,18 @@
 
 NumPy provides element-wise power, exponential, and logarithmic functions.
 
+!!! tip "Mental Model"
+    `np.exp`, `np.log`, and `**` are element-wise ufuncs that apply the corresponding math function to every element independently. They are the vectorized equivalents of `math.exp` and `math.log` -- same formulas, but operating on entire arrays at once. Use `np.log` for natural log, `np.log10` for base-10, and `np.log2` for base-2.
+
+    Conceptually, **exp and log are transformations of scale**: `exp` maps additive
+    differences to multiplicative ratios, and `log` does the reverse. This is why
+    they appear everywhere — decibels (log scale of power), softmax (exp for
+    probabilities), compound growth (exp of rate × time), and information theory
+    (log of probabilities).
+
+!!! info "These Are Just Ufuncs"
+    Every function on this page — `np.exp`, `np.log`, `np.sqrt`, `np.power` — is a ufunc. They follow the same execution pattern as arithmetic: broadcast inputs, apply a compiled C scalar function element-wise, produce an output array. They support `out=`, `where=`, `.reduce()`, and every other ufunc feature. The math is domain-specific; the mechanism is identical.
+
 ## Power Operations
 
 ### 1. Using ** Operator

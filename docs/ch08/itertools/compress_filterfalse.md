@@ -2,6 +2,9 @@
 
 `compress()` filters based on a selector iterable, while `filterfalse()` keeps elements where the predicate is False. Use `compress()` when you have a precomputed boolean mask from a separate computation, and `filterfalse()` when you need the complement of the built-in `filter()` — that is, the elements that fail a predicate test.
 
+!!! tip "Mental Model"
+    `compress` is a stencil: lay a boolean mask over your data and only the items under `True` holes pass through. `filterfalse` is the inverse of `filter` — it keeps what `filter` would discard. Together they let you partition data by any criterion without writing conditional loops.
+
 ## compress() - Filter with Selectors
 
 `compress()` pairs each element in a data iterable with a corresponding value in a selector iterable and yields only those elements whose selector is truthy. This is similar to applying a boolean mask to a sequence.

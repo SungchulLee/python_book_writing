@@ -1,5 +1,8 @@
 # Higher-Order Functions
 
+!!! tip "Mental Model"
+    A higher-order function treats other functions as data -- it either accepts a function as an argument, returns a function, or both. This is the gateway to functional programming: once functions can flow in and out of other functions, you can build powerful abstractions like `map`, `filter`, decorators, and pipelines.
+
 ## Definition
 
 Functions that:

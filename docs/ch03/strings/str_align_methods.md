@@ -17,6 +17,9 @@ print(s)  # 'Hello'
 print(t)  # 'Hello     '
 ```
 
+!!! tip "Mental Model"
+    Alignment methods pad a string to a target width: `ljust` pads on the right, `rjust` pads on the left, and `center` pads on both sides. If the string is already at least as wide as the target, it is returned unchanged. For more complex formatting, f-string format specifiers (`f"{val:<10}"`) offer the same alignment with additional options.
+
 ---
 
 ## Basic Alignment Methods

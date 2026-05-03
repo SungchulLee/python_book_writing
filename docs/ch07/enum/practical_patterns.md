@@ -2,6 +2,18 @@
 
 Real-world enum patterns that solve common application needs: state machines, configuration, and domain modeling.
 
+!!! tip "Mental Model"
+    Enums shine when you need a closed set of named options with behavior attached. Each pattern on this page replaces scattered `if/elif` logic with methods on the enum itself -- state machines validate transitions, configuration enums carry environment settings, and dispatch enums route to the right handler. The enum becomes the single source of truth for both the values and their semantics.
+
+!!! tip "Pattern Quick Reference"
+    | Pattern | When to use | Key technique |
+    |---|---|---|
+    | State Machine | Workflows with valid transitions | `can_transition_to()` method with transition map |
+    | Configuration | Environment-specific settings | `@property` returning config dict |
+    | Dispatch / Handler | Route to different logic by type | Method returning handler callable |
+    | Roles & Permissions | Access control | `can_perform(action)` with permission sets |
+    | Domain Modeling | Rich value objects (cards, menu items) | Tuple values + `@property` accessors |
+
 ---
 
 ## State Machine Pattern
@@ -498,6 +510,34 @@ if __name__ == '__main__':
     demo_enum_features()
 ```
 
+## Choosing the Right Enum Type
+
+!!! tip "Enum Decision Guide"
+
+    **Use `Enum` when:**
+
+    - You need a fixed set of named constants with type safety
+    - Values represent domain concepts (states, roles, categories)
+    - You want to prevent accidental comparisons with raw values
+
+    **Use `Flag` when:**
+
+    - Multiple options can be active simultaneously (permissions, features, config flags)
+
+    **Use `IntEnum` when:**
+
+    - Interacting with numeric APIs, C libraries, or legacy code expecting integers
+
+    **Use `StrEnum` when:**
+
+    - Interacting with string-based systems (JSON, HTTP headers, config files)
+
+    **Avoid enums when:**
+
+    - Values are dynamic or come from external sources at runtime
+    - The set of values changes frequently
+    - You need hundreds of members (use a dictionary or database instead)
+
 ---
 
 ## Exercises
@@ -596,3 +636,93 @@ Build a `Command` enum for a CLI application with values as description strings.
 
         unknown = Command.from_input("quit")
         print(unknown)  # None
+
+---
+
+**Exercise 4.**
+Design a `PaymentState` enum-based state machine with states `CREATED`, `AUTHORIZED`, `CAPTURED`, `REFUNDED`, `FAILED`. Define valid transitions (e.g., `CREATED` can go to `AUTHORIZED` or `FAILED`, but `REFUNDED` is a terminal state). Add a `transition(next_state)` method that raises `ValueError` for invalid transitions. Write a test scenario that processes a payment through its full lifecycle and catches an invalid transition attempt.
+
+??? success "Solution to Exercise 4"
+
+        from enum import Enum
+
+        class PaymentState(Enum):
+            CREATED = "created"
+            AUTHORIZED = "authorized"
+            CAPTURED = "captured"
+            REFUNDED = "refunded"
+            FAILED = "failed"
+
+            _transitions = {
+                "created": {"authorized", "failed"},
+                "authorized": {"captured", "failed"},
+                "captured": {"refunded"},
+                "refunded": set(),
+                "failed": set(),
+            }
+
+            def transition(self, next_state):
+                allowed = self._transitions.value.get(self.value, set())
+                if next_state.value not in allowed:
+                    raise ValueError(
+                        f"Cannot transition from {self.name} to {next_state.name}"
+                    )
+                return next_state
+
+        # Happy path
+        state = PaymentState.CREATED
+        state = state.transition(PaymentState.AUTHORIZED)
+        state = state.transition(PaymentState.CAPTURED)
+        state = state.transition(PaymentState.REFUNDED)
+        print(f"Final state: {state.name}")  # REFUNDED
+
+        # Invalid transition
+        try:
+            state.transition(PaymentState.CAPTURED)
+        except ValueError as e:
+            print(e)  # Cannot transition from REFUNDED to CAPTURED
+
+---
+
+**Exercise 5.**
+Compare two approaches to associating configuration with enum members: (1) a `@property` that returns a dict, and (2) tuple values with `@property` accessors. Implement both for a `Database` enum with members `SQLITE`, `POSTGRES`, `MYSQL`, each having a `driver`, `default_port`, and `supports_json` attribute. Discuss the trade-offs: which is easier to read? Which is easier to extend with new fields?
+
+??? success "Solution to Exercise 5"
+
+        from enum import Enum
+
+        # Approach 1: @property returning dict
+        class Database1(Enum):
+            SQLITE = "sqlite"
+            POSTGRES = "postgres"
+            MYSQL = "mysql"
+
+            @property
+            def config(self):
+                configs = {
+                    Database1.SQLITE: {"driver": "sqlite3", "default_port": None, "supports_json": False},
+                    Database1.POSTGRES: {"driver": "psycopg2", "default_port": 5432, "supports_json": True},
+                    Database1.MYSQL: {"driver": "pymysql", "default_port": 3306, "supports_json": True},
+                }
+                return configs[self]
+
+        print(Database1.POSTGRES.config["default_port"])  # 5432
+
+        # Approach 2: Tuple values with properties
+        class Database2(Enum):
+            SQLITE = ("sqlite3", None, False)
+            POSTGRES = ("psycopg2", 5432, True)
+            MYSQL = ("pymysql", 3306, True)
+
+            def __init__(self, driver, default_port, supports_json):
+                self.driver = driver
+                self.default_port = default_port
+                self.supports_json = supports_json
+
+        print(Database2.POSTGRES.default_port)  # 5432
+
+    **Trade-offs:**
+
+    - **Approach 1** (property dict) is easier to extend with new fields — just add a key to each dict. But access is string-based (`config["driver"]`), which has no IDE autocompletion and risks `KeyError` typos.
+    - **Approach 2** (tuple values) gives clean attribute access (`db.driver`) with IDE support, but adding a new field requires updating every member's tuple and the `__init__` signature.
+    - For 2–3 fields, approach 2 is cleaner. For many fields or frequently changing schemas, approach 1 or a `dataclass` value is more practical.

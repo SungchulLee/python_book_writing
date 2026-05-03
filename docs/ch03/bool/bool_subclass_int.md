@@ -2,6 +2,9 @@
 
 In Python, `bool` is a subclass of `int`, giving boolean values numeric properties.
 
+!!! tip "Mental Model"
+    `True` is literally the integer `1` and `False` is literally `0`, just wearing a boolean costume. Because `bool` inherits from `int`, booleans participate in arithmetic, indexing, and summation. `sum(bool_list)` counts `True` values precisely because each `True` adds 1.
+
 ---
 
 ## Numeric Behavior

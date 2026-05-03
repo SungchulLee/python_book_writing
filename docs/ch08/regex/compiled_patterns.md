@@ -1,5 +1,8 @@
 # Compiling Patterns
 
+!!! tip "Mental Model"
+    `re.compile()` pre-parses a pattern string into an internal state machine once, so you can reuse it many times without paying the parsing cost again. Think of it as compiling source code into an executable — the compiled pattern object is faster to apply repeatedly and also makes code more readable by giving the pattern a name.
+
 ## Why Compile?
 
 `re.compile()` converts a pattern string into a **compiled regular expression object**. This object has the same methods as the `re` module functions (`search`, `match`, `findall`, etc.) but avoids re-parsing the pattern on every call.

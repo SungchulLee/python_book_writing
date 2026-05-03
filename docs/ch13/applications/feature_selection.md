@@ -2,6 +2,9 @@
 
 Before training a machine learning model, selecting the most informative features from a large candidate set can improve predictive accuracy, reduce overfitting, and speed up computation. Statistical tests provide a principled, model-free approach to measuring the relationship between each feature and the target variable. This section demonstrates how to use `scipy.stats` functions for univariate feature selection.
 
+!!! tip "Mental Model"
+    Think of feature selection as auditioning candidates for a team. Each statistical test asks one question: "Does this feature carry a signal about the target, or is it just noise?" Features that fail the audition are cut, leaving a leaner model that generalizes better.
+
 ## Statistical Criteria for Feature Relevance
 
 Univariate feature selection evaluates each feature independently by testing the null hypothesis that the feature is unrelated to the target. The choice of test depends on the data types involved.

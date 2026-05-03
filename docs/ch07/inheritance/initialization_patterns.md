@@ -2,6 +2,9 @@
 
 When a child class defines its own `__init__`, Python does not automatically call the parent's initializer. If the parent sets up important attributes or performs setup logic, those steps are silently skipped unless the child explicitly invokes them. The `super()` function provides a clean, MRO-aware way to call parent initializers, and using it correctly is essential for both single and multiple inheritance.
 
+!!! tip "Mental Model"
+    Python's rule is simple: defining `__init__` in a child class replaces the parent's -- it does not extend it. If the parent's setup matters, the child must explicitly call `super().__init__()`. Think of it as relaying a baton: if you do not pass it, the next runner never starts. In multiple inheritance, `super()` follows the MRO, so every class in the chain gets its turn.
+
 ## Parent __init__
 
 ### 1. Call super()

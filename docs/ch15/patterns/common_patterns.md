@@ -2,6 +2,9 @@
 
 Practical patterns for concurrent and parallel programming in Python.
 
+!!! tip "Mental Model"
+    Concurrency patterns are battle-tested templates for organizing parallel work. Parallel map distributes independent items across workers, producer-consumer decouples generation from processing via a queue, and fan-out/fan-in splits a job into subtasks then merges results. Knowing which pattern fits your problem is half the solution.
+
 ---
 
 ## Pattern 1: Parallel Map

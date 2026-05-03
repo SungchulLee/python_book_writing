@@ -2,6 +2,9 @@
 
 The `assign()` method adds new columns to a DataFrame, returning a new DataFrame with the additions.
 
+!!! tip "Mental Model"
+    `assign()` is the functional way to add columns: it returns a new DataFrame instead of modifying the original. This makes it perfect for method chaining -- you can pipe `assign` calls together to build up derived columns step by step without side effects.
+
 ## Basic Usage
 
 Add new columns.

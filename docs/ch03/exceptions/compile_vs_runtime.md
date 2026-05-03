@@ -2,6 +2,8 @@
 
 Programming errors fall into three main categories based on when they occur: compile-time errors (caught before execution), runtime errors (caught during execution), and logical errors (never caught by Python).
 
+!!! tip "Mental Model"
+    Python catches errors at two stages. Syntax errors are caught when the source code is parsed into bytecode -- before any line runs. Runtime errors (like `NameError` or `TypeError`) only surface when the faulty line actually executes. Logical errors are the sneakiest: the code runs without complaint but produces wrong results.
 
 ## Compile-Time Errors
 

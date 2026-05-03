@@ -257,6 +257,7 @@ p.price = 19.99    # ✅ OK
 ### 1. When to Use Property
 
 Use `@property` when:
+
 - Simple getter/setter/deleter logic
 - One-off attribute management
 - Quick prototyping
@@ -272,6 +273,7 @@ class Circle:
 ### 2. When to Use Custom Descriptor
 
 Use custom descriptor when:
+
 - Reusable validation logic
 - Complex attribute behavior
 - Need to share logic across multiple classes
@@ -492,6 +494,9 @@ __get__, __set__, __delete__
 - Document descriptor behavior clearly
 - Test edge cases (class access, None checks)
 - Consider using `__set_name__` for automatic naming
+
+!!! tip "The Unifying View"
+    There are no "properties" in Python — there is only **attribute access + the descriptor protocol**. When you write `obj.attr`, Python checks the class for a descriptor first. If found, the descriptor's `__get__`/`__set__`/`__delete__` methods control access. `@property`, `cached_property`, methods, `__slots__`, and custom descriptors are all variations of this single mechanism. Properties are not special syntax — they are part of attribute lookup.
 
 ---
 

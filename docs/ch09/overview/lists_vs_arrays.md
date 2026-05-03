@@ -3,6 +3,15 @@
 !!! tip "Mental Model"
     Python lists store pointers to scattered objects; NumPy arrays store raw values in a single contiguous block. This difference makes arrays 10-100x faster for numeric operations because the CPU can process elements in bulk without pointer chasing. The trade-off is that arrays require a single dtype, while lists can mix types freely.
 
+!!! note "Why This Enables Everything"
+    The constraint of contiguous memory + fixed dtype is not a limitation — it is the **foundation** of the entire NumPy system:
+
+    - Contiguous memory → enables **vectorized computation** (ufuncs process whole arrays in compiled C)
+    - Fixed dtype → enables **broadcasting** (shape-based rules replace explicit loops)
+    - Predictable layout → enables **views and strides** (reshape, transpose, slicing without copying)
+
+    Without this constraint, none of NumPy's speed or abstractions would exist. Every topic in later chapters — broadcasting, FFT, linear algebra — depends on this memory model.
+
 ## Performance
 
 ### 1. Speed Comparison

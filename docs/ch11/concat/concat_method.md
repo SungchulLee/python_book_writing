@@ -2,6 +2,9 @@
 
 The `concat()` function concatenates pandas objects along a particular axis, stacking DataFrames vertically or horizontally.
 
+!!! tip "Mental Model"
+    `pd.concat` is like stacking blocks. With `axis=0` (default) you stack vertically -- more rows. With `axis=1` you stack horizontally -- more columns. No key matching happens; DataFrames are simply glued along the chosen axis, and pandas aligns by index labels to decide where NaN fills appear.
+
 ## Basic Usage
 
 Concatenate DataFrames vertically.

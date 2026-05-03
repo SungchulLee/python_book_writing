@@ -2,6 +2,20 @@
 
 NumPy arrays and C arrays share memory layout but differ significantly in functionality.
 
+!!! tip "Mental Model"
+    A NumPy array is essentially a C array with a Python object wrapper that adds shape metadata, bounds checking, dtype awareness, and vectorized operations. The raw bytes are identical -- which is why NumPy can interoperate with C/Fortran libraries at zero copy cost -- but the Python layer provides safety and expressiveness that raw C arrays lack.
+
+    The one-sentence summary: **NumPy = high-level interface to low-level
+    performance.** You write Python; NumPy dispatches to compiled C/Fortran loops
+    over contiguous memory, achieving speeds within 2--5x of hand-written C for
+    most array operations.
+
+    The bridge between the two worlds is the **ufunc**: each ufunc is a thin
+    Python wrapper around a compiled C loop that iterates over the data buffer
+    using strides. When you write `a + b`, Python calls `np.add`, which calls
+    a C function that reads contiguous memory — exactly like a hand-written
+    `for` loop in C, but without you writing it.
+
 
 ## Memory Layout
 

@@ -2,6 +2,9 @@
 
 Floating-point arithmetic introduces systematic errors that can accumulate and compromise computational results. Understanding these error sources is essential for writing reliable numerical code.
 
+!!! tip "Mental Model"
+    Every floating-point operation can introduce a tiny rounding error up to machine epsilon. One error is negligible, but millions of them can snowball -- especially when you subtract nearly equal numbers (catastrophic cancellation) or accumulate a running sum. Awareness of where errors creep in is the first step toward controlling them.
+
 ## Round-Off Error
 
 Every floating-point operation may introduce a small rounding error bounded by machine epsilon.

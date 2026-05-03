@@ -2,6 +2,9 @@
 
 Choosing between composition and inheritance is one of the most consequential design decisions in object-oriented programming. The widely cited guideline "favor composition over inheritance" exists because composition generally provides greater flexibility, simpler testing, and fewer surprises as a codebase grows. This page summarizes when each approach is appropriate and why.
 
+!!! tip "Mental Model"
+    Start every design decision with the question: "Would I bet that this *is-a* relationship will hold true in two years?" If the answer is uncertain, use composition -- it is always easier to plug in a new component than to restructure an inheritance tree. Inheritance is a one-way door; composition is a revolving one.
+
 ## Prefer Composition
 
 ### 1. Over Inheritance
@@ -50,6 +53,22 @@ Real design decisions are often not clear-cut. Some cases genuinely support eith
 - **`Stack` and `list`**: a stack *is-a* restricted list, but inheriting from `list` exposes methods (`insert`, `sort`) that violate the stack contract. Composition (wrapping a list) is safer.
 
 When the choice is ambiguous, ask: **will this hierarchy need to change?** If yes, lean toward composition. If the hierarchy is small and stable, inheritance is fine. See [Is-a vs Has-a](isa_vs_hasa.md) and [Composition vs Inheritance](composition_vs_inheritance.md) for deeper comparisons.
+
+## Quick Decision Tree
+
+!!! tip "One-Minute Decision"
+    ```text
+    What kind of relationship?
+    │
+    ├── "Is-a" (true type) ──→ Inheritance
+    │     └── But will it change at runtime? ──→ Composition
+    │
+    ├── "Has-a" (containment) ──→ Composition or Aggregation
+    │     ├── Container creates & owns parts? ──→ Composition
+    │     └── Parts are shared or pre-existing? ──→ Aggregation
+    │
+    └── Unsure? ──→ Default to composition
+    ```
 
 ## Summary
 
@@ -202,3 +221,100 @@ Identify a case where inheritance IS the right choice: model a `Shape` hierarchy
         shapes = [Circle(5), Rectangle(4, 6), Triangle(3, 4, 5)]
         for s in shapes:
             print(s.describe())
+
+---
+
+**Exercise 4.**
+A `Stack` can be modeled either by inheriting from `list` or by composing a `list`. Implement both approaches. Then demonstrate the problem with inheritance: show that `Stack(list)` exposes `insert()`, `sort()`, and other methods that violate the stack contract (LIFO only). Explain why composition is the safer choice here.
+
+??? success "Solution to Exercise 4"
+
+        # Inheritance approach — problematic
+        class StackInherit(list):
+            def push(self, item):
+                self.append(item)
+
+            def pop_top(self):
+                return self.pop()
+
+        si = StackInherit()
+        si.push(1)
+        si.push(2)
+        si.insert(0, 99)  # Violates LIFO! Not blocked.
+        si.sort()          # Also allowed — not a stack operation.
+        print(si)          # [1, 2, 99] — broken stack invariant
+
+        # Composition approach — safe
+        class StackCompose:
+            def __init__(self):
+                self._data = []
+
+            def push(self, item):
+                self._data.append(item)
+
+            def pop(self):
+                if not self._data:
+                    raise IndexError("pop from empty stack")
+                return self._data.pop()
+
+            def peek(self):
+                if not self._data:
+                    raise IndexError("peek at empty stack")
+                return self._data[-1]
+
+            def __len__(self):
+                return len(self._data)
+
+        sc = StackCompose()
+        sc.push(1)
+        sc.push(2)
+        # sc.insert(0, 99)  # AttributeError — not exposed
+        # sc.sort()          # AttributeError — not exposed
+        print(sc.pop())  # 2 — correct LIFO behavior
+
+    Inheritance from `list` exposes the entire `list` API, including operations that break the stack contract. Composition hides the internal list and only exposes `push`, `pop`, `peek`, and `__len__` — exactly the operations a stack should support. This is a textbook case where "is-a" (a stack *is-a* list) sounds plausible but fails the **Liskov Substitution Principle**: code that uses `list.insert()` would break the stack's invariant.
+
+---
+
+**Exercise 5.**
+A colleague says "I always use composition — inheritance is an anti-pattern." Construct a counter-example: describe a scenario where inheritance is clearly simpler and more appropriate than composition. Implement it, and explain the three criteria that make inheritance the right choice in this case.
+
+??? success "Solution to Exercise 5"
+
+        from abc import ABC, abstractmethod
+
+        class Shape(ABC):
+            @abstractmethod
+            def area(self) -> float:
+                pass
+
+            def describe(self):
+                return f"{type(self).__name__}: area = {self.area():.2f}"
+
+        class Circle(Shape):
+            def __init__(self, radius):
+                self.radius = radius
+
+            def area(self):
+                import math
+                return math.pi * self.radius ** 2
+
+        class Rectangle(Shape):
+            def __init__(self, w, h):
+                self.w, self.h = w, h
+
+            def area(self):
+                return self.w * self.h
+
+        # Polymorphism: works for any Shape
+        shapes = [Circle(5), Rectangle(3, 4)]
+        for s in shapes:
+            print(s.describe())
+
+    **Three criteria that make inheritance right here:**
+
+    1. **True is-a relationship:** "Circle is-a Shape" is natural and stable. Nobody would say "Circle has-a Shape."
+    2. **Shared interface for polymorphism:** The `describe()` method works uniformly across all shapes. Client code (`for s in shapes`) does not care which specific shape it has.
+    3. **Shallow, stable hierarchy:** The set of shapes rarely changes, and there is only one level of inheritance.
+
+    A composition alternative would require every shape to hold a `ShapeImpl` object and delegate `area()` to it — more code for no benefit. Inheritance is not an anti-pattern; it is the wrong tool *when applied to problems that don't fit the three criteria above*.

@@ -2,6 +2,9 @@
 
 Configure logging using dictConfig for Python dicts or fileConfig for configuration files.
 
+!!! tip "Mental Model"
+    Logging configuration wires together three things: *loggers* (who emits), *handlers* (where it goes), and *formatters* (how it looks). `dictConfig` lets you declare all three in a single dictionary, applied once at startup. This separates "what to log" in your code from "how to deliver it" in configuration — so you can redirect output without touching a single log call.
+
 ## dictConfig - Dictionary Configuration
 
 Configure logging with a dictionary.

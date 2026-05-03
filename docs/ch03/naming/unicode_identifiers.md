@@ -1,5 +1,8 @@
 # Unicode Identifiers
 
+!!! tip "Mental Model"
+    Python 3 lets you name variables using Unicode letters, so identifiers like `nombre`, `alpha`, or even Korean and Chinese characters are syntactically valid. This is powerful for mathematical code or localized teaching, but in production it is best to stick to ASCII names for cross-team readability and tool compatibility.
+
 ## Unicode Support
 
 ### 1. Python 3 Allows

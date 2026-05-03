@@ -2,6 +2,9 @@
 
 Classical estimators like the sample mean and variance are optimal when data follow an exact parametric model, but even a single outlier can render them misleading. Robust statistics provides estimators that remain reliable under contamination, trading a small amount of efficiency under ideal conditions for stability when the data deviate from assumptions. This page covers the key robust estimators available in `scipy.stats`, including the median absolute deviation, trimmed and winsorized statistics, and the concept of breakdown point.
 
+!!! tip "Mental Model"
+    Robust estimators are built to survive contamination. The breakdown point tells you how many data points an adversary can corrupt before the estimator gives nonsense. The mean breaks after a single bad point (0% breakdown), while the median survives up to 50% corruption -- the price is a small loss of precision on clean data.
+
 ---
 
 ## Breakdown Point

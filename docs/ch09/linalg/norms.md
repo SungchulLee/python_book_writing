@@ -2,6 +2,14 @@
 
 Compute vector and matrix norms using `np.linalg.norm`.
 
+!!! tip "Mental Model"
+    A norm measures the "size" of a vector or matrix as a single number. The L2 (Euclidean) norm gives the straight-line length, L1 gives the taxicab distance, and the Frobenius norm extends Euclidean length to matrices. The `axis` parameter lets you compute norms along specific dimensions, which is essential for row-wise or column-wise normalization.
+
+    Across linear algebra, norms serve three roles: **error** (how far is my
+    approximation?), **size** (how large is this vector/matrix?), and **stability**
+    (how sensitive is this system to perturbation?). The condition number — ratio of
+    largest to smallest singular value — is itself a norm-based measure of stability.
+
 ## Vector Norms
 
 ### 1. L2 Norm (Euclidean)

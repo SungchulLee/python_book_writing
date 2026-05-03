@@ -1,5 +1,13 @@
 # dtype and Shape
 
+!!! tip "Mental Model"
+    Every `ndarray` is defined by two metadata attributes: `dtype` (what kind of number each element is) and `shape` (how the flat buffer is folded into dimensions). Together they fully describe the array's structure, and most NumPy errors trace back to a mismatch in one or both.
+
+    The deeper insight: `dtype` is the **interpretation of bytes** (the same 4 bytes
+    can be a float32 or an int32) and `shape` is the **interpretation of structure**
+    (the same 12 elements can be a (3,4) matrix or a (2,6) matrix). Changing either
+    reinterprets existing data without moving it.
+
 ## Type System
 
 ### 1. Built-in dtypes

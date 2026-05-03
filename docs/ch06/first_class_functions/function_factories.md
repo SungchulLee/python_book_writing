@@ -2,6 +2,9 @@
 
 A function factory is a function that creates and returns another function. This pattern leverages closures to generate specialized functions dynamically.
 
+!!! tip "Mental Model"
+    A function factory is a template with blanks: you call it with configuration values, and it hands back a new function with those values baked in via a closure. Each call produces an independent function that remembers its own captured state, like stamping out custom tools from the same mold.
+
 ## Basic Pattern
 
 A function factory returns an inner function that captures variables from the enclosing scope:

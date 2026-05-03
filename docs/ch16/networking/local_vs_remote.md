@@ -1,5 +1,8 @@
 # Local vs Remote Computation
 
+!!! tip "Mental Model"
+    Choosing local vs remote is a shipping problem: if moving data costs more time than the computation itself, keep it local; if the remote machine is dramatically faster, pay the transfer tax. The sweet spot is to move computation to data when data is large, and move data to computation when you need specialized hardware.
+
 ## The Fundamental Trade-off
 
 Where should computation happen? Locally on your machine, or remotely on a server?

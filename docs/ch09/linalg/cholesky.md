@@ -2,6 +2,17 @@
 
 Decompose positive definite matrices as $A = LL^T$.
 
+!!! tip "Mental Model"
+    Cholesky is a "square root" for positive definite matrices -- it splits $A$ into a lower-triangular matrix $L$ times its own transpose. It is roughly twice as fast as a general LU decomposition and serves as the workhorse for sampling multivariate normals, solving symmetric systems, and testing positive definiteness.
+
+!!! note "Connection to Solving Systems"
+    When $A$ is symmetric positive definite, Cholesky gives the fastest path to
+    solving $Ax = b$: factor $A = LL^T$ once, then solve two triangular systems
+    ($Ly = b$, then $L^T x = y$) via `scipy.linalg.cho_solve`. This is roughly 2x
+    faster than the general `np.linalg.solve` (which uses LU) and exploits the
+    structure that `solve` cannot assume. Covariance matrices in statistics and
+    kernel matrices in ML are always SPD, making Cholesky the natural choice.
+
 ## np.linalg.cholesky
 
 ### 1. Basic Usage

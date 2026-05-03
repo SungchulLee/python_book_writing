@@ -20,6 +20,9 @@ flowchart LR
     the default on most modern systems, but older files may use `latin-1` or
     `cp1252`.
 
+!!! tip "Mental Model"
+    CSV is a flat table stored as text---rows are lines, columns are separated by commas. JSON is a nested structure stored as text---it maps directly to Python dicts and lists. Use CSV when your data is tabular and JSON when your data is hierarchical. Python's `csv` and `json` modules handle the parsing so you work with native Python objects.
+
 ---
 
 ## 1. CSV Files

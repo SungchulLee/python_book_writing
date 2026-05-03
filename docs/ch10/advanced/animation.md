@@ -2,6 +2,24 @@
 
 The `matplotlib.animation` module provides tools for creating animated visualizations. `FuncAnimation` is the primary class for creating animations by repeatedly calling a function.
 
+!!! note "Visual Encoding Framework"
+    Each tool in this section encodes a different aspect of data into a visual:
+
+    | Tool | What it encodes |
+    |---|---|
+    | Animation | Change over **time** |
+    | [axhline/axvline](axhline_axvline.md) | **Thresholds** and reference points |
+    | [fill_between](fill_between.md) | **Regions** — area, uncertainty, difference |
+    | [Polar plots](polar_plots.md) | **Periodicity** and direction |
+    | [Quiver plots](quiver_plots.md) | **Vector fields** — direction + magnitude |
+    | [Secondary axes](secondary_axes.md) | **Unit reinterpretation** of same data |
+    | [Twin axes](twin_axes.md) | **Multi-variable comparison** |
+
+    The unifying idea: **visualization = choosing what to emphasize**. Each tool highlights a different structure in the data.
+
+!!! tip "Mental Model"
+    `FuncAnimation` works like a flipbook: it repeatedly calls your update function with a new frame number, and each call modifies the Artists on the Axes (e.g., `line.set_ydata(new_y)`). The init function sets up the blank frame, the update function draws each page, and `interval` controls the flip speed in milliseconds.
+
 ## Basic FuncAnimation
 
 ### Minimal Example
@@ -515,4 +533,71 @@ Create a `FuncAnimation` of a growing scatter plot. Start with an empty scatter 
 
         ani = FuncAnimation(fig, update, frames=100, interval=100, blit=True)
         ani.save('growing_scatter.gif', writer=PillowWriter(fps=10))
+
+---
+
+**Exercise 4.**
+Create an animation of a bar chart that grows over time. Start with 5 bars at height 0, and in each frame (50 total) increase each bar's height by a random amount between 0 and 1. Use `ax.bar()` and update bar heights using `bar.set_height()` on each bar artist.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import matplotlib.animation as animation
+        import numpy as np
+
+        fig, ax = plt.subplots()
+        n_bars = 5
+        heights = np.zeros(n_bars)
+        bars = ax.bar(range(n_bars), heights, color='steelblue')
+        ax.set_ylim(0, 30)
+        ax.set_title('Growing Bar Chart')
+
+        def update(frame):
+            nonlocal heights
+            heights += np.random.rand(n_bars)
+            for bar, h in zip(bars, heights):
+                bar.set_height(h)
+            return bars
+
+        ani = animation.FuncAnimation(fig, update, frames=50, interval=100, blit=True)
+        plt.show()
+
+---
+
+**Exercise 5.**
+Explain why `blit=True` dramatically improves animation performance. What does blitting do, and when does it fail (hint: what happens if the axes limits change between frames)? Write a short animation that intentionally breaks blitting by changing `ax.set_ylim` in the update function, and show the fix.
+
+??? success "Solution to Exercise 5"
+
+    **What blitting does:** instead of redrawing the entire figure each frame, blitting saves the static background (axes, labels, gridlines) once, and only redraws the Artists that changed. This skips the expensive background rendering.
+
+    **When it breaks:** if the axes limits, title, or any "background" element changes between frames, the saved background becomes stale and artifacts appear (old elements remain visible under new ones).
+
+        import matplotlib.pyplot as plt
+        import matplotlib.animation as animation
+        import numpy as np
+
+        fig, ax = plt.subplots()
+        line, = ax.plot([], [])
+        ax.set_xlim(0, 10)
+
+        def init():
+            line.set_data([], [])
+            return line,
+
+        def update(frame):
+            x = np.linspace(0, 10, 100)
+            y = np.sin(x + frame * 0.1) * frame
+            line.set_data(x, y)
+            # This BREAKS blit=True — background is stale
+            # ax.set_ylim(-frame, frame)
+            # Fix: use blit=False when axes limits change
+            return line,
+
+        # blit=True works when only Artists change
+        ani = animation.FuncAnimation(fig, update, init_func=init,
+                                       frames=50, interval=50, blit=True)
+        plt.show()
+
+    **Rule:** use `blit=True` when only line/scatter data changes. Use `blit=False` when axes limits, titles, or legends change between frames.
         plt.show()

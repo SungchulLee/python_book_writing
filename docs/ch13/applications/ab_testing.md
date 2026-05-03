@@ -2,6 +2,9 @@
 
 In product development and clinical trials, practitioners often need to compare two variants -- a control (A) and a treatment (B) -- to determine whether an observed difference in a metric is statistically significant or merely due to random variation. A/B testing applies the hypothesis testing framework from Chapter 12.5 to this comparison problem. This section walks through the complete statistical workflow using `scipy.stats`.
 
+!!! tip "Mental Model"
+    Think of an A/B test as a courtroom trial for a product change. The null hypothesis is "innocent" (no effect), and the data is the evidence. You must gather enough evidence (sample size) to convict beyond reasonable doubt (significance level), while the effect size determines how hard the case is to prove.
+
 ## Hypothesis Setup
 
 An A/B test begins by framing the question as a hypothesis test. Let $\mu_A$ and $\mu_B$ denote the population means of the metric under variants A and B, respectively.

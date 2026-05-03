@@ -2,6 +2,9 @@
 
 This page builds on [Call-by-Object-Reference](call_by_object_reference.md) with practical guidance on how arguments flow from caller to function.
 
+!!! tip "Mental Model"
+    Calling a function is like filling out a form. Positional arguments fill fields left to right, keyword arguments fill fields by name, and defaults pre-fill any field you skip. Once you switch to keyword mode, you cannot go back to positional -- this rule keeps call sites unambiguous.
+
 ## Positional and Keyword Arguments
 
 A function can receive arguments by position, by name, or by a mix of both.

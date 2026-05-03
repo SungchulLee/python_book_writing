@@ -2,6 +2,9 @@
 
 The `query()` method filters DataFrames using a string expression, providing cleaner syntax for complex conditions.
 
+!!! tip "Mental Model"
+    `query()` lets you write filter conditions as a readable string instead of bracket-heavy boolean expressions. `df.query("age > 30 and city == 'NY'")` replaces `df[(df['age'] > 30) & (df['city'] == 'NY')]`. The result is identical, but the string form is closer to how you think about the condition in plain English.
+
 ## Basic Usage
 
 Filter with string expressions.

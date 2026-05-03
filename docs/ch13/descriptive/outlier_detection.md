@@ -2,6 +2,9 @@
 
 A single anomalous observation can shift the sample mean by several standard deviations, inflate variance estimates, and distort regression coefficients. Identifying such outliers before analysis protects downstream inferences. This page covers the main statistical methods for detecting outliers using `scipy.stats` and NumPy, progressing from simple threshold rules to formal hypothesis tests.
 
+!!! tip "Mental Model"
+    An outlier is a data point that does not belong to the same generating process as the rest. Detection methods ask "how surprising is this point under the assumed model?" The catch is that outliers contaminate the very statistics (mean, standard deviation) used to detect them, so robust methods like the MAD-based Z-score break this circular dependency.
+
 ---
 
 ## Z-Score Method

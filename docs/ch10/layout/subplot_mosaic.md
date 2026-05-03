@@ -2,6 +2,18 @@
 
 `plt.subplot_mosaic()` provides a flexible, intuitive way to create complex subplot layouts using ASCII-art or nested lists.
 
+!!! tip "Mental Model"
+    `subplot_mosaic` lets you sketch your layout as text art: `"AB\nCC"` means A and B side by side on top, C spanning the full bottom. Each unique letter becomes a named Axes in a dictionary. It is the most readable way to create asymmetric layouts because the code looks like the result.
+
+!!! warning "Limitations"
+    `subplot_mosaic` trades power for readability. It is less suited for:
+
+    - **Very large grids** (>6x6) — the ASCII art becomes unwieldy
+    - **Programmatic generation** — you cannot easily construct the layout string
+      from data or loop variables (use GridSpec instead)
+    - **Fine-grained size control** — it supports `width_ratios` / `height_ratios`
+      but not per-cell sizing as precise as GridSpec slicing
+
 ## Basic Usage
 
 ### ASCII Art Layout

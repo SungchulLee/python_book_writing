@@ -2,6 +2,9 @@
 
 The `dt` accessor in pandas provides vectorized datetime operations on Series containing datetime values. This allows you to extract date components, perform datetime arithmetic, and format dates without explicit loops.
 
+!!! tip "Mental Model"
+    Picture each datetime value as a clock face with year, month, day, hour dials. The `.dt` accessor lets you read any dial across an entire column at once -- no loop needed. It turns one column of timestamps into many columns of components, all in a single vectorized call.
+
 ## Overview
 
 ```python

@@ -2,6 +2,9 @@
 
 Pandas provides built-in plotting capabilities through the `plot()` method available on both Series and DataFrame objects. This method is a convenient wrapper around matplotlib that simplifies common visualization tasks.
 
+!!! tip "Mental Model"
+    `df.plot()` is a one-line shortcut to matplotlib. It uses the DataFrame's index as the x-axis, each column as a line (or bar, etc.), and auto-generates legends from column names. For quick exploration it saves boilerplate; for publication-quality figures, grab the returned axes object and customize with raw matplotlib calls.
+
 ## Basic Usage
 
 ### Series.plot()

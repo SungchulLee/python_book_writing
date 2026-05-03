@@ -2,6 +2,8 @@
 
 Python allows creating custom exception classes by subclassing the built-in `Exception` class. Custom exceptions improve code clarity and enable specific error handling.
 
+!!! tip "Mental Model"
+    A custom exception is just a class that inherits from `Exception`. It gives a meaningful name to a specific failure condition so callers can catch it precisely. Start with a bare subclass (`class MyError(Exception): pass`) and add attributes only when the handler needs structured data about what went wrong.
 
 ## Basic Custom Exception
 

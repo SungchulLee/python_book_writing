@@ -2,6 +2,9 @@
 
 The `pd.plotting.scatter_matrix()` function creates a grid of scatter plots showing pairwise relationships between numeric columns. Diagonal plots show the distribution of each variable.
 
+!!! tip "Mental Model"
+    A scatter matrix is an n-by-n grid where each off-diagonal cell shows a scatter plot of two variables and each diagonal cell shows one variable's distribution. It is the fastest way to spot correlations, clusters, and outliers across all variable pairs at once -- a visual correlation matrix.
+
 ## Basic Usage
 
 ```python

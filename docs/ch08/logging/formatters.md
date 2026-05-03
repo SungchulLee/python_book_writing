@@ -2,6 +2,9 @@
 
 Formatters control the output format of log messages with customizable fields and styles.
 
+!!! tip "Mental Model"
+    A formatter is a template string for log lines. It decides which fields appear (timestamp, logger name, level, message) and in what order. Every handler has exactly one formatter, and changing it instantly reshapes all output going through that handler without touching any log calls in your code.
+
 ## Common Format Codes
 
 Use format codes to customize log output.

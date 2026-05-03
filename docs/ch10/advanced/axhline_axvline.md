@@ -2,6 +2,12 @@
 
 Add horizontal and vertical reference lines that span the entire axes.
 
+!!! tip "Mental Model"
+    `axhline(y)` draws a horizontal line at a fixed y-value, and `axvline(x)` draws a vertical line at a fixed x-value — both stretch edge to edge regardless of axis limits. Use them to mark thresholds, means, or baselines. They are more convenient than `plot()` for reference lines because they automatically span the full plot width or height.
+
+!!! note "Reference Lines Are Not Data"
+    Unlike data lines (which come from measurements or computation), reference lines are **interpretation guides** — they add semantic meaning to the plot. A threshold line says "above here is critical," a mean line says "this is the center," and an event line says "this happened here." This distinction matters: reference lines should be styled differently (dashed, muted color, lower zorder) so readers do not confuse them with plotted data.
+
 ---
 
 ## ax.axhline()
@@ -281,3 +287,63 @@ Create a plot of `y = x^2` for `x` in $[-3, 3]$. Use `axvspan` to shade the regi
         ax.set_title(r'$y = x^2$ with Highlighted Region')
         ax.legend()
         plt.show()
+
+---
+
+**Exercise 4.**
+Plot a time series of 100 random values simulating daily temperatures. Add `axhline` for the mean (solid green) and mean ± 1 standard deviation (dashed red). Use `axhspan` to shade the region between the two SD lines in light red. Explain how these reference elements help a reader interpret the data without reading values.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        np.random.seed(42)
+        temps = np.random.randn(100) * 5 + 20
+
+        fig, ax = plt.subplots()
+        ax.plot(temps, color='black', alpha=0.7)
+
+        mu, sigma = temps.mean(), temps.std()
+        ax.axhline(mu, color='green', linestyle='-', label=f'Mean ({mu:.1f})')
+        ax.axhline(mu + sigma, color='red', linestyle='--', label=f'+1 SD')
+        ax.axhline(mu - sigma, color='red', linestyle='--', label=f'-1 SD')
+        ax.axhspan(mu - sigma, mu + sigma, alpha=0.1, color='red')
+
+        ax.legend()
+        ax.set_title('Daily Temperature with Reference Lines')
+        plt.show()
+
+        # The reference lines act as semantic anchors: the green line says
+        # "this is normal," the red band says "68% of data falls here,"
+        # and points outside the band are unusual — readable at a glance.
+
+---
+
+**Exercise 5.**
+A colleague marks an event time on a plot using `ax.plot([5, 5], [-1, 1], 'r--')`. Explain why `axvline(5)` is better. Demonstrate the problem: change `ylim` after plotting and show the manual line no longer spans the full height.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+        x = np.linspace(0, 10, 100)
+        y = np.sin(x)
+
+        ax1.plot(x, y)
+        ax1.plot([5, 5], [-1, 1], 'r--', label='manual line')
+        ax1.set_ylim(-2, 2)
+        ax1.set_title('Manual line (broken on resize)')
+        ax1.legend()
+
+        ax2.plot(x, y)
+        ax2.axvline(5, color='r', linestyle='--', label='axvline')
+        ax2.set_ylim(-2, 2)
+        ax2.set_title('axvline (always spans full height)')
+        ax2.legend()
+
+        plt.tight_layout()
+        plt.show()
+        # axvline uses axes-relative coordinates (0 to 1) for vertical span

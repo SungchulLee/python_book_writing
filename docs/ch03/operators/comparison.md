@@ -2,6 +2,8 @@
 
 Comparison operators compare values and return `True` or `False`.
 
+!!! tip "Mental Model"
+    Comparisons answer yes/no questions about values: equal, not equal, greater, less. Python allows chaining (`1 < x < 10`) which reads like mathematical notation and is evaluated as `1 < x and x < 10` without computing `x` twice. Remember that `==` compares values while `is` compares identity -- two different questions.
 
 ## Operator Summary
 

@@ -2,6 +2,9 @@
 
 One-hot encoding converts categorical variables into binary columns, enabling their use in machine learning models that require numerical input.
 
+!!! tip "Mental Model"
+    One-hot encoding replaces a single column of labels with a row of binary flags -- one flag per unique label. If a column has values `[red, blue, green]`, it becomes three columns where exactly one is 1 and the rest are 0. This trades a compact representation for one that linear models can consume directly.
+
 ## pd.get_dummies Basics
 
 ### Basic Usage

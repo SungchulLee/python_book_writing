@@ -5,6 +5,9 @@ Conditional statements allow a program to **execute code only when certain condi
 
 The primary conditional structure in Python is the `if` statement.
 
+!!! tip "Mental Model"
+    Conditional statements are forks in the road. The program evaluates a condition, and the result determines which branch of code executes. Every `if` creates exactly two paths---one for `True`, one for `False`---and `elif` chains let you test multiple conditions in sequence until one matches.
+
 ---
 
 ### if–else Statement

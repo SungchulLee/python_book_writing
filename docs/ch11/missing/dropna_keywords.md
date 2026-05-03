@@ -2,6 +2,9 @@
 
 The `dropna()` method accepts several keyword arguments to control which rows or columns are dropped.
 
+!!! tip "Mental Model"
+    The keywords fine-tune which rows survive. `how='any'` drops a row if even one cell is NaN; `how='all'` drops only if every cell is NaN. `subset` limits the NaN check to specific columns. `thresh` sets a minimum count of non-NaN values required to keep the row. Together they let you express nuanced "how much missing is too much" policies.
+
 ## how Keyword
 
 Specify when to drop a row or column.

@@ -2,6 +2,9 @@
 
 The `rolling()` method applies operations over a fixed-size sliding window, fundamental for time series analysis.
 
+!!! tip "Mental Model"
+    `rolling(window=N)` slides a fixed-size frame of N consecutive rows across your data, computing a statistic at each position. The first N-1 results are NaN because the window is not yet full. Common uses include moving averages for smoothing trends, rolling standard deviations for measuring volatility, and rolling correlations for time-varying relationships.
+
 ## Basic Rolling
 
 Create rolling window calculations.

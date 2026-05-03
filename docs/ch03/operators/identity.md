@@ -2,6 +2,9 @@
 
 Identity operators compare **memory addresses** of objects, not their values.
 
+!!! tip "Mental Model"
+    `is` asks "are these the exact same object in memory?" while `==` asks "do these objects have the same value?" Two lists with identical contents are `==` but not `is`. The only common use for `is` is comparing against singletons: `x is None`, `x is True`, `x is False`. For everything else, use `==`.
+
 | Operator | Description | Example |
 |----------|-------------|---------|
 | `is` | Same object in memory | `x is y` |

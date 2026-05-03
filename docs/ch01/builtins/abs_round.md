@@ -5,6 +5,9 @@ These are **value transformations**---they take a single number and produce a ne
 
 Both normalize numbers toward a simpler or more useful form: `abs()` strips the sign, `round()` reduces precision.
 
+!!! tip "Mental Model"
+    Think of `abs()` and `round()` as lenses that simplify a number. `abs()` removes direction (keeping only magnitude), while `round()` removes excess precision (keeping only the detail you need). Both take a raw number and return a cleaner version of it.
+
 ## abs()
 
 Returns the absolute value of a number---its distance from zero on the number line.

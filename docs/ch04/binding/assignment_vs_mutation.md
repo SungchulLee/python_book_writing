@@ -2,6 +2,9 @@
 
 Understanding the difference between rebinding a name and modifying an object is fundamental to Python.
 
+!!! tip "Mental Model"
+    Assignment moves the name tag to a different object; mutation changes the object the tag is already attached to. Check `id()` before and after: if it changed, you rebound; if it stayed the same, you mutated.
+
 ---
 
 ## Core Difference

@@ -2,6 +2,9 @@
 
 The `threading` module provides a way to run multiple threads (lightweight processes) within a single Python process.
 
+!!! tip "Mental Model"
+    A thread is a separate line of execution inside the same program, sharing all memory with the main thread. Creating one is like hiring an assistant who works at the same desk -- fast to start and can see all your files, but you need coordination to avoid stepping on each other. Use `start()` to launch, `join()` to wait for completion.
+
 ---
 
 ## Creating Threads

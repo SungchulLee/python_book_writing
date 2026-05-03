@@ -2,6 +2,9 @@
 
 클로저와 관련된 Python의 스코프 규칙입니다.
 
+!!! tip "Mental Model"
+    Python 3 comprehensions, generator expressions, and class bodies each create their own scope -- loop variables do not leak out. This is different from Python 2 and from bare `for` loops. Understanding which constructs create scopes and which do not is the key to predicting where a name is visible.
+
 ## Comprehension Scoping (Python 3+)
 
 ### List Comprehension Has Own Scope

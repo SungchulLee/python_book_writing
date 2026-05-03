@@ -2,6 +2,9 @@
 
 # Registers and Cache
 
+!!! tip "Mental Model"
+    Registers are the handful of values the CPU holds in its hands right now; cache is the small shelf within arm's reach. Both exist because RAM is too slow to keep up with the CPU's execution speed. When your data fits in cache, the processor flies; when it doesn't, the processor stalls waiting for memory -- which is why data layout and access patterns matter as much as algorithms.
+
 Registers and caches are the **fastest storage locations in a computer**. They sit between the CPU's execution units and main memory, allowing programs to operate on data with extremely low latency.
 
 Because modern processors execute instructions much faster than data can be retrieved from RAM, these small but fast storage layers play a critical role in overall performance.

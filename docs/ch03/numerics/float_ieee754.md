@@ -2,6 +2,9 @@
 
 The IEEE 754 floating-point standard defines how computers represent real numbers in binary. Understanding this representation explains why certain decimal values cannot be stored exactly and why floating-point arithmetic behaves unexpectedly.
 
+!!! tip "Mental Model"
+    A 64-bit float packs three fields into 8 bytes: a sign bit, an 11-bit exponent, and a 52-bit mantissa. This is binary scientific notation -- the mantissa gives precision and the exponent gives range. Because the mantissa has only 52 bits, most decimal fractions (like 0.1) cannot be represented exactly, which is the root cause of floating-point surprises.
+
 ## Binary Scientific Notation
 
 Floating-point numbers use binary scientific notation, analogous to decimal scientific notation.

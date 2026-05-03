@@ -2,6 +2,9 @@
 
 A `Pool` manages a collection of worker processes, providing a simple way to parallelize function execution across multiple inputs.
 
+!!! tip "Mental Model"
+    A `Pool` is a batch-processing factory: you feed it a function and a list of inputs, and it distributes the items across worker processes automatically. Think `map()` but parallel -- each worker grabs the next item, computes the result, and returns it. The pool handles process creation, work distribution, and result collection so you can focus on the computation itself.
+
 ---
 
 ## Creating a Pool

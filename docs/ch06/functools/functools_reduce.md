@@ -2,6 +2,9 @@
 
 `reduce` applies a two-argument function cumulatively to the items of a sequence, reducing it to a single value. It was a built-in in Python 2 and moved to `functools` in Python 3.
 
+!!! tip "Mental Model"
+    `reduce` is a left fold: it takes the first two elements, combines them with your function, then combines that result with the next element, and so on until one value remains. Picture a snowball rolling downhill, accumulating each element as it goes. For most cases Python offers clearer alternatives (`sum`, `math.prod`, `str.join`), but `reduce` is the general-purpose tool when none of those fit.
+
 ```python
 from functools import reduce
 ```

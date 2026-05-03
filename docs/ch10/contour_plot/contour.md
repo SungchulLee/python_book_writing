@@ -2,6 +2,12 @@
 
 The `ax.contour()` method draws contour lines for scalar fields.
 
+!!! tip "Mental Model"
+    `contour()` draws lines of constant value through a 2D scalar field, like elevation contours on a topographic map. You provide X, Y grids and a Z value at each point; Matplotlib interpolates to find where Z equals each contour level. Close-together lines mean steep gradients; widely spaced lines mean flat regions.
+
+!!! note "Contour = Horizontal Slice of a Surface"
+    A contour line at level $c$ is the set of all points where $f(x, y) = c$ — geometrically, it is a **horizontal slice** through the 3D surface $z = f(x, y)$. This is the bridge between 2D and 3D: every contour plot is a top-down view of level slices through the surface. The **spacing** between contour lines encodes the gradient: closely spaced lines mean the function is changing rapidly (steep slope), widely spaced lines mean it is nearly flat.
+
 [Official Documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.contour.html)
 
 ## Basic Usage

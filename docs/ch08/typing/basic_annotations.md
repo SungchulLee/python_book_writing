@@ -2,6 +2,9 @@
 
 Basic type annotations include primitive types and built-in collection types, forming the foundation of type hinting.
 
+!!! tip "Mental Model"
+    Type annotations are labels you attach to variables, parameters, and return values — `x: int`, `names: list[str]`, `def greet(name: str) -> str`. Python ignores them at runtime, but tools like mypy read them to catch type mismatches before you run the code. Start by annotating function signatures; that alone catches the majority of type bugs.
+
 ## Primitive Type Annotations
 
 Annotate variables with primitive types like int, str, float, and bool.

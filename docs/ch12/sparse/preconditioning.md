@@ -2,6 +2,9 @@
 
 Preconditioners accelerate iterative solver convergence.
 
+!!! tip "Mental Model"
+    A preconditioner transforms a hard-to-solve system into an easier one that an iterative solver can crack quickly. Instead of solving $Ax = b$ directly, you solve $M^{-1}Ax = M^{-1}b$ where $M$ approximates $A$ but is cheap to invert. The better $M$ approximates $A$, the fewer iterations you need -- but a more accurate $M$ costs more to build, so there is always a tradeoff.
+
 ## Why Precondition
 
 ### 1. Condition Number Effect

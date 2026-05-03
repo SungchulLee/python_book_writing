@@ -13,6 +13,9 @@ flowchart TD
     A --> D[dynamic size]
 ```
 
+!!! tip "Mental Model"
+    A list is a row of numbered slots that you can read, rewrite, extend, or shrink at any time. Because lists are mutable, operations like `append()` and `sort()` change the list in place rather than creating a new one. This flexibility makes lists the default go-to collection in Python.
+
 ---
 
 ## 1. Creating Lists

@@ -2,6 +2,9 @@
 
 Converting between sparse matrix formats.
 
+!!! tip "Mental Model"
+    Different sparse formats excel at different tasks, so a typical workflow converts between them: build in COO or LIL (easy to assemble), then convert to CSR for row-oriented computation or CSC for column-oriented solvers. Conversion itself is cheap compared to the operations that follow, so convert once up front and reuse the result.
+
 ## Conversion Methods
 
 ### 1. To CSR

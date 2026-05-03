@@ -1,5 +1,8 @@
 # Shorthand Operators
 
+!!! tip "Mental Model"
+    `x += y` looks like a shortcut for `x = x + y`, and for immutable types it behaves identically -- a new object is created and rebound to `x`. But for mutable types like lists, `+=` calls `__iadd__`, which mutates the object in place. This distinction matters when multiple names reference the same mutable object.
+
 ## Augmented Assignment
 
 ### 1. Arithmetic

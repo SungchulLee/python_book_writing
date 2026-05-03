@@ -2,6 +2,9 @@
 
 Methods for counting and identifying unique values are essential for data exploration and analysis. This document covers `value_counts()`, `nunique()`, and related methods.
 
+!!! tip "Mental Model"
+    `value_counts()` is a frequency table: it counts how many times each unique value appears and sorts by frequency. `nunique()` returns just the count of distinct values. Together they answer the two most basic questions about a categorical column: "what values exist?" and "how often does each appear?"
+
 ## value_counts()
 
 Returns a Series containing counts of unique values, sorted by frequency.

@@ -2,6 +2,9 @@
 
 `__init__` (initializer) and `__del__` (destructor) manage object lifecycle in Python. Despite common usage, `__init__` is not the true constructor — `__new__` is. Understanding when each runs — and when `__del__` does not — is essential for writing reliable classes.
 
+!!! tip "Mental Model"
+    `__new__` builds the empty house (allocates memory), `__init__` moves the furniture in (sets attributes). Most classes only need `__init__` -- override `__new__` only for singletons, immutable types, or when you need to control *which* object is returned. The "destructor" `__del__` is unreliable; never depend on it for resource cleanup.
+
 ---
 
 ## Object Lifecycle
@@ -176,6 +179,17 @@ class Singleton:
 ```
 
 Think of it as: `__new__` decides *what object exists*; `__init__` decides *how it is configured*. In 99% of classes, `__init__` alone is enough.
+
+!!! note "Instantiation Is Just Method Calls"
+    When you write `obj = Student("Alice", "Math")`, Python executes:
+
+    ```python
+    obj = Student.__new__(Student, "Alice", "Math")
+    if isinstance(obj, Student):
+        Student.__init__(obj, "Alice", "Math")
+    ```
+
+    Both `__new__` and `__init__` are ordinary method calls in Python's data model — there is no special "construction" mechanism. This is why you can override either one, and why the entire object lifecycle is customizable through the same protocol system that powers attribute access, iteration, and context managers.
 
 ---
 
@@ -436,3 +450,48 @@ Explain why `__init__` is called an "initializer" rather than a "constructor" in
         #
         # For most classes, you only need __init__. Override __new__
         # only when you need to control the creation step itself.
+
+---
+
+**Exercise 5.**
+Create a class `Tracker` that logs every instantiation. Use a class attribute `_instances` (a list) and have `__init__` append `self` to it. Add a class method `count()` that returns the number of instances created. Then implement `__del__` to remove `self` from the list. Create three instances, delete one, and verify the count. Discuss why relying on `__del__` for this tracking is fragile in production code.
+
+??? success "Solution to Exercise 5"
+
+        class Tracker:
+            _instances = []
+
+            def __init__(self, name):
+                self.name = name
+                Tracker._instances.append(self)
+                print(f"Created {self.name} (total: {Tracker.count()})")
+
+            def __del__(self):
+                if self in Tracker._instances:
+                    Tracker._instances.remove(self)
+                print(f"Destroyed {self.name}")
+
+            @classmethod
+            def count(cls):
+                return len(cls._instances)
+
+        a = Tracker("A")  # Created A (total: 1)
+        b = Tracker("B")  # Created B (total: 2)
+        c = Tracker("C")  # Created C (total: 3)
+
+        print(f"Count: {Tracker.count()}")  # 3
+
+        del b              # Destroyed B
+        print(f"Count: {Tracker.count()}")  # 2
+
+        # Why this is fragile:
+        # 1. __del__ may not run (circular references, interpreter shutdown)
+        # 2. _instances holds strong references, preventing garbage collection
+        # 3. In production, use weakref.WeakSet instead of a list:
+        #
+        #    import weakref
+        #    class Tracker:
+        #        _instances = weakref.WeakSet()
+        #
+        # WeakSet does not prevent garbage collection and automatically
+        # removes entries when objects are collected — no __del__ needed.

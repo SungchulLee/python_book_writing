@@ -1,5 +1,8 @@
 # Quantifiers and Anchors
 
+!!! tip "Mental Model"
+    Quantifiers answer "how many?" — `*` means zero or more, `+` means one or more, `?` means zero or one, and `{n,m}` means between n and m. Anchors answer "where?" — `^` pins to the start of the string and `$` to the end. Together they let you specify not just *what* to match but *how much* and *where*.
+
 ## Quantifiers
 
 Quantifiers specify **how many times** the preceding element must occur for a match. By default, quantifiers are **greedy** — they match as much text as possible.

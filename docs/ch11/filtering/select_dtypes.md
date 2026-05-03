@@ -2,6 +2,9 @@
 
 The `select_dtypes()` method filters DataFrame columns based on their data types. This is essential for applying type-specific operations and preparing data for analysis.
 
+!!! tip "Mental Model"
+    `select_dtypes` is a column filter based on type, not name. Pass `include='number'` to grab all numeric columns, or `exclude='object'` to drop all string columns. It is the first step in any pipeline that needs to treat numeric and categorical columns differently, such as scaling or encoding.
+
 ## Basic Usage
 
 ### Selecting Numeric Columns

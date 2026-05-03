@@ -2,6 +2,9 @@
 
 Before collecting data, a researcher needs to know how many observations are required to detect an effect of practical interest. An underpowered study wastes resources because it is unlikely to find a real effect even if one exists, while an overpowered study collects more data than necessary. Power analysis answers this question by quantifying the relationship between four interrelated quantities: significance level, effect size, sample size, and statistical power.
 
+!!! tip "Mental Model"
+    Power analysis is the study design equation: significance level, effect size, sample size, and power are four knobs connected by one constraint. Fix any three and the fourth is determined. In practice, you fix $\alpha = 0.05$, target power $= 0.80$, estimate the effect size from prior work, and solve for the sample size you need.
+
 ---
 
 ## Statistical Power

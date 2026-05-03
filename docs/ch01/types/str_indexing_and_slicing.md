@@ -17,6 +17,9 @@ flowchart TD
     A --> C[Slicing]
 ````
 
+!!! tip "Mental Model"
+    Indexing picks out a single character by position; slicing extracts a substring by specifying a range. Positions start at `0`, and negative indices count from the end (`-1` is the last character). The slice `s[start:stop]` includes `start` but excludes `stop`---this "half-open" convention makes `len(s[a:b])` equal to `b - a`.
+
 ---
 
 ## 1. Indexing

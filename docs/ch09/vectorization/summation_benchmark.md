@@ -2,6 +2,9 @@
 
 Compare different approaches for computing $\sum_{k=1}^n k^2$.
 
+!!! tip "Mental Model"
+    This benchmark uses a simple sum-of-squares to compare Python loops, list comprehensions, `np.sum` on arrays, and the closed-form formula. The results consistently show that vectorized NumPy is 10-100x faster than Python loops, and a closed-form solution (when one exists) beats everything. The exercise teaches you to always look for the highest-level abstraction first.
+
 ## Problem Setup
 
 ### 1. Mathematical Form

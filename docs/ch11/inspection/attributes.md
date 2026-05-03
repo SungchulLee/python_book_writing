@@ -2,6 +2,9 @@
 
 DataFrame attributes provide information about the structure and properties of your data.
 
+!!! tip "Mental Model"
+    Attributes are metadata lookups, not computations. `.shape` gives dimensions, `.dtypes` gives column types, `.columns` and `.index` give axis labels. They are your first stop after loading data -- a quick structural X-ray before doing any analysis.
+
 ## columns
 
 Access column labels.

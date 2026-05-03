@@ -2,6 +2,9 @@
 
 Python is **dynamically typed**, while languages like C are **statically typed**. This fundamental difference affects how you write and think about code.
 
+!!! tip "Mental Model"
+    Static typing checks types before the program runs (at compile time); dynamic typing checks types while the program runs (at runtime). Static catches type errors earlier but requires explicit declarations; dynamic is more flexible but pushes errors to runtime. Python's type hints offer a middle ground: optional annotations checked by external tools like mypy.
+
 ---
 
 ## The Key Difference

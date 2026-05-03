@@ -2,6 +2,9 @@
 
 Index objects provide axis labels for pandas data structures. Understanding indexes is fundamental to effective pandas usage.
 
+!!! tip "Mental Model"
+    An Index is an immutable array of labels attached to an axis. It serves two roles: it is the lookup key for label-based selection (`loc`), and it is the alignment mechanism that makes arithmetic between mismatched Series "just work." Every pandas operation begins by consulting the Index.
+
 ## Index Purpose
 
 Index serves as an immutable container for axis labels.

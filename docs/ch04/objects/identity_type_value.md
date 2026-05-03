@@ -1,5 +1,8 @@
 # Identity Type Value
 
+!!! tip "Mental Model"
+    Every Python object carries exactly three things: an identity (its unique address, checked with `is`), a type (its blueprint, checked with `type()`), and a value (its data, checked with `==`). Identity and type are fixed at creation; only the value can change, and only if the type is mutable.
+
 ## Three Characteristics
 
 ### 1. Every Object

@@ -2,6 +2,9 @@
 
 `strftime()` formats datetime objects as strings, while `strptime()` parses strings into datetime objects.
 
+!!! tip "Mental Model"
+    Think of `strftime` as "string **f**rom time" — it turns a datetime object into a human-readable string. `strptime` is "string **p**arse time" — it reads a string and builds a datetime object. The same format codes (`%Y`, `%m`, `%d`, etc.) drive both directions, so learning the codes once covers formatting and parsing alike.
+
 ## strftime - Format Datetime to String
 
 Use format codes to create human-readable date strings.

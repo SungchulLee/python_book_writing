@@ -2,6 +2,9 @@
 
 `range()` defines an iteration space; `len()` measures the size of a collection. Together they are among the most frequently used built-ins in Python.
 
+!!! tip "Mental Model"
+    `len()` asks "how big is this?" and `range()` asks "give me numbers from here to there." `range()` is lazy---it describes a sequence of integers without storing them all in memory. Together they let you measure collections and generate index sequences for iteration.
+
 ## len()
 
 `len()` returns the number of elements in a container.

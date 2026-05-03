@@ -2,6 +2,9 @@
 
 SciPy provides multiple sparse matrix formats optimized for different operations.
 
+!!! tip "Mental Model"
+    A sparse format answers: "How do I store only the nonzero entries and still know where they belong?" Each format encodes position differently -- CSR groups by row, CSC by column, COO stores explicit (row, col, value) triplets. The storage scheme determines which operations are fast and which are slow, so understanding the internal arrays is key to predicting performance.
+
 ## CSR (Compressed Sparse Row)
 
 ### 1. Structure

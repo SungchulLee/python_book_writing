@@ -2,6 +2,9 @@
 
 In statistical inference, a point estimate like the sample mean provides a single best guess for a parameter, but it says nothing about the uncertainty of that guess. A **confidence interval** gives a range of plausible values, and the `.interval()` method on `scipy.stats` distributions computes the equal-tails interval directly from the quantile function. This page explains the mathematical basis and demonstrates the method across several distributions.
 
+!!! tip "Mental Model"
+    The `.interval()` method chops off equal probability from both tails and returns the central region. For a 95% interval, it finds the values at the 2.5th and 97.5th percentiles. This is the distribution-level building block that confidence intervals for parameters are constructed from.
+
 ---
 
 ## Equal-Tails Interval

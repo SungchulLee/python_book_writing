@@ -39,6 +39,9 @@ flowchart TD
     F2 --> G
 ```
 
+!!! tip "Mental Model"
+    Reading a file is a three-step process: open the file to get a file object, read data from that object, then close it. The `with` statement collapses open-and-close into a single safe block. Python gives you multiple reading methods---`read()` for the whole file, `readline()` for one line, iteration for line-by-line processing---so you can match the reading strategy to your data size.
+
 ---
 
 ## 1. Opening and Reading a File with `with`

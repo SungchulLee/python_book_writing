@@ -2,6 +2,9 @@
 
 This page consolidates the decision rules from the 2.13 section into practical guidance.
 
+!!! tip "Mental Model"
+    Good parameter design makes call sites readable without checking the signature. Use positional parameters for the one or two main inputs, keyword-only (`*`) for optional flags, and `*args`/`**kwargs` only when the interface is genuinely variable. Default to `None` instead of mutable defaults, and use `/` to lock down implementation-detail parameter names.
+
 ## Use Keyword-Only Parameters for Optional Configuration
 
 When a function has optional boolean flags or configuration values, force callers to name them. Positional boolean arguments are unreadable at the call site:

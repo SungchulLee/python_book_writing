@@ -2,6 +2,9 @@
 
 In-place operations modify arrays without creating new memory allocations.
 
+!!! tip "Mental Model"
+    `a += b` modifies `a` in place, reusing its memory, while `a = a + b` allocates a new array and rebinds the name. In-place operations cut memory usage in half for large arrays and improve cache performance. The trade-off is that views sharing the same buffer see the changes immediately, which can cause bugs if you are not careful.
+
 
 ## Core Concept
 

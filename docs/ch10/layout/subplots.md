@@ -2,6 +2,26 @@
 
 Create multiple plots in a single figure using `plt.subplots()` for organized, comparative visualizations.
 
+!!! tip "Mental Model"
+    `plt.subplots(nrows, ncols)` is a one-line factory that creates a Figure with a uniform grid of Axes. Think of it as creating a contact sheet in photography -- same-sized frames arranged in rows and columns. Use `sharex`/`sharey` to lock axes together for fair comparison, and `figsize` to control the overall canvas size.
+
+    The key shortcut: **`axes` behaves like a NumPy array of Axes objects.**
+    Access individual panels with `axes[row, col]` — row is vertical, col is
+    horizontal — and use `.flat` to iterate over all panels in order.
+
+!!! note "Layout Hierarchy"
+    Matplotlib offers four layout tools at increasing levels of flexibility:
+
+    | Tool | Use when | Complexity |
+    |------|----------|-----------|
+    | `plt.subplots()` | Regular grid (same-sized panels) | Simplest |
+    | `GridSpec` | Asymmetric layouts (merged cells, varying sizes) | Moderate |
+    | `subplot_mosaic` | Readable asymmetric layouts (ASCII art) | Moderate |
+    | `subplots_adjust` / `tight_layout` | Spacing control after layout is set | Finishing step |
+
+    Start with `subplots()` — it covers 90% of use cases. Reach for the others
+    only when you need panels of different sizes or shapes.
+
 ## Basic Subplots
 
 Create a grid of axes with `plt.subplots()`.

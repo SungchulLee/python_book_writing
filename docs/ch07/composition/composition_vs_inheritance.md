@@ -1,5 +1,8 @@
 # Composition vs Inheritance
 
+!!! tip "Mental Model"
+    Inheritance says "I am a kind of X" and locks you into X's structure forever. Composition says "I use an X" and lets you swap X for Y at any time. Choose inheritance when the relationship is truly taxonomic (a Dog *is* an Animal); choose composition when you are assembling capabilities (a Dog *has* a Bark).
+
 ## Core Differences
 
 ### 1. Relationship Type
@@ -612,6 +615,17 @@ class TimestampDecorator:
 logger = TimestampDecorator(Logger())
 ```
 
+## Decision Checklist
+
+Before choosing, run through these questions in order:
+
+!!! tip "Quick Decision Checklist"
+    1. **Is it a true type relationship?** Can you say "B is-a A" and it sounds natural to a domain expert? → **Inheritance**
+    2. **Does it need to change at runtime?** Will the behavior or component vary between instances or over the lifetime of an object? → **Composition**
+    3. **Is it built from parts?** Is the object assembled from independent components? → **Composition**
+    4. **Is the hierarchy shallow and stable?** Will there be 2–3 subclasses that are unlikely to change? → **Inheritance is fine**
+    5. **Still unsure?** → **Default to composition.** It is easier to refactor composition into inheritance than the reverse.
+
 ## Summary Table
 
 | Criterion | Inheritance | Composition |
@@ -755,3 +769,104 @@ Design a `Character` class for a game using composition instead of inheritance. 
         print(warrior.defend())  # Warrior: Blocks with shield...
         print(mage.attack())     # Mage: Casts fireball for 35 damage
         print(mage.defend())     # Mage: Summons magic barrier...
+
+---
+
+**Exercise 4.**
+A junior developer writes the following inheritance hierarchy. Identify the design problem and refactor it to use composition. Explain why the original breaks down when a new requirement arrives: "some employees need both `RemoteWork` and `OfficeWork` capabilities."
+
+```python
+class Employee:
+    def work(self):
+        return "Working"
+
+class RemoteEmployee(Employee):
+    def work(self):
+        return "Working remotely"
+
+class OfficeEmployee(Employee):
+    def work(self):
+        return "Working in office"
+
+# New requirement: HybridEmployee?
+class HybridEmployee(RemoteEmployee, OfficeEmployee):
+    pass  # Diamond problem!
+```
+
+??? success "Solution to Exercise 4"
+
+    The inheritance approach creates a **diamond problem**: `HybridEmployee` inherits from both `RemoteEmployee` and `OfficeEmployee`, which both override `work()`. Python's MRO resolves this deterministically, but the result (`RemoteEmployee.work`) is arbitrary — it does not represent "hybrid" behavior.
+
+    **Refactored with composition:**
+
+        class RemoteWork:
+            def perform(self):
+                return "Working remotely"
+
+        class OfficeWork:
+            def perform(self):
+                return "Working in office"
+
+        class Employee:
+            def __init__(self, name, work_modes):
+                self.name = name
+                self._modes = work_modes
+
+            def work(self):
+                return [mode.perform() for mode in self._modes]
+
+        hybrid = Employee("Alice", [RemoteWork(), OfficeWork()])
+        print(hybrid.work())
+        # ['Working remotely', 'Working in office']
+
+    Composition avoids the diamond entirely. Adding a new work mode (e.g., `CoworkingSpace`) requires only a new class — no changes to `Employee` or existing modes.
+
+---
+
+**Exercise 5.**
+The "Interface Inheritance + Composition" pattern (shown earlier in this page) combines the best of both approaches. Explain why this pattern avoids the fragile base class problem. Then demonstrate it: define an ABC `Exporter` with an abstract `export(data)` method, create a `JSONEngine` and `CSVEngine` class, and implement `JSONExporter` and `CSVExporter` that inherit from `Exporter` but delegate to their respective engines via composition.
+
+??? success "Solution to Exercise 5"
+
+        from abc import ABC, abstractmethod
+        import json
+
+        class Exporter(ABC):
+            @abstractmethod
+            def export(self, data) -> str:
+                pass
+
+        class JSONEngine:
+            def convert(self, data) -> str:
+                return json.dumps(data, indent=2)
+
+        class CSVEngine:
+            def convert(self, data) -> str:
+                if not data:
+                    return ""
+                header = ",".join(data[0].keys())
+                rows = [",".join(str(v) for v in row.values()) for row in data]
+                return header + "\n" + "\n".join(rows)
+
+        class JSONExporter(Exporter):
+            def __init__(self):
+                self._engine = JSONEngine()  # Composition
+
+            def export(self, data) -> str:
+                return self._engine.convert(data)
+
+        class CSVExporter(Exporter):
+            def __init__(self):
+                self._engine = CSVEngine()  # Composition
+
+            def export(self, data) -> str:
+                return self._engine.convert(data)
+
+        data = [{"name": "Alice", "age": 30}, {"name": "Bob", "age": 25}]
+
+        for exporter in [JSONExporter(), CSVExporter()]:
+            print(type(exporter).__name__)
+            print(exporter.export(data))
+            print()
+
+    **Why this avoids the fragile base class problem:** `Exporter` is abstract — it has no implementation to break. The actual conversion logic lives in the engine classes, which are independent of the inheritance hierarchy. Changing `JSONEngine.convert()` cannot affect `CSVExporter`, and adding a new engine requires no changes to `Exporter`. The inheritance provides a shared interface (polymorphism), while composition provides the implementation (flexibility).

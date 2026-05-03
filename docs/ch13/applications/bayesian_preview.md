@@ -2,6 +2,9 @@
 
 Throughout this chapter, hypothesis tests and confidence intervals follow the frequentist approach: parameters are fixed unknowns, and probability statements apply to the data. Bayesian inference takes a different perspective by treating parameters as random variables with probability distributions. This section introduces the core Bayesian framework using `scipy.stats` distribution objects, setting the stage for more advanced Bayesian methods covered in later chapters.
 
+!!! tip "Mental Model"
+    Imagine a dial you can turn to set a parameter like a coin's bias. Bayesian inference starts with a prior belief about where the dial is set, then updates that belief each time new data arrives. The posterior distribution is your refined belief -- it gets sharper and more concentrated as evidence accumulates.
+
 ## Bayes' Theorem
 
 The foundation of Bayesian inference is Bayes' theorem. Given observed data $x$ and a parameter $\theta$, the **posterior distribution** is

@@ -13,6 +13,9 @@ value_if_true if condition else value_if_false
 
 ````
 
+!!! tip "Mental Model"
+    A ternary expression is an inline fork: it evaluates a condition and produces one of two values on the spot. Read `A if C else B` as "give me A when C is true, otherwise B." Use it when the choice is simple enough to fit naturally inside an assignment or function argument.
+
 ---
 
 ## Example

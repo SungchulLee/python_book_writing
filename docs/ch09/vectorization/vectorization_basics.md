@@ -2,6 +2,33 @@
 
 Vectorization replaces explicit loops with bulk array operations optimized in C.
 
+!!! tip "Mental Model"
+    Vectorization means expressing your computation as operations on whole arrays instead of looping over individual elements. The mental shift is from "process one item at a time" to "describe the transformation on the entire collection." NumPy then runs the work in compiled C, bypassing Python's per-element overhead entirely.
+
+!!! note "Performance Model — The Optimization Hierarchy"
+    Efficient NumPy code is not about writing faster loops — it is about
+    transforming computations into forms the system can execute efficiently.
+    This transformation follows a hierarchy, from most to least impactful:
+
+    ```text
+    1. Mathematical simplification  → closed-form beats any loop
+    2. Vectorization                → array ops in C (this page)
+    3. Memory optimization          → in-place ops, preallocation
+    4. Loop optimization            → hoisting invariants
+    5. Measurement                  → profiling to find the real bottleneck
+    ```
+
+    The goal at every level is the same: **move computation from Python-level
+    interpretation to optimized low-level execution**:
+
+    ```text
+    Python loop → NumPy vectorization → compiled C → CPU/SIMD → GPU/distributed
+    ```
+
+    Always start at the top of the hierarchy — a closed-form formula beats even
+    the best-vectorized loop. When NumPy alone is not enough, [acceleration
+    libraries](acceleration_libs.md) extend the pipeline further toward hardware.
+
 
 ## Core Principle
 

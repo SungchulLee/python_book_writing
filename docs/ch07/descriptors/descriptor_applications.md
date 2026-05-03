@@ -1,6 +1,28 @@
 # Descriptor Use Cases
 
-## Validation
+!!! tip "Mental Model"
+    Descriptors are **reusable attribute behavior**: write validation, type-checking, or caching logic once in a descriptor class, then attach it to any attribute on any class. One descriptor definition can manage dozens of attributes across unrelated classes — this is the mechanism that powers framework-level patterns like Django ORM fields.
+
+This page organizes descriptor patterns into three tiers to help you focus on what matters most:
+
+- **Core** — patterns every Python developer should know
+- **Advanced** — useful in production code, but not everyday
+- **Framework-level** — patterns used when building libraries or frameworks
+
+!!! warning "When to Use Descriptors"
+    **Use descriptors when:**
+
+    - Behavior must be shared across many attributes or classes
+    - You need reusable control over attribute access
+    - You are building a framework or library
+
+    **Avoid descriptors when:**
+
+    - Logic is simple → use `@property`
+    - Validation is one-off → use `__init__` or `dataclass`
+    - A plain attribute will do → don't over-engineer
+
+## Validation (Core)
 
 ### 1. Type Checking
 
@@ -94,7 +116,7 @@ user.email = "alice@example.com"  # ✅ OK
 # user.email = "invalid"          # ❌ ValueError
 ```
 
-## ORM Patterns
+## ORM Patterns (Framework-Level)
 
 ### 1. Database Field
 
@@ -213,7 +235,7 @@ class LazyRelationship:
         return instance.__dict__[cache_key]
 ```
 
-## Performance Optimization
+## Performance Optimization (Core)
 
 ### 1. Lazy Loading
 
@@ -302,7 +324,7 @@ class Node:
     parent = WeakAttribute()
 ```
 
-## Access Control
+## Access Control (Advanced)
 
 ### 1. Read-Only After Init
 
@@ -393,7 +415,7 @@ model.value = 200
 print(model._audit_log)
 ```
 
-## Type Conversion
+## Type Conversion (Advanced)
 
 ### 1. Auto-Converting
 

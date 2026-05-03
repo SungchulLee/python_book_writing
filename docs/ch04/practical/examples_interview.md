@@ -2,6 +2,9 @@
 
 Real-world applications and common interview topics related to Python variables, scope, and memory.
 
+!!! tip "Mental Model"
+    Interview questions about Python internals almost always test one thing: do you understand that names are references, not boxes? If you can trace object identity through aliasing, closures, and mutable defaults, you can reason through any tricky snippet on the spot.
+
 ## Real-World Examples
 
 ### Configuration Management

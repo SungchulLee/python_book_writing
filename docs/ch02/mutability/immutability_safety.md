@@ -10,6 +10,9 @@ up and erase or rewrite content, and everyone else sees the change immediately. 
 are like laminated reference cards. They cannot be altered, so you can hand them out freely
 without worrying that someone will modify your copy.
 
+!!! tip "Mental Model"
+    Immutability is a guarantee that an object will never change once created. This guarantee unlocks hashability for dict keys and sets, eliminates surprise mutations from aliasing, and makes code easier to reason about because you never have to ask "could something else have changed this?"
+
 ---
 
 ## 1. Hashability: Dict Keys and Set Elements

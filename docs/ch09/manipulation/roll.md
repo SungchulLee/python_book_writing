@@ -2,6 +2,12 @@
 
 The `np.roll()` function shifts array elements along an axis with circular wrapping.
 
+!!! tip "Mental Model"
+    `np.roll` shifts every element by a fixed offset and wraps elements that fall off one end back to the other, like a circular conveyor belt. Positive shifts move elements to the right (or down), negative shifts move left (or up). No data is lost -- the array is just rotated in place along the chosen axis.
+
+!!! note "Why Roll Exists"
+    Circular shifting arises naturally in domains with **periodic boundary conditions**: FFT frequency bins wrap around, time-series data has seasonal cycles, and image processing uses circular convolution. `np.roll` provides this operation directly on arrays without manual index arithmetic. It fits into the manipulation system as the **shift** operation — alongside combine (concatenate), divide (split), and reorder (transpose).
+
 ## Basic Concept
 
 ### 1D Array Rolling
@@ -149,6 +155,9 @@ for ax, frame in zip(axes, frames):
 plt.tight_layout()
 plt.show()
 ```
+
+!!! info "Where Rolling Appears"
+    Circular shifts are not just an image trick. They show up in **periodic boundary conditions** (physics simulations), **signal processing** (aligning waveforms), and **FFT work** (centering the zero-frequency component with `np.fft.fftshift`, which is roll under the hood).
 
 ## Practical Applications
 

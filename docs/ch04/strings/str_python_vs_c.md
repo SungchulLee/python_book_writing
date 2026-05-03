@@ -2,6 +2,9 @@
 
 Python strings differ fundamentally from C strings in storage, safety, and semantics.
 
+!!! tip "Mental Model"
+    A C string is a raw byte array terminated by a null character -- fast but dangerous. A Python string is an immutable, length-aware, Unicode-native object that trades raw speed for safety and expressiveness. The key difference: C trusts you to manage memory; Python manages it for you.
+
 ---
 
 ## C Strings

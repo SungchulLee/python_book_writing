@@ -2,6 +2,9 @@
 
 A comprehensive example demonstrating pandas operations for analyzing S&P 500 stock data.
 
+!!! tip "Mental Model"
+    This example ties together the full pandas workflow: download data, inspect it, filter and group, compute statistics, and visualize results. Think of it as a capstone that shows how individual pandas verbs chain together into a real analysis pipeline, with an OOP wrapper for reusability.
+
 ## SP500 Class Design
 
 Build a class to download and analyze S&P 500 data.

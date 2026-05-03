@@ -2,6 +2,9 @@
 
 Proper error handling is critical in concurrent programs where exceptions can occur in multiple threads or processes simultaneously.
 
+!!! tip "Mental Model"
+    In sequential code an exception stops everything immediately. In concurrent code, exceptions happen in worker threads or processes -- they are silently captured inside Futures and only re-raised when you call `result()`. If you never check, you never know something failed. Always retrieve results or attach error callbacks; otherwise failures vanish silently and corrupt your output.
+
 ---
 
 ## Challenges in Concurrent Error Handling

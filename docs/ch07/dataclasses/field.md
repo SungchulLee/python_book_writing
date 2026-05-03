@@ -2,6 +2,19 @@
 
 The `field()` function provides fine-grained control over how individual fields are handled in dataclasses, including default values, factory functions, and metadata.
 
+!!! tip "Mental Model"
+    If `@dataclass` is the architect drawing the blueprint, `field()` is the fine print on each room's spec sheet. It lets you say "this room has a default size", "this room is not shown on the tour", or "this room builds its own furniture on move-in" -- per-field customization that the decorator alone cannot express.
+
+!!! tip "Quick Guide — when to reach for each parameter"
+    | Parameter | Use when |
+    |-----------|----------|
+    | `default_factory` | Mutable defaults (lists, dicts, sets) |
+    | `compare=False` | Cache fields, internal state that should not affect equality |
+    | `repr=False` | Secrets (passwords, tokens) or noisy fields (large data) |
+    | `init=False` | Derived/computed fields set in `__post_init__` |
+    | `kw_only=True` | Preventing positional-argument mix-ups on a per-field basis |
+    | `metadata` | Serialization hints, ORM column mapping, documentation |
+
 ---
 
 ## Basic field() Usage
@@ -67,6 +80,10 @@ print(user1 == user2)  # True (email not compared, password excluded)
 
 ## Custom Metadata
 
+Metadata is an arbitrary mapping attached to a field. The dataclass machinery itself ignores
+it, but external tools read it — serialization libraries use metadata to map field names to
+JSON keys or database columns, and ORM layers use it for column constraints.
+
 ```python
 from dataclasses import dataclass, field, fields
 
@@ -79,6 +96,15 @@ class Product:
 # Access metadata
 for f in fields(Product):
     print(f"{f.name}: {f.metadata}")
+```
+
+In a real serialization framework, metadata might drive JSON key renaming:
+
+```python
+@dataclass
+class APIUser:
+    user_name: str = field(metadata={"json": "userName"})
+    email_addr: str = field(metadata={"json": "email"})
 ```
 
 ## Initialization Order and Init
@@ -101,6 +127,12 @@ print(example)  # Example(required='test', optional='default_value', computed='t
 ```
 
 ## Compare and Hash Control
+
+!!! warning "`compare=False` can silently break equality logic"
+    Excluding a field from comparisons means two instances with different values
+    for that field will compare as equal. This is intentional for caches and
+    internal state, but it can mask bugs if applied to semantically meaningful
+    fields. Always document **why** a field is excluded.
 
 ```python
 from dataclasses import dataclass, field

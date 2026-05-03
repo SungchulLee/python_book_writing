@@ -2,6 +2,9 @@
 
 Indexing is one of pandas' most powerful features. Understanding the difference between label-based and position-based selection is essential.
 
+!!! tip "Mental Model"
+    Pandas has two addressing systems: `loc` uses label names (like looking up a word in a dictionary), and `iloc` uses integer positions (like accessing an array by index). Mixing them up is the most common pandas mistake. When in doubt, `loc` for labels, `iloc` for integers.
+
 ## Label-based Selection
 
 The `loc` accessor selects by labels.

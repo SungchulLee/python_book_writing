@@ -3,6 +3,9 @@
 
 Return values define how results leave a function, completing the function's interface. The `return` statement not only produces a value but also immediately terminates the function's execution---making it a form of control flow as well as output.
 
+!!! tip "Mental Model"
+    `return` does two things at once: it sends a value back to the caller and immediately exits the function. If a function has no `return` statement, it implicitly returns `None`. This means every function call in Python is an expression that produces a value---you just need to decide whether to capture it.
+
 ## The Problem
 
 In Python, every function returns a value.

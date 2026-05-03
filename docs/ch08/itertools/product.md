@@ -2,6 +2,9 @@
 
 The `product()` function computes the Cartesian product of input iterables, generating all ordered tuples by selecting one element from each iterable. It replaces nested for-loops with a single flat iterator, producing more concise code and avoiding deep indentation when iterating over multiple dimensions.
 
+!!! tip "Mental Model"
+    `product` is a nested-loop flattener. If you would write `for x in A: for y in B: for z in C:`, then `product(A, B, C)` yields every `(x, y, z)` combination in a single flat stream. Each additional iterable adds another "dimension," and the total number of tuples is the product of all input lengths.
+
 ## Basic Cartesian Product
 
 Pass two or more iterables to `product()` and it yields every possible ordered tuple containing one element from each. This is equivalent to nested for-loops but expressed as a single flat iterator.

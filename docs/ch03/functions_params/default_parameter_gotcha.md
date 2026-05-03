@@ -2,6 +2,9 @@
 
 One of Python's most common pitfalls is using a mutable object as a default parameter value.
 
+!!! tip "Mental Model"
+    Default values are evaluated once when the `def` statement runs, not on each call. A mutable default like `[]` becomes a single shared object attached to the function itself. Every call that uses the default mutates the same object, causing values to accumulate across calls. The fix: use `None` as the default and create a fresh object inside the function body.
+
 ## The Problem
 
 ```python

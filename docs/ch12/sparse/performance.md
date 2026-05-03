@@ -2,6 +2,9 @@
 
 Best practices for sparse matrix performance.
 
+!!! tip "Mental Model"
+    Sparse performance boils down to three rules: convert to the right format once up front, never access individual elements in a loop, and avoid operations that destroy sparsity. Most performance problems come from repeatedly converting formats inside loops or from treating sparse matrices like dense NumPy arrays with element-wise access.
+
 ## 1. Convert Once
 
 ```python

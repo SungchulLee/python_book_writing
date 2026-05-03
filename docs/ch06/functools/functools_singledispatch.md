@@ -2,6 +2,9 @@
 
 `singledispatch` transforms a function into a **single-dispatch generic function**. It dispatches to different implementations based on the type of the **first argument**, providing a clean alternative to `if/elif isinstance()` chains.
 
+!!! tip "Mental Model"
+    `singledispatch` gives Python a simple form of function overloading: you write one base function and register specialized versions for different types. At call time, Python inspects the type of the first argument and routes to the matching implementation -- like a switchboard that directs calls based on caller ID.
+
 ```python
 from functools import singledispatch
 ```

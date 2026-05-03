@@ -3,6 +3,12 @@
 !!! tip "Mental Model"
     `mgrid` builds full coordinate grids using slice syntax (like `meshgrid` but more compact), while `ogrid` returns open grids -- just the 1D vectors with shapes set up for broadcasting. Use `ogrid` when you want memory efficiency and `mgrid` when you need the fully materialized grid.
 
+    The deeper distinction is **explicit grid vs broadcast grid**: `mgrid` (and
+    `meshgrid` without `sparse=True`) materializes every coordinate pair into full
+    arrays, while `ogrid` (and `meshgrid(sparse=True)`) stores only the 1D axes
+    and lets broadcasting expand them on the fly. For a 1000x1000 grid, this is
+    the difference between 8 MB and 16 KB of coordinate storage.
+
 ## np.mgrid Basics
 
 `np.mgrid` is an index trick that creates dense multi-dimensional mesh grids using slice notation. Unlike `np.meshgrid`, which takes arrays as arguments, `np.mgrid` uses Python's slice syntax directly.

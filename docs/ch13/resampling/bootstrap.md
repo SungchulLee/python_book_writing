@@ -4,6 +4,9 @@ Classical statistical inference often relies on analytical formulas for standard
 
 This page introduces the nonparametric bootstrap, its theoretical foundation in the plug-in principle, and its use for estimating standard errors and bias.
 
+!!! tip "Mental Model"
+    The bootstrap treats your sample as a miniature population. Resample from it with replacement thousands of times, compute your statistic each time, and the spread of those values approximates the sampling distribution. No formulas, no distributional assumptions -- just repeated resampling and computation.
+
 ---
 
 ## The Plug-In Principle

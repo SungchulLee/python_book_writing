@@ -2,6 +2,9 @@
 
 `ProcessPoolExecutor` manages a pool of worker processes for parallel execution. Best suited for **CPU-bound tasks** that need to bypass the GIL.
 
+!!! tip "Mental Model"
+    A ProcessPoolExecutor is a team of independent workers, each with their own Python interpreter and GIL. Because they run in separate processes, they achieve true CPU parallelism -- but communication between them requires serialization (pickling). Use it when the computation per task is heavy enough to justify the overhead of copying data across process boundaries.
+
 ---
 
 ## Basic Usage

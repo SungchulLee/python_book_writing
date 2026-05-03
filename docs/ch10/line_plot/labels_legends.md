@@ -2,6 +2,25 @@
 
 Labels and legends help viewers understand what data is being displayed.
 
+!!! tip "Mental Model"
+    The `label` parameter on a plot call is metadata -- it does nothing visible until you call `ax.legend()`. Think of it as naming each line behind the scenes. When `legend()` is called, it collects all named artists and builds a key mapping colors/styles to names.
+
+!!! warning "Best Practice: Always Use `label=` in `plot()`"
+    ```python
+    # Recommended — labels travel with the data
+    ax.plot(x, y1, label="sin")
+    ax.plot(x, y2, label="cos")
+    ax.legend()
+
+    # Avoid — fragile, breaks if plot order changes
+    ax.plot(x, y1)
+    ax.plot(x, y2)
+    ax.legend(["sin", "cos"])
+    ```
+    Passing a list to `legend()` is order-dependent — if you reorder or add plots,
+    the labels silently mismatch. Using `label=` ties each label to its data line,
+    making the code robust to changes.
+
 ---
 
 ## Adding Labels

@@ -1,5 +1,8 @@
 # Data vs Non-Data
 
+!!! tip "Mental Model"
+    The key question is: **does the descriptor control writes?** If it defines `__set__` or `__delete__`, it is a *data* descriptor and wins over instance `__dict__`. If it only defines `__get__`, it is *non-data* and instance `__dict__` can shadow it. This single distinction — write control — determines lookup priority.
+
 ## Two Types
 
 ### 1. Definitions
@@ -33,11 +36,12 @@ class NonDataDesc:
 
 | Lookup Order | What Python Checks |
 |--------------|-------------------|
-| 1st | Data descriptors from class |
+| 1st | Data descriptors from class (MRO search) |
 | 2nd | Instance `__dict__` |
-| 3rd | Non-data descriptors from class |
-| 4th | Class `__dict__` |
-| 5th | `__getattr__` if defined |
+| 3rd | Non-data descriptors and plain class attributes (MRO search) |
+| 4th | `__getattr__` if defined |
+
+See [Attribute Access and Lookup](attribute_access_lookup.md) for the full resolution pipeline including `__getattribute__` and MRO.
 
 ## Priority Demonstration
 
@@ -189,25 +193,20 @@ print(c.area)  # 100
 
 ### 1. Property Behavior
 
-Properties need `__set__` to override instance attributes:
+The `property` type always defines `__set__` and `__delete__`, making every property a data descriptor — even without an explicit setter. A read-only property's `__set__` raises `AttributeError`, which prevents instance `__dict__` from shadowing it:
 
 ```python
 class Person:
     @property
     def name(self):
         return self._name
-    
-    # Without setter - non-data descriptor
-    # With setter - data descriptor
 
 p = Person()
 p._name = "Alice"
 
-# If property has no setter (non-data):
-# p.name can be overridden by p.__dict__['name']
-
-# If property has setter (data):
-# p.name always uses property, can't override
+# Cannot shadow — property is a data descriptor regardless of setter
+p.__dict__['name'] = "override"
+print(p.name)  # "Alice" — property wins
 ```
 
 ### 2. Method Rebinding
@@ -452,7 +451,7 @@ class Example:
 ro = type(Example.read_only)
 rw = type(Example.read_write)
 
-print(hasattr(Example.read_only, '__set__'))    # False (non-data)
+print(hasattr(Example.read_only, '__set__'))    # True (property always has __set__)
 print(hasattr(Example.read_write, '__set__'))   # True (data)
 ```
 
@@ -470,7 +469,7 @@ print(hasattr(Example.read_write, '__set__'))   # True (data)
 | Example | Type | Reason |
 |---------|------|--------|
 | `@property` with setter | Data | Has `__set__` |
-| `@property` without setter | Non-data | Only `__get__` |
+| `@property` without setter | Data | Has `__set__` (raises `AttributeError`) |
 | Methods | Non-data | Only `__get__` |
 | `@classmethod` | Non-data | Only `__get__` |
 | `@staticmethod` | Non-data | Only `__get__` |
@@ -485,6 +484,10 @@ print(hasattr(Example.read_write, '__set__'))   # True (data)
 | Caching with replacement | Non-data descriptor |
 | Always compute fresh | Data descriptor |
 | Method-like behavior | Non-data descriptor |
+
+!!! tip "Rule of Thumb"
+    **Need control?** → data descriptor (intercepts every access)
+    **Need override/caching?** → non-data descriptor (instance `__dict__` can take over)
 
 ---
 
@@ -845,71 +848,22 @@ if __name__ == "__main__":
     They use descriptors to track column values and changes.
     """)
 
-    # ============ EXAMPLE 7: Summary - The Complete Picture ============
-    print("\n# Example 7: Complete Descriptor Hierarchy")
+    # ============ EXAMPLE 7: Summary ============
+    print("\n# Example 7: Descriptor Hierarchy Summary")
     print("=" * 70)
 
     print("""
-    DESCRIPTOR TYPES:
+    DATA DESCRIPTOR (has __set__ and/or __delete__):
+      - Priority: before instance __dict__
+      - Examples: @property with setter, validators
+      - obj.__dict__['x'] = 5 gets ignored — descriptor wins
 
-    1. DATA DESCRIPTOR (has __set__ and/or __delete__)
-       - Intercepts attribute setting
-       - Takes priority over instance __dict__
-       - Used for: @property, validators, computed attributes
-       - Lookup priority: #1
+    NON-DATA DESCRIPTOR (only __get__):
+      - Priority: after instance __dict__
+      - Examples: methods, lazy-loading
+      - obj.__dict__['method'] = func — instance wins
 
-    2. NON-DATA DESCRIPTOR (only __get__)
-       - Only intercepts attribute getting
-       - Instance __dict__ can shadow it
-       - Used for: methods, lazy-loading
-       - Lookup priority: #3
-
-    3. ATTRIBUTE LOOKUP ORDER (obj.attr):
-       #1. Data descriptor from class
-       #2. Instance __dict__
-       #3. Non-data descriptor from class
-       #4. Class __dict__ (non-descriptor)
-       #5. Bases and __getattr__()
-
-    4. DESCRIPTOR PROTOCOL METHODS:
-       - __get__(self, instance, owner) -> value
-       - __set__(self, instance, value) -> None
-       - __delete__(self, instance) -> None
-
-    PRACTICAL IMPLICATIONS:
-
-    @property is a data descriptor:
-        class X:
-            @property
-            def x(self):
-                return self._x
-
-        obj.__dict__['x'] = 5  # This gets ignored!
-        obj.x  # Still returns property result
-
-    Methods are non-data descriptors:
-        class X:
-            def method(self): pass
-
-        obj.__dict__['method'] = lambda: print("hi")
-        obj.method()  # Calls the lambda (instance dict wins)
-
-    Regular attributes:
-        class X:
-            attr = "default"
-
-        obj.__dict__['attr'] = "instance"
-        obj.attr  # Returns instance value
-
-    WHY THIS MATTERS:
-
-    Understanding descriptors explains:
-        - How properties work
-        - How methods get bound to objects
-        - How ORM frameworks track changes
-        - How decorators can intercept access
-        - The difference between class and instance attributes
-        - Why some things can be overridden and others can't
+    LOOKUP ORDER: data descriptor > instance __dict__ > non-data descriptor
     """)
 
     # ============ EXAMPLE 8: Advanced Pattern - Lazy Loading ============
@@ -969,95 +923,31 @@ if __name__ == "__main__":
         - More efficient than computing everything upfront
     """)
 
-    # ============ EXAMPLE 9: Descriptor Statistics ============
-    print("\n# Example 9: Key Statistics to Remember")
+    # ============ EXAMPLE 9: Quick Reference ============
+    print("\n# Example 9: Quick Reference")
     print("=" * 70)
 
     print("""
-    DESCRIPTOR CHECKLIST:
-
-    __get__(self, instance, owner)
-        - Called when attribute is accessed (obj.attr)
-        - instance: the object being accessed (None if via class)
-        - owner: the class of the object
-        - Return: the computed value
-        - Every descriptor must have this
-
-    __set__(self, instance, value)
-        - Called when attribute is assigned (obj.attr = value)
-        - Makes this a DATA descriptor
-        - Takes priority over instance __dict__
-        - Optional (only for data descriptors)
-
-    __delete__(self, instance)
-        - Called on del obj.attr
-        - Makes this a DATA descriptor
-        - Optional (rarely used)
-
-    ATTRIBUTE ACCESS RULES:
-
-    instance.attr  ->  obj.__dict__.get('attr', MISSING)
-                    OR descriptor.__get__(obj, type(obj))
-                    OR class.__dict__.get('attr', MISSING)
-                    OR obj.__getattribute__('attr')
-
-    obj.attr = value  ->  descriptor.__set__(obj, value)
-                       OR obj.__dict__['attr'] = value
-
-    PERFORMANCE NOTES:
-
-    - Descriptors have slight overhead vs direct attribute access
-    - Data descriptors require __set__ lookup even for reads
-    - Methods (non-data descriptors) are cached by Python internally
-    - Properties are optimized for common access patterns
-    - Use descriptors for enforcing constraints, not fast loops
+    PROTOCOL METHODS:
+      __get__(self, instance, owner)  — attribute read
+      __set__(self, instance, value)  — attribute write (makes it data)
+      __delete__(self, instance)      — attribute delete (makes it data)
 
     WHEN TO USE DESCRIPTORS:
-
-    DO:
-        ✓ Validating values (@property with validator)
-        ✓ Computing values (cached properties)
-        ✓ Tracking access (monitoring, debugging)
-        ✓ ORM mappings (SQLAlchemy-style)
-        ✓ Lazy-loading (deferred computation)
-
-    DON'T:
-        ✗ Simple getter/setter (use @property instead)
-        ✗ Performance-critical code (too much overhead)
-        ✗ Simple caching (use functools.lru_cache)
-        ✗ When you don't understand them yet (learn first!)
+      DO:  validation, computed/cached properties, ORM mappings, lazy-loading
+      DON'T: simple getter/setter (use @property), performance-critical loops
     """)
 
     print("\n" + "=" * 70)
     print("KEY TAKEAWAYS")
     print("=" * 70)
     print("""
-    1. DESCRIPTORS ARE THE FOUNDATION: Properties, methods, and many other
-       Python features are built on descriptors.
-
-    2. __GET__ AND __SET__ ARE THE PROTOCOL: Implement these and you control
-       attribute access for your objects.
-
-    3. DATA VS NON-DATA MATTERS: Data descriptors (__set__) take priority
-       over instance dict. This is crucial to understand.
-
-    4. ATTRIBUTE LOOKUP HAS AN ORDER: Know the order so you understand why
-       something is or isn't overrideable.
-
-    5. METHODS ARE DESCRIPTORS: Understanding methods as non-data descriptors
-       explains why 'self' is bound automatically.
-
-    6. DESCRIPTORS ARE ADVANCED: You rarely write descriptors directly.
-       Use @property or other tools instead.
-
-    7. FRAMEWORKS USE THEM EXTENSIVELY: ORMs, web frameworks, and validators
-       all rely on descriptors internally.
-
-    8. UNDERSTAND BEFORE USING: Descriptors can be confusing. Make sure you
-       understand the lookup order before implementing custom descriptors.
-
-    NEXT: Learn about metaprogramming and introspection to see how descriptors
-    can be used in advanced patterns like ORMs and data validation frameworks.
+    1. Data descriptors (__set__) override instance __dict__; non-data don't.
+    2. Properties, methods, classmethod, staticmethod — all use descriptors.
+    3. The lookup order (data desc > instance > non-data desc) explains why
+       properties can't be shadowed but methods can.
+    4. Use @property for simple cases; write custom descriptors for reusable
+       validation, caching, or ORM-style patterns.
     """)
 ```
 

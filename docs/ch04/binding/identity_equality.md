@@ -2,6 +2,9 @@
 
 Understanding the difference between `is` (identity) and `==` (equality) operators.
 
+!!! tip "Mental Model"
+    `is` asks "are these the same object in memory?" while `==` asks "do these objects have the same value?" Two identical-looking lists can be equal (`==`) yet distinct (`is` returns `False`), just like two copies of the same book are equal in content but physically separate.
+
 ## Identity (`is`)
 
 The `is` operator checks if two names refer to the **same object** in memory:

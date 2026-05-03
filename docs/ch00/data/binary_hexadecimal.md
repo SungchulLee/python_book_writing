@@ -2,6 +2,9 @@
 
 # Binary and Hexadecimal
 
+!!! tip "Mental Model"
+    Binary is the computer's native tongue -- every value is a string of 0s and 1s. Hexadecimal is a shorthand that humans invented to read binary without going cross-eyed: each hex digit maps to exactly four bits, so a byte like `11010010` becomes `D2`. Whenever you see hex in debuggers, memory dumps, or color codes, you are looking at binary in disguise.
+
 Computers store and manipulate data using **binary numbers**—numbers written in base 2. While binary is ideal for hardware, it is often inconvenient for humans to read or write long sequences of bits.
 
 To make binary data easier to work with, programmers frequently use **hexadecimal** (base 16) and sometimes **octal** (base 8). These number systems provide compact representations of the same underlying bit patterns.

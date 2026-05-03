@@ -2,6 +2,9 @@
 
 `scipy.sparse.linalg` provides eigensolvers for large sparse matrices.
 
+!!! tip "Mental Model"
+    When your matrix has millions of rows but you only need a handful of eigenvalues, sparse eigensolvers like `eigs` and `eigsh` use iterative methods (Arnoldi/Lanczos) that never form the full matrix. You trade the ability to find all eigenvalues for the ability to find a few eigenvalues of matrices far too large for dense solvers.
+
 ## eigs - General Sparse
 
 ### 1. Basic Usage

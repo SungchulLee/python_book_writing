@@ -3,6 +3,9 @@
 
 Loop control statements modify the execution flow **inside** loops. Loops define an *iteration space*; `break` and `continue` define how execution navigates that space. While `if` decides *which* code runs and loops decide *how many times* code runs, `break` and `continue` provide fine-grained control *within* each iteration.
 
+!!! tip "Mental Model"
+    `break` is an emergency exit---it stops the entire loop immediately. `continue` is a skip button---it jumps to the next iteration without finishing the current one. Both give you fine-grained control over a loop's behavior beyond what the loop condition alone provides.
+
 ---
 
 ## break

@@ -2,6 +2,9 @@
 
 As projects grow, type hints sometimes create circular import chains — module A imports a type from module B, which imports a type from module A. Similarly, a class may need to reference itself in its own type annotations before the class definition is complete. Python's `TYPE_CHECKING` constant and forward references (string-quoted type names) solve both problems without sacrificing type safety.
 
+!!! tip "Mental Model"
+    `TYPE_CHECKING` is a gate that opens only for type checkers and stays closed at runtime. Imports placed inside `if TYPE_CHECKING:` exist for mypy but never execute, breaking circular import chains cleanly. Forward references (quoted type names like `"MyClass"`) let you annotate with a type that hasn't been defined yet. Together they decouple type analysis from runtime execution.
+
 ## TYPE_CHECKING for Conditional Imports
 
 The `TYPE_CHECKING` constant from the `typing` module is `False` at runtime but treated as `True` by static type checkers like `mypy`. Wrapping an import in `if TYPE_CHECKING:` means the import only executes during type analysis, breaking the circular dependency at runtime. The type annotation must then use a string (forward reference) so Python does not try to evaluate it.

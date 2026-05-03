@@ -1,5 +1,13 @@
 # Searching Arrays
 
+!!! tip "Mental Model"
+    `np.searchsorted` performs binary search on a sorted array, returning the index where a value would be inserted to keep the array sorted. It runs in O(log n) time and is the NumPy equivalent of Python's `bisect` module. Use `np.where` and `np.nonzero` for general-purpose element searching in unsorted arrays.
+
+    The unifying idea: **search = mapping values to positions in a structure.**
+    `searchsorted` maps values to indices in a sorted array; `np.where` maps a
+    boolean condition to the positions where it holds. Both convert "what" questions
+    into "where" answers — the bridge between values and their locations.
+
 ## np.searchsorted
 
 ### 1. Basic Usage
@@ -298,3 +306,40 @@ Use `np.nonzero` to find all non-zero elements in a sparse array created by `a =
         nz = np.nonzero(a)
         print(f"Non-zero indices: {nz[0]}")
         print(f"Non-zero values: {a[nz]}")
+
+---
+
+**Exercise 4.**
+Use `np.searchsorted` to bin 1000 random values into bins defined by edges `[0, 0.25, 0.5, 0.75, 1.0]`. Count how many values fall into each bin and verify the counts sum to 1000.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        values = np.random.rand(1000)
+        edges = np.array([0, 0.25, 0.5, 0.75, 1.0])
+        bins = np.searchsorted(edges, values, side='right') - 1
+        counts = np.bincount(bins, minlength=4)
+
+        for i in range(4):
+            print(f"Bin [{edges[i]:.2f}, {edges[i+1]:.2f}): {counts[i]}")
+        print(f"Total: {counts.sum()}")  # 1000
+
+---
+
+**Exercise 5.**
+Use `np.argwhere` to find all positions in a 2D boolean mask where the value is `True`. Given `M = np.random.randn(5, 5)`, create a mask `M > 1.0` and print the coordinates and values of all elements exceeding 1.0.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        np.random.seed(42)
+        M = np.random.randn(5, 5)
+        mask = M > 1.0
+        positions = np.argwhere(mask)
+
+        print(f"Elements > 1.0:")
+        for pos in positions:
+            r, c = pos
+            print(f"  M[{r}, {c}] = {M[r, c]:.4f}")

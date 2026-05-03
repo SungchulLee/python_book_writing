@@ -2,6 +2,26 @@
 
 Visualize stochastic processes with Matplotlib.
 
+!!! tip "Mental Model"
+    Brownian motion is a random walk with continuous time -- each step is a small random increment. Plotting many sample paths on one figure reveals the distribution of possible trajectories fanning out from the origin. Use `ax.plot()` in a loop for individual paths and `fill_between` to shade confidence bands.
+
+!!! note "Theoretical Foundation"
+    Standard Brownian motion $B_t$ has three defining properties:
+
+    1. **Independent increments**: $B_t - B_s$ is independent of the history up to time $s$
+    2. **Normal increments**: $B_t - B_s \sim N(0, t - s)$
+    3. **Continuous paths**: $B_t$ is continuous in $t$ (with probability 1)
+
+    Property 2 means variance grows linearly with time — this is why sample paths
+    fan out as $\sqrt{t}$, and why the $\pm 2\sqrt{t}$ confidence band captures
+    ~95% of paths (by the normal distribution's 2$\sigma$ rule).
+
+    **Geometric Brownian Motion** (GBM) models prices via $S_t = S_0 \exp((\mu - \tfrac{1}{2}\sigma^2)t + \sigma B_t)$.
+    The drift correction $-\tfrac{1}{2}\sigma^2$ arises from Ito's lemma: applying
+    $\exp$ to a process with quadratic variation shifts the mean. The result is
+    that $S_t$ is log-normally distributed — it cannot go negative, matching the
+    behavior of asset prices.
+
 ---
 
 ## Brownian Motion Class
@@ -51,8 +71,10 @@ class BrownianMotion:
         sqrt_dt = np.sqrt(dt)
 
         Z = np.random.standard_normal((num_paths, num_steps))
-        if num_paths > 1:
-            Z = (Z - Z.mean(axis=0)) / Z.std(axis=0)
+        # Note: we do NOT normalize Z here. Centering/rescaling
+        # (Z - Z.mean()) / Z.std() would force zero mean and unit
+        # variance per time step, breaking independence across paths
+        # and invalidating the Monte Carlo sampling.
 
         dB = Z * sqrt_dt
         B = np.concatenate([np.zeros((num_paths, 1)), dB.cumsum(axis=1)], axis=1)

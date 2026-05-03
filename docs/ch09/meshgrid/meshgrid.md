@@ -3,6 +3,40 @@
 !!! tip "Mental Model"
     `meshgrid` takes two 1D vectors of x and y coordinates and returns two 2D matrices where every (x, y) pair on the grid has a home. One matrix holds the x-values repeated across rows, the other holds y-values repeated down columns. This lets you evaluate $f(x, y)$ for every grid point in a single vectorized call.
 
+    Mathematically, `meshgrid` computes the **Cartesian product** of axis vectors
+    and lays the results into coordinate matrices. This replaces nested loops with
+    vectorized array operations:
+
+    ```python
+    # Instead of:                    # You write:
+    for x in xs:                     X, Y = np.meshgrid(xs, ys)
+        for y in ys:                 Z = f(X, Y)
+            f(x, y)
+    ```
+
+!!! note "Grid Computation Model"
+    Continuous functions $f(x, y)$ are evaluated in NumPy by:
+
+    ```text
+    1D vectors (x, y)
+        │
+        ▼
+    Grid expansion (Cartesian product)
+        ├── Dense grid  → meshgrid / mgrid  (full coordinate matrices)
+        └── Sparse grid → meshgrid(sparse=True) / ogrid  (broadcast-ready)
+        │
+        ▼
+    Vectorized evaluation: Z = f(X, Y)
+        │
+        ▼
+    Visualization or analysis
+    ```
+
+    This turns scalar math into array computation. The key choice is **dense vs
+    sparse**: dense grids allocate full coordinate matrices; sparse grids store
+    only the 1D vectors and rely on broadcasting, using orders of magnitude less
+    memory.
+
 ## Overview
 
 `np.meshgrid` creates coordinate matrices from 1D coordinate vectors. Given two 1D arrays representing x and y coordinates, it returns two 2D arrays where every combination of x and y values is represented. This is essential for evaluating functions over a grid and creating surface plots.

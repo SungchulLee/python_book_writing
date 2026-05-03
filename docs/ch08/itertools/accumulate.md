@@ -2,6 +2,9 @@
 
 `accumulate()` applies a function cumulatively to items, computing running totals or products. Running accumulations appear frequently in data processing tasks such as computing cumulative sums for time series, tracking running extremes, or building prefix computations. This function provides a concise, iterator-based approach to these patterns without requiring manual loop state.
 
+!!! tip "Mental Model"
+    `accumulate` is a snowball rolling downhill — each step folds the next element into the running result. By default it adds, but you can supply any two-argument function to compute running products, running maximums, or any other cumulative operation. The key insight is that it yields every intermediate result, not just the final one.
+
 ## Cumulative Sum
 
 The simplest use of `accumulate()` computes a running total. When no function argument is provided, it defaults to addition, yielding the cumulative sum at each position.

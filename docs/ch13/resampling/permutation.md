@@ -4,6 +4,9 @@ Classical hypothesis tests such as the $t$-test rely on distributional assumptio
 
 This page defines the permutation testing framework, presents the algorithm for computing permutation $p$-values, and discusses the two-sample and correlation settings.
 
+!!! tip "Mental Model"
+    If the group labels truly do not matter (null hypothesis), then shuffling them and recomputing the test statistic should give a similar result to the original. A permutation test shuffles labels thousands of times and asks: "How often does a random shuffle produce a statistic as extreme as the one we observed?" That fraction is the exact p-value, no distributional assumptions needed.
+
 ---
 
 ## The Exchangeability Principle

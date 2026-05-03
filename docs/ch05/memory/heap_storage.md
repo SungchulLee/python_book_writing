@@ -1,5 +1,8 @@
 # Heap Storage
 
+!!! tip "Mental Model"
+    The heap is a big warehouse where every Python object lives -- integers, strings, lists, everything. Unlike the organized call stack, heap objects are scattered wherever space is available. Python's memory allocator and garbage collector manage this warehouse for you, placing new objects in free spots and reclaiming space when objects are no longer needed.
+
 ## Object Allocation
 
 ### 1. All Objects

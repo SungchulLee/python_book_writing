@@ -2,6 +2,9 @@
 
 Python dictionaries are implemented as hash tables, using hash functions to map keys to values with O(1) average lookup time. Understanding dict internals explains performance characteristics and behavioral quirks.
 
+!!! tip "Mental Model"
+    A dict is an array of slots indexed by hash values. To look up a key, Python computes its hash, jumps straight to the corresponding slot, and checks for a match. This is why lookups are O(1) on average and why keys must be hashable -- the hash is the address in the internal array.
+
 ---
 
 ## Hash Functions

@@ -2,6 +2,9 @@
 
 Perform file and directory operations like creating, removing, listing, and copying.
 
+!!! tip "Mental Model"
+    The `os` module's filesystem functions are Python wrappers around the same system calls your shell uses — `mkdir`, `rmdir`, `listdir`, `rename`, `remove`. They operate on path strings and return basic results. For richer, object-oriented path handling, pair them with `pathlib`, but `os` remains the go-to for low-level operations like walking directory trees or changing permissions.
+
 ## Directory Operations
 
 Create and navigate directories.

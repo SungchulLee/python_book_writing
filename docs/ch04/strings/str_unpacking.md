@@ -2,6 +2,9 @@
 
 Strings are iterable sequences, allowing their characters to be unpacked into individual variables using Python's assignment syntax.
 
+!!! tip "Mental Model"
+    A string is just a sequence of single-character strings, so unpacking works exactly like list or tuple unpacking. Each character becomes a separate name binding, and the star operator (`*`) collects leftover characters into a list -- not a string.
+
 ## Basic Unpacking
 
 Assign each character of a string to separate variables.

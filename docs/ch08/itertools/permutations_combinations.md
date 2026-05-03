@@ -2,6 +2,9 @@
 
 These functions generate all permutations (order matters) and combinations (order doesn't matter) from an iterable.
 
+!!! tip "Mental Model"
+    Permutations answer "in how many ways can I arrange these items?" — order matters, so (A, B) differs from (B, A). Combinations answer "in how many ways can I choose a subset?" — order is ignored, so {A, B} and {B, A} count as one. Both generators are lazy, but beware: the number of results grows explosively with input size.
+
 ## permutations() - Order Matters
 
 Generate all ordered arrangements of elements.

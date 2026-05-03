@@ -2,6 +2,9 @@
 
 Common patterns and best practices for applying type hints effectively in real-world Python code.
 
+!!! tip "Mental Model"
+    Practical type hinting follows a cost-benefit curve: annotate public API boundaries first (function signatures, class attributes), then work inward. Use `TypedDict` for JSON-shaped data, `Protocol` for duck-typed interfaces, and `overload` for functions with multiple signatures. The goal is not 100% coverage but maximum clarity at the points where bugs are most likely.
+
 ## API Response Typing
 
 Type hint API responses and data structures clearly.

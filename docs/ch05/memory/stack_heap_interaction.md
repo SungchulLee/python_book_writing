@@ -1,5 +1,8 @@
 # Stack-Heap Interaction
 
+!!! tip "Mental Model"
+    The stack holds names (variables), and the heap holds the actual objects. A variable on the stack is just an arrow pointing to its object on the heap. Multiple names can point to the same object, which is why aliasing works -- and why mutating through one name affects all names that share that arrow.
+
 ## Name-Object Binding
 
 ### 1. Names on Stack

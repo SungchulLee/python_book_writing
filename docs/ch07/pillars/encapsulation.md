@@ -2,6 +2,9 @@
 
 Encapsulation controls how an object's state can be accessed and modified, ensuring that all mutations go through well-defined interfaces. The goal is not merely to hide data, but to **protect invariants** --- making invalid states impossible. Encapsulation works alongside [abstraction](abstraction.md) (defining stable interfaces), [inheritance](inheritance.md) (sharing structure), and [polymorphism](polymorphism.md) (enabling flexibility).
 
+!!! tip "Mental Model"
+    Encapsulation is not about secrecy -- it is about control. A bank account does not hide its balance to be mysterious; it forces all changes to go through `deposit()` and `withdraw()` so it can enforce "balance must not go negative." The underscore prefix in Python is a social contract, not a padlock -- it signals "use the public interface, not this internal detail."
+
 ---
 
 ## What is Encapsulation
@@ -87,6 +90,9 @@ person = Person("John")
 # person.__name             # AttributeError (mangled name)
 print(person._Person__name)  # "John" — still accessible
 ```
+
+!!! tip "Practical Rule"
+    In modern Python, prefer **single underscore** `_attr` as the default for internal attributes. It signals "internal use" clearly and avoids the complications of name mangling. Reserve **double underscore** `__attr` for the narrow case where you need to prevent **name clashes in inheritance** — for example, when a parent and child both need an attribute with the same name but independent storage. Most classes never need `__`.
 
 ### 2. Use Getter Methods
 

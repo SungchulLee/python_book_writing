@@ -2,6 +2,9 @@
 
 The shelve module provides persistent dictionary storage using DBM backend. It is simpler than databases for small data persistence needs, storing Python objects as pickled values.
 
+!!! tip "Mental Model"
+    A shelf is a persistent dictionary: it looks and feels like a `dict`, but the key-value pairs are saved to disk automatically. Under the hood it pickles each value, so anything you can pickle you can shelve. Use it for quick-and-dirty persistence of small datasets; for anything larger or multi-user, reach for a real database.
+
 ---
 
 ## Basic Usage

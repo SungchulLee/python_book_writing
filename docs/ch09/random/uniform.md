@@ -5,6 +5,22 @@ NumPy provides functions for generating uniformly distributed random numbers ove
 !!! tip "Mental Model"
     `np.random.rand` draws from the half-open interval $[0, 1)$; scale and shift with `low + (high - low) * rand(...)` to cover any range, or use `np.random.uniform(low, high, size)` directly. Uniform samples are the raw ingredient from which all other distributions can be generated via inverse transform sampling.
 
+!!! note "Random Computation Model"
+    All random processes in this section follow a single pipeline:
+
+    ```text
+    Seed / RNG → Distribution → Array of Samples → NumPy Ops → Statistics / Simulation
+    ```
+
+    1. A **pseudorandom number generator** (seeded for reproducibility) produces base randomness
+    2. A **distribution** transforms this randomness into samples with specific statistical properties
+    3. Samples are stored as **ordinary arrays** — all NumPy operations apply
+    4. **Deterministic computation** (mean, histogram, vectorized formulas) extracts insights
+
+    The key insight: **simulation = random sampling + array computation.** NumPy
+    turns probability into deterministic array transformations — the randomness
+    is confined to step 1; everything after is structured, reproducible computation.
+
 
 ## np.random.rand
 

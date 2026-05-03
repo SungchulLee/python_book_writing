@@ -2,6 +2,9 @@
 
 Chained assignment occurs when you index a DataFrame twice in sequence to assign a value. This is a common source of bugs because pandas cannot guarantee the operation will work as intended.
 
+!!! tip "Mental Model"
+    Chained assignment fails because the first indexing step may return a copy, and assigning to a copy does nothing to the original DataFrame. The fix is always the same: collapse two indexing steps into one `loc` call. If you see `df[...][...] = value`, rewrite it as `df.loc[..., ...] = value`.
+
 ## What is Chained Assignment?
 
 ```python

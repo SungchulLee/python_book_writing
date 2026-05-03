@@ -2,6 +2,9 @@
 
 `groupby()` groups consecutive elements with the same key, making it useful for processing sorted data. Unlike SQL-style GROUP BY or `pandas.groupby`, this function only groups elements that are adjacent in the input sequence. To group all matching elements together, sort the input by the key first. This iterator-based approach works well for streaming data where items arrive in order.
 
+!!! tip "Mental Model"
+    `groupby` draws boundaries in a sequence wherever the key changes — like dividing a sorted deck of cards into piles by suit. It only looks at consecutive runs, so if you want all matching elements grouped together, sort first. Think "consecutive-run splitter," not SQL GROUP BY.
+
 ## Basic Grouping
 
 Without a key function, `groupby()` groups consecutive elements that are equal. Note that the trailing `1` in the example forms its own group because it is separated from the earlier `1`s by other values.

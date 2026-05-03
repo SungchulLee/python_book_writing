@@ -2,6 +2,9 @@
 
 The `drop()` method removes specified rows or columns from a DataFrame.
 
+!!! tip "Mental Model"
+    `drop()` removes by label, not by condition. Pass column names with `axis=1` to remove columns, or index labels with `axis=0` to remove rows. It returns a new DataFrame by default -- the original is unchanged unless you set `inplace=True`.
+
 ## Drop Columns
 
 Remove columns by name.

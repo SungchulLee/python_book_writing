@@ -14,6 +14,8 @@ describe(**{"age": 25, "name": "Alice"})        # unpacking dict
 
 This page covers every mechanism Python offers for getting arguments into a function.
 
+!!! tip "Mental Model"
+    A function signature is a contract with five zones, always in this order: positional-only (before `/`), positional-or-keyword, `*args`, keyword-only (after `*`), and `**kwargs`. The caller side mirrors this: bare values fill positional slots left to right, `name=value` fills by name, `*iterable` unpacks into positional, and `**dict` unpacks into keyword arguments.
 
 ## Parameter Categories
 

@@ -1,6 +1,13 @@
 # Abstract Base Classes (ABC)
 
-Abstract Base Classes define interfaces that subclasses must implement. They provide a way to enforce contracts and enable polymorphism with explicit structure.
+Abstract Base Classes define interfaces that subclasses must implement. They provide a way to enforce contracts and enable polymorphism with explicit structure. While Python's duck typing is flexible, it offers no guarantee that a class actually implements the methods a caller expects. ABCs fill this gap by letting you declare required methods up front and catching missing implementations at instantiation time rather than deep in a call stack.
+
+!!! note "Mental Model"
+    **ABC = nominal contract + optional shared implementation.** A class must
+    explicitly inherit from the ABC (nominal typing), implement every abstract
+    method, and optionally reuse concrete methods the ABC provides. This stands in
+    contrast to `typing.Protocol`, which uses structural typing — no inheritance
+    required, just matching method signatures.
 
 ```python
 from abc import ABC, abstractmethod
@@ -107,7 +114,7 @@ class Circle(Shape):
 
 ### Using ABCMeta Metaclass
 
-Alternative syntax (equivalent to inheriting from ABC):
+Alternative syntax (equivalent to inheriting from ABC). In practice, `class MyABC(ABC)` is the preferred modern form — `ABCMeta` is shown here because you will encounter it in older codebases:
 
 ```python
 from abc import ABCMeta, abstractmethod
@@ -239,7 +246,7 @@ print(dog.introduce())  # "I am Buddy and I say: Woof!"
 
 ## Default Implementation
 
-Abstract methods can have default implementations:
+Abstract methods can have a body that serves as a default implementation. Subclasses must still override the method (it is still abstract), but they can call `super()` to reuse the default logic:
 
 ```python
 from abc import ABC, abstractmethod
@@ -248,6 +255,8 @@ class Logger(ABC):
     @abstractmethod
     def log(self, message):
         """Log a message. Subclasses should call super()."""
+        # This body is a *default* — subclasses MUST still override,
+        # but can call super().log() to reuse this logic.
         print(f"[{self.__class__.__name__}] {message}")
 
 class FileLogger(Logger):
@@ -257,6 +266,13 @@ class FileLogger(Logger):
         with open("log.txt", "a") as f:
             f.write(message + "\n")
 ```
+
+!!! warning "Abstract methods with bodies must still be overridden"
+    Even though `Logger.log` has a full method body, the `@abstractmethod` decorator
+    still prevents direct instantiation of `Logger`. Subclasses **must** override
+    the method — the body is purely opt-in for subclasses that choose to call
+    `super()`. This surprises many developers who expect a body to make the method
+    concrete.
 
 ---
 
@@ -502,6 +518,33 @@ class ShoppingCart:
         total = sum(item['price'] for item in self.items)
         return self.payment_strategy.pay(total)
 ```
+
+---
+
+## When to Use (and Not Use) ABCs
+
+!!! tip "Decision Framework"
+    ```text
+    Use ABC when:
+    - You control the class hierarchy
+    - You want shared implementation (concrete methods)
+    - You want runtime enforcement (TypeError at instantiation)
+
+    Use Protocol when:
+    - You don't control implementations (third-party code)
+    - You want loose coupling without inheritance
+    - You rely on static type checking (mypy / pyright)
+
+    Use collections.abc when:
+    - Building container-like types (Sequence, Mapping, Set)
+
+    Use register() when:
+    - Adapting legacy or third-party code to an existing ABC — only
+    ```
+    Don't use ABC for small projects or one-off classes — it adds ceremony without proportional benefit. Plain duck typing is fine when the interface is obvious.
+
+!!! warning "ABC ≠ Full Runtime Safety"
+    ABCs enforce that abstract methods are *defined* in subclasses, but they do not verify argument types, return values, or behavioral contracts. A subclass can implement `def area(self): return "not a number"` and Python will not complain. For richer validation, combine ABCs with type checkers like `mypy`.
 
 ---
 
@@ -1091,3 +1134,59 @@ Write an ABC `NotificationSender` with abstract methods `send(recipient, message
 
         email.send("alice@example.com", "Hello!")
         sms.send("1234567890", "Hi there!")
+
+---
+
+**Exercise 4.**
+Explain why the following code raises a `TypeError` at instantiation, even though `PartialShape` defines `area()`. What must be done to fix it?
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimeter(self):
+        pass
+
+class PartialShape(Shape):
+    def area(self):
+        return 0
+
+shape = PartialShape()
+```
+
+??? success "Solution to Exercise 4"
+
+    `PartialShape` implements `area()` but does **not** implement `perimeter()`. Python's ABC machinery tracks all abstract methods and prevents instantiation unless **every** one is overridden. The error message will be:
+
+        TypeError: Can't instantiate abstract class PartialShape with abstract method perimeter
+
+    To fix it, add the missing method:
+
+        class PartialShape(Shape):
+            def area(self):
+                return 0
+
+            def perimeter(self):
+                return 0
+
+    This illustrates the core value of ABCs: incomplete implementations are caught at instantiation time, not when `perimeter()` is eventually called deep inside another method.
+
+---
+
+**Exercise 5.**
+Consider the `Logger` ABC shown in the Default Implementation section. Describe what happens if `FileLogger` does **not** call `super().log(message)`. Does `FileLogger` still satisfy the ABC contract? Under what circumstances would omitting `super()` be a design mistake versus an intentional choice?
+
+??? success "Solution to Exercise 5"
+
+    Yes, `FileLogger` still satisfies the ABC contract — it overrides the abstract `log()` method, which is all that `@abstractmethod` requires. The `super().log()` call is entirely optional.
+
+    **Omitting `super()` is intentional** when the subclass provides a completely different implementation that does not need the parent's behavior. For example, a `NullLogger` that silently discards messages would have no reason to call `super()`.
+
+    **Omitting `super()` is a mistake** when the ABC's default implementation provides shared setup logic that all subclasses should run (e.g., timestamp formatting, log-level filtering). In that case, forgetting `super()` silently skips that shared logic, leading to inconsistent behavior across subclasses.
+
+    This highlights a limitation of ABCs: they can enforce that a method *exists*, but they cannot enforce that it *calls `super()`*. When the default implementation is load-bearing, document the expectation clearly in the docstring.

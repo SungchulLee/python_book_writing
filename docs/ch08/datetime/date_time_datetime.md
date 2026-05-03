@@ -2,6 +2,9 @@
 
 These three classes represent dates, times, and the combination of both, forming the foundation of datetime operations.
 
+!!! tip "Mental Model"
+    Think of `date` as a calendar page (year-month-day), `time` as a clock face (hour-minute-second), and `datetime` as both stapled together. Most real-world timestamps need `datetime` because events happen at a specific date *and* time. The split into three classes lets you work with whichever dimension matters for your task.
+
 ## date Class
 
 The date class represents a calendar date (year, month, day).

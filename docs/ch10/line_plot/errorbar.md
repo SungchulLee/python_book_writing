@@ -2,6 +2,22 @@
 
 Error bars display the uncertainty or variability of data points, essential for statistical and scientific visualizations.
 
+!!! tip "Mental Model"
+    An error bar is a line plot with "whiskers" showing how much each data point might vary. `ax.errorbar()` works like `ax.plot()` but adds vertical and/or horizontal bars centered on each point. The length of each bar represents the uncertainty -- longer bars mean less confidence in the exact value.
+
+!!! warning "Error Bars Have Different Meanings"
+    Error bars do **not** always represent the same quantity. Common conventions:
+
+    | Meaning | What it shows | When to use |
+    |---------|--------------|-------------|
+    | Standard deviation (SD) | Spread of the data | Describing variability |
+    | Standard error (SE) | Precision of the mean | Comparing group means |
+    | 95% confidence interval | Range likely containing true mean | Statistical inference |
+
+    **Always label what your error bars represent** — readers cannot tell SD from
+    SE by looking at the chart. A plot without this context is ambiguous at best
+    and misleading at worst.
+
 ## Basic Error Bars
 
 ### Symmetric Error Bars

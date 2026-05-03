@@ -2,6 +2,9 @@
 
 Aggregation is a form of "has-a" relationship where the contained objects have independent lifetimes. Unlike composition, the container does not create or destroy its parts. Instead, pre-existing objects are passed into the container, and they survive even if the container is destroyed. This distinction makes aggregation the right choice when objects need to be shared across multiple containers or reused after a container is gone.
 
+!!! tip "Mental Model"
+    Composition is like a heart inside a body -- the heart is created with the body and dies with it. Aggregation is like a passenger on a bus -- the passenger exists before boarding, rides along, and walks away when the bus is scrapped. If the parts outlive the whole, you have aggregation.
+
 ## Aggregation as a Has-A Relationship
 
 ### 1. Weaker Has-A
@@ -51,6 +54,18 @@ print(len(car_b.wheels))  # 3 — surprise!
 ```
 
 If shared mutation is a concern, the container should store a **copy** of the list, or the aggregated objects themselves should be immutable.
+
+## When to Use Aggregation Over Composition
+
+!!! tip "Decision Rule"
+    Use **aggregation** when:
+
+    - Objects must be **shared** across multiple containers (e.g., a `Player` on two `Team`s).
+    - Objects **outlive** the container (e.g., `Student`s exist before and after a `Course`).
+    - Ownership is **external** — the container did not create the objects and should not destroy them.
+    - You need **loose coupling** — the container is just a view or grouping of independently managed objects.
+
+    Use **composition** instead when the container creates its parts, owns them exclusively, and the parts have no meaning outside the container.
 
 ## Summary
 
@@ -167,3 +182,85 @@ Design a `Playlist` class that aggregates `Song` objects. A `Song` has `title` a
         print(s1)  # Song('Song A') — still exists
         print(s2)  # Song('Song B') — still exists
         print(pl2.songs)  # [Song('Song B'), Song('Song C')]
+
+---
+
+**Exercise 4.**
+A `Car` class aggregates a list of `Wheel` objects passed to its constructor. Two cars share the same wheel list. Show that appending a wheel to one car's list also affects the other. Then fix the design so that each car gets its own copy of the list while the underlying `Wheel` objects remain shared.
+
+??? success "Solution to Exercise 4"
+
+        class Wheel:
+            def __init__(self, size):
+                self.size = size
+
+            def __repr__(self):
+                return f"Wheel({self.size})"
+
+        # Problem: shared list reference
+        wheels = [Wheel(16), Wheel(16), Wheel(16), Wheel(16)]
+        car_a = type("Car", (), {"wheels": wheels})()
+        car_b = type("Car", (), {"wheels": wheels})()
+
+        car_a.wheels.append(Wheel(18))
+        print(len(car_b.wheels))  # 5 — unintended side effect!
+
+        # Fix: copy the list, but share the Wheel objects
+        class Car:
+            def __init__(self, wheels):
+                self.wheels = list(wheels)  # Shallow copy
+
+        shared_wheels = [Wheel(16), Wheel(16), Wheel(16), Wheel(16)]
+        car_x = Car(shared_wheels)
+        car_y = Car(shared_wheels)
+
+        car_x.wheels.append(Wheel(18))
+        print(len(car_x.wheels))  # 5
+        print(len(car_y.wheels))  # 4 — isolated
+
+        # But the Wheel objects are still shared
+        print(car_x.wheels[0] is car_y.wheels[0])  # True
+
+    The fix uses `list(wheels)` — a **shallow copy** that gives each car its own list while the `Wheel` objects themselves remain shared (true aggregation). A deep copy (`copy.deepcopy`) would create independent wheels, which is composition, not aggregation.
+
+---
+
+**Exercise 5.**
+Explain whether the following `Course`/`Student` example is aggregation or composition, and why. Then modify it so that it clearly demonstrates the *other* pattern.
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+class Course:
+    def __init__(self, title):
+        self.title = title
+        self.students = []
+
+    def enroll(self, student):
+        self.students.append(student)
+```
+
+??? success "Solution to Exercise 5"
+
+    This is **aggregation**. The `Course` does not create `Student` objects — they are created externally and passed in via `enroll()`. Students have independent lifetimes; they exist before enrollment and survive after the course ends. Multiple courses can share the same student.
+
+    To convert to **composition**, the `Course` must create and own its students internally:
+
+        class Course:
+            def __init__(self, title, student_names):
+                self.title = title
+                # Composition: Course creates its own Student objects
+                self._students = [Student(name) for name in student_names]
+
+            def list_students(self):
+                return [s.name for s in self._students]
+
+        course = Course("Python 101", ["Alice", "Bob", "Charlie"])
+        print(course.list_students())  # ['Alice', 'Bob', 'Charlie']
+
+        # No external references to Student objects — they live and die with Course
+        del course  # Students become unreachable
+
+    The key difference: in aggregation, the caller creates the students and passes them in. In composition, the course creates them itself, and nobody outside holds a reference.

@@ -2,6 +2,9 @@
 
 When a single hypothesis test is conducted at significance level $\alpha = 0.05$, there is a 5% chance of a false positive. But when many tests are performed simultaneously — comparing multiple groups, scanning many features, or testing at multiple time points — the probability of at least one false positive grows rapidly. Multiple testing corrections control this inflation by adjusting either the significance threshold or the p-values themselves.
 
+!!! tip "Mental Model"
+    Running 20 tests at the 5% level is like rolling a 20-sided die and hoping for no 1s -- you will get a false positive about 64% of the time. Bonferroni divides the significance level by the number of tests (strict but safe); Benjamini-Hochberg controls the false discovery rate (more power, slightly more false positives).
+
 ---
 
 ## The Multiple Comparisons Problem

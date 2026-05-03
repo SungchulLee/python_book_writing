@@ -2,6 +2,9 @@
 
 Numerical stability determines whether an algorithm produces reliable results despite unavoidable floating-point errors. A stable algorithm keeps errors bounded; an unstable one amplifies them catastrophically.
 
+!!! tip "Mental Model"
+    Conditioning is a property of the problem (how sensitive the answer is to input noise); stability is a property of the algorithm (whether it makes that sensitivity worse). A good algorithm on an ill-conditioned problem still loses digits, but a bad algorithm can turn even a well-conditioned problem into garbage.
+
 ## Stability vs Conditioning
 
 Distinguish between problem sensitivity and algorithm reliability.

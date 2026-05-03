@@ -2,6 +2,9 @@
 
 Understanding the mapping between JSON data types and Python data types.
 
+!!! tip "Mental Model"
+    JSON has only six data types (string, number, object, array, boolean, null), while Python has many more. The `json` module maps each JSON type to a natural Python counterpart (object to dict, array to list, null to None) and vice versa. Knowing this mapping tells you exactly what comes out of `json.loads` and what goes into `json.dumps` without surprises.
+
 ## JSON to Python Mapping
 
 How JSON types convert to Python types.

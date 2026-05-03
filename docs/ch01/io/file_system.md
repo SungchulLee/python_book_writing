@@ -4,6 +4,9 @@ Programs interact with files stored on disk. To work with files effectively, you
 need to understand how the file system is organized, how paths work, and how Python
 provides tools for navigating directories.
 
+!!! tip "Mental Model"
+    The file system is a tree of folders and files. Every file has a unique address called a path, which traces the route from a starting point to the file. Understanding absolute vs. relative paths and how the current working directory affects file lookups is essential before reading or writing any file in Python.
+
 ---
 
 ## 1. Directory Structure

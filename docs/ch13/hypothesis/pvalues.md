@@ -2,6 +2,9 @@
 
 In hypothesis testing, after computing a test statistic, we need a way to calibrate how surprising the observed result is under the null hypothesis. The p-value provides this calibration by converting the test statistic into a probability scale. This section defines p-values formally, explains their correct interpretation, and presents the standard decision rule for statistical significance.
 
+!!! tip "Mental Model"
+    The p-value answers: "If nothing interesting were happening (null hypothesis true), how often would I see data this extreme or more?" A small p-value means the data are surprising under the null. Crucially, it is not the probability that the null is true -- it is the probability of the data given the null, not the other way around.
+
 ## Definition
 
 A **p-value** is the probability, under the null hypothesis $H_0$, of obtaining a test statistic at least as extreme as the value actually observed from the sample data.

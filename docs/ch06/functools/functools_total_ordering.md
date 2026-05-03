@@ -2,6 +2,9 @@
 
 The `@total_ordering` class decorator auto-generates missing comparison methods. Define `__eq__` and **one** of `__lt__`, `__le__`, `__gt__`, or `__gt__`, and `total_ordering` fills in the remaining four.
 
+!!! tip "Mental Model"
+    If you can test equality and one ordering direction, the other comparisons are logically derivable. `@total_ordering` does that derivation for you: define `__eq__` plus any one of `__lt__`/`__le__`/`__gt__`/`__ge__`, and the decorator fills in the rest. It trades a small runtime cost for eliminating four boilerplate methods.
+
 ```python
 from functools import total_ordering
 ```

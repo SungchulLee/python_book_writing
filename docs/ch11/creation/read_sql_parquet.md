@@ -2,6 +2,9 @@
 
 pandas supports reading data from SQL databases and Parquet files, which are common in enterprise and big data environments.
 
+!!! tip "Mental Model"
+    `read_sql` treats a database query result as a DataFrame -- the SQL engine does the heavy filtering, and pandas receives the final table. `read_parquet` loads columnar binary files that preserve dtypes exactly, making round-trips lossless and fast. Both skip the parsing overhead of text formats like CSV.
+
 ## pd.read_sql - Database Connectivity
 
 ### Basic Setup

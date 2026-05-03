@@ -2,6 +2,9 @@
 
 The walrus operator (assignment expression) assigns a value and returns it in a single expression. Introduced in Python 3.8 (PEP 572), it enables more concise code in loops, conditions, and comprehensions.
 
+!!! tip "Mental Model"
+    `:=` is "assign and use in one shot." Instead of computing a value on one line and testing it on the next, `if (n := len(data)) > 10` does both at once. It shines in `while` loops and `if` conditions where you need to capture and test a result simultaneously. Use it sparingly -- readability drops fast if overused.
+
 ---
 
 ## Basic Usage

@@ -2,6 +2,9 @@
 
 pandas provides rich support for time series data through the **DatetimeIndex**, which enables label-based time alignment and slicing.
 
+!!! tip "Mental Model"
+    A DatetimeIndex is a sorted array of timestamps that serves as a time-aware row label. It unlocks partial-string indexing (`df['2024']` for all of 2024), resampling to different frequencies, and automatic time-based alignment. Any DataFrame with a DatetimeIndex becomes a first-class time series.
+
 ## Creating DatetimeIndex
 
 Generate datetime indices for time series.

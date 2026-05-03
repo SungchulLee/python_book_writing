@@ -4,6 +4,9 @@ A bootstrap standard error tells us how variable a statistic is, but it does not
 
 This page presents the four most common bootstrap confidence interval methods: the normal interval, the percentile interval, the basic (pivotal) interval, and the bias-corrected and accelerated (BCa) interval.
 
+!!! tip "Mental Model"
+    The simplest bootstrap CI reads the 2.5th and 97.5th percentiles directly from the bootstrap distribution (percentile method). More sophisticated methods correct for bias and skewness in the bootstrap distribution. The BCa interval is generally the most accurate, but requires more computation. All methods need at least $B = 10{,}000$ replicates for stable tail quantiles.
+
 ---
 
 ## Setup and Notation

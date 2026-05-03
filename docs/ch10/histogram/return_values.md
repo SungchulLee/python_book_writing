@@ -2,6 +2,14 @@
 
 The `ax.hist()` method returns three objects that provide information about the created histogram.
 
+!!! tip "Mental Model"
+    `n, bins, patches = ax.hist(data)` gives you three things: `n` is the count (or density) per bin, `bins` is the array of bin edges (one longer than `n`), and `patches` is the list of Rectangle artists. Capture these return values when you need to post-process bin counts or individually style each bar after creation.
+
+    The deeper connection: `n` and `bins` together define an **empirical
+    distribution** — you can compute probabilities from them
+    (`P(a < X < b) ≈ sum of density × bin_width` for bins in `[a, b]`), making
+    the histogram a bridge between raw data and probability theory.
+
 ## Return Signature
 
 ```python

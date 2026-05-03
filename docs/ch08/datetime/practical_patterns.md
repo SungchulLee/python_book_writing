@@ -2,6 +2,9 @@
 
 Common patterns and best practices for working with dates and times in real-world applications.
 
+!!! tip "Mental Model"
+    Real-world datetime code revolves around a handful of recurring patterns: computing "time ago" labels, finding business-day boundaries, generating date ranges, and converting between timezones. Mastering these recipes means you rarely need to reinvent the wheel — most datetime tasks are a variation of one of these patterns.
+
 ## Human-Readable Relative Times
 
 Display times relative to now (e.g., '2 hours ago').

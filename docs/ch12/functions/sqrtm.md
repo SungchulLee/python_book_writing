@@ -2,6 +2,9 @@
 
 The matrix square root $X$ satisfies $X^2 = A$.
 
+!!! tip "Mental Model"
+    The matrix square root finds $X$ such that multiplying $X$ by itself recovers the original matrix $A$. Unlike the scalar case, a matrix can have multiple square roots (or none at all for certain singular matrices). SciPy computes the principal square root via the Schur decomposition, which is numerically stable and works even when eigenvalues are complex.
+
 ## linalg.sqrtm
 
 ### 1. Basic Usage

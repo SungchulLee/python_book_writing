@@ -2,6 +2,9 @@
 
 pandas provides methods to sort DataFrames and Series by their index labels or column values.
 
+!!! tip "Mental Model"
+    `sort_values` reorders rows by the data in one or more columns -- like clicking a column header in a spreadsheet. `sort_index` reorders rows by their index labels. Both return a new DataFrame by default and support `ascending=False` for descending order.
+
 ## sort_index Method
 
 Sort by row or column labels.

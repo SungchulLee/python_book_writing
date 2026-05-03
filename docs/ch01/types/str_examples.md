@@ -3,6 +3,9 @@
 
 This section gathers practical examples showing how string operations work together.
 
+!!! tip "Mental Model"
+    These examples show how individual string skills---formatting, slicing, methods, membership testing---combine to solve real tasks. Each example is a small program that uses multiple string operations together, building the habit of thinking in terms of composable string tools rather than isolated methods.
+
 ---
 
 ## 1. Greeting Message

@@ -1,6 +1,9 @@
 # Enum Members and Values
 
-Access and manipulate enum members and their values. Understand the differences between names, values, and member objects.
+Access and manipulate enum members and their values. Understand the differences between names, values, and member objects. For everyday use, you only need `member.name`, `member.value`, `EnumClass(value)`, and `EnumClass['NAME']`. The internal attributes (`_member_map_`, `_value2member_map_`) shown later in this page are advanced — useful for introspection and metaprogramming, but not needed for typical enum usage.
+
+!!! tip "Mental Model"
+    An enum member is a triple: the **member object** itself (e.g., `Fruit.APPLE`), its **name** (the string `"APPLE"`), and its **value** (whatever you assigned, like `"apple"`). Access goes both ways: `EnumClass['NAME']` for name-to-member and `EnumClass(value)` for value-to-member. The member is the identity; the name and value are just labels attached to it.
 
 ---
 
@@ -42,13 +45,13 @@ class Day(Enum):
     SATURDAY = 6
     SUNDAY = 7
 
-# Access _member_names_ (tuple)
+# Access _member_names_ (tuple) — ADVANCED: internal API
 print(Day._member_names_)  # ('MONDAY', 'TUESDAY', ...)
 
-# Access _member_map_ (dict name -> member)
+# Access _member_map_ (dict name -> member) — ADVANCED: internal API
 print(Day._member_map_['FRIDAY'])  # Day.FRIDAY
 
-# Access _value2member_map_ (dict value -> member)
+# Access _value2member_map_ (dict value -> member) — ADVANCED: internal API
 print(Day._value2member_map_[5])   # Day.FRIDAY
 
 # Iterate
@@ -103,6 +106,10 @@ print(Status.WAITING == Status.PENDING)  # True
 # Canonical and aliases have same object
 print(Status.PENDING is Status.WAITING)  # True
 ```
+
+!!! note "Aliases Share Identity"
+
+    Aliases are not copies — they are the **exact same object**. `Status.WAITING is Status.PENDING` is `True` because they share identity, not just equality. This means aliases don't appear in iteration (only the canonical name does), and any method called on an alias behaves identically to the original member.
 
 ## Conditional Access
 
@@ -254,3 +261,75 @@ Create a `Currency` enum with values as 3-letter codes. Write a `from_value(valu
             Currency.from_value("XYZ")
         except ValueError as e:
             print(f"Error: {e}")
+
+---
+
+**Exercise 4.**
+Explain the difference between iterating over an enum class directly (`for s in Status`) and iterating over `Status.__members__.items()`. Create a `Status` enum with aliases (`ENABLED = 1`, `ACTIVE = 1`, `DISABLED = 2`, `INACTIVE = 2`) and show the output of both iteration approaches. Why does Python hide aliases from the default iterator?
+
+??? success "Solution to Exercise 4"
+
+        from enum import Enum
+
+        class Status(Enum):
+            ENABLED = 1
+            ACTIVE = 1    # alias for ENABLED
+            DISABLED = 2
+            INACTIVE = 2  # alias for DISABLED
+
+        # Default iteration — canonical members only
+        print("Default iteration:")
+        for s in Status:
+            print(f"  {s.name} = {s.value}")
+        # ENABLED = 1
+        # DISABLED = 2
+
+        # __members__ — includes aliases
+        print("\n__members__ iteration:")
+        for name, member in Status.__members__.items():
+            canonical = "alias" if name != member.name else "canonical"
+            print(f"  {name} -> {member.name} ({canonical})")
+        # ENABLED -> ENABLED (canonical)
+        # ACTIVE -> ENABLED (alias)
+        # DISABLED -> DISABLED (canonical)
+        # INACTIVE -> DISABLED (alias)
+
+    Python hides aliases from the default iterator to prevent duplicate processing. When you iterate to build a menu, populate a dropdown, or map values, you typically want each *distinct value* once — not multiple names pointing to the same member. The `__members__` dict is available when you explicitly need to see aliases (e.g., for documentation or migration tools).
+
+---
+
+**Exercise 5.**
+Write a generic function `enum_to_dict(enum_class)` that takes any `Enum` subclass and returns a dictionary mapping member names to values. Then write the reverse: `dict_to_enum(name, mapping)` that dynamically creates an `Enum` class from a dictionary using the functional API (`Enum(name, mapping)`). Demonstrate round-tripping: create an enum, convert to dict, recreate from dict, and verify the members match.
+
+??? success "Solution to Exercise 5"
+
+        from enum import Enum
+
+        def enum_to_dict(enum_class):
+            return {member.name: member.value for member in enum_class}
+
+        def dict_to_enum(name, mapping):
+            return Enum(name, mapping)
+
+        # Original enum
+        class Color(Enum):
+            RED = 1
+            GREEN = 2
+            BLUE = 3
+
+        # Convert to dict
+        color_dict = enum_to_dict(Color)
+        print(color_dict)  # {'RED': 1, 'GREEN': 2, 'BLUE': 3}
+
+        # Recreate from dict
+        Color2 = dict_to_enum("Color2", color_dict)
+
+        # Verify members match
+        for member in Color2:
+            original = Color[member.name]
+            print(f"{member.name}: {member.value} == {original.value} -> {member.value == original.value}")
+        # RED: 1 == 1 -> True
+        # GREEN: 2 == 2 -> True
+        # BLUE: 3 == 3 -> True
+
+    Note: `Color2.RED is not Color.RED` — they are different enum classes with the same names and values. The functional API `Enum(name, mapping)` is useful for creating enums from external data (configuration files, database schemas), but the resulting classes are not interchangeable with statically defined ones.

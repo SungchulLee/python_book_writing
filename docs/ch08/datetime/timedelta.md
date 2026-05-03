@@ -2,6 +2,9 @@
 
 `timedelta` represents a duration and enables arithmetic operations on dates and times.
 
+!!! tip "Mental Model"
+    A `timedelta` is a ruler on the timeline — it measures the gap between two points in time. Add a `timedelta` to a `datetime` to move forward, subtract to move backward, and subtract two `datetime` objects to get the `timedelta` between them. Internally it stores only days, seconds, and microseconds, normalizing everything else into those three fields.
+
 ## Creating and Using timedelta
 
 Create timedelta objects to represent durations.

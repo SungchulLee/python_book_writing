@@ -2,6 +2,25 @@
 
 Create professional financial visualizations with Matplotlib.
 
+!!! tip "Mental Model"
+    Financial charts combine multiple plot types on shared time axes: line plots for prices, bar charts for volume, fill_between for ranges, and twin axes for overlaying different scales. The key technique is using `twinx()` to pair price and volume on the same figure without distorting either scale.
+
+!!! warning "Visualization vs Analysis"
+    This page demonstrates **plotting techniques**, not trading strategies. Moving
+    average crossovers, bullish/bearish shading, and volume overlays are shown as
+    Matplotlib patterns — they are not validated signals. In real finance:
+
+    - Moving averages are **lagging indicators** — they react to past data, not future prices
+    - Crossover "signals" produce many **false positives** in sideways markets
+    - `twinx()` can **visually mislead** by implying correlation between differently scaled axes
+
+    Always apply statistical rigor before interpreting any chart pattern as meaningful.
+
+!!! tip "Offline Usage"
+    Examples use `yfinance` for real data, but all techniques work equally well
+    with synthetic data (`np.cumsum(np.random.randn(250))`) for offline
+    development and testing.
+
 ---
 
 ## Stock Price Chart

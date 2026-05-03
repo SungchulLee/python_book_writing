@@ -16,6 +16,9 @@ flowchart LR
     A --> E[strip/replace methods]
 ````
 
+!!! tip "Mental Model"
+    `split()` and `join()` are inverses: `split()` breaks a string into a list of pieces at a delimiter, and `join()` reassembles a list of strings with a separator between them. Together they form the standard pattern for parsing and rebuilding text. Methods like `.strip()` and `.replace()` handle cleanup by removing whitespace or swapping substrings.
+
 ---
 
 ## 1. split()

@@ -2,6 +2,9 @@
 
 The `axis` parameter determines whether to concatenate along rows (vertically) or columns (horizontally).
 
+!!! tip "Mental Model"
+    `axis=0` means "grow downward" -- new rows are appended below existing ones. `axis=1` means "grow rightward" -- new columns are placed beside existing ones. The axis number tells you which dimension gets longer: 0 for row-count, 1 for column-count.
+
 ## axis=0 Vertical
 
 Stack DataFrames on top of each other.

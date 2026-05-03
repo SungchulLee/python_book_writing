@@ -2,6 +2,29 @@
 
 This document covers the XAxis/YAxis objects, tick locators, and tick formatters for fine-grained control over axis behavior.
 
+!!! tip "Mental Model"
+    Tick placement is a two-step pipeline: a Locator decides where ticks go, and a Formatter decides what text to display at each tick. Matplotlib picks reasonable defaults, but swapping in a different Locator (e.g., `MultipleLocator(5)`) or Formatter (e.g., `PercentFormatter`) gives you precise control without manually listing every tick position.
+
+!!! note "The Three Tools You Actually Need"
+    The Locator/Formatter system has many classes, but in practice these three
+    cover ~90% of use cases:
+
+    1. **`MultipleLocator(n)`** — ticks at regular intervals of `n`
+    2. **`MaxNLocator(n)`** — automatic placement with at most `n` ticks
+    3. **`FuncFormatter(func)`** — custom label text via a callback
+
+    Everything else (`FixedLocator`, `LogLocator`, `DateFormatter`, etc.) is for
+    specialized domains. Start with these three and reach for others only when
+    they cannot express your needs.
+
+!!! tip "Design Principle"
+    - **Too many ticks** → visual clutter, labels overlap
+    - **Too few ticks** → reader cannot judge scale or read values
+
+    The goal is **just enough ticks to communicate the scale** without competing
+    with the data. As a rule of thumb, 5--7 ticks per axis is usually optimal
+    for most plot sizes.
+
 ## XAxis and YAxis Objects
 
 Access axis objects via the axes:

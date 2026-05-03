@@ -2,6 +2,20 @@
 
 Violin plots combine box plot statistics with kernel density estimation, showing the full distribution shape of data.
 
+!!! tip "Mental Model"
+    A violin plot is a box plot that traded its box for a mirrored density curve. The wider the violin at a given value, the more data points cluster there. This reveals multimodality and skewness that a box plot hides, while still showing median and quartile markers inside the shape.
+
+    **Box vs Violin — the tradeoff:**
+
+    - **Box plot** → compact and comparable (easy to line up 10+ groups), but hides
+      shape (a bimodal distribution looks the same as a unimodal one).
+    - **Violin plot** → detailed and expressive (shows full density), but takes more
+      space and can be harder to read for quick comparison.
+
+    Use box plots when the audience needs fast comparison across many groups.
+    Use violins when the shape of the distribution matters (e.g., detecting
+    bimodality or heavy tails).
+
 ## Basic Violin Plot
 
 ### Simple Example

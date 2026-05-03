@@ -2,6 +2,9 @@
 
 The CDF answers "what is the probability that $X \le x$?" The **quantile function** inverts that question: "at what value $x$ does the cumulative probability reach $q$?" This inverse operation is central to statistical practice — it determines critical values for hypothesis tests, endpoints of confidence intervals, and the theoretical quantiles used in QQ plots. In `scipy.stats`, the quantile function is called `ppf` (percent point function) and its survival-function counterpart is `isf` (inverse survival function).
 
+!!! tip "Mental Model"
+    The CDF maps values to probabilities; the PPF (quantile function) maps probabilities back to values. It is the CDF run in reverse. Whenever you need a critical value or a confidence interval endpoint, you are using the PPF -- for example, `ppf(0.975)` for the standard normal gives the familiar 1.96.
+
 ---
 
 ## Quantile Function (ppf)

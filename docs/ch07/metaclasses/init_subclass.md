@@ -1,6 +1,27 @@
 # \_\_init_subclass\_\_
 
-`__init_subclass__` (Python 3.6+) is a hook that's called whenever a class is subclassed. It provides a simpler alternative to metaclasses for many common use cases.
+`__init_subclass__` (Python 3.6+) is a hook that runs whenever a class is subclassed. It provides a simpler alternative to metaclasses for many common use cases — but it has hard limits.
+
+!!! tip "Mental Model"
+    `__init_subclass__` is a parent class's callback that fires every time someone writes `class Child(Parent)`. Think of it as a registration desk: the parent inspects each new child at birth, can enforce rules (require certain methods), inject behavior (auto-register plugins), or reject the child entirely. It covers 80% of metaclass use cases with none of the complexity.
+
+!!! warning "Hard Limits — what `__init_subclass__` cannot do"
+    `__init_subclass__` runs **after** the class object already exists. It cannot:
+
+    - Modify the class namespace **before** creation (use `__prepare__` in a metaclass)
+    - Affect method resolution order (MRO)
+    - Intercept or control **instance** creation (use `__call__` in a metaclass)
+
+    ```text
+    class statement → metaclass.__new__ → class object exists → __init_subclass__
+    ```
+
+    If you need to act *before* the class is fully formed, you need a metaclass.
+
+!!! tip "The `super()` rule"
+    Always call `super().__init_subclass__(**kwargs)` in your implementation. This
+    ensures cooperative multiple inheritance works correctly — without it, sibling
+    hooks in the MRO chain will be silently skipped.
 
 ```python
 class Base:
@@ -139,6 +160,13 @@ class UserModel(ValidatedModel):
 
 ### Automatic Method Addition
 
+!!! note "Illustrative example — not production-safe"
+    The `AutoRepr` pattern below inspects `__init__` parameters via `inspect.signature`.
+    This breaks with inheritance (picks up the wrong `__init__`), does not handle
+    `*args`/`**kwargs`, and ignores dataclasses, slots, and descriptors. For production
+    use, prefer `@dataclass` (which generates `__repr__` correctly) or write an explicit
+    `__repr__`.
+
 ```python
 class AutoRepr:
     def __init_subclass__(cls, **kwargs):
@@ -261,7 +289,9 @@ class C(A, B):
 # A.__init_subclass__ for C
 ```
 
-**Important**: Always call `super().__init_subclass__(**kwargs)` to support multiple inheritance!
+Note how the MRO determines the order: `B.__init_subclass__` runs before
+`A.__init_subclass__` because Python traverses the MRO from right to left when
+calling cooperative `super()` chains.
 
 ---
 
@@ -275,6 +305,13 @@ class C(A, B):
 | Modify namespace | No | Yes (via `__prepare__`) |
 | Control instantiation | No | Yes (via `__call__`) |
 | Use case | Registration, validation | DSLs, ORMs |
+
+!!! tip "Decision Rule"
+
+    Use `__init_subclass__` when you only need the **finished class** — registration,
+    validation, adding attributes. Use a metaclass when you need to control **how the
+    class is built** — custom namespace (`__prepare__`), intercepting instance creation
+    (`__call__`), or transforming the class body before the class object exists.
 
 ### When to Use __init_subclass__
 

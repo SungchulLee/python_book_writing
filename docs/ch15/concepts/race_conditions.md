@@ -2,6 +2,9 @@
 
 A **race condition** occurs when the behavior of a program depends on the relative timing of events, such as the order in which threads execute.
 
+!!! tip "Mental Model"
+    A race condition is a bug that only appears when timing is unlucky. Picture two people editing the same spreadsheet cell at the same moment -- one overwrites the other without knowing. The fix is to make critical sections atomic: lock, read-modify-write, unlock, so no one else can interfere mid-operation.
+
 ## Classic Race Condition: Check-Then-Act
 
 ### The Problem

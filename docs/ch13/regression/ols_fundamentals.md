@@ -8,6 +8,9 @@ from the data points to the line. This page develops the OLS framework from the
 optimization problem through the solution, its statistical properties, and
 practical computation.
 
+!!! tip "Mental Model"
+    OLS draws the line that minimizes the total squared vertical distance from each data point to the line. Squaring the distances penalizes large errors disproportionately and yields a smooth, differentiable objective with a unique closed-form solution. Under Gaussian errors, OLS is also the maximum likelihood estimator.
+
 ---
 
 ## The OLS Objective

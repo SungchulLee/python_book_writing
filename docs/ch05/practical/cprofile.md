@@ -2,6 +2,9 @@
 
 Python's built-in `cProfile` module provides a deterministic profiler that measures CPU time spent in each function. It's essential for identifying performance bottlenecks in your code.
 
+!!! tip "Mental Model"
+    `cProfile` is like a stopwatch for every function call in your program. It records how many times each function was called and how long it took, then ranks them. The key insight is to sort by cumulative time to find the real bottlenecks -- the functions where your program actually spends its life.
+
 ---
 
 ## Basic Usage

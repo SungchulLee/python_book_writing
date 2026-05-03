@@ -2,6 +2,15 @@
 
 Exporting figures to files is essential for reports, papers, and presentations.
 
+!!! tip "Mental Model"
+    `fig.savefig()` renders the Figure to a file just as `plt.show()` renders it to the screen. The file format is inferred from the extension — `.png` for raster, `.pdf` or `.svg` for vector. Set `dpi` for resolution and `bbox_inches='tight'` to avoid clipped labels.
+
+!!! warning "Common Pitfalls"
+    - **Clipped labels:** without `bbox_inches='tight'`, axis labels and titles may be cut off. Always include it (or use `constrained_layout`).
+    - **Low DPI for print:** screen resolution (72–100 DPI) looks blurry in print. Use 300 DPI minimum for papers and posters.
+    - **Large SVG files:** vector plots with thousands of data points produce huge SVGs. For dense scatter plots or heatmaps, prefer PNG.
+    - **Font embedding in PDF:** by default, Matplotlib embeds fonts in PDF. If you see substitution warnings, set `plt.rcParams['pdf.fonttype'] = 42` to embed TrueType fonts.
+
 ---
 
 ## Basic savefig
@@ -255,5 +264,40 @@ for fmt in ['png', 'pdf', 'svg']:
                 bbox_inches='tight', transparent=True)
     plt.show()
     ```
+
+    Saving with `transparent=True` makes the figure and axes backgrounds transparent (alpha=0). This is useful for presentations and documents where you want to overlay the plot on a colored or image background without a white rectangle surrounding it.
+
+---
+
+**Exercise 5.** A colleague's saved figure has clipped axis labels and low resolution. Diagnose and fix: write a `savefig` call that (a) prevents clipping, (b) sets print-quality DPI, (c) uses vector format for a journal submission, and (d) embeds fonts. Explain each parameter choice.
+
+??? success "Solution to Exercise 5"
+
+    ```python
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    plt.rcParams['pdf.fonttype'] = 42  # (d) Embed TrueType fonts in PDF
+
+    fig, ax = plt.subplots()
+    x = np.linspace(0, 10, 100)
+    ax.plot(x, np.sin(x))
+    ax.set_xlabel('Time (seconds)')
+    ax.set_ylabel('Amplitude (volts)')
+    ax.set_title('Signal Measurement')
+
+    fig.savefig(
+        'figure_for_journal.pdf',   # (c) Vector format — scales to any size
+        dpi=300,                     # (b) Print quality (affects raster elements)
+        bbox_inches='tight',         # (a) Prevents clipped labels
+        pad_inches=0.1               # Small padding around the figure
+    )
+    plt.show()
+    ```
+
+    - `bbox_inches='tight'` — recomputes the bounding box to include all artists (labels, titles, legends) that would otherwise be clipped by the default figure boundary.
+    - `dpi=300` — journals require minimum 300 DPI; 600 for line art.
+    - `.pdf` — vector format means no pixelation at any zoom level.
+    - `pdf.fonttype=42` — embeds fonts as TrueType instead of Type 3, which some journals require for searchable/selectable text.
 
     Saving with `transparent=True` makes the figure and axes backgrounds transparent (alpha=0). This is useful for presentations and documents where you want to overlay the plot on a colored or image background without a white rectangle surrounding it.

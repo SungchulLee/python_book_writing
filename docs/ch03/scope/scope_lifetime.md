@@ -1,5 +1,8 @@
 # Scope Lifetime
 
+!!! tip "Mental Model"
+    A scope is born when its containing block starts executing and dies when it ends. A function's local scope is created on each call and destroyed on return -- unless a closure captures it, keeping the variables alive as long as the closure exists. Global scope lives for the entire program; built-in scope is eternal.
+
 ## Local Scope
 
 ### 1. Function Call

@@ -10,6 +10,9 @@ flowchart TD
     A --> C[reversed()]
 ````
 
+!!! tip "Mental Model"
+    `sorted()` produces a brand-new list arranged in order; `reversed()` produces a lazy iterator that walks backward through a sequence. Neither modifies the original data. Use `sorted()` when you need a reordered copy, and `reversed()` when you just need to traverse in reverse without building a new list.
+
 ---
 
 ## sorted()

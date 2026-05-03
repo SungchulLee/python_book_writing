@@ -2,6 +2,15 @@
 
 Matplotlib provides built-in style sheets for consistent and professional-looking plots.
 
+!!! tip "Mental Model"
+    Figure styles are global presets that override Matplotlib's defaults. Under the hood, each style is a set of **rcParams** — the hundreds of key-value pairs that control every visual aspect of a plot (font size, line width, color cycle, grid visibility, etc.). Calling `plt.style.use('ggplot')` bulk-overrides these params. You can inspect or set any individual param via `plt.rcParams['axes.labelsize'] = 14`.
+
+!!! note "Choosing a Style: Design Principles"
+    - **Publication/print:** use `'seaborn-v0_8-whitegrid'` or a custom minimal style — high contrast, clear labels, vector export (PDF/SVG).
+    - **Presentation/slides:** use `'dark_background'` or large-font styles — must be readable from a distance.
+    - **Exploration/notebook:** use `'ggplot'` or `'bmh'` — pleasant colors for quick iteration.
+    - **Consistency:** pick one style for your entire project and set it once at the top of your plotting module. Inconsistent styles across figures look unprofessional.
+
 ---
 
 ## Available Styles
@@ -233,3 +242,33 @@ plt.style.use('default')
     print(f"Pixel dimensions: {6 * 150} x {4 * 150}")   # 900 x 600
     plt.show()
     ```
+
+---
+
+**Exercise 5.** Explain what `rcParams` are and how styles modify them. Write code that (a) prints the current `axes.labelsize`, (b) changes it to 16 using `plt.rcParams`, (c) creates a plot to verify the change, and (d) resets to defaults with `plt.rcdefaults()`. When would you modify `rcParams` directly instead of using a style sheet?
+
+??? success "Solution to Exercise 5"
+
+    ```python
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    # (a) Current value
+    print(f"Default label size: {plt.rcParams['axes.labelsize']}")
+
+    # (b) Change it
+    plt.rcParams['axes.labelsize'] = 16
+
+    # (c) Verify
+    fig, ax = plt.subplots()
+    ax.plot([1, 2, 3], [1, 4, 9])
+    ax.set_xlabel('X (should be large)')
+    ax.set_ylabel('Y (should be large)')
+    plt.show()
+
+    # (d) Reset
+    plt.rcdefaults()
+    print(f"After reset: {plt.rcParams['axes.labelsize']}")
+    ```
+
+    **When to use `rcParams` directly:** when you need to tweak one or two specific settings without changing everything else (e.g., increase just the font size for a presentation). Use a style sheet when you want a complete, reusable visual theme. In practice, many workflows combine both: set a base style with `plt.style.use()`, then override specific params with `plt.rcParams[...]`.

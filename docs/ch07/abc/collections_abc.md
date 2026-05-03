@@ -1,6 +1,29 @@
 # collections.abc
 
-The `collections.abc` module provides abstract base classes for container types. These help you create classes that work with Python's built-in operations.
+The `collections.abc` module provides abstract base classes for container types. Every built-in container — `list`, `dict`, `set` — follows implicit contracts defined by dunder methods like `__getitem__`, `__iter__`, and `__len__`. The `collections.abc` module formalizes these contracts: inherit from the right ABC, implement a handful of required methods, and Python gives you a complete, consistent container with many methods provided for free.
+
+!!! tip "Mental Model"
+    Think of `collections.abc` as a vending machine: you insert a few required methods (the coins), and the ABC dispenses a fully functional container with all the convenience methods included. The insight is that containers are not monolithic -- they are layered contracts, and each ABC defines exactly which layer you are buying into.
+
+!!! tip "Key Insight"
+    `collections.abc` turns the question from "which dunder methods does `list` use?" into "implement these 2–3 methods and get a full `Sequence` for free." This is the **minimal implementation → inherited power** principle.
+
+---
+
+## Built-in Types and Their ABCs
+
+Before diving into the classes, it helps to see how built-in types relate to these ABCs:
+
+| Built-in type | Satisfies ABC |
+|---|---|
+| `list`, `tuple`, `range`, `str` | `Sequence` |
+| `list` | `MutableSequence` |
+| `dict` | `MutableMapping` |
+| `set` | `MutableSet` |
+| `frozenset` | `Set` |
+| functions, lambdas | `Callable` |
+
+All built-in containers are already registered as virtual subclasses of the corresponding ABCs, so `isinstance([1,2,3], Sequence)` returns `True` without any extra work.
 
 ---
 
@@ -41,13 +64,33 @@ class CustomList(Sequence):
 custom = CustomList([10, 20, 30])
 print(custom[0])           # 10
 print(len(custom))         # 3
-print(20 in custom)        # True
+print(20 in custom)        # True  (inherited __contains__)
 print(list(custom))        # [10, 20, 30]
 
-# Supports iteration
+# Supports iteration (inherited __iter__)
 for item in custom:
     print(item)
 ```
+
+!!! tip "Inherited for Free — How It Works"
+    `CustomList` only implements `__getitem__` and `__len__`, yet it automatically
+    gains `__contains__`, `__iter__`, `__reversed__`, `index()`, and `count()`. This
+    works because `Sequence`'s mixin methods are built on top of the two core
+    primitives:
+
+    - `__contains__` iterates via `__getitem__` to check membership
+    - `__iter__` calls `__getitem__` with indices `0, 1, 2, ...`
+    - `index()` and `count()` iterate to find/count matches
+
+    The same pattern applies across all `collections.abc` classes: each ABC defines
+    a small set of required methods and derives everything else from them.
+
+!!! warning "Performance caveat"
+    The inherited mixin methods are correct but not always fast. Because they are
+    generic implementations built on iteration, they are typically **O(n)**. For
+    example, `__contains__` on a `Sequence` does a linear scan — unlike `set`'s
+    O(1) lookup. If performance matters, override the inherited methods with
+    optimized versions.
 
 ## Creating a Custom Mapping
 
@@ -99,6 +142,11 @@ print(unique & UniqueList([2, 3, 4])) # {2, 3} - set operations work!
 ```
 
 ## Iterator and Iterable
+
+The `Iterable` and `Iterator` ABCs formalize the two sides of Python's iteration
+protocol. Every container ABC above (`Sequence`, `Mapping`, `Set`) is also an
+`Iterable`, because they all provide `__iter__`. Understanding these two ABCs
+directly clarifies how `for` loops, comprehensions, and `next()` work under the hood.
 
 ```python
 from collections.abc import Iterator, Iterable
@@ -343,3 +391,71 @@ Build a `Countdown` iterable by creating two classes: `Countdown` inheriting fro
         for num in cd:
             print(num, end=" ")
         # 5 4 3 2 1
+
+---
+
+**Exercise 4.**
+Using the `collections.abc` module, determine which ABCs the following built-in types satisfy: `list`, `tuple`, `dict`, `set`, `frozenset`, `str`. Test each with `isinstance()` against `Sequence`, `MutableSequence`, `Mapping`, `MutableMapping`, `Set`, `MutableSet`, and `Iterable`. Summarize your findings in a table and explain why `tuple` is a `Sequence` but not a `MutableSequence`.
+
+??? success "Solution to Exercise 4"
+
+        from collections.abc import (
+            Sequence, MutableSequence,
+            Mapping, MutableMapping,
+            Set, MutableSet,
+            Iterable,
+        )
+
+        types = [list, tuple, dict, set, frozenset, str]
+        abcs = [Sequence, MutableSequence, Mapping, MutableMapping, Set, MutableSet, Iterable]
+
+        for t in types:
+            results = {abc.__name__: issubclass(t, abc) for abc in abcs}
+            matches = [name for name, val in results.items() if val]
+            print(f"{t.__name__:>12}: {', '.join(matches)}")
+
+        # Output:
+        #         list: Sequence, MutableSequence, Iterable
+        #        tuple: Sequence, Iterable
+        #         dict: Mapping, MutableMapping, Iterable
+        #          set: Set, MutableSet, Iterable
+        #    frozenset: Set, Iterable
+        #          str: Sequence, Iterable
+
+    `tuple` is a `Sequence` because it supports `__getitem__` and `__len__`, but it is **not** a `MutableSequence` because it lacks `__setitem__`, `__delitem__`, and `insert()` — tuples are immutable. The `MutableSequence` ABC requires these mutation methods, which is precisely how `collections.abc` distinguishes read-only containers from writable ones.
+
+---
+
+**Exercise 5.**
+Explain what happens if you inherit from `collections.abc.MutableMapping` but forget to implement `__delitem__`. Write the code, attempt to instantiate it, and describe the error. Then explain the design benefit: why does Python catch this at instantiation time rather than when `__delitem__` is first called?
+
+??? success "Solution to Exercise 5"
+
+        from collections.abc import MutableMapping
+
+        class PartialDict(MutableMapping):
+            def __init__(self):
+                self._data = {}
+
+            def __getitem__(self, key):
+                return self._data[key]
+
+            def __setitem__(self, key, value):
+                self._data[key] = value
+
+            # __delitem__ is missing!
+
+            def __iter__(self):
+                return iter(self._data)
+
+            def __len__(self):
+                return len(self._data)
+
+        try:
+            d = PartialDict()
+        except TypeError as e:
+            print(e)
+        # Can't instantiate abstract class PartialDict
+        #   with abstract method __delitem__
+
+    Python raises `TypeError` **at instantiation time**, not when `__delitem__` is eventually called. This is the core benefit of ABCs over plain duck typing: errors surface immediately when an object is created, making them far easier to diagnose. With duck typing, the missing method would only be discovered at runtime when some code path happens to call `del d[key]` — potentially much later and harder to trace.

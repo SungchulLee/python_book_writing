@@ -2,6 +2,9 @@
 
 Moments describe the shape of a distribution, with mean (1st moment), variance (2nd), skewness (3rd), and kurtosis (4th) quantifying center, spread, asymmetry, and tail heaviness respectively.
 
+!!! tip "Mental Model"
+    Each successive moment peels back another layer of a distribution's shape. The mean tells you where it sits, the variance how wide it spreads, the skewness which direction it leans, and the kurtosis how heavy its tails are. Together, these four numbers sketch a surprisingly complete portrait of any distribution.
+
 ---
 
 ## Moments Definition

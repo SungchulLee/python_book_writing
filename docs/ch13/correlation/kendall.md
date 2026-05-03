@@ -2,6 +2,9 @@
 
 While Pearson and Spearman correlation measure linear and monotonic association respectively, Kendall's Tau offers a different perspective: it measures association in terms of the probability that two randomly chosen observations are concordant. This pairwise comparison approach produces a statistic with attractive theoretical properties, including more reliable p-values for small samples and a natural probabilistic interpretation.
 
+!!! tip "Mental Model"
+    Pick any two data points at random. If both variables increase together (or both decrease), the pair is concordant; otherwise it is discordant. Kendall's Tau is simply the fraction of concordant pairs minus the fraction of discordant pairs -- a direct vote on whether the relationship is monotone.
+
 ## Concordant and Discordant Pairs
 
 Given $n$ paired observations $(x_1, y_1), \ldots, (x_n, y_n)$, consider any pair of observations $(x_i, y_i)$ and $(x_j, y_j)$ with $i < j$:

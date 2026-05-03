@@ -14,6 +14,9 @@ flowchart LR
     C --> D[Boolean result]
 ````
 
+!!! tip "Mental Model"
+    String comparison works character by character, left to right, using Unicode code points. The first differing character decides the result. This means uppercase letters sort before lowercase ones (`"A" < "a"`) and digits sort before letters. When case-insensitive comparison is needed, normalize both strings first with `.lower()` or `.casefold()`.
+
 ---
 
 ## 1. Equality Comparison

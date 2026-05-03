@@ -2,6 +2,9 @@
 
 Introduction to testing frameworks and strategies for writing reliable tests.
 
+!!! tip "Mental Model"
+    Automated tests are a safety net for change. Every test encodes one fact about how your code should behave; when you modify the code, the test suite instantly tells you which facts still hold and which broke. Python offers `unittest` (built-in, class-based) and `pytest` (third-party, function-based) — both achieve the same goal with different ergonomics.
+
 ## Why Test?
 
 Benefits of automated testing.

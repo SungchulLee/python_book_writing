@@ -2,6 +2,9 @@
 
 Indexing and slicing affect array dimensions differently.
 
+!!! tip "Mental Model"
+    A single integer index collapses that axis (the dimension disappears), while a slice preserves it -- even if the slice selects only one element. This is the most common source of "unexpected shape" bugs: `a[0]` drops a dimension, but `a[0:1]` keeps it.
+
 
 ## Index vs Slice
 
@@ -147,6 +150,9 @@ a[1:2, :, 3:4, :].shape = (1, 8, 1, 8)
 
 Each integer index removes one dimension; each slice keeps it.
 
+
+!!! danger "Silent Bug: Shape Collapse"
+    Shape collapse from accidental integer indexing is one of the most common sources of downstream errors. A function expecting a 2D array receives 1D because somewhere upstream `a[0]` was used instead of `a[0:1]`. The error message appears far from the actual cause. **When in doubt, use slices to preserve dimensions.**
 
 ## Practical Impact
 

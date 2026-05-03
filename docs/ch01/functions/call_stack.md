@@ -4,6 +4,9 @@ The call stack defines how function execution is organized at runtime. Each func
 
 When functions call other functions, Python must remember where execution should return after each function finishes. This is handled by the **call stack**.
 
+!!! tip "Mental Model"
+    The call stack is a stack of sticky notes. Each time a function is called, Python writes down "where to return" on a new note and pushes it on top. When the function finishes, Python pops the top note and resumes at the recorded location. This is how Python keeps track of deeply nested function calls.
+
 ## Nested Function Calls
 
 Functions can call other functions.

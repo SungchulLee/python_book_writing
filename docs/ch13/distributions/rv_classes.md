@@ -2,6 +2,9 @@
 
 All probability distributions in `scipy.stats` inherit from one of two base classes: `rv_continuous` for continuous distributions and `rv_discrete` for discrete distributions. Understanding these base classes reveals the unified design behind the entire `scipy.stats` distribution system.
 
+!!! tip "Mental Model"
+    Every distribution in `scipy.stats` is a specialized version of the same blueprint. `rv_continuous` provides `.pdf()`, `.cdf()`, `.ppf()`, `.rvs()`, and `.fit()` for any continuous distribution; `rv_discrete` provides the analogous `.pmf()` interface. Once you learn one distribution's API, you know them all.
+
 ---
 
 ## The Distribution Class Hierarchy

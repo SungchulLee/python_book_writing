@@ -2,6 +2,9 @@
 
 Common mistakes and gotchas to avoid in Python.
 
+!!! tip "Mental Model"
+    Most Python pitfalls stem from one misunderstanding: confusing names with values. Mutable default arguments, late-binding closures, and accidental aliasing all trace back to forgetting that names are references, not containers. When a bug surprises you, ask "which object is this name actually pointing to right now?"
+
 ## Scope Pitfalls
 
 ### Late Binding in Closures

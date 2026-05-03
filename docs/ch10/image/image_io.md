@@ -2,6 +2,17 @@
 
 This document covers reading, loading, and displaying images in matplotlib.
 
+!!! tip "Mental Model"
+    Image I/O is about converting between file formats and NumPy arrays. `plt.imread()` reads a file into an array, PIL/Pillow reads from URLs or does format conversion, and `ax.imshow()` displays the array. Once an image is a NumPy array, you can inspect its shape (height, width, channels) and manipulate it with standard array operations.
+
+!!! warning "dtype Pitfalls"
+    Image arrays come in two common dtypes that behave very differently:
+
+    - `uint8` — values 0–255 (most file formats, PIL). This is what `imshow()` expects for RGB images.
+    - `float64` or `float32` — values 0.0–1.0 (after normalization, or from `plt.imread` on PNGs). `imshow()` clips float values to [0, 1].
+
+    Mixing these silently produces wrong results: multiplying a `uint8` image by 2.0 converts to float but gives values up to 510, which `imshow` clips to 1.0 (nearly black). Always check `img.dtype` after loading and normalize explicitly when needed: `img_float = img.astype(np.float32) / 255.0`. For large images, be mindful of memory: a 4000x3000 RGB `float64` image uses ~288 MB versus ~36 MB for `uint8`.
+
 ## Reading Web Images
 
 Load images from URLs directly into NumPy arrays for visualization and manipulation.

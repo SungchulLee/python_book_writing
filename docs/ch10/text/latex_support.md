@@ -2,6 +2,23 @@
 
 Matplotlib supports LaTeX-style math rendering for professional mathematical notation.
 
+!!! tip "Mental Model"
+    Wrap math expressions in dollar signs inside any Matplotlib string -- titles, labels, annotations -- and they render as formatted equations. Use `r'$\alpha^2$'` (raw strings) to avoid Python interpreting backslashes. For full LaTeX rendering (custom fonts, packages), enable `plt.rcParams['text.usetex'] = True`, which requires a system LaTeX installation.
+
+!!! note "When to Use LaTeX"
+    | Scenario | Approach |
+    |----------|---------|
+    | Papers / publications | `usetex=True` (full LaTeX, consistent with document) |
+    | Mathematical notation in plots | Mathtext (`r'$...$'`) — no install needed |
+    | Simple labels without math | Plain strings — no dollar signs needed |
+    | Exploratory / quick plots | Skip LaTeX entirely — adds complexity for no benefit |
+
+!!! warning "Performance"
+    `usetex=True` invokes the system LaTeX compiler for every text element, which
+    is **significantly slower** than Matplotlib's built-in mathtext renderer. For
+    interactive work or many plots, use the default mathtext (`r'$...$'`) and
+    reserve `usetex=True` for final publication rendering.
+
 ---
 
 ## Basic Math Mode

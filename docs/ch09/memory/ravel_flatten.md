@@ -2,6 +2,19 @@
 
 Both methods flatten arrays to 1D, but differ in memory behavior.
 
+!!! tip "Mental Model"
+    `ravel` returns a view when the array is already contiguous (free), but falls back to a copy when it must rearrange data. `flatten` always returns a copy, guaranteeing independence. Choose `ravel` for speed when you just need a flat view, and `flatten` when you need a safe, modifiable 1D copy.
+
+!!! tip "Decision Rule"
+
+    | Need | Use | Why |
+    |---|---|---|
+    | Speed, read-only flat view | `ravel()` | Returns a view when contiguous — O(1) |
+    | Safe, independent 1D copy | `flatten()` | Always copies — O(n) but mutation-safe |
+    | Flat view, guaranteed no copy | `a.reshape(-1)` | Raises error if copy needed (unlike ravel, which silently copies) |
+
+    If you are unsure whether `ravel` returned a view or a copy, check `result.base is a`.
+
 
 ## Method ravel
 

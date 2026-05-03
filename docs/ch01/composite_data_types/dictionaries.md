@@ -23,6 +23,9 @@ flowchart TD
     A --> D["key3 → value3"]
 ```
 
+!!! tip "Mental Model"
+    A dictionary is a lookup table: you provide a key and instantly get the associated value, like finding a word in a dictionary to read its definition. Keys must be unique and hashable, but values can be anything. When you need to associate one piece of data with another, a dict is almost always the right choice.
+
 ---
 
 ## 1. Accessing Values

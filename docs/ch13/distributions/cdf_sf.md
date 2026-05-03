@@ -2,6 +2,9 @@
 
 The **cumulative distribution function** (CDF) and **survival function** (SF) are complementary functions that describe the probability of a random variable falling below or above a threshold.
 
+!!! tip "Mental Model"
+    The CDF answers "what is the probability of being at or below $x$?" and the survival function answers "what is the probability of exceeding $x$?" They always sum to 1. Use the CDF for left-tail probabilities and the SF for right-tail probabilities -- the SF avoids catastrophic floating-point cancellation when the probability is very close to 1.
+
 ---
 
 ## Cumulative Distribution Function (CDF)

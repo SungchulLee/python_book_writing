@@ -2,6 +2,9 @@
 
 `concurrent.futures` provides a high-level interface for asynchronously executing callables. It's the **recommended approach** for most concurrent programming in Python.
 
+!!! tip "Mental Model"
+    The Executor is a universal job dispatcher: hand it a function and arguments, and it returns a Future (an IOU for the result). Whether the work runs in threads or processes is a one-line swap -- `ThreadPoolExecutor` vs `ProcessPoolExecutor` -- because both share the same `submit`/`map` interface. Start here for any concurrent task; drop down to raw threads or processes only when you need finer control.
+
 ---
 
 ## Why concurrent.futures?

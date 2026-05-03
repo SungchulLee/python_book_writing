@@ -2,6 +2,9 @@
 
 Class attributes are shared across all instances of a class, storing data that belongs to the class itself. Unlike [instance attributes](instance_attributes.md) which hold per-object state, class attributes exist once on the class and are found via the [attribute lookup chain](attribute_lookup.md) when not shadowed by an instance attribute.
 
+!!! tip "Mental Model"
+    A class attribute is a sign posted on the classroom wall -- every student (instance) can read it, but if a student writes the same name on their own notebook (instance attribute), the notebook wins for that student. Reading is shared; writing is local. This read/write asymmetry is the single most common source of class-attribute confusion.
+
 !!! tip "Core Rule"
 
     **Reading** an attribute via an instance may find a class attribute (through the [lookup chain](attribute_lookup.md)). **Writing** an attribute via an instance **always** creates an instance attribute, shadowing the class attribute. This asymmetry between reads and writes is the source of most class-attribute bugs.

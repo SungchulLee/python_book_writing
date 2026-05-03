@@ -2,6 +2,9 @@
 
 Both methods reshape data from long to wide format, but they have important differences in functionality and use cases.
 
+!!! tip "Mental Model"
+    `pivot` is a strict reshape -- it moves values into a grid and fails if any cell would receive more than one value. `pivot_table` is a reshape plus aggregation -- it handles duplicates by applying `aggfunc` and also supports `margins` for row/column totals. When in doubt, use `pivot_table` because it is a strict superset of `pivot`.
+
 ## Key Differences
 
 Summary of differences between pivot and pivot_table.

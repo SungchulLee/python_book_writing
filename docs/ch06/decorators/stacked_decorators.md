@@ -2,6 +2,9 @@
 
 Multiple decorators can be applied to a single function. The order of application matters.
 
+!!! tip "Mental Model"
+    Stacking decorators is like nesting Russian dolls: the bottom decorator wraps the function first, then each decorator above wraps the previous result. They apply inside-out but execute outside-in, so the topmost decorator's wrapper runs first on every call.
+
 ## Basic Stacking
 
 Decorators are applied bottom-up (inner first), but execute top-down.

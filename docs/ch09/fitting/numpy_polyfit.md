@@ -2,6 +2,16 @@
 
 NumPy provides tools for fitting polynomials to data and working with polynomial objects.
 
+!!! tip "Mental Model"
+    `polyfit` finds the best polynomial curve through your data points by minimizing squared errors, and `poly1d` wraps those coefficients into a callable object. Think of `polyfit` as the fitting step and `poly1d` as the evaluation step -- together they give you a smooth function you can evaluate anywhere.
+
+    Under the hood, `polyfit` builds a Vandermonde matrix from your x-values and
+    solves $V\mathbf{c} \approx \mathbf{y}$ via QR decomposition — the same
+    [least squares](least_squares.md) machinery described in the previous page.
+    Understanding this connection explains why high-degree fits on wide x-ranges
+    become unstable (the Vandermonde matrix becomes ill-conditioned) and why the
+    modern `Polynomial.fit` API, which scales x to $[-1, 1]$, is more reliable.
+
 ```python
 import numpy as np
 ```
@@ -258,6 +268,15 @@ for deg in [1, 3, 5, 10]:
 ```
 
 ---
+
+!!! warning "Legacy API — Know the Limits"
+    `polyfit`/`poly1d` are fine for quick, low-degree fits with moderate x-ranges. **Avoid** for:
+
+    - High-degree polynomials (degree > 10) — numerical instability
+    - Large x-ranges (e.g., `[0, 10000]`) — Vandermonde conditioning blows up
+    - Production code — prefer `Polynomial.fit` from the modern `np.polynomial` module
+
+    See [Least Squares Connection](least_squares.md) for *why* conditioning matters, and [np.polynomial Module](numpy_polynomial.md) for the stable alternative.
 
 ## Modern Alternative: np.polynomial
 

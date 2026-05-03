@@ -2,6 +2,12 @@
 
 Memory layout affects whether operations return views or copies.
 
+!!! tip "Mental Model"
+    C-contiguous means elements in the last axis are adjacent in memory (row-major), while Fortran-contiguous means elements in the first axis are adjacent (column-major). Operations that traverse memory in order are fast; operations that jump around cause cache misses and slow down. Transpose flips contiguity without moving data.
+
+!!! warning "Why Contiguity Matters for Performance"
+    Contiguity determines whether an operation can return a **view** (O(1), no copy) or must create a **copy** (O(n), new allocation). For example, `reshape` on a C-contiguous array is free (just change shape/strides), but on a non-contiguous array it forces a copy. Contiguous memory also enables CPU cache-line prefetching, making element-wise operations significantly faster. When performance matters, check `a.flags['C_CONTIGUOUS']` and call `np.ascontiguousarray(a)` if needed.
+
 
 ## C Contiguous
 

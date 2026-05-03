@@ -2,6 +2,9 @@
 
 Polymorphism allows objects of different types to be treated through a common interface, with each type implementing behavior in its own way. At its core, polymorphism replaces conditional branching (`if/elif` on types) with **dispatch** --- the right method is called automatically based on the object's type. Polymorphism works alongside [encapsulation](encapsulation.md) (protecting state), [abstraction](abstraction.md) (defining interfaces), and [inheritance](inheritance.md) (sharing structure).
 
+!!! tip "Mental Model"
+    Polymorphism is the principle that the same message can produce different behavior depending on who receives it. Calling `shape.area()` on a circle gives you one formula; on a rectangle, another. The caller does not branch on type -- it trusts that each object knows how to answer the question. Every `if isinstance(...)` chain is a missed opportunity for polymorphism.
+
 ---
 
 ## What is Polymorphism
@@ -310,6 +313,10 @@ Polymorphism can work without abstraction (via duck typing), and abstraction wit
 - Duck typing: if it quacks, it's a duck.
 - Method overriding enables custom behavior.
 - Operator overloading uses special methods.
+
+!!! note "Polymorphism Is Attribute Lookup"
+
+    Under the hood, polymorphism is implemented through Python's **attribute lookup** and **MRO**. When you call `obj.method()`, Python searches the instance's class and its ancestors in MRO order, finds the first matching method, and calls it. The caller never chooses which implementation runs — the object's type determines that at runtime. This is why polymorphism, MRO, and descriptors are not separate topics: they are different views of the same attribute lookup mechanism.
 
 ---
 

@@ -9,6 +9,9 @@ Think of it this way: a mutable object is like a whiteboard. You can erase parts
 content, and the board itself remains the same physical object. An immutable object is like a
 printed page. To "change" it, you must create an entirely new page; the original stays as it was.
 
+!!! tip "Mental Model"
+    Mutable objects can be changed after creation; immutable objects cannot. When you "modify" an immutable value like a string, Python actually creates a brand-new object and rebinds the name to it. This single distinction determines whether aliases share changes and whether a type can serve as a dictionary key.
+
 ---
 
 ## 1. Classification of Built-in Types

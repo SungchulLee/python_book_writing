@@ -1,5 +1,10 @@
 # Sum Prod Cumsum
 
+!!! tip "Mental Model"
+    `sum` adds elements, `prod` multiplies them, and `cumsum`/`cumprod` do the same but keep all intermediate results. The cumulative variants are especially useful for running totals, CDFs, and prefix-sum algorithms. All accept `axis` to operate along a specific dimension and `keepdims` to preserve the reduced axis as size 1.
+
+    **Key insight:** `cumsum` is **discrete integration** — it converts rates into totals, just as integration sums up infinitesimal slices. Similarly, `np.diff` (in the [utility](utility.md) page) is **discrete differentiation**. Together they form a discrete calculus pair.
+
 ## sum and np.sum
 
 ### 1. Basic Usage
@@ -508,3 +513,42 @@ Use `np.nansum` and `np.nanmean` to compute the sum and mean of an array that co
         print(f"np.nansum: {np.nansum(a)}")    # 13.0
         print(f"np.mean:    {np.mean(a)}")     # nan
         print(f"np.nanmean: {np.nanmean(a)}")  # 3.25
+
+---
+
+**Exercise 4.**
+Demonstrate that `cumsum` is discrete integration and `np.diff` is discrete differentiation. Starting with `velocities = np.array([0, 2, 5, 3, 1])`, compute positions via `cumsum`. Then recover the original velocities by applying `np.diff` to the positions (prepend 0). Verify the round-trip.
+
+??? success "Solution to Exercise 4"
+
+        import numpy as np
+
+        velocities = np.array([0, 2, 5, 3, 1])
+
+        # Integration: velocity → position
+        positions = np.cumsum(velocities)
+        print(f"Velocities: {velocities}")
+        print(f"Positions:  {positions}")  # [0 2 7 10 11]
+
+        # Differentiation: position → velocity
+        recovered = np.diff(positions, prepend=0)
+        print(f"Recovered:  {recovered}")  # [0 2 5 3 1]
+
+        print(f"Round-trip: {np.array_equal(velocities, recovered)}")  # True
+
+---
+
+**Exercise 5.**
+Use `np.cumprod` to compute the growth of a \$1000 investment given daily returns `r = np.array([0.01, -0.005, 0.02, -0.01, 0.015])`. The portfolio value after day `k` is `1000 * cumprod(1 + r)[:k+1]`. Print the portfolio value after each day.
+
+??? success "Solution to Exercise 5"
+
+        import numpy as np
+
+        initial = 1000
+        r = np.array([0.01, -0.005, 0.02, -0.01, 0.015])
+        growth = np.cumprod(1 + r)
+        portfolio = initial * growth
+        print(f"Daily returns: {r}")
+        print(f"Portfolio:     {np.round(portfolio, 2)}")
+        # [1010.0, 1004.95, 1025.05, 1014.80, 1030.02]

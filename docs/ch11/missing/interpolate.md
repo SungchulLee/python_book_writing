@@ -2,6 +2,9 @@
 
 The `interpolate()` method fills missing values using interpolation techniques, estimating values based on surrounding data points.
 
+!!! tip "Mental Model"
+    `interpolate()` draws a line (or curve) between known data points and reads off the missing values. Linear interpolation assumes a straight line between neighbors; other methods (`quadratic`, `spline`, `time`) fit smoother curves. It is the best choice when the underlying data is continuous and gaps are small.
+
 ## Linear Interpolation
 
 The default method performs linear interpolation between valid values.

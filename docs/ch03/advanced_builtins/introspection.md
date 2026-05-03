@@ -2,6 +2,9 @@
 
 These built-ins support **introspection**, allowing programs to examine objects at runtime.
 
+!!! tip "Mental Model"
+    Every Python object carries an invisible ID card. `id()` reads its unique serial number, `type()` reads its class label, and `isinstance()` checks whether it belongs to a particular family. Together they let your code ask "what am I looking at?" at runtime without knowing in advance.
+
 ---
 
 ## `id()`

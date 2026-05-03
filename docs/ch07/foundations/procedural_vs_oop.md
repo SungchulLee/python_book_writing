@@ -2,6 +2,9 @@
 
 Understanding the fundamental differences between procedural and object-oriented programming paradigms.
 
+!!! tip "Mental Model"
+    Procedural code is a recipe: step-by-step instructions that transform data passed through function parameters. OOP is a workshop: each object is a workbench with its own tools (methods) and materials (attributes), and objects collaborate by sending messages to each other. The shift from procedural to OOP is the shift from "do this to that data" to "ask this object to handle its own data."
+
 !!! tip "Core Insight"
     Procedural programming separates data and behavior — functions receive data, transform it, and return results. OOP *binds* data and behavior together, so state changes are controlled by the object itself.
 
@@ -223,6 +226,24 @@ OOP provides more mechanisms for extension. `CustomProcessor` reuses `BaseProces
 
 ---
 
+## How Python Makes OOP Work
+
+!!! note "Under the Hood"
+    OOP in Python is built on attribute access and method binding — not a separate execution model. When you write:
+
+    ```python
+    ford.speed_up()
+    ```
+
+    Python does:
+
+    1. Look up `speed_up` in `ford.__dict__` (instance namespace)
+    2. If not found, look up in `type(ford).__dict__` (class namespace)
+    3. If it's a function, bind it: `Car.speed_up.__get__(ford, Car)` → bound method
+    4. Call the bound method, which passes `ford` as `self`
+
+    This means OOP is not a special mode — it is built on the same attribute lookup and descriptor protocol that powers everything else in Python. Understanding this connection makes the transition from procedural to OOP feel natural rather than magical.
+
 ## Key Takeaways
 
 - Procedural programming organizes code around functions that operate on external data.
@@ -230,6 +251,7 @@ OOP provides more mechanisms for extension. `CustomProcessor` reuses `BaseProces
 - OOP provides better encapsulation, cohesion, and reuse mechanisms.
 - Choose the paradigm based on problem complexity and expected growth.
 - Modern Python often blends both paradigms in the same project.
+- OOP in Python is built on attribute lookup and method binding — not a separate paradigm engine.
 
 ---
 

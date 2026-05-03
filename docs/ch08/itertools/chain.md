@@ -2,6 +2,9 @@
 
 The `chain()` function concatenates multiple iterables into a single iterator, while `chain.from_iterable()` accepts an iterable of iterables. These tools let you process items from several sources as a single stream without copying them into a new collection, preserving memory efficiency and keeping code concise.
 
+!!! tip "Mental Model"
+    `chain` is like laying train tracks end-to-end — items come from the first iterable, then seamlessly from the second, and so on, without ever building a combined list in memory. Use `chain()` when you have a known set of iterables and `chain.from_iterable()` when the iterables themselves come from a generator or lazy source.
+
 ## chain() - Concatenate Iterables
 
 Pass any number of iterables as separate arguments to `chain()`. It yields elements from the first iterable until it is exhausted, then proceeds to the next, and so on.

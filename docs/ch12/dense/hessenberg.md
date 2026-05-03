@@ -2,6 +2,9 @@
 
 Hessenberg form reduces a matrix to almost-triangular form.
 
+!!! tip "Mental Model"
+    Hessenberg form is a halfway house between a full matrix and a triangular one -- it has zeros below the first subdiagonal. This near-triangular structure makes subsequent eigenvalue iterations converge much faster, which is why eigenvalue algorithms almost always start by reducing to Hessenberg form.
+
 ## Basic Decomposition
 
 ### 1. linalg.hessenberg

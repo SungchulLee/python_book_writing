@@ -2,6 +2,23 @@
 
 The `np.diag` function provides bidirectional conversion between diagonal components and diagonal matrices.
 
+!!! tip "Mental Model"
+    `np.diag` is a two-way street: give it a 1D array and it builds a matrix with those values on the diagonal; give it a 2D matrix and it extracts the diagonal as a 1D array. The `k` parameter lets you shift to super- or sub-diagonals, making it easy to construct tridiagonal and banded matrices.
+
+    Together with [`np.eye` and `np.identity`](full_eye_identity.md), `diag` belongs
+    to the **structured matrix** family — creation functions where mathematical
+    structure (diagonal, banded, identity) is the point, not just filling values.
+
+!!! note "Where Diagonal Matrices Appear"
+    Diagonal and banded matrices are not just textbook constructs — they arise naturally in:
+
+    - **Finite difference methods** — discretizing derivatives produces tridiagonal systems
+    - **Eigenvalue decomposition** — diagonalizing a matrix isolates its eigenvalues on the diagonal
+    - **Sparse linear algebra** — banded structure enables O(n) solvers instead of O(n^3)
+    - **Covariance matrices** — uncorrelated variables produce a diagonal covariance matrix
+
+    The `k` parameter in `np.diag` makes it easy to build these structures directly.
+
 
 ## Core Concept
 

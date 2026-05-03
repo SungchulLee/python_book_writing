@@ -23,6 +23,9 @@ The three most important ideas in this section are:
 
 Under the hood, `a + b` is translated to a method call like `a.__add__(b)`, but the key insight is simpler: **operators do not have meaning by themselves**. Their meaning is defined by the objects they operate on.
 
+!!! tip "Mental Model"
+    An expression is anything Python can evaluate to produce a value. Operators are just shorthand for asking objects to do something---`a + b` really means "ask `a` how to add `b`." The object's type determines the answer, which is why the same symbol can mean addition, concatenation, or merging depending on context.
+
 ---
 
 ## 1. Operators and Operands

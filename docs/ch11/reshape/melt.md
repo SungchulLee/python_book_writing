@@ -2,6 +2,9 @@
 
 The `melt()` function transforms a DataFrame from wide format to long format, unpivoting columns into rows.
 
+!!! tip "Mental Model"
+    `melt` is the reverse of `pivot`. It takes columns and folds them down into two new columns: one for the former column name ("variable") and one for the value. Use `id_vars` to specify which columns stay fixed and `value_vars` to specify which columns get melted. The result is always longer and narrower.
+
 ## Basic Usage
 
 Convert columns to rows.

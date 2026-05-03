@@ -2,6 +2,9 @@
 
 The `rename()` method changes labels of axes (columns or index). Clear, descriptive names improve code readability and data understanding.
 
+!!! tip "Mental Model"
+    `rename()` swaps out axis labels without touching the data. Pass a dict of `{old_name: new_name}` pairs to selectively rename columns or index labels. It is a metadata-only operation -- the underlying arrays stay in place, only the labels change.
+
 ## Column Renaming
 
 Rename DataFrame columns.

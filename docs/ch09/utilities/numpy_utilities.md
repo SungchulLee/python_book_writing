@@ -1,6 +1,26 @@
-# Array Utilities: clip, unique, diff
+# Array Utilities: clip, unique, diff, gradient
 
 Common NumPy utility functions for data manipulation and analysis.
+
+!!! tip "Mental Model"
+    `clip` caps values to a range (great for clamping pixel values or enforcing bounds), `unique` finds distinct elements (like SQL `DISTINCT`), and `diff` computes consecutive differences (the discrete derivative). These utilities handle the most common data-cleaning tasks without loops.
+
+!!! note "These Are Operators, Not Just Utilities"
+    These functions transform arrays in three fundamentally different ways:
+
+    | Function | Operator type | What it does |
+    |----------|--------------|--------------|
+    | `clip` | **Constraint** (projection) | Enforce bounds — project values onto $[a, b]$ |
+    | `unique` | **Structural** (set extraction) | Extract distinct values — factorize into categories |
+    | `diff` | **Derivative** (finite difference) | Measure change — discrete first/second derivative |
+    | `gradient` | **Differential** (central difference) | Approximate continuous derivative — same-length output |
+
+    Together they form the core toolkit for the pipeline:
+    **data → constrain (clip) → structure (unique) → differentiate (diff/gradient) → analyze**.
+
+    The unifying insight: these are **discrete analogs of mathematical operators** —
+    projection, factorization, and differentiation — applied element-wise to arrays.
+    They bridge raw data and higher-level analysis.
 
 ```python
 import numpy as np
@@ -9,6 +29,11 @@ import numpy as np
 ---
 
 ## np.clip() — Limit Values to Range
+
+Mathematically, `clip(x, a, b)` is the **projection of $x$ onto the interval
+$[a, b]$** — it returns the closest point in the interval to $x$. This framing
+connects it to constrained optimization, where clipping is a standard step after
+gradient updates.
 
 Constrain array values to a minimum and maximum:
 
@@ -67,6 +92,11 @@ print(probs)  # [0.  0.5 1. ]
 ---
 
 ## np.unique() — Find Unique Values
+
+`unique` with `return_inverse=True` is a **factorization**: it decomposes an array
+into a compact set of distinct values and an index mapping that can reconstruct the
+original. This is exactly **categorical encoding** — the basis of label encoding in
+ML, value-count analysis, and data compression.
 
 Return sorted unique elements of an array:
 
@@ -159,6 +189,12 @@ print(has_duplicates)  # True
 
 ## np.diff() — Discrete Differences
 
+`diff` is a **finite difference operator** — the discrete analog of differentiation.
+`np.diff(x)` computes forward differences ($x_{i+1} - x_i$), and `np.diff(x, n=2)`
+computes second-order differences (the discrete second derivative, analogous to
+acceleration). This connects directly to calculus, signal processing (change
+detection), and time-series analysis (returns, velocity).
+
 Calculate the n-th discrete difference along an axis:
 
 ```python
@@ -232,6 +268,12 @@ print(np.diff(cumsum, prepend=0))   # [1 2 3 4 5] (original!)
 ---
 
 ## np.gradient() — Numerical Gradient
+
+`gradient` approximates the **continuous derivative** using central differences,
+which are more accurate than the forward differences of `diff` and — critically —
+preserve the array length. For multi-dimensional arrays, `np.gradient(img)` returns
+partial derivatives along each axis, connecting directly to edge detection in image
+processing and gradient computation in optimization.
 
 Unlike `diff()`, `gradient()` computes central differences and preserves array length:
 

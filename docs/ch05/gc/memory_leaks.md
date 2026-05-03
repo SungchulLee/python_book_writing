@@ -2,6 +2,9 @@
 
 메모리 누수의 원인, 탐지, 예방 방법입니다.
 
+!!! tip "Mental Model"
+    A memory leak is like filling a bathtub with the drain plugged -- memory keeps rising because objects stay reachable even though your program no longer needs them. The usual culprits are global caches that grow forever, circular references with custom `__del__` methods, and closures that accidentally capture large objects.
+
 ## Common Causes
 
 ### 1. Global References

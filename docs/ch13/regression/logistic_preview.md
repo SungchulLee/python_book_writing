@@ -10,6 +10,9 @@ This page introduces the core ideas of logistic regression as a preview. Full
 treatment with regularization and multiclass extensions belongs to dedicated
 machine learning resources.
 
+!!! tip "Mental Model"
+    Logistic regression wraps a linear model inside a sigmoid function to squeeze predictions into the $(0, 1)$ probability range. The linear combination $\beta_0 + \beta_1 x$ controls the log-odds; the sigmoid converts log-odds into a probability. The result is a classification boundary that is linear in the feature space but nonlinear in probability.
+
 ---
 
 ## The Sigmoid Function

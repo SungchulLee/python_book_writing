@@ -2,6 +2,9 @@
 
 Backtracking is a recursive algorithm pattern that explores possible solutions, abandoning paths when they become invalid. It's used for constraint satisfaction problems.
 
+!!! tip "Mental Model"
+    Backtracking is trial-and-error with an undo button. You make a choice, recurse forward, and if you hit a dead end, you undo the choice and try the next option. The recursion tree prunes itself by abandoning invalid branches early, making it far more efficient than brute-force enumeration.
+
 ---
 
 ## The Backtracking Pattern

@@ -2,6 +2,9 @@
 
 In Python, an **attribute** is a property or value linked to an object, while a **method** is a callable function bound to an object. Since everything in Python is an object, even primitive types like `int`, `float`, and `str` have methods and attributes.
 
+!!! tip "Mental Model"
+    Every Python object carries a bag of named references called attributes. Some of those references point to callable objects -- those are methods. Use `dir()` to peek inside the bag and `help()` to read the label on any item.
+
 ---
 
 ## Discovering Methods and Attributes

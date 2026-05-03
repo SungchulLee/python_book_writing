@@ -2,6 +2,9 @@
 
 The `.str` accessor provides string operations for filtering and transforming text data.
 
+!!! tip "Mental Model"
+    String filtering combines two ideas: the `.str` accessor exposes vectorized string methods, and each method returns a boolean mask or transformed Series. Chain `.str.contains()` or `.str.startswith()` inside `[]` to filter rows by text patterns, just as you would chain comparison operators for numeric filtering.
+
 ## str.contains
 
 Check if string contains a pattern.

@@ -13,6 +13,9 @@ flowchart TD
     B -->|no| D[continue normally]
 ````
 
+!!! tip "Mental Model"
+    `try/except` is a safety net. The `try` block says "attempt this," and the `except` block says "if it fails, do this instead." This separates the happy path from error recovery, keeping your main logic clean while still handling things that can go wrong.
+
 ---
 
 ## 1. Basic try / except

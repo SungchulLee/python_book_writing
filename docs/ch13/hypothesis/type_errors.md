@@ -2,6 +2,9 @@
 
 When performing a hypothesis test, two kinds of mistakes are possible: concluding that an effect exists when it does not, or missing a real effect. These mistakes — Type I and Type II errors — have direct consequences for scientific conclusions and decision-making. This section defines both error types, quantifies their probabilities, and examines the fundamental trade-off between them.
 
+!!! tip "Mental Model"
+    Type I is a false alarm (convicting an innocent person); Type II is a missed detection (letting a guilty person go free). Lowering one error rate raises the other unless you increase the sample size. The significance level $\alpha$ directly controls the Type I rate, while power $1 - \beta$ controls the Type II rate.
+
 ## Type I Error (False Positive)
 
 A **Type I error** occurs when the null hypothesis $H_0$ is true, but the test incorrectly rejects it. Informally, this is a "false alarm" — we declare a significant result when there is actually no effect.

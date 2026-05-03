@@ -2,6 +2,9 @@
 
 When files are too large to fit in memory, chunked processing allows you to work with data in smaller pieces. This is essential for handling datasets larger than available RAM.
 
+!!! tip "Mental Model"
+    Chunked processing is streaming for DataFrames: instead of loading an entire file at once, `read_csv(chunksize=N)` yields one N-row DataFrame at a time. You process each chunk, accumulate results, and discard the chunk. Memory usage stays flat regardless of file size -- only one chunk lives in RAM at any moment.
+
 ## The Memory Problem
 
 ```python

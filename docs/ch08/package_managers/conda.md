@@ -2,6 +2,9 @@
 
 `conda` is a cross-platform package and environment manager. It can install Python packages as well as non-Python dependencies (C libraries, compilers, etc.).
 
+!!! tip "Mental Model"
+    `conda` is both a package manager *and* an environment manager that works across languages. Unlike `pip`, which only installs Python packages, `conda` can install C libraries, compilers, and even non-Python tools — making it the default choice for data science stacks where binary dependencies are the norm.
+
 ---
 
 ## Anaconda vs Miniconda

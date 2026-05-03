@@ -2,6 +2,9 @@
 
 These dunder methods control how objects are converted to strings.
 
+!!! tip "Mental Model"
+    `__repr__` is for developers (unambiguous, ideally copy-pasteable to recreate the object), `__str__` is for end users (clean, readable). When in doubt, implement `__repr__` first -- Python falls back to it whenever `__str__` is missing, so one good `__repr__` covers both debugging and basic display.
+
 ## __repr__: Developer Representation
 
 `__repr__` provides an unambiguous, developer-friendly representation.
@@ -126,6 +129,10 @@ m = MinimalClass("test")
 print(str(m))   # MinimalClass('test')
 print(repr(m))  # MinimalClass('test')
 ```
+
+!!! tip "The One Rule"
+
+    If you implement only one string method, make it `__repr__`. Python falls back to `__repr__` when `__str__` is not defined, so `print()` and `str()` will still produce useful output. The reverse is not true — if you only define `__str__`, the interactive console and containers will show the default unhelpful `<MyClass object at 0x...>` representation. Always start with `__repr__`; add `__str__` only when you need a separate user-facing format.
 
 ## __format__: Custom Formatting
 

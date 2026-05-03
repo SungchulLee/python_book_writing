@@ -2,6 +2,9 @@
 
 A practical guide for choosing the right concurrency approach in Python.
 
+!!! tip "Mental Model"
+    The decision boils down to two questions: Is the bottleneck CPU or I/O? And how many concurrent tasks do you need? CPU-bound work needs processes; moderate I/O-bound work is best served by a thread pool; and thousands of concurrent I/O connections call for asyncio. When in doubt, start with `concurrent.futures` -- it is the simplest on-ramp and lets you switch between threads and processes with a single line change.
+
 ---
 
 ## Quick Decision Flowchart

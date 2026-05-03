@@ -1,5 +1,8 @@
 # Formal Model
 
+!!! tip "Mental Model"
+    An environment is just a dictionary that maps names to objects. Assignment writes an entry, lookup reads one, and scope nesting chains dictionaries together so inner scopes can fall through to outer ones.
+
 ## Environment
 
 ### 1. Name-Value Mapping

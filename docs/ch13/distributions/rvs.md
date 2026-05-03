@@ -2,6 +2,9 @@
 
 The `.rvs()` method generates **random variates** (random samples) from a probability distribution. It is the primary tool for Monte Carlo simulation, bootstrapping, and any workflow that requires synthetic data from a known distribution.
 
+!!! tip "Mental Model"
+    Calling `.rvs(size=n)` is like rolling a custom die $n$ times, where the die is shaped by the distribution's parameters. The `random_state` parameter pins the sequence of rolls for reproducibility. The output is always a NumPy array, ready for vectorized computation.
+
 ---
 
 ## Basic Usage
