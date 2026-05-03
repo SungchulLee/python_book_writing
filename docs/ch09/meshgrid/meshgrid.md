@@ -1,5 +1,8 @@
 # np.meshgrid
 
+!!! tip "Mental Model"
+    `meshgrid` takes two 1D vectors of x and y coordinates and returns two 2D matrices where every (x, y) pair on the grid has a home. One matrix holds the x-values repeated across rows, the other holds y-values repeated down columns. This lets you evaluate $f(x, y)$ for every grid point in a single vectorized call.
+
 ## Overview
 
 `np.meshgrid` creates coordinate matrices from 1D coordinate vectors. Given two 1D arrays representing x and y coordinates, it returns two 2D arrays where every combination of x and y values is represented. This is essential for evaluating functions over a grid and creating surface plots.
@@ -458,6 +461,19 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## The Grid Computation Pipeline
+
+A grid is a **discrete sampling of continuous space**. All grid-based computation follows the same four steps:
+
+```text
+1. Define 1D vectors     →  x = np.linspace(-5, 5, 100)
+2. Expand to grid        →  X, Y = np.meshgrid(x, y)
+3. Evaluate function     →  Z = f(X, Y)
+4. Visualize or analyze  →  ax.plot_surface(X, Y, Z)
+```
+
+This pipeline turns vectors into surfaces — and applies to function plotting, parameter sweeps, PDFs, and any computation over a 2D (or higher) domain. See also [mgrid / ogrid](mgrid_ogrid.md) for alternative grid creation and [Surface Plotting](surface_plotting.md) for visualization.
 
 ---
 

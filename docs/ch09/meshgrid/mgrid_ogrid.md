@@ -1,5 +1,8 @@
 # np.mgrid and np.ogrid
 
+!!! tip "Mental Model"
+    `mgrid` builds full coordinate grids using slice syntax (like `meshgrid` but more compact), while `ogrid` returns open grids -- just the 1D vectors with shapes set up for broadcasting. Use `ogrid` when you want memory efficiency and `mgrid` when you need the fully materialized grid.
+
 ## np.mgrid Basics
 
 `np.mgrid` is an index trick that creates dense multi-dimensional mesh grids using slice notation. Unlike `np.meshgrid`, which takes arrays as arguments, `np.mgrid` uses Python's slice syntax directly.
@@ -484,6 +487,16 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## When to Use Which
+
+```text
+meshgrid  →  explicit grids, visualization, when you have pre-built 1D arrays
+mgrid     →  concise syntax, small-to-medium grids, quick prototyping
+ogrid     →  large grids, memory efficiency, broadcasting-aware computation
+```
+
+In practice: start with `meshgrid` for clarity. Switch to `ogrid` when memory matters (large grids). Use `mgrid` when you want compact slice syntax without worrying about memory.
 
 ## Summary Table
 

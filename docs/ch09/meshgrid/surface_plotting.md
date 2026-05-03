@@ -1,5 +1,8 @@
 # Surface Plotting
 
+!!! tip "Mental Model"
+    A surface plot visualizes $z = f(x, y)$ by evaluating the function on a meshgrid and passing the three same-shaped arrays (X, Y, Z) to Matplotlib's `plot_surface`. The meshgrid provides the coordinates; the function evaluation provides the heights. Contour plots are the 2D projection of the same data.
+
 ## 3D Surface Basics
 
 Mesh grids are essential for creating 3D surface plots with Matplotlib. The `plot_surface` method requires X, Y, and Z arrays of the same shape.
@@ -618,6 +621,18 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+## Core Pipeline Summary
+
+Every surface plot follows three steps:
+
+```text
+1. meshgrid  →  X, Y = np.meshgrid(x, y)
+2. compute   →  Z = f(X, Y)
+3. visualize →  ax.plot_surface(X, Y, Z)
+```
+
+All variations (colormaps, contours, wireframes, projections) are styling on top of this same pipeline. The meshgrid provides coordinates; the function evaluation provides heights; the plotting call renders the result.
 
 ---
 
