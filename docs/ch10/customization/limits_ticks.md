@@ -2,6 +2,22 @@
 
 Control the visible range and tick positions on your axes.
 
+!!! tip "Mental Model"
+    Limits define the viewport window (what range of data is visible) and ticks define the ruler marks within that window. `set_xlim`/`set_ylim` zoom or pan the view, while `set_xticks`/`set_yticks` place marks at specific values. Matplotlib auto-picks reasonable defaults, but manual control is essential for publication-quality figures.
+
+!!! note "The Axes System (applies to all customization pages)"
+
+    Every plot answers six questions. Each customization page in this section addresses one:
+
+    | Question | Control | Page |
+    |---|---|---|
+    | What is visible? | `set_xlim`, `set_ylim` | This page |
+    | How is it measured? | `set_xticks`, `set_yticks` | This page |
+    | How is it labeled? | `set_xticklabels`, rotation | [Tick Labels](tick_labels.md) |
+    | How is it guided? | `ax.grid()` | [Grid](grid_axis.md) |
+    | How is it scaled? | `set_xscale('log')` | [Log Scales](log_scales.md) |
+    | What does it mean? | `set_title`, `set_xlabel` | [Title & Labels](title_labels.md) |
+
 ---
 
 ## Setting Axis Limits

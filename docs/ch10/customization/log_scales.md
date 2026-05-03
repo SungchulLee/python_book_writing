@@ -2,6 +2,9 @@
 
 Logarithmic scales compress large ranges of data, making patterns visible across multiple orders of magnitude.
 
+!!! tip "Mental Model"
+    A log scale replaces equal spacing with equal ratios: each tick mark is 10x (or 2x, etc.) the previous one. This turns exponential growth into straight lines and makes patterns across orders of magnitude visible. Use `ax.set_yscale('log')` when your data spans several powers of ten and small values are getting crushed against zero.
+
 ## Setting Log Scale
 
 ### Using set_xscale / set_yscale
@@ -450,6 +453,17 @@ bins = np.logspace(np.log10(data.min()), np.log10(data.max()), 50)
 ax.hist(data, bins=bins)
 ax.set_xscale('log')
 ```
+
+## The Deeper Meaning of Scale Choice
+
+Changing the scale is not just a visual preference --- it changes the **geometry** of your data:
+
+```text
+Linear scale → equal spacing = equal differences (additive structure)
+Log scale    → equal spacing = equal ratios     (multiplicative structure)
+```
+
+This is why exponential growth becomes a straight line on a log scale: growth by a constant *factor* (multiplicative) maps to growth by a constant *step* (additive) in log space. Choosing the right scale reveals the natural structure of your data.
 
 ---
 
