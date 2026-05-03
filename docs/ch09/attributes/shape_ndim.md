@@ -2,6 +2,9 @@
 
 Every NumPy array has `shape` and `ndim` attributes that describe its structure.
 
+!!! tip "Mental Model"
+    `shape` is the blueprint of an array's geometry -- a tuple like `(3, 4)` means 3 rows and 4 columns, while `ndim` simply counts how many axes that tuple has. Knowing the shape is the first step in debugging any NumPy operation, because most errors trace back to mismatched shapes.
+
 
 ## The shape Attribute
 
@@ -144,6 +147,22 @@ assert x.ndim == len(x.shape)
 
 Use `ndim` to check dimensionality before operations that require specific dimensions.
 
+## Shape Debugging Checklist
+
+When an operation fails with a shape mismatch:
+
+1. **Print shapes**: `print(a.shape, b.shape)` — the single most useful debugging step.
+2. **Check ndim**: is one array 1D when it should be 2D? Use `np.expand_dims` or `reshape`.
+3. **Check broadcasting**: shapes must be equal or one must be 1 in each trailing dimension.
+4. **Check after slicing**: indexing with a scalar reduces ndim by 1 (e.g., `a[0]` turns `(3, 4)` into `(4,)`). Use `a[0:1]` to keep the dimension.
+
+```python
+import numpy as np
+
+a = np.zeros((3, 4))
+print(a[0].shape)    # (4,) — scalar index drops dimension
+print(a[0:1].shape)  # (1, 4) — slice preserves dimension
+```
 
 ---
 

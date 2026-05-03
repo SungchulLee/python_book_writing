@@ -2,6 +2,9 @@
 
 NumPy provides multiple ways to convert array data types.
 
+!!! tip "Mental Model"
+    Think of dtype conversion as pouring data from one container shape into another. `astype` always makes a fresh copy with the new type, while specifying `dtype` at creation time avoids the extra copy altogether. Be aware that narrowing conversions (e.g., float to int) silently truncate -- NumPy will not warn you.
+
 
 ## The astype Method
 
@@ -210,6 +213,24 @@ np.uint8(-1.8001195) = 255
 ### 3. Warning
 
 Negative floats converting to uint8 produce unexpected results due to overflow.
+
+## Safe vs Unsafe Casting
+
+NumPy distinguishes casting safety levels. Use `np.can_cast` to check before converting:
+
+```python
+import numpy as np
+
+print(np.can_cast(np.float64, np.float32))  # True (safe — might lose precision)
+print(np.can_cast(np.float64, np.int32))    # False (unsafe — truncates)
+print(np.can_cast(np.int32, np.int64))      # True (safe — no data loss)
+```
+
+In functions that accept a `casting` parameter, use `casting='safe'` to prevent silent data loss:
+
+```python
+# np.add(float_array, int_array, casting='safe')  # raises if unsafe
+```
 
 ---
 

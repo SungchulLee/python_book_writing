@@ -2,6 +2,9 @@
 
 The `np.squeeze` function removes all size-1 dimensions from an array.
 
+!!! tip "Mental Model"
+    `squeeze` is the inverse of `expand_dims` -- it strips away every axis that has only one element, collapsing unnecessary packaging around your data. Think of it like removing single-item wrappers: a shape `(1, 3, 1, 5)` becomes `(3, 5)` because those length-1 dimensions carry no information.
+
 
 ## np.squeeze Function
 
@@ -124,6 +127,16 @@ Neural network outputs often have extra batch or channel dimensions.
 
 Broadcasting may introduce size-1 dimensions that need removal.
 
+!!! danger "Batch Size 1 Trap"
+
+    The most common `squeeze` bug in ML: a model output has shape `(1, 10)` (batch size 1, 10 classes). Calling `np.squeeze` removes the batch dimension, producing shape `(10,)`. Later code that expects a 2D batch array breaks silently.
+
+    ```python
+    output = model.predict(single_image)  # shape (1, 10)
+    squeezed = np.squeeze(output)          # shape (10,) — batch dim gone!
+    ```
+
+    **Fix**: use selective squeeze (`axis=`) to remove only the dimensions you intend, never blindly squeeze all size-1 axes.
 
 ---
 

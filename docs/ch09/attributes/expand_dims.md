@@ -2,6 +2,9 @@
 
 Adding new axes to arrays is essential for broadcasting and batch operations.
 
+!!! tip "Mental Model"
+    `expand_dims` inserts a size-1 axis at the position you specify, like sliding an empty shelf into a bookcase. The data doesn't change -- only the shape gains a new dimension. This is the standard way to promote an array so that broadcasting aligns axes correctly.
+
 
 ## np.expand_dims
 
@@ -170,6 +173,28 @@ Standard NumPy idiom, clear intent.
 ### 3. None Shorthand
 
 Shortest syntax, common in concise code.
+
+## When Broadcasting Fails Without expand_dims
+
+A common error: trying to operate on arrays whose shapes don't align.
+
+```python
+import numpy as np
+
+a = np.array([1, 2, 3])          # shape (3,)
+b = np.array([[10], [20], [30]])  # shape (3, 1)
+
+# This works — broadcasting aligns (3,) to (1, 3) automatically
+print((a + b).shape)  # (3, 3)
+
+# But this fails:
+row_means = np.mean(b, axis=1)   # shape (3,)
+# b - row_means                  # shape (3, 1) - (3,) → works by accident
+# For clarity, expand_dims makes intent explicit:
+b - np.expand_dims(row_means, axis=1)  # shape (3, 1) - (3, 1) → clear
+```
+
+When shapes are ambiguous, `expand_dims` makes the broadcasting intent explicit and prevents subtle bugs.
 
 ---
 

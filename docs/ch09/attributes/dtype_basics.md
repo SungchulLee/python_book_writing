@@ -2,6 +2,9 @@
 
 The `dtype` attribute specifies how array bytes are interpreted.
 
+!!! tip "Mental Model"
+    A NumPy array is a flat buffer of bytes; the `dtype` is the lens that tells NumPy how to interpret each chunk of those bytes. Choosing a dtype is like choosing a unit of measurement -- `float64` gives you precision, `uint8` saves memory, and picking wrong silently corrupts your numbers.
+
 
 ## Dtype Reference
 
@@ -167,6 +170,23 @@ b = tf.constant([1., 2, 3])    # float32
 ```
 
 NumPy promotes types automatically; PyTorch and TensorFlow require explicit conversion.
+
+## Common Dtype Pitfalls
+
+!!! warning "Overflow and Precision"
+
+    **uint8 wraparound**: values outside 0--255 silently wrap around. `np.uint8(256)` becomes `0`, `np.uint8(-1)` becomes `255`. This is the most common bug in image processing pipelines.
+
+    **float32 precision loss**: `float32` has ~7 decimal digits of precision. In iterative algorithms (gradient descent, cumulative sums), rounding errors accumulate. Use `float64` when precision matters more than memory.
+
+    **Integer overflow**: `np.int8(127) + np.int8(1)` wraps to `-128` with no warning.
+
+| Dtype | Bytes | Use when | Avoid when |
+|---|---|---|---|
+| `float32` | 4 | GPU training, images | High-precision numerics |
+| `float64` | 8 | Scientific computing | Memory-constrained workloads |
+| `uint8` | 1 | Image pixels (0--255) | Arithmetic that may exceed 0--255 |
+| `int64` | 8 | General integers | Memory-critical large arrays |
 
 ---
 

@@ -2,6 +2,9 @@
 
 Reshaping changes an array's dimensions while preserving its data.
 
+!!! tip "Mental Model"
+    Reshape reinterprets a flat sequence of numbers by placing new row and column boundaries. The total number of elements stays constant -- you are folding the same ribbon of data into a different grid. When possible, NumPy returns a view (no copy), so the reshaped array shares memory with the original.
+
 
 ## Method reshape
 
@@ -259,6 +262,26 @@ if __name__ == "__main__":
     """)
 ```
 
+
+## Contiguity and Reshape Pitfalls
+
+!!! warning "Non-Contiguous Arrays"
+
+    After slicing, an array may become **non-contiguous** in memory. Reshaping a non-contiguous array forces a **copy** instead of returning a view:
+
+    ```python
+    import numpy as np
+
+    a = np.arange(12).reshape(3, 4)
+    sliced = a[:, ::2]  # every other column — non-contiguous
+    print(sliced.flags['C_CONTIGUOUS'])  # False
+
+    reshaped = sliced.reshape(-1)  # works, but creates a COPY
+    reshaped[0] = 999
+    print(sliced[0, 0])  # unchanged — it's a copy, not a view
+    ```
+
+    Check `arr.flags['C_CONTIGUOUS']` before relying on reshape returning a view. If contiguity matters, call `np.ascontiguousarray(arr)` first.
 
 ---
 
