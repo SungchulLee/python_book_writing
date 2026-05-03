@@ -1,6 +1,9 @@
 # Axes Method - plot (3D Lines)
 
-The `ax.plot` method on 3D axes creates line plots in three-dimensional space. This is equivalent to `ax.plot3D` - both methods are interchangeable.
+The `ax.plot` method on 3D axes creates line plots in three-dimensional space. This is equivalent to `ax.plot3D` --- both methods are interchangeable. A parametric 3D curve is a **trajectory through space**: as the parameter $t$ advances, the point $(x(t), y(t), z(t))$ traces a path.
+
+!!! tip "Mental Model"
+    3D line plotting is the same as 2D `plot()` but with an extra z array: `ax.plot(x, y, z)` connects the 3D points with line segments in sequence. Parametric curves like helices and spirals become natural --- just define x(t), y(t), z(t) and plot them. All 2D styling (color, linestyle, linewidth) works identically.
 
 ## Basic Usage
 

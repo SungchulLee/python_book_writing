@@ -2,6 +2,9 @@
 
 The `plot_surface` method creates a 3D surface plot from grid data. It requires 2D arrays for X, Y coordinates and corresponding Z values.
 
+!!! tip "Mental Model"
+    `plot_surface(X, Y, Z)` renders a 3D terrain from three 2D arrays: X and Y define a coordinate grid (built with `np.meshgrid`), and Z holds the height at each grid point. Think of it as draping a colored sheet over a landscape. Use `cmap` to color the surface by height and `view_init` to rotate the camera for the best viewing angle.
+
 ## Understanding meshgrid
 
 Before using `plot_surface`, understand how `np.meshgrid` creates coordinate grids.
@@ -568,6 +571,17 @@ fig.colorbar(surf, shrink=0.6, aspect=15, label='Probability Density')
 plt.tight_layout()
 plt.show()
 ```
+
+## Choosing the Right 3D Representation
+
+| Data type | Method | When to use |
+|---|---|---|
+| 1D parametric: x(t), y(t), z(t) | `ax.plot(x, y, z)` | Trajectories, helices, orbits |
+| 2D scalar field: z = f(x, y) | `ax.plot_surface(X, Y, Z)` | Landscapes, PDFs, potential fields |
+| Complex function: f(t) = u(t) + iv(t) | `ax.plot(t, Re, Im)` | Characteristic functions, Euler's formula |
+| Contour projection | `ax.contour(X, Y, Z)` | Isolines, level sets |
+
+Use parametric curves when data flows along a single parameter; use surfaces when data covers a 2D domain.
 
 ---
 

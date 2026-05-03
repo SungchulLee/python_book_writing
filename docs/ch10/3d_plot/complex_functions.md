@@ -2,6 +2,21 @@
 
 This document covers techniques for visualizing complex-valued functions in 3D, with emphasis on characteristic functions from probability theory and Euler's formula.
 
+!!! tip "Mental Model"
+    A complex function maps a real input to a complex output with two parts (real and imaginary), so you need three dimensions to see it: one for the input and two for the output. Plot the real part as one surface and the imaginary part as another, or use a single surface colored by phase. This makes abstract complex analysis tangible.
+
+!!! note "Mathematical Visualization Pipeline"
+
+    Every 3D visualization in this section follows the same pipeline:
+
+    1. **Define the mathematical object** --- function, distribution, parametric curve
+    2. **Choose a representation** --- curve (1D to 3D), surface (2D to 3D), or color-coded
+    3. **Map variables to axes** --- input to x, real part to y, imaginary part to z
+    4. **Choose visual encoding** --- height = magnitude, color = phase, separate real/imag
+    5. **Choose viewpoint** --- `view_init(elev, azim)` to reveal specific structure
+
+    The goal: reveal structure that is invisible in equations alone.
+
 ## Complex Numbers Review
 
 A complex number $z = x + iy$ has real part $x$ and imaginary part $y$. In Python:

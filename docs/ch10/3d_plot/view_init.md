@@ -2,6 +2,9 @@
 
 The `view_init` method sets the elevation and azimuth angles for viewing a 3D plot. It controls the camera position relative to the plotted surface.
 
+!!! tip "Mental Model"
+    `view_init(elev, azim)` positions the camera orbiting your 3D plot. Elevation tilts up/down (0 degrees is eye-level, 90 degrees is bird's-eye view), and azimuth rotates left/right around the z-axis. Experiment with different angles to find the view that best reveals your data's structure -- a single surface can look completely different from two viewpoints.
+
 ## Understanding View Angles
 
 The view is defined by two angles:
@@ -464,6 +467,19 @@ for ax, (Z, title) in zip(axes.flat, surfaces):
 plt.tight_layout()
 plt.show()
 ```
+
+## What Each View Reveals
+
+`view_init` is not just a camera --- it is a tool to extract structure. Different angles reveal different features of the same surface:
+
+| View | `view_init` | What it reveals |
+|---|---|---|
+| Top-down | `(90, 0)` | Contour structure, symmetry |
+| Side view | `(0, 0)` | Amplitude / cross-section along one axis |
+| Diagonal | `(30, 45)` | Overall 3D shape (default) |
+| Rotated side | `(0, 90)` | Cross-section along the other axis |
+
+When exploring a new surface, start with the default view, then rotate to top-down to see contours and to side views to see amplitude profiles.
 
 ---
 
