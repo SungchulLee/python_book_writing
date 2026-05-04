@@ -5,6 +5,11 @@ Annotations combine text with arrows to highlight specific features in your plot
 !!! tip "Mental Model"
     `ax.annotate()` is `ax.text()` with an arrow. You specify two points: where the arrow points to (`xy`) and where the text sits (`xytext`). The `arrowprops` dictionary controls the arrow style. Use annotations to call out specific data points -- peaks, anomalies, or thresholds -- making your plot tell a story.
 
+    The deeper role: **annotations turn a plot into a narrative.** They guide the
+    viewer's attention to the most important insights — the peaks, anomalies, and
+    thresholds that matter. A well-annotated plot communicates a finding; an
+    unannotated one leaves interpretation to guesswork.
+
 !!! warning "Annotation Rules"
     - **Highlight only key points** — annotate the peak, the anomaly, or the
       threshold, not every data point

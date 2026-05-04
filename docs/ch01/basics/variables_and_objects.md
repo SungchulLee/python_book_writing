@@ -448,6 +448,25 @@ Understanding these concepts explains many common Python behaviors.
     Names point to objects---they do not store values. If two names point to the same mutable object, changing it through one name affects the other.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = 1 # int
+b = 1
+print(a == b)
+print(a is b) # int interning (-5, ..., 256)
+```
+
+```python
+break = 10
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

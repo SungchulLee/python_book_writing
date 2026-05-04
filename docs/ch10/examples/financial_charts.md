@@ -16,6 +16,11 @@ Create professional financial visualizations with Matplotlib.
 
     Always apply statistical rigor before interpreting any chart pattern as meaningful.
 
+    Stock prices often resemble **random walks** (see [Brownian Motion](brownian_motion.md)).
+    This means visual patterns like crossovers can appear meaningful even when they
+    are mostly noise — a moving average crossover on a random walk will produce
+    "signals" at exactly the same rate as on real data.
+
 !!! tip "Offline Usage"
     Examples use `yfinance` for real data, but all techniques work equally well
     with synthetic data (`np.cumsum(np.random.randn(250))`) for offline

@@ -5,6 +5,16 @@ The `ax.bar()` and `ax.barh()` methods accept numerous keyword arguments to cont
 !!! tip "Mental Model"
     Bar chart keywords control the geometry and look of each rectangle: `width` sets thickness, `color` fills the bar, `edgecolor` outlines it, `align` shifts its position, and `bottom` offsets its base (used for stacking). Like scatter keywords, each can be a scalar for uniform styling or an array for per-bar control.
 
+!!! note "Parameter Priority"
+    Not all keywords are equally important. Focus on these in order:
+
+    1. **`color`** — visual grouping and meaning (the first thing readers see)
+    2. **`width`** — spacing clarity between bars
+    3. **`bottom`** — stacking logic (accumulating series)
+    4. **`alpha`** — transparency for layering, overlap, and emphasis control
+
+    Transparency (`alpha`) matters more than it seems: it reveals overlap in grouped bars, reduces visual dominance of large bars, and guides attention to highlighted elements.
+
 ## Width and Height
 
 The `width` parameter controls bar thickness for vertical bars; `height` for horizontal bars.

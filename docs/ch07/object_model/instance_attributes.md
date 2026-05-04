@@ -441,6 +441,84 @@ if __name__ == "__main__":
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+class Student: # <--- class
+
+    def __init__(self, name, age, gender, classes):
+        # Instance attribute
+        self.name = name # a.name = "Bob"
+        self.age = age
+        self.gender = gender
+        self.classes = classes
+
+    def add_class(self, class_name): # method
+        if class_name not in self.classes: # self.classes not input
+            self.classes.append(class_name)
+
+    # def drop_class(self, class_name):
+    #     try:
+    #         self.classes.remove(class_name)
+    #     except ValueError as e:
+    #         print("you tries to drop non-existing class")
+
+    def drop_class(self, class_name): # method
+        if class_name in self.classes:
+            self.classes.remove(class_name)
+
+
+a = Student("Bob", 20, "Male", ["python", "mat21", "linear algebra"]) # <--- instance; run __init__(self, name); self = a, name = "Bob"
+print(a.name) # attribute
+print(a.age) # attribute
+print(a.gender) # attribute
+print(a.classes) # attribute
+
+a.add_class("deep learning") # method; Student.add_class(a, "deep learning")
+print(a.classes) # attribute
+
+a.drop_class("mat21") # method; Student.add_class(a, "deep learning")
+print(a.classes) # attribute
+
+a.drop_class("mat21") # method; Student.add_class(a, "deep learning")
+print(a.classes) # attribute
+
+b = Student("Kim", 21, "Female", ["python", "mat2111", "pde"])
+```
+
+```python
+class Student:
+    pass
+
+a = Student()
+a.name = "Lee"
+a.major = "Math"
+```
+
+```python
+class Student:
+    def __init__(self, name, major):
+        self.name = name
+        self.major = major
+
+a = Student("Lee", "Math")
+```
+
+```python
+class Student:
+    pass
+
+a = Student()
+a.classes = ["python", "mat21", "linear algebra"]
+a.classes.drop("mat21")
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

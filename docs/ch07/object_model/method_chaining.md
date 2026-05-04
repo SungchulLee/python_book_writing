@@ -181,6 +181,20 @@ a method mutated the original or created a copy.
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+name = " aLiCe "
+
+print( name.strip().lower().title() )
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

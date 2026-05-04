@@ -578,6 +578,83 @@ if __name__ == "__main__":
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+class Student:
+
+    university = 'Yonsei' # class attribute
+    num_students = 0 # class attribute
+    students_list = [] # class attribute
+    mandatory = ['Chapel'] # class attribute
+
+    def __init__(self, name):
+        self.name = name  # instance attribute
+        Student.num_students += 1
+        Student.students_list.append(name)
+
+a = Student("Kim")
+print(a.name)
+print(a.university)
+print(a.num_students)
+print(a.students_list)
+print(a.mandatory, end="\n\n")
+
+b = Student("Lee")
+print(b.name)
+print(b.university)
+print(b.num_students)
+print(b.students_list)
+print(b.mandatory)
+```
+
+```python
+class Student:
+
+    university = 'Yonsei' # class attribute
+    num_students = 0 # class attribute
+    students_list = [] # class attribute
+    mandatory = ['Chapel'] # class attribute
+
+    def __init__(self, name):
+        self.name = name  # instance attribute
+        self.increase_num_student()
+        self.append_student_name(name)
+
+    @classmethod # <--- decorator
+    def increase_num_student(cls):
+        cls.num_students += 1
+
+    @classmethod # <--- decorator
+    def append_student_name(cls, name):
+        cls.students_list.append(name)
+
+
+a = Student("Kim")
+print(a.name)
+print(a.university)
+print(a.num_students)
+print(a.students_list)
+print(a.mandatory, end="\n\n")
+
+b = Student("Lee")
+print(b.name)
+print(b.university)
+print(b.num_students)
+print(b.students_list)
+print(b.mandatory, end="\n\n")
+
+print(a.__dict__)
+print(b.__dict__)
+print(Student.__dict__)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -7,6 +7,13 @@ The Figure object provides methods for managing subplots, layout, and overall fi
 
     The typical workflow order: **create → populate → layout → export.**
 
+    The key distinction: **Figure methods control global structure; Axes methods
+    control local content.** Confusing the two (e.g., calling `fig.set_xlabel()`
+    instead of `ax.set_xlabel()`) is a common source of errors. Layout is about
+    readability — overlapping labels cause confusion, cramped plots are unreadable,
+    and excessive spacing wastes attention. Good layout makes the figure effortless
+    to read.
+
 !!! tip "Layout Methods: When to Use Each"
     | Method | Use when |
     |---|---|

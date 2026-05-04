@@ -3,7 +3,22 @@
 Matplotlib supports two plotting interfaces: the pyplot (MATLAB-style) interface and the object-oriented (OOP) interface. Understanding both is essential for effective visualization.
 
 !!! tip "Mental Model"
-    Pyplot is like a TV remote -- you press buttons and the current channel changes behind the scenes. The OOP interface is like holding the TV object directly -- you call methods on a specific Figure and specific Axes, so there is never ambiguity about which plot you are modifying. Use pyplot for quick exploration; switch to OOP for anything with multiple subplots or production code.
+    Pyplot is like a TV remote -- you press buttons and the current channel changes behind the scenes. The OOP interface is like holding the TV object directly -- you call methods on a specific Figure and specific Axes, so there is never ambiguity about which plot you are modifying. Use pyplot for quick exploration; switch to OOP for **everything else.**
+
+    The difference is not stylistic — it is **conceptual.** Pyplot tells
+    Matplotlib what to do (a sequence of commands). OOP gives you objects that
+    represent parts of the visualization (Figure, Axes, Artists). This means
+    your code mirrors the structure of the visualization itself:
+
+    ```text
+    fig   → the whole message
+    ax    → one perspective on the data
+    lines → visual elements inside that perspective
+    ```
+
+    Using OOP is not just "better practice" — it is a way to **think about
+    visualizations as structured objects**, which is essential for building
+    complex, readable, and correct plots.
 
 !!! note "The State Machine Under Pyplot"
     Pyplot maintains a **global stack** of figures and axes. Every `plt.*` call
@@ -300,6 +315,16 @@ plt.show()
     axes locally, and compose plots from functions that return figure objects.
     This is why it scales to complex dashboards and production code while pyplot
     does not.
+
+    **Cognitive load:** implicit state forces you to remember which figure and
+    axes are "current" — a mental burden that grows with plot complexity.
+    Explicit objects remove that burden entirely. This is why OOP scales and
+    pyplot doesn't: the code tells you what it modifies, so you don't have to.
+
+    **Mixing styles breaks the model:** once you hold explicit `ax` references,
+    calling `plt.title()` silently targets a different axes than you think.
+    You lose track of which object is being modified, defeating the purpose of
+    OOP entirely. Pick one style per script and commit to it.
 
 ---
 

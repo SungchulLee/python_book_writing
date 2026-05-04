@@ -210,6 +210,95 @@ Key ideas:
 File reading is the first step in processing external data sources.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+import os
+
+def batch_file_iterator(directory, batch_size=10):
+    # Get sorted list of files (assuming names like 1.txt ... 1000.txt)
+    files = sorted(
+        [f for f in os.listdir(directory) if f.endswith(".txt")],
+        key=lambda x: int(x.split('.')[0])  # sort numerically
+    )
+
+    for i in range(0, len(files), batch_size):
+        batch_files = files[i:i + batch_size]
+        batch_data = []
+
+        for fname in batch_files:
+            path = os.path.join(directory, fname) # ./Volumn/T5/data/3.txt
+            with open(path, 'r') as f:
+                batch_data.append(f.read())
+
+        yield batch_data    # <--- iterator
+        # return batch_data # <--- function
+```
+
+```python
+# . --- current directory
+# .. --- parent directory
+# / --- root (/)
+# ~ --- home (Users/sungchul)
+```
+
+```python
+import os
+
+path = "/Users/sungchul/Desktop/1.txt"
+
+with open(path, "r") as f:
+    for line in f:
+        print(line, end="")
+
+cnn = "Iran’s military warned it would respond after the US Navy fired on and seized an Iranian cargo ship in the Gulf of Oman, according to state media."
+
+with open(path, "a") as f:
+    f.write("\n" + cnn)
+```
+
+```python
+import os
+
+path ="/Users/sungchul/Desktop/1.txt"
+
+# with context manager
+# with open(path, "r") as f:
+#     for line in f:
+#         print(line, end="")
+
+
+# without context manager
+# f = open(path, "r") # with open(path, "r") as f:
+# for line in f:
+#     print(line, end="")
+# f.close()           # with open(path, "r") as f:
+
+# with context manager
+# with open(path, "rb") as f:
+#     for line in f:
+#         print(line, end="")
+
+with open(path, "rb") as f:
+    for byte in f.read():
+        print(format(byte, "08b"), end=" ")
+```
+
+```python
+# open mode
+# "r"
+# "w"
+# "a"
+# "rb"
+help(open)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

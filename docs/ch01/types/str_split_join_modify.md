@@ -176,6 +176,92 @@ Key ideas:
 These methods are central to practical string processing.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+x = "367    txt"
+print( x.split() )
+```
+
+```python
+x = "367.txt"
+print( x.split(".") )
+print( x.split(".")[0], type(x.split(".")[0]) )
+print( int(x.split(".")[0]), type(int(x.split(".")[0])) )
+```
+
+```python
+a = "hgfj sefliqorg. wefioiJ.     ghhfjggui!"
+lst = a.split()
+
+print(lst)
+```
+
+```python
+a = "hgfj sefliqorg. wefioiJ.     ghhfjggui!"
+lst = a.split(sep=".")
+
+print(lst)
+```
+
+```python
+lst = ["Hello", "Bob"]
+a = "".join(lst)
+
+print(a)
+```
+
+```python
+lst = ["Hello", "Bob"]
+a = " ".join(lst) # mutaion vs binding? binding
+
+print(a)
+```
+
+```python
+lst = ["Hello", "Bob"]
+a = "-----".join(lst) # mutaion vs binding? binding
+
+print(a)
+```
+
+```python
+a = "Hello"
+#a.lower() # mutaion vs binding?
+a = a.lower() # mutaion vs binding?
+
+print(a)
+```
+
+```python
+a = "Hello"
+#a.lower() # mutaion vs binding?
+a = a.upper() # mutaion vs binding?
+
+print(a)
+```
+
+```python
+a = "Hello bob. how are you?"
+#a.lower() # mutaion vs binding?
+a = a.capitalize() # mutaion vs binding?
+
+print(a)
+```
+
+```python
+a = "Hello bob. how are you?"
+a = ". ".join(item.strip().capitalize() for item in a.split("."))
+
+print(a)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

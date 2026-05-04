@@ -373,6 +373,151 @@ Key ideas:
 Dictionaries are one of Python's most powerful tools for representing structured information. Dictionary values can themselves be dictionaries — nested structures are covered in a later chapter. Dictionaries can also be built concisely using comprehensions — see [Comprehensions](comprehensions.md). This page follows [Sets](sets.md) in the composite data types section.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = {1 : '1',  2 : "2", 3 : '1'} # dict
+b = {"one" : '1', "two" : "3"}
+c = a + b
+print(c)
+```
+
+```python
+a = ["bob", "alice", "lee", "kim", "lee"]
+
+print("harry" in a) # O(n)
+#print(a.find("harry"))
+#print(a.index("harry"))
+print(a.index("lee"))
+print(list.index(a, "lee"))
+```
+
+```python
+a = {"bob", "alice", "lee", "kim"} # set
+b = {"bob" : 123, "alice" : 5678, "lee": 1357, "kim": 4587} # dict
+c = ["bob", "alice", "lee", "kim"] # list
+d = ("bob", "alice", "lee", "kim") # tuple
+
+print("harry" in a) # membership test
+print(c[1], "harry" in c)
+print(d[1:], "harry" in d)
+```
+
+```python
+a = {"bob" : 123, "alice" : 5678, "lee": 1357, "kim": 4587} # dict
+#     ^    :  ^
+#     |       |
+#    key    value       a["alice"]       if a is dict
+#   index   value       a[3]             if a is list
+print(a["bob"])
+print(a["alice"])
+print(a["park"])
+```
+
+```python
+a = {[1,2] : "bob", [1,3] : "alice", [3,4]: "lee", [-1,3]: "kim"} # dict
+#     ^    :  ^
+#     |       |
+#    key    value       a["alice"]       if a is dict
+#   index   value       a[3]             if a is list
+print(a[[1,3]])
+```
+
+```python
+a = {(1,2) : "bob", (1,3) : "alice", (3,4): "lee", (-1,3): "kim"} # dict
+#     ^    :  ^
+#     |       |
+#    key    value       a["alice"]       if a is dict
+#   index   value       a[3]             if a is list
+print(a[(1,3)])
+```
+
+```python
+print(hash(313))
+print(hash(3.13))
+print(hash(3.13 + 2.1j))
+print(hash("harry"))
+print(hash("Harry"))
+print(hash("HARRY"))
+print(hash((1,2))) # tuple, ok
+#print(hash([1,2])) # list
+#print(hash({1,2})) # set
+#print(hash({1:"harry",2:"potter"})) # dict
+#print(hash((1,[2,"harry"]))) # tuple, not ok
+```
+
+```python
+d = {} # set or dict
+print(type(d))
+
+for i in range(10):
+    d[i] = i
+print(d)
+
+for i in range(10):
+    d[i] = str(i)
+print(d)
+```
+
+```python
+d = set() # set or dict
+print(type(d))
+```
+
+```python
+d = { "bob" : 23, "allice" : 20 }
+print(d["bob"])
+#print(d["harry"]) # KeyError
+print(d.get("harry", "don't have"))
+print(d.get("harry", 0))
+```
+
+```python
+d = { "bob" : 23, "allice" : 20 }
+print( d.keys() )
+print( dict.keys( d ) )
+print( d.values() )
+print( dict.values( d ) )
+```
+
+```python
+d = {1:"one",2:"two",3:"three"} # iterable ---> __iter__ works ---> iterator
+# iterable : __iter__
+# iterator : __iter__, __next__
+
+for key, value in d.items():
+    print(key, value)
+
+print(dir(d))
+```
+
+```python
+import pandas as pd
+
+df = pd.DataFrame({
+    "name": ["Alice", "Bob", "Charlie", "David"],
+    "age": [25, 30, 35, 40],
+    "score": [80, 90, 70, 85]
+})
+
+# result = (
+#     df
+#     .query("age > 30")                  # filter rows
+#     .assign(score_plus_5=lambda x: x.score + 5)  # create new column
+#     .sort_values(by="score_plus_5", ascending=False)
+#     [["name", "score_plus_5"]]          # select columns
+# )
+
+result = df.query("age > 30").assign(score_plus_5=lambda x: x.score + 5) # method chaining
+print(result)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

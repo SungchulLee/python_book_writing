@@ -144,6 +144,39 @@ In functions, `return` often makes `else` unnecessary.
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+for i in range(10):
+    if i == 7:
+        break
+    print(i)
+```
+
+```python
+for i in range(10):
+    if i == 7:
+        break
+    print(i)
+else:
+    print("wow")
+```
+
+```python
+for i in range(10):
+    if i == 77:
+        break
+    print(i)
+else: # no break
+    print("wow")
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

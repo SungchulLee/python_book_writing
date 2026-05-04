@@ -350,6 +350,19 @@ C is different from both:
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+if __name__ == "__main__":
+    main()
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -5,6 +5,12 @@ Control the visible range and tick positions on your axes.
 !!! tip "Mental Model"
     Limits define the viewport window (what range of data is visible) and ticks define the ruler marks within that window. `set_xlim`/`set_ylim` zoom or pan the view, while `set_xticks`/`set_yticks` place marks at specific values. Matplotlib auto-picks reasonable defaults, but manual control is essential for publication-quality figures.
 
+!!! warning "Changing Limits Changes the Story"
+    Axis limits are not neutral. Zooming in can reveal fine structure but hide context; zooming out can flatten variation and obscure signals; starting the y-axis at zero vs. non-zero changes perceived magnitude. Every limit choice frames the narrative — be intentional about what the reader sees and what they don't.
+
+!!! note "Ticks as a Ruler"
+    Ticks define the **resolution** at which readers can extract values. More ticks → more precise reading but more visual clutter. Fewer ticks → cleaner plot but less precision. Choose tick density based on your purpose: exploration needs many ticks; presentation needs few.
+
 !!! note "The Axes System (applies to all customization pages)"
 
     Every plot answers six questions. Each customization page in this section addresses one:
@@ -754,3 +760,37 @@ Plot three subplots (1x3) of the same data `y = x^3 - 3*x` over $[-3, 3]$: the f
 
         plt.tight_layout()
         plt.show()
+
+---
+
+**Exercise 4.**
+Demonstrate how axis limits "change the story." Plot `y = sin(x)` over `[0, 4π]` three ways: (a) full range, (b) zoomed to one period `[0, 2π]`, (c) zoomed to a narrow region `[π-0.5, π+0.5]` with y-limits `[-0.5, 0.5]`. Explain how each view reveals or hides different aspects of the function.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(0, 4 * np.pi, 500)
+        y = np.sin(x)
+
+        fig, axes = plt.subplots(1, 3, figsize=(14, 4))
+
+        axes[0].plot(x, y)
+        axes[0].set_title('Full range: periodic pattern')
+
+        axes[1].plot(x, y)
+        axes[1].set_xlim(0, 2 * np.pi)
+        axes[1].set_title('One period: shape detail')
+
+        axes[2].plot(x, y)
+        axes[2].set_xlim(np.pi - 0.5, np.pi + 0.5)
+        axes[2].set_ylim(-0.5, 0.5)
+        axes[2].set_title('Narrow zoom: near-linear')
+
+        plt.tight_layout()
+        plt.show()
+
+        # (a) reveals periodicity — you see the repeating pattern
+        # (b) reveals shape — the full wave is visible in detail
+        # (c) hides periodicity entirely — sin(x) looks linear near π

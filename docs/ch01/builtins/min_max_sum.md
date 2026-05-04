@@ -77,6 +77,24 @@ print("Lowest:", min(sales))
 print("Total:", sum(sales))
 ```
 
+
+
+---
+
+## Notebook Examples
+
+```python
+print( sum([1,2,3]) )
+```
+
+```python
+sum = 10
+print( sum )
+print( sum([1,2,3]) )
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

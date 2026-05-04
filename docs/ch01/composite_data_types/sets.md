@@ -284,6 +284,148 @@ Key ideas:
 Sets are especially useful for uniqueness, filtering, and fast membership logic.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = {'1', "2", '1'} # set
+b = {'1', "3"}
+c = a + b
+print(c)
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+print(a)
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+a.add("five")
+print(a)
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+a = a.add("five")
+print(a) # None
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+a.remove("four")
+print(a)
+a.remove("four")
+print(a)
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+a.discard("four")
+print(a)
+a.discard("four")
+print(a)
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+
+for _ in range(3):
+    a.pop()
+    print(a)
+
+print()
+print(a)
+print(_)
+```
+
+```python
+a = {1,2,3,"four",4,4,4,4,4} # set
+
+for _ in range(3):
+    popped = a.pop()
+    print(a, popped)
+```
+
+```python
+a = [1,2,3,"four",4,4,4,4,4] # list
+
+for _ in range(10):
+    popped = a.pop()
+    print(a, popped)
+```
+
+```python
+a = [1,2,3,"four",4,4,4,4,4] # list
+
+for _ in range(10):
+    popped = a.pop(0)
+    print(a, popped)
+```
+
+```python
+nums = [1, 2, 2, 3, 3]
+unique = set(nums)
+print(unique)
+```
+
+```python
+allowed = {"admin", "editor"}
+
+if "admin" in allowed:
+    print("granted")
+```
+
+```python
+allowed = {"admin", "editor"}
+
+if "Bob" in allowed:
+    print("granted")
+```
+
+```python
+a = {1,2,3}
+b = {3,4,5}
+c = a | b
+d = a.union(b)
+print(c)
+print(d)
+```
+
+```python
+a = {1,2,3}
+b = {3,4,5}
+c = a & b
+d = a.intersection(b)
+print(c)
+print(d)
+```
+
+```python
+a = {1,2,3}
+b = {3,4,5}
+c = a - b
+d = a.difference(b)
+print(c)
+print(d)
+```
+
+```python
+a = {1,2,3}
+b = {3,4,5}
+c = a ^ b
+d = a.symmetric_difference(b)
+e = set.symmetric_difference(a,b)
+print(c)
+print(d)
+print(e)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

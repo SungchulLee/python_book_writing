@@ -394,6 +394,54 @@ my_array * 3   # multiplication → array([3, 6, 9])
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = [1,2,3]
+b = [4,5,6]
+c = a + b # list concatenation
+
+print(c)
+```
+
+```python
+import numpy
+
+a = numpy.array([1,2,3])
+b = numpy.array([4,5,6])
+c = a + b # vector addition
+
+print(c)
+```
+
+```python
+import numpy as np
+
+a = np.array([1,2,3])
+b = np.array([4,5,6])
+c = a + b # vector addition
+
+print(c)
+```
+
+```python
+import numpy
+
+a = numpy.array( [1,2,3] )
+```
+
+```python
+import numpy as np
+
+a = np.array( [1,2,3] )
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.** Create a Python list and a NumPy array, each containing integers 1 through 1,000,000. Measure the time to compute the element-wise square of each. Report the speedup.

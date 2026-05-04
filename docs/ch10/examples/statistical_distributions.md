@@ -22,6 +22,18 @@ This document provides practical examples for visualizing probability distributi
     Binomial for large $n$ and small $p$. Overlaying related distributions on
     one plot makes these connections visible.
 
+!!! note "Unifying Idea: Everything Is Density"
+    All continuous distributions define a density function $f(x)$ — the same
+    concept that appears throughout this book:
+
+    - **Histograms** → empirical density (counting)
+    - **KDE** → smoothed density (estimation)
+    - **2D density plots** → density in two dimensions
+    - **Distributions on this page** → theoretical density (closed-form)
+
+    Visualizing distributions is visualizing density from the theoretical side,
+    just as histograms and KDE visualize it from the data side.
+
 ## Setup
 
 ```python

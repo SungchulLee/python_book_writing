@@ -291,6 +291,135 @@ while True:
 
 This pattern is common in **interactive programs and servers**.
 
+
+
+---
+
+## Notebook Examples
+
+```python
+flag = True
+
+if flag:
+    print("flag is true.")
+```
+
+```python
+flag = True
+
+if flag:
+    print("flag is true.")
+else:
+    print("flag is false.")
+```
+
+```python
+flag = False
+
+if flag: # <--- True / False
+    print("flag is true.")
+else:
+    print("flag is false.")
+```
+
+```python
+age = 25
+
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a child")
+```
+
+```python
+age = 15
+
+if age >= 18:
+    print("You are an adult")
+else:
+    print("You are a child")
+```
+
+```python
+print("12345")
+for n in range(20):
+    if n % 2 == 0 :
+        print(f"{n:5d} is even.")
+    else:
+        print(f"{n:5d} is odd.")
+```
+
+```python
+print("12345")
+for n in range(20):
+    if n % 2 == 0 :
+        print(f"{n:<5d} is even.")
+    else:
+        print(f"{n:<5d} is odd.")
+```
+
+```python
+for n in range(10):
+    if n % 3 == 0 :
+        print(f"{n} % 3 == 0")
+    elif n % 3 == 1 :
+        print(f"{n} % 3 == 1")
+    else:
+        print(f"{n} % 3 == 2")
+```
+
+```python
+for n in range(2,10):
+    for m in range(1,10):
+        print(f"{n} * {m} = {n*m}")
+```
+
+```python
+# if
+
+
+# if
+# else
+
+# if
+# elif
+# elif
+# else
+```
+
+```python
+flag = 100
+
+if flag == 200:
+    print( "OK" )
+elif flag == 404:
+    print( "Not Found" )
+else:
+    print( "Unknown" )
+```
+
+```python
+day = "sunday"
+
+if day in {"Saturday", "Sunday", "saturday", "sunday"} :
+    print("Weekend")
+else:
+    print("Weekday")
+```
+
+```python
+age = 20
+
+if age >= 18:
+    status = "adult"
+else:
+    status = "minor"
+
+print(status)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

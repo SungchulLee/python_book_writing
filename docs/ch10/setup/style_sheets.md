@@ -3,6 +3,12 @@
 !!! tip "Mental Model"
     Style sheets are like CSS for Matplotlib. A single `plt.style.use('ggplot')` call changes dozens of defaults -- colors, fonts, backgrounds, line widths -- so your plots look polished without setting each property by hand. Think of them as preset themes you can swap in one line.
 
+    The deeper role: **styles influence perception, not just appearance.** Contrast
+    affects visibility, gridlines affect readability, and color choices affect
+    interpretation. Styles modify how visual encodings are perceived, but do not
+    change the underlying data mapping — they define the **visual language** of
+    your plots.
+
 !!! note "Design Principles"
     Style matters, but **clarity beats decoration**. A few rules:
 

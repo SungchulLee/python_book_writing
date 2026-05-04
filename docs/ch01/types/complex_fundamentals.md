@@ -250,6 +250,23 @@ Key ideas:
 The `complex` type extends Python’s numeric model beyond ordinary real-number arithmetic.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = 1. + 2.j # complex
+b = 1.0 + 2.0J
+c = a + b
+d = complex.__add__(a, b)
+print(c)
+print(d)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -5,6 +5,13 @@ This document covers colormaps and image manipulation techniques in matplotlib.
 !!! tip "Mental Model"
     Image processing in Matplotlib means manipulating the underlying NumPy array and redisplaying it. Convert to grayscale by averaging channels, adjust brightness by scaling values, apply colormaps to single-channel images, and crop by slicing the array. Matplotlib is the visualization layer; NumPy does the actual pixel math.
 
+    Mathematically, **image processing = function transformation.** The original
+    image is a function $f(x, y)$; every operation produces a new function
+    $g(x, y)$. Convolution-based operations (blur, edge detection) are **local
+    transformations** — each output pixel becomes a function of its neighbors,
+    exactly like the [neighborhood operators](../../ch09/ndimage/convolution_filtering.md)
+    in the ndimage chapter.
+
 !!! note "The Deeper Model: Images as Matrices"
     Every image operation has a mathematical interpretation:
 

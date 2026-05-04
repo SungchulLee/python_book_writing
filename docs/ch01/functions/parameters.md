@@ -143,6 +143,147 @@ When a function has multiple parameters, arguments are matched to parameters by 
 Next: [Return Values](return_values.md).
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+def full_add_analysis(a, b=1): # <--- a, b : input (b=1 default value)
+    c = a + b
+    return a, b, c # <--- a,b,c: output (tuple)
+
+alpha = 1
+return_val = full_add_analysis(alpha)
+
+print( return_val, type(return_val))
+print( return_val, type(return_val), sep=" " )
+print( return_val, type(return_val), sep=" --- " )
+print( return_val, type(return_val), sep="\t" )
+print( return_val, type(return_val), sep="\n" )
+```
+
+```python
+def full_add_analysis(a, b=1): # <--- a, b : input (b=1 default value)
+    c = a + b
+    return a, b, c # <--- a,b,c: output (tuple)
+
+alpha = 1
+return_val = full_add_analysis(alpha)
+
+print( return_val, type(return_val), sep=" --- " )
+print( return_val, type(return_val), sep=" --- ", end="\n" )
+print( return_val, type(return_val), sep=" --- ", end="\n\n" )
+print( return_val, type(return_val), sep=" --- ", end="\n"*5 )
+print( return_val, type(return_val), sep=" --- ", end="\n"*10 )
+print( return_val, type(return_val), sep=" --- ", end="\n"*10 )
+```
+
+```python
+a = 1
+
+def f():
+    print(a)
+
+print( f() ) # None
+```
+
+```python
+a = 1
+
+def f(a):
+    print(a)
+
+print( f(2) ) # None
+```
+
+```python
+def greet():
+    print("Inside greet()")
+    print("Hello")
+    print("I am going to leave greet()")
+
+print("Start program")
+greet()
+print("End program")
+```
+
+```python
+def describe(name, age=20): # default argument
+    print(name, age)
+
+describe(25, "Alice")
+describe("Alice", 25) # positional argument
+describe("Alice", age=25) # ok
+# SyntaxError: positional argument follows keyword argument
+#describe(name="Alice", 25) # not ok; SyntaxError
+describe(age=25, name="Alice") # keyword argument
+describe( * ("Alice", 25) ) # unpacking - *args
+describe( ** {"age" : 25, "name" : "Alice"} ) # unpacking - **kwargs
+```
+
+```python
+def f(para, *args, **kwargs):
+    print(para, args, kwargs)
+    return para
+```
+
+```python
+def f(para, *args, **kwargs):
+    print(para, args, kwargs)
+    return para, args, kwargs # tuple
+```
+
+```python
+def f(para, *args, **kwargs):
+    print(para, args, kwargs)
+    return # None
+```
+
+```python
+def f(para, *args, **kwargs):
+    print(para, args, kwargs) # None
+```
+
+```python
+def f(para, *args, **kwargs): # error
+```
+
+```python
+def f(para, *args, **kwargs):
+    pass
+```
+
+```python
+def append_stuffs(name, given=["bob"]):
+    given.append(name)
+    return given
+
+names = append_stuffs("alice")
+print(names)
+```
+
+```python
+names = append_stuffs("tom")
+print(names)
+```
+
+```python
+def append_stuffs(name, given=None):
+    if given is None:
+        given = ["bob"]
+    given.append(name)
+    return given
+
+names = append_stuffs("alice")
+print(names)
+names = append_stuffs("tom")
+print(names)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

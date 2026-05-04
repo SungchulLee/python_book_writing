@@ -271,6 +271,40 @@ Key ideas:
 Boolean operators let programs express complex logic clearly and efficiently.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = True
+b = True
+
+print(a and b)
+print(a or b)
+print(not a)
+```
+
+```python
+for a in [True, False]:
+    for b in [True, False]:
+        print(f"{a} and {b} : {a and b}")
+```
+
+```python
+for a in [True, False]:
+    for b in [True, False]:
+        print(f"{a} or {b} : {a or b}")
+```
+
+```python
+for a in [True, False]:
+    print(f"not {a} : {not a}")
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

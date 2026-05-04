@@ -59,6 +59,86 @@ This combination is what makes programs responsive rather than static.
 !!! tip "Mental Model"
     Without control flow, a program is a straight line---every statement runs once, in order. Control flow adds three powers: branching (choose which code runs), looping (repeat code), and early exit (stop when done). These three mechanisms turn static scripts into programs that adapt to their inputs.
 
+
+
+---
+
+## Notebook Examples
+
+```python
+for i in range(5):
+    print(i)
+```
+
+```python
+for _ in range(5):
+    print(_)
+```
+
+```python
+for i in {"HI", 1,2,3, "BOB",3,2,1}:
+    print(i, end="\t")
+```
+
+```python
+print({"HI", 1,2,3, "BOB",3,2,1})
+```
+
+```python
+for i in range(1,5):
+    print(i)
+```
+
+```python
+for i in range(1,5,2):
+    print(i)
+```
+
+```python
+for i in [1,"two",3]:
+    print(i)
+```
+
+```python
+for i in (1,"two",3):
+    print(i)
+```
+
+```python
+for i in {1,"two",3}:
+    print(i)
+```
+
+```python
+d = {1:"one",2:"two",3:"three"}
+
+for i in d:
+    print(i)
+```
+
+```python
+d = {1:"one",2:"two",3:"three"}
+
+for i in d.values():
+    print(i)
+```
+
+```python
+d = {1:"one",2:"two",3:"three"}
+
+for i in d.keys(): # same to "for i in d:"
+    print(i)
+```
+
+```python
+d = {1:"one",2:"two",3:"three"}
+
+for i in d.items():
+    print(i)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.** Summarize the key concepts introduced in this overview in your own words. Identify which concept you find most important and explain why.

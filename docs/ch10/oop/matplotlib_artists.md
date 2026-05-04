@@ -1,7 +1,20 @@
 # Line2D and Artists
 
 !!! tip "Mental Model"
-    Every visible element on a Matplotlib plot -- every line, text label, axis tick, legend entry -- is an Artist object. `Line2D` is the Artist created by `ax.plot()`. Once you realize that plotting commands return Artists, you can grab them, inspect their properties with `get_*()`, and modify them with `set_*()` after the fact.
+    Every visible element on a Matplotlib plot — every line, text label, axis tick, legend entry — is an Artist object. `Line2D` is the Artist created by `ax.plot()`. Once you realize that plotting commands return Artists, you can grab them, inspect their properties with `get_*()`, and modify them with `set_*()` after the fact.
+
+!!! note "Artists = Visual Encoding"
+    Artists are the concrete implementation of visual variables. Each plot command creates a specific Artist type:
+
+    | Plot command | Artist created | Visual variable |
+    |---|---|---|
+    | `ax.plot()` | `Line2D` | Position, color, linestyle |
+    | `ax.scatter()` | `PathCollection` | Position, size, color |
+    | `ax.bar()` | `Rectangle` (Patch) | Height, color |
+    | `ax.text()` | `Text` | Position, content, font |
+    | `ax.imshow()` | `AxesImage` | Color map of 2D data |
+
+    Understanding this mapping means you can modify any aspect of a plot after creation by accessing the returned Artist and calling its `set_*()` methods.
 
 ## Artist Base Class
 
@@ -185,16 +198,62 @@ Common issues:
 **Exercise 4.** Create a plot and manually add a `matplotlib.patches.Rectangle` to the axes using `ax.add_patch()`.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        import matplotlib.pyplot as plt
+        import matplotlib.patches as mpatches
+        import numpy as np
+
+        fig, ax = plt.subplots()
+        x = np.linspace(0, 10, 100)
+        ax.plot(x, np.sin(x), 'b-')
+
+        # Manually create and add a Rectangle Artist
+        rect = mpatches.Rectangle((2, -0.5), 3, 1,
+                                   linewidth=2, edgecolor='red',
+                                   facecolor='yellow', alpha=0.3)
+        ax.add_patch(rect)
+
+        ax.set_title('Line2D + manually added Rectangle')
+        plt.show()
+
+        # The Rectangle is a Patch Artist — same base class as bars in bar charts.
+        # add_patch() inserts it into the Axes' artist list for rendering.
+
+---
+
+**Exercise 5.** Demonstrate the `set_*()` / `get_*()` pattern. Create a line plot and then modify it after creation: change the line color, width, linestyle, and marker using only `set_*()` methods on the returned `Line2D` object. Print the properties before and after using `get_color()`, `get_linewidth()`, etc.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        fig, ax = plt.subplots()
+        x = np.linspace(0, 5, 30)
+        line, = ax.plot(x, np.cos(x))
+
+        # Before modification
+        print(f"Color:     {line.get_color()}")
+        print(f"Linewidth: {line.get_linewidth()}")
+        print(f"Linestyle: {line.get_linestyle()}")
+
+        # Modify via set_*() — no need to replot
+        line.set_color('red')
+        line.set_linewidth(3)
+        line.set_linestyle('--')
+        line.set_marker('o')
+        line.set_markersize(6)
+
+        # After modification
+        print(f"\nAfter set_*():")
+        print(f"Color:     {line.get_color()}")
+        print(f"Linewidth: {line.get_linewidth()}")
+        print(f"Linestyle: {line.get_linestyle()}")
+
+        ax.set_title('Modified Line2D (red, dashed, markers)')
+        plt.show()
+
+        # This is the Artist mutation model: create once, modify freely.
+        # The plot updates when drawn — no need to recreate the figure.
 
     Refer to the code examples in the main content for the specific API calls needed.

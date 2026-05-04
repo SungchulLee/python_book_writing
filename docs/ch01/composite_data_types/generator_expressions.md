@@ -107,6 +107,71 @@ All three approaches are **lazy**---values are computed on demand.
 - Use generators for large data; use list comprehensions when reuse or random access is needed
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+lst = ["bob","alice","tom"] # iterable
+lst_it = iter(lst) # list.__iter__(lst) <--- iterator
+
+print("__iter__" in dir(lst_it))
+print("__next__" in dir(lst_it))
+```
+
+```python
+lst = ["bob","alice","tom"] # iterable
+lst_it = iter(lst) # list.__iter__(lst) <--- iterator
+
+print(next(lst_it)) # lst_it.__next__()
+print(next(lst_it)) # lst_it.__next__()
+print(next(lst_it)) # lst_it.__next__()
+print(next(lst_it)) # lst_it.__next__()
+```
+
+```python
+lst = ["bob","alice","tom"] # iterable
+lst_it = iter(lst) # list.__iter__(lst) <--- iterator
+
+try:
+    print(next(lst_it)) # lst_it.__next__()
+    print(next(lst_it)) # lst_it.__next__()
+    print(next(lst_it)) # lst_it.__next__()
+    print(next(lst_it)) # lst_it.__next__()
+except StopIteration as e:
+    print(e)
+    print("I am leaving the for loop")
+```
+
+```python
+lst = ["bob","alice","tom"] # iterable
+lst_it = iter(lst) # list.__iter__(lst) <--- iterator
+
+try:
+    print(next(lst_it)) # lst_it.__next__()
+    print(next(lst_it)) # lst_it.__next__()
+    print(next(lst_it)) # lst_it.__next__()
+    print(next(lst_it)) # lst_it.__next__()
+except StopIteration as e:
+    pass
+```
+
+```python
+lst = ["bob","alice","tom"] # iterable
+lst_it = iter(lst) # list.__iter__(lst) <--- iterator
+
+flag = True
+while flag:
+    try:
+        print(next(lst_it)) # lst_it.__next__()
+    except StopIteration as e:
+        flag = False
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

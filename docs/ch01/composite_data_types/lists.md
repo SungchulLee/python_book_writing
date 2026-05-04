@@ -301,6 +301,101 @@ Key ideas:
 Lists are the standard tool for storing ordered collections that need to change over time. List comprehensions provide a concise way to build lists; see [Comprehensions](comprehensions.md).
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = ['1'] # list
+b = ['1']
+c = a + b
+d = list.__add__(a, b)
+print(c)
+print(d)
+```
+
+```python
+a = [1,2,"Hi"]
+
+print( a[-1] ) # "Hi"
+print( a[-1][-1] ) # "i"
+```
+
+```python
+a = [ "Hi Bob", "Hi Alice" ] # list
+b = a
+print( a ) # ["Hi Bob", "Hi Alice"]
+print( b ) # ["Hi Bob", "Hi Alice"]
+
+a[0] = 0
+print( a ) # [0, "Hi Alice"]
+print( b ) # [0, "Hi Alice"]
+```
+
+```python
+a = [ "Hi Bob", "Hi Alice" ] # list
+b = [ "Hi Bob", "Hi Alice" ] # list
+print( a ) # ["Hi Bob", "Hi Alice"]
+print( b ) # ["Hi Bob", "Hi Alice"]
+
+a[0] = 0
+print( a ) # [0, "Hi Alice"]
+print( b ) # ["Hi Bob", "Hi Alice"]
+```
+
+```python
+a = []
+print(a)
+
+for i in range(10_000):
+    a.append(i)
+    print(a)
+```
+
+```python
+import time
+import matplotlib.pyplot as plt
+
+a = []
+times = []
+
+for i in range(1_000):
+    start = time.perf_counter()
+
+    a.append(i)
+
+    end = time.perf_counter()
+    times.append(end - start)
+
+fig, ax = plt.subplots(figsize=(12,3))
+ax.plot(times)
+ax.set_xlabel("Append iteration")
+ax.set_ylabel("Time (seconds)")
+ax.set_title("Time per list.append() operation")
+plt.show()
+```
+
+```python
+a = []
+print(a)
+
+for i in range(10):
+    a.insert(0, i)
+    print(a)
+```
+
+```python
+nums = [1, 2, 3, 4, 5, 6]
+for n in nums:
+    if n % 2 == 0:
+        nums.remove(n)
+print(nums)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -3,7 +3,23 @@
 Titles and axis labels provide context for your plots.
 
 !!! tip "Mental Model"
-    A plot without labels is like a photograph without a caption -- technically visible but missing context. `ax.set_title()` tells readers what they are looking at, `ax.set_xlabel()`/`ax.set_ylabel()` tell them what the axes represent. These three calls turn a raw chart into a self-explanatory figure.
+    A plot without labels is like a photograph without a caption — technically visible but missing context. `ax.set_title()` tells readers what they are looking at, `ax.set_xlabel()`/`ax.set_ylabel()` tell them what the axes represent. These three calls turn a raw chart into a self-explanatory figure.
+
+!!! note "Title = Message, Not Description"
+    The title should answer: **"What should the reader learn from this plot?"**
+
+    - Weak: `"Sine Curve"` (describes content)
+    - Strong: `"Oscillatory Behavior with Period 2π"` (communicates insight)
+
+    Good titles summarize the takeaway. Axis labels identify the quantities; the title interprets the relationship.
+
+!!! note "Role Hierarchy"
+    ```text
+    Title       →  overall message / conclusion
+    Axis labels →  what each axis represents (quantity + units)
+    Tick labels →  exact values at each mark
+    ```
+    Each level adds a different type of information. All three are needed for a self-explanatory figure.
 
 ---
 
@@ -246,3 +262,35 @@ Create a plot where the title includes LaTeX math: display the formula being plo
         ax.grid(True, alpha=0.3)
         plt.tight_layout()
         plt.show()
+
+---
+
+**Exercise 4.**
+Demonstrate weak vs strong titles. Plot the same data (`y = e^{-x} \sin(5x)` for `x in [0, 3]`) twice: once with a weak title ("Plot of Data") and once with a strong title that communicates the insight ("Exponentially Decaying Oscillation"). Add proper axis labels with units to both. Explain why the strong title is better.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(0, 3, 200)
+        y = np.exp(-x) * np.sin(5 * x)
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))
+
+        ax1.plot(x, y, 'b-')
+        ax1.set_title('Plot of Data')  # WEAK: says nothing
+        ax1.set_xlabel('x')
+        ax1.set_ylabel('y')
+
+        ax2.plot(x, y, 'b-')
+        ax2.set_title(r'Exponentially Decaying Oscillation ($e^{-x}\sin(5x)$)')
+        ax2.set_xlabel('Time (seconds)')
+        ax2.set_ylabel('Amplitude (volts)')
+
+        plt.tight_layout()
+        plt.show()
+
+        # The strong title tells the reader what to observe (decay + oscillation)
+        # The axis labels with units place it in a physical context
+        # The weak title adds no information beyond "this is a plot"

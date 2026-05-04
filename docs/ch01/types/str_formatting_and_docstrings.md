@@ -202,6 +202,61 @@ Key ideas:
 Formatting and documentation make string usage much more practical and expressive.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+print("Hello, Bob")
+```
+
+```python
+name = "Bob"
+age = 20
+
+print("Hello, " + name + ". Your age is " + str(age) + ".") # str concantenation
+```
+
+```python
+name = "Bob"
+age = 20
+
+print("Hello, %s. Your age is %d." % (name, age) ) # place holder
+```
+
+```python
+name = "Bob"
+age = 20
+
+print("Hello, {}. Your age is {}.".format(name, age) ) # format string
+```
+
+```python
+name = "Bob"
+age = 20
+
+print( f"Hello, {name}. Your age is {age}." ) # f string
+```
+
+```python
+import numpy as np
+
+name = "Bob"
+age = 20
+
+print( f"Hello, {name:10}. Your age is {age:10}." ) # f string
+print( f"Hello, {name:>10}. Your age is {age:<10}." ) # f string
+print( f"pi is  {np.pi}." ) # f string
+print( f"pi is  {np.pi:.2f}." ) # f string
+#.                      ^
+#.                      |
+#.                 format specifier
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

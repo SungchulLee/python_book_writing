@@ -11,6 +11,15 @@ The `ax.hexbin()` method creates hexagonal binning plots for 2D data density vis
     point to the nearest bin center, producing smoother-looking results without
     the computational cost of KDE.
 
+    Hexagons also reduce **directional bias**: square bins align with the x/y axes,
+    which can create artificial vertical/horizontal patterns. Hexagons have no
+    preferred direction, giving more uniform perception across all orientations.
+
+!!! note "Most Important Controls"
+    1. **`gridsize`** → resolution (higher = finer, noisier)
+    2. **`bins='log'`** → reveals structure across large dynamic ranges
+    3. **`mincnt=1`** → filters empty hexagons (noise reduction)
+
 [Official Documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hexbin.html)
 
 ## Basic Usage

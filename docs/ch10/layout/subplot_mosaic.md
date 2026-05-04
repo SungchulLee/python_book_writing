@@ -5,6 +5,12 @@
 !!! tip "Mental Model"
     `subplot_mosaic` lets you sketch your layout as text art: `"AB\nCC"` means A and B side by side on top, C spanning the full bottom. Each unique letter becomes a named Axes in a dictionary. It is the most readable way to create asymmetric layouts because the code looks like the result.
 
+    The key contrast with GridSpec: **`subplot_mosaic` is declarative** (you
+    describe *what* the layout looks like), while **GridSpec is imperative** (you
+    specify *how* to build it step by step). Declarative layouts are more readable
+    but less flexible; imperative layouts handle any complexity but require more
+    code.
+
 !!! warning "Limitations"
     `subplot_mosaic` trades power for readability. It is less suited for:
 

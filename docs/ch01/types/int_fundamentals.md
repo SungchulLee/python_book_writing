@@ -272,6 +272,23 @@ Key ideas:
 The `int` type is the foundation for counting, indexing, and exact numeric computation.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = 1 # int
+b = 1
+c = a + b # + : operator, a and b : operand
+d = int.__add__(a, b) # int.__add__ : method (function)
+print(c)
+print(d)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

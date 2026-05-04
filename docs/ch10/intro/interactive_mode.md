@@ -5,6 +5,11 @@ Interactive mode allows dynamic updating of plots without blocking script execut
 !!! tip "Mental Model"
     Think of interactive mode as a live preview toggle. With `plt.ion()`, every plotting command immediately updates the window, like typing into a live document. With `plt.ioff()`, changes accumulate silently until you explicitly call `plt.show()` to reveal the final result.
 
+    At the system level, **interactive mode gives you manual control over the
+    rendering loop**: update data, redraw, repeat. This turns static figures
+    into time-dependent displays — the foundation for live dashboards, sensor
+    monitors, and animation prototyping.
+
 ---
 
 ## Enabling Interactive Mode

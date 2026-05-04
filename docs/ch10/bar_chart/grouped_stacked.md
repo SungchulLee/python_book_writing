@@ -11,6 +11,20 @@ Create multi-series bar charts to compare categories across groups or show compo
 
     Choose grouped when the reader needs to compare individual series values. Choose stacked when the total and its breakdown matter more than precise per-series comparison.
 
+!!! warning "Stacked Bar Pitfall"
+    Stacked bars make it **hard to compare individual segments across categories** — only the bottom segment shares a common baseline. If precise per-series comparison matters, use grouped bars instead.
+
+!!! note "Bar Chart Decision Guide"
+    | Data situation | Use |
+    |---------------|-----|
+    | Single series | Basic bar |
+    | Multiple series, need comparison | Grouped bar |
+    | Show composition of totals | Stacked bar |
+    | Show proportions | 100% stacked bar |
+    | Long category labels | Horizontal bar |
+
+    **Limit to 2–4 series** for readability. More than that creates clutter regardless of layout.
+
 ## Grouped Bar Chart
 
 Place bars side by side to compare multiple series.

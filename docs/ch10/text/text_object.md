@@ -5,6 +5,11 @@ Text objects in Matplotlib represent any text element including tick labels, axi
 !!! tip "Mental Model"
     Every piece of text on a Matplotlib figure -- every tick label, title, axis label, and annotation -- is a `Text` Artist object. This means you can grab any text element, inspect its properties (`get_fontsize()`, `get_position()`), and modify it after creation (`set_color()`, `set_rotation()`). Understanding this unifies all text customization under one interface.
 
+    Text objects control how **meaning is presented** in a plot — they are the
+    interface between data visualization and human interpretation. Modifying a
+    Text object changes not just appearance, but how the viewer understands
+    the data.
+
 !!! tip "Debugging Text Layout"
     When text overlaps or appears misaligned:
 

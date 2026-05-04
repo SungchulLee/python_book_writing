@@ -5,6 +5,20 @@ Understanding how `plt.subplots` returns different shaped arrays is crucial for 
 !!! tip "Mental Model"
     `plt.subplots(r, c)` returns axes shaped like the grid: a single object for 1x1, a 1D array for a single row or column, and a 2D array for multi-row, multi-column grids. Use `squeeze=False` to always get a 2D array, which makes indexing uniform and avoids shape-related bugs.
 
+!!! warning "Why This Matters"
+    Shape inconsistency is the **#1 source of subplot bugs.** Code that works
+    for a 2x2 grid (`axes[0, 1]`) crashes on a 1x2 grid (`axes` is 1D, so
+    `axes[0, 1]` raises `IndexError`). The fix: always pass `squeeze=False`
+    in functions that accept variable grid sizes.
+
+    ```text
+    Rule of thumb:
+    1 subplot     → ax (scalar)
+    1 row/column  → axes[i] (1D array)
+    Grid          → axes[i, j] (2D array)
+    Need consistency → squeeze=False (always 2D)
+    ```
+
 ---
 
 ## Single Axes

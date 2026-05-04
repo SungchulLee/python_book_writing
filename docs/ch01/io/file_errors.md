@@ -162,6 +162,134 @@ def safe_read(path):
 - Use `as e` to access details like `e.errno`, `e.strerror`, and `e.filename`.
 - The `with` statement ensures files are closed regardless of exceptions.
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = 3
+b = 0
+
+try:
+    c = a / b
+except Exception as e:
+    print(e)
+```
+
+```python
+a = 3
+b = 0
+
+try:
+    c = a / b
+except ValueError as e:
+    print(e)
+    print("value error???")
+except ZeroDivisionError as e: # specific error
+    print(e)
+    print("I am dam stupid")
+except Exception as e: # general error
+    print(e)
+    print("I am done")
+```
+
+```python
+x = input("Number: ")
+print(x, type(x))
+```
+
+```python
+try:
+    x = int(input("Number: "))
+    print(10 / x)
+except ValueError:
+    print("Invalid number")
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+```
+
+```python
+try:
+    x = int(input("Number: "))
+    print(10 / x)
+except ValueError:
+    print("Invalid number")
+except ZeroDivisionError as e:
+    print(e)
+    print("Cannot divide by zero")
+```
+
+```python
+try:
+    x = int(input("Number: "))
+    print(10 / x)
+except (ValueError, TypeError) as e:
+    print(e)
+    print("Invalid input")
+# except ZeroDivisionError as e:
+#     print(e)
+#     print("Cannot divide by zero")
+# except Exception as e: # general error
+#     print(e)
+#     print("I am done")
+```
+
+```python
+try:
+    x = int(input("Number: "))
+    print(10 / x)
+except (ValueError, TypeError) as e:
+    print(e)
+    print("Invalid input")
+# except ZeroDivisionError as e:
+#     print(e)
+#     print("Cannot divide by zero")
+except Exception as e: # general error
+    print(e)
+    print("I am done")
+```
+
+```python
+try:
+    x = int("10")
+except ValueError:
+    print("Bad input")
+except Exception as e: # general error
+    print(e)
+    print("I am done")
+else: # no exception
+    print("Success")
+```
+
+```python
+try:
+    x = int("10")
+except ValueError:
+    print("Bad input")
+except Exception as e: # general error
+    print(e)
+    print("I am done")
+else: # no exception
+    print("Success")
+finally: # run with / without exception
+    print("runs no mater what")
+```
+
+```python
+def f():
+    raise ValueError("WOW")
+    return 1
+
+try:
+    a = f()
+except ValueError as e:
+    print(e)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

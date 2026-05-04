@@ -13,6 +13,9 @@ Violin plots combine box plot statistics with kernel density estimation, showing
       space and can be harder to read for quick comparison.
 
     Use box plots when the audience needs fast comparison across many groups.
+    Use violin plots when the **shape** of the distribution matters (bimodality, skewness).
+
+    Violin plots are **slower to read** than box plots — the density curve requires more visual processing. Choose them when detail matters, not speed. Also be cautious with small samples: KDE can suggest smooth shapes that the sparse data does not actually support.
     Use violins when the shape of the distribution matters (e.g., detecting
     bimodality or heavy tails).
 

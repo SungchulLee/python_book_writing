@@ -5,6 +5,11 @@ Understanding the difference between `plt.subplot` (singular) and `plt.subplots`
 !!! tip "Mental Model"
     `plt.subplot` (singular, no "s") is the old MATLAB-style way -- you specify one subplot at a time using a 3-digit code. `plt.subplots` (plural, with "s") is the modern way -- it creates the entire grid at once and hands you back all the Axes in an array. Prefer `plt.subplots` for cleaner, more Pythonic code.
 
+    `plt.subplots()` is a **factory function** — it creates a Figure and a
+    structured collection of Axes objects in one call. This defines the
+    **structure of the visualization before any data is plotted**, which is
+    why it belongs to the setup layer rather than the plotting layer.
+
 ---
 
 ## plt.subplot (MATLAB Style)

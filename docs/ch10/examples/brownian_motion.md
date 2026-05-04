@@ -16,6 +16,14 @@ Visualize stochastic processes with Matplotlib.
     fan out as $\sqrt{t}$, and why the $\pm 2\sqrt{t}$ confidence band captures
     ~95% of paths (by the normal distribution's 2$\sigma$ rule).
 
+!!! tip "Visual Intuition"
+    Brownian motion is not a single path — it is a **distribution over paths.**
+    Each plotted line is one possible realization; the collection of all lines
+    represents the true stochastic object. At each time $t$, the vertical slice
+    through the plot is a distribution: $B_t \sim N(0, t)$. As $t$ increases,
+    this distribution spreads — which is why the plot "fans out." Brownian motion
+    is a **moving distribution**, and plotting many paths makes that movement visible.
+
     **Geometric Brownian Motion** (GBM) models prices via $S_t = S_0 \exp((\mu - \tfrac{1}{2}\sigma^2)t + \sigma B_t)$.
     The drift correction $-\tfrac{1}{2}\sigma^2$ arises from Ito's lemma: applying
     $\exp$ to a process with quadratic variation shifts the mean. The result is

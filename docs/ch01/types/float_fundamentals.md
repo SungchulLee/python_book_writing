@@ -253,6 +253,45 @@ Key ideas:
 The `float` type is essential for measurements, ratios, and scientific computation.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = 1. # float (32bits or 64bits, I guess)
+b = 1.0
+c = a + b
+d = float.__add__(a, b)
+print(c)
+print(d)
+```
+
+```python
+a = 1. # float
+b = 1.0
+print(a == b)
+print(a is b) # no interning
+```
+
+```python
+print( 2.3 == 1.1 + 1.2 ) # no truncation
+print( 2.4 == 1.1 + 1.3 ) # yes truncation
+
+import numpy as np
+
+print( np.isclose( 2.4, 1.1 + 1.3 ) )
+```
+
+```python
+print(2.2 == 1.1 + 1.1)
+print(2.3 == 1.1 + 1.2)
+print(2.4 == 1.1 + 1.3)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

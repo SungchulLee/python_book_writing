@@ -190,6 +190,93 @@ NumPy promotes types automatically; PyTorch and TensorFlow require explicit conv
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+import numpy as np
+
+a = np.array([1,2,3])
+b = np.array([4,5,6])
+c = a + b # vector addition
+
+print(a.dtype, b.dtype, c.dtype)
+```
+
+```python
+import numpy as np
+
+a = np.array([1,2,3.])
+b = np.array([4,5,6])
+c = a + b # vector addition
+
+print(a.dtype, b.dtype, c.dtype)
+```
+
+```python
+import torch
+
+x = torch.tensor([1,2,3])
+print(x, x.dtype)
+```
+
+```python
+import torch
+
+x = torch.tensor([1,2,3.])
+print(x, x.dtype)
+```
+
+```python
+import torch
+from torchvision import datasets, transforms
+import matplotlib.pyplot as plt
+
+# Transform: convert images to tensor
+transform = transforms.ToTensor()
+
+# Download MNIST
+mnist = datasets.MNIST(root="./data", train=True, download=True, transform=None)
+
+# Get first 64 images
+images = [mnist[i][0] for i in range(64)]  # (image, label)
+
+# Plot
+fig, axes = plt.subplots(8, 8, figsize=(8, 8))
+
+for i, ax in enumerate(axes.flat):
+    #ax.imshow(images[i].squeeze(), cmap="binary")
+    ax.imshow(images[i], cmap="binary")
+    ax.axis("off")
+
+plt.tight_layout()
+plt.show()
+```
+
+```python
+from torchvision import datasets
+import numpy as np
+
+# Download MNIST (no transform → raw PIL images)
+mnist = datasets.MNIST(root="./data", train=True, download=True, transform=None)
+
+# Get one image
+img, label = mnist[0]
+
+# Convert to NumPy
+img_np = np.array(img)
+
+# Check dtype
+print("Type:", type(img))
+print("NumPy dtype:", img_np.dtype)
+print("Min/Max:", img_np.min(), img_np.max())
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

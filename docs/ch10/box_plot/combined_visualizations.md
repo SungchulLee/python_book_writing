@@ -10,6 +10,8 @@ Combine box plots with other chart types for comprehensive data analysis and pre
     a scatter/strip shows individual points. Combining them is not decoration — it
     is choosing the right **resolution** for each aspect of the data:
 
+    Combine at most **2–3 layers**. Too many overlays reduce clarity — each additional layer should add information the reader cannot get from the existing ones.
+
     | Combination | What you gain |
     |-------------|--------------|
     | Box + histogram | Summary + shape |

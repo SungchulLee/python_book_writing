@@ -84,6 +84,55 @@ The distinction between printing and returning is one of the most important conc
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+def full_add_analysis(a, b): # <--- a, b : input
+    c = a + b
+    return a, b, c # <--- a,b,c: output (tuple)
+
+alpha = 1
+beta = 1
+return_val = full_add_analysis(alpha, beta)
+
+print( return_val, type(return_val))
+print( return_val, type(return_val), sep=" " )
+print( return_val, type(return_val), sep=" --- " )
+print( return_val, type(return_val), sep="\t" )
+print( return_val, type(return_val), sep="\n" )
+```
+
+```python
+def f():
+
+
+print( f() ) # None
+print( f ) # function object
+```
+
+```python
+def f():
+    pass
+
+
+print( f() ) # None
+print( f ) # function object
+```
+
+```python
+def f():
+    return
+
+print( f() ) # None
+print( f ) # function object
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

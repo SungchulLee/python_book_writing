@@ -91,6 +91,50 @@ The key is not the syntax, but choosing the right construct for the structure of
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+for i in range(5):
+    print(i)
+
+print()
+print(i)
+```
+
+```python
+for _ in range(5):
+    print(_)
+
+print()
+print(_)
+```
+
+```python
+for i in range(5):
+    if i == 2:
+        break
+    print(i)
+
+print()
+print(i)
+```
+
+```python
+for i in range(5):
+    if i == 2:
+        continue
+    print(i) # skip when i is 2, continue the for loop (not break the for loop)
+
+print()
+print(i)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

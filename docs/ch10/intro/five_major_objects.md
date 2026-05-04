@@ -5,6 +5,22 @@ Matplotlib is built around five major object types that form a hierarchy. Unders
 !!! tip "Mental Model"
     Picture a Figure as a physical canvas on a wall, and each Axes as a framed picture hanging on that canvas. Inside each frame, the XAxis, YAxis, and Spines form the border, while Artists (lines, text, patches) are the painted content. Every plotting command ultimately creates or modifies one of these five objects.
 
+!!! note "The Visualization Pipeline"
+    These five objects implement a rendering pipeline:
+
+    ```text
+    Data (NumPy/Pandas)
+    → Axes (coordinate system + encoding)
+    → Artists (visual elements: lines, patches, text)
+    → Backend (renderer: Agg, SVG, PDF, ...)
+    → Display (screen / file)
+    ```
+
+    Matplotlib is essentially a **scene graph**: the objects define structure,
+    and the backend renders them to pixels. Understanding this pipeline means
+    understanding that every `ax.plot()` call creates Artists, and `savefig()`
+    triggers the backend to traverse the tree and render everything.
+
 ---
 
 ## Object Hierarchy

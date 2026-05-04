@@ -5,6 +5,21 @@ Logarithmic scales compress large ranges of data, making patterns visible across
 !!! tip "Mental Model"
     A log scale replaces equal spacing with equal ratios: each tick mark is 10x (or 2x, etc.) the previous one. This turns exponential growth into straight lines and makes patterns across orders of magnitude visible. Use `ax.set_yscale('log')` when your data spans several powers of ten and small values are getting crushed against zero.
 
+!!! tip "When to Use a Log Scale"
+    Switch to log when:
+
+    - Data spans **multiple orders of magnitude** (e.g., 1 to 1,000,000)
+    - Exponential growth looks like a hockey stick on linear scale
+    - Small values are **compressed near zero** and invisible
+    - You want to compare **ratios** rather than differences
+
+!!! note "Interpretation Rules"
+    ```text
+    Straight line on semi-log (log y, linear x)  →  exponential relationship
+    Straight line on log-log  (log y, log x)     →  power-law relationship
+    ```
+    These are among the most powerful diagnostic tools in science: plot your data on a log scale and see if it straightens out. If it does, you know the functional form.
+
 ## Setting Log Scale
 
 ### Using set_xscale / set_yscale
@@ -559,3 +574,36 @@ Use `ax.set_xscale('symlog', linthresh=1)` to plot the function $y = x^3$ over $
 
         plt.tight_layout()
         plt.show()
+
+---
+
+**Exercise 4.**
+Generate data from a power law `y = 2 * x^1.5` for `x` in `[1, 1000]`. Plot it on linear, semi-log, and log-log axes (3 subplots). Verify that only the log-log plot produces a straight line, and explain why the slope of that line equals the exponent (1.5).
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(1, 1000, 500)
+        y = 2 * x ** 1.5
+
+        fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+
+        axes[0].plot(x, y)
+        axes[0].set_title('Linear: curved')
+
+        axes[1].semilogy(x, y)
+        axes[1].set_title('Semi-log: still curved')
+
+        axes[2].loglog(x, y)
+        axes[2].set_title('Log-log: STRAIGHT (slope=1.5)')
+
+        for ax in axes:
+            ax.grid(True, alpha=0.3)
+        plt.tight_layout()
+        plt.show()
+
+        # On log-log: log(y) = log(2) + 1.5*log(x)
+        # This is linear in log-log space with slope = exponent
+        # The straight line confirms the power-law relationship

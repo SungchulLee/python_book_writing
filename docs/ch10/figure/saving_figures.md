@@ -5,6 +5,16 @@ Exporting figures to files is essential for reports, papers, and presentations.
 !!! tip "Mental Model"
     `fig.savefig()` renders the Figure to a file just as `plt.show()` renders it to the screen. The file format is inferred from the extension — `.png` for raster, `.pdf` or `.svg` for vector. Set `dpi` for resolution and `bbox_inches='tight'` to avoid clipped labels.
 
+    Saving is the **final step of communication** — a poorly exported figure
+    (low resolution, clipped labels, wrong format) can destroy an otherwise good
+    visualization. Choose the format based on the audience:
+
+    | Audience | Format | Why |
+    |----------|--------|-----|
+    | Screen / web | PNG | Universal raster, fixed resolution |
+    | Paper / print | PDF | Vector, scales to any size, embeds fonts |
+    | Web / interactive | SVG | Vector, DOM-manipulable, searchable text |
+
 !!! warning "Common Pitfalls"
     - **Clipped labels:** without `bbox_inches='tight'`, axis labels and titles may be cut off. Always include it (or use `constrained_layout`).
     - **Low DPI for print:** screen resolution (72–100 DPI) looks blurry in print. Use 300 DPI minimum for papers and posters.

@@ -173,6 +173,29 @@ Key ideas:
 Case and check methods are among the most frequently used string tools in Python.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = "Hi Bob"
+print( a ) # "Hi Bob"
+print( a.upper() ) # "HI BOB"
+print( str.upper(a) ) # "HI BOB"
+print( a ) # "Hi Bob"
+```
+
+```python
+a = "Hi Bob"
+print( a ) # "Hi Bob"
+a = a.upper()
+print( a ) # "HI BOB"
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

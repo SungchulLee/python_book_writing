@@ -17,6 +17,13 @@ Bar charts display categorical data with rectangular bars, where bar length repr
 
     If your x-axis is categorical (names, groups, labels), bars are almost always the right choice.
 
+!!! info "Why Bar Charts Are So Effective"
+    Bar charts encode value as **length**, which is one of the most accurate visual channels humans have. We compare lengths far more precisely than areas (pie charts), angles, or colors. This perceptual advantage is why bar charts remain the default for categorical comparison.
+
+!!! warning "Readability Limits"
+    - **More than ~10 categories** → the chart becomes cluttered and hard to read. Consider grouping, filtering, or switching to a horizontal layout.
+    - **Long category labels** → use `ax.barh()` (horizontal bars) so labels read naturally left-to-right.
+
 ## Simple Bar Chart
 
 Create a basic vertical bar chart with `ax.bar()`.

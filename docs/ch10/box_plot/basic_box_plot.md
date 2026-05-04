@@ -14,6 +14,8 @@ Box plots (box-and-whisker plots) visualize the distribution of data through qua
     | Full shape | **Histogram / Violin** | Density, skewness, multimodality |
     | Exact points | **Scatter / Strip** | Individual observations |
 
+    Box plots are powerful for **comparison** across groups, but they compress data — a bimodal distribution and a unimodal one with the same quartiles produce identical box plots. When shape matters, pair with a histogram or violin.
+
     **Decision guide:**
 
     - Compare groups compactly → **box plot**

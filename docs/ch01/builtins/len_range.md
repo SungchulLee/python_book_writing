@@ -79,6 +79,22 @@ for i in range(0, len(items), page_size):
     print(page)
 ```
 
+
+
+---
+
+## Notebook Examples
+
+```python
+for i in range(10):
+    print(i, end=" ")
+
+print()
+print(i) # 9
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -268,6 +268,21 @@ Key ideas:
 The `None` object is an essential part of Python’s way of representing missing or intentionally absent values.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = None # None
+b = None
+c = a + b
+print(c)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

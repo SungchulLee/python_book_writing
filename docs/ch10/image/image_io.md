@@ -5,6 +5,15 @@ This document covers reading, loading, and displaying images in matplotlib.
 !!! tip "Mental Model"
     Image I/O is about converting between file formats and NumPy arrays. `plt.imread()` reads a file into an array, PIL/Pillow reads from URLs or does format conversion, and `ax.imshow()` displays the array. Once an image is a NumPy array, you can inspect its shape (height, width, channels) and manipulate it with standard array operations.
 
+    The deeper view: **an image is a measurement over space.** Each pixel records
+    intensity (grayscale) or color (RGB) at a spatial position. Loading an image
+    converts it from a file format into a numerical representation — a spatial
+    dataset that can be analyzed like any other array:
+
+    - **Grayscale** → scalar field $f(x, y)$ — same structure as heatmaps and contour plots
+    - **RGB** → vector field $(R, G, B)$ at each $(x, y)$ — three channels of spatial data
+    - **Image resolution** → spatial sampling: more pixels = finer detail
+
 !!! warning "dtype Pitfalls"
     Image arrays come in two common dtypes that behave very differently:
 

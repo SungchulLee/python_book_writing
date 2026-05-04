@@ -5,6 +5,12 @@ The Figure object is the top-level container for all plot elements in Matplotlib
 !!! tip "Mental Model"
     A Figure is a blank sheet of paper. It has a size (`figsize`), a resolution (`dpi`), and a background color, but no data until you add Axes to it. You can create Figures explicitly with `plt.figure()` or implicitly when `plt.subplots()` builds one for you.
 
+    A Figure is not just a container — it is the **final visual message.** Everything
+    inside contributes to what the viewer understands. The layout of Axes within a
+    Figure controls attention: a large Axes draws primary focus, a small inset
+    provides detail, and side-by-side panels invite comparison. The arrangement
+    determines how the viewer reads the figure.
+
 !!! note "The Matplotlib Hierarchy"
     ```text
     Figure  →  the whole canvas (size, background, export)

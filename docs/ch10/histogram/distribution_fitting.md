@@ -5,6 +5,12 @@ A common use case for histograms is visualizing empirical data alongside theoret
 !!! tip "Mental Model"
     Distribution fitting overlays a smooth theoretical curve on your histogram to see how well a known distribution (e.g., Normal, Exponential) explains your data. Plot the histogram with `density=True` so the y-axis shows probability density, then draw the fitted PDF on top. A good fit means the curve hugs the bars closely.
 
+    Distribution fitting is a form of **modeling**: you are asking "what
+    mathematical distribution could have generated this data?" The histogram
+    shows empirical behavior; the PDF shows theoretical behavior. Fitting
+    connects the two — but a visually good fit does not guarantee a
+    statistically correct model. Always validate with statistical tests.
+
 !!! warning "Histogram is not a density estimator"
     A histogram's shape depends heavily on the number of bins and their placement.
     Two different bin counts on the same data can suggest different distributions.

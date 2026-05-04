@@ -14,6 +14,22 @@ Python's tuple unpacking provides a clean way to name individual axes when creat
     fig, (ax_price, ax_volume, ax_returns) = plt.subplots(3, 1)
     ```
 
+!!! warning "Unpacking is Fragile"
+    Unpacking hardcodes the number of axes. If the layout changes (e.g., from
+    2 to 3 panels), the unpacking line breaks immediately:
+
+    ```python
+    # This works for 2 panels
+    fig, (ax1, ax2) = plt.subplots(1, 2)
+
+    # Adding a third panel requires changing the unpack line too
+    fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
+    ```
+
+    For functions that accept a **variable number of panels**, use indexing
+    (`axes[i]`) or `axes.flat` instead. Reserve unpacking for fixed, known
+    layouts where readability outweighs flexibility.
+
 ---
 
 ## Unpacking a Single Axes

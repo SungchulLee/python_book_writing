@@ -193,6 +193,30 @@ Key ideas:
 The `str` type is one of the most important and frequently used types in Python.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = '1' # str
+b = '1'
+c = a + b
+d = str.__add__(a, b)
+print(c)
+print(d)
+```
+
+```python
+a = "hello"
+b = "hello"
+print(a == b)
+print(a is b) # str interning
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

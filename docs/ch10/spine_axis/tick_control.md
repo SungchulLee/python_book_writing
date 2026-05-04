@@ -5,6 +5,12 @@ This document covers the XAxis/YAxis objects, tick locators, and tick formatters
 !!! tip "Mental Model"
     Tick placement is a two-step pipeline: a Locator decides where ticks go, and a Formatter decides what text to display at each tick. Matplotlib picks reasonable defaults, but swapping in a different Locator (e.g., `MultipleLocator(5)`) or Formatter (e.g., `PercentFormatter`) gives you precise control without manually listing every tick position.
 
+    At a deeper level, **ticks encode the scale** — they convert visual position
+    into quantitative meaning. Position is the most precise visual encoding
+    channel, and ticks are what allow the viewer to decode it back into numbers.
+    Without ticks, a viewer can see *relative* differences but cannot read
+    *absolute* values.
+
 !!! note "The Three Tools You Actually Need"
     The Locator/Formatter system has many classes, but in practice these three
     cover ~90% of use cases:

@@ -227,6 +227,43 @@ Key ideas:
 Indexing and slicing are essential for analyzing and transforming text.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = "Hello Bob"
+#    012345678
+
+# indexing
+print( a[0] ) # "H"
+print( a[5] ) # " "
+print( a[8] ) # "b"
+
+# indexing (negative)
+print( a[-1] ) # "b"
+print( a[-2] ) # "0"
+print( a[-3] ) # "B"
+
+# slicing
+print( a[0:5] ) # "Hello" <--- start from 0 end at 5 (exclusive)
+print( a[0:6] ) # "Hello " <--- start from 0 end at 6 (exclusive)
+print( a[0:8] ) # "Hello Bo" <--- start from 0 end at 8 (exclusive)
+print( a[0:] ) # "Hello Bob" <--- start from 0 to the end (inclusive)
+print( a[0:6:2] ) # "Hlo" <--- start from 0 end at 6 (exclusive) with step size 2
+
+
+# slicing (negative)
+print( a[::-1] ) # backward
+
+# slicing (mix)
+print( a[6:1:-1] ) # backward
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

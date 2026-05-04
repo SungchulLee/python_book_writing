@@ -22,6 +22,11 @@ Create multiple plots in a single figure using `plt.subplots()` for organized, c
     Start with `subplots()` — it covers 90% of use cases. Reach for the others
     only when you need panels of different sizes or shapes.
 
+    All four tools solve the same problem: **place Axes inside a Figure.** Layout
+    is a spatial mapping — from data views to rectangular regions on the canvas.
+    A figure with multiple Axes is a **composition of coordinated views**, and
+    the layout determines how those views are compared and understood.
+
 ## Basic Subplots
 
 Create a grid of axes with `plt.subplots()`.

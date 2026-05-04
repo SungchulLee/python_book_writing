@@ -3,7 +3,9 @@
 Customize how tick labels appear on your axes.
 
 !!! tip "Mental Model"
-    Tick labels are the text strings displayed at each tick mark. By default, Matplotlib formats numbers automatically, but you can override them with custom strings (e.g., month names), rotate them for readability, or use `FuncFormatter` for computed labels. Always set tick positions with `set_xticks` before setting tick labels with `set_xticklabels` to keep them aligned.
+    Tick labels are the text strings displayed at each tick mark — the **encoding layer** that translates raw numbers into meaning. By default, Matplotlib formats numbers automatically, but you can override them with custom strings (e.g., month names), rotate them for readability, or use `FuncFormatter` for computed labels. Always set tick positions with `set_xticks` before setting tick labels with `set_xticklabels` to keep them aligned.
+
+    The same data can be labeled as `1000`, `1K`, `$1,000`, `Jan`, or `π/2` — each communicates something different to the reader. Choose labels that match your audience: mathematicians expect π notation, analysts expect currency symbols, general readers expect plain language.
 
 ---
 
@@ -277,3 +279,43 @@ Generate a time series of 365 daily data points and format the x-axis using `mda
         ax.grid(True, alpha=0.3)
         plt.tight_layout()
         plt.show()
+
+---
+
+**Exercise 4.**
+Create three versions of the same plot (`x = [0, π/2, π, 3π/2, 2π]`, `y = sin(x)`) with different tick label styles: (a) raw numbers, (b) fraction-of-π notation (`0, π/2, π, 3π/2, 2π`), (c) degree notation (`0°, 90°, 180°, 270°, 360°`). Explain when each labeling style is appropriate.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        x = np.linspace(0, 2 * np.pi, 100)
+        y = np.sin(x)
+        ticks = [0, np.pi/2, np.pi, 3*np.pi/2, 2*np.pi]
+
+        fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+
+        # (a) Raw numbers
+        axes[0].plot(x, y)
+        axes[0].set_xticks(ticks)
+        axes[0].set_title('Raw numbers')
+
+        # (b) π notation
+        axes[1].plot(x, y)
+        axes[1].set_xticks(ticks)
+        axes[1].set_xticklabels(['0', r'$\pi/2$', r'$\pi$', r'$3\pi/2$', r'$2\pi$'])
+        axes[1].set_title('π notation (math audience)')
+
+        # (c) Degrees
+        axes[2].plot(x, y)
+        axes[2].set_xticks(ticks)
+        axes[2].set_xticklabels(['0°', '90°', '180°', '270°', '360°'])
+        axes[2].set_title('Degrees (engineering audience)')
+
+        plt.tight_layout()
+        plt.show()
+
+        # π notation: for mathematicians and physics papers
+        # Degrees: for engineers and general audiences
+        # Raw numbers: when the axis is just a numeric variable

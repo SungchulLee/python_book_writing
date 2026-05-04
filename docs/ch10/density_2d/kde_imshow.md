@@ -11,6 +11,25 @@ Kernel Density Estimation (KDE) provides a smooth estimate of the probability de
     integrated analytically. The cost is computation — KDE scales with the number
     of data points, while binning methods scale with the number of bins.
 
+!!! warning "KDE is an Estimate, Not Truth"
+    KDE is a **model** of the data, not the data itself. The bandwidth parameter
+    controls how much structure is revealed:
+
+    - **Small bandwidth** → noisy, overfitting (shows artifacts as peaks)
+    - **Large bandwidth** → oversmoothed, underfitting (hides real clusters)
+
+    Choosing bandwidth = choosing how much structure to believe. Always compare
+    multiple bandwidths before interpreting peaks as real features.
+
+!!! tip "Interpreting KDE Output"
+    | Visual feature | Meaning |
+    |---------------|---------|
+    | Bright region | High probability — data is concentrated here |
+    | Smooth hill | A cluster |
+    | Multiple peaks | Multimodal distribution — distinct subgroups |
+    | Flat area | Uniform distribution — no structure |
+    | Contour lines close together | Sharp density gradient — abrupt boundary |
+
 ## What is KDE?
 
 KDE estimates the probability density function by placing a kernel (typically Gaussian) at each data point and summing them:

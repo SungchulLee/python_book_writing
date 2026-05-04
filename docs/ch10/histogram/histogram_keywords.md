@@ -5,6 +5,17 @@ The `ax.hist()` method accepts various keyword arguments to customize histogram 
 !!! tip "Mental Model"
     The three most important histogram keywords are `bins` (how many divisions), `density` (counts vs. probability density), and `histtype` (bar style). `bins` controls resolution, `density=True` normalizes area to 1 for comparison with PDFs, and `histtype='step'` draws outlines instead of filled bars for overlaying multiple distributions.
 
+!!! note "Parameter Priority"
+    Not all histogram parameters are equally important:
+
+    1. **`bins`** → controls structure (most important — few bins = smooth, many = noisy)
+    2. **`density`** → controls interpretation (counts vs probability density)
+    3. **`histtype` / styling** → controls visual presentation (least important)
+
+    **Bins = resolution of the distribution.** This is the same resolution
+    tradeoff that appears in 2D density plots (gridsize, bandwidth): too few
+    bins hides real structure, too many creates noise.
+
 !!! note "Decision Guide — When to Use Which Option"
     | Situation | Parameter | Setting |
     |-----------|-----------|---------|

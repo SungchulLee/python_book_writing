@@ -158,6 +158,223 @@ Remember that defining a function only registers it --- no code runs until the f
 Next: [Parameters](parameters.md).
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+def add(a, b): # <--- a, b : input
+    c = a + b
+    return c # <--- c: output
+
+alpha = 1
+beta = 1
+print( add(alpha, beta) )
+```
+
+```python
+def is_prime(num)
+    for i in range(2, num):
+        if num % i == 0:
+            return False
+    return True
+
+print( is_prime(10) )
+print( is_prime(11) )
+```
+
+```python
+def is_prime(num, prime_list):
+    for p in prime_list:
+        if p * p > num:
+            break
+        if num % p == 0:
+            return False
+    return True
+
+prime_list = [2]
+for num in range(3, 20):
+    if is_prime(num, prime_list):
+        prime_list.append(num)
+
+print( is_prime(10, prime_list))
+```
+
+```python
+prime_list = [2]
+
+def is_prime(num):
+    global prime_list
+    for p in prime_list:
+        if p * p > num:
+            break
+        if num % p == 0:
+            return False
+    # if prime, update prime_list
+    if num not in prime_list:
+        prime_list.append(num)
+    return True
+
+print(is_prime(10))   # False
+print(is_prime(11))   # True
+print(prime_list)     # [2, 11]
+```
+
+```python
+def is_prime(num, prime_list=[2], some_stuff=None):
+    for p in prime_list:
+        if p * p > num:
+            break
+        if num % p == 0:
+            return False
+    if num not in prime_list:
+        prime_list.append(num)
+    return True
+
+print(is_prime(10))                          # False
+print(is_prime(11))                          # True
+print(is_prime.__defaults__[0])              # [2, 11]
+print(is_prime.__defaults__)              # [2, 11]
+```
+
+```python
+def f(lst, item):
+    for i in lst:
+        if i == item:
+            return True
+    return False
+
+lst = [1,2,3]
+item = 4
+print( f(lst, item) )
+```
+
+```python
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+
+print(type(greet)) # print(isinstance(greet, object)) # True
+
+print(greet) # print(greet("Alice")) # Hello, Alice!
+```
+
+```python
+def greet(name):
+    return f"Hello, {name}"
+
+def process(func, value): # func as an arguement of function --- function is a first class citizen
+    return func(value)
+
+print(process(greet, "Bob"))
+```
+
+```python
+def square(x):
+    return x * x
+
+def cube(x):
+    return x * x * x
+
+def apply(func, x):
+    return func(x)
+
+print(apply(square, 3))  # 9
+print(apply(cube, 3))    # 27
+```
+
+```python
+def add(x, y):
+    return x + y
+
+# lambda expression : one-line function (한번쓰고 버릴놈)
+add_lambda = lambda x, y: x + y
+
+print(add(3, 5)) # 8
+print(add_lambda(3, 5)) # 8
+```
+
+```python
+def outer():
+    x = 10 # Enclosing variable
+    def inner():
+        return x  # Captures x
+    return inner # function
+
+
+f = outer()
+print( f() ) # 10 — x is still accessible
+print( f.__code__.co_freevars )
+
+idx = f.__code__.co_freevars.index("x") # idx = 0
+print(f.__closure__[0].cell_contents)
+```
+
+```python
+def decorator(func):
+    def wrapper(*args, **kwargs):
+        print("Before")
+        result = func(*args, **kwargs)
+        print("After")
+        return result
+    return wrapper
+
+
+@decorator # greet = decorator(greet)
+def greet(greeting, **kwargs):
+    print(greeting, kwargs["name"])
+
+# def greet(greeting, **kwargs):
+#     print(greeting, kwargs["name"])
+# greet = decorator(greet)
+
+print(greet("Hello", name="Bob"))
+```
+
+```python
+def make_multiplier(factor):
+    def multiply(x):
+        return x * factor # factor is captured
+    return multiply
+
+times3 = make_multiplier(3)
+print(times3(10)) # 30
+```
+
+```python
+def my_decorator(func):
+    def wrapper():
+        print("Before function runs")
+        func()
+        print("After function runs")
+    return wrapper
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+say_hello()
+```
+
+```python
+def my_decorator(func):
+    def wrapper():
+        print("Before function runs")
+        func()
+        print("After function runs")
+    return wrapper
+
+def say_hello():
+    print("Hello!")
+
+say_hello = my_decorator(say_hello)
+
+say_hello()
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

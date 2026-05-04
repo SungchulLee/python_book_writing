@@ -251,6 +251,96 @@ Comprehensions create collections concisely by combining an expression, one or m
 Comprehensions build on [Lists](lists.md), [Sets](sets.md), and [Dictionaries](dictionaries.md) covered earlier in this section. For deeper coverage of how these collections work internally, see the hashing and hash tables topic in a later chapter.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+squares = [x * x for x in range(5)] # list comprehension
+
+print(squares)
+```
+
+```python
+squares = []
+
+for x in range(5): # list comprehension
+    squares.append(x * x)
+
+print(squares)
+```
+
+```python
+evens = [x for x in range(10) if x % 2 == 0]
+
+print(evens)
+```
+
+```python
+evens = []
+
+for x in range(10):
+    if x % 2 == 0:
+        evens.append(x)
+
+print(evens)
+```
+
+```python
+evens = []
+
+for x in range(0,10,2):
+    evens.append(x)
+
+print(evens)
+```
+
+```python
+evens = list(range(0,10,2))
+
+print(evens)
+```
+
+```python
+evens = list(filter(lambda x: x % 2 == 0, range(10))) # iterator
+
+print(evens)
+```
+
+```python
+# list, tuple, set, dict, (generator) comprehension
+
+squares = [x * x for x in range(5)] # list comprehension
+squares = (x * x for x in range(5)) # tuple comprehension (X) generator (==iterator) comprehension
+
+for _ in range(3):
+    try:
+        print(next(squares))
+    except StopIteration as e:
+        print(e)
+        break
+else: # no break
+    print("break does not work here")
+
+print("we are out of the for loop")
+```
+
+```python
+# list, tuple, set, dict, (generator) comprehension
+
+squares = [x * x for x in range(5)] # list comprehension
+squares = (x * x for x in range(5)) # tuple comprehension (X) generator (==iterator) comprehension
+squares = tuple( x * x for x in range(5) ) # tuple comprehension : gerator ---> tuple
+squares = { x * x for x in range(5) } # set
+squares = { x : x * x for x in range(5) } # dict
+
+print(squares)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

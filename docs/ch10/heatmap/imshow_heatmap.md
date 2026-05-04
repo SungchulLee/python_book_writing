@@ -5,6 +5,20 @@ The `ax.imshow()` method displays 2D data as a color-coded image, ideal for matr
 !!! tip "Mental Model"
     `imshow()` treats a 2D array as a grid of pixels, coloring each cell by its value. Row 0 is at the top (image convention), and cells are equally sized. It is the simplest way to visualize matrices and correlation tables. For non-uniform grids or coordinate-based data, use `pcolormesh()` instead.
 
+    A heatmap is a visualization of a **scalar field**: each cell represents a
+    value at a location, and color shows how that value changes across space.
+    In this framing, **color is a third axis** — x and y give position, color
+    gives value. Heatmaps are discrete versions of contour and density plots.
+
+!!! tip "Reading Heatmaps"
+    | Visual feature | Interpretation |
+    |---------------|---------------|
+    | Bright/dark region | High/low values |
+    | Color gradient | Transition between values |
+    | Block of uniform color | Plateau or cluster |
+    | Diagonal pattern | Correlation or symmetry |
+    | Isolated bright cell | Outlier or peak |
+
 !!! warning "Coordinate Convention"
     `imshow()` uses **image coordinates** by default: row 0 is at the **top** (`origin='upper'`). This matches image/pixel convention but is upside-down relative to mathematical plots. Set `origin='lower'` when your y-axis represents a quantity that increases upward (e.g., frequency, temperature). Forgetting this is one of the most common heatmap bugs.
 

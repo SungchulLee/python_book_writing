@@ -52,6 +52,22 @@ help(math.sqrt)           # learn how sqrt works
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+print( help(print) )
+```
+
+```python
+help(enumerate)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

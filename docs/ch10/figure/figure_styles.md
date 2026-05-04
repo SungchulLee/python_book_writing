@@ -5,6 +5,19 @@ Matplotlib provides built-in style sheets for consistent and professional-lookin
 !!! tip "Mental Model"
     Figure styles are global presets that override Matplotlib's defaults. Under the hood, each style is a set of **rcParams** — the hundreds of key-value pairs that control every visual aspect of a plot (font size, line width, color cycle, grid visibility, etc.). Calling `plt.style.use('ggplot')` bulk-overrides these params. You can inspect or set any individual param via `plt.rcParams['axes.labelsize'] = 14`.
 
+    **Style is not decoration — it changes what stands out:**
+
+    | Style choice | Perceptual effect |
+    |-------------|------------------|
+    | High contrast | Emphasizes differences |
+    | Muted colors | Emphasizes trends over noise |
+    | Dark background | Highlights bright elements (presentations) |
+    | Thin lines + small fonts | Fits more data (dense dashboards) |
+
+    **Consistency matters:** changing styles between figures forces the viewer to
+    re-learn the visual language each time, creating cognitive friction. Pick one
+    style per project and stick to it.
+
 !!! note "Choosing a Style: Design Principles"
     - **Publication/print:** use `'seaborn-v0_8-whitegrid'` or a custom minimal style — high contrast, clear labels, vector export (PDF/SVG).
     - **Presentation/slides:** use `'dark_background'` or large-font styles — must be readable from a distance.

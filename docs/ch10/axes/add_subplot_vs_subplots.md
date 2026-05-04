@@ -1,7 +1,11 @@
 # add_subplot vs subplots
 
 !!! tip "Mental Model"
-    `fig.add_subplot()` builds a grid one cell at a time -- useful when subplots are added conditionally or in a loop. `plt.subplots()` builds the entire grid in one call and returns all Axes at once -- simpler for fixed layouts. Choose `add_subplot` for dynamic construction and `subplots` for everything else.
+    `fig.add_subplot()` builds a grid one cell at a time -- useful when subplots are added conditionally or in a loop. `plt.subplots()` builds the entire grid in one call and returns all Axes at once -- simpler for fixed layouts.
+
+    **Default choice: `plt.subplots()`.** Switch to `add_subplot` only when the
+    layout is built dynamically (e.g., number of panels determined at runtime) or
+    when panels have irregular sizes that require GridSpec.
 
 ## Overview
 

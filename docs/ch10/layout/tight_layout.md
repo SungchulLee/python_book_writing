@@ -5,10 +5,17 @@ Tight layout automatically adjusts subplot parameters to prevent overlapping lab
 !!! tip "Mental Model"
     `fig.tight_layout()` is an automatic spacing fixer. It measures all text (titles, labels, tick labels) and adjusts subplot margins so nothing overlaps. Call it once at the end, right before `savefig()` or `show()`. For even more control, use `constrained_layout=True` when creating the figure, which adjusts continuously as you add elements.
 
-    Under the hood, the layout engine computes **bounding boxes** of all text
-    elements (titles, labels, tick labels, legends) and adjusts subplot positions
-    so no bounding boxes overlap. This is why it must be called *after* all text
-    is added — it cannot anticipate text that doesn't exist yet.
+    Under the hood, layout engines solve a **constraint problem**: prevent overlap
+    of visual elements while maximizing the use of available space. They compute
+    **bounding boxes** of all text elements (titles, labels, tick labels, legends)
+    and adjust subplot positions so no bounding boxes overlap. This is why
+    `tight_layout` must be called *after* all text is added — it cannot anticipate
+    text that doesn't exist yet.
+
+    The two engines reflect different approaches:
+
+    - **`tight_layout`** = heuristic optimizer (fast, sometimes wrong)
+    - **`constrained_layout`** = constraint-based engine (slower, more reliable)
 
 !!! warning "When tight_layout Fails"
     `tight_layout()` is a heuristic, not a guarantee. It may produce poor results

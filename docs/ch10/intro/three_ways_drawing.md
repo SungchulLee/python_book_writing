@@ -5,6 +5,12 @@ Matplotlib behaves differently depending on where you run your code: Jupyter Not
 !!! tip "Mental Model"
     Matplotlib's display behavior depends on its backend. Jupyter auto-renders plots inline after each cell, Python scripts need an explicit `plt.show()` to open a window, and the interactive terminal updates on every command. The plotting code stays the same; only the "when does it appear on screen" part changes.
 
+    The architectural principle: **Matplotlib separates drawing logic from
+    rendering logic.** Your code defines *what* to draw (data, encoding, layout).
+    The backend decides *when* and *how* it appears (inline image, GUI window,
+    file). This separation is why the same plotting code works across Jupyter,
+    scripts, and terminals without modification.
+
 ---
 
 ## Jupyter Notebook

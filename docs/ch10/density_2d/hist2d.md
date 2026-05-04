@@ -25,6 +25,21 @@ The `ax.hist2d()` method creates 2D histograms with rectangular bins.
     - Publication-quality density → `hexbin`
     - Smooth probability surface / contour integration → KDE
 
+!!! tip "How to Read a Density Plot"
+    Density transforms raw points into a **probability landscape** — instead of
+    looking at individual observations, you see where data concentrates:
+
+    | Visual pattern | Interpretation |
+    |---------------|---------------|
+    | Single bright peak | Unimodal distribution — data clusters around one center |
+    | Multiple peaks | Clusters or multimodal distribution |
+    | Diagonal bright band | Correlation between x and y |
+    | Uniform color | No structure — data is evenly spread |
+    | Isolated bright cell | Potential outlier cluster |
+
+    High density = likely regions. Low density = rare events. This framing turns
+    a plot into a tool for detecting clusters, correlations, and anomalies.
+
 [Official Documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist2d.html)
 
 ## Basic Usage

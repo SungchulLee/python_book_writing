@@ -17,6 +17,11 @@ GridSpec provides fine-grained control over subplot layout, enabling complex arr
     Use GridSpec when you need precise control over cell spanning and size ratios
     that `subplots()` cannot express.
 
+    At its core, GridSpec is a **low-level layout engine** — it defines a coordinate
+    system over the Figure for placing Axes. Where `subplots()` gives you a uniform
+    partition and `subplot_mosaic` gives you a declarative description, GridSpec gives
+    you **imperative, programmatic control** over every cell's position and span.
+
 ## Basic GridSpec
 
 Create a grid and add subplots to each cell.

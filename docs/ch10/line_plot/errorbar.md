@@ -5,6 +5,11 @@ Error bars display the uncertainty or variability of data points, essential for 
 !!! tip "Mental Model"
     An error bar is a line plot with "whiskers" showing how much each data point might vary. `ax.errorbar()` works like `ax.plot()` but adds vertical and/or horizontal bars centered on each point. The length of each bar represents the uncertainty -- longer bars mean less confidence in the exact value.
 
+    Error bars add a third dimension to the visualization: beyond value (position)
+    and category (color/style), they encode **uncertainty.** A visualization can
+    represent value, variability, and confidence — error bars are what make
+    the confidence visible.
+
 !!! warning "Error Bars Have Different Meanings"
     Error bars do **not** always represent the same quantity. Common conventions:
 

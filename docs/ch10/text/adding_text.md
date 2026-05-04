@@ -19,11 +19,22 @@ Add text labels and descriptions directly to your plots.
     `ax.text()`. Reserve `ax.text()` for labels that don't fit the other
     categories.
 
+!!! note "Text = The Semantic Layer"
+    A plot consists of two complementary parts:
+
+    - **Visual encoding** (position, color, shape) → shows patterns
+    - **Semantic layer** (text, labels, annotations) → explains what those patterns mean
+
+    Without text, a viewer can see data. With text, they can **understand** it.
+    Text is the bridge between visual encoding and human interpretation — it
+    transforms a picture into a communication.
+
 !!! tip "Text Design Principles"
     - **Use text sparingly** — too many labels create clutter that obscures data
     - **Keep labels concise** — a few words, not sentences
     - **Use consistent font sizes** — title > labels > annotations > tick labels
     - **Prefer annotations** for highlighting specific data points over general text
+    - **Text should clarify, not decorate** — every text element should serve a purpose
 
 ---
 

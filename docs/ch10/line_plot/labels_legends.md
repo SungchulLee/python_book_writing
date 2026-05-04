@@ -5,6 +5,10 @@ Labels and legends help viewers understand what data is being displayed.
 !!! tip "Mental Model"
     The `label` parameter on a plot call is metadata -- it does nothing visible until you call `ax.legend()`. Think of it as naming each line behind the scenes. When `legend()` is called, it collects all named artists and builds a key mapping colors/styles to names.
 
+    The deeper role: **a legend decodes visual encodings into semantic meaning.**
+    The plot maps data to colors and line styles; the legend is the inverse
+    mapping that tells the reader what each visual element represents.
+
 !!! warning "Best Practice: Always Use `label=` in `plot()`"
     ```python
     # Recommended — labels travel with the data

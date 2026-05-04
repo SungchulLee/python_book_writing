@@ -100,6 +100,68 @@ for user in sorted_users:
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+names = ["Charlie","Alice","Bob"]
+
+sorted_lst = sorted(names)
+print(sorted_lst)
+```
+
+```python
+names = ["Charlie","Alice","Bob"]
+
+sorted_lst = sorted(names, reverse=True)
+print(sorted_lst)
+```
+
+```python
+names = ["Charlie","Alice","Bob"]
+
+sorted_lst = sorted(names, reverse=True, key=lambda x: hash(x))
+print(sorted_lst)
+```
+
+```python
+print("sort" in dir(list))
+```
+
+```python
+names = ["Charlie","Alice","Bob"]
+names.sort()
+
+print(names)
+```
+
+```python
+names = ["Charlie","Alice","Bob"]
+names.sort(reverse=True) # mutaion
+# names = names.sort(reverse=True) # binding; wrong way
+
+print(names)
+```
+
+```python
+names = ["Charlie","Alice","Bob"]
+names.sort(reverse=True, key=lambda x: hash(x))
+
+print(names)
+```
+
+```python
+numbers = [1,2,3]
+
+for n in reversed(numbers):
+    print(n)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -5,6 +5,10 @@ Matplotlib sits at the center of the Python data science ecosystem, integrating 
 !!! tip "Mental Model"
     Think of the Python data science stack as layers: NumPy provides the array foundation, Pandas organizes data into tables, and Matplotlib turns those arrays and tables into pictures. Every visualization library you encounter ultimately converts data into NumPy arrays before drawing pixels.
 
+    The key insight: **Matplotlib is not a data tool — it is a rendering engine
+    for numerical data.** All libraries in the ecosystem ultimately produce arrays;
+    Matplotlib's job is the final transformation: **arrays → pixels.**
+
 ---
 
 ## The Ecosystem

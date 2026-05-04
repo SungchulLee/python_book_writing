@@ -132,6 +132,61 @@ for i, (name, score) in enumerate(zip(names, scores), start=1):
     print(f"{i}. {name}: {score}")
 ```
 
+
+
+---
+
+## Notebook Examples
+
+```python
+lst = ["bob","alice",'tom'] # iterable
+
+for name in lst:
+    print(name)
+```
+
+```python
+lst = ["bob","alice",'tom'] # iterable
+
+for i, name in enumerate(lst):
+    print(i, name)
+```
+
+```python
+lst = ["bob","alice",'tom'] # iterable
+
+for i, name in enumerate(lst, start=1):
+    print(i, name)
+```
+
+```python
+lst = ["bob","alice",'tom'] # iterable
+nums = [1,3,7]
+
+for name, num in zip(lst,nums):
+    print(name, num)
+```
+
+```python
+lst = ["bob","alice",'tom'] # iterable
+nums = [1,3,7]
+nationalities = ["korea","japan","us"]
+
+for name, num, nationality in zip(lst,nums,nationalities):
+    print(name, num, nationality)
+```
+
+```python
+lst = ["bob","alice"] # iterable
+nums = [1,3,7,30,100]
+nationalities = ["korea","japan","us"]
+
+for name, num, nationality in zip(lst,nums,nationalities):
+    print(name, num, nationality)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -199,6 +199,313 @@ Functions allow programs to scale by separating concerns: each function handles 
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+def f():
+    x = 10
+    print(x)
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    print(x)
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    x = 7
+    print(x)
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    x = 7
+    def g():
+        print(x)
+    g()
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    x = 7
+    def g():
+        x = 5
+        print(x)
+    g()
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    #x = 7
+    def g():
+        #x = 5
+        print(x)
+    g()
+
+f()
+```
+
+```python
+#LEGB - local ---> enclosing ---> global ---> built-in
+
+x = 10 # <--- global
+
+def f():
+    #x = 7 <--- enclosing
+    def g():
+        #x = 5 <--- local
+        print(x)
+    g()
+
+f()
+```
+
+```python
+print(__name__)
+print(__file__)
+```
+
+```python
+print(__doc__)
+```
+
+```python
+def add(a, b):
+    """Returns a + b."""
+    return a + b
+
+print(add.__doc__)  # 'Returns a + b.'
+print(help(add))
+```
+
+```python
+def add(a, b):
+    """Returns a + b."""
+    return a + b
+
+print(add.__doc__)  # 'Returns a + b.'
+help(add)
+```
+
+```python
+x = 10
+
+def f():
+    print(x)
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    x = x + 1 # UnboundLocalError
+    # when "x = ", python think x is a local variable
+    print(x)
+
+f()
+```
+
+```python
+x = 10
+
+def f():
+    global x
+    x = x + 1 # UnboundLocalError
+    # when "x = ", python think x is a local variable
+    print(x)
+
+f()
+print(x)
+```
+
+```python
+x = 10
+
+def f():
+    def g():
+        global x
+        x = x + 1 # UnboundLocalError
+        # when "x = ", python think x is a local variable
+        print(x)
+    g()
+
+f()
+print(x)
+```
+
+```python
+x = 10
+
+def f():
+    x = 11
+    def g():
+        nonlocal x
+        x = x + 1 # UnboundLocalError
+        # when "x = ", python think x is a local variable
+        print(x) # <--- 12
+    g()
+    print(x) # <--- 12
+
+f()
+print(x) # <--- 10
+```
+
+```python
+x = 10
+
+def f():
+    #x = 11
+    def g():
+        nonlocal x
+        x = x + 1 # UnboundLocalError
+        # when "x = ", python think x is a local variable
+        print(x) # <--- 12
+    g()
+    print(x) # <--- 12
+
+f()
+print(x) # <--- 10
+```
+
+```python
+def f(n: int) -> int:
+    """n: int >= 0"""
+    # base case
+    if n <= 1:
+        return n
+
+    # recursive case
+    return f(n-1) + f(n-2)
+
+for n in range(10):
+    print( f(n) )
+```
+
+```python
+num_fun_frames = 0
+
+def f(n: int) -> int:
+    """n: int >= 0"""
+    global num_fun_frames
+    num_fun_frames += 1
+    #print(num_fun_frames, end="\t")
+
+    # base case
+    if n <= 1:
+        return n
+
+    # recursive case
+    return f(n-1) + f(n-2)
+
+
+f(100)
+print(num_fun_frames)
+```
+
+```python
+# memoization (top down)
+
+memo = {0 : 0, 1 : 1}
+
+def f(n: int) -> int:
+    """n: int >= 0"""
+    global memo
+    if n not in memo: # n is key of dictionary
+        memo[n] = f(n-1) + f(n-2)
+    return memo[n]
+
+print( f(0) ) # no memo writing
+print( f(1) ) # no memo writing
+print( f(2) ) # memo[2]
+print( f(100) )
+```
+
+```python
+# bottom up
+
+def f(n: int) -> int:
+    """n: int >= 0"""
+    # base case
+    if n <= 1:
+        return n
+
+    # recursive case
+    a_n_minus_2 = 0
+    a_n_minus_1 = 1
+    for i in range(2, n+1):
+        a_n = a_n_minus_1 + a_n_minus_2
+        a_n_minus_2, a_n_minus_1 = a_n_minus_1, a_n
+    return a_n
+
+print( f(0) ) # no memo writing
+print( f(1) ) # no memo writing
+print( f(2) ) # memo[2]
+print( f(3) )
+print( f(4) )
+print( f(5) )
+print( f(6) )
+```
+
+```python
+def fib(n: int) -> int:
+    """Return the nth Fibonacci number, n >= 0."""
+    if n < 0:
+        raise ValueError("n must be >= 0")
+    return _fib_pair(n)[0]
+
+def _fib_pair(n: int) -> tuple[int, int]:
+    """
+    Returns (F(n), F(n+1)).
+    """
+    if n == 0:
+        return (0, 1)
+
+    a, b = _fib_pair(n // 2)   # a = F(k), b = F(k+1)
+    c = a * (2 * b - a)        # F(2k)
+    d = a * a + b * b          # F(2k+1)
+
+    if n % 2 == 0:
+        return (c, d)
+    else:
+        return (d, c + d)
+
+print(fib(0))
+print(fib(1))
+print(fib(2))
+print(fib(10))
+print(fib(100))
+print(fib(1000))
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

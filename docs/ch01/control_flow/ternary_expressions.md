@@ -102,6 +102,22 @@ The key is not the syntax, but recognizing when an expression-level decision is 
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+age = 20
+
+status = "adult" if age >= 18 else "minor"
+
+print(status)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

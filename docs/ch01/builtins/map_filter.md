@@ -169,6 +169,89 @@ valid = list(filter(lambda e: "@" in e and "." in e, emails))
 print(valid)   # ['user@example.com', 'test@test.org']
 ```
 
+
+
+---
+
+## Notebook Examples
+
+```python
+numbers = [1, 2, 3, 4]
+
+lst = []
+for n in numbers:
+    lst.append(n * 2)
+
+print(lst)
+```
+
+```python
+numbers = [1, 2, 3, 4]
+
+result = list(map(lambda x: x * 2, numbers))
+print(result)
+```
+
+```python
+def square(x):
+    return x * x
+
+numbers = [1, 2, 3, 4]
+
+result = list(map(square, numbers))
+print(result)
+```
+
+```python
+numbers = [1, 2, 3, 4, 5, 6]
+
+lst = []
+for n in numbers:
+    if n % 2 == 0:
+        lst.append(n)
+
+print(lst)
+```
+
+```python
+numbers = [1, 2, 3, 4, 5, 6]
+
+result = list(filter(lambda x: x % 2 == 0, numbers))
+print(result)
+```
+
+```python
+def is_even(x):
+    return x % 2 == 0
+
+numbers = [1, 2, 3, 4, 5, 6]
+
+result = list(filter(is_even, numbers))
+print(result)
+```
+
+```python
+from functools import reduce
+
+numbers = [1, 2, 3, 4]
+# [3,3,4]
+# [6,4]
+# 10
+
+result = reduce(lambda a, b: a + b, numbers)
+print(result)
+```
+
+```python
+numbers = [1, 2, 3, 4, 5]
+result = map(lambda x: x**2, numbers)
+print(result)
+print(list(result))
+print(list(result))
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

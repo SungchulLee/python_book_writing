@@ -125,6 +125,36 @@ It is not a replacement for `if`, but a **specialized tool** that can replace lo
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+flag = 100
+
+match flag:
+    case 200:
+        print( "OK" )
+    case 404:
+        print( "Not Found" )
+    case _:
+        print( "Unknown" )
+```
+
+```python
+day = "sunday"
+
+match day:
+    case "Saturday" | "Sunday" | "saturday" | "sunday" :
+        print("Weekend")
+    case _:
+        print("Weekday")
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -7,7 +7,24 @@ The `plot()` method is the fundamental tool for creating line plots in Matplotli
 
     The core concept: **`plot()` maps numerical data to visual position (x, y).**
     Everything else — line styles, colors, markers, labels — is styling on top of
-    this spatial encoding.
+    this spatial encoding. Each `plot()` call creates `Line2D` artists on the
+    Axes; all styling modifies these artists.
+
+!!! note "Visual Encoding Channels"
+    All plotting in Matplotlib is about encoding data into visual variables:
+
+    | Channel | What it encodes | Example |
+    |---------|----------------|---------|
+    | Position (x, y) | Where — the primary data | `ax.plot(x, y)` |
+    | Color | What — category or group | `color='red'` |
+    | Linestyle | Distinction — primary vs reference | `linestyle='--'` |
+    | Marker | Discrete observations | `marker='o'` |
+    | Size | Emphasis | `linewidth=2` |
+    | Error bars | Uncertainty | `ax.errorbar(...)` |
+
+    Understanding plotting is not about memorizing functions — it is about
+    understanding how data is translated into visuals. Lines encode continuity
+    (interpolation between points); markers encode discrete measurements.
 
 !!! note "Matplotlib Workflow"
     Every visualization follows the same five-step pipeline:

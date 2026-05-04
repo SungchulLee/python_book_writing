@@ -5,6 +5,12 @@ The `ax.pcolormesh()` method creates pseudocolor plots with quadrilateral cells,
 !!! tip "Mental Model"
     `pcolormesh()` is like `imshow()` but with explicit coordinates. Instead of assuming a uniform pixel grid, you supply X and Y coordinate arrays that define each cell's corners. This makes it ideal for data on non-uniform grids, curvilinear coordinates, or when axes must reflect real-world units.
 
+    The key distinction: **`imshow` = image representation** (uniform pixel grid,
+    implicit coordinates), **`pcolormesh` = geometric representation** (explicit
+    coordinates, preserves the domain's geometry). Use `imshow` for matrices and
+    images; use `pcolormesh` when the x/y axes represent real-world quantities
+    with potentially non-uniform spacing.
+
 ## Basic pcolormesh
 
 Create a heatmap using pcolormesh.

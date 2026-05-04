@@ -104,6 +104,30 @@ For functions that only perform side effects and return nothing, use `-> None`.
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+def celsius_to_fahrenheit(c: float) -> float:
+    """Convert a temperature from Celsius to Fahrenheit."""
+    return (c * 9 / 5) + 32
+
+print(help(celsius_to_fahrenheit))
+```
+
+```python
+def convert_celsius_to_fahrenheit(c: float) -> float:
+    """Convert a temperature from Celsius to Fahrenheit."""
+    return (c * 9 / 5) + 32
+
+print(help(convert_celsius_to_fahrenheit))
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

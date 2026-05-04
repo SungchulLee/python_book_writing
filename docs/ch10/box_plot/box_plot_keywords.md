@@ -5,6 +5,14 @@ The `ax.boxplot()` method accepts numerous keyword arguments to control appearan
 !!! tip "Mental Model"
     Box plot keywords fall into three groups: data interpretation (`vert`, `whis`, `showfliers`), labeling (`labels`, `positions`), and styling (`patch_artist`, `boxprops`, `medianprops`). The most impactful is `patch_artist=True`, which switches boxes from outlines to filled patches, unlocking color customization.
 
+!!! tip "Most Important Parameters"
+    If you learn only four keywords, make it these:
+
+    1. **`whis`** — controls outlier definition (default 1.5×IQR; set to `[5, 95]` for percentile-based whiskers)
+    2. **`showfliers`** — toggle outlier dots on/off (hide them to reduce noise in dense data)
+    3. **`notch`** — adds a confidence interval notch around the median (non-overlapping notches suggest different medians)
+    4. **`patch_artist`** — switches boxes to filled patches (required for color customization)
+
 ## Labels
 
 The `labels` keyword assigns names to each box on the x-axis.

@@ -5,6 +5,21 @@ Matplotlib is the foundational plotting library for Python scientific computing.
 !!! tip "Mental Model"
     Matplotlib has one required install (`matplotlib`) and one standard import convention (`import matplotlib.pyplot as plt`). The `plt` alias is universal -- virtually every tutorial, Stack Overflow answer, and textbook uses it. Memorize this single import line and you are ready to plot.
 
+!!! note "Matplotlib Setup Layers"
+    Matplotlib operates in layers, each controlling a different aspect:
+
+    ```text
+    1. Environment  (installation, backend)  → where plots render
+    2. Defaults     (style sheets, rcParams)  → how plots look
+    3. Structure    (subplots, GridSpec)       → how plots are arranged
+    4. Content      (plot, scatter, etc.)      → what data is shown
+    ```
+
+    This section covers layers 1--2. The **backend** is the rendering engine that
+    converts plotting instructions into pixels or files — Matplotlib separates
+    plotting logic (your Python code) from rendering (the backend), which is why
+    the same code works in Jupyter, scripts, and terminals.
+
 ---
 
 ## Installation

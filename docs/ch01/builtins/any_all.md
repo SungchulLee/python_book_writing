@@ -61,6 +61,21 @@ all_passed = all(score >= 60 for score in scores)
 print(all_passed)  # True
 ```
 
+
+
+---
+
+## Notebook Examples
+
+```python
+values = [False, False, True]
+
+print(any(values))
+print(all(values))
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

@@ -10,6 +10,10 @@ Matplotlib accepts various data types for plotting, providing flexibility for di
     dtypes will raise errors or produce unexpected results. When in doubt, verify
     with `np.asarray(data).shape` before plotting.
 
+    The deeper principle: **Matplotlib is type-agnostic but structure-sensitive.**
+    It accepts lists, arrays, Series, and more — but it always requires consistent
+    shape. Plotting operates on arrays, not objects.
+
 ---
 
 ## Python Lists

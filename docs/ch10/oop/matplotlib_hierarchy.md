@@ -1,7 +1,20 @@
 # Figure-Axes-Artist
 
 !!! tip "Mental Model"
-    Matplotlib uses a tree structure: a Figure contains Axes, and each Axes contains Artists. This is the composite pattern -- every node knows its children and can draw them recursively. When you call `fig.savefig()`, the Figure asks each Axes to render, and each Axes asks its Artists to render. Understanding this tree is the key to debugging any display issue.
+    Matplotlib uses a tree structure: a Figure contains Axes, and each Axes contains Artists. This is the composite pattern — every node knows its children and can draw them recursively. When you call `fig.savefig()`, the Figure asks each Axes to render, and each Axes asks its Artists to render. Understanding this tree is the key to debugging any display issue.
+
+!!! note "Matplotlib Is a Scene Graph"
+    The hierarchy `Figure → Axes → Artists` is a **scene graph**: a tree data structure where each node represents a visual element, and rendering traverses the tree recursively calling `draw()`. This is the same architecture used in game engines, SVG, and the browser DOM.
+
+    ```text
+    Full visualization pipeline:
+
+    Data → Encoding (plot/scatter/bar) → Artists (Line2D, Patch, Text)
+         → Axes (coordinate system) → Figure (layout container)
+         → Backend (renderer) → Pixels/File → Human perception
+    ```
+
+    Understanding this pipeline means you can intervene at any stage: change the data, swap the encoding, modify Artists after creation, rearrange Axes, or switch the output format.
 
 ## Composite Pattern
 
@@ -189,16 +202,54 @@ When something doesn't appear on screen, trace this pipeline: is the data correc
 **Exercise 4.** Access and modify a specific tick label on the x-axis programmatically. Change its color to red and increase its font size.
 
 ??? success "Solution to Exercise 4"
-    ```python
-    import matplotlib.pyplot as plt
-    import numpy as np
 
-    np.random.seed(42)
-    x = np.linspace(0, 10, 100)
-    fig, ax = plt.subplots()
-    ax.plot(x, np.sin(x), 'b-', lw=2)
-    ax.set_title('Solution')
-    plt.show()
-    ```
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        fig, ax = plt.subplots()
+        ax.plot(np.linspace(0, 10, 50), np.sin(np.linspace(0, 10, 50)))
+
+        # Draw first to populate tick labels
+        fig.canvas.draw()
+
+        # Access tick labels — they are Text Artists
+        labels = ax.get_xticklabels()
+        if len(labels) > 2:
+            labels[2].set_color('red')
+            labels[2].set_fontsize(16)
+
+        plt.show()
+
+---
+
+**Exercise 5.** Traverse the scene graph programmatically. Write code that creates a figure with 2 subplots, each containing a line plot. Then use `fig.get_children()` and `ax.get_children()` to print the full tree structure (Figure → Axes → Artists). Count the total number of Artists in the figure.
+
+??? success "Solution to Exercise 5"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        fig, (ax1, ax2) = plt.subplots(1, 2)
+        ax1.plot([1, 2, 3], [1, 4, 9], 'b-')
+        ax2.bar([1, 2, 3], [3, 1, 2])
+
+        # Traverse the scene graph
+        print(f"Figure children: {len(fig.get_children())}")
+        for i, child in enumerate(fig.get_children()):
+            print(f"  [{i}] {type(child).__name__}")
+
+        print(f"\nAx1 children: {len(ax1.get_children())}")
+        for child in ax1.get_children()[:5]:
+            print(f"  {type(child).__name__}")
+
+        # Count all Artists recursively
+        total = 0
+        for ax in fig.get_axes():
+            total += len(ax.get_children())
+        print(f"\nTotal Artists across all Axes: {total}")
+
+        # This demonstrates the scene graph: Figure owns Axes,
+        # each Axes owns Lines, Patches, Text, Spines, etc.
+        plt.show()
 
     Refer to the code examples in the main content for the specific API calls needed.

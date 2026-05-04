@@ -242,6 +242,23 @@ Key ideas:
 The `bool` type is the foundation of logical reasoning in Python programs.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = True # bool (true, TRUE)
+b = False
+c = a + b
+d = bool.__add__(a, b)
+print(c)
+print(d)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

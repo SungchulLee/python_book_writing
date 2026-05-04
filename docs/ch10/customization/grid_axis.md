@@ -3,7 +3,12 @@
 Configure grid lines and axis behavior for clearer visualizations.
 
 !!! tip "Mental Model"
-    Grid lines are faint reference lines aligned with tick marks that help readers trace values from data points back to the axes. `ax.grid(True)` adds them, and the `which`, `axis`, and `linestyle` parameters let you control major vs. minor grids, x vs. y, and their visual weight. Subtle grids improve readability; heavy grids create clutter.
+    Grid lines are faint reference lines aligned with tick marks that help readers trace values from data points back to the axes. `ax.grid(True)` adds them, and the `which`, `axis`, and `linestyle` parameters let you control major vs. minor grids, x vs. y, and their visual weight.
+
+    **Grid = visual scaffolding for reading values.** Without grid lines, readers must estimate by eye where a point falls between tick marks. With grid lines, they can read values precisely by following the line to the axis. But too many grid lines compete with the data — use them lightly.
+
+!!! warning "Grid Overuse"
+    Heavy, dark grid lines create visual noise that competes with data for attention. Use `alpha=0.3` or lighter for grid lines, and prefer major-only grids unless fine precision is needed. If the data itself is dense (scatter plots with many points), consider removing the grid entirely.
 
 ---
 
@@ -318,3 +323,33 @@ Plot `y = exp(x)` for `x` in $[0, 5]$ and turn off the top and right axis lines 
         ax.set_ylabel('exp(x)')
         ax.set_title('Exponential with Log Scale Grid')
         plt.show()
+
+---
+
+**Exercise 4.**
+Demonstrate "good grid vs bad grid." Create two versions of the same scatter plot (50 random points): one with heavy black grid lines (`alpha=1, linewidth=1`) and one with subtle light gray grid (`alpha=0.3, linewidth=0.5`). Explain which is better for reading values and why.
+
+??? success "Solution to Exercise 4"
+
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        np.random.seed(42)
+        x, y = np.random.randn(50), np.random.randn(50)
+
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
+        ax1.scatter(x, y, zorder=5)
+        ax1.grid(True, alpha=1.0, linewidth=1, color='black')
+        ax1.set_title('Heavy grid: competes with data')
+
+        ax2.scatter(x, y, zorder=5)
+        ax2.grid(True, alpha=0.3, linewidth=0.5, color='gray')
+        ax2.set_title('Subtle grid: aids reading')
+
+        plt.tight_layout()
+        plt.show()
+
+        # The subtle grid lets the eye trace values to axes without
+        # competing for attention. The heavy grid dominates the visual
+        # field, making data points harder to distinguish.

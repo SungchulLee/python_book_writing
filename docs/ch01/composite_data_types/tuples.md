@@ -262,6 +262,156 @@ Key ideas:
 Tuples provide a compact and reliable way to represent stable structured data. For a mutable sequence, see [Lists](lists.md).
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+a = ('1', "2") # tuple
+b = ('1', "3")
+c = a + b
+d = tuple.__add__(a, b)
+print(c)
+print(d)
+```
+
+```python
+a = ( "Hi Bob", "Hi Alice" ) # tuple
+b = ( "Hi Bob", "Hi Alice" ) # tuple
+print( a ) # ("Hi Bob", "Hi Alice")
+print( b ) # ("Hi Bob", "Hi Alice")
+
+a[0] = 0 # TypeError: 'tuple' object does not support item assignment
+# print( a ) # (0, "Hi Alice")
+# print( b ) # ("Hi Bob", "Hi Alice")
+```
+
+```python
+a = ( "HI", [1,2,3] )
+print(a)
+
+a[1][0] = "One"
+print(a)
+```
+
+```python
+a = ( "HI", [] )
+print(a)
+
+for i in range(1_000):
+    a[1].append(0)
+print(a)
+```
+
+```python
+a = ( "HI", [] )
+id_a = id(a[1])
+
+for i in range(1_000):
+    a[1].append(0)
+    if id_a != id(a[1]):
+        print("WOW")
+```
+
+```python
+# packing and unpacking
+a = 25, "Alice"
+print(a)
+print(type(a))
+```
+
+```python
+# packing and unpacking
+a, b = 25, "Alice"
+print(a)
+print(type(a))
+```
+
+```python
+# packing and unpacking
+a, b = 25, "Alice", "bob" # error
+print(a)
+print(type(a))
+```
+
+```python
+# packing and unpacking
+a, b, _ = 25, "Alice", "bob" # ok
+print(a)
+print(type(a))
+```
+
+```python
+# packing and unpacking
+a, _, b = 25, "Alice", "bob" # ok
+print(a)
+print(type(a))
+```
+
+```python
+# packing and unpacking
+a, _, b = 25, "Alice", "bob", 1, 3, 4, 5 # error
+print(a)
+print(type(a))
+```
+
+```python
+# packing and unpacking
+a, *_, b = 25, "Alice", "bob", 1, 3, 4, 5
+print(a, b, _)
+```
+
+```python
+# packing and unpacking
+a, *_, b, _ = 25, "Alice", "bob", 1, 3, 4, 5
+print(a, b, _)
+```
+
+```python
+# packing and unpacking
+def f():
+    return 25, "Alice", "bob", 1, 3, 4, 5
+
+a, *_, b, _ = f()
+print(a, b, _)
+```
+
+```python
+a = 1
+b = 2
+print(a, b)
+
+temp_a = a
+temp_b = b
+a = temp_b
+b = temp_a
+print(a, b)
+```
+
+```python
+a = 1
+b = 2
+print(a, b)
+
+temp = a
+a = b
+b = temp
+print(a, b)
+```
+
+```python
+a = 1
+b = 2
+print(a, b)
+
+b, a = a, b
+print(a, b)
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

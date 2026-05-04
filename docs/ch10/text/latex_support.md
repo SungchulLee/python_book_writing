@@ -13,6 +13,11 @@ Matplotlib supports LaTeX-style math rendering for professional mathematical not
     | Simple labels without math | Plain strings — no dollar signs needed |
     | Exploratory / quick plots | Skip LaTeX entirely — adds complexity for no benefit |
 
+    LaTeX is not just formatting — it improves **precision of communication.**
+    Mathematical expressions rendered in LaTeX are clearer and less ambiguous
+    than plain-text approximations. Mathematical notation is part of the
+    semantic layer of visualization.
+
 !!! warning "Performance"
     `usetex=True` invokes the system LaTeX compiler for every text element, which
     is **significantly slower** than Matplotlib's built-in mathtext renderer. For

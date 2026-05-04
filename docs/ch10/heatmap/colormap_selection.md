@@ -8,6 +8,18 @@ Choosing the right colormap is critical for effective data visualization. This g
 !!! tip "Default Strategy"
     **Use `viridis` unless you have a specific reason not to.** It is perceptually uniform (equal steps in data produce equal perceived color changes), prints well in grayscale, and is accessible to colorblind readers. Switch to a diverging map (`coolwarm`, `RdBu`) only when your data has a meaningful center, and to qualitative (`Set1`, `tab10`) only for unordered categories.
 
+!!! warning "Colormaps Shape Perception"
+    Colormaps do not just display data — they **distort** it. A poor colormap
+    can create fake patterns, hide real gradients, or exaggerate small
+    differences:
+
+    - **`jet`** creates false boundaries at yellow-green and cyan-blue transitions
+      where the brightness changes non-monotonically — features appear where none exist
+    - **`hot`** compresses the dark end, hiding low values
+    - **Diverging maps on non-centered data** imply a midpoint that doesn't exist
+
+    Choosing a colormap is choosing **how differences are perceived.**
+
 !!! warning "Why Jet and Rainbow Are Harmful"
     Human vision perceives brightness non-uniformly — we are far more sensitive to changes in yellow-green than in blue or red. Non-uniform colormaps like `jet` create false boundaries and hide real gradients. A smooth gradient in data can appear as sharp bands in `jet`, leading readers to see structure that does not exist. Perceptually uniform colormaps (`viridis`, `plasma`, `inferno`) eliminate this distortion.
 

@@ -119,6 +119,30 @@ except ValueError:
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+print(int("10"))
+```
+
+```python
+print(str(10))
+```
+
+```python
+print(float(10)) # explict conversion
+```
+
+```python
+print(1 + 1.0) # implict conversion; casting
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

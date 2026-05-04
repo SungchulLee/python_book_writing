@@ -8,6 +8,24 @@ A histogram groups numerical data into bins and displays the count (or density) 
     The core pipeline: **data → bins → counts → shape.** Everything else —
     density normalization, styling, PDF overlays — builds on this foundation.
 
+    The deeper truth: a histogram with `density=True` is an **empirical
+    approximation of a probability density function.** As sample size increases
+    and bin width decreases, the histogram converges to the true underlying
+    distribution. In probability: **height = density, area = probability.**
+
+!!! tip "Reading Histogram Shapes"
+    | Shape | Interpretation |
+    |-------|---------------|
+    | Symmetric bell | Normal-like distribution |
+    | Long right tail | Right-skewed (income, waiting times) |
+    | Long left tail | Left-skewed (exam scores near ceiling) |
+    | Two peaks | Bimodal — likely two subgroups in the data |
+    | Flat | Uniform — no preferred value |
+    | Narrow spread | Low variance — data is tightly clustered |
+
+    Histograms are the 1D version of density estimation. The same idea extends
+    to KDE (smooth estimate), 2D histograms, and heatmaps.
+
 ## Basic Usage
 
 The following example generates 10,000 samples from a standard normal distribution and plots the histogram with 100 bins.

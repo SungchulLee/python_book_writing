@@ -238,6 +238,96 @@ Key ideas:
 Understanding truthiness makes Python control flow more natural and readable.
 
 
+
+
+---
+
+## Notebook Examples
+
+```python
+obj = 1
+
+if obj: # int ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+obj = 0
+
+if obj: # int ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+obj = -10
+
+if obj: # int ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+a = 1
+b = 1.0
+c = a + b
+
+print(c, type(c))
+```
+
+```python
+obj = 1.
+
+if obj: # float ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+obj = 0.
+
+if obj: # float ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+obj = -10.
+
+if obj: # float ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+obj = []
+
+if obj: # list ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+```
+
+```python
+obj = [0]
+
+if obj: # list ---> bool (casting)
+    print("interpreted as true")
+else:
+    print("interpreted as false")
+
+print( bool(obj) )
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

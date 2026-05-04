@@ -5,6 +5,23 @@ Colorbars provide a visual legend mapping colors to data values, essential for i
 !!! tip "Mental Model"
     A colorbar is a legend for continuous color scales. It shows the mapping from data values to colors so readers can decode heatmaps, scatter plots, and contour fills. Always add a colorbar when using `imshow`, `pcolormesh`, `contourf`, or `scatter` with color mapping -- without it, the colors are meaningless.
 
+    The deeper truth: **the colorbar is the scale of a color-based plot, just
+    as axes are the scale of a line plot.** Colors without a colorbar are just
+    decoration — the colorbar defines what colors mean.
+
+!!! note "Color Encoding Pipeline"
+    All color-based visualization in this section follows one pipeline:
+
+    ```text
+    Data → Normalization → Colormap → Color → Perception
+                                                  ↓
+                                            Colorbar (decoding)
+    ```
+
+    The colorbar is the decoder — it lets the viewer reverse the pipeline and
+    read values back from colors. This is why `vmin`/`vmax` and normalization
+    matter so much: they define the encoding, and the colorbar must match.
+
 !!! info "The Key Idea: Normalization"
     A colorbar visualizes a **normalization** — the function that maps data values to colors. By default, matplotlib uses linear normalization between `vmin` and `vmax`. Changing the normalization (e.g., `LogNorm`, `TwoSlopeNorm`) changes what colors mean. This is why `vmin`/`vmax` matter so much: they define the mapping, and shared subplots must share the same normalization or the colors become incomparable.
 

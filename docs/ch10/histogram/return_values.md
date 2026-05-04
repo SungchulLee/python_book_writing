@@ -10,6 +10,10 @@ The `ax.hist()` method returns three objects that provide information about the 
     (`P(a < X < b) ≈ sum of density × bin_width` for bins in `[a, b]`), making
     the histogram a bridge between raw data and probability theory.
 
+    More precisely: the pair `(n, bins)` defines a **piecewise-constant
+    approximation of a probability distribution.** Histograms are not just
+    plots — they are data structures representing distributions.
+
 ## Return Signature
 
 ```python

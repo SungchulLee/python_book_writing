@@ -28,6 +28,17 @@ The Axes object is the core component for plotting in Matplotlib. It contains mo
     | Inset Axes | Detail zoom |
     | Twin Axes | Same data, different units |
 
+    Every plot decision belongs to one of these layers:
+
+    - **Figure** → how many plots total?
+    - **Axes** → what perspective on the data?
+    - **Layout** → how are perspectives arranged?
+    - **Access** → how do I reference each one in code?
+    - **Encoding** → how is data visualized?
+
+    Thinking in layers prevents mixing concerns (e.g., choosing colors before
+    deciding how many panels you need).
+
 ---
 
 ## What is an Axes Object

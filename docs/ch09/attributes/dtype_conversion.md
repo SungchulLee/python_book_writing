@@ -234,6 +234,24 @@ In functions that accept a `casting` parameter, use `casting='safe'` to prevent 
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+import numpy as np
+
+a = np.array([1,2,3.], dtype=np.uint8)
+b = np.array([4,5,6])
+c = a + b # vector addition
+
+print(a.dtype, b.dtype, c.dtype) # casting
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

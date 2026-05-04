@@ -387,6 +387,58 @@ Use class method when you need access to the class (e.g., modifying class state,
 
 ---
 
+
+
+---
+
+## Notebook Examples
+
+```python
+class Student:
+
+    university = 'Yonsei'
+    num_students = 0
+    students_list = []
+    mandatory = ['Chapel']
+
+    def __init__(self, name):
+        if self.is_valid_name(name):
+            self.name = self.format_name(name)
+            self.increase_num_student()
+            self.append_student_name(name)
+
+    @classmethod
+    def increase_num_student(cls):
+        cls.num_students += 1
+
+    @classmethod
+    def append_student_name(cls, name):
+        cls.students_list.append(name)
+
+    @staticmethod
+    def is_valid_name(name):
+        """Check if name is a non-empty string"""
+        return isinstance(name, str) and len(name) > 0
+
+    @staticmethod
+    def format_name(name):
+        """Capitalize the name nicely"""
+        return name.strip().title()
+
+    @staticmethod
+    def school_motto():
+        """Return a fixed message (no class/instance needed)"""
+        return "Truth and Freedom"
+
+
+# usage
+print(Student.is_valid_name("Kim"))   # True
+print(Student.format_name("  lee "))  # Lee
+print(Student.school_motto())         # Truth and Freedom
+```
+
+---
+
 ## Exercises
 
 **Exercise 1.**

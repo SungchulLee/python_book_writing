@@ -10,6 +10,18 @@ Spines are the lines that form the borders of the plotting area. This document c
     frame is the **refinement layer** of the visualization pipeline (after data,
     plot type, and layout are decided).
 
+!!! note "Axis System Theory"
+    The axis system connects visual position to data values:
+
+    - **Spines** → define the coordinate boundaries (reference lines)
+    - **Ticks** → encode the scale (position → number)
+    - **Tick labels** → provide numerical meaning
+
+    Together, they implement the transformation: **data space → visual space.**
+    Without the axis system, a plot is just colored shapes — the axis system is
+    what makes it a quantitative representation. Moving or removing spines changes
+    how the data is framed and interpreted.
+
 !!! note "When to Customize Spines"
     | Goal | Technique |
     |------|-----------|

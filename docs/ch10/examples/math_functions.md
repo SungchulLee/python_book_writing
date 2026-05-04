@@ -5,6 +5,12 @@ Create publication-quality mathematical function plots.
 !!! tip "Mental Model"
     Plotting a math function means sampling it at many x-values and connecting the dots. Use `np.linspace` for smooth curves (100-1000 points), LaTeX labels for professional notation, and spine repositioning to place axes at the origin. The recipe is always: define x, compute y = f(x), then `ax.plot(x, y)`.
 
+    A function plot is a **geometric object** — it reveals structure that formulas
+    alone cannot convey: shape (convex, concave), growth rate (polynomial, exponential),
+    curvature (how fast the slope changes), and critical points (zeros, extrema,
+    inflections). Plotting $f$, $f'$, and $f''$ together shows how these features
+    are connected: $f' = 0$ marks extrema, $f'' = 0$ marks inflection points.
+
 ---
 
 ## Basic Function Plot
