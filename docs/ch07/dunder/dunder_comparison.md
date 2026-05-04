@@ -895,3 +895,54 @@ Build a `Temperature` class with a `value` and `scale` ("C" or "F"). Implement c
         print(Temperature(32, "F") == Temperature(0, "C"))   # True
         print(Temperature(212, "F") == Temperature(100, "C")) # True
         print(Temperature(100, "C") > Temperature(200, "F"))  # True
+
+---
+
+**Exercise 4.**
+Predict the output of both `print` statements. Explain what happens when Python evaluates `a > b` given that `Student` defines `__ge__` but not `__gt__`.
+
+```python
+class Student:
+    def __init__(self, name):
+        self.name = name
+
+    def __ge__(self, other):
+        if other.name == "Lee":
+            return True
+        else:
+            return False
+
+a = Student("Kim")
+b = Student("Lee")
+print(a >= b)
+print(a > b)
+```
+
+??? success "Solution to Exercise 4"
+
+        class Student:
+            def __init__(self, name):
+                self.name = name
+
+            def __ge__(self, other):
+                if other.name == "Lee":
+                    return True
+                else:
+                    return False
+
+        a = Student("Kim")
+        b = Student("Lee")
+        print(a >= b)  # True — calls a.__ge__(b), other.name == "Lee" → True
+        print(a > b)   # TypeError: '>' not supported between instances of 'Student' and 'Student'
+
+        # Explanation:
+        # a >= b calls a.__ge__(b), which is defined and returns True.
+        #
+        # a > b tries a.__gt__(b) first — not defined, returns NotImplemented.
+        # Then Python tries the reflected operation: b.__lt__(a) — also not
+        # defined, returns NotImplemented. Both sides fail → TypeError.
+        #
+        # Key lesson: defining __ge__ does NOT automatically give you __gt__.
+        # Python does not derive one comparison from another unless you use
+        # @functools.total_ordering (which derives the missing operators from
+        # __eq__ + one ordering method).
