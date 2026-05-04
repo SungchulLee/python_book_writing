@@ -1001,3 +1001,46 @@ print(b.volume)
     print(loader.data)  # 333283335000 (no recomputation)
     print(loader.data)  # 333283335000 (still cached)
     ```
+
+---
+
+**Exercise 6.** A `Student` class has `name` and an optional `id_num`. The tuition `price` should be 7000 if the student has an ID number, and 8000 otherwise. A junior developer stores `price` as a plain attribute set in `__init__`. Explain why a `@property` is a better design, then implement it. Show that the same class produces different prices for different students without any explicit assignment to `price`.
+
+```python
+# Junior version (plain attribute)
+class Student:
+    def __init__(self, name, id_num=None):
+        self.name = name
+        self.id_num = id_num
+        if id_num is not None:
+            self.price = 7000
+        else:
+            self.price = 8000
+```
+
+??? success "Solution to Exercise 6"
+    The plain-attribute version works, but the price logic is buried in `__init__` and can be overridden by accident (`a.price = 0`). A `@property` makes the rule explicit, computed, and read-only:
+
+    ```python
+    class Student:
+        def __init__(self, name, id_num=None):
+            self.name = name
+            self.id_num = id_num
+
+        @property
+        def price(self):
+            if self.id_num is not None:
+                return 7000
+            else:
+                return 8000
+
+    a = Student("Kim", 12345)
+    print(a.price)  # 7000
+
+    b = Student("Lee")
+    print(b.price)  # 8000
+
+    # a.price = 0  # AttributeError — cannot override the rule
+    ```
+
+    The `@property` version is better because: (1) the pricing rule lives in one place, not scattered in `__init__`, (2) it is read-only — external code cannot accidentally set `price` to an invalid value, and (3) if the rule changes later (e.g., different tiers), you modify one method instead of hunting through constructors.
