@@ -72,6 +72,29 @@ print(obj.x)   # calls DataDescriptor.__get__(descriptor, obj, MyClass)
 
 The descriptor stores data in `obj._x` (not `obj.x`) to avoid infinite recursion --- writing to `obj.x` would trigger `__set__` again.
 
+### Why `if obj is None: return self`
+
+Descriptors serve **two roles** depending on how you access them:
+
+```python
+obj.x       # instance access → obj is the instance → return the VALUE
+MyClass.x   # class access    → obj is None         → return the DESCRIPTOR
+```
+
+| Expression | `obj` | Returns | Used for |
+|---|---|---|---|
+| `obj.x` | the instance | Computed value (`obj._x`) | Normal program logic |
+| `MyClass.x` | `None` | The descriptor object itself | Inspection, frameworks, debugging |
+
+Without the `if obj is None` guard, `MyClass.x` would try `None._x` and crash with `AttributeError`. Returning `self` lets frameworks inspect the descriptor (this is how Django discovers model fields and how `type(MyClass.x)` shows `<property>`).
+
+```python
+obj = MyClass()
+obj.x = 10
+print(obj.x)       # 10 — instance access, returns value
+print(MyClass.x)   # <DataDescriptor object> — class access, returns descriptor
+```
+
 ---
 
 ### Non-Data Descriptor
