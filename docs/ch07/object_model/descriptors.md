@@ -146,7 +146,17 @@ flowchart LR
     B -->|"call"| C["f(obj)"]
 ```
 
-A bound method holds two pointers: `__func__` (the original function) and `__self__` (the instance). When you call `obj.f()`, Python calls `f(obj)` behind the scenes. A new bound method is created on every access --- `obj.f is obj.f` is `False` --- but all share the same underlying function.
+A bound method holds two references: `__func__` (the original function) and `__self__` (the instance). When you call `obj.f()`, Python calls `f(obj)` behind the scenes. A new bound method is created on every access, so `obj.f is obj.f` is `False` (different objects), even though `obj.f == obj.f` is `True` (same function + same instance).
+
+```python
+a = A()
+first = a.f
+second = a.f
+print(first is second)                       # False — different objects
+print(first == second)                       # True  — same __func__ and __self__
+print(first.__func__ is second.__func__)     # True  — same function
+print(first.__self__ is second.__self__)     # True  — same instance
+```
 
 ---
 
