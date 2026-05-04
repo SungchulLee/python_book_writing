@@ -3,7 +3,7 @@
 Descriptors are the **core mechanism behind attribute access in Python**.
 
 !!! tip "Mental Model"
-    A descriptor is an object that hijacks attribute access on another object. When a class attribute defines `__get__`, `__set__`, or `__delete__`, Python calls those methods instead of simply reading or writing the attribute. This single mechanism powers properties, methods, `classmethod`, `staticmethod`, and ORMs -- understanding descriptors means understanding how Python's object model actually works.
+    A descriptor is an object that hijacks attribute access on another object. When a class attribute is a descriptor—an instance of a class that defines `__get__`, `__set__`, or `__delete__`—Python calls those methods instead of simply reading or writing the attribute. Descriptors only work when defined as class attributes; assigning them to instances has no effect. This single mechanism powers properties, methods, `classmethod`, `staticmethod`, and ORMs—understanding descriptors means understanding how Python’s object model actually works.
 
 They power:
 
@@ -138,7 +138,15 @@ class A:
 A.__dict__['f'].__get__(a, A)
 ```
 
-This returns a **bound method**.
+This returns a **bound method** --- an object that pairs the function with the instance, so calling it automatically passes the instance as the first argument (`self`).
+
+```mermaid
+flowchart LR
+    A["obj.f"] -->|"descriptor __get__"| B["bound method (f + obj)"]
+    B -->|"call"| C["f(obj)"]
+```
+
+A bound method holds two pointers: `__func__` (the original function) and `__self__` (the instance). When you call `obj.f()`, Python calls `f(obj)` behind the scenes. A new bound method is created on every access --- `obj.f is obj.f` is `False` --- but all share the same underlying function.
 
 ---
 
