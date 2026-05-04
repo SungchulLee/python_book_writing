@@ -1043,4 +1043,58 @@ class Student:
     # a.price = 0  # AttributeError — cannot override the rule
     ```
 
+---
+
+**Exercise 7.** Predict the output and explain which attributes exist on instance `a`. Then explain what happens if you access `a.id_num` for a student created without an ID.
+
+```python
+class Student:
+    def __init__(self, name, id_num=None):
+        self.name = name
+        if id_num is not None:
+            self.id_num = id_num
+        self.price = 7_000
+
+a = Student("Kim", 12345)
+print(a.price)
+print(a.id_num)
+
+b = Student("Lee")
+print(b.price)
+print(b.id_num)
+```
+
+??? success "Solution to Exercise 7"
+
+        class Student:
+            def __init__(self, name, id_num=None):
+                self.name = name
+                if id_num is not None:
+                    self.id_num = id_num
+                self.price = 7_000
+
+        a = Student("Kim", 12345)
+        print(a.price)    # 7000
+        print(a.id_num)   # 12345
+
+        b = Student("Lee")
+        print(b.price)    # 7000
+        # print(b.id_num) # AttributeError: 'Student' has no attribute 'id_num'
+
+        # Explanation:
+        # When id_num is not None (Kim's case), self.id_num is created.
+        # When id_num is None (Lee's case), the if-block is skipped,
+        # so self.id_num is NEVER assigned — the attribute does not exist.
+        #
+        # This is a subtle bug: two instances of the same class have
+        # different sets of attributes depending on constructor arguments.
+        # This makes the class fragile — code that assumes id_num exists
+        # will crash for some students but not others.
+        #
+        # Fix: always assign all attributes in __init__, even if to None:
+        #
+        #     self.id_num = id_num  # always exists, may be None
+        #
+        # This ensures every instance has the same attribute set.
+
     The `@property` version is better because: (1) the pricing rule lives in one place, not scattered in `__init__`, (2) it is read-only — external code cannot accidentally set `price` to an invalid value, and (3) if the rule changes later (e.g., different tiers), you modify one method instead of hunting through constructors.
