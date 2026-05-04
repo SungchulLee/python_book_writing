@@ -171,6 +171,14 @@ class A:
 
 `property` is a **data descriptor** --- it always intercepts access, even if a key of the same name exists in the instance `__dict__`.
 
+The decorated method provides `__get__`. The `property` object itself also defines `__set__` (raising `AttributeError` if no setter is provided), making it a data descriptor. This is not Python "auto-adding" `__set__` --- the `property` class comes with `__set__` built in.
+
+```python
+a = A()
+print(a.x)     # 10 — __get__ runs
+# a.x = 99     # AttributeError — __set__ exists but raises
+```
+
 ---
 
 ### 4.3 Classmethod / Staticmethod
