@@ -204,3 +204,120 @@ Always delegate to `object.__getattribute__` unless you have a specific reason n
 - [Attribute Lookup (Pipeline)](attribute_lookup.md)
 - [Descriptors](descriptors.md)
 - [Properties as Descriptors](property_descriptor_connection.md)
+
+---
+
+## Exercises
+
+**Exercise 1.**
+Create a class `Logged` that overrides `__getattribute__` to print every attribute access. Delegate to `object.__getattribute__` for normal behavior. Create an instance with a `name` attribute and show the log message when accessing it.
+
+??? success "Solution to Exercise 1"
+
+        class Logged:
+            def __init__(self, name):
+                self.name = name
+
+            def __getattribute__(self, attr):
+                print(f"Accessing: {attr}")
+                return object.__getattribute__(self, attr)
+
+        obj = Logged("Alice")
+        print(obj.name)
+        # Accessing: name
+        # Alice
+
+---
+
+**Exercise 2.**
+Create a class `DefaultDict` that uses `__getattr__` to return `0` for any missing attribute. Show that existing attributes are returned normally, while missing ones return `0` without raising `AttributeError`.
+
+??? success "Solution to Exercise 2"
+
+        class DefaultDict:
+            def __init__(self):
+                self.x = 10
+
+            def __getattr__(self, name):
+                return 0
+
+        obj = DefaultDict()
+        print(obj.x)       # 10 — exists, __getattr__ NOT called
+        print(obj.missing)  # 0 — missing, __getattr__ called
+
+---
+
+**Exercise 3.**
+Predict the output and explain why overriding `__getattribute__` without calling `object.__getattribute__` breaks `@property`.
+
+```python
+class Broken:
+    def __init__(self):
+        self._x = 10
+
+    @property
+    def x(self):
+        return self._x
+
+    def __getattribute__(self, name):
+        return "intercepted"
+
+obj = Broken()
+print(obj.x)
+print(obj._x)
+```
+
+??? success "Solution to Exercise 3"
+
+        class Broken:
+            def __init__(self):
+                self._x = 10
+
+            @property
+            def x(self):
+                return self._x
+
+            def __getattribute__(self, name):
+                return "intercepted"
+
+        obj = Broken()
+        print(obj.x)    # "intercepted"
+        print(obj._x)   # "intercepted"
+
+        # Both print "intercepted" because __getattribute__ intercepts
+        # EVERY attribute access and returns "intercepted" without
+        # ever calling object.__getattribute__. This means:
+        # - The property descriptor for x is never triggered
+        # - The instance __dict__ for _x is never consulted
+        # - Descriptors, properties, and normal attributes all break
+        #
+        # Fix: always delegate to object.__getattribute__ for normal
+        # behavior, and only add logic around it.
+
+---
+
+**Exercise 4.**
+Write a `Proxy` class whose `__init__` accepts a target object. Override `__getattribute__` so that accessing any attribute on the proxy forwards to the target. Be careful to avoid infinite recursion when accessing `self._target`.
+
+??? success "Solution to Exercise 4"
+
+        class Proxy:
+            def __init__(self, target):
+                # Must use object.__setattr__ to avoid triggering __getattribute__
+                object.__setattr__(self, '_target', target)
+
+            def __getattribute__(self, name):
+                if name == '_target':
+                    return object.__getattribute__(self, '_target')
+                target = object.__getattribute__(self, '_target')
+                return getattr(target, name)
+
+        class Real:
+            def __init__(self):
+                self.value = 42
+            def greet(self):
+                return "Hello from Real"
+
+        proxy = Proxy(Real())
+        print(proxy.value)    # 42
+        print(proxy.greet())  # Hello from Real

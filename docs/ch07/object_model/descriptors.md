@@ -280,3 +280,146 @@ Descriptors are the **engine behind Python attribute behavior**. They unify:
 - [Attribute Lookup (Pipeline)](attribute_lookup.md)
 - [`__getattribute__` vs `__getattr__`](getattribute_vs_getattr.md)
 - [Properties as Descriptors](property_descriptor_connection.md)
+
+---
+
+## Exercises
+
+**Exercise 1.**
+Create a non-data descriptor `Verbose` that prints a message and returns a fixed value from `__get__`. Attach it to a class `Host`. Show that `host.attr` triggers the descriptor. Then assign `host.attr = "direct"` and show that the instance `__dict__` entry now shadows the non-data descriptor.
+
+??? success "Solution to Exercise 1"
+
+        class Verbose:
+            def __get__(self, obj, objtype=None):
+                if obj is None:
+                    return self
+                print("Descriptor __get__ called")
+                return 42
+
+        class Host:
+            attr = Verbose()
+
+        host = Host()
+        print(host.attr)
+        # Descriptor __get__ called
+        # 42
+
+        host.attr = "direct"
+        print(host.attr)   # "direct" — instance dict shadows descriptor
+        print(host.__dict__)  # {'attr': 'direct'}
+
+---
+
+**Exercise 2.**
+Create a data descriptor `Positive` that only allows positive numbers. Implement `__set__` to raise `ValueError` for non-positive values, and `__get__` to return the stored value. Use `__set_name__` to automatically capture the attribute name. Demonstrate that `obj.x = -5` raises an error.
+
+??? success "Solution to Exercise 2"
+
+        class Positive:
+            def __set_name__(self, owner, name):
+                self.name = name
+                self.storage = f"_{name}"
+
+            def __get__(self, obj, objtype=None):
+                if obj is None:
+                    return self
+                return getattr(obj, self.storage, None)
+
+            def __set__(self, obj, value):
+                if value <= 0:
+                    raise ValueError(f"{self.name} must be positive, got {value}")
+                setattr(obj, self.storage, value)
+
+        class Account:
+            balance = Positive()
+
+        acc = Account()
+        acc.balance = 100
+        print(acc.balance)  # 100
+
+        try:
+            acc.balance = -5
+        except ValueError as e:
+            print(e)  # balance must be positive, got -5
+
+---
+
+**Exercise 3.**
+Predict the output of both `print` statements. Explain why `MyClass.x` and `obj.x` return different things.
+
+```python
+class Demo:
+    def __get__(self, obj, objtype=None):
+        if obj is None:
+            return "I am the descriptor"
+        return "I am the value"
+
+class MyClass:
+    x = Demo()
+
+obj = MyClass()
+print(MyClass.x)
+print(obj.x)
+```
+
+??? success "Solution to Exercise 3"
+
+        class Demo:
+            def __get__(self, obj, objtype=None):
+                if obj is None:
+                    return "I am the descriptor"
+                return "I am the value"
+
+        class MyClass:
+            x = Demo()
+
+        obj = MyClass()
+        print(MyClass.x)  # "I am the descriptor"
+        print(obj.x)      # "I am the value"
+
+        # MyClass.x calls __get__(descriptor, None, MyClass)
+        #   → obj is None → returns "I am the descriptor"
+        #
+        # obj.x calls __get__(descriptor, obj, MyClass)
+        #   → obj is not None → returns "I am the value"
+        #
+        # This is the two-role pattern: class access returns the
+        # descriptor itself (for inspection), instance access
+        # returns the managed value (for program logic).
+
+---
+
+**Exercise 4.**
+Explain why a data descriptor **cannot** be shadowed by an instance attribute, but a non-data descriptor **can**. Write code that proves both behaviors.
+
+??? success "Solution to Exercise 4"
+
+        class DataDesc:
+            def __get__(self, obj, objtype=None):
+                return "from data descriptor"
+            def __set__(self, obj, value):
+                print(f"__set__ intercepted: {value}")
+
+        class NonDataDesc:
+            def __get__(self, obj, objtype=None):
+                return "from non-data descriptor"
+
+        class MyClass:
+            x = DataDesc()
+            y = NonDataDesc()
+
+        obj = MyClass()
+
+        # Try to shadow data descriptor
+        obj.x = "shadow"
+        # prints: __set__ intercepted: shadow
+        print(obj.x)  # "from data descriptor" — NOT shadowed
+
+        # Shadow non-data descriptor
+        obj.y = "shadow"
+        print(obj.y)  # "shadow" — instance dict wins
+
+        # Why: data descriptors (tier 1) are checked BEFORE instance
+        # __dict__ (tier 2). Non-data descriptors (tier 3) are checked
+        # AFTER. So instance __dict__ can override tier 3 but not tier 1.
