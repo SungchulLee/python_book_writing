@@ -299,3 +299,63 @@ Rewrite the `TextProcessor` from Exercise 3 using the **immutable style** --- ea
     ```
 
     The immutable style mirrors how built-in `str` methods work: each call returns a new object, leaving the original intact. This is safer for shared references but creates more objects. The mutable style (Exercise 3) is more memory-efficient but can surprise callers who hold a reference to the original.
+
+---
+
+**Exercise 5.**
+Predict the output. The developer intends to drop "Cal" and add "Python" in one chained call. Explain why it fails and fix it.
+
+```python
+class Student:
+    def __init__(self, name, subjects):
+        self.name = name
+        self.subjects = subjects
+
+    def drop(self, subject):
+        if subject in self.subjects:
+            self.subjects.remove(subject)
+
+    def add(self, subject):
+        if subject not in self.subjects:
+            self.subjects.append(subject)
+
+a = Student("Kim", ["Cal", "Linear Alg"])
+print(a.subjects)
+a.drop("Cal").add("Python")
+print(a.subjects)
+```
+
+??? success "Solution to Exercise 5"
+
+        # Output:
+        # ['Cal', 'Linear Alg']
+        # AttributeError: 'NoneType' object has no attribute 'add'
+
+        # Explanation:
+        # a.drop("Cal") removes "Cal" successfully, but drop() has no
+        # return statement — so it returns None.
+        # Then None.add("Python") is called → AttributeError.
+        #
+        # This is the classic chaining failure: methods that mutate in
+        # place but return None cannot be chained.
+
+        # Fix: return self from each method to enable chaining.
+
+        class Student:
+            def __init__(self, name, subjects):
+                self.name = name
+                self.subjects = subjects
+
+            def drop(self, subject):
+                if subject in self.subjects:
+                    self.subjects.remove(subject)
+                return self  # enables chaining
+
+            def add(self, subject):
+                if subject not in self.subjects:
+                    self.subjects.append(subject)
+                return self  # enables chaining
+
+        a = Student("Kim", ["Cal", "Linear Alg"])
+        a.drop("Cal").add("Python")
+        print(a.subjects)  # ['Linear Alg', 'Python']
