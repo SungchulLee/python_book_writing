@@ -24,6 +24,14 @@ __set__(self, obj, value)
 __delete__(self, obj)
 ```
 
+The `__get__` parameters:
+
+- `self` --- the descriptor instance (lives on the class)
+- `obj` --- the instance being accessed (`None` if accessed via the class)
+- `objtype` --- the class that owns the descriptor (defaults to `None` for flexibility)
+
+When accessed via an instance (`obj.x`), Python calls `descriptor.__get__(obj, type(obj))`. When accessed via the class (`MyClass.x`), Python calls `descriptor.__get__(None, MyClass)`. This is why descriptors typically check `if obj is None: return self`.
+
 ---
 
 ## 2. Types of Descriptors
@@ -35,13 +43,34 @@ Implements `__get__` AND `__set__` (or `__delete__`):
 ```python
 class DataDescriptor:
     def __get__(self, obj, objtype=None):
-        return obj._x
+        if obj is None:
+            return self  # accessed via class
+        return obj._x    # accessed via instance
 
     def __set__(self, obj, value):
         obj._x = value
 ```
 
 Takes precedence over instance attributes.
+
+### Full Trace
+
+```python
+class MyClass:
+    x = DataDescriptor()  # descriptor lives on the class
+
+obj = MyClass()
+obj.x = 10     # calls DataDescriptor.__set__(descriptor, obj, 10)
+               # self = MyClass.__dict__["x"] (the descriptor)
+               # obj  = the MyClass instance
+               # value = 10
+               # stores obj._x = 10
+
+print(obj.x)   # calls DataDescriptor.__get__(descriptor, obj, MyClass)
+               # returns obj._x → 10
+```
+
+The descriptor stores data in `obj._x` (not `obj.x`) to avoid infinite recursion --- writing to `obj.x` would trigger `__set__` again.
 
 ---
 
