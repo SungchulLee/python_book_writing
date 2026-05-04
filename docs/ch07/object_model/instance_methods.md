@@ -568,3 +568,66 @@ print(f())
         # The difference exists because functions are descriptors:
         # function.__get__(s, Student) returns a bound method with self=s.
         # That is why s.greet() works without passing self explicitly.
+
+---
+
+**Exercise 5.**
+Trace through the following code and predict all three `print` outputs. Explain how `drop` and `add` modify the instance's state through `self`.
+
+```python
+class Student:
+    def __init__(self, name, subjects):
+        self.name = name
+        self.subjects = subjects
+
+    def drop(self, subject):
+        if subject in self.subjects:
+            self.subjects.remove(subject)
+
+    def add(self, subject):
+        if subject not in self.subjects:
+            self.subjects.append(subject)
+
+a = Student("Kim", ["Cal", "Linear Alg"])
+print(a.subjects)
+a.drop("Cal")
+print(a.subjects)
+a.add("Python")
+print(a.subjects)
+```
+
+??? success "Solution to Exercise 5"
+
+        class Student:
+            def __init__(self, name, subjects):
+                self.name = name
+                self.subjects = subjects
+
+            def drop(self, subject):
+                if subject in self.subjects:
+                    self.subjects.remove(subject)
+
+            def add(self, subject):
+                if subject not in self.subjects:
+                    self.subjects.append(subject)
+
+        a = Student("Kim", ["Cal", "Linear Alg"])
+        print(a.subjects)  # ['Cal', 'Linear Alg']
+
+        a.drop("Cal")
+        print(a.subjects)  # ['Linear Alg']
+
+        a.add("Python")
+        print(a.subjects)  # ['Linear Alg', 'Python']
+
+        # How it works:
+        # a.drop("Cal") calls Student.drop(a, "Cal").
+        # Inside drop, self is a, so self.subjects is a.subjects.
+        # "Cal" is in the list, so remove() mutates the list in place.
+        #
+        # a.add("Python") calls Student.add(a, "Python").
+        # "Python" is not in the list, so append() adds it.
+        #
+        # Both methods modify self.subjects (the same list object)
+        # through self. They return None — the mutation happens
+        # as a side effect, not via a return value.
