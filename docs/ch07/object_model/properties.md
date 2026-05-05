@@ -238,15 +238,23 @@ Circle.area.fset   # None (read-only — no setter defined)
 Circle.area.fdel   # None (no deleter defined)
 ```
 
-These are **two layers** of the same mechanism:
+These are **two layers** of the same mechanism — just like `a + b` is actually `a.__add__(b)`, attribute access is actually a descriptor call:
 
-| Your code | Stored in property as | Invoked by Python via |
+| Syntax | Python desugars to | Which calls |
+|---|---|---|
+| `obj.x` (read) | `type(obj).__dict__['x'].__get__(obj, type(obj))` | `fget(obj)` |
+| `obj.x = v` (write) | `type(obj).__dict__['x'].__set__(obj, v)` | `fset(obj, v)` |
+| `del obj.x` (delete) | `type(obj).__dict__['x'].__delete__(obj)` | `fdel(obj)` |
+
+And the mapping from your decorators to what gets stored:
+
+| Your code | Stored in property as | Descriptor method that calls it |
 |---|---|---|
 | `@property def x` | `fget` | `__get__` |
 | `@x.setter def x` | `fset` | `__set__` |
 | `@x.deleter def x` | `fdel` | `__delete__` |
 
-`fget/fset/fdel` = **what to do** (your functions). `__get__/__set__/__delete__` = **when Python does it** (descriptor protocol, triggered by attribute access). The `property` object connects the two: when Python calls `property.__get__(obj, cls)`, it internally calls `fget(obj)`.
+`fget/fset/fdel` = **what to do** (your functions). `__get__/__set__/__delete__` = **when Python does it** (descriptor protocol, triggered by attribute access). The `property` object connects the two: `property.__get__(obj, cls)` internally calls `fget(obj)`.
 
 !!! warning "Why Properties Enforce Control"
     Properties work because they are **data descriptors** --- they define both `__get__` and `__set__` (even if the setter raises `AttributeError`). Data descriptors are checked **before** the instance `__dict__` during attribute lookup. Without this mechanism, any assignment would bypass property logic entirely.
