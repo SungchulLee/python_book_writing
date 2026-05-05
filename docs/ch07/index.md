@@ -59,7 +59,7 @@ This chapter provides a comprehensive guide to object-oriented programming in Py
 
 ## 6.8 Properties
 
-- [Properties](object_model/properties_as_a_unified_abstraction.md)
+- [Properties](object_model/properties.md)
 - [Cached Properties](object_model/cached_property.md)
 - [Properties as Descriptors](object_model/property_descriptor_connection.md)
 
