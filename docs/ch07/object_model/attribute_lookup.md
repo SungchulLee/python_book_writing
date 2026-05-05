@@ -115,11 +115,13 @@ print(obj.__dict__)  # {'x': 10}
 
 ### Class Dict
 
-Class-level attributes, methods, and other definitions live in the class's `__dict__`. Python searches here after checking the instance namespace.
+Class-level attributes, methods, and other definitions live in the class's `__dict__`. Python searches here after checking the instance namespace. Descriptors also live here --- functions, properties, `classmethod`, and `staticmethod` are all stored as descriptor objects in the class `__dict__`, and Python invokes them during attribute lookup when they are found there.
 
 ```python
 print(MyClass.__dict__)
-# Contains methods and class attributes
+# Contains class attributes, including descriptor objects
+# (functions, properties, classmethod, staticmethod)
+# that define how attribute access behaves
 ```
 
 ## Descriptors and Properties
