@@ -59,10 +59,8 @@ This chapter provides a comprehensive guide to object-oriented programming in Py
 
 ## 6.8 Properties
 
-- [Property Decorator](object_model/property_decorator.md)
-- [Getter Setter Deleter](object_model/getter_setter_deleter.md)
+- [Properties](object_model/properties_as_a_unified_abstraction.md)
 - [Cached Properties](object_model/cached_property.md)
-- [Read-Only Properties](object_model/readonly_properties.md)
 - [Properties as Descriptors](object_model/property_descriptor_connection.md)
 
 ## 6.9 Descriptor Protocol

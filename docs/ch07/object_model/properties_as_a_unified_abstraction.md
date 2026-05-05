@@ -1,44 +1,23 @@
-# Property Decorator
+# Properties as a Unified Abstraction
 
 !!! tip "Mental Model"
-    A property is a method masquerading as an attribute. The caller writes `obj.x` and gets clean attribute syntax, while behind the scenes a getter method runs -- optionally validating, computing, or logging. The power is in the invisible upgrade path: start with a plain attribute, add a property later, and no calling code needs to change.
+    A property is not three separate features. It is **one concept** --- a gatekeeper object that sits on a class and intercepts attribute access through up to three hooks: **get**, **set**, and **delete**. The caller writes `obj.x` and has no idea whether they are reading a stored value or triggering a method. Start with a plain attribute; add a property later when you need validation, computation, or access control --- without changing the public API.
+
+!!! note "One Descriptor, Three Hooks"
+    Each `@property` creates a single descriptor object with up to three callables (`fget`, `fset`, `fdel`). The `@prop.setter` and `@prop.deleter` decorators attach additional hooks to the **same** descriptor. They are not independent features.
+
+---
 
 ## What Are Properties?
 
-### 1. Definition
-
-A **property** allows you to **define methods that behave like attributes**. This supports encapsulation while enabling attribute-style access.
-
-It is declared using the `@property` decorator and optionally `@<property>.setter` and `@<property>.deleter`.
-
-### 2. Core Motivation
+A **property** lets you define methods that behave like attributes. It is declared using the `@property` decorator and optionally `@<name>.setter` and `@<name>.deleter`.
 
 Use properties to:
 
 - Expose **computed values** as attributes
 - Add **getter/setter logic** without changing the external API
 - Enforce **validation** or **read-only** access
-- Keep internal representation private while providing clean interface
-
-!!! tip "Core Rule"
-    `@property` = **controlled attribute access**. It lets you compute, validate, or restrict without changing how users access the attribute. The caller writes `obj.attr` — they never know whether it is a stored value or a method call.
-
-### 3. Basic Syntax
-
-```python
-class Circle:
-    def __init__(self, radius):
-        self._radius = radius
-
-    @property
-    def area(self):
-        from math import pi
-        return pi * self._radius ** 2
-```
-
-## Read-Only Properties
-
-### 1. Simple Example
+- Keep internal representation private while providing a clean interface
 
 ```python
 class Circle:
@@ -51,123 +30,350 @@ class Circle:
         return pi * self._radius ** 2
 
 c = Circle(3)
-print(c.area)  # attribute-like access, but computed
-# c.area = 50  # Error: no setter defined
+print(c.area)   # attribute-like access, but computed
+# c.area = 50   # AttributeError: no setter defined
 ```
 
-### 2. Why Use Read-Only
+!!! tip "Core Rule"
+    `@property` = **controlled attribute access**. It lets you compute, validate, or restrict without changing how callers access the attribute. The caller writes `obj.attr` --- they never know whether it is a stored value or a method call.
 
-- Prevents accidental modification of computed values
-- Encapsulates calculation logic
-- Maintains data consistency
-- Provides clean API without exposing implementation
+---
 
-### 3. Common Use Cases
+## Why Properties Exist
+
+Start with a plain attribute:
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius
+
+c = Circle(5)
+print(c.radius)    # 5
+c.radius = 10      # direct access
+```
+
+Later, you need validation. You have two choices.
+
+**Option 1: Introduce a method** --- breaks existing code:
+
+```python
+# Old code: c.radius = 10       <-- breaks
+# New code: c.set_radius(10)    <-- different API
+```
+
+Every caller that wrote `c.radius` must be rewritten.
+
+**Option 2: Use `@property`** --- old code still works:
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self.radius = radius        # triggers setter
+
+    @property
+    def radius(self):
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("must be positive")
+        self._radius = value
+
+c = Circle(5)
+c.radius = 10      # still works -- setter validates silently
+print(c.radius)     # still works -- getter returns value
+```
+
+Callers see no change. Validation was added without touching the interface.
+
+!!! tip "The Design Principle"
+    `@property` separates **what users see** (`obj.radius`) from **how it works** (validation, computation, storage). This lets you evolve implementation without breaking existing code --- the same principle Java solves with boilerplate getters/setters, but without the boilerplate.
+
+| Approach | Read Syntax | Write Syntax | Pythonic |
+|----------|-------------|--------------|----------|
+| Explicit methods | `p.get_name()` | `p.set_name("Bob")` | No |
+| Property | `p.name` | `p.name = "Bob"` | Yes |
+
+---
+
+## The Three Hooks: Getter, Setter, Deleter
+
+### Getter
+
+The `@property` decorator turns a method into a readable attribute.
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def radius(self):
+        return self._radius
+```
+
+### Setter
+
+The `@<name>.setter` decorator defines what happens on assignment.
+
+```python
+    @radius.setter
+    def radius(self, value):
+        if value < 0:
+            raise ValueError("Negative radius")
+        self._radius = value
+```
+
+### Deleter
+
+The `@<name>.deleter` decorator defines what happens on `del obj.attr`.
+
+```python
+    @radius.deleter
+    def radius(self):
+        del self._radius
+```
+
+Most properties do not need a deleter. Common uses include invalidating caches, closing resources, and resetting state.
+
+!!! warning "Name Matching Requirement"
+    The setter and deleter method names **must** be identical to the property name --- `@radius.setter def radius(self, value)`. A mismatched name silently creates a separate property instead of attaching a hook to the existing one.
+
+---
+
+## Read-Only Properties
+
+A read-only property is a `@property` with no setter. Any attempt to assign to it raises `AttributeError`.
+
+```python
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+
+    @property
+    def area(self):
+        from math import pi
+        return pi * self._radius ** 2
+
+c = Circle(5)
+print(c.area)    # 78.54...
+# c.area = 100  # AttributeError: can't set attribute
+```
+
+Use read-only properties when:
+
+- The value is derived from other state (area from radius)
+- External modification would break invariants
+- You want to express immutability at the language level
+
+### Immutable Objects
+
+Making all attributes read-only produces an immutable object:
+
+```python
+class Point:
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    @property
+    def x(self):
+        return self._x
+
+    @property
+    def y(self):
+        return self._y
+
+    @property
+    def magnitude(self):
+        return (self._x ** 2 + self._y ** 2) ** 0.5
+
+    def move(self, dx, dy):
+        """Return a new Point -- the original is unchanged."""
+        return Point(self._x + dx, self._y + dy)
+```
+
+Benefits: thread-safe by design, usable as dictionary keys (with `__hash__`), easier to reason about.
+
+### Caveat: `__dict__` Override
+
+Writing directly to `obj.__dict__['area'] = 100` bypasses the descriptor. The shadowed value is never returned because data descriptors take priority, but it can cause confusion. Avoid manipulating `__dict__` directly for property-controlled attributes. For more, see [Properties as Descriptors](property_descriptor_connection.md).
+
+---
+
+## Internal Mechanism
+
+### The Plain-English Version
+
+When you write `@property` above a method, Python creates a **gatekeeper object** that sits on the class and watches for anyone trying to read, write, or delete that attribute name.
+
+- **Read** `obj.name` --- the gatekeeper calls your getter and returns the result.
+- **Write** `obj.name = value` --- the gatekeeper calls your setter (or raises an error if none exists).
+- **Delete** `del obj.name` --- the gatekeeper calls your deleter.
+
+The gatekeeper always runs before Python checks the instance's own dictionary, so it cannot be bypassed by accident. This is why properties can enforce validation --- the gatekeeper intercepts every access.
+
+### The Technical Details
+
+`@property` creates a **descriptor object** of type `property` that implements `__get__`, `__set__`, and `__delete__`. It lives in the class's namespace (`Circle.__dict__`). Because it defines both `__get__` and `__set__`, it is a **data descriptor** --- it takes priority over instance `__dict__` entries during attribute lookup.
+
+```python
+print(type(Circle.area))             # <class 'property'>
+print(isinstance(Circle.area, property))  # True
+```
+
+You can inspect the three hooks directly:
+
+```python
+Circle.area.fget   # the getter function
+Circle.area.fset   # the setter function (or None)
+Circle.area.fdel   # the deleter function (or None)
+```
+
+!!! warning "Why Properties Enforce Control"
+    Properties work because they are **data descriptors** --- they define both `__get__` and `__set__` (even if the setter raises `AttributeError`). Data descriptors are checked **before** the instance `__dict__` during attribute lookup. Without this mechanism, any assignment would bypass property logic entirely.
+
+For the full descriptor mechanics, see [Properties as Descriptors](property_descriptor_connection.md).
+
+---
+
+## Common Patterns
+
+### Computed Values
 
 ```python
 class Rectangle:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-    
+
     @property
     def area(self):
         return self.width * self.height
-    
+
     @property
     def perimeter(self):
         return 2 * (self.width + self.height)
-```
-
-## Alternative Approaches
-
-### 1. Without Property
-
-You'd have to do this instead:
-
-```python
-class Person:
-    def __init__(self, name):
-        self.set_name(name)
-
-    def get_name(self):
-        return self._name
-
-    def set_name(self, value):
-        if not value.isalpha():
-            raise ValueError("Name must be alphabetic")
-        self._name = value
-```
-
-Accessing looks ugly:
-
-```python
-p = Person("Alice")
-p.set_name("Bob")
-print(p.get_name())
-```
-
-### 2. With Property
-
-Using `@property`, you retain **encapsulation** while exposing a **clean interface**:
-
-```python
-class Person:
-    def __init__(self, name):
-        self._name = name
 
     @property
-    def name(self):
-        return self._name
+    def diagonal(self):
+        return (self.width ** 2 + self.height ** 2) ** 0.5
 ```
 
-### 3. API Comparison
-
-| Approach | Read Syntax | Write Syntax | Pythonic |
-|----------|-------------|--------------|----------|
-| Methods | `p.get_name()` | `p.set_name("Bob")` | ❌ |
-| Property | `p.name` | `p.name = "Bob"` | ✅ |
-
-## Internal Mechanism
-
-### 1. The Plain-English Version
-
-When you write `@property` above a method, Python does not store that method as a normal attribute. Instead, it creates a **gatekeeper object** that sits on the class and watches for anyone trying to read, write, or delete that attribute name.
-
-- When you **read** `obj.name`, the gatekeeper calls your getter function and returns the result.
-- When you **write** `obj.name = value`, the gatekeeper calls your setter function (or raises an error if you didn't define one).
-- When you **delete** `del obj.name`, the gatekeeper calls your deleter function.
-
-The gatekeeper always runs before Python checks the instance's own dictionary, so it cannot be bypassed by accident. This is why properties can enforce validation --- the gatekeeper intercepts every access.
-
-In Python's technical vocabulary, this gatekeeper is called a **descriptor**. You don't need to understand descriptors to use `@property` effectively, but knowing they exist explains why properties "just work."
-
-### 2. The Technical Details
-
-When you define a property:
+### Derived Attributes
 
 ```python
-@property
-def name(self): ...
+class Person:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
+    @property
+    def initials(self):
+        return f"{self.first_name[0]}.{self.last_name[0]}."
 ```
 
-Python creates a **descriptor object** of type `property`, which:
+### Lazy Evaluation
 
-- Implements the `__get__`, `__set__`, and `__delete__` methods
-- Lives in the class's namespace (`Person.__dict__`)
-- Manages how the attribute behaves at the instance level
-
-### 3. Inspection
-
-You can inspect it:
+Defer expensive work until the value is actually needed. This is a manual version of a cached property. For a reusable descriptor-based implementation, see [Cached Properties](cached_property.md).
 
 ```python
-print(type(Person.name))  # <class 'property'>
+class ExpensiveCalculation:
+    def __init__(self, data):
+        self._data = data
+        self._result = None
+
+    @property
+    def result(self):
+        if self._result is None:
+            self._result = sum(x ** 2 for x in self._data)
+        return self._result
 ```
 
-### 4. How It Works
+### Conditional Read-Only
 
-Properties are **descriptors** stored at the class level that intercept attribute access at the instance level. Because `property` defines `__get__` and `__set__`, it is a **data descriptor** --- it takes priority over instance `__dict__` entries during attribute lookup. This is also why a property on a parent class works correctly on subclass instances. For the full descriptor mechanics, see [Properties as Descriptors](property_descriptor_connection.md).
+Make a property writable until some condition locks it:
+
+```python
+class Document:
+    def __init__(self):
+        self._content = ""
+        self._locked = False
+
+    @property
+    def content(self):
+        return self._content
+
+    @content.setter
+    def content(self, value):
+        if self._locked:
+            raise AttributeError("Document is locked")
+        self._content = value
+
+    def lock(self):
+        self._locked = True
+```
+
+### Type Conversion
+
+```python
+class DataRecord:
+    def __init__(self, timestamp_str):
+        self._timestamp_str = timestamp_str
+
+    @property
+    def timestamp(self):
+        """Always returns a datetime object."""
+        from datetime import datetime
+        return datetime.fromisoformat(self._timestamp_str)
+```
+
+---
+
+## Properties vs Methods
+
+Use `@property` when the access **looks like reading an attribute**: the name is a noun, the computation is fast, and there are no side effects beyond the computation itself.
+
+Use a **method** when the operation is a verb, is expensive, has side effects, takes parameters, or might involve I/O.
+
+| Criterion | Property | Method |
+|-----------|----------|--------|
+| Name | Noun (`area`, `name`) | Verb (`save`, `fetch`) |
+| Speed | Fast / cached | May be slow |
+| Side effects | None | Allowed |
+| Parameters | None (beyond `self`) | Accepted |
+| Example | `circle.area` | `db.query(sql)` |
+
+```python
+# Property -- noun, fast, pure computation
+class Circle:
+    @property
+    def area(self):
+        import math
+        return math.pi * self.radius ** 2
+
+# Method -- verb, expensive, I/O
+class Database:
+    def query(self, sql):
+        return self.execute(sql)
+```
+
+---
+
+## Best Practices
+
+1. **Start with plain attributes.** Add `@property` only when you need validation, computation, or read-only access.
+2. **Keep properties fast.** Users expect `obj.x` and `obj.x = val` to be near-instant. Use methods for expensive operations.
+3. **Prefer immutability.** Omit the setter to make an attribute read-only when external modification would break invariants.
+4. **Don't write trivial properties.** A getter that returns `self._x` with no validation or computation adds noise, not value. Use a plain attribute instead.
+5. **Document your properties.** The getter's docstring becomes the property's `__doc__`.
+6. **Use lazy loading for expensive computations.** Cache the result in a private attribute so work is done at most once.
 
 ---
 
@@ -682,18 +888,18 @@ if __name__ == "__main__":
 
     print("""
     USE @property WHEN:
-        ✓ Value looks like an attribute (singular noun)
-        ✓ Access is fast (cached or simple computation)
-        ✓ Logically feels like an attribute (name, age, area)
-        ✓ No side effects beyond computation
-        ✓ You might want to change to simple attribute later
+        - Value looks like an attribute (singular noun)
+        - Access is fast (cached or simple computation)
+        - Logically feels like an attribute (name, age, area)
+        - No side effects beyond computation
+        - You might want to change to simple attribute later
 
     USE A METHOD WHEN:
-        ✓ Operation name is a verb (get_user(), save())
-        ✓ Computation is expensive (database query)
-        ✓ Has side effects (I/O, modifies state)
-        ✓ Takes parameters (get(key), find(pattern))
-        ✓ Might take variable time (network request)
+        - Operation name is a verb (get_user(), save())
+        - Computation is expensive (database query)
+        - Has side effects (I/O, modifies state)
+        - Takes parameters (get(key), find(pattern))
+        - Might take variable time (network request)
 
     EXAMPLES:
 
@@ -724,7 +930,7 @@ if __name__ == "__main__":
                 return requests.get(url)
     """)
 
-    # ============ EXAMPLE 10: Summary - The Property Checklist ============
+    # ============ EXAMPLE 10: Summary ============
     print("\n# Example 10: Property Implementation Checklist")
     print("=" * 70)
 
@@ -777,16 +983,16 @@ if __name__ == "__main__":
 
     print("""
     PROPERTY CHECKLIST:
-        ✓ Use @property for getter
-        ✓ Use @name.setter for setter (if needed)
-        ✓ Use @name.deleter for deleter (rarely needed)
-        ✓ Store in __dict__ or private attribute
-        ✓ Validate in setter
-        ✓ Include docstring
-        ✓ Handle None defaults gracefully
-        ✓ Make computation fast or lazy-load
-        ✓ Don't use for expensive I/O (use methods instead)
-        ✓ Document return type in docstring
+        - Use @property for getter
+        - Use @name.setter for setter (if needed)
+        - Use @name.deleter for deleter (rarely needed)
+        - Store in __dict__ or private attribute
+        - Validate in setter
+        - Include docstring
+        - Handle None defaults gracefully
+        - Make computation fast or lazy-load
+        - Don't use for expensive I/O (use methods instead)
+        - Document return type in docstring
 
     PERFORMANCE:
         - Properties have slightly more overhead than attributes
@@ -875,77 +1081,13 @@ if __name__ == "__main__":
 
 ---
 
-**Exercise 2.** Predict the output of the following code:
-
-```python
-class Box:
-    def __init__(self, length, width, height):
-        self.length = length
-        self.width = width
-        self.height = height
-
-    @property
-    def volume(self):
-        return self.length * self.width * self.height
-
-b = Box(2, 3, 4)
-print(b.volume)
-b.length = 10
-print(b.volume)
-```
+**Exercise 2.** Write a `Temperature` class with a `celsius` property that has a getter, setter, and deleter. The setter should reject values below $-273.15$. The deleter should reset the temperature to `0`. Demonstrate all three operations.
 
 ??? success "Solution to Exercise 2"
-    The output is:
-
-    ```
-    24
-    120
-    ```
-
-    The `volume` property is computed from `length * width * height`. On first access it returns `2 * 3 * 4 = 24`. After changing `length` to 10, the property recomputes as `10 * 3 * 4 = 120`. Since it is a regular property (not cached), it recalculates every time it is accessed.
-
----
-
-**Exercise 3.** Write a `Person` class where `name` is a property with both a getter and setter. The setter should strip leading/trailing whitespace and raise `ValueError` if the name is empty after stripping. Demonstrate both valid and invalid usage.
-
-??? success "Solution to Exercise 3"
     ```python
-    class Person:
-        def __init__(self, name):
-            self.name = name  # uses the setter
-
-        @property
-        def name(self):
-            return self._name
-
-        @name.setter
-        def name(self, value):
-            cleaned = value.strip()
-            if not cleaned:
-                raise ValueError("Name cannot be empty")
-            self._name = cleaned
-
-    p = Person("  Alice  ")
-    print(repr(p.name))  # 'Alice'
-
-    p.name = "Bob"
-    print(p.name)        # Bob
-
-    try:
-        p.name = "   "
-    except ValueError as e:
-        print(e)  # Name cannot be empty
-    ```
-
----
-
-**Exercise 4.** Implement a `Thermostat` class with a `celsius` property (getter and setter) and a read-only `fahrenheit` property that computes the conversion. Setting `celsius` should reject values below $-273.15$. Setting `fahrenheit` directly should raise `AttributeError`.
-
-??? success "Solution to Exercise 4"
-    ```python
-    class Thermostat:
-        def __init__(self, celsius=20.0):
-            self.celsius = celsius  # uses the setter
+    class Temperature:
+        def __init__(self, celsius=0):
+            self.celsius = celsius
 
         @property
         def celsius(self):
@@ -954,57 +1096,102 @@ print(b.volume)
         @celsius.setter
         def celsius(self, value):
             if value < -273.15:
-                raise ValueError("Temperature below absolute zero")
+                raise ValueError("Below absolute zero")
             self._celsius = value
 
-        @property
-        def fahrenheit(self):
-            return self._celsius * 9 / 5 + 32
+        @celsius.deleter
+        def celsius(self):
+            self._celsius = 0
 
-    t = Thermostat(100)
-    print(t.celsius)      # 100
-    print(t.fahrenheit)   # 212.0
+    t = Temperature(100)
+    print(t.celsius)       # 100
 
-    t.celsius = 0
-    print(t.fahrenheit)   # 32.0
+    t.celsius = -10
+    print(t.celsius)       # -10
 
-    try:
-        t.fahrenheit = 50
-    except AttributeError:
-        print("Cannot set fahrenheit directly")
+    del t.celsius
+    print(t.celsius)       # 0
 
     try:
         t.celsius = -300
     except ValueError as e:
-        print(e)  # Temperature below absolute zero
+        print(e)           # Below absolute zero
     ```
 
 ---
 
-**Exercise 5.** Create a class `LazyLoader` with a property `data` that simulates an expensive computation on first access and caches the result in a private attribute. Verify that the expensive computation runs only once, even when `data` is accessed multiple times.
+**Exercise 3.** Create an immutable `Point` class with read-only `x` and `y` properties and a read-only `distance_from_origin` property that computes $\sqrt{x^2 + y^2}$. Show that attempting to set `x` or `y` raises an error.
 
-??? success "Solution to Exercise 5"
+??? success "Solution to Exercise 3"
     ```python
-    class LazyLoader:
-        def __init__(self):
-            self._data = None
+    import math
+
+    class Point:
+        def __init__(self, x, y):
+            self._x = x
+            self._y = y
 
         @property
-        def data(self):
-            if self._data is None:
-                print("Performing expensive computation...")
-                self._data = sum(i ** 2 for i in range(10000))
-            return self._data
+        def x(self):
+            return self._x
 
-    loader = LazyLoader()
-    print(loader.data)  # Performing expensive computation... 333283335000
-    print(loader.data)  # 333283335000 (no recomputation)
-    print(loader.data)  # 333283335000 (still cached)
+        @property
+        def y(self):
+            return self._y
+
+        @property
+        def distance_from_origin(self):
+            return math.sqrt(self._x ** 2 + self._y ** 2)
+
+    p = Point(3, 4)
+    print(p.x)                      # 3
+    print(p.y)                      # 4
+    print(p.distance_from_origin)   # 5.0
+
+    try:
+        p.x = 10
+    except AttributeError:
+        print("Cannot set x")  # Cannot set x
     ```
 
 ---
 
-**Exercise 6.** A `Student` class has `name` and an optional `id_num`. The tuition `price` should be 7000 if the student has an ID number, and 8000 otherwise. A junior developer stores `price` as a plain attribute set in `__init__`. Explain why a `@property` is a better design, then implement it. Show that the same class produces different prices for different students without any explicit assignment to `price`.
+**Exercise 4.** Implement a `Document` class whose `content` property starts as writable but becomes read-only after calling `lock()`. Demonstrate both the writable and locked states.
+
+??? success "Solution to Exercise 4"
+    ```python
+    class Document:
+        def __init__(self, content=""):
+            self._content = content
+            self._locked = False
+
+        @property
+        def content(self):
+            return self._content
+
+        @content.setter
+        def content(self, value):
+            if self._locked:
+                raise AttributeError("Document is locked")
+            self._content = value
+
+        def lock(self):
+            self._locked = True
+
+    doc = Document()
+    doc.content = "Hello, world!"
+    print(doc.content)  # Hello, world!
+
+    doc.lock()
+    try:
+        doc.content = "New text"
+    except AttributeError as e:
+        print(e)  # Document is locked
+    ```
+
+---
+
+**Exercise 5.** A `Student` class has `name` and an optional `id_num`. The tuition `price` should be 7000 if the student has an ID number, and 8000 otherwise. A junior developer stores `price` as a plain attribute set in `__init__`. Explain why a `@property` is a better design, then implement it. Show that the same class produces different prices for different students without any explicit assignment to `price`.
 
 ```python
 # Junior version (plain attribute)
@@ -1018,7 +1205,7 @@ class Student:
             self.price = 8000
 ```
 
-??? success "Solution to Exercise 6"
+??? success "Solution to Exercise 5"
     The plain-attribute version works, but the price logic is buried in `__init__` and can be overridden by accident (`a.price = 0`). A `@property` makes the rule explicit, computed, and read-only:
 
     ```python
@@ -1040,61 +1227,42 @@ class Student:
     b = Student("Lee")
     print(b.price)  # 8000
 
-    # a.price = 0  # AttributeError — cannot override the rule
+    # a.price = 0  # AttributeError -- cannot override the rule
     ```
+
+    The `@property` version is better because: (1) the pricing rule lives in one place, not scattered in `__init__`, (2) it is read-only --- external code cannot accidentally set `price` to an invalid value, and (3) if the rule changes later (e.g., different tiers), you modify one method instead of hunting through constructors.
 
 ---
 
-**Exercise 7.** Predict the output and explain which attributes exist on instance `a`. Then explain what happens if you access `a.id_num` for a student created without an ID.
+**Exercise 6.** Write a `Person` class where `name` is a property with both a getter and setter. The setter should strip leading/trailing whitespace and raise `ValueError` if the name is empty after stripping. Add a read-only `full_name` property using `first_name` and `last_name` stored internally. Demonstrate both valid and invalid usage.
 
-```python
-class Student:
-    def __init__(self, name, id_num=None):
-        self.name = name
-        if id_num is not None:
-            self.id_num = id_num
-        self.price = 7_000
+??? success "Solution to Exercise 6"
+    ```python
+    class Person:
+        def __init__(self, name):
+            self.name = name  # uses the setter
 
-a = Student("Kim", 12345)
-print(a.price)
-print(a.id_num)
+        @property
+        def name(self):
+            return f"{self._first} {self._last}"
 
-b = Student("Lee")
-print(b.price)
-print(b.id_num)
-```
+        @name.setter
+        def name(self, value):
+            cleaned = value.strip()
+            if not cleaned:
+                raise ValueError("Name cannot be empty")
+            parts = cleaned.split(maxsplit=1)
+            self._first = parts[0]
+            self._last = parts[1] if len(parts) > 1 else ""
 
-??? success "Solution to Exercise 7"
+    p = Person("  Alice Smith  ")
+    print(p.name)  # Alice Smith
 
-        class Student:
-            def __init__(self, name, id_num=None):
-                self.name = name
-                if id_num is not None:
-                    self.id_num = id_num
-                self.price = 7_000
+    p.name = "Bob Jones"
+    print(p.name)  # Bob Jones
 
-        a = Student("Kim", 12345)
-        print(a.price)    # 7000
-        print(a.id_num)   # 12345
-
-        b = Student("Lee")
-        print(b.price)    # 7000
-        # print(b.id_num) # AttributeError: 'Student' has no attribute 'id_num'
-
-        # Explanation:
-        # When id_num is not None (Kim's case), self.id_num is created.
-        # When id_num is None (Lee's case), the if-block is skipped,
-        # so self.id_num is NEVER assigned — the attribute does not exist.
-        #
-        # This is a subtle bug: two instances of the same class have
-        # different sets of attributes depending on constructor arguments.
-        # This makes the class fragile — code that assumes id_num exists
-        # will crash for some students but not others.
-        #
-        # Fix: always assign all attributes in __init__, even if to None:
-        #
-        #     self.id_num = id_num  # always exists, may be None
-        #
-        # This ensures every instance has the same attribute set.
-
-    The `@property` version is better because: (1) the pricing rule lives in one place, not scattered in `__init__`, (2) it is read-only — external code cannot accidentally set `price` to an invalid value, and (3) if the rule changes later (e.g., different tiers), you modify one method instead of hunting through constructors.
+    try:
+        p.name = "   "
+    except ValueError as e:
+        print(e)  # Name cannot be empty
+    ```
