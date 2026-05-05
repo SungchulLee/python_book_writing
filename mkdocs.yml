@@ -485,7 +485,7 @@ nav:
             - Static Methods: ch07/object_model/static_methods.md 
             - Method Chaining: ch07/object_model/method_chaining.md 
             # Properties:
-            - Properties: ch07/object_model/properties_as_a_unified_abstraction.md
+            - Properties: ch07/object_model/properties.md
             - Cached Properties: ch07/object_model/cached_property.md 
 
         - 7.3 Four Pillars of Object-Oriented Programming:

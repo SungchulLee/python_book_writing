@@ -232,6 +232,16 @@ Circle.area.fset   # the setter function (or None)
 Circle.area.fdel   # the deleter function (or None)
 ```
 
+These are **two layers** of the same mechanism:
+
+| Your code | Stored in property as | Invoked by Python via |
+|---|---|---|
+| `@property def x` | `fget` | `__get__` |
+| `@x.setter def x` | `fset` | `__set__` |
+| `@x.deleter def x` | `fdel` | `__delete__` |
+
+`fget/fset/fdel` = **what to do** (your functions). `__get__/__set__/__delete__` = **when Python does it** (descriptor protocol, triggered by attribute access). The `property` object connects the two: when Python calls `property.__get__(obj, cls)`, it internally calls `fget(obj)`.
+
 !!! warning "Why Properties Enforce Control"
     Properties work because they are **data descriptors** --- they define both `__get__` and `__set__` (even if the setter raises `AttributeError`). Data descriptors are checked **before** the instance `__dict__` during attribute lookup. Without this mechanism, any assignment would bypass property logic entirely.
 
