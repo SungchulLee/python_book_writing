@@ -170,7 +170,7 @@ Use read-only properties when:
 
 ### Immutable Objects
 
-Making all attributes read-only produces an immutable object:
+Making all public attributes read-only via properties creates an **immutable interface** --- external code cannot reassign `obj.x`. However, this is not true immutability: `obj._x = 100` still works because the private attribute is just a naming convention.
 
 ```python
 class Point:
@@ -195,7 +195,19 @@ class Point:
         return Point(self._x + dx, self._y + dy)
 ```
 
-Benefits: thread-safe by design, usable as dictionary keys (with `__hash__`), easier to reason about.
+```python
+p = Point(3, 4)
+# p.x = 10      # AttributeError — property prevents this
+p._x = 10       # still works — properties prevent assignment, not mutation
+```
+
+| Level | What properties provide |
+|---|---|
+| API immutability | Yes --- `obj.x = val` raises `AttributeError` |
+| Internal immutability | No --- `obj._x = val` still works |
+| True immutability | Use `@dataclass(frozen=True)` or override `__setattr__` |
+
+Benefits of the property approach: easier to reason about, clear API intent, usable as dictionary keys (if you also define `__hash__`). For true enforcement, use `from dataclasses import dataclass` with `frozen=True`.
 
 ### Caveat: `__dict__` Override
 
