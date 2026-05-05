@@ -33,7 +33,7 @@ To write to a file, open it with a write mode.
 | `"x"` | Exclusive creation -- **fails** if file exists   |
 
 The full table of all file modes (including read and binary modes) is on the
-[Opening and Reading Files](file_reading.md#7-file-modes) page.
+[Opening and Reading Files](file_reading.md#6-file-modes) page.
 
 ### Write mode (`"w"`)
 
