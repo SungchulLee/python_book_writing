@@ -224,12 +224,18 @@ print(type(Circle.area))             # <class 'property'>
 print(isinstance(Circle.area, property))  # True
 ```
 
-You can inspect the three hooks directly:
+Every `property` object stores three function references internally:
+
+- **`fget`** --- the **getter** function. Called when you read the attribute (`obj.x`). This is the method you decorate with `@property`.
+- **`fset`** --- the **setter** function. Called when you assign to the attribute (`obj.x = value`). This is the method you decorate with `@x.setter`. If `None`, assignment raises `AttributeError`.
+- **`fdel`** --- the **deleter** function. Called when you delete the attribute (`del obj.x`). This is the method you decorate with `@x.deleter`. If `None`, deletion raises `AttributeError`.
+
+You can inspect them directly:
 
 ```python
-Circle.area.fget   # the getter function
-Circle.area.fset   # the setter function (or None)
-Circle.area.fdel   # the deleter function (or None)
+Circle.area.fget   # <function Circle.area at 0x...>
+Circle.area.fset   # None (read-only — no setter defined)
+Circle.area.fdel   # None (no deleter defined)
 ```
 
 These are **two layers** of the same mechanism:
