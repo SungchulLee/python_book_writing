@@ -8,7 +8,7 @@ When you access an attribute on a Python object, the interpreter does not simply
 
     1. **Class-controlled access** — data descriptors (e.g., `property`) can intercept reads and writes before the instance is even consulted.
     2. **Object state** — the instance's own `__dict__`, where `self.x = value` stores data.
-    3. **Class defaults** — class attributes and non-data descriptors, inherited via the MRO.
+    3. **Class defaults** — class attributes and non-data descriptors (notably functions that become methods, including instance methods, `classmethod`, and `staticmethod`), inherited via the MRO.
 
     The first tier that matches wins. Everything in Python attributes — methods, properties, slots, plain variables — is built on this single system.
 
