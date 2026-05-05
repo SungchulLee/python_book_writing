@@ -470,23 +470,24 @@ nav:
             - Constructor and Destructor: ch07/foundations/constructor_destructor.md
 
         - 7.2 Attribute Access, Methods, and Properties:
-            # Core Mechanism
-            - Attribute Lookup (Pipeline): ch07/object_model/attribute_lookup.md 
-            - Controlling Attribute Access (__getattribute__ vs __getattr__): ch07/object_model/getattribute_vs_getattr.md
-            # Attributes:
-            - Instance Attributes: ch07/object_model/instance_attributes.md 
-            - Class Attributes: ch07/object_model/class_attributes.md 
-            # Descriptors:
-            - Descriptor Protocol: ch07/object_model/descriptors.md
-            - Properties as Descriptors: ch07/object_model/property_descriptor_connection.md 
-            # Methods:
-            - Instance Methods: ch07/object_model/instance_methods.md 
-            - Class Methods: ch07/object_model/class_methods.md 
-            - Static Methods: ch07/object_model/static_methods.md 
-            - Method Chaining: ch07/object_model/method_chaining.md 
-            # Properties:
+            # 1. Big Idea: What is an Attribute?
+            - Instance Attributes: ch07/object_model/instance_attributes.md
+            - Class Attributes: ch07/object_model/class_attributes.md
+            # 2. Behavior Built on Attributes
+            ## Methods
+            - Instance Methods: ch07/object_model/instance_methods.md
+            - Class Methods: ch07/object_model/class_methods.md
+            - Static Methods: ch07/object_model/static_methods.md
+            - Method Chaining: ch07/object_model/method_chaining.md
+            ## Properties
             - Properties: ch07/object_model/properties.md
-            - Cached Properties: ch07/object_model/cached_property.md 
+            - Cached Properties: ch07/object_model/cached_property.md
+            # 3. Unifying Mechanism
+            - Descriptor Protocol: ch07/object_model/descriptors.md
+            - Properties as Descriptors: ch07/object_model/property_descriptor_connection.md
+            # 4. Core Mechanism (Internals)
+            - Attribute Lookup (Pipeline): ch07/object_model/attribute_lookup.md
+            - Controlling Attribute Access (__getattribute__ vs __getattr__): ch07/object_model/getattribute_vs_getattr.md
 
         - 7.3 Four Pillars of Object-Oriented Programming:
             - Encapsulation: ch07/pillars/encapsulation.md
