@@ -254,6 +254,7 @@ add("2", 3)     # TypeError: Expected int, got str
 | Optional params | Support both `@deco` and `@deco()` |
 
 **Best Practices**:
+
 - Always use `@wraps(func)` in wrappers
 - Use keyword-only arguments for clarity
 - Document factory parameters

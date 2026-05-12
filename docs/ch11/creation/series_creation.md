@@ -177,6 +177,7 @@ print(type(survived))  # <class 'pandas.core.series.Series'>
 ```
 
 **Limitations of dot notation:**
+
 - Fails if column name contains spaces
 - Fails if column name starts with a number
 - Fails if column name conflicts with DataFrame methods

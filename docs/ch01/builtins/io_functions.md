@@ -86,6 +86,7 @@ Why does Line A fail? Why does Line B fail? What does the mode string control?
     Line A raises `io.UnsupportedOperation: not writable`. Line B raises `io.UnsupportedOperation: not readable`.
 
     The mode string controls which operations are permitted:
+
     - `"r"` (read): only `read()`, `readline()`, `readlines()` -- no writing
     - `"w"` (write): only `write()`, `writelines()` -- no reading, and it truncates the file to zero length on opening
 

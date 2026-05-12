@@ -80,11 +80,13 @@ print(factorial_iterative(5))  # 120
 ```
 
 **When to use recursion**:
+
 - Problem has recursive structure (tree traversal, divide-and-conquer)
 - Code clarity matters more than performance
 - Problem is naturally expressed recursively
 
 **When to use iteration**:
+
 - Simple loops suffice
 - Performance is critical
 - Avoiding stack overflow is important

@@ -383,6 +383,7 @@ a, b = "h"
 What is the minimum number of characters needed for each unpacking pattern?
 
 ??? success "Solution to Exercise 2"
+
     - Line 1: **Succeeds**. `"hi"` has 2 characters, 2 variables.
     - Line 2: **ValueError**: not enough values to unpack. `"hi"` has 2 characters, 3 variables needed.
     - Line 3: **Succeeds**. `a = "h"`, `b = ["i"]`. Starred variables absorb remaining elements.

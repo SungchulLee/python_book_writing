@@ -273,6 +273,7 @@ result = value if condition else default
 | Walrus | Assign in expressions | `if (n := len(x)):` |
 
 Key principles:
+
 - Prefer EAFP for cleaner code
 - Always use context managers for resources
 - Use comprehensions for clarity and performance
@@ -311,6 +312,7 @@ What can go wrong with the LBYL pattern between the `exists()` check and the `op
     EAFP avoids this because the check and the operation are atomic from the application's perspective: you try to open the file, and if it fails, you handle the error. There is no window where the file's state can change between checking and using.
 
     EAFP is also more Pythonic because:
+
     - It handles the "usually succeeds" case with zero overhead (no preliminary check)
     - It uses Python's exception mechanism, which is well-optimized for the no-exception path
     - It covers all failure modes, not just the ones you thought to check for

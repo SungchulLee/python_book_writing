@@ -8,6 +8,7 @@
 ### 1. LEGB Rule
 
 Lookup order:
+
 1. **L**ocal
 2. **E**nclosing
 3. **G**lobal

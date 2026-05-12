@@ -37,6 +37,7 @@ print(arr.flags)  # Shows C_CONTIGUOUS, OWNDATA, etc.
 ```
 
 **Key properties:**
+
 - **Data buffer**: Raw memory block holding elements
 - **Metadata**: Shape, strides, dtype, flags
 - **C-contiguous layout**: Row-major ordering (default)
@@ -56,6 +57,7 @@ print(arr_f.flags['F_CONTIGUOUS'])  # True
 ```
 
 **Why it matters:**
+
 - Cache locality affects performance
 - Interoperability with C/Fortran libraries
 - Stride calculations for slicing

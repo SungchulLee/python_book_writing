@@ -164,6 +164,7 @@ Classify each of the following as "language-level guarantee" or "CPython impleme
 Explain why the distinction matters for writing portable Python code.
 
 ??? success "Solution to Exercise 1"
+
     1. **Language-level guarantee** -- the Python language specification defines lists as ordered, mutable sequences.
     2. **CPython implementation detail** -- `sys.getrefcount` only exists because CPython uses reference counting. PyPy does not use reference counting, and while it provides `sys.getrefcount` for compatibility, the values may differ.
     3. **CPython implementation detail** -- the language says nothing about caching integers. This is a CPython memory optimization.

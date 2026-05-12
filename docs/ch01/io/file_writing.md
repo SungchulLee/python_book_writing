@@ -288,6 +288,7 @@ Why is accidental use of `"w"` a common source of data loss? What simple precaut
     The first `"w"` open creates the file with `"first\n"`. The second `"w"` open **overwrites** the entire file with `"second\n"` -- `"first\n"` is gone. The `"a"` open appends `"third\n"` to the existing content.
 
     Accidental use of `"w"` is a common source of data loss because it silently destroys the previous content without warning. Precautions:
+
     1. Check if the file exists before writing: `if Path(filename).exists(): raise FileExistsError(...)`.
     2. Use `"x"` mode (exclusive creation): `open("log.txt", "x")` raises `FileExistsError` if the file already exists.
     3. Always use `"a"` for log files.

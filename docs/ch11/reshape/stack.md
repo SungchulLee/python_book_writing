@@ -335,6 +335,7 @@ print(melted)
 | `dropna` | Drop rows with missing values | True |
 
 **Key Points:**
+
 - `stack()` pivots columns to rows
 - Result is typically a Series with MultiIndex
 - Operates on innermost column level by default

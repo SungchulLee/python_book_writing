@@ -158,6 +158,7 @@ All three calls succeed. Why does Python not enforce type hints? What tool would
     A **static type checker** like `mypy` or `pyright` would flag the last two calls as errors: `add("hello", " world")` passes `str` where `int` is expected.
 
     The benefits of type hints without enforcement:
+
     1. **Documentation**: readers immediately see expected types.
     2. **IDE support**: autocompletion, refactoring, and inline error highlighting.
     3. **Static analysis**: tools catch type errors before runtime, during development.
@@ -224,6 +225,7 @@ def transform(data: list[tuple[str, int]]) -> dict[str, int]:
 What is the difference between `Optional[int]` and `Union[int, None]`? Why is expressing these types in hints useful even though Python does not check them?
 
 ??? success "Solution to Exercise 3"
+
     - `find(items: list[int], target: int) -> Optional[int]`: takes a list of integers and an integer target. Returns either an `int` (the found value/index) or `None` (if not found).
 
     - `process(value: Union[str, int]) -> str`: accepts either a string or an integer. Returns a string.

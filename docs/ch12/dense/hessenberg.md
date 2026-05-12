@@ -36,6 +36,7 @@ if __name__ == "__main__":
 $$A = QHQ^H$$
 
 where:
+
 - $Q$ is unitary
 - $H$ is upper Hessenberg (zero below first subdiagonal)
 

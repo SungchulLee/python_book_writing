@@ -23,6 +23,7 @@ Instance methods are functions defined inside a class that operate on instance-s
     | `@staticmethod` | `staticmethod.__get__(obj, cls)` → raw function | nothing |
 
     Methods are not a language feature — they are a **side effect of attribute access
+
     + descriptor binding**.
 
 ---

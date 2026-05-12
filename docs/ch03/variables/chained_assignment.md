@@ -48,6 +48,7 @@ dis.dis(f)
 ```
 
 Shows:
+
 - `LOAD_CONST 1`
 - `DUP_TOP` (duplicate)
 - `DUP_TOP` (duplicate)

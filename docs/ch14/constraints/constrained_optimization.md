@@ -39,6 +39,7 @@ print(f"Bounded value: {objective(result_bounded.x):.4f}")
 ```
 
 **Key Methods Supporting Bounds:**
+
 - `L-BFGS-B`: Limited memory BFGS with bounds (recommended)
 - `TNC`: Truncated Newton method
 - `SLSQP`: Sequential least squares programming

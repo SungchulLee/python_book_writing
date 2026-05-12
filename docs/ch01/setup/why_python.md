@@ -243,6 +243,7 @@ int main() {
 Name three Python third-party packages and describe a practical task each one is used for. For each, write the `pip install` command needed to install it.
 
 ??? success "Solution to Exercise 4"
+
     1. **`numpy`** -- used for numerical computing with arrays and matrices. Essential for scientific calculations and data processing.
 
         ```bash

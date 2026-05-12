@@ -88,6 +88,7 @@ print(f"Leakage ratio: {leakage_ratio:.1f}:1")
 ```
 
 **What's happening:**
+
 - The signal doesn't repeat seamlessly at the boundary
 - The discontinuity introduces high-frequency components ("spectral leakage")
 - Energy "leaks" from the signal's true frequency bin into neighboring bins
@@ -142,6 +143,7 @@ visualize_windows()
 ```
 
 **Key observations:**
+
 - Rectangular: Edges are sharp (1 → 0 instantly)
 - Hann, Hamming, Blackman: Edges taper smoothly (0 → 1 → 0)
 - Kaiser: Tunable edge sharpness via β parameter
@@ -153,6 +155,7 @@ visualize_windows()
 $$w[n] = 0.5 \left(1 - \cos\left(\frac{2\pi n}{N-1}\right)\right), \quad 0 \le n < N$$
 
 **Characteristics:**
+
 - General-purpose window, widely used
 - Good balance of main lobe width and sidelobe attenuation
 - Sidelobe level: ~-32 dB
@@ -167,6 +170,7 @@ print(f"Hann window min: {w_hann.min():.4f}, max: {w_hann.max():.4f}")
 $$w[n] = 0.54 - 0.46 \cos\left(\frac{2\pi n}{N-1}\right), \quad 0 \le n < N$$
 
 **Characteristics:**
+
 - Slightly flatter peak than Hann
 - Sidelobe level: ~-43 dB (better than Hann)
 - Does not quite reach zero at edges (residual window effect)
@@ -181,6 +185,7 @@ print(f"Hamming window min: {w_hamming.min():.4f}, max: {w_hamming.max():.4f}")
 $$w[n] = 0.42 - 0.5 \cos\left(\frac{2\pi n}{N-1}\right) + 0.08 \cos\left(\frac{4\pi n}{N-1}\right)$$
 
 **Characteristics:**
+
 - Very low sidelobe level: ~-58 dB
 - Wider main lobe (reduced frequency resolution)
 - Use when sidelobe reduction is critical (e.g., radar)
@@ -197,6 +202,7 @@ $$w[n] = \frac{I_0\left(\beta\sqrt{1-(2n/N-1)^2}\right)}{I_0(\beta)}$$
 where $I_0$ is the modified Bessel function of the first kind.
 
 **The β parameter tunes the trade-off:**
+
 - $\beta = 0$: Rectangular window
 - $\beta = 5$: Similar to Hamming
 - $\beta = 10$: Better sidelobe suppression (~-60 dB)
@@ -238,6 +244,7 @@ print(f"Kaiser window for -80 dB: β ≈ {0.1102 * (80 - 8.7):.1f}")
 
 !!! note "Kaiser Window Design"
     The β parameter has design rules:
+
     - $\beta = 0.1102(A - 8.7)$ for $A > 50$ dB
     - $\beta = 0.5842(A - 21)^{0.4} + 0.07886(A - 21)$ for $21 < A < 50$ dB
 
@@ -268,10 +275,12 @@ Every window function involves a trade-off:
 | Kaiser (β=10) | -60 dB | 5 bins | Tunable trade-off |
 
 **Interpretation:**
+
 - **Main lobe width**: Narrower = better frequency resolution
 - **Sidelobe level**: Lower = better dynamic range, weaker signals visible
 
 **Example:**
+
 - If two signals are close in frequency, a wider main lobe (Blackman) will merge them
 - If a weak signal hides behind a strong signal's sidelobes, you need lower sidelobes
 
@@ -335,6 +344,7 @@ w_bartlett = np.bartlett(N)
 ```
 
 !!! tip "Window Selection Guidelines"
+
     1. **Default choice**: Hann window (good balance)
     2. **Weak signal detection**: Kaiser or Blackman (lower sidelobes)
     3. **High frequency resolution needed**: Rectangular or Kaiser with low β
@@ -432,6 +442,7 @@ for name, w in windows.items():
 - **Standard choice**: Hann window for most applications
 
 **Next steps:**
+
 1. Read **Spectrogram and STFT** to see windows in action on time-varying signals
 2. Explore **2D FFT** for image processing where windowing is less critical
 3. Study window design theory for specialized applications

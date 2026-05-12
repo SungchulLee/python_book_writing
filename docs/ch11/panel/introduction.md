@@ -8,6 +8,7 @@
 ## What is Panel Data?
 
 Panel data has two dimensions:
+
 - **Cross-sectional**: Different entities (stocks, companies, individuals)
 - **Time-series**: Repeated observations over time
 
@@ -52,6 +53,7 @@ Panel: 100 stocks × 252 days = 25,200 observations
 ### 2. Control for Unobserved Heterogeneity
 
 Panel data allows fixed effects models that control for entity-specific factors:
+
 - Stock-specific characteristics (management quality, brand value)
 - Time-specific effects (market conditions, regulations)
 

@@ -82,6 +82,7 @@ print(sum_iterative(numbers))        # 15
 ## Key Takeaway for Python
 
 Python deliberately doesn't support TCO. When you identify tail recursive code:
+
 1. Convert to iteration for better performance
 2. Or use accumulator pattern if recursion is clearer
 3. Accept the O(n) stack space usage if recursion adds clarity

@@ -11,6 +11,7 @@ Annotations combine text with arrows to highlight specific features in your plot
     unannotated one leaves interpretation to guesswork.
 
 !!! warning "Annotation Rules"
+
     - **Highlight only key points** — annotate the peak, the anomaly, or the
       threshold, not every data point
     - **Avoid annotating everything** — more than 3--5 annotations on a single

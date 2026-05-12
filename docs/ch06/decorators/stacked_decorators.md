@@ -259,6 +259,7 @@ def func():
 | Metadata | Use `@wraps(func)` at each level |
 
 **Key Rules**:
+
 - Decorators apply bottom-up, execute top-down
 - Order affects both behavior and measurements
 - Inner decorators are "closer" to the original function

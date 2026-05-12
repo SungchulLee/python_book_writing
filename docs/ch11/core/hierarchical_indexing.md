@@ -19,6 +19,7 @@ us       new york             21        68
 ```
 
 Hierarchical indexing allows you to:
+
 - Represent 3D+ data in a 2D structure
 - Perform grouped operations efficiently
 - Select data at different levels of granularity
@@ -148,6 +149,7 @@ df.loc[("us", "new york")]
 ```
 
 **Why avoid chained indexing?**
+
 - `df.loc["us"]` creates an intermediate DataFrame
 - pandas treats these as separate operations
 - Can lead to unpredictable behavior with assignments

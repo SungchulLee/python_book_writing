@@ -62,6 +62,7 @@ stats.print_stats(10)  # Top 10 functions
 ## Interpreting Results
 
 cProfile output shows:
+
 - **ncalls**: Number of calls to the function
 - **tottime**: Total time spent in the function (excluding subfunctions)
 - **cumtime**: Cumulative time (including called functions)

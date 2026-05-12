@@ -145,6 +145,7 @@ print(id(42))           # Is this a memory address?
 Which of these can you safely rely on in portable Python code?
 
 ??? success "Solution to Exercise 1"
+
     - **(a) Guaranteed.** Mutating a mutable object does not change its identity. `id(x)` is stable across mutations for the lifetime of the object. This is a language guarantee.
     - **(b) Implementation detail.** Small integer caching (`-5` to `256`) is a CPython optimization. Other implementations may not cache these values, so `a is b` could be `False`.
     - **(c) Guaranteed.** String immutability is a language guarantee. `s[0] = "H"` raises `TypeError` in every Python implementation.
@@ -220,14 +221,17 @@ Why is Pattern A particularly dangerous? What is the correct alternative?
 
 ??? success "Solution to Exercise 3"
     **Pattern A** (reference counting cleanup):
+
     - CPython: works (file closed immediately on `del` because refcount drops to 0)
     - PyPy: **broken** (PyPy uses a tracing garbage collector, not reference counting; `del` does not guarantee immediate cleanup)
     - The correct alternative: `with open("test.txt", "w") as f: f.write("data")`. Context managers guarantee cleanup regardless of the garbage collection strategy.
 
     **Pattern B** (id for hashing):
+
     - Works in all implementations but is **semantically wrong**. After `del x`, a new object could reuse the same `id()`, causing stale lookups. Use the object itself or a proper hash.
 
     **Pattern C** (small integer caching):
+
     - CPython: works for `-5` to `256`
     - PyPy: may work with a different range
     - MicroPython: may not cache at all

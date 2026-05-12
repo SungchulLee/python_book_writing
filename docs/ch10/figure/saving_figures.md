@@ -16,6 +16,7 @@ Exporting figures to files is essential for reports, papers, and presentations.
     | Web / interactive | SVG | Vector, DOM-manipulable, searchable text |
 
 !!! warning "Common Pitfalls"
+
     - **Clipped labels:** without `bbox_inches='tight'`, axis labels and titles may be cut off. Always include it (or use `constrained_layout`).
     - **Low DPI for print:** screen resolution (72–100 DPI) looks blurry in print. Use 300 DPI minimum for papers and posters.
     - **Large SVG files:** vector plots with thousands of data points produce huge SVGs. For dense scatter plots or heatmaps, prefer PNG.

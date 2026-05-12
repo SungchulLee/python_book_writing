@@ -12,6 +12,7 @@ DataFrame.eval(expr, inplace=False)
 ```
 
 **Parameters:**
+
 - `expr`: String expression to evaluate
 - `inplace`: If True, modify DataFrame in place
 
@@ -259,12 +260,14 @@ df.eval('deviation = A - rolling_mean', inplace=True)
 | Local variables | Direct use | Use @ prefix |
 
 **When to use eval():**
+
 - Large DataFrames (>100K rows)
 - Complex arithmetic expressions
 - Memory-constrained environments
 - Multiple column operations
 
 **When to use standard pandas:**
+
 - Small DataFrames
 - Need method calls (`.abs()`, `.str`, etc.)
 - Custom functions required

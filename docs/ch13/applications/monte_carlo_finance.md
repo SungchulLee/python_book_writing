@@ -93,7 +93,7 @@ print(f"95% CI: [{price - 1.96*se:.4f}, {price + 1.96*se:.4f}]")
 For a European call, the Black-Scholes formula provides an exact benchmark:
 
 $$
-C = S_0\, \Phi(d_1) - K e^{-rT}\, \Phi(d_2)
+C = S_0\, \mathcal{N}(d_1) - K e^{-rT}\, \mathcal{N}(d_2)
 $$
 
 where $\Phi$ is the standard normal CDF and

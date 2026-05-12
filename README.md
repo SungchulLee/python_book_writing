@@ -7,6 +7,7 @@ This document explains how to **set up, run, and preview this documentation loca
 ## Prerequisites
 
 You need:
+
 - **Python 3.8+**
 - **Git**
 - Internet connection (for first-time installation)
@@ -47,6 +48,7 @@ sudo apt install git
 ```
 
 **Windows**
+
 - Install **Git for Windows**
 - Use **Git Bash** as your terminal
 

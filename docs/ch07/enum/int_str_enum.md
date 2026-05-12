@@ -175,16 +175,19 @@ except TypeError as e:
 ## When to Use
 
 **IntEnum:**
+
 - Numeric codes (HTTP status, error codes)
 - Need comparison with numbers
 - Using as array indices
 
 **StrEnum (3.11+):**
+
 - String representations (color names, content types)
 - Need string operations
 - Serialization to strings
 
 **Regular Enum:**
+
 - Arbitrary values
 - No numeric/string compatibility needed
 - Mixed value types

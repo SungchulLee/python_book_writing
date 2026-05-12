@@ -252,6 +252,7 @@ Trace the environment chain: what are Γ_global, Γ_outer, and Γ_inner? When `i
     - When `inner()` executes: Γ_inner = {y: ?}, parent = Γ_outer
 
     When `inner` evaluates `x + 10`:
+
     1. Look up `x` in Γ_inner → not found
     2. Look up `x` in parent Γ_outer → found: 2
     3. Compute 2 + 10 = 12, bind y: Γ_inner = {y: 12}

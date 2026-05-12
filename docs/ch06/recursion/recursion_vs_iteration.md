@@ -98,12 +98,14 @@ def large_sum_recursive(n):
 ## When to Use Each
 
 **Use Recursion for:**
+
 - Tree/graph traversal
 - Divide-and-conquer algorithms
 - Mathematical problem definitions
 - When code clarity is priority
 
 **Use Iteration for:**
+
 - Simple loops (for, while)
 - Processing sequences
 - When memory/stack is limited

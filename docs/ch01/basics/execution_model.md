@@ -81,12 +81,14 @@ code → compile → bytecode → VM → machine code → CPU → result
 ### Compile Time vs Run Time
 
 **Compile time (before execution):**
+
 - Python parses the code
 - Generates bytecode
 - **Determines variable scope (very important)**
 - Detects syntax errors
 
 **Run time (during execution):**
+
 - Bytecode is executed by the Python Virtual Machine (PVM)
 - Values are computed
 - Runtime errors may occur
@@ -209,6 +211,7 @@ bytecode → VM → CPU
 
 #### 2. Simpler Language Design
 Python does not need to deal with:
+
 - CPU instruction sets
 - Registers
 - Low-level memory handling
@@ -239,6 +242,7 @@ This flexibility is much easier to support with a VM than with direct machine co
 
 #### 4. Better Error Handling
 Because execution is controlled by the VM:
+
 - Python can provide detailed tracebacks
 - Errors can be detected cleanly at runtime
 
@@ -246,6 +250,7 @@ Because execution is controlled by the VM:
 
 #### 5. Memory Management
 The VM manages:
+
 - Object creation
 - Reference counting
 - Garbage collection

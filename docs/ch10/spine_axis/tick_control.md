@@ -24,6 +24,7 @@ This document covers the XAxis/YAxis objects, tick locators, and tick formatters
     they cannot express your needs.
 
 !!! tip "Design Principle"
+
     - **Too many ticks** → visual clutter, labels overlap
     - **Too few ticks** → reader cannot judge scale or read values
 

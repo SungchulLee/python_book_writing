@@ -74,6 +74,7 @@ profiler.print_stats()
 ## Combining with cProfile
 
 For a complete picture, use both tools:
+
 - **cProfile** identifies which functions are slow
 - **line_profiler** identifies which lines within those functions are slow
 

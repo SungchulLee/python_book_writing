@@ -121,6 +121,7 @@ w: list[int] = [1, "two", 3]
 ```
 
 ??? success "Solution to Exercise 3"
+
     - `x: int = "hello"` — error: incompatible type `str` assigned to `int`
     - `y: str = 42` — error: incompatible type `int` assigned to `str`
     - `z: list[int] = [1, 2, 3]` — no error

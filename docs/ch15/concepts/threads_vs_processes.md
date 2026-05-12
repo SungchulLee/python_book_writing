@@ -12,6 +12,7 @@ Understanding the fundamental differences between threads and processes is essen
 ### Process
 
 A **process** is an independent program execution with its own:
+
 - Memory space
 - Python interpreter
 - Global variables
@@ -34,6 +35,7 @@ Process 1              Process 2
 ### Thread
 
 A **thread** is a lightweight unit of execution that shares:
+
 - Memory space (with other threads in same process)
 - Python interpreter
 - Global variables

@@ -285,6 +285,7 @@ class Config:
 | `__slots__` | Reduce memory | Many instances |
 
 Key points:
+
 - Understand shallow vs deep copy to avoid aliasing bugs
 - Use memory views for efficient buffer manipulation
 - Use `__slots__` when creating many instances of a class

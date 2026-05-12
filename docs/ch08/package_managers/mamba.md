@@ -10,11 +10,13 @@
 ## Why mamba?
 
 conda's dependency solver can be **very slow**, especially with:
+
 - Many packages
 - Complex dependency trees
 - Large environments
 
 mamba solves the same problems **10-100x faster** using:
+
 - C++ implementation (libsolv)
 - Parallel downloads
 - Better dependency resolution algorithm
@@ -114,6 +116,7 @@ conda env export > environment.yml
 | Resolve complex dependencies | Minutes | Seconds |
 
 The difference is most noticeable with:
+
 - Many packages
 - Version conflicts to resolve
 - Fresh environments
@@ -152,6 +155,7 @@ The difference is most noticeable with:
 ## Micromamba
 
 **micromamba** is an even smaller, standalone version:
+
 - No base environment needed
 - Single static binary (~5MB)
 - No Python dependency
@@ -234,6 +238,7 @@ Then `conda install` actually runs `mamba install`.
 - Updating environments
 
 Use conda for:
+
 - `activate`/`deactivate`
 - `config` changes
 - `env export`

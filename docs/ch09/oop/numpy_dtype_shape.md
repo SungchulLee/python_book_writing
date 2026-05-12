@@ -265,6 +265,7 @@ result = arr1 + arr2  # ✅ (3, 4)
 ### 2. Shape Rules
 
 Broadcasting works when:
+
 - Dimensions are equal, or
 - One dimension is 1, or
 - Dimension doesn't exist (added as size 1)

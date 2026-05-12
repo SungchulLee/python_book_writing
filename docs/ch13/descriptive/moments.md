@@ -477,17 +477,20 @@ from statsmodels.stats.power import normal_power_het
 ## Summary
 
 **Moments:**
+
 - 1st: Mean (location)
 - 2nd: Variance (spread)
 - 3rd: Skewness (asymmetry)
 - 4th: Kurtosis (tail heaviness)
 
 **Skewness:**
+
 - 0: Symmetric
 - >0: Right-skewed (mean > median)
 - <0: Left-skewed (mean < median)
 
 **Kurtosis (excess):**
+
 - 0: Normal tails
 - >0: Heavy tails (more extremes)
 - <0: Light tails (fewer extremes)

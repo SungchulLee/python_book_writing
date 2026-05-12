@@ -67,6 +67,7 @@ Parent.__init_subclass__(Child)
 ```
 
 The hook receives:
+
 - `cls`: The newly created subclass (not the parent)
 - `**kwargs`: Any keyword arguments from the class definition
 

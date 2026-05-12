@@ -10,6 +10,7 @@ When you apply a standard FFT to a long signal, you get frequency information bu
 Consider a chirp signal that starts at 1000 Hz and sweeps to 5000 Hz over 2 seconds. A standard FFT of the entire signal would show frequencies between 1000–5000 Hz, but you'd have no idea how the frequency changed with time.
 
 The **Short-Time Fourier Transform (STFT)** solves this problem by:
+
 1. Dividing the signal into short, overlapping time windows
 2. Applying a window function to each slice (to reduce spectral leakage)
 3. Computing the FFT of each windowed slice
@@ -24,6 +25,7 @@ The STFT of a signal $x(n)$ is defined as:
 $$X(m, k) = \sum_{n=0}^{N-1} w(n) \cdot x(n + m \cdot h) \cdot e^{-j2\pi kn/N}$$
 
 where:
+
 - $m$ is the time frame index
 - $k$ is the frequency bin index
 - $w(n)$ is a window function (Hann, Hamming, etc.)
@@ -35,12 +37,14 @@ The magnitude $|X(m, k)|$ represents the power at frequency bin $k$ during time 
 ### Sliding Window Approach
 
 The key idea is to:
+
 1. **Extract overlapping segments** from the signal using a sliding window
 2. **Apply a window function** to each segment (typically Hann or Hamming to reduce edge artifacts)
 3. **Compute the FFT** of each windowed segment
 4. **Arrange results** in a 2D array: rows = frequency bins, columns = time frames
 
 **Overlap considerations:**
+
 - 50% overlap is common (hop length = window length / 2)
 - More overlap preserves temporal continuity but increases computation
 - Less overlap (25% overlap) speeds up computation with minimal quality loss
@@ -86,12 +90,14 @@ plt.show()
 ```
 
 **Key parameters:**
+
 - `nperseg`: Window length (number of samples per segment)
 - `noverlap`: Number of overlapping samples between adjacent segments
 - `window`: Type of window function ('hann', 'hamming', 'blackman', 'kaiser', etc.)
 - `nfft`: FFT size (use zero-padding for better frequency resolution)
 
 !!! tip "Parameter Selection"
+
     - **Longer windows** → better frequency resolution, worse time resolution
     - **Shorter windows** → better time resolution, worse frequency resolution
     - **Zero-padding** (`nfft > nperseg`) → smoother frequency display, doesn't improve actual resolution
@@ -231,6 +237,7 @@ print(f"dB range: {Sxx_db.min():.1f} to {Sxx_db.max():.1f} dB")
 ```
 
 **Why decibels matter:**
+
 - Human hearing perceives loudness logarithmically
 - dB scale reveals quiet but important signals masked by peaks
 - Standard dynamic range: -80 dB to 0 dB (relative to max)
@@ -280,10 +287,12 @@ plt.show()
 ```
 
 **Comparison:**
+
 - `imshow()`: Assumes uniform grid, simpler syntax
 - `pcolormesh()`: More flexible for non-uniform grids, handles irregular time spacing
 
 !!! tip "Colormap Selection"
+
     - `viridis`: Perceptually uniform, colorblind-friendly
     - `magma`, `inferno`: High contrast, good for small dynamic ranges
     - `jet`: Avoid (perceptually non-linear), but familiar to some users

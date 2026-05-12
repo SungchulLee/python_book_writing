@@ -8,6 +8,7 @@ A **DataFrame** is a two-dimensional labeled data structure with columns of pote
 ## Conceptual Overview
 
 A DataFrame can be thought of as:
+
 - A dictionary of Series objects sharing the same index
 - A 2D NumPy array with row and column labels
 - An Excel spreadsheet with named columns

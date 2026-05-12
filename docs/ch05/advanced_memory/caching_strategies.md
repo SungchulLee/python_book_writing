@@ -252,6 +252,7 @@ print(f"With pool: {time.time() - start:.2f}s")
 ## Summary
 
 Key points:
+
 - Use `@lru_cache` for simple function memoization
 - Use `WeakValueDictionary` for caches that auto-clean
 - Implement custom caches for specific requirements (TTL, size)

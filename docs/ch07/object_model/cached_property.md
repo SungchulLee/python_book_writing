@@ -107,6 +107,7 @@ Circle.area = CachedProperty(area)
 ```
 
 The `CachedProperty.__init__` stores:
+
 - `self.func = area` → original method
 - `self.__doc__ = area.__doc__` → docstring
 - `self.name = 'area'` → attribute name
@@ -231,11 +232,13 @@ class Matrix:
 ### 2. When to Choose
 
 **Use `@property` when:**
+
 - Value changes over time
 - Computation is cheap
 - Need fresh value each time
 
 **Use `@cached_property` when:**
+
 - Value is constant after creation
 - Computation is expensive
 - Multiple accesses expected

@@ -179,6 +179,7 @@ Why does `range(0, 10, -1)` produce an empty list? What is the general rule for 
     `range(0, 10, -1)` is empty because with a negative step, `range` counts downward, but `start` (0) is already less than `stop` (10). There is no way to count down from 0 to 10.
 
     The general rule: a `range` is empty when:
+
     - `step > 0` and `start >= stop` (counting up but already past the target)
     - `step < 0` and `start <= stop` (counting down but already past the target)
 

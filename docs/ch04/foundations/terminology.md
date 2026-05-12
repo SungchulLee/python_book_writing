@@ -14,6 +14,7 @@ x = 42  # Binds name 'x' to integer object 42
 ```
 
 **Key Properties**:
+
 - Names stored in namespaces (dictionaries)
 - Objects stored in heap memory
 - Multiple names can bind to same object
@@ -33,6 +34,7 @@ def f():
 ```
 
 **Types**:
+
 - **Local**: Function/method scope
 - **Enclosing**: Nested function scopes
 - **Global**: Module level
@@ -118,6 +120,7 @@ print(gc.get_count())  # (count0, count1, count2)
 **Definition**: Formal term for namespace context in language semantics
 
 In formal semantics:
+
 - Environment: Γ (gamma)
 - Binding: Γ[x ↦ v] means "bind x to value v in Γ"
 

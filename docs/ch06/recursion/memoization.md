@@ -113,6 +113,7 @@ expensive_function.cache_clear()
 ## Performance Impact
 
 Memoization provides dramatic speedup for recursive algorithms with overlapping subproblems:
+
 - Without memoization: O(2^n)
 - With memoization: O(n)
 

@@ -41,6 +41,7 @@ print(df['product'].dtype)  # category
 ### Categories are Automatically Inferred
 
 When using `astype('category')`, pandas automatically:
+
 - Identifies unique values
 - Creates categories in sorted order (alphabetical for strings)
 - Assigns integer codes to each value

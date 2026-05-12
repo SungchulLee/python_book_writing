@@ -223,6 +223,7 @@ print(a is c)  # ?
 **Answer**: `True`, `False`, `True`
 
 **Explanation**: 
+
 - `==` compares values (equality)
 - `is` compares identity (same object in memory)
 
@@ -323,6 +324,7 @@ print(a == c)
 **Answer**: `~88` (varies), `True`, `False`, `True`
 
 **Explanation**:
+
 - `b = a` creates another reference to same object
 - `c = a[:]` creates a shallow copy (new object)
 
@@ -358,6 +360,7 @@ squares_gen = (x**2 for x in range(1000000))
 ### Q10: Explain garbage collection
 
 **Answer**:
+
 - Python uses reference counting as primary mechanism
 - Each object tracks how many references point to it
 - When count reaches 0, memory is freed

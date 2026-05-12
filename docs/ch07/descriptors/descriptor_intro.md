@@ -261,11 +261,13 @@ print(type(Example.__dict__['x']))  # <class 'property'>
 ### 2. When to Use Each
 
 **Use `@property` when:**
+
 - One-off attribute with custom logic
 - Simple getter/setter/deleter
 - Specific to one class
 
 **Use descriptor when:**
+
 - Reusable across multiple classes
 - Complex attribute management
 - Need to share logic

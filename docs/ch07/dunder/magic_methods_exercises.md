@@ -5,6 +5,7 @@
 
 ## Exercise 1: Temperature Class
 Create a `Temperature` class that:
+
 - Stores temperature in Celsius
 - Implements `__init__`, `__repr__`, and `__str__`
 - Implements comparison operators (`__eq__`, `__lt__`, `__gt__`, etc.)
@@ -25,6 +26,7 @@ print(t1 + 5)  # Temperature(30)
 
 ## Exercise 2: Shopping Cart
 Create a `ShoppingCart` class that:
+
 - Implements `__len__` to return the number of items
 - Implements `__getitem__` to access items by index
 - Implements `__setitem__` to update items
@@ -38,6 +40,7 @@ Create a `ShoppingCart` class that:
 
 ## Exercise 3: Fraction Class
 Create a `Fraction` class that:
+
 - Stores numerator and denominator
 - Implements all arithmetic operators (`__add__`, `__sub__`, `__mul__`, `__truediv__`)
 - Automatically simplifies fractions (greatest common divisor)
@@ -59,6 +62,7 @@ print(float(f1))  # 0.5
 
 ## Exercise 4: Range-like Class
 Create a `CustomRange` class that mimics Python's built-in `range()`:
+
 - Implements `__init__` with start, stop, and step parameters
 - Implements `__len__` to return the number of elements
 - Implements `__getitem__` to access elements by index
@@ -70,6 +74,7 @@ Create a `CustomRange` class that mimics Python's built-in `range()`:
 
 ## Exercise 5: Callable Validator
 Create a `Validator` class that:
+
 - Takes validation rules in `__init__` (e.g., min, max, type)
 - Implements `__call__` to validate a value
 - Returns True if valid, False otherwise
@@ -86,6 +91,7 @@ print(age_validator(-5))  # False
 
 ## Exercise 6: File Logger Context Manager
 Create a `FileLogger` context manager that:
+
 - Opens a log file when entering the context
 - Implements `__enter__` and `__exit__`
 - Provides a `log(message)` method
@@ -105,6 +111,7 @@ with FileLogger('app.log') as logger:
 
 ## Exercise 7: Coordinate System
 Create a `Coordinate` class that:
+
 - Represents a point in 2D space
 - Implements arithmetic operators for vector operations
 - Implements `__abs__` to return distance from origin
@@ -116,6 +123,7 @@ Create a `Coordinate` class that:
 
 ## Exercise 8: Counter Dictionary
 Create a `CounterDict` class that:
+
 - Automatically initializes missing keys to 0
 - Implements `__missing__` for default values
 - Implements `__getitem__` and `__setitem__`
@@ -134,6 +142,7 @@ print(counter['c'])  # 0 (not KeyError)
 
 ## Exercise 9: Smart String
 Create a `SmartString` class that:
+
 - Wraps a regular string
 - Implements `__len__`, `__getitem__`, and `__iter__`
 - Implements `__add__` for concatenation
@@ -146,6 +155,7 @@ Create a `SmartString` class that:
 
 ## Exercise 10: Matrix Operations
 Create a `Matrix` class that:
+
 - Stores a 2D grid of numbers
 - Implements `__add__` and `__sub__` for matrix addition/subtraction
 - Implements `__mul__` for scalar multiplication and matrix multiplication
@@ -157,6 +167,7 @@ Create a `Matrix` class that:
 
 ## Challenge Exercise: Database-like Table
 Create a `Table` class that:
+
 - Stores rows of data with named columns
 - Implements `__len__` for number of rows
 - Implements `__getitem__` to get rows by index or columns by name
@@ -172,6 +183,7 @@ This is a complex exercise that combines multiple magic methods!
 ## Testing Your Solutions
 
 For each exercise, write test cases that verify:
+
 1. All magic methods work correctly
 2. Edge cases are handled (empty inputs, None, zeros, etc.)
 3. Type checking works appropriately

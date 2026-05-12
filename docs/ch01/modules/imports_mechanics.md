@@ -222,6 +222,7 @@ from math import *
 Why is `from math import *` generally discouraged? What specific problem can it cause with name collisions?
 
 ??? success "Solution to Exercise 2"
+
     - `import math`: imports the module as a **namespace**. Access via `math.sqrt()`. Best for standard library modules where the module name provides useful context and prevents name collisions.
 
     - `from math import sqrt`: imports `sqrt` directly into the current namespace. Access via `sqrt()` without the module prefix. Good when you use a few specific functions frequently and the names are unambiguous.

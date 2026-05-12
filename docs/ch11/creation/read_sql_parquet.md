@@ -397,6 +397,7 @@ print(f"Parquet size: {os.path.getsize('data.parquet') / 1e6:.1f} MB")
 ```
 
 Typical results:
+
 - Parquet is 5-10x faster to read than CSV
 - Parquet files are 2-10x smaller than CSV
 - Column selection in Parquet provides additional speedup

@@ -137,11 +137,13 @@ plt.show()
 | Fine customization | Limited | Full control |
 
 **Use pandas plot() for:**
+
 - Quick data exploration
 - Simple visualizations
 - Prototyping before detailed plots
 
 **Use matplotlib directly for:**
+
 - Publication-quality figures
 - Complex layouts
 - Fine-grained control

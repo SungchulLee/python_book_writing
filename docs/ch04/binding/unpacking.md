@@ -261,6 +261,7 @@ else:
 | Walrus | `(name := expr)` | `if (n := len(x)) > 0:` |
 
 Key points:
+
 - Use unpacking to extract values cleanly
 - `*` collects remaining elements into a list
 - `_` is convention for ignored values

@@ -324,6 +324,7 @@ Are these exactly equivalent? Which is more readable? Give one case where `map()
     Yes, these are exactly equivalent in behavior. Both filter words longer than 3 characters and convert them to uppercase.
 
     The comprehension is more readable in this case because:
+
     - It reads left to right: "for each `s` in `words`, if length > 3, give me `s.upper()`."
     - The `map`/`filter` chain reads inside-out: you must parse `filter(...)` first, then `map(...)`.
 

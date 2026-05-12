@@ -15,11 +15,13 @@
 A digital image is a 2D signal: a matrix of pixel intensities. Just as 1D FFT decomposes signals into frequency components, **2D FFT** decomposes images into frequency components in both spatial dimensions.
 
 **Key insight:**
+
 - **Low frequencies** in an image represent smooth regions (large color/brightness areas)
 - **High frequencies** represent edges, textures, and fine details
 - **Periodic patterns** (like striped noise) show up as concentrated peaks in frequency space
 
 This opens possibilities:
+
 - **Denoising**: Suppress high-frequency noise while preserving edges
 - **Blur detection**: Analyze frequency content
 - **Remove periodic noise**: Identify and eliminate repeating patterns
@@ -35,6 +37,7 @@ The 2D DFT is:
 $$X(u, v) = \sum_{m=0}^{M-1} \sum_{n=0}^{N-1} x(m, n) \cdot e^{-j2\pi(um/M + vn/N)}$$
 
 where:
+
 - $x(m, n)$ is the pixel intensity at row $m$, column $n$
 - $X(u, v)$ is the frequency component at frequency $(u, v)$
 - $M, N$ are image dimensions
@@ -70,12 +73,14 @@ print(f"FFT dtype: {X.dtype}")  # complex128
 ### Interpreting Frequency Components
 
 The output `X` is a 2D array of complex numbers:
+
 - **Real part**: Cosine components
 - **Imaginary part**: Sine components
 - **Magnitude** $|X(u, v)|$: Amplitude at frequency $(u, v)$
 - **Phase** $\angle X(u, v)$: Phase shift
 
 **Frequency layout (without fftshift):**
+
 - Origin $(0, 0)$ is at top-left
 - Positive frequencies in top-right and bottom-left
 - Negative frequencies in bottom-right (due to complex conjugate symmetry)
@@ -265,6 +270,7 @@ print(f"Improvement: {noise_original / noise_restored:.1f}x")
 ```
 
 !!! tip "More Sophisticated Filters"
+
     - **Butterworth filter**: Smooth roll-off (avoids sharp artifacts)
     - **Morphological operations**: Enhance specific frequency bands
     - **Wiener filter**: Optimal restoration for known noise statistics
@@ -460,6 +466,7 @@ print(f"More padding = finer frequency grid (interpolation, not more info)")
 ### 3. Edge Effects
 
 Abrupt image boundaries create high-frequency artifacts. Options:
+
 - **Zero-padding**: Simple but introduces discontinuity
 - **Mirroring**: Reflects image edges
 - **Periodic extension**: Assumes the image repeats (FFT default)
@@ -551,6 +558,7 @@ plt.show()
 - **Real-world applications** use SciPy (`fftconvolve`, `ndimage`) for reliability
 
 **Next steps:**
+
 - Explore **convolution theorem** for deeper frequency domain theory
 - Study **image restoration** techniques (Wiener filtering, etc.)
 - Apply to **computer vision** tasks: edge detection, blur analysis, feature extraction

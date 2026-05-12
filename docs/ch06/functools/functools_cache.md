@@ -386,6 +386,7 @@ def fibonacci(n):
 ```
 
 Benefits of `@cache`:
+
 - Cleaner code (no manual memo dict)
 - Thread-safe
 - Built-in cache management (info, clear)

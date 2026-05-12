@@ -22,6 +22,7 @@ print(p.__dict__)  # {'x': 1, 'y': 2}
 ```
 
 This dictionary:
+
 - Consumes memory (empty dict ~64 bytes, plus key storage)
 - Allows dynamic attribute creation
 - Has hash table overhead for attribute lookup

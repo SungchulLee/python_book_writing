@@ -499,6 +499,7 @@ Write both a naive recursive and a memoized version of a function `tribonacci(n)
             if n == 2:
                 return 1
             cache[n] = (tribonacci_memo(n-1, cache)
+
                         + tribonacci_memo(n-2, cache)
                         + tribonacci_memo(n-3, cache))
             return cache[n]

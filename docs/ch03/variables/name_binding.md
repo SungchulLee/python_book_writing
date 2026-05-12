@@ -155,12 +155,14 @@ refs = [huge_list] * 1000  # 1000 names → 1 object
 ## Mental Model
 
 **Think of variables as**:
+
 - Post-it notes with names
 - Stuck on objects in heap
 - Can move to different objects
 - Multiple notes on same object
 
 **Not as**:
+
 - Boxes containing values
 - Fixed storage locations
 - Independent containers

@@ -358,6 +358,7 @@ old_function()  # DeprecationWarning: old_function is deprecated. Use new_functi
 | `@deprecated` | Warn about old functions | Migration support |
 
 **Key Benefits**:
+
 - Keep original functions clean
 - Reusable across many functions
 - Easy to enable/disable

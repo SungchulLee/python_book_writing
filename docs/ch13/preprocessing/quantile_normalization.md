@@ -15,6 +15,7 @@ Consider a gene expression experiment with samples processed on different days o
 - **Sample 2 (Day 2):** average expression = 150
 
 These differences could reflect:
+
 1. **Technical effects:** differences in processing, library preparation quality, sequencing depth
 2. **Biological effects:** real differences in gene activity between cell types or conditions
 
@@ -54,6 +55,7 @@ plt.show()
 ### When to Apply Normalization
 
 Apply normalization when:
+
 - Samples have different median values or distributions
 - You're combining data from multiple experiments or batches
 - Technical artifacts could interfere with biological conclusions
@@ -68,6 +70,7 @@ Before applying quantile normalization, log transformation is often valuable for
 ### Why Log Transform?
 
 Count data (like RNA-seq reads, bacterial colony counts) typically:
+
 - Have a **skewed (right-tailed) distribution**
 - Show **variance proportional to mean** (heteroscedasticity)
 - Range over multiple orders of magnitude
@@ -87,6 +90,7 @@ X_log = np.log(X + 1)
 
 !!! tip
     **Adding 1:** The pseudocount (usually 1) ensures that:
+
     - Zero values map to log(1) = 0 instead of undefined
     - Small counts aren't over-compressed relative to large counts
     - The transformation is invertible (approximately): $\text{exp}(X_{\text{log}}) - 1 \approx X$
@@ -199,6 +203,7 @@ print("Column 2:", Xn[:, 2])
 
 !!! note
     **Key NumPy Concepts:**
+
     - `np.sort(axis=0)`: Sort within each column
     - `np.mean(..., axis=1)`: Average across columns (row-wise)
     - `np.apply_along_axis()`: Apply function along each column
@@ -267,6 +272,7 @@ print(f"Selected gene indices: {gene_indices}")
 
 !!! tip
     **Choosing n_features:** Use domain knowledge and downstream goals:
+
     - **Clustering:** 100-1000 features often sufficient
     - **Classification:** May need more features for accurate prediction
     - **Visualization:** Keep it small (50-200) for interpretable plots
@@ -343,6 +349,7 @@ plt.show()
 ### Why This Matters
 
 Hierarchical clustering after normalization:
+
 1. **Removes batch effects** via normalization (technical noise)
 2. **Reveals biological structure** (cell types, conditions, disease states)
 3. **Identifies outliers** (unusual samples or genes)

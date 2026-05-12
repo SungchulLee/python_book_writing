@@ -25,16 +25,19 @@ class Descriptor:
 ### 2. Parameters
 
 **`__get__(self, instance, owner)`:**
+
 - `self` - the descriptor object itself
 - `instance` - the instance being accessed (`None` if accessed from class)
 - `owner` - the class that owns the descriptor
 
 **`__set__(self, instance, value)`:**
+
 - `self` - the descriptor object itself
 - `instance` - the instance being modified
 - `value` - the value being assigned
 
 **`__delete__(self, instance)`:**
+
 - `self` - the descriptor object itself
 - `instance` - the instance where attribute is being deleted
 

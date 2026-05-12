@@ -33,6 +33,7 @@ def trips_and_users(trips: pd.DataFrame, users: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - `replace()` maps categorical values to numeric
 - `astype(int)` ensures consistent integer type
 - Series arithmetic for rate calculation
@@ -51,6 +52,7 @@ def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFram
 ```
 
 **Key Concepts**:
+
 - `isin()` checks membership in another Series
 - `~` negates boolean Series
 - Boolean indexing filters DataFrame
@@ -100,6 +102,7 @@ def tree_node(tree: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - `isna()` detects missing values
 - `notna()` detects non-missing values
 - `.loc[]` for conditional assignment
@@ -123,6 +126,7 @@ def employees_with_missing_info(
 ```
 
 **Key Concepts**:
+
 - `isna()` returns boolean DataFrame
 - `any(axis=1)` checks if any column is True per row
 - Boolean indexing on aggregated condition
@@ -146,6 +150,7 @@ def find_managers(employee: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - `value_counts()` counts occurrences
 - Index contains unique values
 - Filter on count threshold
@@ -176,6 +181,7 @@ def game_play_analysis(activity: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - `nunique()` counts unique values
 - `groupby().min()` finds first occurrence
 - Date arithmetic with Timedelta
@@ -257,6 +263,7 @@ def swap_salary(salary: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - `replace()` with dictionary for bidirectional swap
 - In-place modification of column
 
@@ -286,6 +293,7 @@ def restaurant_growth(customer: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - `rolling('7D')` creates time-based window
 - Requires DatetimeIndex
 - `.sum()` aggregates within window

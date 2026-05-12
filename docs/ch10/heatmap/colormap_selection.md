@@ -563,6 +563,7 @@ for category, cmap_list in categories.items():
 **Exercise 2.** Explain the difference between sequential, diverging, and qualitative colormaps. Give one example of each and when to use it.
 
 ??? success "Solution to Exercise 2"
+
     - **Sequential colormaps** (e.g., `'viridis'`, `'Blues'`) map low-to-high values with a single color gradient. Use for data that goes in one direction (counts, temperatures, concentrations).
     - **Diverging colormaps** (e.g., `'coolwarm'`, `'RdBu'`) have two contrasting colors meeting at a midpoint. Use for data with a meaningful center point (e.g., deviations from zero, anomalies).
     - **Qualitative colormaps** (e.g., `'Set1'`, `'tab10'`) use distinct colors without implied ordering. Use for categorical data or distinguishing groups.

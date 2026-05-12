@@ -16,6 +16,7 @@ Build a complete banking system with different account types using inheritance a
 
 ### 1. Base Account Class
 Create an abstract `BankAccount` class with:
+
 - Attributes: account_number, account_holder, balance, transactions (list)
 - Methods:
   - `deposit(amount)` - add money to account
@@ -30,6 +31,7 @@ Create an abstract `BankAccount` class with:
 Implement these account types:
 
 **SavingsAccount**
+
 - Minimum balance: \$100
 - Monthly fee: \$0 (no fee)
 - Interest rate: 2% annual (compounded monthly)
@@ -43,6 +45,7 @@ Implement these account types:
     compound based on the balance at the time `apply_interest()` is called.
 
 **CheckingAccount**
+
 - Minimum balance: \$25
 - Monthly fee: \$5 (waived if balance > \$500)
 - Interest rate: 0.1% annual
@@ -50,6 +53,7 @@ Implement these account types:
 - Overdraft protection: Can go negative up to -\$100 (with \$35 fee)
 
 **BusinessAccount**
+
 - Minimum balance: \$1000
 - Monthly fee: \$15
 - Interest rate: 1.5% annual
@@ -57,6 +61,7 @@ Implement these account types:
 - Transaction fee: \$0.50 per transaction after 50 transactions/month
 
 **StudentAccount** (inherits from SavingsAccount)
+
 - Minimum balance: \$0
 - Monthly fee: \$0
 - Interest rate: 1.5% annual
@@ -65,6 +70,7 @@ Implement these account types:
 
 ### 3. Customer Class
 Create a `Customer` class with:
+
 - Attributes: customer_id, name, email, accounts (list)
 - Methods:
   - `add_account(account)` - open new account
@@ -75,6 +81,7 @@ Create a `Customer` class with:
 
 ### 4. Bank Class
 Create a `Bank` class that:
+
 - Manages all customers and accounts
 - Assigns account numbers
 - Processes monthly maintenance (fees and interest)
@@ -98,6 +105,7 @@ Create a `Bank` class that:
 
 ### 5. Transaction Class
 Create a `Transaction` class to track:
+
 - Transaction ID
 - Date/time
 - Transaction type (deposit, withdrawal, transfer, fee, interest)
@@ -150,6 +158,7 @@ bank.process_monthly_maintenance()
 
 ## Testing Requirements
 Your implementation should:
+
 1. Create multiple customers
 2. Open different account types
 3. Perform various transactions

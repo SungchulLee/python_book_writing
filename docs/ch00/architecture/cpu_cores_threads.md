@@ -475,6 +475,7 @@ Processes and threads have different sharing characteristics. For each resource 
 Why does shared heap memory make threads faster to communicate with but also more dangerous?
 
 ??? success "Solution to Exercise 3"
+
     - **(a) Heap memory:** **Shared** between threads, **isolated** between processes. This is the key difference.
     - **(b) Stack:** **Isolated** in both cases. Each thread and each process has its own stack.
     - **(c) Open file descriptors:** **Shared** between threads (they can read/write the same files), **isolated** between processes (though file descriptors can be explicitly passed).

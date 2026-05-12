@@ -11,10 +11,10 @@ markdown_extensions:
     - toc:
         permalink: true
     - pymdownx.superfences:
-        custom_fences:
-          - name: mermaid
-            class: mermaid
-            format: !!python/name:mermaid2.fence_mermaid_custom
+        # custom_fences:
+        #   - name: mermaid
+        #     class: mermaid
+        #     format: !!python/name:mermaid2.fence_mermaid_custom
     - pymdownx.arithmatex:
         generic: true
 

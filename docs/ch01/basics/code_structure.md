@@ -319,6 +319,7 @@ if not user.is_active:     # check if user is not active
 Why does commenting "what" become harmful as code evolves?
 
 ??? success "Solution to Exercise 3"
+
     - `# increment x` -- **not useful**. It restates the code. Anyone who reads `x = x + 1` already knows it increments `x`.
     - `# compensate for border pixel` -- **useful**. It explains *why* the increment is needed -- a domain-specific reason that is not obvious from the code alone.
     - `# create empty list` -- **not useful**. `results = []` is self-evident.

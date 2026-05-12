@@ -559,6 +559,7 @@ duck = Animal([FlyAbility(), SwimAbility()])
 Composition is not always simpler. For small, stable hierarchies inheritance is often **less code and easier to read**. Don't force composition when a two-level hierarchy with three subclasses would do the job.
 
 Use inheritance for:
+
 - True **is-a** relationships
 - **Abstract base classes** (interfaces)
 - **Framework extension points**
@@ -620,6 +621,7 @@ logger = TimestampDecorator(Logger())
 Before choosing, run through these questions in order:
 
 !!! tip "Quick Decision Checklist"
+
     1. **Is it a true type relationship?** Can you say "B is-a A" and it sounds natural to a domain expert? → **Inheritance**
     2. **Does it need to change at runtime?** Will the behavior or component vary between instances or over the lifetime of an object? → **Composition**
     3. **Is it built from parts?** Is the object assembled from independent components? → **Composition**

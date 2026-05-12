@@ -16,6 +16,7 @@ The `ax.hexbin()` method creates hexagonal binning plots for 2D data density vis
     preferred direction, giving more uniform perception across all orientations.
 
 !!! note "Most Important Controls"
+
     1. **`gridsize`** → resolution (higher = finer, noisier)
     2. **`bins='log'`** → reveals structure across large dynamic ranges
     3. **`mincnt=1`** → filters empty hexagons (noise reduction)

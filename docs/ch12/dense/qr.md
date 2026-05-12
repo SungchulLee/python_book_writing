@@ -41,6 +41,7 @@ if __name__ == "__main__":
 $$A = QR$$
 
 where:
+
 - $Q$ is orthogonal ($Q^TQ = I$)
 - $R$ is upper triangular
 

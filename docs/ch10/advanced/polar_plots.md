@@ -575,10 +575,12 @@ Explain why plotting `y = sin(x)` for `x` in `[0, 10]` in polar coordinates look
     `sin(x)` for `x in [0, 10]` in polar interprets `x` as an angle (radians) and `sin(x)` as a radius. The result is a looping curve that does not convey the periodic nature of sine — it distorts the familiar wave into an unrecognizable shape. The problem: `x` here represents a continuous independent variable, not a cyclic angle.
 
     **Polar is appropriate for:**
+
     - Wind direction frequency (angle = compass bearing, radius = frequency)
     - Time-of-day activity (angle = hour, radius = count)
     - Phase angles in signal processing
 
     **Never use polar for:**
+
     - Time series where time is linear (not cyclic) — e.g., stock prices over 5 years. Plotting this in polar wraps the time axis into a circle, destroying the chronological structure and making trends impossible to read. If the x-axis has a natural start and end (not a cycle), use Cartesian coordinates.
         plt.show()

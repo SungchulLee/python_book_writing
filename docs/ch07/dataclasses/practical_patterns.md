@@ -192,6 +192,7 @@ you need schema validation at API boundaries, and attrs when you want rich valid
 without pydantic's heavier runtime.
 
 !!! danger "Anti-patterns to avoid"
+
     - **Business-logic-heavy dataclasses**: A dataclass that grows dozens of methods
       and complex state transitions is no longer a data container — it is a
       domain object pretending to be one. Extract behavior into separate service

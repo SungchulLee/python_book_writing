@@ -35,6 +35,7 @@ def confusion_matrix_naive(predictions, ground_truth):
 ```
 
 This approach:
+
 - Requires loop iteration
 - Allocates dense storage (wasteful for sparse data)
 - Poor cache locality
@@ -157,6 +158,7 @@ Output(x, y) = w₁·Input(x₁, y₁) + w₂·Input(x₂, y₂) +
 ```
 
 This is a sparse linear operation! We can build a matrix T where:
+
 - Each row represents one output pixel
 - Each column represents one input pixel
 - Entry T[i,j] = interpolation weight (0 if unrelated)

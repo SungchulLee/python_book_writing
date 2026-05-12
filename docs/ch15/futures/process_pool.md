@@ -426,6 +426,7 @@ executor.map(func, large_list, chunksize=1000)
 ### Startup Overhead
 
 Process creation is slow. Avoid for:
+
 - Very short tasks
 - Small datasets
 - Tasks that run once

@@ -12,6 +12,7 @@
 ### Anaconda Licensing Issue
 
 Since 2020, Anaconda Inc. requires a **paid license** for commercial use (organizations with 200+ employees) when using:
+
 - Anaconda Distribution
 - Miniconda (with default channel)
 - The `defaults` channel
@@ -19,6 +20,7 @@ Since 2020, Anaconda Inc. requires a **paid license** for commercial use (organi
 ### The Solution: conda-forge
 
 **conda-forge** is:
+
 - Community-maintained (not owned by Anaconda Inc.)
 - Free for all uses (personal and commercial)
 - Has more packages than defaults channel
@@ -29,6 +31,7 @@ Since 2020, Anaconda Inc. requires a **paid license** for commercial use (organi
 ## What is conda-forge?
 
 A **channel** (package repository) with:
+
 - 20,000+ packages
 - Community-maintained recipes
 - CI/CD for all platforms (Linux, macOS, Windows)

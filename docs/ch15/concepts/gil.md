@@ -45,12 +45,14 @@ print(sys.getrefcount(a))  # 2
 ```
 
 Without the GIL, two threads could simultaneously modify reference counts, causing:
+
 - Memory leaks (count never reaches 0)
 - Use-after-free bugs (premature deallocation)
 
 ### Historical Simplicity
 
 The GIL was introduced in Python's early days when:
+
 - Multi-core processors were rare
 - Single-threaded performance was priority
 - C extensions needed simple integration
@@ -318,6 +320,7 @@ This is a work in progress and may take several Python versions to stabilize.
 ### Free-Threading Python
 
 Future Python versions may offer:
+
 - Optional GIL removal
 - Per-interpreter GIL (subinterpreters)
 - Better multicore support

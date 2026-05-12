@@ -482,6 +482,7 @@ A program runs 1 billion instructions. 30% are memory accesses, and 70% of memor
     **(a)** Non-memory instructions: 1,000,000,000 * 0.70 = 700,000,000 instructions * 1 cycle = **700,000,000 cycles**.
 
     **(b)** Memory instructions: 300,000,000 total.
+
     - L1 hits: 300,000,000 * 0.70 = 210,000,000 * 4 cycles = 840,000,000 cycles
     - L1 misses: 300,000,000 * 0.30 = 90,000,000 * 200 cycles = 18,000,000,000 cycles
     - Total memory cycles: 840,000,000 + 18,000,000,000 = **18,840,000,000 cycles**

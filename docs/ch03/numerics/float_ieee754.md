@@ -33,6 +33,7 @@ IEEE 754 encodes numbers as:
 $$x = (-1)^s \times (1 + m) \times 2^{e-\text{bias}}$$
 
 Where:
+
 - $s$ is the sign bit (0 = positive, 1 = negative)
 - $m$ is the mantissa (fractional part after the implicit 1)
 - $e$ is the biased exponent

@@ -14,6 +14,7 @@ Understanding whether your task is CPU-bound or I/O-bound is crucial for choosin
 A task is **CPU-bound** when it spends most of its time doing computation — the CPU is the bottleneck.
 
 **Examples:**
+
 - Mathematical calculations
 - Image/video processing
 - Data compression
@@ -35,6 +36,7 @@ def cpu_bound_task(n):
 A task is **I/O-bound** when it spends most of its time waiting for input/output operations — the CPU is mostly idle.
 
 **Examples:**
+
 - Network requests (HTTP, database queries)
 - File reading/writing
 - User input
@@ -149,6 +151,7 @@ print(results)
 ```
 
 **Why processes?**
+
 - Each process has its own Python interpreter
 - Each process has its own GIL
 - True parallel execution on multiple CPU cores
@@ -179,6 +182,7 @@ print(results)
 ```
 
 **Why threads?**
+
 - GIL is released during I/O operations
 - Threads are lighter weight than processes
 - Shared memory makes data passing easy

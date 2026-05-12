@@ -137,6 +137,7 @@ ax3 = fig.add_subplot(gs[1:, 1:])  # Bottom-right 2x2
 ### When to Use plt.subplots()
 
 ✅ **Use when**:
+
 - Creating regular grid of subplots
 - All subplots needed at once
 - Want shared axes
@@ -152,6 +153,7 @@ for ax, data in zip(axes.flat, datasets):
 ### When to Use fig.add_subplot()
 
 ✅ **Use when**:
+
 - Non-uniform subplot sizes
 - Adding subplots incrementally
 - Complex layouts with GridSpec

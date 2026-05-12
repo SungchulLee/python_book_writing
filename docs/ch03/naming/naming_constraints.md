@@ -10,10 +10,12 @@ Python identifiers (variable names, function names, class names) must follow spe
 ### First Character
 
 Valid first characters:
+
 - Letters: `A-Z`, `a-z`
 - Underscore: `_`
 
 Invalid first characters:
+
 - Digits: `0-9`
 
 ```python
@@ -32,11 +34,13 @@ Name = "Bob"
 ### Subsequent Characters
 
 After the first character, you can use:
+
 - Letters: `A-Z`, `a-z`
 - Digits: `0-9`
 - Underscore: `_`
 
 Not allowed anywhere:
+
 - Spaces
 - Hyphens: `-`
 - Special characters: `@`, `#`, `$`, etc.
@@ -88,6 +92,7 @@ print(keyword.kwlist)
 ```
 
 Common keywords:
+
 - Control flow: `if`, `else`, `elif`, `for`, `while`, `break`, `continue`
 - Functions: `def`, `return`, `lambda`, `yield`
 - Classes: `class`, `pass`

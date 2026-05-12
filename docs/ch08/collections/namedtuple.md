@@ -227,6 +227,7 @@ print(s.nobel)              # False
 | Memory | Low | Low | Higher |
 
 **Use namedtuple when:**
+
 - You need readable field names
 - Immutability is desired
 - Memory efficiency matters

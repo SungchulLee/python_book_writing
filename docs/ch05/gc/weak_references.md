@@ -243,6 +243,7 @@ class Child:
 | `proxy()` | Transparent weak reference | Drop-in replacement |
 
 Key points:
+
 - Weak references don't prevent garbage collection
 - Useful for caches and avoiding circular references
 - Not all types support weak references

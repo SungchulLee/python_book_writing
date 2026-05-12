@@ -97,6 +97,7 @@ def calculate_sum(data):
 ### 2. Encoding Issues
 
 May cause problems with:
+
 - Text editors
 - Version control
 - CI/CD pipelines

@@ -392,6 +392,7 @@ This tradeoff is fundamental in statistics:
 
 ### 1. Paste your original `.py` code into each page
 But:
+
 - remove unnecessary boilerplate
 - keep only what is pedagogically useful
 
@@ -1017,6 +1018,7 @@ Example target outputs:
 - optional `docs/assets/generated/ch02/weed_prices_summary.csv`
 
 That way:
+
 - `.py` = computation
 - `.md` = lesson
 

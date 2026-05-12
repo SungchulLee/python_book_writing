@@ -6,6 +6,7 @@
 ## Definition
 
 Functions that:
+
 1. Take functions as arguments
 2. Return functions
 

@@ -219,6 +219,7 @@ Create a $5000 \times 5000$ sparse matrix with density 0.002 and its dense equiv
 
         dense_bytes = A_dense.nbytes
         sparse_bytes = (A_sparse.data.nbytes + A_sparse.indices.nbytes
+
                         + A_sparse.indptr.nbytes)
 
         print(f"Dense memory:  {dense_bytes / 1e6:.1f} MB")

@@ -630,6 +630,7 @@ Memory coalescing is critical for GPU performance. A warp of 32 threads accesses
     **(a)** Pattern A (sequential) achieves the best bandwidth. 32 threads accessing consecutive 4-byte addresses span 128 bytes, which fits in a single cache line. One memory transaction serves the entire warp.
 
     **(b)**
+
     - Pattern A: **1 transaction** (128 bytes covers all 32 * 4 = 128 bytes)
     - Pattern B: **32 transactions** (each thread's address is 1024 bytes apart, requiring separate cache lines)
     - Pattern C: up to **32 transactions** (worst case: every address hits a different cache line)

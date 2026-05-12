@@ -41,6 +41,7 @@ if __name__ == "__main__":
 $$A = PLU$$
 
 where:
+
 - $P$ is a permutation matrix
 - $L$ is lower triangular with ones on diagonal
 - $U$ is upper triangular

@@ -39,6 +39,7 @@ print(plt.style.available)
 ```
 
 Common styles:
+
 - `'default'` — Matplotlib default
 - `'seaborn-v0_8'` — Seaborn-inspired (clean, modern)
 - `'ggplot'` — R's ggplot2 style

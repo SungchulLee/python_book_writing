@@ -55,6 +55,7 @@ def decorator(func):
 ```
 
 **Key elements**:
+
 - `func`: The original function being decorated
 - `wrapper`: The new function that wraps the original
 - `*args, **kwargs`: Accepts any arguments to pass through
@@ -143,6 +144,7 @@ print(greet.__doc__)   # 'Say hello.' — Preserved!
 ```
 
 **Always use `@wraps`**—it preserves:
+
 - `__name__`: Function name
 - `__doc__`: Docstring
 - `__module__`: Module name
@@ -307,6 +309,7 @@ def decorator_name(func):
 | Closure | Function + captured environment |
 
 **Key Takeaways**:
+
 - Decorators are functions that transform functions
 - Always use `@wraps` to preserve metadata
 - The wrapper pattern is the foundation of most decorators

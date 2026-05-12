@@ -19,6 +19,7 @@ Matplotlib provides built-in style sheets for consistent and professional-lookin
     style per project and stick to it.
 
 !!! note "Choosing a Style: Design Principles"
+
     - **Publication/print:** use `'seaborn-v0_8-whitegrid'` or a custom minimal style — high contrast, clear labels, vector export (PDF/SVG).
     - **Presentation/slides:** use `'dark_background'` or large-font styles — must be readable from a distance.
     - **Exploration/notebook:** use `'ggplot'` or `'bmh'` — pleasant colors for quick iteration.

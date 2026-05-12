@@ -337,6 +337,7 @@ If most values are zero, sparse matrices (`scipy.sparse`) are more memory-effici
 ## Rules of Thumb
 
 !!! tip "Performance Quick Reference"
+
     1. **Broadcasting vs loops:** expect 100-1000x speedup over Python `for` loops on arrays larger than ~1000 elements.
     2. **Memory check first:** before broadcasting, estimate `np.prod(result_shape) * 8` bytes. If it exceeds ~25% of RAM, chunk or use `scipy`.
     3. **In-place when possible:** `M += v` avoids allocating a new array; `np.add(M, v, out=M)` does the same.

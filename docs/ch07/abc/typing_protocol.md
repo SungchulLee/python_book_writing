@@ -474,12 +474,14 @@ def timed_operation(cm: ContextManager[Timer]):
 ### When to Use Each
 
 **Use Protocol when:**
+
 - You want duck typing with type hints
 - Working with external code you can't modify
 - Defining interfaces for callbacks
 - Type checking without requiring inheritance
 
 **Use ABC when:**
+
 - You need runtime enforcement
 - You want to share implementation (concrete methods)
 - Building class hierarchies

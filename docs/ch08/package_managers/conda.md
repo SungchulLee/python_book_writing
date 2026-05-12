@@ -229,6 +229,7 @@ dependencies:
 ⚠️ **Important**: Since 2020, Anaconda's terms of service require a paid license for commercial use (organizations with 200+ employees).
 
 **Free alternatives**:
+
 - **conda-forge** (community channel)
 - **Miniforge** (conda-forge default installer)
 - **Mambaforge** (Miniforge + mamba)

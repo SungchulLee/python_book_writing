@@ -16,6 +16,7 @@ These methods do not require gradient information and often work well on noisy o
 The Nelder-Mead method maintains a simplex (a geometric shape in $n$-dimensional space) and iteratively moves away from the worst point.
 
 **Characteristics:**
+
 - No gradient required
 - Works reasonably well in low dimensions (< 10)
 - Slower convergence than gradient-based methods
@@ -44,6 +45,7 @@ print(f"Function evaluations: {result.nfev}")
 ```
 
 **When to use:**
+
 - Noisy objective functions
 - Non-smooth functions
 - Low-dimensional problems
@@ -54,6 +56,7 @@ print(f"Function evaluations: {result.nfev}")
 Powell's method uses conjugate direction methods and performs line searches along successive dimensions.
 
 **Characteristics:**
+
 - No gradient required
 - Good for smooth functions
 - Often faster than Nelder-Mead
@@ -80,6 +83,7 @@ print(f"Function evaluations: {result.nfev}")
 ```
 
 **When to use:**
+
 - Smooth but gradient-free optimization
 - Medium dimensions
 - Image registration and alignment
@@ -96,6 +100,7 @@ These methods use the gradient (first derivative) to guide the search. They're u
 The simplest gradient-based method: move in the direction opposite to the gradient.
 
 **Characteristics:**
+
 - Slow convergence
 - Requires gradient
 - Simple to understand
@@ -127,6 +132,7 @@ print(f"Result: {result.x}")
 BFGS is a quasi-Newton method that approximates the inverse Hessian (second derivatives).
 
 **Characteristics:**
+
 - Uses first-order derivatives (gradients)
 - Excellent convergence for smooth problems
 - Efficient: requires only gradients, not Hessians
@@ -168,6 +174,7 @@ print(f"Function evaluations: {result2.nfev}")
 ```
 
 **When to use:**
+
 - Smooth, continuous objective functions
 - When gradient is available or easily computed
 - Medium to large-scale problems
@@ -178,6 +185,7 @@ print(f"Function evaluations: {result2.nfev}")
 L-BFGS-B is BFGS with limited memory (useful for large problems) and built-in bounds support.
 
 **Characteristics:**
+
 - Limited memory version of BFGS (uses $\mathcal{O}(m \times n)$ memory instead of $\mathcal{O}(n^2)$)
 - Handles bounds naturally
 - Good for large-scale problems
@@ -211,6 +219,7 @@ print(f"Iterations: {result.nit}")
 ```
 
 **When to use:**
+
 - Large-scale problems (thousands of variables)
 - When you need to constrain parameters to ranges
 - Limited memory available
@@ -221,6 +230,7 @@ print(f"Iterations: {result.nit}")
 CG uses conjugate directions to achieve faster convergence than steepest descent.
 
 **Characteristics:**
+
 - Requires gradient
 - Good for large sparse problems
 - Converges in $n$ iterations for quadratic functions
@@ -251,6 +261,7 @@ print(f"Iterations: {result.nit}")
 ```
 
 **When to use:**
+
 - Very large-scale smooth problems
 - When memory is limited
 - Problems with sparse structure

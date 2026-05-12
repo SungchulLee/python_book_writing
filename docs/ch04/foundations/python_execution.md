@@ -48,6 +48,7 @@ print("Hello, World!")
 ```
 
 When you run this, Python:
+
 1. Parses the source code
 2. Compiles it to bytecode
 3. Stores bytecode in `.pyc` files (in `__pycache__/`)
@@ -223,6 +224,7 @@ total = np.arange(1_000_000).sum()
 ### Mental Model for Performance
 
 Think in terms of:
+
 - Reducing Python-level operations
 - Pushing work into optimized libraries
 - Clarity before optimization (profile first!)

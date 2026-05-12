@@ -141,6 +141,7 @@ df_sample = pd.DataFrame(sample)
 | Processing speed | Slower | Faster |
 
 **Guidelines:**
+
 - Start with 100,000 rows
 - Adjust based on column count and types
 - Monitor memory during processing
@@ -298,6 +299,7 @@ df = pd.read_csv('huge_file.csv', memory_map=True)
 | Sampling | Getting representative subset |
 
 **Best practices:**
+
 1. Choose appropriate chunk size (100K is good default)
 2. Specify dtypes to reduce per-chunk memory
 3. Use appropriate aggregation pattern for your task

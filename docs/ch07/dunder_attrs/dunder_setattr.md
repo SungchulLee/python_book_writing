@@ -438,6 +438,7 @@ obj.x = 10  # ✅ OK
 ## When NOT to Use __setattr__
 
 !!! warning "Avoid When"
+
     - **Validating only one or two attributes** — use `@property` setters instead. `__setattr__` intercepts *every* assignment, including internal ones in `__init__`, which adds complexity for no benefit when only one field needs validation.
     - **Simple logging of one attribute** — a property setter with a `print` is far simpler.
     - **Performance-sensitive code** — `__setattr__` runs on every assignment, including `self.x = ...` inside methods. In tight loops this overhead is measurable.

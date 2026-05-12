@@ -23,6 +23,7 @@ Conceptually corresponds to a memory address.
 In CPython, `id(obj)` returns the object's identity, which corresponds to its **virtual memory address**.
 
 From Python's perspective:
+
 - The object is allocated once.
 - Its identity (`id`) remains constant for its lifetime.
 - The object itself is not relocated.
@@ -30,16 +31,19 @@ From Python's perspective:
 However, this should not be confused with physical memory.
 
 From the operating system's perspective:
+
 - Memory is managed using **virtual memory**.
 - The OS may remap a virtual address to different physical memory locations over time (e.g., paging, swapping).
 - This remapping is completely transparent to Python.
 
 Additionally, some objects (like lists) manage internal storage separately:
+
 - When a list grows beyond its capacity, Python allocates a new internal buffer and copies elements.
 - The list object itself remains at the same virtual address.
 - Only its internal storage changes.
 
 Key ideas:
+
 - `id()` reflects the object's identity (virtual address).
 - The object itself does not move.
 - Internal storage may be reallocated independently.

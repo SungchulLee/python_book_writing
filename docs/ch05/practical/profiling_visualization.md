@@ -48,6 +48,7 @@ snakeviz profile.prof
 ## Interpreting Flame Graphs
 
 The visualization shows:
+
 - **Box width**: Time spent in that function
 - **Box height**: Call stack depth
 - **Colors**: Different functions (random assignment)

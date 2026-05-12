@@ -310,11 +310,13 @@ def get_data(key):
 | Object pools | Reduces allocations | Medium |
 
 Profiling tools:
+
 - `sys.getsizeof()`: Quick object size
 - `tracemalloc`: Detailed allocation tracking
 - `memory_profiler`: Line-by-line analysis
 
 Key points:
+
 - Profile before optimizing
 - Use generators for large sequences
 - Choose appropriate data structures

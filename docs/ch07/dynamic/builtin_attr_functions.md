@@ -317,11 +317,13 @@ Both static access (`obj.attr`) and dynamic access (`getattr(obj, "attr")`) trig
 ### 2. When to Use Each
 
 **Use static access (`obj.attr`) when:**
+
 - You know the attribute name at coding time
 - Performance is critical
 - Code clarity is priority
 
 **Use dynamic access (`getattr/setattr`) when:**
+
 - Attribute name comes from user input, config, or database
 - Writing generic utilities or frameworks
 - Need to iterate over arbitrary attributes

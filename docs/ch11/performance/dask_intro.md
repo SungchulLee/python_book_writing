@@ -317,6 +317,7 @@ ddf = ddf.set_index('id')
 | Best for | < 10GB | > 10GB |
 
 **Workflow recommendation:**
+
 1. Prototype with pandas on sample data
 2. Scale to Dask when data grows
 3. Use `.compute()` sparingly (at the end)

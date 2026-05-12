@@ -38,6 +38,7 @@ print(x)
   - array of machine words
 
 This makes Python `int`:
+
 - slower than C `int`
 - but mathematically safe
 
@@ -46,10 +47,12 @@ This makes Python `int`:
 ## Semantics
 
 Python integers obey **mathematical integer semantics**:
+
 - exact arithmetic
 - no overflow surprises
 
 This is crucial for:
+
 - financial calculations
 - cryptography
 - symbolic computation
@@ -59,6 +62,7 @@ This is crucial for:
 ## Performance
 
 Because Python `int` is an object:
+
 - arithmetic is slower than in C
 - large integers cost more memory
 

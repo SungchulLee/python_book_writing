@@ -121,11 +121,13 @@ plt.show()
 ### When to Use Each
 
 **Secondary Axes:**
+
 - Same measurement in different units (km ↔ miles)
 - Same scale with transformation (linear ↔ log)
 - Wavelength and frequency
 
 **Twin Axes:**
+
 - Price and volume on same chart
 - Temperature and humidity
 - Different physical quantities

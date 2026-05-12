@@ -10,6 +10,7 @@ Python’s built-in functions, exceptions, and types live in the **`builtins` na
 ## What is `builtins`?
 
 `builtins` is a module automatically loaded by Python that contains:
+
 - core functions (`len`, `print`, `range`, …),
 - built-in types (`int`, `list`, `dict`, …),
 - built-in exceptions (`ValueError`, `TypeError`, …).
@@ -46,6 +47,7 @@ Avoid shadowing built-in names.
 ## Why this matters
 
 Understanding `builtins` helps with:
+
 - debugging name conflicts,
 - reading unfamiliar code,
 - metaprogramming and introspection.

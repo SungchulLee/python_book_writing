@@ -124,6 +124,7 @@ Output:
 ```
 
 Each bytecode instruction involves:
+
 1. Fetch instruction
 2. Decode instruction
 3. Dispatch to handler

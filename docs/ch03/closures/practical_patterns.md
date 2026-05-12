@@ -339,6 +339,7 @@ def outer():
 | Memoization | Cache results | Dict in closure |
 
 **Debugging Checklist:**
+
 1. `func.__closure__` — Cell objects
 2. `func.__code__.co_freevars` — Variable names
 3. `cell.cell_contents` — Actual values

@@ -87,6 +87,7 @@ In Jupyter notebooks:
 ```
 
 !!! warning "Common Gotchas"
+
     - **Plot window doesn't appear** → wrong backend for your environment. Try `matplotlib.use('TkAgg')` or `matplotlib.use('Agg')` for headless servers.
     - **Jupyter shows nothing** → add `%matplotlib inline` at the top of the notebook.
     - **Script vs Jupyter behavior differs** → scripts need `plt.show()` to display; Jupyter renders automatically at the end of each cell.

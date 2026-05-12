@@ -252,6 +252,7 @@ Why is the second `list(r)` empty? How does `reversed()` differ from slicing wit
     `reversed()` returns a **lazy iterator** that can only be consumed once. The first `list(r)` exhausts the iterator. The second `list(r)` gets an empty iterator.
 
     `reversed()` vs `[::-1]`:
+
     - `reversed([1, 2, 3])` creates an iterator that produces elements in reverse order **without copying the list**. Memory usage: O(1).
     - `[1, 2, 3][::-1]` creates a **new list** with all elements in reverse. Memory usage: O(n).
 

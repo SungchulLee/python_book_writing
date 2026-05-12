@@ -48,6 +48,7 @@ async def fetch_all_urls(urls):
 ```
 
 **Asyncio excels when**:
+
 - Many concurrent I/O operations
 - High number of connections (1000s)
 - Network-bound applications
@@ -90,6 +91,7 @@ for t in threads:
 ```
 
 **Problems**:
+
 - Thread overhead (memory, context switching)
 - Limited scalability (100s of threads, not 1000s)
 - Race conditions with shared state
@@ -112,6 +114,7 @@ asyncio.run(main())
 ```
 
 **Benefits**:
+
 - Single thread, no race conditions
 - Minimal overhead per task
 - Scales to 10,000s of concurrent operations

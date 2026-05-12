@@ -12,12 +12,14 @@ Build a complete task management application using object-oriented programming p
 Create a `User` class with the following:
 
 **Attributes:**
+
 - username (string, unique)
 - email (string)
 - created_at (datetime)
 - tasks (list of Task objects)
 
 **Methods:**
+
 - `add_task(task)`: Add a task to user's task list
 - `remove_task(task_id)`: Remove task by ID
 - `get_tasks()`: Return all tasks
@@ -30,6 +32,7 @@ Create a `User` class with the following:
 Create a `Task` class with the following:
 
 **Attributes:**
+
 - task_id (unique integer, auto-generated)
 - title (string)
 - description (string)
@@ -40,6 +43,7 @@ Create a `Task` class with the following:
 - tags (list of strings)
 
 **Methods:**
+
 - `mark_completed()`: Set status to completed
 - `mark_in_progress()`: Set status to in_progress
 - `add_tag(tag)`: Add a tag
@@ -50,12 +54,14 @@ Create a `Task` class with the following:
 - `__eq__()`: Compare tasks by task_id
 
 **Class Methods:**
+
 - `from_dict(data)`: Create task from dictionary
 
 ### 3. Project Class
 Create a `Project` class that groups related tasks:
 
 **Attributes:**
+
 - project_id (unique integer)
 - name (string)
 - description (string)
@@ -64,6 +70,7 @@ Create a `Project` class that groups related tasks:
 - status (string: 'active', 'completed', 'archived')
 
 **Methods:**
+
 - `add_task(task)`: Add task to project
 - `remove_task(task_id)`: Remove task from project
 - `get_progress()`: Return percentage of completed tasks
@@ -76,10 +83,12 @@ Create a `Project` class that groups related tasks:
 Create a main `TaskManager` class that coordinates everything:
 
 **Attributes:**
+
 - users (dictionary: username -> User object)
 - projects (dictionary: project_id -> Project object)
 
 **Methods:**
+
 - `create_user(username, email)`: Create and register new user
 - `get_user(username)`: Retrieve user by username
 - `create_project(name, description)`: Create new project
@@ -103,23 +112,28 @@ Create a main `TaskManager` class that coordinates everything:
 Implement these for extra challenge:
 
 **Priority Queue for Tasks:**
+
 - Sort tasks by priority and due date
 
 **Recurring Tasks:**
+
 - Create `RecurringTask` subclass that inherits from `Task`
 - Add frequency attribute (daily, weekly, monthly)
 - Implement `create_next_instance()` method
 
 **Task Dependencies:**
+
 - Add `dependencies` attribute to Task
 - Implement `can_start()` method (checks if dependencies completed)
 
 **Notifications:**
+
 - Create `Notification` class
 - Generate notifications for due tasks
 - Send reminders for overdue tasks
 
 **Statistics:**
+
 - Track average completion time
 - Most productive days
 - Task completion trends
@@ -220,6 +234,7 @@ print(report)
 ## Testing Requirements
 
 Create a `tests.py` file with test cases for:
+
 1. User creation and task management
 2. Task status transitions
 3. Project progress calculation
@@ -257,6 +272,7 @@ Create a `tests.py` file with test cases for:
 ## Extensions (Optional)
 
 Once you complete the basic requirements, consider adding:
+
 - Persistent storage (save/load from JSON or database)
 - Define a `TaskRepository` interface to decouple domain logic from storage
 - Web interface using Flask

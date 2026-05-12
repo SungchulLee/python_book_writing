@@ -22,6 +22,7 @@ Python's `int` type uses a variable-length structure (Big Integer implementation
 ### 3. Memory Structure
 
 Python's integer contains:
+
 - Reference count
 - Type information
 - Actual integer value
@@ -129,6 +130,7 @@ Understanding the practical implications of these differences.
 ### 1. Performance Overhead
 
 Python's `int` operations are slower because they involve:
+
 - Memory allocation
 - Reference counting
 - Dynamic type checking
@@ -175,6 +177,7 @@ Two's complement is the standard method for representing signed integers in bina
 ### 1. Definition
 
 In an **N-bit** system:
+
 - **Most significant bit (MSB)** is the sign bit:
   - `0` = positive
   - `1` = negative
@@ -202,6 +205,7 @@ Thus, `11111011` represents `-5` in two's complement.
 The MSB contributes a large negative weight.
 
 In 8-bit:
+
 - MSB in `11111011` has weight `-128`
 - Remaining bits: `64 + 32 + 16 + 8 + 2 + 1 = 123`
 - Total: `-128 + 123 = -5`
@@ -244,14 +248,17 @@ Python uses sign-magnitude with arbitrary-length representation, not two's compl
 **Answer:** No, Python does not use two's complement for representing negative integers. Python uses a sign-magnitude representation.
 
 **Sign-magnitude representation:**
+
 - Leftmost bit indicates sign: `0` for positive, `1` for negative
 - Remaining bits represent the magnitude
 
 Example with 8-bit integers:
+
 - Positive 5: `00000101`
 - Negative 5: `10000101`
 
 **Two's complement (used in C/C++):**
+
 - Negative numbers are represented by inverting bits and adding 1
 - Simplifies arithmetic operations
 - No separate sign bit needed
@@ -269,21 +276,25 @@ Evaluating the trade-offs of each representation.
 ### 1. Two's Complement
 
 **Pros:**
+
 - Simple arithmetic operations
 - Efficient in hardware with fixed bit-width
 - Single representation for zero
 
 **Cons:**
+
 - Overflow issues due to fixed bit-width
 - Limited range of values
 
 ### 2. Python's Approach
 
 **Pros:**
+
 - No overflow due to dynamic sizing
 - Handles very large numbers
 
 **Cons:**
+
 - Slightly higher memory usage
 - More computational overhead
 

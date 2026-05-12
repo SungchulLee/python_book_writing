@@ -110,12 +110,14 @@ Python is more concise — no type declarations, no semicolons, no `main()`.
 ### Static Typing (C)
 
 **Pros:**
+
 - Errors caught at compile-time
 - Better performance (no runtime type checks)
 - Self-documenting code (types visible)
 - IDE support (autocomplete, refactoring)
 
 **Cons:**
+
 - More verbose
 - Less flexible
 - Slower development
@@ -123,12 +125,14 @@ Python is more concise — no type declarations, no semicolons, no `main()`.
 ### Dynamic Typing (Python)
 
 **Pros:**
+
 - Faster development
 - More flexible and concise
 - Easier prototyping
 - No boilerplate
 
 **Cons:**
+
 - Runtime errors (type bugs found later)
 - Harder to refactor large codebases
 - Performance overhead (runtime type checks)
@@ -148,6 +152,7 @@ prices: list[float] = [19.99, 29.99, 39.99]
 ```
 
 Type hints provide:
+
 - Documentation
 - IDE autocomplete
 - Static analysis (with tools like `mypy`)

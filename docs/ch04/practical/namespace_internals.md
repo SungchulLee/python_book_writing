@@ -258,6 +258,7 @@ gc.enable()
 | `dir(obj)` | List attributes | N/A |
 
 GIL implications:
+
 - Only one thread executes Python bytecode at a time
 - I/O-bound: Use threading (GIL released during I/O)
 - CPU-bound: Use multiprocessing (separate processes)
@@ -265,6 +266,7 @@ GIL implications:
 - Compound operations need explicit locking
 
 Key points:
+
 - Use `globals()` for dynamic global variables
 - `locals()` is read-only in functions
 - GIL affects CPU-bound parallelism

@@ -258,6 +258,7 @@ df_optimized = optimize_dtypes(df.copy())
 | `info()` | Overall summary | `memory_usage='deep'` |
 
 Best practices:
+
 - Always use `deep=True` for object columns
 - Monitor memory after each major transformation
 - Optimize dtypes for large datasets

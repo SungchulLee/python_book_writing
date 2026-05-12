@@ -234,6 +234,7 @@ What Python mechanism allows `/` to join paths? Why is this preferred over strin
     The `/` operator works because `Path` defines the `__truediv__` method, which Python calls when `/` is used. This is **operator overloading** -- the same mechanism that lets `+` mean addition for numbers and concatenation for strings.
 
     `Path("/")` is preferred over string concatenation because:
+
     1. **Platform independence**: `Path` uses the correct separator (`/` on Unix, `\` on Windows) automatically.
     2. **Type safety**: the result is a `Path` object with path-specific methods, not a raw string.
     3. **Readability**: `Path("data") / "file.txt"` is cleaner than `os.path.join("data", "file.txt")`.
@@ -264,6 +265,7 @@ What advantage does the object-oriented `pathlib` approach have? Why does `Path`
     The object-oriented approach groups all path-related operations on a single object. Instead of calling free functions from `os.path` and passing the path string each time, you call methods on the `Path` object.
 
     Advantages:
+
     1. **Discoverability**: all path operations are methods on the `Path` object, so IDE autocompletion shows available operations.
     2. **Chaining**: `Path("dir").mkdir(parents=True, exist_ok=True)` reads naturally.
     3. **Consistency**: one object carries the path state, reducing the chance of passing the wrong string to a function.
@@ -303,6 +305,7 @@ Explain why this fails on macOS/Linux. Show how `pathlib.Path` solves the cross-
     ```
 
     `Path.home()` returns the current user's home directory as a `Path` object:
+
     - Windows: `C:\Users\alice`
     - macOS: `/Users/alice`
     - Linux: `/home/alice`

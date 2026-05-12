@@ -184,6 +184,7 @@ What exceptions does `BaseException` catch that `Exception` does not? Why is cat
     - `GeneratorExit`: raised when a generator is closed.
 
     Catching `BaseException` catches these too, which is almost always wrong because:
+
     - Catching `KeyboardInterrupt` prevents the user from stopping a runaway program.
     - Catching `SystemExit` prevents `sys.exit()` from working.
 
@@ -214,6 +215,7 @@ Why does catching `LookupError` work here even though an `IndexError` was raised
     Catching `LookupError` works because `IndexError` is a **subclass** of `LookupError`. When `except` checks if the raised exception matches, it uses `isinstance()` -- so `except LookupError` catches any exception that is a `LookupError` or a subclass of it (including `IndexError` and `KeyError`).
 
     Whether to catch parent or specific exceptions depends on intent:
+
     - Catch **specific** (`IndexError`) when you want to handle that exact error differently.
     - Catch **parent** (`LookupError`) when you want to handle all lookup failures the same way.
     - Catch **`Exception`** only as a last resort, and always log or re-raise.
@@ -248,6 +250,7 @@ What is stored in `e.args`? Why are exceptions objects rather than simple error 
     `e.args` is a tuple containing the arguments passed to the exception constructor. For most built-in exceptions, this is a single error message string.
 
     Exceptions are objects (rather than simple error codes) because:
+
     1. **Hierarchy**: class inheritance lets you catch groups of related errors.
     2. **Information**: objects can carry detailed context (message, traceback, attributes).
     3. **Custom behavior**: you can subclass and add methods or attributes.

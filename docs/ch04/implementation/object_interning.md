@@ -100,6 +100,7 @@ print(a is b)  # May be False
 ### Why This Range?
 
 Small integers are used frequently in programs (loop counters, indices, etc.), so caching them:
+
 - Reduces memory usage
 - Improves performance
 - Avoids repeated object creation
@@ -162,6 +163,7 @@ print(a is b)  # True
 | Empty tuple | Auto | `()` |
 
 Key points:
+
 - Interning saves memory by sharing objects
 - Use `==` for value comparison, `is` for identity
 - Don't rely on caching in program logic

@@ -239,12 +239,14 @@ print(obj.missing)
 ### 3. When to Choose
 
 **Use `__getattr__`:**
+
 - Providing default values
 - Delegating to another object
 - Lazy loading attributes
 - Backward compatibility (old attribute names)
 
 **Use `__getattribute__`:**
+
 - Logging all access
 - Proxying everything
 - Universal access control

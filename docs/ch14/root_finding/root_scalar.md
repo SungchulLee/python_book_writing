@@ -86,6 +86,7 @@ These methods require the function to have opposite signs at the bracket endpoin
 The best general-purpose method: combines bisection, secant, and inverse quadratic interpolation.
 
 **Characteristics:**
+
 - Guaranteed convergence (if bracket brackets a root)
 - Very fast in practice
 - Doesn't require derivatives
@@ -112,6 +113,7 @@ print(f"  Function evals: {result.function_calls}")
 Simple and bulletproof: repeatedly halves the bracket containing the root.
 
 **Characteristics:**
+
 - Very reliable
 - Slower than Brent
 - Predictable convergence rate
@@ -141,6 +143,7 @@ These methods don't require a bracket but may fail to converge:
 Uses both function and derivative. Very fast when derivative is available.
 
 **Characteristics:**
+
 - Requires derivative (or numerical gradient)
 - Quadratic convergence (very fast)
 - May diverge for poor starting points
@@ -171,6 +174,7 @@ print(f"  Function evals: {result.function_calls}")
 Uses finite differences to approximate the derivative. Good balance of speed and simplicity.
 
 **Characteristics:**
+
 - No derivative required
 - Good convergence rate (super-linear)
 - Faster than bisection, slower than Newton
@@ -281,6 +285,7 @@ for method in methods:
 ```
 
 **Available Methods:**
+
 - `hybr`: Hybrid Powell method (default, most robust)
 - `lm`: Levenberg-Marquardt (good for least-squares)
 - `broyden1`, `broyden2`: Broyden's method variants
@@ -498,6 +503,7 @@ print(f"\nRoot-finding is faster and more reliable for this problem.")
 7. **Always verify** the solution by plugging back into the equation
 
 **Choose Based On:**
+
 - Single equation? → root_scalar()
 - Multiple equations? → root()
 - Have derivative? → Newton's method

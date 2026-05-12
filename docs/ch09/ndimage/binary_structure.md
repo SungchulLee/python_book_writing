@@ -52,6 +52,7 @@ print(struct_26[:, :, 1])  # Middle slice
 The output shows `True` for connected neighbors and `False` otherwise. The center element is always `True`.
 
 !!! note "Connectivity Parameter"
+
     - `connectivity=1`: Face neighbors only (minimal connectivity)
     - `connectivity=2`: Face and edge neighbors (in 3D)
     - `connectivity=3`: All neighbors including corners (full connectivity)
@@ -147,6 +148,7 @@ for component_id in range(1, num_features + 1):
 ```
 
 !!! tip "Labeling Applications"
+
     - **Object counting**: How many separate objects?
     - **Component filtering**: Remove small noise components
     - **Feature extraction**: Compute properties per object
@@ -258,6 +260,7 @@ plt.show()
 ```
 
 !!! note "When to Use Morphological Operations"
+
     - **Opening**: Remove small spurious objects
     - **Closing**: Fill holes in objects
     - **Erosion**: Extract internal boundaries, shrink objects
@@ -392,6 +395,7 @@ Binary structures and morphological operations are essential for image segmentat
 - These techniques work on both binary and grayscale images
 
 See also:
+
 - [Convolution and Filtering](convolution_filtering.md) - Linear filtering fundamentals
 - [Generic Filter Operations](generic_filter.md) - Custom neighborhood operations
 

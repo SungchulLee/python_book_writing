@@ -285,6 +285,7 @@ d = '''hello'''
 When is each form most appropriate? Then explain: what is the relationship between triple-quoted strings and docstrings? Are they fundamentally different objects, or the same thing used in different contexts?
 
 ??? success "Solution to Exercise 3"
+
     - **Single quotes** (`'hello'`): useful when the string contains double quotes: `'She said "hi"'`.
     - **Double quotes** (`"hello"`): useful when the string contains apostrophes: `"Don't panic"`.
     - **Triple quotes** (`"""hello"""` or `'''hello'''`): useful for strings that span multiple lines or contain both single and double quotes.

@@ -326,6 +326,7 @@ if (condition_one
 | Style | Follow PEP 8, consistent formatting, organized imports |
 
 Key principles:
+
 - Code is read more than written--optimize for readability
 - Test your code thoroughly
 - Follow established conventions

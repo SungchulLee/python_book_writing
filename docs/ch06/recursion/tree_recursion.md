@@ -116,6 +116,7 @@ Write a tree-recursive function `count_partitions(n, max_part)` that counts the 
                 return 0
             # Use max_part + don't use max_part
             return (count_partitions(n - max_part, max_part)
+
                     + count_partitions(n, max_part - 1))
 
         print(count_partitions(6, 4))   # 9

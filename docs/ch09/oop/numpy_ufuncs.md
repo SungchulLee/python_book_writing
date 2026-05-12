@@ -23,6 +23,7 @@ print(y)  # [0. 1. 0.]
 ```
 
 **Characteristics:**
+
 - Implemented in C for speed
 - Operate element-wise
 - Support broadcasting

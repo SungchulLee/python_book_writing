@@ -8,6 +8,7 @@
 ### 1. Base Structure
 
 Every object has:
+
 - Reference count
 - Type pointer
 - Value data

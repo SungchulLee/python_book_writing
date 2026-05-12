@@ -225,6 +225,7 @@ max       80.000000
 ### Identifying Outliers
 
 Outliers are points beyond:
+
 - Upper fence: Q3 + 1.5 × IQR
 - Lower fence: Q1 - 1.5 × IQR
 

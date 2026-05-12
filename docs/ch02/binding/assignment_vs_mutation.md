@@ -347,6 +347,7 @@ a[0] = 99
 ```
 
 ??? success "Solution to Exercise 2"
+
     1. **`a.reverse()`** -- **Mutation.** The `reverse()` method reverses the
        list in place and returns `None`. The object `a` refers to is modified;
        `id(a)` stays the same.

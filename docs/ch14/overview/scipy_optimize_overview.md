@@ -48,6 +48,7 @@ print(result.x)  # Near 3
 ```
 
 **Key Functions:**
+
 - `minimize()`: General-purpose minimizer supporting multiple algorithms
 - `minimize_scalar()`: Specialized for single-variable functions
 
@@ -63,6 +64,7 @@ result = optimize.minimize(f, x0=0, constraints=constraints)
 ```
 
 **Key Functions:**
+
 - `minimize()` with `constraints` and `bounds` arguments
 - `LinearConstraint()`, `NonlinearConstraint()`: For structured constraints
 
@@ -84,6 +86,7 @@ params, _ = optimize.curve_fit(model, xdata, ydata)
 ```
 
 **Key Functions:**
+
 - `curve_fit()`: Nonlinear least squares curve fitting
 - `least_squares()`: General least squares with bounds and regularization
 
@@ -101,6 +104,7 @@ root = optimize.brentq(f, 0, 3)  # Finds x = 2
 ```
 
 **Key Functions:**
+
 - `root_scalar()`: For scalar functions
 - `root()`: For systems of equations
 - `brentq()`, `newton()`: Specialized scalar root finders
@@ -120,6 +124,7 @@ result = optimize.linprog(c, A_ub=A_ub, b_ub=b_ub)
 ```
 
 **Key Functions:**
+
 - `linprog()`: Linear programming solver
 
 ### 6. Global Optimization
@@ -134,6 +139,7 @@ result = optimize.differential_evolution(f, bounds=[(0, 10)])
 ```
 
 **Key Functions:**
+
 - `differential_evolution()`: Stochastic population-based method
 - `basinhopping()`: Local minimization with random jumps
 - `dual_annealing()`: Simulated annealing variant
@@ -232,6 +238,7 @@ print(f"Iterations: {result.nit}")
 ### Objective Function (Cost Function)
 
 The function you're trying to minimize. Good cost functions are:
+
 - Smooth and continuous (helps most algorithms)
 - Computable at any point in parameter space
 - Meaningful for your problem
@@ -254,6 +261,7 @@ optimize.differential_evolution(f, bounds=[(-10, 10)])  # Finds global
 ### Convergence Criteria
 
 Algorithms stop when:
+
 - Changes in parameters become very small
 - Changes in cost become very small
 - Maximum iterations reached

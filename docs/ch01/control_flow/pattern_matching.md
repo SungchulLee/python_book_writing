@@ -250,6 +250,7 @@ Rewrite this using `match/case` with guards (`if` clauses) and the `|` (or) patt
     The `|` pattern (`301 | 302`) matches either value, replacing `or` in the `if` chain. The guard `if 400 <= code < 500` handles the range check, with `code` capturing the matched value.
 
     Advantages of `match/case`:
+
     1. Each case clearly shows the pattern being matched -- the dispatch structure is visually obvious.
     2. The `|` pattern for alternatives is cleaner than `or` chains.
     3. Guards separate the pattern (what type/structure) from the condition (what values), making complex dispatch easier to read.

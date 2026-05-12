@@ -12,6 +12,7 @@ Iteration is a core concept in Python. Understanding **iterables** and **iterato
 An **iterable** is any object that can be looped over.
 
 Examples:
+
 - lists, tuples, strings
 - dictionaries
 - sets
@@ -28,11 +29,13 @@ iter([1, 2, 3])
 ## Iterators
 
 An **iterator** is an object that:
+
 - produces values one at a time,
 - remembers its state,
 - raises `StopIteration` when exhausted.
 
 It implements:
+
 - `__iter__()` — returns itself
 - `__next__()` — returns next value
 

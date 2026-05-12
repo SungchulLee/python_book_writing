@@ -126,6 +126,7 @@ print(is_safe_name("list"))   # False
 ### 2. Use Linters
 
 Tools that catch shadowing:
+
 - pylint
 - flake8
 - pycodestyle

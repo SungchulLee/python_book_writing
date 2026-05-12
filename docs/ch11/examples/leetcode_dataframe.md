@@ -80,6 +80,7 @@ def employee_bonus(employee: pd.DataFrame, bonus: pd.DataFrame) -> pd.DataFrame:
 ```
 
 **Key Concepts**:
+
 - Left join preserves all employees
 - `isnull()` catches employees without bonus records
 

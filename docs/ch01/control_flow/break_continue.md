@@ -211,6 +211,7 @@ Does `continue` prevent the `else` clause from executing? Explain the interactio
     `continue` does NOT prevent the `else` clause from executing. The `else` clause runs only when the loop completes without hitting `break`. Since `continue` skips the rest of the current iteration but does NOT exit the loop, the loop still completes "normally."
 
     The rules:
+
     - `break`: exits the loop AND skips the `else` clause.
     - `continue`: skips the rest of the current iteration, loop continues normally, `else` still runs.
     - Normal completion (no `break`): `else` runs.

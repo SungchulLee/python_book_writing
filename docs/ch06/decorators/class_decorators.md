@@ -302,6 +302,7 @@ create_user(name="Bob", age="30")  # TypeError
 | `__get__` | For method decoration (descriptor protocol) |
 
 **Key Points**:
+
 - Class decorators modify or enhance classes
 - Decorator classes provide stateful decorators
 - Use `__get__` for method compatibility

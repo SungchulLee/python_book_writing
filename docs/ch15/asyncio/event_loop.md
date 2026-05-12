@@ -3,6 +3,7 @@
 ## What is the Event Loop?
 
 The **event loop** is the core of asyncio. It:
+
 - Schedules and runs coroutines
 - Handles I/O events
 - Manages callbacks and timers
@@ -44,6 +45,7 @@ asyncio.run(main())
 ```
 
 `asyncio.run()`:
+
 - Creates a new event loop
 - Runs the coroutine until complete
 - Closes the loop when done
@@ -278,6 +280,7 @@ asyncio.run(main(), debug=True)
 ```
 
 Debug mode:
+
 - Warns about unawaited coroutines
 - Logs slow callbacks (>100ms)
 - Enables additional checks

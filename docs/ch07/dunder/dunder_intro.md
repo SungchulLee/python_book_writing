@@ -17,6 +17,7 @@ Dunder methods — short for "double underscore" methods — are special methods
 
 ### 3. Purpose
 Enable objects to interact with Python's built-in operations:
+
 - Arithmetic: `+`, `-`, `*`, `/`
 - Comparisons: `==`, `<`, `>`
 - Container operations: `len()`, `[]`, `in`

@@ -16,6 +16,7 @@ Build a complete RPG (Role-Playing Game) character system using inheritance and 
 
 ### 1. Base Character Class
 Create an abstract `Character` class with:
+
 - Attributes: name, level, health, max_health, attack, defense, experience
 - Methods:
   - `take_damage(amount)` - reduce health, check if alive
@@ -30,18 +31,21 @@ Create an abstract `Character` class with:
 Implement these character types:
 
 **Warrior**
+
 - High health and defense
 - Moderate attack
 - Special ability: "Power Strike" - deals 2x attack damage
 - Gains +10 health, +3 attack, +2 defense per level
 
 **Mage**
+
 - Low health and defense
 - High attack (magical)
 - Special ability: "Fireball" - deals 3x attack damage but costs health
 - Gains +5 health, +5 attack, +1 defense per level
 
 **Rogue**
+
 - Moderate health
 - High attack
 - Low defense
@@ -49,6 +53,7 @@ Implement these character types:
 - Gains +7 health, +4 attack, +1 defense per level
 
 **Healer**
+
 - Moderate health
 - Low attack
 - Moderate defense
@@ -64,6 +69,7 @@ Implement these character types:
 
 ### 3. Combat System
 Create a `Battle` class that:
+
 - Manages turn-based combat between two characters
 - Allows characters to attack or use special abilities
 - Displays combat log
@@ -79,6 +85,7 @@ Create a `Battle` class that:
 
 ### 4. Character Party
 Create a `Party` class that:
+
 - Stores multiple characters
 - Has methods to add/remove characters
 - Calculate total party stats
@@ -115,6 +122,7 @@ Experience gained: 150
 
 ## Testing Requirements
 Your implementation should:
+
 1. Create one of each character type
 2. Display their initial stats
 3. Simulate a battle between two characters

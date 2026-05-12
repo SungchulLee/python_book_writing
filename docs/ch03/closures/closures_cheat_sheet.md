@@ -6,6 +6,7 @@
 ## Definition
 
 A **closure** is a function that:
+
 1. Is defined inside another function (nested)
 2. References variables from the outer function's scope
 3. Can be returned and called later, still remembering those variables
@@ -58,10 +59,12 @@ print(counter())  # 2
 ```
 
 **Without nonlocal:**
+
 - Can READ outer variables ✓
 - Cannot MODIFY outer variables ✗ (creates local variable instead)
 
 **With nonlocal:**
+
 - Can both READ and MODIFY outer variables ✓
 
 ## Common Patterns
@@ -161,6 +164,7 @@ def make_counter(start=0):
 ## LEGB Rule (Variable Lookup Order)
 
 Python searches for variables in this order:
+
 1. **L**ocal: Inside current function
 2. **E**nclosing: In enclosing functions (closures!)
 3. **G**lobal: Module level

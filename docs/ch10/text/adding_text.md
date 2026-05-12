@@ -30,6 +30,7 @@ Add text labels and descriptions directly to your plots.
     transforms a picture into a communication.
 
 !!! tip "Text Design Principles"
+
     - **Use text sparingly** — too many labels create clutter that obscures data
     - **Keep labels concise** — a few words, not sentences
     - **Use consistent font sizes** — title > labels > annotations > tick labels

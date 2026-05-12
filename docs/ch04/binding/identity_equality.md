@@ -281,10 +281,12 @@ How do `==` and `is` behave differently after mutation?
     ```
 
     Before mutation:
+
     - `a == b` and `a is b`: `b` is an alias for `a` -- same object, same value. Both `True`.
     - `a == c` and `a is c`: `c` is a copy -- different object, same value. `==` is `True`, `is` is `False`.
 
     After `a.append(4)`:
+
     - `a == b` and `a is b`: still the same object. Both are now `[1, 2, 3, 4]`. Both `True`.
     - `a == c` and `a is c`: `a` is `[1, 2, 3, 4]`, `c` is still `[1, 2, 3]`. Different values, different objects. Both `False`.
 

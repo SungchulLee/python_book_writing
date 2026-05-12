@@ -119,6 +119,7 @@ $B$ is a head and not in any tail → append $B$.
 Result: $[D, B]$
 
 Updated lists:
+
 - $[A, \text{object}]$
 - $[C, A, \text{object}]$
 - $[C]$
@@ -130,6 +131,7 @@ $C$ is a head and not in any tail → append $C$.
 Result: $[D, B, C]$
 
 Updated lists:
+
 - $[A, \text{object}]$
 - $[A, \text{object}]$
 - $[]$
@@ -141,6 +143,7 @@ $A$ is a head and not in any tail → append $A$.
 Result: $[D, B, C, A]$
 
 Updated lists:
+
 - $[\text{object}]$
 - $[\text{object}]$
 - $[]$

@@ -438,11 +438,13 @@ print(f"Outliers (IQR): {outliers_iqr}")
 ## Summary
 
 **Central tendency:**
+
 - Mean: Average value (sensitive to outliers)
 - Median: Middle value (robust)
 - Mode: Most frequent (for categorical/discrete)
 
 **Spread:**
+
 - Std: Average deviation from mean
 - IQR: Range of middle 50% (robust)
 - MAD: Median absolute deviation (very robust)

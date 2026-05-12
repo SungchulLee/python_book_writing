@@ -358,6 +358,7 @@ result4 = False or boom()
 Which of these four lines raises `ValueError`? Explain the short-circuit rule for each operator. Then show a practical example where short-circuiting prevents an error.
 
 ??? success "Solution to Exercise 2"
+
     - `result1 = False and boom()` -- `boom()` is **NOT called**. `and` short-circuits: `False` is falsy, so the result is already `False` without evaluating the right side.
     - `result2 = True or boom()` -- `boom()` is **NOT called**. `or` short-circuits: `True` is truthy, so the result is already `True`.
     - `result3 = True and boom()` -- `boom()` **IS called**, raises `ValueError`. `True` is truthy, so `and` must evaluate the right side.

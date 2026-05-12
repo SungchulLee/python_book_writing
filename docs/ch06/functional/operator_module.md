@@ -26,6 +26,7 @@ result = reduce(add, numbers)
 ```
 
 Benefits:
+
 - **Faster**: Implemented in C
 - **Cleaner**: More readable than lambdas
 - **Documented**: Clear intent from function name

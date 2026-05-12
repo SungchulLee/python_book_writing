@@ -17,6 +17,7 @@ df[df['A'] > 1]['B'] = 0  # ❌ BAD - Chained assignment
 ```
 
 This is "chained" because:
+
 1. First index: `df[df['A'] > 1]` (filter rows)
 2. Second index: `['B'] = 0` (select column and assign)
 

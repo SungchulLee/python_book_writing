@@ -8,6 +8,7 @@ The `view_init` method sets the elevation and azimuth angles for viewing a 3D pl
 ## Understanding View Angles
 
 The view is defined by two angles:
+
 - **Elevation (elev)**: Angle above the xy-plane in degrees. 0° is edge-on, 90° is directly above.
 - **Azimuth (azim)**: Rotation around the z-axis in degrees. Determines horizontal viewing direction.
 

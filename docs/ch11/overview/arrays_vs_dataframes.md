@@ -141,6 +141,7 @@ ma = np.convolve(temps, np.ones(5)/5, mode='valid')
 **Exercise 2.** Explain three advantages of Pandas DataFrames over NumPy arrays for tabular data analysis.
 
 ??? success "Solution to Exercise 2"
+
     1. **Named columns**: DataFrames allow accessing columns by name rather than integer index.
     2. **Mixed types**: Each column can have a different dtype (int, float, string, etc.).
     3. **Built-in methods**: DataFrames provide `groupby`, `merge`, `pivot`, and other high-level data manipulation methods not available in NumPy.

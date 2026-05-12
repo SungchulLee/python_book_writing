@@ -261,6 +261,7 @@ scores["bob"] = 85
 ```
 
 ??? success "Solution to Exercise 2"
+
     - **(a) No side effect.** The list comprehension creates a new list and assigns it to a local variable. No existing data is changed.
 
     - **(b) Side effect: I/O.** `print()` writes to standard output, which is an interaction with the outside world.

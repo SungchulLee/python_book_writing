@@ -83,6 +83,7 @@ with ThreadPoolExecutor(max_workers=5) as executor:
 ```
 
 **Characteristics:**
+
 - Task spends most time waiting (I/O)
 - Low CPU usage per task
 - Need shared memory/state
@@ -117,6 +118,7 @@ with ProcessPoolExecutor() as executor:
 ```
 
 **Characteristics:**
+
 - Task is CPU-intensive
 - High CPU usage per task
 - Can tolerate memory copying overhead
@@ -142,6 +144,7 @@ asyncio.run(main())
 ```
 
 **Characteristics:**
+
 - Very high concurrency (thousands)
 - All I/O operations
 - Need fine-grained control
@@ -174,6 +177,7 @@ processes = [Process(target=worker, args=(queue,)) for _ in range(4)]
 ```
 
 **Characteristics:**
+
 - Need long-running workers
 - Custom synchronization required
 - Complex communication patterns

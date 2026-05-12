@@ -129,6 +129,7 @@ When local minima are a concern, global optimization methods search more broadly
 Differential evolution uses a population-based approach: multiple candidate solutions evolve over iterations by mutating and recombining.
 
 **Characteristics:**
+
 - Population-based (maintains many candidate solutions)
 - No gradient required
 - Very robust, rarely gets stuck in local minima
@@ -168,6 +169,7 @@ print(f"\nFunction evaluations - Local: {result_local.nfev}, Global: {result_glo
 ```
 
 **When to use:**
+
 - Black-box optimization (no gradient available)
 - Function has many local minima
 - Non-smooth or discontinuous functions
@@ -178,6 +180,7 @@ print(f"\nFunction evaluations - Local: {result_local.nfev}, Global: {result_glo
 Basin-hopping combines local minimization with random jumps in parameter space. It minimizes locally, then makes a random step and minimizes again from the new location.
 
 **Characteristics:**
+
 - Local minimization with randomization
 - Escapes local minima by jumping to new regions
 - Faster than population-based methods
@@ -214,6 +217,7 @@ print(f"  x: {result_basin.x}")
 ```
 
 **When to use:**
+
 - Need faster global optimization than differential_evolution
 - Problem has distinct basins
 - Can provide good local minimizer
@@ -224,6 +228,7 @@ print(f"  x: {result_basin.x}")
 Dual annealing is a variant of simulated annealing that combines global and local search strategies.
 
 **Characteristics:**
+
 - Simulated annealing variant
 - Probabilistically accepts uphill moves to escape local minima
 - Temperature gradually decreases
@@ -253,6 +258,7 @@ print(f"Dual annealing: f = {result_annealing.fun:.6f}")
 ```
 
 **When to use:**
+
 - Moderate-sized global optimization
 - Bounds are naturally defined
 - Don't want to tune population size (like in differential_evolution)
@@ -455,6 +461,7 @@ print(f"Global: shift = {result_global.x[0]:.2f}, error = {result_global.fun:.4f
 6. **Combine strategies**: Use coarse grid search → local refinement → verify globally
 
 Choose based on:
+
 - Problem complexity and number of local minima
 - Computational budget (function evaluation cost)
 - Need for accuracy vs speed

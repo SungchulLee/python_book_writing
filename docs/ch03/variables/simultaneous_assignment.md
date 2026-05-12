@@ -13,6 +13,7 @@ print(f"{a = }, {b = }")  # a = 1, b = 2
 ```
 
 **Process**:
+
 1. Right side: Create tuple `(1, 2)`
 2. Left side: Unpack to `a` and `b`
 

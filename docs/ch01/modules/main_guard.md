@@ -196,6 +196,7 @@ print(f"__name__ = {__name__}")
 What does `__name__` contain when: (a) you run `python mymodule.py` directly, (b) another file runs `import mymodule`, (c) another file runs `from mymodule import *`? Why does Python set `__name__` differently in each case?
 
 ??? success "Solution to Exercise 2"
+
     - **(a)** `python mymodule.py` directly: `__name__` = `"__main__"`. Python sets it to `"__main__"` for the file being executed as the entry point.
     - **(b)** `import mymodule`: `__name__` = `"mymodule"`. Python sets it to the module's name (derived from the filename without `.py`).
     - **(c)** `from mymodule import *`: `__name__` = `"mymodule"`. Same as regular import -- `from ... import` still executes the module file, and `__name__` is the module name.

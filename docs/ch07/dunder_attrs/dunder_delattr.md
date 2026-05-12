@@ -503,6 +503,7 @@ class RefCounted:
 ## When NOT to Use __delattr__
 
 !!! warning "Avoid When"
+
     - **Controlling deletion of a specific named attribute** — use a `@property` deleter instead. It is self-contained and easier to understand.
     - **The default behavior is sufficient** — if you just want `del obj.attr` to remove the attribute from `__dict__`, you don't need to override anything.
     - **You are tempted to add cascade deletes** — prefer an explicit `reset()` or `clear()` method that makes the intent visible to the caller.

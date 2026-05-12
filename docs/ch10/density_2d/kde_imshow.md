@@ -37,6 +37,7 @@ KDE estimates the probability density function by placing a kernel (typically Ga
 $$\hat{f}(x) = \frac{1}{nh} \sum_{i=1}^{n} K\left(\frac{x - x_i}{h}\right)$$
 
 where:
+
 - $K$ is the kernel function
 - $h$ is the bandwidth (smoothing parameter)
 - $n$ is the number of data points

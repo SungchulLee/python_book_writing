@@ -67,6 +67,7 @@ print(times3(10))  # 30
 ### 2. Free Variables
 
 `factor` is a **free variable** in `multiply`:
+
 - Used inside the function
 - Not defined locally
 - Captured from enclosing scope
@@ -87,6 +88,7 @@ print(times3(10))  # 30 - still works!
 ### 1. Definition
 
 A variable that is:
+
 - Referenced in a function
 - Not bound (defined) in that function
 - Comes from an enclosing scope

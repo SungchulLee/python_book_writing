@@ -593,6 +593,7 @@ ValueError: invalid literal for int() with base 10: 'hello'
 Read the traceback and answer: which function raised the error? Which function called it? What was the original call that started the chain? Why does Python print the traceback in order from outermost to innermost call?
 
 ??? success "Solution to Exercise 3"
+
     - **Which function raised the error?** `transform` -- the error occurred at line 5, inside `transform`, when `int(value)` was called with the string `'hello'`.
     - **Which function called it?** `process` -- line 10 in `process` called `transform(item)`.
     - **What was the original call?** Line 15 in `<module>` (the main script) called `process(data)`.

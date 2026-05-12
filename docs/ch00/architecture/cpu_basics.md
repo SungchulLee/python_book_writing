@@ -526,6 +526,7 @@ Instruction pipelining allows CPUs to overlap stages of multiple instructions. A
 What hardware techniques do modern CPUs use to mitigate each type?
 
 ??? success "Solution to Exercise 2"
+
     - **(a) Data hazard.** Instruction 2 depends on the result of Instruction 1. Mitigated by **forwarding/bypassing** (routing the result directly from the Execute stage to the next instruction's input without waiting for Writeback) and **pipeline stalls** (inserting bubbles).
     - **(b) Control hazard.** The branch makes the next instruction uncertain. Mitigated by **branch prediction** (guessing which way the branch goes) and **speculative execution** (executing the predicted path and rolling back if wrong).
     - **(c) Structural hazard.** Two instructions compete for the same hardware resource. Mitigated by **resource duplication** (adding more ALUs) and **instruction scheduling** (reordering instructions to avoid conflicts).
@@ -540,6 +541,7 @@ The memory hierarchy has vastly different latencies at each level. A register ac
 - (c) This ratio explains why NumPy (contiguous arrays with good cache locality) outperforms Python lists (scattered objects with poor cache locality). What is the approximate speedup factor from cache locality alone?
 
 ??? success "Solution to Exercise 3"
+
     - **(a)** If the array fits in L1 (~4 cycles per access): 1,000,000 * 4 = **4,000,000 cycles**.
     - **(b)** If every access goes to RAM (~300 cycles per access): 1,000,000 * 300 = **300,000,000 cycles**.
     - **(c)** The ratio is 300,000,000 / 4,000,000 = **75x** speedup from cache locality alone. In practice, the difference is somewhat less because hardware prefetchers help with sequential access patterns, but the order of magnitude is correct.

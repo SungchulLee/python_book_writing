@@ -26,6 +26,7 @@ print(type(a))  # <class 'str'>
 ### 3. What Happens
 
 Each assignment:
+
 1. Creates/retrieves object
 2. Binds name to object
 3. Increments reference count

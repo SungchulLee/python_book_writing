@@ -137,6 +137,7 @@ When switching from pyplot to OOP style, method names change (add `set_` prefix)
 ### Pyplot Style
 
 Best for:
+
 - Quick exploratory plots
 - Simple single-axis figures
 - Interactive REPL/notebook sessions
@@ -151,6 +152,7 @@ plt.show()
 ### OOP Style
 
 Best for:
+
 - Complex multi-panel figures
 - Production-quality visualizations
 - Reusable plotting functions
@@ -726,6 +728,7 @@ plt.show()
 **Exercise 2.** Explain two advantages of the OOP style (`fig, ax = plt.subplots()`) over the pyplot style (`plt.plot()`) when creating complex, multi-subplot figures.
 
 ??? success "Solution to Exercise 2"
+
     1. **Explicit control over multiple subplots**: With the OOP style, each Axes object is a distinct variable (`ax1`, `ax2`, etc.), making it clear which subplot you are modifying. In pyplot style, the "current axes" concept can be ambiguous and error-prone with multiple subplots.
 
     2. **Better for reusable functions**: You can write functions that accept an `ax` parameter and draw on it, making your plotting code modular and testable. With pyplot, functions implicitly modify global state, which is harder to compose and debug.

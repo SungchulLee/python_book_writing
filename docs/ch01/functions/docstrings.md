@@ -115,6 +115,7 @@ def version_c(x):
 For each version, what does `func.__doc__` return? Which form is accessible at runtime, and why? What makes a docstring fundamentally different from a comment?
 
 ??? success "Solution to Exercise 1"
+
     - `version_a.__doc__` returns `None` -- the comment `# Return the square of x` is stripped by the parser and has no runtime existence.
     - `version_b.__doc__` returns `"Return the square of x."` -- the string literal as the first statement is stored as the docstring.
     - `version_c.__doc__` returns `None` -- the comment after `return` is not a docstring; `return x * x` is the first statement, and it is not a string literal.
@@ -147,6 +148,7 @@ def connect(host: str, port: int, timeout: float = 30.0) -> bool:
 Why is this level of documentation useful even when type hints are present? What information does the docstring provide that type hints cannot?
 
 ??? success "Solution to Exercise 2"
+
     - **Summary line** ("Establish a TCP connection..."): a one-sentence description, readable in `help()` listings.
     - **Args**: documents each parameter's meaning, constraints (port range), and defaults. Type hints say `port: int` but not "must be 1-65535."
     - **Returns**: describes the meaning of the return value. `-> bool` says the type, but not that `True` means success.

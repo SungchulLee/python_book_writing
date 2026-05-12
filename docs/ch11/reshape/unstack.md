@@ -336,6 +336,7 @@ print(unstacked)
 | `fill_value` | Value for missing combinations | NaN |
 
 **Key Points:**
+
 - `unstack()` pivots index level to columns
 - Inverse of `stack()`
 - Creates NaN for missing combinations

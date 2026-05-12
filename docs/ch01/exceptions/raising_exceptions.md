@@ -166,6 +166,7 @@ def set_age(age):
 ```
 
 ??? success "Solution to Exercise 1"
+
     - `age = "hello"`: **`TypeError`**. The type is wrong -- `set_age` expects a number, not a string. No string value could be a valid age.
     - `age = -5`: **`ValueError`**. The type is correct (integer), but the specific value is invalid (ages cannot be negative).
     - `age = [25]`: **`TypeError`**. A list is the wrong type for an age parameter, regardless of its contents.
@@ -214,6 +215,7 @@ Why is `raise` (without arguments) preferable to `raise ValueError(...)` in the 
     Bare `raise` re-raises the **exact same exception object**, preserving the original traceback. If you instead wrote `raise ValueError("conversion failed")`, you would create a new exception object with a new traceback -- the original location of the error (inside `int()`) would be lost.
 
     Bare `raise` is preferable in "catch, log, re-raise" patterns because:
+
     1. The original traceback is preserved, showing where the error actually occurred.
     2. The original error message is preserved.
     3. Any custom attributes on the original exception are preserved.
@@ -262,6 +264,7 @@ How does this hierarchy let a caller handle all application errors with one `exc
     `except AppError` catches `DatabaseError` and `AuthError` (because they inherit from `AppError`), but the more specific `except` clauses handle them individually when listed first.
 
     Advantages over using built-in exceptions like `RuntimeError`:
+
     1. **Clarity**: `except DatabaseError` is self-documenting; `except RuntimeError` could mean anything.
     2. **Specificity**: you can catch only your application's errors without accidentally catching unrelated `RuntimeError`s from libraries.
     3. **Organization**: the hierarchy mirrors your application's error categories, making error handling logic match your domain model.

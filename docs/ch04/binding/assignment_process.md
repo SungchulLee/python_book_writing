@@ -208,6 +208,7 @@ x = (a := 5) + (b := 10)
 | Access | `x` | Lookup in namespace |
 
 Key points:
+
 - RHS always evaluated first
 - Assignment binds names, doesn't copy values
 - Multiple assignment uses unpacking

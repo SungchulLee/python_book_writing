@@ -170,6 +170,7 @@ def add_to_total(n):
 ```
 
 ??? success "Solution to Exercise 1"
+
     - `multiply(a, b)`: **Pure.** It depends only on its arguments and returns a result without side effects.
 
     - `greet(name)`: **Impure.** It violates the "no side effects" rule by calling `print()`, which performs I/O. Even though it also returns a value, the `print` call makes it impure.

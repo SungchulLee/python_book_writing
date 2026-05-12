@@ -41,6 +41,7 @@ if __name__ == "__main__":
 $$A = ZTZ^H$$
 
 where:
+
 - $Z$ is unitary ($Z^HZ = I$)
 - $T$ is upper quasi-triangular (upper triangular with possible 2×2 blocks on diagonal)
 

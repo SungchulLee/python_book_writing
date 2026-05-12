@@ -24,6 +24,7 @@ The function receives a flattened array of all values in the neighborhood and sh
 
 !!! note "When to Use Generic Filters"
     Use `generic_filter()` when:
+
     - Your operation cannot be expressed as a linear convolution
     - You need to apply statistics (median, percentile, min, max)
     - You want to implement custom neighborhood logic
@@ -66,6 +67,7 @@ print(result)
 Footprints give fine control over which neighbors participate in the operation. This is essential for defining connectivity in segmentation and morphological operations.
 
 !!! tip "Footprint Choice"
+
     - **Size**: Simple, rectangular, efficient
     - **Footprint**: Custom shapes, connectivity control, more flexible
 
@@ -110,6 +112,7 @@ print("Median filter range:", median_result.min(), "-", median_result.max())
 ```
 
 !!! note "Why Percentile Filters?"
+
     - **Median (50th percentile)**: Removes outliers, preserves edges
     - **Higher percentiles**: Remove dark noise, preserve bright features
     - **Lower percentiles**: Remove bright noise
@@ -171,6 +174,7 @@ This example demonstrates several key features:
 
 !!! tip "Why Game of Life?"
     This demonstrates that `generic_filter()` can:
+
     - Express complex conditional logic
     - Handle non-linear operations
     - Work with custom neighborhood topologies
@@ -286,6 +290,7 @@ for idx, data in detected_neighbors.items():
 
 !!! warning "State Accumulation Caution"
     Global state during filtering is useful for analysis but:
+
     - Can produce unexpected results with boundary modes
     - Makes debugging harder
     - Doesn't parallelize well
@@ -380,6 +385,7 @@ plt.show()
 - Useful for percentiles, statistics, and adaptive operations
 
 See also:
+
 - [Convolution and Filtering](convolution_filtering.md) - Linear filtering operations
 - [Binary Structures and Morphology](binary_structure.md) - Connectivity and labeling
 

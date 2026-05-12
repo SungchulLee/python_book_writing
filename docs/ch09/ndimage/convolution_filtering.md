@@ -53,6 +53,7 @@ where $K$ is a 2D kernel and $I$ is the image.
 
 !!! note "Why Convolution Matters"
     Convolution is the mathematical foundation for:
+
     - **Blurring and smoothing** - Averaging neighboring values
     - **Edge detection** - Finding boundaries where intensity changes
     - **Feature extraction** - Highlighting patterns in images
@@ -118,6 +119,7 @@ for mode in modes:
 - **`reflect`**: Mirror values at the boundary
 
 !!! tip "Choosing the Right Mode"
+
     - Use **`reflect`** for natural images where boundaries shouldn't repeat
     - Use **`wrap`** for periodic data (e.g., spherical coordinates)
     - Use **`nearest`** when edge pixels matter
@@ -183,6 +185,7 @@ plt.show()
 The `gaussian_filter()` function is optimized using separable convolution—it applies 1D Gaussian filters horizontally and vertically, which is much faster than 2D convolution.
 
 !!! note "Why Gaussian Smoothing?"
+
     - Natural weighting: nearby pixels have more influence
     - Frequency response: removes high-frequency noise gradually
     - Separable: can be computed efficiently in 1D passes
@@ -250,6 +253,7 @@ This combination makes Sobel more robust to noise than simple difference filters
 
 !!! tip "Key Takeaway"
     Sobel edge detection is a practical tool that:
+
     - Combines smoothing and differencing for noise robustness
     - Provides both magnitude (edge strength) and direction
     - Forms the basis for more advanced edge detection (Canny, etc.)
@@ -315,6 +319,7 @@ print(f"Speedup: {t2/t1:.1f}x")
 ```
 
 !!! tip "Performance Tips"
+
     - Use `gaussian_filter()` instead of `convolve()` with Gaussian kernels
     - For separable kernels, apply 1D convolutions sequentially
     - Use `order` parameter in `gaussian_filter()` for derivatives
@@ -381,6 +386,7 @@ Convolution is the fundamental building block for image processing and filtering
 - scipy.ndimage provides optimized implementations
 
 See also:
+
 - [Generic Filter Operations](generic_filter.md) - Arbitrary neighborhood computations
 - [Binary Structures and Morphology](binary_structure.md) - Connected components and morphological operations
 

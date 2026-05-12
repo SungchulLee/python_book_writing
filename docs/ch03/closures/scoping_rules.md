@@ -244,6 +244,7 @@ def counter():
 | Loop (for/while) | No | Yes |
 
 **Key Points:**
+
 - Comprehensions and generators have isolated scopes in Python 3
 - Lambda and def have identical closure behavior
 - Use `nonlocal` for rebinding, `global` for module-level

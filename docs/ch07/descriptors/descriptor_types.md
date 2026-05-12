@@ -8,10 +8,12 @@
 ### 1. Definitions
 
 **Data Descriptor:**
+
 - Defines `__set__` and/or `__delete__` (at least one)
 - Takes **priority** over instance `__dict__`
 
 **Non-Data Descriptor:**
+
 - Defines **only** `__get__`
 - **Defers** to instance `__dict__` if it exists
 

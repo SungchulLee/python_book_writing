@@ -23,6 +23,7 @@ def __getattribute__(self, name):
 ### 3. Universal Hook
 
 **Key characteristic**: `__getattribute__` is called for **every** attribute access, even:
+
 - Instance attributes
 - Class attributes
 - Methods

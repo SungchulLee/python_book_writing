@@ -10,6 +10,7 @@
 ## What is Homebrew?
 
 Homebrew installs **system packages** that aren't managed by pip or conda:
+
 - Python interpreter
 - Git, curl, wget
 - Databases (PostgreSQL, Redis)
@@ -95,6 +96,7 @@ brew install python
 ```
 
 This installs:
+
 - `python3` command
 - `pip3` command
 - Latest stable Python version
@@ -300,6 +302,7 @@ source ~/.bashrc
 ```
 
 Useful for:
+
 - Installing newer software than system packages
 - Consistent tooling across macOS and Linux
 - Avoiding `sudo apt install` permission issues

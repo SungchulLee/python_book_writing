@@ -477,6 +477,7 @@ class User:
 - `asdict()` and `astuple()` for easy serialization
 
 !!! warning "Common Mistakes"
+
     - **Mutable defaults**: Writing `items: list = []` shares one list across all
       instances. Always use `field(default_factory=list)`.
     - **Forgetting field ordering**: Fields with defaults must come after fields

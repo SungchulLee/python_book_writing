@@ -149,6 +149,7 @@ Modules are essential for building larger and maintainable programs.
 A Python file can be both a script and a module. Explain the practical implications: if `math_utils.py` contains top-level code like `print("loaded")`, what happens when (a) you run it as a script, and (b) another program imports it? Why is this a problem for modular design?
 
 ??? success "Solution to Exercise 1"
+
     - **(a)** Running as a script: `"loaded"` prints, then any other code executes.
     - **(b)** Importing: `"loaded"` ALSO prints, because Python executes the module file when importing it for the first time.
 
@@ -203,6 +204,7 @@ Explain the difference between a module, a package, and a script. For each of th
 Why did Python add the concept of packages? What problem do they solve that simple modules cannot?
 
 ??? success "Solution to Exercise 3"
+
     1. `app.py` run with `python app.py`: **script** -- it is the entry point of the program.
     2. `helpers.py` imported by `app.py`: **module** -- it provides reusable definitions.
     3. `mypackage/` with `__init__.py`: **package** -- a directory containing modules, organized as a namespace.

@@ -206,6 +206,7 @@ int("3.14")
 What is the difference between `TypeError` and `ValueError`? Both indicate "wrong input" -- how does Python decide which one to raise?
 
 ??? success "Solution to Exercise 1"
+
     - **A**: `TypeError: object of type 'int' has no len()`. The type `int` does not support `len()`. The **type** is wrong for this operation.
     - **B**: `ValueError: invalid literal for int() with base 10: '3.14'`. The type is correct (`str`), but the **value** is inappropriate (contains a decimal point).
     - **C**: `KeyError: 'b'`. The key `"b"` does not exist in the dictionary.
@@ -257,6 +258,7 @@ Why are these different exception types and not just the same error? How does Py
     `AttributeError` occurs when Python finds the **object** (`x = 42`) but the object does not have the requested **attribute** (`.append`). The name `x` is found successfully, but the `int` object it refers to does not have an `append` attribute.
 
     They are different exceptions because they represent different failure points in name resolution:
+
     - `NameError`: the name itself cannot be resolved to any object.
     - `AttributeError`: the name resolves to an object, but the attribute lookup on that object fails.
 
