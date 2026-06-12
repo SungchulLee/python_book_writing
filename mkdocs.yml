@@ -85,6 +85,8 @@ nav:
             - 점수열과 정규분포 근사: ch04/discrete_to_normal/discrete_to_normal.md
         - 4.2 중복순열과 중복조합:
             - 중복순열과 중복조합: ch04/repetition_counting/repetition_counting.md
+        - 4.3 확률밀도함수와 적분:
+            - 확률밀도함수와 적분: ch04/density_function/density_function.md
 
 plugins:
     - search

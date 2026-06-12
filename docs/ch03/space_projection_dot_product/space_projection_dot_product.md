@@ -250,3 +250,62 @@ $$
         - **구의 접점은 중심-접점-외부점이 직각삼각형**을 이루므로 닮음을 통해 좌표가 즉시 결정된다.
         - **xy 평면 정사영과 원래 선분의 길이 비** 가 두 직선이 이루는 각의 코사인.
         - **삼수선의 정리**로 3차원 점-직선 거리를 평면 거리 + 수직 거리의 피타고라스로 환원.
+
+---
+
+**연습문제 (보충 2).** [종이접기로 만드는 사면체의 이면각] 직사각형 모양의 종이의 네 꼭짓점 $\mathrm{A, B, C, D}$ 에 대하여 $\overline{\mathrm{AB}} = 2$, $\overline{\mathrm{AD}} = 2\sqrt 3$ 이다. 선분 $\mathrm{AD}$ 의 중점을 $\mathrm{E}$ 라 하고, 선분 $\mathrm{EB}$ 와 선분 $\mathrm{EC}$ 를 접어서 두 선분 $\mathrm{AE}$ 와 $\mathrm{DE}$ 가 맞닿도록 하자. 두 점 $\mathrm{A}$ 와 $\mathrm{D}$ 가 만나는 점을 $\mathrm{P}$ 라 할 때, 다음 물음에 답하시오. (단, 종이의 두께는 생각하지 않는다.)
+
+(1) 평면 $\mathrm{PEB}$ 와 평면 $\mathrm{EBC}$ 가 이루는 각의 크기를 $\theta$ 라 할 때, $\cos\theta$ 의 값을 구하시오.
+
+(2) 삼각형 $\mathrm{PBC}$ 의 넓이와 사면체 $\mathrm{PEBC}$ 의 부피를 구하시오.
+
+??? success "연습문제 (보충 2) 풀이"
+
+    **기본 길이**. 점 $\mathrm{E}$ 가 $\mathrm{AD}$ 의 중점이므로 $\overline{\mathrm{AE}} = \overline{\mathrm{ED}} = \sqrt 3$. 직각삼각형 $\mathrm{ABE}$ 에서 $\overline{\mathrm{BE}} = \sqrt{\overline{\mathrm{AB}}^2 + \overline{\mathrm{AE}}^2} = \sqrt{4 + 3} = \sqrt 7$.
+
+    접은 후 $\mathrm{A} = \mathrm{D} = \mathrm{P}$ 이므로 $\overline{\mathrm{PB}} = \overline{\mathrm{AB}} = 2$, $\overline{\mathrm{PC}} = \overline{\mathrm{DC}} = 2$, $\overline{\mathrm{PE}} = \sqrt 3$.
+
+    **(1) $\cos\theta$.** 점 $\mathrm{P}$ 에서 선분 $\mathrm{EB}$ 와 평면 $\mathrm{EBC}$ 에 내린 수선의 발을 각각 $\mathrm{H, O}$ 라 하자. $\overline{\mathrm{PH}} \perp \overline{\mathrm{EB}}$ 이고, 선분 $\mathrm{PO}$ 와 평면 $\mathrm{EBC}$ 가 수직이므로 **삼수선의 정리**에 의하여 $\overline{\mathrm{HO}} \perp \overline{\mathrm{EB}}$. 직각삼각형 $\mathrm{POH}$ 에서
+
+    $$
+    \cos\theta = \frac{\overline{\mathrm{HO}}}{\overline{\mathrm{PH}}}
+    $$
+
+    삼각형 $\mathrm{AEO}$ (평면 위로 펼친 모양) 와 삼각형 $\mathrm{BAE}$ 의 닮음에서 $\overline{\mathrm{AE}} : \overline{\mathrm{BA}} = \overline{\mathrm{AE}} : \overline{\mathrm{EO}}$ 즉 $\overline{\mathrm{EO}} = \dfrac{\overline{\mathrm{AE}}^2}{\overline{\mathrm{BA}}} = \dfrac{3}{2}$. 마찬가지로 삼각형 $\mathrm{AHB}$ 와 $\mathrm{OHE}$ 의 닮음에서
+
+    $$
+    \frac{\overline{\mathrm{HO}}}{\overline{\mathrm{AH}}} = \frac{\overline{\mathrm{EO}}}{\overline{\mathrm{HO}}} \cdot \frac{\overline{\mathrm{AH}}}{\overline{\mathrm{AH}}} \cdots
+    $$
+
+    좀 더 직접적으로, $\overline{\mathrm{AH}}$ 는 직각삼각형 $\mathrm{ABE}$ 에서 빗변 $\mathrm{EB}$ 로 내린 수선의 발까지 거리이므로 $\overline{\mathrm{AH}} = \overline{\mathrm{PH}} = \dfrac{\overline{\mathrm{AB}} \cdot \overline{\mathrm{AE}}}{\overline{\mathrm{BE}}} = \dfrac{2\sqrt 3}{\sqrt 7}$ ; 또 $\overline{\mathrm{HO}} = \dfrac{3}{4}\,\overline{\mathrm{AH}} = \dfrac{3}{4}\cdot\dfrac{2\sqrt 3}{\sqrt 7}$ (닮음비 $\overline{\mathrm{AH}} : \overline{\mathrm{HO}} = 4 : 3$).
+
+    $$
+    \cos\theta = \frac{\overline{\mathrm{HO}}}{\overline{\mathrm{PH}}} = \frac{3}{4}\quad\square
+    $$
+
+    **(2) 삼각형 PBC 넓이와 사면체 부피.**
+
+    선분 $\mathrm{BC}$ 의 중점 $\mathrm{E}'$ 에 대하여 $\overline{\mathrm{E}' \mathrm{C}} = \sqrt 3$, $\overline{\mathrm{PC}} = 2$. $\mathrm{E}'$ 은 $\mathrm{P}$ 에서 $\mathrm{BC}$ 에 내린 수선의 발이므로 직각삼각형 $\mathrm{PE}'\mathrm{C}$ 에서 $\overline{\mathrm{PE}'} = \sqrt{4 - 3} = 1$. 따라서
+
+    $$
+    \triangle \mathrm{PBC} = \frac{1}{2}\cdot\overline{\mathrm{BC}}\cdot\overline{\mathrm{PE}'} = \frac{1}{2}\cdot 2\sqrt 3 \cdot 1 = \sqrt 3
+    $$
+
+    **사면체 부피**. 직각삼각형 $\mathrm{ABE}$ 의 빗변에 대한 수직거리 $\overline{\mathrm{AH}} = \overline{\mathrm{PH}} = \dfrac{2\sqrt 3}{\sqrt 7}$. (1)에서 $\sin\theta = \sqrt{1 - 9/16} = \dfrac{\sqrt 7}{4}$ 이므로
+
+    $$
+    \overline{\mathrm{PO}} = \overline{\mathrm{PH}}\sin\theta = \frac{2\sqrt 3}{\sqrt 7}\cdot\frac{\sqrt 7}{4} = \frac{\sqrt 3}{2}
+    $$
+
+    $\triangle \mathrm{EBC} = 2\sqrt 3$ (직사각형 펼친 평면에서의 넓이) 이므로
+
+    $$
+    V_{\mathrm{PEBC}} = \frac{1}{3}\cdot\triangle \mathrm{EBC}\cdot\overline{\mathrm{PO}} = \frac{1}{3}\cdot 2\sqrt 3 \cdot \frac{\sqrt 3}{2} = 1\quad\square
+    $$
+
+    **(다른 풀이)** $\overline{\mathrm{EP}}\perp\overline{\mathrm{BP}}$ 이고 $\overline{\mathrm{EP}}\perp\overline{\mathrm{PC}}$ 이므로 ($\overline{\mathrm{EP}} = \sqrt 3$, $\overline{\mathrm{BP}} = \overline{\mathrm{PC}} = 2$ 이고 $\angle\mathrm{BPC}$ 는 따라 결정), 선분 $\mathrm{EP}$ 가 평면 $\mathrm{PBC}$ 에 수직. 따라서 사면체를 $\triangle\mathrm{PBC}$ 를 밑면, $\overline{\mathrm{EP}} = \sqrt 3$ 을 높이로 보면 $V = \dfrac{1}{3}\cdot\sqrt 3\cdot\sqrt 3 = 1$ 동일.
+
+    !!! info "교훈"
+        - **종이접기 문제의 핵심**: 접기 전 평면 거리는 보존되므로, 펼친 평면 그림과 접은 입체 그림을 둘 다 다루어야 한다.
+        - **삼수선의 정리**가 이면각의 코사인을 평면 도형의 닮음비로 환원한다.
+        - 사면체 부피는 (밑면 × 높이) / 3. 어느 면을 밑면으로 삼느냐에 따라 풀이가 크게 달라진다 — 수직 관계가 명확한 면을 밑면으로 잡는 것이 유리.
