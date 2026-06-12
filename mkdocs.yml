@@ -87,6 +87,8 @@ nav:
             - 중복순열과 중복조합: ch04/repetition_counting/repetition_counting.md
         - 4.3 확률밀도함수와 적분:
             - 확률밀도함수와 적분: ch04/density_function/density_function.md
+        - 4.4 확률의 곱셈정리와 도착 확률:
+            - 확률의 곱셈정리와 도착 확률: ch04/random_walk_probability/random_walk_probability.md
 
 plugins:
     - search
