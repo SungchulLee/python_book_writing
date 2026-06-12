@@ -69,6 +69,8 @@ nav:
             - 수열의 극한: ch02/sequence_limit/sequence_limit.md
         - 2.3 수열의 합:
             - 수열의 합: ch02/series_sum/series_sum.md
+        - 2.4 삼각함수의 덧셈정리와 미분:
+            - 삼각함수의 덧셈정리와 미분: ch02/trig_addition_derivative/trig_addition_derivative.md
 
     - 3 기하:
         - 3.1 정사영과 내적:
