@@ -1611,3 +1611,119 @@ $a (a \neq 0), b$ 에 대해 $f(x) = (ax^2 + bx)e^x$, $g(x) = (e^x - e^2)(e^x - 
 
 ??? success "풀이"
     직각 위치: $\angle A = \pi/2$ → $\mathrm{C}(-1, a+b)$, $\angle B = \pi/2$ → $\mathrm{C}(1, a+b)$. $\angle C = \pi/2$ → $\mathrm{C}(p,q)$ 에서 $\overrightarrow{\mathrm{CA}} \cdot \overrightarrow{\mathrm{CB}} = 0 \Rightarrow p^2 + q^2 = 1$, $\mathrm{C}$ 가 원 위. 등차수열 조건 → $p = \pm 1/3$, $q = 2\sqrt 2/3$. 이차함수 식 대입 → $a + 9b = 6\sqrt 2$, $a \in \{1,2,\dots,8\}$, $0 < b < 2\sqrt 2/3$. $g'(x) = 3x^2 + 2ax = x(3x+2a) = 0$ → $x = 0, -2a/3$. $m = g(0) = b$, $M = g(-2a/3) = 4a^3/27 + b$. $M - m = 4a^3/27 \ge 4$ ↔ $a \ge 3$. $a = 1, 2$ 제외하면 $a \in \{3,\dots,8\}$ → **순서쌍 6 개**.
+
+---
+
+## 카드 31 — 중앙대 2026 자연계열 논술 수학
+
+> **출처**: 중앙대학교 2026학년도 대학별고사 선행학습 영향평가 보고서, 논술전형 필답고사 부록 (자연계열 I·II 수학 문항카드 7~14). 자연계열 I 120분 4문제, 자연계열 II 120분 4문제. PDF 모범답안 명시. 인문사회·경영경제 카드 1·2·4·5·6 및 재외국민 면접 카드 15 는 비수학.
+
+### 자연계 I [문제 1] — 원순열·수학적 확률 (8명 원탁)
+
+[제시문] $1$ 학년 $1$ 명, $2$ 학년 $2$ 명, $3$ 학년 $2$ 명, $4$ 학년 $3$ 명이 $8$ 개의 자리가 있는 원탁에 둘러앉는다. 조건: ① $2$ 학년끼리 서로 이웃하지 않는다, ② 두 $2$ 학년은 같은 학생과 서로 이웃하지 않는다, ③ $3$ 학년은 $1$ 학년과 서로 이웃하지 않는다, ④ 회전하여 일치하는 것은 같은 것으로 본다.
+
+**[1]** 위 시행에서 $2$ 학년 학생이 $1$ 학년 학생과 서로 이웃할 확률.
+
+??? success "풀이"
+    $1$ 학년을 기준으로 시계방향 자리를 $1, \dots, 7$. 두 $2$ 학년 위치 $i < j$ 에 대해 조건 ①·②: $i + 2 < j$, $j + 2 < 8 + i$ → $i + 2 < j < i + 6$. 만족하는 $(i,j) = (1,4),(1,5),(1,6),(2,5),(2,6),(2,7),(3,6),(3,7),(4,7)$ → $9$ 가지. 이 중 $i=1$ 또는 $j=7$ 인 경우가 $6$ 가지 ($2$ 학년이 $1$ 학년과 이웃). 두 $2$ 학년 자리 바꾸기 $2$ 가지. $1$ 학년 옆 빈 한 자리에 $4$ 학년 (3 중 1 택), 나머지 $4$ 학년 $2$ 명·$3$ 학년 $2$ 명 배치 $4!$. 이웃하는 경우: $6 \times 2 \times 3 \times 4! = 864$. 이웃하지 않는 경우 ($i \ne 1, j \ne 7$): $3$ 가지, $1$ 학년 옆 두 자리 모두 $4$ 학년 $_3\mathrm{P}_2 = 6$, 남은 $4$ 학년 $1$·$3$ 학년 $2$ 배치 $3!$, $2$ 학년 자리바꿈 $2$ → $3 \times 2 \times 6 \times 3! = 216$. **확률 $= \dfrac{864}{864 + 216} = \dfrac{4}{5}$**.
+
+### 자연계 I [문제 2] — 이차방정식 근과계수·미분가능·불연속
+
+[제시문 1] $ax^2 + bx + c = 0$ 두 근 $\alpha, \beta$ → $\alpha + \beta = -b/a, \alpha\beta = c/a$. [제시문 2] $f(x)$ 가 $x=a$ 에서 정의·극한 존재·$\lim_{x \to a} f(x) = f(a)$ 이면 연속, 아니면 불연속.
+
+**[2-i]** 모든 계수가 자연수인 삼차함수 $f(x) = x^3 + mx^2 + nx + k$ 가 (가) $f'(x) = 0$ 이 서로 다른 두 실근 $\alpha, \beta$, (나) $f(1) = 11$. $\dfrac{1}{\alpha} + \dfrac{1}{\beta}$ 가 최대가 되는 자연수 $m, n, k$.
+
+??? success "풀이"
+    $f'(x) = 3x^2 + 2mx + n$. 두 실근 조건 $m^2 - 3n > 0$, 근과 계수 $\alpha + \beta = -2m/3, \alpha\beta = n/3$. $f(1) = 11$ → $m + n + k = 10$, $1 \le m, n, k \le 8$, $m + n \le 9$. $\dfrac{1}{\alpha} + \dfrac{1}{\beta} = -\dfrac{2m}{n}$ 최대 → $n$ 크고 $m$ 작아야. $m^2 > 3n, m + n \le 9$ 후보 중 $m=4, n=5$ 일 때 $-2m/n = -8/5$ 최대. **$m=4, n=5, k=1$**, $f(x) = x^3 + 4x^2 + 5x + 1$.
+
+**[2-ii]** 모든 실수 $x$ 에서 미분가능한 함수
+
+$$f(x) = \begin{cases} 4\sin^3 x - 3\sin x & (x \ge 0) \\ \dfrac{3}{\pi^2}x^3 + ax & (x < 0) \end{cases}$$
+
+에 대해 $g(k)$ 는 $-\pi \le x \le \pi$ 에서 $f(x) = k$ 의 서로 다른 실근의 개수. 실수 $a$ 의 값과 $g(k)$ 가 불연속인 $k$ 모두.
+
+??? success "풀이"
+    $x \to 0^+$: $f'(x) = 3\cos x(4\sin^2 x - 1) \to -3$. $x \to 0^-$: $f'(x) = 9x^2/\pi^2 + a \to a$. 미분가능 → **$a = -3$**. $-\pi \le x < 0$: $f(x) = (3/\pi^2)x(x^2 - \pi^2)$, $f(-\pi) = 0$, $f'(-\pi/\sqrt 3) = 0$ → 극댓값 $f(-\pi/\sqrt 3) = 2\pi/\sqrt 3$. $0 \le x \le \pi$: $f(x) = \sin x(4\sin^2 x - 3)$, 극솟값 $f(\pi/6) = f(5\pi/6) = -1$, 극댓값 $f(\pi/2) = 1$, $f(0) = f(\pi/3) = f(2\pi/3) = f(\pi) = 0$. 그래프 개형으로 $g(k)$ 의 불연속점 **$k = -1, 0, 1, \dfrac{2\pi}{\sqrt 3}$**.
+
+### 자연계 I [문제 3] — 정적분과 급수합·치환·부분적분
+
+[제시문] 정적분 정의, 극값 판정, 치환적분, 부분적분 공식.
+
+**[3-i]** $\displaystyle \lim_{n \to \infty} \sum_{k=1}^{n} \dfrac{1}{n} \cdot \dfrac{\big(3 + \frac{k}{n}\big)\ln(3n+k) - \big(2 + \frac{k}{n}\big)\ln(2n+k) - \ln n}{\big(2 + \frac{k}{n}\big)\big(3 + \frac{k}{n}\big)\ln\big(2 + \frac{k}{n}\big)\ln\big(3 + \frac{k}{n}\big)}$.
+
+??? success "풀이"
+    분자: $(3+k/n)\ln n(3+k/n) - (2+k/n)\ln n(2+k/n) - \ln n = (3+k/n)\ln(3+k/n) - (2+k/n)\ln(2+k/n)$. 극한 $= \int_0^1 \dfrac{(3+x)\ln(3+x) - (2+x)\ln(2+x)}{(2+x)(3+x)\ln(2+x)\ln(3+x)} dx = \int_0^1 \dfrac{1}{(2+x)\ln(2+x)}dx - \int_0^1 \dfrac{1}{(3+x)\ln(3+x)}dx$. $y = \ln(2+x), y = \ln(3+x)$ 치환 → **$2\ln(\ln 3) - \ln(\ln 2) - \ln(\ln 4)$**.
+
+**[3-ii]** $\mathrm{O}(0,0), \mathrm{P}(x, 0), \mathrm{A}(t, \sqrt 3 t), \mathrm{B}(t, -\sqrt 3 t)$ ($t > 0$). $f(x) = \overline{\mathrm{PO}} + \overline{\mathrm{PA}} + \overline{\mathrm{PB}}$ 의 최솟값을 $m(t)$. $\displaystyle\int_{1/2}^4 \ln(m(t))\,dt = a\ln 2 + b\ln 5 + c\ln 7 + d$ 일 때 유리수 $a, b, c, d$.
+
+??? success "풀이"
+    $f(x) = |x| + 2\sqrt{(x-t)^2 + 3t}$, $x \ge 0$ 만 고려. $f'(x) = 1 + 2(x-t)/\sqrt{(x-t)^2 + 3t}$, $x \ge t$ 면 $f'(x) \ge 0$. $0 \le x \le t$ 에서 $f'(x) = 0$ → $x = t - \sqrt t$. $0 \le t \le 1$ 면 $t - \sqrt t \le 0$ → $x = 0$ 에서 최소 $m(t) = 2\sqrt{t^2 + 3t}$. $t \ge 1$ 면 $x = t - \sqrt t$ 에서 최소 $m(t) = t + 3\sqrt t$. $\int_{1/2}^1 \ln(2\sqrt{t^2+3t})dt = (1/2)\ln 2 + (1/2)\int_{1/2}^1(\ln t + \ln(t+3))dt = \dfrac{13}{2}\ln 2 - \dfrac{7}{4}\ln 7 - \dfrac{1}{2}$. $\int_1^4 \ln(t + 3\sqrt t)dt$ 부분적분: $[t\ln(t+3\sqrt t)]_1^4 - \int_1^4 \dfrac{\sqrt t + 3/2}{\sqrt t + 3}dt = 20\ln 2 - 5\ln 5$. 합: $\dfrac{53}{2}\ln 2 - 5\ln 5 - \dfrac{7}{4}\ln 7 - \dfrac{1}{2}$. **$a = \dfrac{53}{2}, b = -5, c = -\dfrac{7}{4}, d = -\dfrac{1}{2}$**.
+
+### 자연계 I [문제 4] — 위치벡터·코사인법칙·공간좌표
+
+[제시문] 벡터 동치 ($\vec u = \vec v$), $\vec p - \vec q = \overrightarrow{\mathrm{QP}}$, 구 방정식 $(x-a)^2+(y-b)^2+(z-c)^2 = r^2$.
+
+**[4-i]** 점 $\mathrm{O}$ 와 반지름 $1$ 인 원 $C$, $\overline{\mathrm{AB}} = 5, \overline{\mathrm{BC}} = 6, \overline{\mathrm{CA}} = 7$ 인 삼각형 $\mathrm{ABC}$ 가 한 평면. $\mathrm{P, Q}$ 가 원 $C$ 위, $\mathrm{R, S}$ 가 삼각형 변 위. $\overrightarrow{\mathrm{OX}} = \overrightarrow{\mathrm{PS}} + \overrightarrow{\mathrm{RQ}}$ 일 때 $\mathrm{X}$ 영역 넓이.
+
+??? success "풀이"
+    $\overrightarrow{\mathrm{PS}} + \overrightarrow{\mathrm{RQ}} = \overrightarrow{\mathrm{RS}} + \overrightarrow{\mathrm{PQ}}$. $\mathrm{O}$ 를 꼭짓점으로 삼각형 $\mathrm{ABC}$ 와 합동인 삼각형 $6$ 개를 맞물려 이어붙인 육각형 $\mathrm{I}_1\mathrm{I}_2\mathrm{I}_3\mathrm{I}_4\mathrm{I}_5\mathrm{I}_6$ 위에서 $\overrightarrow{\mathrm{OY}} = \overrightarrow{\mathrm{RS}}$ 가능. 그 위 점 $\mathrm{Y}$ 를 중심·반지름 $2$ 인 원 $C'$ 에서 $\overrightarrow{\mathrm{YZ}} = \overrightarrow{\mathrm{PQ}}$ 가능. 따라서 $\mathrm{X}$ 영역 $=$ ($6$ 직사각형) $+$ ($6$ 부채꼴) $+$ ($6$ 합동삼각형). 코사인법칙 $\cos\angle\mathrm{ABC} = 1/5$, $\sin = 2\sqrt 6/5$, $\triangle\mathrm{ABC} = 6\sqrt 6$. 육각형 넓이 $36\sqrt 6$, 직사각형 합 $2 \times 2 \times (5+6+7) = 72$, 부채꼴 중심각 합 $2\pi$ → 넓이 $4\pi$. **$72 + 36\sqrt 6 + 4\pi$**.
+
+**[4-ii]** 좌표공간 구 $S: x^2 + y^2 + z^2 = 100$, 점 $\mathrm{T}\big(\frac{2\sqrt 5}{3}, \frac{14\sqrt 5}{3}, \frac{5\sqrt 5}{3}\big)$. $\mathrm{T}$ 지나는 직선이 $z$ 좌표 $0$ 이하인 $\mathrm{P}$ 에서 $S$ 에 접한다. $\mathrm{P}$ 가 나타내는 도형의 길이.
+
+??? success "풀이"
+    $\overline{\mathrm{OT}} = 5\sqrt 5$, $\overline{\mathrm{PT}} = \sqrt{\mathrm{OT}^2 - \mathrm{OP}^2} = 5$. $\overline{\mathrm{OT}} \cdot \overline{\mathrm{DP}} = \mathrm{OT} \cdot \mathrm{DP}$ ($\mathrm{D}$ 가 $\overline{\mathrm{OT}}$ 위로 $\mathrm{P}$ 의 수선의 발): $\overline{\mathrm{DP}} = 2\sqrt 5$. 닮음 $\overline{\mathrm{OD}} = 4\sqrt 5$. $\mathrm{D}$ 는 $\overline{\mathrm{OT}}$ 를 $4:1$ 내분 → $\mathrm{D}\big(\frac{8\sqrt 5}{15}, \frac{56\sqrt 5}{15}, \frac{4\sqrt 5}{3}\big)$. $\mathrm{D}$ 의 $xy$ 평면 수선의 발 $\mathrm{H}$, $\overline{\mathrm{DH}} = 4\sqrt 5/3$, $\overline{\mathrm{OH}} = 8\sqrt{10}/3$. $\mathrm{P}$ 가 그리는 원 $C$ 가 $xy$ 평면과 만나는 두 점 $\mathrm{A, B}$, $\mathrm{AB}$ 중점 $\mathrm{I}$ → $\overline{\mathrm{ID}} = \sqrt{10}$, $\cos\angle\mathrm{ADI} = \cos\angle\mathrm{BDI} = 1/\sqrt 2$ → $\angle\mathrm{ADB} = \pi/2$. 호 $\mathrm{AB}$ 길이 $= \overline{\mathrm{AD}} \cdot \pi/2 = 2\sqrt 5 \cdot \pi/2 = \boldsymbol{\sqrt 5\, \pi}$.
+
+### 자연계 II [문제 1] — 배반사건·조건부확률 (팀 테스트)
+
+[제시문] 남학생 $2$ 명, 여학생 $2$ 명이 두 번의 테스트로 구성된 프로그램에 참여. 각 테스트마다 남$1$·여$1$ 로 짝지어 두 팀, 팀은 매번 재구성. 처음 팀일 때 통과확률 $1/2$. 같은 팀이 두 번 연속이면, 첫 통과 시 두 번째 통과확률 $3/4$, 첫 실패 시 두 번째 통과확률 $1/4$. 두 번 중 한 번이라도 통과한 학생은 합격.
+
+**[1]** $4$ 명 학생 모두 합격할 확률.
+
+??? success "풀이"
+    팀이 유지되는 사건 $A$, 모두 합격 사건 $B$. 가능 배치 $4$ 가지 (유지 $2$, 바뀜 $2$) → $P(A) = P(A^c) = 1/2$. $P(B|A)$: 각 팀 독립, 한 번 이상 통과 확률 $= 1/2 + (1/2)(1/4) = 5/8$, 두 팀 모두 $(5/8)^2 = 25/64$. $P(B|A^c)$: $4$ 번 테스트 모두 통과확률 $1/2$ 독립. $4$ 통과 $1/16$, $3$ 통과 ($_4\mathrm{C}_3 \cdot (1/2)^4 = 1/4$ — 누구든 한 번 이상), $2$ 통과는 첫·둘째 테스트 각각 $2$ 통과 → $2 \cdot (1/2)^4 = 1/8$, 그 외 탈락. 합 $= 1/16 + 1/4 + 1/8 = 7/16$. **$P(B) = \dfrac{1}{2} \cdot \dfrac{25}{64} + \dfrac{1}{2} \cdot \dfrac{7}{16} = \dfrac{53}{128}$**.
+
+### 자연계 II [문제 2] — 귀납적 정의·부분적분
+
+[제시문] 치환적분, 접선의 방정식, 부분적분.
+
+**[2-i]** 모든 항이 자연수인 수열 $\{a_n\}$ 이 모든 자연수 $n$ 에 대해
+
+$$a_{n+1} = \begin{cases} 3(a_n + 2) & (a_n \bmod 3 = 1) \\ 3(a_n + 1) & (a_n \bmod 3 = 2) \\ \frac{1}{3}a_n & (a_n \bmod 3 = 0) \end{cases}$$
+
+만족. $A = \{a_n \mid n \text{ 은 자연수}\}$, $|A| = 5$ 되는 모든 $a_1$.
+
+??? success "풀이"
+    $|A| = 5$ 면 수열은 어느 항 이후 $5$ 개를 반복. $\dots \to 9 \to 3 \to 1 \to 9 \to 3 \to 1 \dots$ 의 $3$ 주기 ($1, 3, 9$) 만이 가능 ($\bmod 3$ 분석으로 다른 반복 길이는 모순). $|A|=5$ → $a_1, a_2$ 가 $\{1,3,9\}$ 와 다른 자연수이고 $a_3$ 이후 $9, 3, 1$ 반복. $a_3 = 9$ 만 가능. $a_2 \in \{2, 27\}$ ($1$ 제외). $a_2 = 2$ → $a_1 = 6$. $a_2 = 27$ → $a_1 \bmod 3 = 0$ 면 $a_1 = 81$, $a_1 \bmod 3 = 1$ 면 $3(a_1+2)=27 \Rightarrow a_1 = 7$, $a_1 \bmod 3 = 2$ 면 $3(a_1+1)=27 \Rightarrow a_1 = 8$. **$a_1 \in \{6, 7, 8, 81\}$**.
+
+**[2-ii]** 실수 전체에서 미분가능한 $f(x)$ 의 도함수 $f'(x)$ 가 모든 $x$ 에 대해 $\int_0^x u f'(x-u)\,du = -xe^{-x} + x^2 + ax$. 곡선 $y = f(x)$ 위 점 $(t, f(t))$ 에서의 접선의 $y$ 절편을 $g(t)$. $\displaystyle\int_{\ln 2}^{\ln 4} g(t)\,dt = 4\ln 2 - \dfrac{1}{2}(\ln 2)^2$. 실수 $a$ 와 $g(t)$ 의 극댓값·극솟값.
+
+??? success "풀이"
+    $x - u = t$ 치환 → $\int_0^x (x-t)f'(t)dt = x f(x) - x f(0) - \int_0^x t f'(t)dt$ → 부분적분으로 $\int_0^x f(t)dt - x f(0)$. 따라서 $\int_0^x f(t)dt = -xe^{-x} + x^2 + ax + xf(0)$, 양변 미분 $f(x) = (x-1)e^{-x} + 2x + f(0) + a$. $x=0$ 대입: $f(0) = -1 + f(0) + a$ → **$a = 1$**. $f'(x) = (2-x)e^{-x} + 2$. 접선 $y - f(t) = f'(t)(x - t)$, $y$ 절편 $g(t) = f(t) - tf'(t) = (t^2 - t - 1)e^{-t} + 1 + f(0)$. $\int_{\ln 2}^{\ln 4}(t^2-t-1)e^{-t}dt = -(1/2)(\ln 2)^2 + (f(0) - 1)\ln 2$... 정리하면 $f(0) = 3$. $g(t) = (t^2 - t - 1)e^{-t} + 4$, $g'(t) = (-t^2 + 3t)e^{-t} = 0$ → $t = 0, 3$. **극솟값 $g(0) = 3$, 극댓값 $g(3) = 5e^{-3} + 4$**.
+
+### 자연계 II [문제 3] — 치환적분·그래프 개형
+
+[제시문] 치환적분 공식, 극값 판정.
+
+**[3-i]** 두 곡선 $y = \dfrac{3e^{2x} - 6}{e^{2x} + 3e^x + 2}$ 와 $y = e^x - \dfrac{3}{2}$ 로 둘러싸인 도형의 넓이.
+
+??? success "풀이"
+    $\dfrac{3e^{2x}-6}{e^{2x}+3e^x+2} = e^x - \dfrac{3}{2}$ 풀면 $(e^x - 1)(e^x - 2)(2e^x + 3) = 0$ → 교점 $x$ 좌표 $0, \ln 2$. $\dfrac{3e^{2x}-6}{(e^x+1)(e^x+2)} = 3 - \dfrac{3}{e^x+1} - \dfrac{6}{e^x+2}$. 넓이 $= \int_0^{\ln 2}\big(3 - \dfrac{3}{e^x+1} - \dfrac{6}{e^x+2} - e^x + \dfrac{3}{2}\big)dx = 3\ln 2 + [3\ln(1+e^{-x})]_0^{\ln 2} + [3\ln(1+2e^{-x})]_0^{\ln 2} + \dfrac{3}{2}\ln 2 - 1 = \dfrac{3}{2}\ln 2 - 1$. **$\dfrac{3}{2}\ln 2 - 1$**.
+
+**[3-ii]** $\overline{\mathrm{AB}} = \overline{\mathrm{AC}}, \angle\mathrm{BAC} \le \pi/2$ 인 삼각형 $\mathrm{ABC}$ 가 반지름 $1$ 인 원에 내접. $\overline{\mathrm{BC}} = 2x$ 일 때 $f(x) = \overline{\mathrm{BC}}^4 + \dfrac{15}{4}(\overline{\mathrm{AB}}^2 + \overline{\mathrm{AC}}^2)$ 의 최댓값.
+
+??? success "풀이"
+    원의 중심이 $\overline{\mathrm{BC}}$ 위 또는 삼각형 내부 ($\angle\mathrm{BAC} \le \pi/2$). $\overline{\mathrm{BC}}^2 = 4x^2$, $\overline{\mathrm{AB}}^2 = \overline{\mathrm{AC}}^2 = 2 + 2\sqrt{1-x^2}$ ($0 \le x \le 1$). $f(x) = 16x^4 + 15(1 + \sqrt{1-x^2})$. $t = x^2 \in [0,1]$, $g(t) = 16t^2 + 15(1+\sqrt{1-t})$. $g'(t) = 32t - \dfrac{15}{2\sqrt{1-t}} = 0$ → $(16t-15)((16t)^2 - 16t - 15) = 0$. $g'$ 부호분석으로 $t = 15/16$ 극대. $g(0) = 30, g(15/16) = 16 \cdot \dfrac{225}{256} + 15(1 + 1/4) = \dfrac{225}{16} + \dfrac{75}{4} = \dfrac{525}{16}$, $g(1) = 31$. **$\dfrac{525}{16}$**.
+
+### 자연계 II [문제 4] — 쌍곡선 접선·이면각·정사영
+
+[제시문] 쌍곡선 $\dfrac{x^2}{a^2} - \dfrac{y^2}{b^2} = 1$ 위 $\mathrm{P}(x_1, y_1)$ 에서 접선 $\dfrac{x_1 x}{a^2} - \dfrac{y_1 y}{b^2} = 1$. 이면각 정의.
+
+**[4-i]** 쌍곡선 $\dfrac{x^2}{6} - \dfrac{y^2}{6} = 1$ 위 제 $1$ 사분면 점 $\mathrm{P}_1$ 에서의 접선 $l_1$ 이 $y=-x, y=x$ 와 만나는 점 $\mathrm{A, B}$, 제 $2$ 사분면 점 $\mathrm{P}_2$ 에서의 접선 $l_2$ 가 $y=-x, y=x$ 와 만나는 점 $\mathrm{C, D}$, $l_1 \cap l_2 = \mathrm{E}$. $\overline{\mathrm{OA}} : \overline{\mathrm{OD}} = 2:3$, $\triangle\mathrm{ADE} = 4$ 일 때 사각형 $\mathrm{ABCD}$ 의 넓이.
+
+??? success "풀이"
+    $\mathrm{P}_1(x_1, y_1)$, 접선 $\dfrac{x_1 x}{6} - \dfrac{y_1 y}{6} = 1$, $y = -x$ 대입: $\overline{\mathrm{OA}} = \dfrac{\sqrt 2}{(x_1+y_1)/6}$, 비슷히 $\overline{\mathrm{OB}}, \overline{\mathrm{OC}}, \overline{\mathrm{OD}}$. $\triangle\mathrm{OAB} = \triangle\mathrm{OCD} = 6$ (점 위치 무관). $\overline{\mathrm{OA}} = 2t, \overline{\mathrm{OD}} = 3t$ → $\overline{\mathrm{OB}} = 6/t, \overline{\mathrm{OC}} = 4/t$, $\triangle\mathrm{OBC} = 12/t^2$. $S = \triangle\mathrm{ODA} + \triangle\mathrm{OAB} + \triangle\mathrm{OCD} + \triangle\mathrm{OBC} = 3t^2 + 12 + 12/t^2$. $\overline{\mathrm{OA}} : \overline{\mathrm{OD}} = \overline{\mathrm{OC}} : \overline{\mathrm{OB}}$ 닮음으로 $\triangle\mathrm{ADE} : \triangle\mathrm{BCE} = t^2 : 4/t^2$. $\triangle\mathrm{BCE} = S + 4$, $4/t^2 \cdot (S+4) = t^2 \cdot 4$ ↔ $3t^6 + 16t^4 + 12t^2 - 16 = 0 \Rightarrow t^2 = 2/3$. **$S = 32$**.
+
+**[4-ii]** 모든 모서리 길이 $2$ 인 정육면체 $\mathrm{ABCD\text{-}EFGH}$ 에서 변 $\mathrm{AE}$ 의 중점 $\mathrm{M}$. 삼각형 $\mathrm{BMG}$ 의 넓이 $S$, 사면체 $\mathrm{BDMG}$ 의 부피 $V$, 두 평면 $\mathrm{DMB}$ 와 $\mathrm{DMG}$ 가 이루는 이면각 $\alpha$ 일 때 $SV\sin\alpha$.
+
+??? success "풀이"
+    피타고라스: $\overline{\mathrm{BG}} = \overline{\mathrm{GD}} = \overline{\mathrm{DB}} = 2\sqrt 2$, $\overline{\mathrm{MB}} = \overline{\mathrm{MD}} = \sqrt 5$, $\overline{\mathrm{MG}} = 3$. 이등변삼각형 $\mathrm{DMB}$ 넓이 $\sqrt 6$, 정삼각형 $\mathrm{BGD}$ 넓이 $2\sqrt 3$. 삼각형 $\mathrm{BMG}$: $\cos\angle\mathrm{MBG} = \dfrac{5+8-9}{2\sqrt 5 \cdot 2\sqrt 2} = \dfrac{1}{\sqrt{10}}$, $\sin = 3/\sqrt{10}$, $S = (1/2)\sqrt 5 \cdot 2\sqrt 2 \cdot 3/\sqrt{10} = 3$. $\mathrm{AC} \cap \mathrm{BD} = \mathrm{B}'$, 합동 삼각형 분석으로 두 평면 $\mathrm{DMB}, \mathrm{BGD}$ 수직. 사면체 부피 $V = (1/3) \cdot 2\sqrt 3 \cdot \sqrt 3 = 2$. $\triangle\mathrm{DMB}$ 는 $\triangle\mathrm{DMG}$ 의 평면 $\mathrm{DMB}$ 위 정사영 → $\cos\alpha = \dfrac{\triangle\mathrm{DMB}}{\triangle\mathrm{DMG}} = \dfrac{\sqrt 6}{2\sqrt 6} \cdot ... = \dfrac{\sqrt 6}{6}$ ($\triangle\mathrm{DMG}$ 넓이 $= 2\sqrt 6$). $\sin\alpha = \sqrt{30}/6$. **$SV\sin\alpha = 3 \cdot 2 \cdot \sqrt{30}/6 = \sqrt{30}$**.
