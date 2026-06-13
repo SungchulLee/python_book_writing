@@ -4186,5 +4186,84 @@ $f(x) = e^{nx} + e^{-nx}$, 점 $P(x, y)$ 에서의 접선 기울기 $= 2n$. $Q$ 
 
 ---
 
+## 카드 54 — 건국대 (2025학년도) KU논술우수자 수학 (자연계 + 자유전공)
+
+자연계 논술 4문항(소문항 1-1-1-2 → 5 sub) + KU자유전공학부 논술 수학 3문항(소문항 1-1-2 → 4 sub). 총 9 sub-문항.
+
+### 자연계 문제 1 — 매개변수·코사인함수 덧셈정리 (수학I·미적분)
+
+점 A 시각 $t$: $(3\cos t, 3\sin t)$ (반지름 3, 원점 중심). 점 B 시각 $t$: $(7 + \cos 3t, \sin 3t)$ (반지름 1, 중심 $(7, 0)$).
+
+**[1 / 자1]** $0 \leq t \leq 2\pi$ 동안 선분 AB 와 원 C (점 A 의 원) 가 서로 다른 두 점에서 만나는 $t$ 범위.
+
+??? success "풀이"
+    각 $\angle OAB$ 가 예각 ↔ $\overline{AB}^2 + 3^2 > \overline{OB}^2$. 좌표 대입 정리 $7 \cos t + \cos t \cos 3t + \sin t \sin 3t < 3$. 덧셈정리로 $\cos 2t = \cos t \cos 3t + \sin t \sin 3t$, 그리고 $\cos 2t = 2 \cos^2 t - 1$. 부등식 $2 \cos^2 t + 7 \cos t - 1 < 3$ → $(2 \cos t - 1)(\cos t + 4) < 0$ → $\cos t < 1/2$. 따라서 $\mathbf{\pi/3 < t < 5\pi/3}$.
+
+### 자연계 문제 2 — 이면각·삼수선의 정리 (기하)
+
+정사면체 ABCD 한 모서리 $6$, $\overline{DE} = 2$ on $\overline{BD}$. 선분 PQ 일정 길이, 평면 ABC 위, 점 A 지남.
+
+**[2 / 자2]** 사면체 DEPQ 부피 최대일 때 평면 EPQ 와 평면 ABC 가 이루는 각 $\theta$. $\cos\theta$.
+
+??? success "풀이"
+    부피 최대 → 사면체 BDPQ 부피 최대 (체적비 1:3), $\overline{PQ} \perp \overline{AB}$ 시 BPQ 넓이 최대. 점 E 에서 평면 ABC 에 내린 수선의 발 F, F 에서 PQ 에 내린 수선의 발 G. 삼수선의 정리 → $\overline{EG} \perp \overline{PQ}$. $\triangle EFG$ 에서 $\cos\theta = \overline{FG}/\overline{EG}$. 정사면체 한 변 6: $\overline{AD} = 6$, $\overline{AH} = 2\sqrt 3$ ($H$ ABC 무게중심). $\overline{DH} = 2\sqrt 6$. $\overline{EF} = (2/3)\overline{DH} = 4\sqrt 6/3$. $\overline{FG} = \overline{AB} - 2 \cdot (2/3)\overline{AM} = 4$. $\overline{EG} = \sqrt{\overline{EF}^2 + \overline{FG}^2} = \sqrt{32/3 + 16} = 4\sqrt{15}/3$. $\cos\theta = 4/(4\sqrt{15}/3) = 3/\sqrt{15} = \mathbf{\sqrt{15}/5}$.
+
+### 자연계 문제 3 — 합성함수 미분·코사인법칙 (수학I·미적분)
+
+사각형 ABCD: $\overline{AB} = \sqrt 3, \overline{BC} = 2, \overline{CD} = 2, \overline{DA} = 1$. $\angle BAD = \theta$, $\overline{AC} = f(\theta)$.
+
+**[3 / 자3]** $f'(\pi/2)$.
+
+??? success "풀이"
+    $\angle ABC = \phi$. $\triangle CDH$ ($H$ 는 $C$ 에서 $AB$ 연장선에 내린 수선): $\overline{CD}^2 = (\sqrt 3 - \cos\theta - 2\cos\phi)^2 + (2\sin\phi - \sin\theta)^2 = 4$. 양변 $\theta$ 미분: $\theta = \pi/2$ 일 때 $\phi = \pi/2$ (대칭에 의해): $\phi'(\pi/2) = -1/2$ 유도. 코사인법칙 $f(\theta)^2 = \overline{AB}^2 + \overline{BC}^2 - 2\overline{AB}\cdot\overline{BC}\cos\phi = 3 + 4 - 4\sqrt 3 \cos\phi = 7 - 4\sqrt 3 \cos\phi$. $\theta = \pi/2$: $f^2 = 7$, $f = \sqrt 7$. 미분 $2 f f' = 4\sqrt 3 \phi' \sin\phi$. $\theta = \pi/2$: $2\sqrt 7 \cdot f'(\pi/2) = 4\sqrt 3 \cdot (-1/2) \cdot 1 = -2\sqrt 3$. $f'(\pi/2) = -\sqrt 3/\sqrt 7 = \mathbf{-\sqrt{21}/7}$.
+
+### 자연계 문제 4 — 곡선 사이의 넓이·치환적분 (미적분)
+
+곡선 $y = x^2$ ($x \geq 0$), 점 $P(0, 10)$. 점 A, B 곡선 위, $\angle OPA = \theta$. 〈그림 1〉 곡선·선분 OP·선분 PA 로 둘러싸인 넓이 $f(\theta)$. 〈그림 2〉 $\angle APB = \pi/2$, 곡선·선분 PA·선분 PB 로 둘러싸인 넓이 $g(\theta)$. $g(\theta) = f(\theta + \pi/2) - f(\theta)$.
+
+**[4 / 자4-1]** $t$ 가 $A$ 의 $x$ 좌표일 때 $f'(\theta)$ 를 $t$ 식으로.
+
+??? success "풀이"
+    $f(\theta) = $ 사다리꼴 $OPAQ$ 의 넓이 (밑변 $t$, 평행변 $10$ 과 $t^2$) $- \int_0^t x^2 dx = t(10 + t^2)/2 - t^3/3 = t^3/6 + 5t$. $\tan\theta = t/(10 - t^2)$. $\sec^2\theta = 1 + \tan^2\theta = ((10 - t^2)^2 + t^2)/(10 - t^2)^2$. 양변 $\theta$ 미분: $dt/d\theta = ((10 - t^2)^2 + t^2)/(10 + t^2)$. $f'(\theta) = (t^2/2 + 5)\, dt/d\theta = \mathbf{((10 - t^2)^2 + t^2)/2}$.
+
+**[5 / 자4-2]** $g'(\theta) = 0$ 인 $\theta$ 에서 $A, B$ 의 $x$ 좌표를 $a, b$. $a^2 + b^2, ab, g(\theta)$.
+
+??? success "풀이"
+    $g'(\theta) = 0$ → $f'(\theta) = f'(\theta + \pi/2)$, 즉 $((10 - a^2)^2 + a^2)/2 = ((10 - b^2)^2 + b^2)/2$. 정리 $(a^2 - b^2)(a^2 + b^2 - 19) = 0$. $a \neq b$ → $\mathbf{a^2 + b^2 = 19}$. 또 $\angle APB = \pi/2$: $\overline{PA} \perp \overline{PB}$, 기울기 곱 $((a^2 - 10)/a)((b^2 - 10)/b) = -1$. 정리 $(ab)^2 + ab - 90 = 0$ → $(ab - 9)(ab + 10) = 0$ → $\mathbf{ab = 9}$. 연립: $a + b = \sqrt{37}$, $b - a = 1$, $b^3 - a^3 = (b-a)(a^2 + ab + b^2) = 28$. $g(\theta) = f(\theta + \pi/2) - f(\theta) = (b^3/6 + 5b) - (a^3/6 + 5a) = 28/6 + 5 = \mathbf{29/3}$.
+
+### 자유전공 문제 2-1 — 미분·점과 점 사이 거리 (수학II)
+
+점 A 곡선 $y = x^3 + x + 3$ ($x \geq 0$) 위, 점 B 직선 $y = 4x - 2$ 위, 선분 $\overline{AB}$ 가 원점 통과.
+
+**[6 / 자유 2-1]** $\overline{OA}/\overline{OB}$ 의 최솟값.
+
+??? success "풀이"
+    $A(a, a^3 + a + 3)$. 직선 $OA$: $y = (a^3 + a + 3)/a \cdot x$ ($a \neq 0$). 직선 $y = 4x - 2$ 와 교점 $B$: 정리하여 $B$ 좌표 계산. $\overline{OA}/\overline{OB} = |a^3 - 3a + 3|/2$. $f(x) = x^3 - 3x + 3$ ($x \geq 0$), $f'(x) = 3x^2 - 3 = 3(x-1)(x+1)$. $x = 1$ 극소, $f(1) = 1$. $x \geq 0$ 에서 $|f(x)|$ 최솟값 $= f(1) = 1$. 따라서 최솟값 $= 1/2 = \mathbf{1/2}$.
+
+### 자유전공 문제 2-2 — 경우의 수·합의 법칙 (수학)
+
+1∼9 자연수 각각 1개씩 적힌 카드 9장. 4장 동시에 뽑을 때 합이 4의 배수인 경우.
+
+**[7 / 자유 2-2]** 경우의 수.
+
+??? success "풀이"
+    합 범위 $10 \leq k \leq 30$, $4$ 배수 $k = 12, 16, 20, 24, 28$. 각 $k$ 에 대해 $(a, b, c, d)$ ($a < b < c < d$) 셀 수: $k = 12$: $2$, $k = 16$: $8$, $k = 20$: $12$, $k = 24$: $8$, $k = 28$: $2$. 합 $\mathbf{32}$.
+
+### 자유전공 문제 2-3 — 원과 직선·삼각형 넓이 (수학·수학I)
+
+원 T 반지름 $1$, 선분 AB 와 점 P 에서 접함. $\overline{AB} = 4, \overline{AP} = t$.
+
+**[8 / 자유 2-3-1]** $t = 1/2$ 일 때 원 T 가 내접원인 삼각형 ABC 의 넓이.
+
+??? success "풀이"
+    $A(0, 0), B(4, 0), E(1/2, 1)$ (원 중심). 직선 AC 기울기 $m$: $|1 - m/2|/\sqrt{m^2 + 1} = 1$ → $m = -4/3$. 직선 BC 기울기 $n$: $|n \cdot 1/2 - 1 - 4n|/\sqrt{n^2 + 1} = 1$ → $n = -28/45$. 교점 $C = (-7/2, 14/3)$. 넓이 $= (1/2) \cdot 4 \cdot (14/3) = \mathbf{28/3}$.
+
+**[9 / 자유 2-3-2]** 원 T 가 내접원인 삼각형 ABC 가 존재할 $t$ 범위.
+
+??? success "풀이"
+    $\tan(\angle A/2) = 1/t, \tan(\angle B/2) = 1/(4 - t)$. $\angle A + \angle B < \pi$ 조건: $\tan((\angle A + \angle B)/2) > 0$, 정리 $1/t + 1/(4-t) > 1/t \cdot 1/(4-t) \cdot $... 즉 $t(4-t) > 4$ 가 잘못된 방향. 계산 결과 $t^2 - 4t + 1 < 0$ → $\mathbf{2 - \sqrt 3 < t < 2 + \sqrt 3}$.
+
+---
+
 
 
