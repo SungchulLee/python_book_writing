@@ -306,3 +306,46 @@ $$
         - **기하 조건만으로 시작**해서 $\sin^2 + \cos^2 = 1$ 항등식으로 곡선의 방정식을 끌어낸다 → 포물선 $y = 4\sqrt x$.
         - **무리함수의 미분** $\dfrac{d}{dx}\sqrt x = \dfrac{1}{2\sqrt x}$ 로 접선의 기울기를 표현.
         - 도형 넓이를 매개변수 $a$ 의 함수로 두고 미분으로 최솟값. 형태 $\dfrac{16}{\sqrt a} + 8\sqrt a$ 는 AM-GM 으로도 가능: $\dfrac{16}{\sqrt a} + 8\sqrt a \geq 2\sqrt{128} = 16\sqrt 2$, 등호 $a = 2$. 같은 결과.
+
+---
+
+**연습문제 (보충 2).** [원과 평행한 두 직선이 만드는 영역의 넓이의 극한]
+원 $x^2 + y^2 = 1$ 과 직선 $y = a(x - 1)$ ($a > 1$) 이 서로 다른 두 점 $\mathrm{P}, \mathrm{Q}$ 에서 만나고, 원 $x^2 + y^2 = 1$ 과 직선 $y = a(x - 1) + k$ ($k$ 양수) 가 서로 다른 두 점 $\mathrm{R}, \mathrm{S}$ 에서 만난다. 두 선분 $\overline{\mathrm{PQ}}, \overline{\mathrm{RS}}$ 와 길이가 $\pi$ 보다 작은 두 호 $\widehat{\mathrm{PR}}, \widehat{\mathrm{QS}}$ 로 둘러싸인 부분의 넓이를 $S(k)$ 라 하자. 극한 $\displaystyle\lim_{k \to 0+}\dfrac{S(k)}{k}$ 를 구하시오.
+
+??? success "연습문제 (보충 2) 풀이"
+
+    직선 $L: y = a(x-1)$, $L': y = a(x-1) + k$.
+
+    점 $\mathrm{P, Q}$ 의 직선 $L'$ 위로의 수선의 발 $\mathrm{B, C}$, 점 $\mathrm{R, S}$ 의 $L$ 위로의 수선의 발 $\mathrm{A, D}$.
+
+    점 $\mathrm{P}$ 와 $L'$ 사이의 거리 = $\dfrac{k}{\sqrt{a^2 + 1}}$. 따라서 직사각형 $\mathrm{PBCQ}$ 의 넓이는 $\dfrac{k}{\sqrt{a^2 + 1}}\cdot\overline{\mathrm{PQ}} = \dfrac{2k}{a^2 + 1}$ (원의 현 $\overline{\mathrm{PQ}} = 2\sqrt{1 - d^2/(a^2+1)}$, 그러나 $L$ 이 $(1,0)$ 을 지나므로 더 직접).
+
+    두 점 $\mathrm{R, S}$ 의 $x$ 좌표의 차 $d = \dfrac{2\sqrt{1 + a^2 - (a - k)^2}}{1 + a^2}$.
+
+    $\overline{\mathrm{RS}} = d\sqrt{1 + a^2} = \dfrac{2\sqrt{1 + a^2 - (a - k)^2}}{\sqrt{1 + a^2}}$. 직사각형 $\mathrm{ARSD}$ 의 넓이는
+
+    $$
+    \frac{k}{\sqrt{a^2+1}}\cdot\overline{\mathrm{RS}} = k\cdot\frac{2\sqrt{1 + a^2 - (a-k)^2}}{1 + a^2}
+    $$
+
+    실수 $0 < k \le a$ 에 대하여 둘러싸인 영역은 직사각형 $\mathrm{ARSD}$ 의 내부이고 직사각형 $\mathrm{PBCQ}$ 를 포함하므로
+
+    $$
+    \frac{2k}{a^2 + 1} \le S(k) \le k\cdot\frac{2\sqrt{1 + a^2 - (a-k)^2}}{1 + a^2}
+    $$
+
+    양변을 $k$ 로 나누고 $k \to 0+$:
+
+    $$
+    \frac{2}{a^2 + 1} \le \lim_{k\to 0+}\frac{S(k)}{k} \le \lim_{k \to 0+}\frac{2\sqrt{1 + a^2 - (a-k)^2}}{1 + a^2} = \frac{2\sqrt{1}}{1 + a^2} = \frac{2}{a^2 + 1}
+    $$
+
+    조임정리에 의하여
+
+    $$
+    \lim_{k\to 0+}\frac{S(k)}{k} = \frac{2}{a^2 + 1}\quad\square
+    $$
+
+    !!! info "교훈"
+        - **두 직사각형으로 영역을 끼워 넣고** $k \to 0+$ 의 극한에서 두 경계가 같은 값으로 수렴하는 **조임정리** 의 전형적 활용.
+        - 원과 직선의 현 길이는 직선의 기울기에 의존하며, 평행이동 후의 차이는 $O(k)$ 의 1차 항만 남고 호의 곡률 효과는 $O(k^2)$ 로 무시된다.
