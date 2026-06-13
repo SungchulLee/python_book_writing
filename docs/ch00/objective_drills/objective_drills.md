@@ -2063,3 +2063,120 @@ $0 < t < \pi$ 일 때 $\mathrm{P}(2\cos t, 2\sin t)$ 에 대해 직선 $\mathrm{
 
 ??? success "풀이"
     $100$ 명 중 $\le 1$ 명 ↔ $99$ 명 이상 정상 ↔ $\mathrm{P}(X \le 100) \ge 0.99$. $Z = (X - a_n)/\sigma$, $\mathrm{P}(Z \le 2.33) = 0.99 \Rightarrow X \le a_n + 2.33\sigma$. 모든 $n$ 에서 $a_n + 2.33\sigma < 100$ 즉 $\lim(a_n + 2.33\sigma) < 100$. $\lim a_n = 70.1$ → $2.33\sigma < 29.9 \Rightarrow \sigma < 12.83$. 최대 정수 $\sigma = \mathbf{12}$.
+
+---
+
+## 카드 35 — 연세대 미래캠 2026 자연·의예 논술 수학 (19 문항)
+
+> **출처**: 연세대학교 미래캠퍼스 2026학년도 선행학습 영향평가 결과보고서, 부록 문항카드 3~5 (창의인재 자연·공학계열 문제 1·2·3) + 문항카드 6~8 (창의인재 의예과 문제 1·2·3). PDF 모범답안 명시. 미래인재 인문 (문항카드 1·2), 면접 (문항카드 9~20: 의학적 인성·논리적 사고력·인성가치관) 은 비수학.
+
+### 창의인재 자연·공학계열 (문제 1~3, 100분)
+
+**[1] 미분가능·정적분 (수학II·미적분, 40분, 30점).** $f(x) = 2x - 2$ ($0 \le x < 2$), $axe^{bx}$ ($2 \le x \le 4$). $g(x) = |(x-1)(x-3)| - 5$ ($0 \le x \le 4$).
+
+**[1-1] (10점)** $f$ 가 구간 $(0,4)$ 에서 미분가능할 때 $a, b$.
+
+??? success "풀이"
+    $x = 2$ 에서 연속: $2 = 2ae^{2b}$ → $ae^{2b} = 1$. 좌미분계수 $= 2$. $f'(x) = ae^{bx}(1+bx)$ → 우미분계수 $f'(2) = ae^{2b}(1+2b) = 1 + 2b = 2$ → $b = 1/2$. $ae^1 = 1$ → $a = 1/e$. **$a = 1/e, b = 1/2$**.
+
+**[1-2] (20점)** [1-1] 의 $a, b$ 에 대해 두 곡선 $y = f(x), y = g(x)$ 와 직선 $x = 4$ 로 둘러싸인 도형 넓이.
+
+??? success "풀이"
+    $g(x) = x^2 - 4x - 2$ ($x \le 1$ 또는 $x \ge 3$), $-x^2 + 4x - 8$ ($1 \le x \le 3$). 적분구간 $[0,1], [1,2], [2,3], [3,4]$ 로 나누어 $f - g$ 적분. $\int_0^1 (-x^2+6x)dx + \int_1^2 (x^2-2x+6)dx + \int_2^3 (xe^{(x-2)/2} + x^2-4x+8)dx + \int_3^4 (xe^{(x-2)/2} - x^2+4x+2)dx$. 지수 부분은 부분적분 ($xe^{(x-2)/2}$ 적분 = $2xe^{(x-2)/2} - 4e^{(x-2)/2}$). 합산 = **$4e + 16$**.
+
+**[2] 접선·등비급수 (수학I·미적분, 40분, 45점).** $f(x) = e^{cx}$ ($c > 0$). $\mathrm{A}_n(a_n, 0)$ 지나고 $x$ 축 수직인 직선이 곡선과 만나는 점 $\mathrm{B}_n$, 이 점에서의 접선이 $x$ 축과 만나는 점 $\mathrm{A}_{n+1}$. $a_1 = N$ ($N > 1$ 자연수). $S_n = \triangle\mathrm{A}_n\mathrm{B}_n\mathrm{A}_{n+1}$ 의 넓이.
+
+**[2-1] (10점)** $S_1$.
+
+??? success "풀이"
+    접선 $y = ce^{ca_n}(x - a_n) + e^{ca_n}$, $x$ 절편 $a_{n+1} = a_n - 1/c$. $|a_2 - a_1| = 1/c$, 높이 $f(a_1) = e^{cN}$. $S_1 = (1/2)(1/c)e^{cN} = \mathbf{e^{cN}/(2c)}$.
+
+**[2-2] (10점)** $S_n$.
+
+??? success "풀이"
+    귀납적으로 $a_n = N - (n-1)/c$, $f(a_n) = e^{cN - (n-1)}$. $S_n = (1/2)(1/c)e^{cN-(n-1)} = \mathbf{e^{cN-(n-1)}/(2c)}$.
+
+**[2-3] (5점)** $\sum_{n=1}^\infty S_n$.
+
+??? success "풀이"
+    $S_n = e^{cN+1}/(2c) \cdot e^{-n}$, 등비급수 합 $\sum e^{-n} = e^{-1}/(1-e^{-1}) = 1/(e-1)$. 답 **$e^{cN+1}/(2c(e-1))$**.
+
+**[2-4] (20점)** $c = 1$ 일 때 $f(a_n) < 0.1$ 인 자연수 $n$ 의 최솟값 ($N$ 에 관한 식, $e = 2.7$).
+
+??? success "풀이"
+    $c = 1$: $f(a_n) = e^{N-n+1}$. $n = N+1$: $f(a_{N+1}) = e^0 = 1$. $f(a_{N+2}) = 1/e \approx 0.370 > 0.1$. $f(a_{N+3}) = 1/e^2 \approx 0.137 > 0.1$. $f(a_{N+4}) = 1/e^3 \approx 0.051 < 0.1$. 최솟값 **$N + 4$**.
+
+**[3] 삼차방정식·코사인법칙 (수학·수학I·미적분, 40분, 25점).** $x^3 - 12x^2 + 45x - k = 0$ 의 세 근 $a, b, c$ ($k$ 는 실수).
+
+**[3-1] (10점)** $a, b, c$ 가 모두 실수가 되는 $k$ 범위.
+
+??? success "풀이"
+    $f(x) = x^3 - 12x^2 + 45x - k$, $f'(x) = 3(x-3)(x-5)$ → $x = 3$ 극대, $x = 5$ 극소. 세 실근 ↔ $f(3) \ge 0$ 이고 $f(5) \le 0$. $f(3) = 54 - k$, $f(5) = 50 - k$. **$50 \le k \le 54$**.
+
+**[3-2] (5점)** $a, b, c$ 가 모두 양의 정수일 때 $k$.
+
+??? success "풀이"
+    근과 계수: $a+b+c = 12, ab+bc+ca = 45, abc = k$. $k \in \{50, 51, 52, 53, 54\}$ 중 정수 해 (3중복 포함) 확인. $(a,b,c) = (2,5,5)$: 합 $12$, 곱 $50$ ✓. $(3,3,6)$: 합 $12$, 곱 $54$ ✓. 다른 조합은 $ab+bc+ca = 45$ 위배. **$k = 50, 54$**.
+
+**[3-3] (10점)** [3-2] 의 $a, b, c$ 가 각각 $\angle\mathrm{A}, \angle\mathrm{B}, \angle\mathrm{C}$ 의 대변의 길이일 때 $ab\cos C + bc\cos A + ca\cos B$.
+
+??? success "풀이"
+    삼각형 성립: 가장 긴 변 < 다른 두 변 합. $(3,3,6)$: $3+3 = 6$ 성립 ✗. $(2,5,5)$: $2+5 > 5$ ✓. 코사인법칙으로 $ab\cos C + bc\cos A + ca\cos B = (a^2 + b^2 + c^2)/2 = (4 + 25 + 25)/2 = \mathbf{27}$.
+
+### 창의인재 의예과 (문제 1~3, 100분)
+
+**[1] 확률·이항·정규분포 (확률과 통계, 30분, 30점).** $n$ 선승제: $(2n-1)$ 전, 매 시합 무승부 없음 · 독립 · 별다른 언급 없으면 두 팀 승률 같음. 마진(margin) = 승리 시합 수 $-$ 패배 시합 수. $\mathrm{P}(0 \le Z \le 1) = 0.3413, \mathrm{P}(0 \le Z \le 1.14) = 0.3729, \mathrm{P}(0 \le Z \le 1.15) = 0.3749, \mathrm{P}(0 \le Z \le 1.16) = 0.3770$.
+
+**[1-1] (5점)** 7전 4선승제에서 최종 결정까지 치르는 시합 수의 평균.
+
+??? success "풀이"
+    $N$ = 시합 수, $N \in \{4,5,6,7\}$. $\mathrm{P}(N=4) = 2 \cdot (1/2)^4 = 2/16$. $\mathrm{P}(N=5) = 2 \cdot {_4}\mathrm{C}_3 (1/2)^5 = 4/16$. $\mathrm{P}(N=6) = 2 \cdot {_5}\mathrm{C}_3 (1/2)^6 = 5/16$. $\mathrm{P}(N=7) = 2 \cdot {_6}\mathrm{C}_3 (1/2)^7 = 5/16$. $\mathrm{E}(N) = (8 + 20 + 30 + 35)/16 = \mathbf{93/16 = 5.8125}$.
+
+**[1-2] (10점)** 7전 4선승제에서 최종 승리 확률 $\ge 80\%$ 인 마진.
+
+??? success "풀이"
+    마진 $1$ ($n=$ 승, $n-1=$ 패) 별 승률 계산: 1승 0패 = $21/32 \approx 0.656$, 2승 1패 $= 11/16 = 0.6875$, 3승 2패 $= 3/4 = 0.75$ (마진 1, $<80\%$). 마진 $2$ ($2승,3승,...$): 2승 0패 = $13/16 = 0.8125$ ✓, 3승 1패 $= 7/8$ ✓. 마진 $3$: 3승 0패 $= 15/16 = 0.9375$ ✓. **마진 $\ge 2$ (즉 2 또는 3)**.
+
+**[1-3] (10점)** 7전 4선승제 $100$ 번 반복할 때 3승 2패 팀이 $80$ 번 이상 최종 승리할 확률.
+
+??? success "풀이"
+    3승 2패 상황에서 최종 승률 $= 3/4$. $X$ = 100번 중 최종 승리 횟수 ~ $\mathrm{B}(100, 0.75) \approx \mathrm{N}(75, 18.75)$. $\mathrm{P}(X \ge 80) = \mathrm{P}(Z \ge (80-75)/\sqrt{18.75}) = \mathrm{P}(Z \ge 2/\sqrt 3) = \mathrm{P}(Z \ge 1.16) = 0.5 - 0.3770 = \mathbf{0.123}$.
+
+**[1-4] (5점)** 승률 $3/5$ 팀의 경우 단판 vs 5전 3선승제 중 유리한 방식.
+
+??? success "풀이"
+    단판 승률 = $0.6$. 5전 3선승제 = $(3/5)^3 + {_3}\mathrm{C}_2(3/5)^3(2/5) + {_4}\mathrm{C}_2(3/5)^3(2/5)^2 = 2133/3125 \approx 0.683$. **5전 3선승제가 유리** ($0.683 > 0.6$).
+
+**[2] 급수·삼각함수·정적분 (수학I·미적분, 35분, 35점).** $S_n = \sum_{k=1}^n (2k-1)/(k(k+1)(k+2))$. $0 < x < \pi$ 에서 $P(x) = \prod_{k=0}^{10} \cos(2^k x)$. $C_n = \sum_{k=1}^n (2k-1)(\cos(k\theta_n) - \cos((k+1)\theta_n))$, $\theta_n = \pi/(2n+1)$.
+
+**[2-1] (5점)** $\alpha = \lim_{n\to\infty} S_n$ 에 대해 $\sum_{n=1}^\infty (1/\alpha^n) S_n$ 의 수렴/발산.
+
+??? success "풀이"
+    부분분수: $S_n = 2\sum_{k=1}^n (1/(k+1) - 1/(k+2)) - \sum_{k=1}^n 1/2 \cdot (1/(k(k+1)) - 1/((k+1)(k+2)))$ → $S_n = 2(1/2 - 1/(n+2)) - 1/2(1/2 - 1/((n+1)(n+2)))$. $\alpha = \lim S_n = 1 - 1/4 = 3/4$. $1/\alpha^n = (4/3)^n \to \infty$, $S_n \to 3/4 \ne 0$ → $S_n/\alpha^n \not\to 0$. **발산**.
+
+**[2-2] (15점)** 방정식 $|P(x)| = 1/2^{11}$ ($0 < x < \pi$) 의 서로 다른 실근의 개수.
+
+??? success "풀이"
+    $\sin(2x) = 2\sin x \cos x$ 반복: $\sin(2^{11}x) = 2^{11}\sin x \cos x \cos(2x)\cdots\cos(2^{10}x) = 2^{11}\sin x \cdot P(x)$. → $P(x) = \sin(2^{11}x)/(2^{11}\sin x)$. $|P(x)| = 1/2^{11}$ ↔ $|\sin(2^{11}x)| = \sin x$ (since $\sin x > 0$) ↔ $\sin(2^{11}x) = \pm\sin x$. 두 경우 각각 $2^{11} - 1$ 실근, 총 **$2^{12} - 2 = 4094$**.
+
+**[2-3] (15점)** $\lim_{n\to\infty} C_n/(n^2 \sin(\theta_n/2))$.
+
+??? success "풀이"
+    덧셈정리 (3): $\cos(k\theta_n) - \cos((k+1)\theta_n) = 2\sin(k\theta_n + \theta_n/2)\sin(\theta_n/2)$. $C_n = 2\sin(\theta_n/2)\sum(2k-1)\sin((k+1/2)\theta_n)$. 정리: $C_n/(n^2\sin(\theta_n/2)) \to 8\int_0^{1/2} 2x\sin(\pi x)dx$. 부분적분으로 $\int_0^{1/2} 2x\sin(\pi x)dx = [-2x\cos(\pi x)/\pi]_0^{1/2} + (2/\pi)\int_0^{1/2}\cos(\pi x)dx = 0 + (2/\pi^2)\sin(\pi/2) = 2/\pi^2$. **$8 \cdot 2/\pi^2 = 16/\pi^2$**.
+
+**[3] 타원·벡터·삼각함수 (수학I·미적분·기하, 35분, 35점).** 반원 $x^2 + y^2 = 1$ ($y \ge 0$), $\mathrm{A}(-1,0), \mathrm{B}(1,0), \mathrm{D}(0,1)$. 호 BD 위 점 C, $\angle\mathrm{BOC} = \theta$, $d\theta/dt = \sqrt 2$. 원 $O_1$: OC·OB·호 BC 동시 접. $\mathrm{F} = O_1 \cap \mathrm{OC}$ 접점, $\mathrm{H} = O_1 \cap \mathrm{OB}$ 접점. F 지나고 OC 수직인 직선 $\cap x$축 $= \mathrm{I}, \cap y$축 $= \mathrm{J}$. AB 장축·H 한 초점인 타원 $T$.
+
+**[3-1] (10점)** $T$ 의 단축 길이 $2\overline{\mathrm{OF}}$ 일 때 $t$ 에 대한 원 $O_1$ 의 넓이 변화율.
+
+??? success "풀이"
+    $\alpha = \theta/2$, $O_1$ 반지름 $g = \sin\alpha/(1+\sin\alpha)$, $\overline{\mathrm{OH}} = \cos\alpha/(1+\sin\alpha) = \overline{\mathrm{OF}}$. 타원 단축 $2b = 2\overline{\mathrm{OF}}$ → $b^2 = 1 - \overline{\mathrm{OH}}^2 = \cos^2\alpha/(1+\sin\alpha)^2$. 두 식 $1 - \cos^2\alpha/(1+\sin\alpha)^2 = \cos^2\alpha/(1+\sin\alpha)^2$ → $\sin\alpha = 1/3$, $\cos\alpha = 2\sqrt 2/3$. $S(\alpha) = \pi g^2 = \pi\sin^2\alpha/(1+\sin\alpha)^2$. $dS/dt = (\sqrt 2/2) \cdot \pi \cdot 2\sin\alpha\cos\alpha/(1+\sin\alpha)^3 = \pi\sqrt 2 \cdot (1/3)(2\sqrt 2/3)/(4/3)^3 = \pi\sqrt 2 \cdot 3\sqrt 2/32 = \mathbf{3\pi/16}$.
+
+**[3-2] (10점)** $\vec{\mathrm{JI}} \cdot \vec{\mathrm{JO}} \ge \vec{\mathrm{IJ}} \cdot \vec{\mathrm{IF}}$, $\vec{\mathrm{OQ}} \perp \vec{\mathrm{AQ}}, \vec{\mathrm{OQ}} \perp \vec{\mathrm{CQ}}$ 만족 Q 에 대해 $|\vec{\mathrm{OQ}}|^2$ 최댓값.
+
+??? success "풀이"
+    수직 두 조건 ⇒ Q는 OA 지름원 ∩ OC 지름원의 두번째 교점 = O에서 AC 에 내린 수선의 발. $\overline{\mathrm{OQ}} = \sin\alpha$ (직각삼각형 OAQ 에서). 조건 부등식: $\vec{\mathrm{JI}}\cdot\vec{\mathrm{JO}} + \vec{\mathrm{JI}}\cdot\vec{\mathrm{IF}} \ge 0$ → $\vec{\mathrm{JI}}\cdot(\vec{\mathrm{JO}}+\vec{\mathrm{IO}}+\vec{\mathrm{FI}}) \ge 0$ 등 변형 → $\vec{\mathrm{JO}}\cdot\vec{\mathrm{JI}} \ge \vec{\mathrm{IO}}\cdot\vec{\mathrm{IJ}}$ ↔ $\tan^2\theta \le 1 \Rightarrow \theta \le \pi/4 \Rightarrow \alpha \le \pi/8$. 따라서 최댓값 $\sin^2(\pi/8) = (1-\cos(\pi/4))/2 = (1-\sqrt 2/2)/2 = \mathbf{(2-\sqrt 2)/4}$.
+
+**[3-3] (15점)** 원 $O_2$ (AC·AB·호 BC 동시 접) 가 선분 OD 에 접할 때 $\overline{\mathrm{OI}} = (u + v\sqrt 2)/w$ ($u, v, w$ 자연수, $\gcd = 1$). $u + v + w$.
+
+??? success "풀이"
+    $\overline{\mathrm{OI}} = \cos\alpha/((2\cos^2\alpha - 1)(1+\sin\alpha))$. 원 $O_2$ 반지름 $f$, $\overline{\mathrm{OK}} = h$. 직각삼각형 KOL 과 KAL 에서 $\tan(\alpha/2) = f/(1+h)$, $(1-f)^2 = h^2 + f^2$ → $h = f/\tan(\alpha/2) - 1$ 등. $h(\alpha) = 1 - 2\tan(\alpha/2)$. 원 $O_2$ 가 OD 접 ⇒ $h = f$ → $2\tan^2(\alpha/2) - 4\tan(\alpha/2) + 1 = 0 \Rightarrow \tan(\alpha/2) = (2-\sqrt 2)/2$ (다른 해 $(2+\sqrt 2)/2 > 1$ 불가). 직각삼각형: $\lambda^2 = 4 + (2-\sqrt 2)^2 = 10 - 4\sqrt 2$. $\sin\alpha = (4-2\sqrt 2)/(5-2\sqrt 2)$, $\cos\alpha = (-1+2\sqrt 2)/(5-2\sqrt 2)$, $\cos^2\alpha = (9-4\sqrt 2)/(33-20\sqrt 2)$. 정리 → **$\overline{\mathrm{OI}} = (19 + 6\sqrt 2)/21$**. $u + v + w = 19 + 6 + 21 = \mathbf{46}$.
