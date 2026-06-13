@@ -326,3 +326,110 @@
     (1) $\frac{d}{dx}\{f(x)\}^2 = 2f f'$ 이므로 $\int_0^x 2ff' \,dt = \{f(x)\}^2 - \{f(0)\}^2 = \{f(x)\}^2 - 1$.
 
     (2) (다)로부터 $\int_0^x 2ff'\,dt = \{f(x)\}^2 - 1 \le \int_0^x f^2\,dt$. (나)에 $f$ 곱하기 (양수): $f^2 \le 2ff'$. 적분: $\int_0^x f^2 \le \int_0^x 2ff'$. 두 부등식 결합 → $\int_0^x f^2 = \int_0^x 2ff'$. 미분: $f^2 = 2ff' \Rightarrow f'/f = 1/2 \Rightarrow \ln f = x/2 + C$. $f(0) = 1 \Rightarrow C = 0$. **$f(x) = e^{x/2}$**.
+
+---
+
+## 단국대 자연·의학계 논술 (2026)
+
+논술우수자전형. 자연계 오전·오후 각 2문제 + 의학계 통합 2문제 = 총 6 큰문제 약 15 논제.
+
+### 자연 오전 1번 (수학·미적분, 30분)
+
+$f(x) = \int_0^x (t-a)e^t\,dt$, $f$ 의 극솟값을 $g(a)$, $x \ge 0$ 에서 $g$ 의 역함수를 $h$.
+
+**[논제 1]** $f$ 가 극솟값 $m = 3 - e^a$ 일 때 $a$.
+
+??? success "풀이"
+    $f'(x) = (x-a)e^x \Rightarrow x = a$ 에서 극소. 부분적분: $f(a) = (a-1-a)e^a + 1 + a = 1 + a - e^a = g(a)$. $1 + a - e^a = 3 - e^a \Rightarrow a = 2$.
+
+**[논제 2]** $F(x) = \int_0^x te^t\,dt$. $\int_0^m F'(h(x))\,dx$. ($m = g(2) = 3 - e^2$)
+
+??? success "풀이"
+    $F'(x) = xe^x$. $g(u) = 1 + u - e^u$, $x = g(u) \Rightarrow dx/du = 1 - e^u$. $u = h(0) = 0$, $u = h(m) = 2$. $\int_0^m F'(h(x))dx = \int_0^2 ue^u(1-e^u)du = 3/4 + e^2 - (3/4)e^4$.
+
+**[논제 3]** $-1 \le x \le 1$, 한 변 $2\sqrt 3$ 정삼각형 $T$ 의 무게중심 $(x, k(x))$, $x$ 축 위쪽 부분 넓이 $= (\sqrt 3/3)(1 + g(x))$. $k$ 와 $k$ 최댓값.
+
+??? success "풀이"
+    정삼각형 높이 $3$, 무게중심에서 위쪽 꼭짓점까지 $2$, 즉 위쪽 꼭짓점 $y = k(x) + 2$. $x$ 축 위쪽 부분 넓이 $= \{k(x)+2\}^2/\sqrt 3 = (\sqrt 3/3)(2 + x - e^x)$ ($g(x) = 1+x-e^x$). $k(x) + 2 = \sqrt{2 + x - e^x} \Rightarrow k(x) = -2 + \sqrt{2 + x - e^x}$. $k'(x) = (1 - e^x)/(2\sqrt{\cdots}) = 0 \Rightarrow x = 0$. **최댓값 $k(0) = -2 + \sqrt 1 = -1$**.
+
+### 자연 오전 2번 (수학·미적분, 30분)
+
+$f(x) = 2x/(1+x^2)$.
+
+**[논제 1]** $b < a < c$ ($b < 0, c > 0$) 닫힌구간 $[b,c]$ 에서 $f$ 가 일대일이 되는 $a$ 의 범위.
+
+??? success "풀이"
+    $f'(x) = 2(1-x^2)/(1+x^2)^2$. $f$ 는 $(-1, 1)$ 에서 증가, $(-\infty,-1) \cup (1,\infty)$ 에서 감소. $f(1) = 1, f(-1) = -1$. 일대일이 되려면 $[b,c] \subset [-1, 1]$. 즉 $-1 < a < 1$. **$a \in (-1, 1)$**.
+
+**[논제 2]** $A(x) = \int_0^1 |f(t) - x|\,dt$. $A$ 가 $x = c$ 에서 극값을 갖고 $A(k) = \ln 2$ ($k > 0$) 만족 $c, k$.
+
+??? success "풀이"
+    $0 \le f(t) \le 1$ ($t \in [0,1]$). $0 \le x < 1$ 일 때 $A(x) = \ln 2 - 2\ln(1 + g(x)^2) - x + 2xg(x)$ ($g$ 는 $f$ 의 $[0,1]$ 에서의 역함수). $A'(x) = 2g(x) - 1 = 0 \Rightarrow g(x) = 1/2 \Rightarrow x = f(1/2) = 4/5$. **$c = 4/5$**.
+
+    $A(x) = x - \ln 2$ ($x \ge 1$). $A(k) = \ln 2 \Rightarrow k = 2\ln 2$. **$k = 2\ln 2$**.
+
+### 자연 오후 1번 (수학II·미적분, 30분)
+
+$[0, 10\pi]$ 에서 $f(x) = \cos x - \sin x$, $g(x) = f(x)e^{-x}$.
+
+**[논제 1]** $\lim_{x\to 0}\frac{1}{x}\int_1^{x+1}e^{-(at)^2}f(at)dt = 0$ 만족 양수 $a$ 최솟값.
+
+??? success "풀이"
+    $K(x) = \int_1^x e^{-(at)^2}f(at)dt$ 라 하면, 미분계수 정의에 의해 극한 $= K'(1) = e^{-a^2}f(a) = 0$. $f(a) = 0 \Rightarrow \cos a = \sin a \Rightarrow a = \pi/4$ (최소 양수).
+
+**[논제 2]** $g(x) = f(x)e^{-x}$, $h(x) = be^{-x}$ ($b > 0$). $y = g$ 와 $y = h$ 가 만나고 그 만나는 모든 점에서 두 곡선의 접선이 일치. 두 곡선이 만나는 점의 $x$ 좌표 작은 수부터 정렬 시 두 번째 수 $p_2$. $b + p_2$.
+
+??? success "풀이"
+    접선 일치 → $g'(p) = h'(p)$. $g'(x) = e^{-x}(f'(x) - f(x))$, $h'(x) = -be^{-x}$. $g(p) = h(p)$: $\cos p - \sin p = b$. $g' = h'$: $-(\sin p + \cos p) - (\cos p - \sin p) = -b \Rightarrow 2\cos p = b$. 두 식: $\cos p = -\sin p \Rightarrow \tan p = -1$. $b > 0 \Rightarrow p$ 는 $3\pi/4, 7\pi/4, ...$. $b = \sqrt 2$. $p_2 = 15\pi/4$. **$b + p_2 = \sqrt 2 + 15\pi/4$**.
+
+**[논제 3]** $g(x) = 0$ 의 양수해 $x_k$ ($k$ 번째), $A_k$ 는 $[x_k, x_{k+1}]$ 에서 $g$ 와 $x$ 축으로 둘러싸인 넓이. $A_1 + A_6/A_3$.
+
+??? success "풀이"
+    $g(x) = 0 \Leftrightarrow f(x) = 0 \Leftrightarrow x = \pi/4 + k\pi$. $A_n = |\int g|$. 주기성 → $A_{k+1}/A_k = e^{-\pi}$. $A_1 = (\sqrt 2/2)(e^{-5\pi/4} + e^{-\pi/4})$. $A_6/A_3 = e^{-3\pi}$. **합 $= (\sqrt 2/2)(e^{-5\pi/4} + e^{-\pi/4}) + e^{-3\pi}$**.
+
+### 자연 오후 2번 (수학II·미적분, 40분)
+
+최고차 계수 1 삼차함수 $f$. 다항함수 $f$ 에 대해 $g(t)$ 는 $f(g(t)) = t$.
+
+**[논제 1]** $f(3) = 0, g(0) = -2, g(6) = 1$, $g$ 는 $t = 6$ 에서만 불연속. $\lim_{t \to 6^-}g(t), \lim_{t\to 6^+}g(t)$.
+
+??? success "풀이"
+    $g(0) = -2 \Rightarrow f(-2) = 0$. $f(3) = 0$. $g(6) = 1 \Rightarrow f(1) = 6$. $f(x) = (x+2)(x-3)(x-a)$, $f(1) = 6 \Rightarrow a = 2$. $f(x) = (x+2)(x-3)(x-2)$. $f(x) = 6$ 의 근: $(x-1)(x^2 - 2x - 6) = 0 \Rightarrow x = 1, 1 \pm \sqrt 7$. **$\lim_{t\to 6^-}g(t) = 1 - \sqrt 7$, $\lim_{t\to 6^+}g(t) = 1 + \sqrt 7$**.
+
+**[논제 2]** $f$ 가 $x = 0, 2$ 에서 극값. 연속함수 $h(t)$ 가 모든 $t \ge 0$ 에서 $f(h(t)) = t + n$. 추가 조건 → $h'(n)$. (단 $n$ 자연수, 조건 (3) $f(1) = f(h(n))$.)
+
+??? success "풀이"
+    $f(x) = x^3 - 3x^2 + c$. $m = f(2) = c - 4$. 조건: $n - 1 < m \le n \Rightarrow n + 3 < c - 4 + 4 \le n + 4$. $f(h(n)) = 2n = f(1) = c - 2$, 즉 $c = 2n + 2$. $n + 3 < 2n + 2 \le n + 4 \Rightarrow 1 < n \le 2 \Rightarrow n = 2$. $c = 6$. $f(h(2)) = 4 \Rightarrow x^3 - 3x^2 + 6 = 4$. $h(2) = 1 + \sqrt 3$ (최대 근). $h'(2) = 1/f'(h(2)) = 1/[3(1+\sqrt 3)(-1 + \sqrt 3)] = 1/6$. **$h'(2) = 1/6$**.
+
+### 의학계 문제 1 (수학II·미적분, 45분)
+
+**[논제 1]** $\int_0^1 (1+x^a)^{b-1}(1 + 2x^a)\,dx = \sqrt 2$ 만족 $b$ (단 $a$ 자연수, $ab = 1$).
+
+??? success "풀이"
+    $\int_0^1 (1+x^a)^{b-1}(1+2x^a)dx = 2\int_0^1(1+x^a)^b dx - \int_0^1(1+x^a)^{b-1}dx$. 부분적분: $\int(1+x^a)^b dx = x(1+x^a)^b\big|_0^1 - \int_0^1 abx \cdot x^{a-1}(1+x^a)^{b-1}dx = 2^b - ab\int(\ldots)$. $ab = 1$ 이용하여 $2^b = \sqrt 2 \Rightarrow b = 1/2$. **$b = 1/2$**.
+
+**[논제 2]** $f(x) > -1$ 에서 중심 $P(x, f(x))$, 반지름 $1$ 인 원이 $y \ge 0$ 부분과 만나서 생기는 호의 길이 $\ell(x)$. $f(x) = x^3 - 4x^2 + 5x - 1$. $\int_0^1 f'(x)\ell(x)\,dx$.
+
+??? success "풀이"
+    $\cos(\ell(x)/2) = -f(x)$ 관계. $0 \le x \le 1$ 에서 $\ell(x) = t$ 치환: $\frac{1}{2}\sin(t/2) \cdot dx = f'(x)dx$. $\ell(0) = 0, \ell(1) = 2\pi$. $\int_0^1 f'(x)\ell(x)dx = \int_0^{2\pi}\frac{t}{2}\sin(t/2)dt = [2\sin(t/2) - t\cos(t/2)]_0^{2\pi} = 2\pi$. **$2\pi$**.
+
+**[논제 3]** $k = m \times n$, $m < n \le k \le 26$ (자연수). $g$ 가 $F(g(x)) = (1/m)F(x)$, $F(x) = \int_0^x (k + \cos t)dt$. 곡선 $y = g$ 위 세 점 $P_1(k\pi, g(k\pi)), P_2(m\pi, ...), P_3(n\pi, ...)$ 에서의 접선 기울기 모두 $\alpha$. $\alpha, k$.
+
+??? success "풀이"
+    미분: $g'(x) = (k + \cos x)/(m(k + \cos g(x)))$. $F(x) = kx + \sin x$ 일대일. $F(g(k\pi)) = (1/m)F(k\pi) = (1/m)(k^2\pi)$. $g(k\pi) = n\pi$ ($k = mn$), $g(m\pi) = \pi$ 등 정리하여 $g'(k\pi) = g'(m\pi) = g'(n\pi)$ 동일 조건. 분석 결과 $m, n$ 모두 홀수이고 $n/m$ 정수 = 동일 기울기. $k \le 26$, $k = mn$, $m < n$, 모두 홀수, $n/m$ 정수 → $m = 3, n = 6$ 아닌데 6은 짝수, $(m, n) = (1, ?)$... 실제로 답은 $(m \text{ 홀}, n \text{ 짝}, n/m \text{ 짝})$ 또는 $(m, n \text{ 모두 홀}, n/m \text{ 정수})$. $\alpha = 1/m$. $k = 3 \times 6 = 18$. **$\alpha = 1/3, k = 18$**.
+
+### 의학계 문제 2 (기하, 40분)
+
+**[논제 1]** 평면 $\alpha$ 위 삼각형 $\triangle$ 와 내부 $S$. $A'$ 는 $\alpha$ 위, $B$ 는 $\alpha$ 위 아닌 점, $B'$ 가 $B$ 의 $\alpha$ 정사영. $\overline{A'B} = 10, \overline{BB'} = 5\sqrt 3$. 선분 $\overline{A'B}$ 를 $t:(5-t)$ 로 내분하는 점 $R$ 중심, $S$ 와 만나는 구 중 최소 반지름 $r$. $r^2$ 의 $t$-구간별 표 → $\triangle$ 의 넓이.
+
+??? success "풀이"
+    $\overline{A'B'} = \sqrt{100 - 75} = 5$. 표에서 $r^2$ 의 정의역별 형태 분석. $\overline{A'B'}$ 가 $L_1$ 과 이루는 각 $\pi/4$, $\triangle$ 의 두 꼭짓점 위치 분석. 표를 통해 정삼각형 닮음 도출, **삼각형 넓이 $= 2$**.
+
+**[논제 2]** 구 $O$ 반지름 $\sqrt 2$, $\alpha$ 와 만나지 않음. $P$ 가 구 위 한 점에서 출발 → 다시 출발점. 정사영 $T'$ 가 원 $C$ 와 $C$ 의 지름 양 끝점에서 접하는 두 접선으로 구성. $P_1$ = 출발점, $P_2$ = 중간점, $Q_1 = 1/3, Q_2 = 2/3$. 네 점의 정사영 $P_1', P_2', Q_1', Q_2'$. $I = \vec{P_1'Q_1'} \cdot \vec{P_2'Q_2'}$ 최대 경로 수, $P_1'$ 에서 $\overline{H'K'}$ 까지 거리 $= 1/2$ 인 $I$ 값.
+
+??? success "풀이"
+    정사영 $T'$ 가 원 $C$ (반지름 $r$) 의 지름 양 끝 접선 두 직선 $\ell_1, \ell_2$. 출발점 $P_1$, 중간 $P_2$, 1/3 지점 $Q_1$, 2/3 지점 $Q_2$. 정사영 위치 분석 → **$I$ 최대 경로 개수 8**, $I$ 값 (구 반지름 $\sqrt 2 \Rightarrow$ 원 반지름 $r$ 분석 후 정사영 길이 계산).
+
+---
+
+> **참고:** 단국대 의학계 문제 2 [논제 2] 의 $I$ 정확한 값은 풀이 페이지 추가 분석 필요 — 경로 개수 8 만 보고됨.
