@@ -4857,4 +4857,135 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 71 — 건국대 (2025학년도, 재외국민·외국인전형 자연계 수학)
+
+> 출처: 2025학년도 건국대학교 선행학습영향평가 평가보고서, 문항카드 3 (재외국민과외국인전형 자연계 수학). 선다형 25 문항. 출제범위: 수학·수학Ⅰ·수학Ⅱ·확률과통계·미적분.
+
+**[71 / 1]** 세 수 $A = 2\log_2 3,\ B = 1 + \log_2 5,\ C = 2\log_3 2$ 의 대소.
+
+??? success "풀이"
+    $A = \log_2 9 \approx 3.17$, $B = \log_2 10 \approx 3.32$, $C = \log_3 4 \approx 1.26$. 답: $\boxed{C < A < B}$.
+
+**[71 / 2]** 양의 실수 $t$ 에 대해 $y = t$ 와 $y = 4^x,\ y = 2^x$ 의 교점을 $A, B$. $\overline{AB} = 3$ 일 때 $t$.
+
+??? success "풀이"
+    $A: x = \log_4 t,\ B: x = \log_2 t$. $\log_2 t - \log_4 t = \log_2 t - (\log_2 t)/2 = (\log_2 t)/2 = 3$, $\log_2 t = 6$. 답: $\boxed{t = 64}$.
+
+**[71 / 3]** $\displaystyle \sum_{k = 2}^n \log_2\!\left(1 - \dfrac{1}{k^2}\right) = -4 + 2\log_2 3$ 을 만족하는 양의 정수 $n$.
+
+??? success "풀이"
+    $\prod_{k=2}^n (k-1)(k+1)/k^2 = (n+1)/(2 n)$ (telescoping). $\log_2((n+1)/(2 n)) = \log_2(9/16)$, $(n+1)/(2 n) = 9/16$, $16 n + 16 = 18 n$, $n = 8$. 답: $\boxed{n = 8}$.
+
+**[71 / 4]** $f(x) = a x(x^2 - 3)$, $(f \circ f)'(\sqrt{3}) = -18$ 인 $a > 0$.
+
+??? success "풀이"
+    $f(\sqrt{3}) = 0$. $f'(x) = a(3 x^2 - 3)$, $f'(\sqrt{3}) = 6 a$, $f'(0) = -3 a$. $(f \circ f)'(\sqrt{3}) = f'(0)\cdot f'(\sqrt{3}) = -18 a^2 = -18$, $a^2 = 1$, $a = 1$. 답: $\boxed{a = 1}$.
+
+**[71 / 5]** $f(x) = \begin{cases} x^2 + (a - 1) x & (x \le a) \\ 2 a^2 - a & (x > a) \end{cases}$ 가 $x = a$ 에서 미분가능. $f(-3)$. (단, $a \ne 0$.)
+
+??? success "풀이"
+    연속: $a^2 + (a - 1) a = 2 a^2 - a$ 항등적으로 성립. 미분가능: 좌도함수 $2 x + (a - 1)|_{x = a} = 3 a - 1$, 우도함수 $0$. $3 a - 1 = 0$, $a = 1/3$. $-3 \le 1/3$ 이므로 $f(-3) = 9 + (1/3 - 1)(-3) = 9 + 2 = 11$. 답: $\boxed{11}$.
+
+**[71 / 6]** $2^{2 x + 1} - 15\cdot 2^x + 7 \le 0$ 을 만족하는 정수 $x$ 의 개수.
+
+??? success "풀이"
+    $t = 2^x$: $2 t^2 - 15 t + 7 \le 0 \Rightarrow (2 t - 1)(t - 7) \le 0 \Rightarrow 1/2 \le t \le 7 \Rightarrow -1 \le x \le \log_2 7 \approx 2.807$. 정수 $-1, 0, 1, 2$ → 답: $\boxed{4\,\text{개}}$.
+
+**[71 / 7]** 직선 $x + 2 y = 10$ 과 원 $x^2 + y^2 = 25$ 의 교점 $A, B$. $\overline{AB}$.
+
+??? success "풀이"
+    원 중심 $(0,0)$ → 직선 거리 $= 10/\sqrt{5} = 2\sqrt{5}$. 현 길이 $= 2\sqrt{25 - 20} = 2\sqrt{5}$. 답: $\boxed{2\sqrt{5}}$.
+
+**[71 / 8]** $f(x) = -\cos^2 x - 2 a \sin x + 4$ 의 최솟값이 $-2$ 인 $a\ (a > 1)$.
+
+??? success "풀이"
+    $-\cos^2 x = \sin^2 x - 1$. $f = \sin^2 x - 2 a \sin x + 3 = (\sin x - a)^2 + 3 - a^2$. $a > 1$, $\sin x \in [-1, 1]$, 꼭짓점 밖. $\sin x = 1$ 에서 최소: $(1 - a)^2 + 3 - a^2 = 4 - 2 a = -2 \Rightarrow a = 3$. 답: $\boxed{a = 3}$.
+
+**[71 / 9]** $f$ 가 양의 실수에서 미분가능, 모든 양의 실수 $x$ 에 대해 $f(x^2) = e^{x^2 + 3 x + 2}$. 점 $(1, f(1))$ 에서의 접선 $y = a x + b$, $a + b$.
+
+??? success "풀이"
+    $y = x^2$, $x = \sqrt{y}$ → $f(y) = e^{y + 3\sqrt{y} + 2}$. $f(1) = e^6$. $f'(y) = e^{y + 3\sqrt{y} + 2}(1 + 3/(2\sqrt{y}))$, $f'(1) = e^6\cdot 5/2$. 접선 $y = (5/2)e^6\cdot x + (1 - 5/2)e^6 = (5/2)e^6 x - (3/2)e^6$. $a + b = e^6$. 답: $\boxed{e^6}$.
+
+**[71 / 10]** 점 $\mathrm{P}_n(n, \sqrt{15}\,n)$ 과 원 $x^2 + y^2 = 4$ 위 점 사이 거리의 최댓·최솟값 $a_n, b_n$. $\displaystyle \sum_{n = 1}^\infty \dfrac{4}{a_n b_n}$.
+
+??? success "풀이"
+    $\overline{\mathrm{OP}_n} = 4 n$. $a_n = 4 n + 2,\ b_n = 4 n - 2$. $a_n b_n = 16 n^2 - 4$. $\sum 4/(16 n^2 - 4) = \sum 1/((2 n - 1)(2 n + 1)) = (1/2)\sum(1/(2 n - 1) - 1/(2 n + 1))$, telescoping → $1/2$. 답: $\boxed{\dfrac{1}{2}}$.
+
+**[71 / 11]** $f(x) = \sqrt{3}\, x \tan x\ (0 < x < \pi/2)$ 의 역함수 $h$. $\displaystyle \lim_{x \to \pi} \dfrac{3 h(x) - \pi}{x - \pi}$.
+
+??? success "풀이"
+    $f(\pi/3) = \sqrt{3}\cdot(\pi/3)\cdot\sqrt{3} = \pi$ → $h(\pi) = \pi/3$. 분자 분모 모두 $\to 0$. $3 h(x) - \pi = 3(h(x) - h(\pi))$ → 극한 $= 3 h'(\pi) = 3/f'(\pi/3)$. $f'(x) = \sqrt{3}\tan x + \sqrt{3}\,x\sec^2 x$, $f'(\pi/3) = 3 + 4\sqrt{3}\,\pi/3$. 극한 $= 3/(3 + 4\sqrt{3}\,\pi/3) = 9/(9 + 4\sqrt{3}\,\pi)$. 답: $\boxed{\dfrac{9}{9 + 4\sqrt{3}\,\pi}}$.
+
+**[71 / 12]** $f(x) = \cos x\ (0 \le x \le \pi/2)$ 의 역함수 $g$. $\displaystyle \int_{1/2}^{\sqrt{2}/2} \dfrac{1}{f'(g(x))}\, dx$.
+
+??? success "풀이"
+    $f'(y) = -\sin y$, $f'(g(x)) = -\sin(\arccos x) = -\sqrt{1 - x^2}$. $\int -1/\sqrt{1 - x^2}\, dx = -\arcsin x$. $[-\arcsin x]_{1/2}^{\sqrt{2}/2} = -(\pi/4 - \pi/6) = -\pi/12$. 답: $\boxed{-\dfrac{\pi}{12}}$.
+
+**[71 / 13]** $\displaystyle \int_0^\pi \left|2\sin x - \dfrac{6 x}{\pi}\right| dx$.
+
+??? success "풀이"
+    $2\sin x = 6 x/\pi$ 의 해 $x = \pi/6$ (구간 $(0, \pi)$ 안). $0 < x < \pi/6$ 에서 $2\sin x > 6 x/\pi$, $\pi/6 < x < \pi$ 에서 부호 반대. $\int_0^{\pi/6}(2\sin x - 6 x/\pi) + \int_{\pi/6}^\pi(6 x/\pi - 2\sin x) = -2\sqrt{3} + 17\pi/6$. 답: $\boxed{-2\sqrt{3} + \dfrac{17\pi}{6}}$.
+
+**[71 / 14]** $f$ 연속, $f(-x) = f(x)$, $\int_0^2 f\, dx = 7$. $\displaystyle \int_{-2}^2 (x + \sin x + 5) f(x)\, dx$.
+
+??? success "풀이"
+    $x f(x), \sin x\cdot f(x)$ 는 홀함수 → 적분 $0$. $5 f(x)$ 짝함수 → $\int_{-2}^2 = 10\cdot 7 = 70$. 답: $\boxed{70}$.
+
+**[71 / 15]** $f$ 연속, $f(x) - f(x - 1) = 2$, $\int_0^5 f = 5$. $\int_0^2 f$.
+
+??? success "풀이"
+    $\int_k^{k+1} f(x) dx = \int_0^1 f(u) du + 2 k$ ($u = x - k$). $\sum_{k=0}^4 = 5\int_0^1 f + 20 = 5$ → $\int_0^1 f = -3$. $\int_0^2 f = \int_0^1 f + \int_1^2 f = -3 + (-3 + 2) = -4$. 답: $\boxed{-4}$.
+
+**[71 / 16]** 최고차계수 $1$ 인 삼차함수 $f$, $f(-x) = -f(x)$, $\int_{-1}^1 (f' - f) dx = 6$. $f'(1)$.
+
+??? success "풀이"
+    $f$ 기함수 → $f(x) = x^3 + c x$, $f'(x) = 3 x^2 + c$. $\int_{-1}^1 f = 0$. $\int_{-1}^1 f' = 2 + 2 c$. $2 + 2 c = 6 \Rightarrow c = 2$. $f'(1) = 3 + 2 = 5$. 답: $\boxed{5}$.
+
+**[71 / 17]** $\sin((x^2 + y^2)\pi/2) = 0$ 인 $0 \le x, y \le 10$ 정수쌍 개수.
+
+??? success "풀이"
+    $(x^2 + y^2)\pi/2 = k\pi \Rightarrow x^2 + y^2$ 짝수, 즉 $x, y$ 가 같은 패리티. $\{0,\ldots,10\}$ 중 짝수 $6$ 개 ($0,2,4,6,8,10$), 홀수 $5$ 개. 짝-짝: $6\cdot 6 = 36$, 홀-홀: $5\cdot 5 = 25$. 답: $\boxed{61}$.
+
+**[71 / 18]** 정수 $a, b$, $|a|, |b| \le 10$, $\{x \mid 2 x^2 + a x + b = 0\} \cap \{x \mid 2 x^2 + b x + a = 0\} = \{1\}$ 인 순서쌍 개수.
+
+??? success "풀이"
+    $1$ 이 공통해 → $2 + a + b = 0 \Rightarrow b = -2 - a$. 다른 공통해 없을 조건: $a \ne b$ (즉 두 방정식이 다름). $|b| \le 10 \Rightarrow -10 \le -2 - a \le 10 \Rightarrow -10 \le a \le 8$ (19 개). $a = -1$ ($= b$) 제외 → $\boxed{18}$ 개.
+
+**[71 / 19]** 한 변 길이 같은 정삼각형 $\triangle \mathrm{ABC}$ 와 변 $\mathrm{AC}$ 를 $1 : 2$ 내분하는 점 $\mathrm{P}$, $\angle \mathrm{ABP} = \theta$. $\cos\theta$.
+
+??? success "풀이"
+    한 변 $= 3$. $\mathrm{A}(0,0)$, $\mathrm{B}(3,0)$, $\mathrm{C}(3/2, 3\sqrt{3}/2)$, $\mathrm{P} = \mathrm{C}/3 = (1/2, \sqrt{3}/2)$. $\vec{\mathrm{BA}} = (-3, 0)$, $\vec{\mathrm{BP}} = (-5/2, \sqrt{3}/2)$. $\cos\theta = (15/2)/(3\cdot \sqrt{25/4 + 3/4}) = (15/2)/(3\sqrt{7}) = 5/(2\sqrt{7}) = 5\sqrt{7}/14$. 답: $\boxed{\dfrac{5\sqrt{7}}{14}}$.
+
+**[71 / 20]** $A = \{1, 2, 3, 4, 5\}$, $f: A \to A$, (i) $\{(f \circ f)(x) \mid x \in A\} = A$, (ii) $\{x \mid (f \circ f \circ f)(x) = x\} = \{1\}$. 개수.
+
+??? success "풀이"
+    (i) → $f$ 는 $A$ 의 순열. (ii) → $f^3$ 의 고정점이 정확히 $\{1\}$. $f^3$ 고정점 $=$ 길이 $\mid 3$ 즉 $1$ 또는 $3$ 인 사이클의 원소. $1$ 은 $1$ 또는 $3$ 사이클; 나머지 $\{2,3,4,5\}$ 는 $1, 3$ 사이클 밖, 즉 $2, 4, 5$ 사이클. 만약 $1$ 이 $3$ 사이클이면 그 사이클의 다른 두 원소도 $f^3$ 고정 → 조건 위배. 따라서 $1$ 은 $1$ 사이클 (고정점). 나머지 $4$ 원소의 사이클: $\{2, 4\}$ 만 가능 (합 $4$). (a) $4$ 사이클: $3! = 6$. (b) $2 + 2$: $\binom{4}{2}/2 = 3$. 답: $\boxed{9}$.
+
+**[71 / 21]** $6$ 글자 $a, b, c, d, e, f$ 일렬 배열 중 $a$ 앞에 $b$ 와 $c$ 가 모두 나타나는 경우의 수.
+
+??? success "풀이"
+    $\{a, b, c\}$ 의 위치 순열 중 $a$ 가 마지막인 비율 $= 1/3$. $6! \cdot (1/3) = 720/3 = 240$. 답: $\boxed{240}$.
+
+**[71 / 22]** $1\sim 6$ 적힌 공, 중복 허용 $16$ 개 선택. (i) 각 숫자 $\ge 1$ 개, (ii) $1, 2$ 는 홀수개, $3\sim 6$ 은 짝수개.
+
+??? success "풀이"
+    $n_1, n_2 = 2 m + 1\ (m \ge 0)$, $n_3, \ldots, n_6 = 2 m + 2\ (m \ge 0)$. 합 $= 2(m_1 + \cdots + m_6) + 10 = 16$ → $\sum m_i = 3$. 비음정수해 $\binom{3 + 5}{5} = 56$. 답: $\boxed{56}$.
+
+**[71 / 23]** $f(x) = \displaystyle \int_x^{2 x} \dfrac{\ln t}{t^2}\, dt$ ($1 < x < 100$) 의 최댓값.
+
+??? success "풀이"
+    $f'(x) = \ln(2 x)/(2 x^2)\cdot 2 - \ln x/x^2 = \ln(2/x)/(2 x^2)$. $f'(x) = 0$ → $x = 2$. $f(2) = \int_2^4 \ln t/t^2\, dt$. 부분적분 ($u = \ln t,\ dv = dt/t^2$): $[-\ln t/t - 1/t]_2^4 = -\ln 4/4 - 1/4 + \ln 2/2 + 1/2 = -\ln 2/2 + \ln 2/2 + 1/4 = 1/4$. 답: $\boxed{\dfrac{1}{4}}$.
+
+**[71 / 24]** 동전 $8$ 회 던져 앞면이 연속하지 않고 $3$ 번 이상 나올 확률.
+
+??? success "풀이"
+    앞면 $k$ 번 (인접 불가) 경우의 수 $\binom{9 - k}{k}$. $k = 3: 20$, $k = 4: 5$, $k = 5: 0$. 합 $25$. 전체 $2^8 = 256$. 답: $\boxed{\dfrac{25}{256}}$.
+
+**[71 / 25]** 삼차함수 $f$, (가) 서로 다른 $a, b$ 에 대해 $a f(a) + b f(b) > a f(b) + b f(a)$, (나) $f(1) = 1,\ f'(1) = 0$. $f(0) + f(2)$.
+
+??? success "풀이"
+    (가) $\Leftrightarrow (a - b)(f(a) - f(b)) > 0$, 즉 $f$ 순증가. $f'(x) \ge 0$ 이고 $f'(1) = 0$ → $f'(x) = 3\alpha(x - 1)^2$ ($\alpha > 0$). $f(x) = \alpha(x - 1)^3 + 1$. $f(0) + f(2) = (1 - \alpha) + (1 + \alpha) = 2$. 답: $\boxed{2}$.
+
+---
+
 
