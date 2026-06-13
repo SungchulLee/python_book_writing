@@ -40,6 +40,8 @@ nav:
     - 0 사용 안내:
         - 0.1 사용 가능한 함수들:
             - 사용 가능한 함수들: ch00/big_picture/functions_you_can_use.md
+        - 0.2 객관식 단답 종합 연습:
+            - 객관식 단답 종합 연습: ch00/objective_drills/objective_drills.md
 
     - 1 적분:
         - Chapter Overview: ch01/index.md
