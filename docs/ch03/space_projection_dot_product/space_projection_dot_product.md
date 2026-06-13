@@ -308,4 +308,25 @@ $$
     !!! info "교훈"
         - **종이접기 문제의 핵심**: 접기 전 평면 거리는 보존되므로, 펼친 평면 그림과 접은 입체 그림을 둘 다 다루어야 한다.
         - **삼수선의 정리**가 이면각의 코사인을 평면 도형의 닮음비로 환원한다.
-        - 사면체 부피는 (밑면 × 높이) / 3. 어느 면을 밑면으로 삼느냐에 따라 풀이가 크게 달라진다 — 수직 관계가 명확한 면을 밑면으로 잡는 것이 유리.
+        - 사면체 부피는 (밑면 × 높이) / 3. 어느 면을 밑면으로 삼느냐에 따라 평이가 크게 달라진다 — 수직 관계가 명확한 면을 밑면으로 잡는 것이 유리.
+
+---
+
+**연습문제 (보충 3).** [정사면체 위의 정사각형의 정사영]
+정사면체 $\mathrm{ABCD}$ 의 한 변의 길이가 $a$. 밑면 $\mathrm{BCD}$ 의 무게중심 $\mathrm{O}$, 정사각형 $\mathrm{EIJF}$ 가 $\overline{\mathrm{AB}}$ 위의 두 점과 $\overline{\mathrm{AD}}$ 위의 두 점을 꼭짓점으로 갖는다고 하자 (구체 설정은 출제 그림 참조).
+
+(1) $a = 4$ 일 때 정사각형 $\mathrm{EIJF}$ 의 평면 $\mathrm{ACD}$ 위로의 정사영의 넓이를 구하시오.
+
+??? success "연습문제 (보충 3) 풀이 (요약)"
+
+    정사면체의 좌표 설정: $\mathrm{D}$ 에서 $\overline{\mathrm{BC}}$ 에 수선의 발 $\mathrm{M}$, $\overline{\mathrm{DM}} = \sqrt{a^2 - (a/2)^2} = a\sqrt 3/2$. 무게중심 $\mathrm{O}$ 는 $\mathrm{DM}$ 을 $2:1$ 내분, $\overline{\mathrm{DO}} = a\sqrt 3/3$. $\overline{\mathrm{AO}} = \sqrt{a^2 - a^2/3} = a\sqrt{2/3}$.
+
+    정사각형 $\mathrm{EIJF}$ 의 변의 길이가 $x$ 이라 두면, 삼각형의 닮음으로 $x = \dfrac{3\sqrt 3}{2\sqrt 3 + 1}(1 - x/2)$ 같은 식에서 $a = 4$ 대입 후 $x = \dfrac{18 - 3\sqrt 3}{11}$.
+
+    평면 $\mathrm{ACD}$ 와 정사각형 $\mathrm{EIJF}$ 가 이루는 각 $\theta_3$. $\cos\theta_3 = 1/\sqrt 7$ (정사면체의 기하 분석).
+
+    정사영의 넓이 = $x^2 \cos\theta_3 = \left(\dfrac{18 - 3\sqrt 3}{11}\right)^2 \cdot \dfrac{1}{\sqrt 7} = \dfrac{351\sqrt 7 - 108\sqrt{21}}{847}\quad\square$
+
+    !!! info "교훈"
+        - **정사면체의 무게중심**과 각 면 사이의 각은 표준 공식으로 구해진다.
+        - 정사각형의 정사영도 결국 (한 변)² × cos(이면각).
