@@ -330,3 +330,37 @@ $$
     !!! info "교훈"
         - **정사면체의 무게중심**과 각 면 사이의 각은 표준 공식으로 구해진다.
         - 정사각형의 정사영도 결국 (한 변)² × cos(이면각).
+
+---
+
+**연습문제 (보충 4).** [정사면체 안의 네 삼각형 넓이의 곱]
+정사면체 $\mathrm{ABCD}$ 의 한 변의 길이 $a$, 점 $\mathrm{O}$ 는 삼각형 $\mathrm{BCD}$ 의 무게중심, 점 $\mathrm{P}$ 는 $\mathrm{O}$ 의 평면 $\mathrm{ACD}$ 위로의 정사영. (구체 그림은 출제 참조.)
+
+(1) 네 삼각형 $\mathrm{DOP}, \mathrm{AOD}, \mathrm{AOP}, \mathrm{APD}$ 의 넓이의 곱을 $a$ 에 관한 식으로 나타내시오.
+
+(2) 평면 $\mathrm{ACD}$ 가 평면 $\mathrm{EFGH}, \mathrm{FJKG}, \mathrm{EIJF}$ 와 이루는 예각의 크기를 각각 $\theta_1, \theta_2, \theta_3$ 라 하자. $\theta_1, \theta_2, \theta_3$ 중 가장 작은 것을 $\theta$ 라 할 때 $\cos\theta = \dfrac{\sqrt 6}{3}$ 이 되도록 하는 $a$ 의 값을 모두 구하시오.
+
+??? success "연습문제 (보충 4) 풀이 (요약)"
+
+    **(1).** 정사면체의 기본 길이: $\overline{\mathrm{DM}} = \dfrac{a\sqrt 3}{2}$, $\overline{\mathrm{DO}} = \dfrac{a\sqrt 3}{3}\cdot 2 = \dfrac{2\sqrt 3}{3}$... 직접 계산 (출제 풀이 따라):
+
+    $\overline{\mathrm{DO}} = 2\sqrt 3$, $\overline{\mathrm{OP}} = 2$, $\overline{\mathrm{AO}} = \sqrt{a^2 - 12}$, $\overline{\mathrm{AM}} = \sqrt{a^2 - 9}$.
+
+    $\triangle \mathrm{DOP} = 2\sqrt 3$, $\triangle \mathrm{AOD} = \sqrt{3(a^2 - 12)}$, $\triangle \mathrm{AOP} = \sqrt{a^2 - 12}$, $\triangle \mathrm{APD} = 2\sqrt{a^2 - 9}$.
+
+    곱: $\boxed{12(a^2 - 12)\sqrt{a^2 - 9}}$
+
+    **(2).** 정사면체 안의 각 보조 평면과 $\mathrm{ACD}$ 가 이루는 각의 코사인:
+
+    $\cos\theta_1 = \dfrac{\triangle \mathrm{DOP}}{\triangle \mathrm{APD}} = \dfrac{\sqrt 3}{\sqrt{a^2 - 9}}$
+
+    $\cos\theta_2 = \dfrac{\triangle \mathrm{AOD}}{\triangle \mathrm{APD}} = \dfrac{\sqrt{3(a^2 - 12)}}{2\sqrt{a^2 - 9}}$
+
+    $\cos\theta_3 = \dfrac{\triangle \mathrm{AOP}}{\triangle \mathrm{APD}} = \dfrac{\sqrt{a^2 - 12}}{2\sqrt{a^2 - 9}}$
+
+    $\cos\theta_2 > \cos\theta_3$ 자명. $\cos\theta_1 > \cos\theta_2 \Leftrightarrow a < 4$, $\cos\theta_1 \le \cos\theta_2 \Leftrightarrow a \ge 4$.
+
+    - **$2\sqrt 3 < a < 4$**: $\cos\theta = \cos\theta_1 = \sqrt 3/\sqrt{a^2 - 9} = \sqrt 6/3 \Rightarrow a^2 - 9 = 9/2 \Rightarrow a = 3\sqrt 6/2$.
+    - **$a \ge 4$**: $\cos\theta = \cos\theta_2 = \sqrt{3(a^2-12)}/(2\sqrt{a^2-9}) = \sqrt 6/3 \Rightarrow 24(a^2 - 9) = 27(a^2 - 12) \Rightarrow a = 6$.
+
+    $\boxed{a = \dfrac{3\sqrt 6}{2}\;\text{또는}\;a = 6}\quad\square$
