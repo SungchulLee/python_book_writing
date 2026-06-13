@@ -495,3 +495,61 @@ $$
     !!! tip "핵심"
         - $\alpha^3 + \beta^3 = (\alpha + \beta)((\alpha + \beta)^2 - 3\alpha\beta)$ 공식으로 무리수 두 근의 세제곱합을 합·곱으로 환원.
         - "**두 점에서 만남 + 그중 하나가 접선**" 조건 ⇔ $f - h$ 가 $(x - p)^2$ 인수를 가지고 또 다른 단순근. $p = 2$ 의 삼중근 경우는 한 실근만 — 배제.
+
+---
+
+**연습문제 (보충 6).** [정적분으로 모형화한 의료 수용 능력 초과 감염자 + 사회적 비용]
+
+정부가 방역 조치를 시행하지 않는 경우 신규 감염자 수 $y_1 = -3x(x - 6)$ ($0 \le x \le 6$), 시행하는 경우 $y_2 = -x(x - 7)$ ($0 \le x \le 7$). 의료체계 수용 능력 $= 15$.
+
+(1) 방역 미시행 시, 수용 능력 초과 감염자 수와 그 기간을 구하시오.
+
+(2) 방역 미시행은 수용 능력 초과 총 감염자 수만큼, 시행은 방역 기간의 $2$ 배만큼 사회적 비용이 발생한다고 할 때 두 경우의 사회적 비용을 비교하시오.
+
+??? success "풀이"
+
+    **(1).** $-3x(x - 6) = 15 \Leftrightarrow x^2 - 6x + 5 = 0 \Leftrightarrow x = 1, 5$. 초과 기간 $1 \le x \le 5$.
+
+    초과 총 감염자 = $\int_1^5 (-3x^2 + 18 x - 15) dx = [-x^3 + 9 x^2 - 15 x]_1^5 = (-125 + 225 - 75) - (-1 + 9 - 15) = 25 - (-7) = \boxed{32}$.
+
+    **(2).** 미시행 비용 $= 32$. 시행 비용 $= 7 \times 2 = 14$. 시행이 절반 이하 ⇒ 자생적 질서만으로는 위기 대응 불충분, 국가 개입이 사회적 비용을 감소시킴.
+
+---
+
+**연습문제 (보충 7).** [측면 포물선 $y = 4\sqrt x$ 의 접선과 도형 넓이의 최솟값]
+
+좌표평면에서 $x$ 축 위 점 $\mathrm A(4, 0)$. 1사분면 위 점 $\mathrm P$ 와 $y$ 축 사이 거리를 $d$ 라 할 때 $d = \overline{\mathrm{AP}} - 4$ 를 만족하는 점 $\mathrm P$ 가 이루는 곡선을 $C$ 라 한다. 
+
+(1) $\sin\theta = 4/5$ 인 점 $\mathrm{P_1}$, $\sin\theta = 2\sqrt 2/3$ 인 점 $\mathrm{P_2}$ 일 때 ($\theta = \angle \mathrm{OAP}$), 두 선분 $\overline{\mathrm{AP_1}}, \overline{\mathrm{AP_2}}$ 와 곡선 $C$ 로 둘러싸인 도형의 넓이.
+
+(2) 곡선 $C$ 위 점 $\mathrm P(a, b)$ 의 접선 $l$, 곡선 $C$, 직선 $x = 4$, $y$ 축으로 둘러싸인 도형 $S$ 의 넓이의 최솟값.
+
+??? success "풀이"
+
+    **준비.** $\mathrm P(x, y)$ 에서 $\overline{\mathrm{AP}} - 4 = d = x$ 이고 $\overline{\mathrm{AP}} = \sqrt{(x - 4)^2 + y^2}$. 따라서
+
+    $$
+    \sqrt{(x - 4)^2 + y^2} = x + 4\quad\Longrightarrow\quad y^2 = 16 x\quad\Longrightarrow\quad y = 4\sqrt x\;(y > 0)
+    $$
+
+    **(1).** $\cos\theta = (4 - x)/(4 + x)$ (점에서 직각삼각형). $\sin\theta = 4/5 \Rightarrow \cos\theta = 3/5$, $(4 - x)/(4 + x) = 3/5$ ⇒ $x = 1$. $\sin\theta = 2\sqrt 2/3 \Rightarrow \cos\theta = 1/3$, $(4-x)/(4+x) = 1/3$ ⇒ $x = 2$.
+
+    $\mathrm P_1(1, 4)$, $\mathrm P_2(2, 4\sqrt 2)$. $\overline{\mathrm{AQ_1}} = 3, \overline{\mathrm{AQ_2}} = 2$ ($Q_i = $ $x$ 축으로 내린 수선의 발). 삼각형 $\mathrm{AP_1 Q_1}$ 넓이 $= 6$, $\mathrm{AP_2 Q_2}$ 넓이 $= 4\sqrt 2$. 곡선 아래 $[1, 2]$ 영역 $\int_1^2 4\sqrt x \,dx = \frac{8}{3}(2\sqrt 2 - 1)$.
+
+    구하는 넓이 $= \frac{8}{3}(2\sqrt 2 - 1) + 4\sqrt 2 - 6 = \boxed{\dfrac{2}{3}(14\sqrt 2 - 13)}$.
+
+    **(2).** $f(x) = 4\sqrt x \Rightarrow f'(x) = 2/\sqrt x$. 점 $\mathrm P(a, 4\sqrt a)$ 의 접선:
+
+    $$
+    l: y = \frac{2}{\sqrt a}(x - a) + 4\sqrt a = \frac{2}{\sqrt a} x + 2\sqrt a
+    $$
+
+    $y$ 절편 $2\sqrt a$. 사다리꼴 LOAM (꼭짓점 $L(0, 2\sqrt a), O, A(4, 0), M(4, 8/\sqrt a + 2\sqrt a)$) 넓이 = $\int_0^4 l\,dx = 8\sqrt a + 16/\sqrt a$. 곡선 아래 $[0, 4]$ 영역 = $\int_0^4 4\sqrt x \,dx = 64/3$.
+
+    $$
+    g(a) = 8\sqrt a + \frac{16}{\sqrt a} - \frac{64}{3}
+    $$
+
+    $g'(a) = \dfrac{4}{\sqrt a} - \dfrac{8}{a\sqrt a} = \dfrac{4}{a\sqrt a}(a - 2) = 0$ ⇒ $a = 2$ (극소).
+
+    $g(2) = 8\sqrt 2 + 16/\sqrt 2 - 64/3 = 8\sqrt 2 + 8\sqrt 2 - 64/3 = 16\sqrt 2 - 64/3 = \boxed{16\left(\sqrt 2 - \dfrac{4}{3}\right)}\quad\square$

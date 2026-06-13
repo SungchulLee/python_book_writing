@@ -265,3 +265,43 @@ $$
     $3d^2 - d^3 = 2$, 즉 $d^3 - 3d^2 + 2 = 0$. 인수정리: $d = 1$ 대입하면 $1 - 3 + 2 = 0\;\checkmark$. 따라서 $(d - 1)(d^2 - 2d - 2) = 0$. 다른 근 $d = 1 \pm \sqrt 3$. $d \in [0, 2]$ 범위에 $d = 1$ 만 적합.
 
     답: $d = 1$ (대칭성에 의한 결과와 일치) $\quad\square$
+
+---
+
+**연습문제 7.** [piecewise 일차 확률밀도 + 두 상수 관계 + $b$ 범위 분기]
+
+상수 $a, b$ ($a > 0$) 에 대하여
+
+$$
+f(x) = \begin{cases} a(b x + 1) & (0 \le x \le 1) \\ -a(b + 1)(x - 2) & (1 < x \le 2) \end{cases}
+$$
+
+이 연속확률변수 $X$ 의 확률밀도함수이다.
+
+(1) $a$ 를 $b$ 에 대한 식으로 나타내고, $c = \displaystyle\int_0^2 x^2 f(x)\,dx$ 의 범위를 구하시오.
+
+(2) $b > 0$ 일 때 $P(0 \le X \le d) = 3/5$ 인 $d$ 를 $b$ 의 식 $d = g(b)$ 로 나타낸 후 $g(1/2) + g(39)$ 의 값.
+
+??? success "연습문제 7 풀이 (요약)"
+
+    **(1).** $f \ge 0$ 조건: $f(0) = a > 0$ ✓; $f(1) = a(b + 1) \ge 0 \Rightarrow b \ge -1$.
+
+    전체 적분 = $\dfrac{1}{2}\bigl(a + a(b + 1)\bigr) + \dfrac{1}{2} a(b + 1) = a \cdot \dfrac{2b + 3}{2} = 1$, 즉 $a = \dfrac{2}{2 b + 3}$.
+
+    $c = \int_0^1 a(b x^3 + x^2) dx + \int_1^2 -a(b+1)(x^3 - 2 x^2)dx = \dfrac{a(3b + 4)}{12} + \dfrac{11 a(b + 1)}{12} = \dfrac{14 b + 15}{12 b + 18} = -\dfrac{1}{2b + 3} + \dfrac{7}{6}$.
+
+    $b \in [-1, \infty) \Rightarrow 2b + 3 \in [1, \infty) \Rightarrow c \in [1/6,\;7/6)$.
+
+    답: $\boxed{\dfrac{1}{6} \le c < \dfrac{7}{6}}$.
+
+    **(2).** $P(0 \le X \le 1) = \dfrac{a(b + 2)}{2} = \dfrac{b + 2}{2 b + 3}$. $= 3/5$ 인 $b$ 는 $5(b+2) = 3(2b+3) \Rightarrow b = 1$.
+
+    - $0 < b \le 1$: $P(0 \le X \le 1) \ge 3/5$, 따라서 $d \in (0, 1]$. $P(0 \le X \le d) = \dfrac{a d(b d + 2)}{2} = \dfrac{3}{5}$. $b d^2 + 2 d - \dfrac{3(2 b + 3)}{5} \cdot \dfrac{1}{a/2}\cdot a = \dfrac{b d^2 + 2 d}{1} = \dfrac{6 b + 9}{5 a}\cdot a$ ... 출제 풀이의 정리 결과: $d = \dfrac{1}{b}\left(-1 + \sqrt{1 + \dfrac{b(6 b + 9)}{5}}\right)$.
+
+    - $b > 1$: $d \in (1, 2)$. 마찬가지로 $d = 2 - \sqrt{\dfrac{4 b + 6}{5 b + 5}}$.
+
+    $b = 1/2$ (≤ 1): $g(1/2) = 2\left(-1 + \sqrt{1 + \dfrac{(1/2)(12)}{5}}\right) = 2\left(-1 + \sqrt{1 + 6/5}\right) = -2 + 2\sqrt{11/5}$.
+
+    $b = 39$ (> 1): $g(39) = 2 - \sqrt{\dfrac{162}{200}} = 2 - \sqrt{\dfrac{81}{100}} = 2 - \dfrac{9}{10}$.
+
+    합 $= -2 + 2\sqrt{11/5} + 2 - 9/10 = \boxed{2\sqrt{\dfrac{11}{5}} - \dfrac{9}{10}}\quad\square$
