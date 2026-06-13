@@ -1727,3 +1727,107 @@ $$a_{n+1} = \begin{cases} 3(a_n + 2) & (a_n \bmod 3 = 1) \\ 3(a_n + 1) & (a_n \b
 
 ??? success "풀이"
     피타고라스: $\overline{\mathrm{BG}} = \overline{\mathrm{GD}} = \overline{\mathrm{DB}} = 2\sqrt 2$, $\overline{\mathrm{MB}} = \overline{\mathrm{MD}} = \sqrt 5$, $\overline{\mathrm{MG}} = 3$. 이등변삼각형 $\mathrm{DMB}$ 넓이 $\sqrt 6$, 정삼각형 $\mathrm{BGD}$ 넓이 $2\sqrt 3$. 삼각형 $\mathrm{BMG}$: $\cos\angle\mathrm{MBG} = \dfrac{5+8-9}{2\sqrt 5 \cdot 2\sqrt 2} = \dfrac{1}{\sqrt{10}}$, $\sin = 3/\sqrt{10}$, $S = (1/2)\sqrt 5 \cdot 2\sqrt 2 \cdot 3/\sqrt{10} = 3$. $\mathrm{AC} \cap \mathrm{BD} = \mathrm{B}'$, 합동 삼각형 분석으로 두 평면 $\mathrm{DMB}, \mathrm{BGD}$ 수직. 사면체 부피 $V = (1/3) \cdot 2\sqrt 3 \cdot \sqrt 3 = 2$. $\triangle\mathrm{DMB}$ 는 $\triangle\mathrm{DMG}$ 의 평면 $\mathrm{DMB}$ 위 정사영 → $\cos\alpha = \dfrac{\triangle\mathrm{DMB}}{\triangle\mathrm{DMG}} = \dfrac{\sqrt 6}{2\sqrt 6} \cdot ... = \dfrac{\sqrt 6}{6}$ ($\triangle\mathrm{DMG}$ 넓이 $= 2\sqrt 6$). $\sin\alpha = \sqrt{30}/6$. **$SV\sin\alpha = 3 \cdot 2 \cdot \sqrt{30}/6 = \sqrt{30}$**.
+
+---
+
+## 카드 32 — 서강대 2026 자연계열 논술 수학
+
+> **출처**: 서강대학교 2026학년도 대입전형 선행학습 영향평가 자체평가보고서, 부록 문항카드 5~8 (논술(일반)전형 자연계열 1차 1·2번, 2차 1·2번). 각 회차 4 하위문항, 100 분, 총 16 문항. PDF 모범답안 명시. 면접 문항 사례 (p.110) 는 비수학 (특성화고/북한이탈주민 인성·진로 면접).
+
+### 자연계열 1차 1번 (40 분) — 도형·미분가능·정적분·변곡점
+
+[제시문] $(x_1, y_1)$ 와 직선 $ax + by + c = 0$ 사이 거리 $d = |ax_1 + by_1 + c|/\sqrt{a^2 + b^2}$. 미분계수 정의. 무리수 $e = \lim_{x \to 0}(1+x)^{1/x}$. 변곡점 정의 (오목·볼록 변화).
+
+**[1-i]** 두 정수 $a, b$ 에 대해 직선 $ax + 2y + 5b = 0$ 이 원 $x^2 + y^2 = 25$ 와 만나도록 하는 순서쌍 $(a, b)$ 의 개수 ($-100 \le a, b \le 100$).
+
+??? success "풀이"
+    원의 중심 $(0,0)$ 과 직선 사이 거리 $5|b|/\sqrt{a^2 + 4} \le 5$ → $|b| \le \sqrt{a^2 + 4}$. $\sqrt{a^2+4} < |a|+1$ 조건 분석: $|a| \ge 2$ 일 때 $|b| \le |a|$. $a = 0$: $b \in \{-2, \dots, 2\}$ ($5$ 개). $|a| = 1$: $|b| \le \sqrt 5$ → $b \in \{-2,\dots,2\}$ ($5$ 개 ×$2$ 부호). $2 \le |a| \le 100$: $|b| \le |a|$ → $2|a|+1$ 개. 합 $= 5 + 2 \cdot 5 + 2 \cdot \sum_{k=2}^{100}(2k+1) = 9 + 2 \cdot 4 \cdot 5050 + 200 = \mathbf{20409}$.
+
+**[1-ii]** $f(x) = ax + b$ ($x \le 0$), $\dfrac{1 - \sqrt{1+3x^2}}{x}$ ($0 < x < 1$), $cx + d$ ($x \ge 1$) 가 모든 실수에서 미분가능. 상수 $a, b, c, d$.
+
+??? success "풀이"
+    $x = 0$ 연속·미분가능: $\lim_{x \to 0^+} f(x) = 0$ → $b = 0$, $\lim_{x \to 0^+}(f(x)-0)/x = \lim \dfrac{-3x^2}{x^2(1+\sqrt{1+3x^2})} = -3/2$ → $a = -3/2$. $x = 1$ 연속: $c+d = -1$. 미분가능: $\lim_{x \to 1^-}(f(x)+1)/(x-1) = \lim \dfrac{-(2x^2-2x)}{x(x-1)(1+\sqrt{1+3x^2})} = -1/2$ → $c = -1/2, d = -1/2$. **$a = -3/2, b = 0, c = -1/2, d = -1/2$**.
+
+**[1-iii]** 실수 전체에서 연속인 $f(x)$ 가 모든 실수 $x$ 에 대해 $\int_0^x t f(x-t)\,dt = x^2 e^{-x^2}$. $f(0) \times \int_{-2}^{3} f(x)\,dx$.
+
+??? success "풀이"
+    $s = x - t$ 치환: $\int_0^x t f(x-t)dt = x \int_0^x f(s)ds - \int_0^x s f(s)ds = x^2 e^{-x^2}$. 양변 미분: $\int_0^x f(s)ds = (2x - 2x^3)e^{-x^2}$. 다시 미분: $f(x) = (4x^4 - 10x^2 + 2)e^{-x^2}$ → $f(0) = 2$. $\int_{-2}^3 f(x)dx = -\int_0^{-2} f(s)ds + \int_0^3 f(s)ds = -12e^{-4} - 48e^{-9} \cdot 1 = -(12e^{-4} + 48e^{-9})$. **$f(0)\int_{-2}^3 f = -(24e^{-4} + 96e^{-9}) = -\dfrac{24e^5 + 96}{e^9}$**.
+
+**[1-iv]** 곡선 $y = kx^3 + x^2 - x\ln x$ ($x > 0$) 의 변곡점의 개수를 실수 $k$ 의 값에 따라 조사.
+
+??? success "풀이"
+    $f''(x) = 6kx + 2 - 1/x = (6kx^2 + 2x - 1)/x$. $g(x) = 6kx^2 + 2x - 1 = 0$ 의 $x > 0$ 인 해 개수 $=$ 변곡점 개수 (부호 변화 시). $k = 0$: $x = 1/2$ ($1$ 개). $k \ne 0$ 판별식 $D/4 = 1 + 6k$. $k < -1/6$: 실근 없음 → $0$. $k = -1/6$: 중근 → 부호 변화 없어 $0$. $-1/6 < k < 0$: 두 양근 → $2$. $k > 0$: 한 양근 → $1$. **$k \le -1/6$: $0$, $-1/6 < k < 0$: $2$, $k \ge 0$: $1$**.
+
+### 자연계열 1차 2번 (60 분) — 삼각함수·연속·치환적분·도함수 활용
+
+[제시문] $\sin(\pi+\theta) = -\sin\theta, \cos(\pi+\theta) = -\cos\theta, \sin(\pi/2+\theta) = \cos\theta, \cos(\pi/2+\theta) = -\sin\theta$. 함수의 연속 조건. 삼각함수 덧셈정리 (사인·코사인·탄젠트).
+
+$0 < t < \pi$ 일 때 $\mathrm{P}(2\cos t, 2\sin t)$ 에 대해 직선 $\mathrm{P}(-1,0)$ 과 $\mathrm{P}(-2,0)$ 이 이루는 예각 $\theta(t)$. $f(t) = \tan\theta(t)$ ($t \in (0, \pi)$).
+
+**[2-i]** $f(t)$ 가 $t = 2\pi/3$ 에서 연속임을 보이시오.
+
+??? success "풀이"
+    $t \ne 2\pi/3$: 두 직선 기울기 $\tan\alpha = \dfrac{2\sin t}{2\cos t + 1}, \tan\beta = \dfrac{2\sin t}{2\cos t + 2}$. $\theta = \alpha - \beta$, $f(t) = \tan(\alpha - \beta) = \dfrac{\sin t}{3(1 + \cos t)}$. $t = 2\pi/3$: $\mathrm{P}(-1, \sqrt 3)$ 에서 $(-1, 0)$ 으로 가는 직선 수직. 직각삼각형 $\mathrm{APB}$ ($\mathrm{A}(-1, 0), \mathrm{B}(-2, 0)$): $\tan\theta(2\pi/3) = \overline{\mathrm{AB}}/\overline{\mathrm{AP}} = 1/\sqrt 3$. $\lim_{t \to 2\pi/3} \dfrac{\sin t}{3(1+\cos t)} = \dfrac{\sqrt 3/2}{3 \cdot 1/2} = \dfrac{\sqrt 3}{3} = f(2\pi/3)$. **연속**.
+
+**[2-ii]** $\sin\alpha = \sqrt 2/4$ ($0 < \alpha < \pi/2$) 일 때 $\int_{2\alpha}^{2\pi/3} f(t)\,dt$.
+
+??? success "풀이"
+    $1 + \cos t = s$ 치환, $ds = -\sin t\, dt$. $\int_{2\alpha}^{2\pi/3} \dfrac{\sin t}{3(1+\cos t)}dt = -\dfrac{1}{3}\int_{1+\cos 2\alpha}^{1/2}\dfrac{1}{s}ds = -\dfrac{1}{3}[\ln s]^{1/2}_{1+\cos 2\alpha}$. $1 + \cos 2\alpha = 2 - 2\sin^2\alpha = 2 - 1/4 = 7/4$. **$-\dfrac{1}{3}\big(\ln\frac{1}{2} - \ln\frac{7}{4}\big) = \dfrac{1}{3}\ln\dfrac{7}{2}$**.
+
+**[2-iii]** 열린구간 $(0, \pi/2)$ 에서 $g(x) = f(x)/(f(2x))^3$. $\displaystyle\lim_{x \to 0^+} \dfrac{g(\pi/2 - x)}{x^n}$ 이 수렴하는 자연수 $n$ 모두와 극한값.
+
+??? success "풀이"
+    $f(x) = \sin x/(3(1+\cos x))$, $f(2x) = \sin 2x/(3(1+\cos 2x)) = (2\sin x \cos x)/(3 \cdot 2\cos^2 x) = \sin x/(3\cos x)$. $g(x) = \dfrac{\sin x/(3(1+\cos x))}{(\sin x/(3\cos x))^3} = \dfrac{9\cos^3 x}{(1+\cos x)\sin^2 x}$. $g(\pi/2 - x) = \dfrac{9\sin^3 x}{(1+\sin x)\cos^2 x}$. $\dfrac{g(\pi/2-x)}{x^n} = \dfrac{9}{(1+\sin x)\cos^2 x} \cdot \big(\dfrac{\sin x}{x}\big)^3 \cdot x^{3-n}$. $\lim$ 수렴 ↔ $\lim x^{3-n}$ 수렴. **$n=1, 2$: 극한 $0$; $n=3$: 극한 $9$; $n > 3$: 발산**.
+
+**[2-iv]** 곡선 $y = f(x)$ ($0 < x < 2\pi/3$) 와 직선 $y = x/3 + k$ 의 교점의 개수를 실수 $k$ 의 값에 따라 조사.
+
+??? success "풀이"
+    $h(x) = f(x) - x/3 = \sin x/(3(1+\cos x)) - x/3$. $h'(x) = \dfrac{1}{3} \cdot \dfrac{\cos x(1+\cos x) - \sin x(-\sin x)}{(1+\cos x)^2} - \dfrac{1}{3} = \dfrac{1}{3} \cdot \dfrac{1+\cos x}{(1+\cos x)^2} - \dfrac{1}{3} = \dfrac{1}{3(1+\cos x)} - \dfrac{1}{3}$. $h'(x) = 0 \Rightarrow \cos x = 0 \Rightarrow x = \pi/2$. $(0, \pi/2)$ 에서 감소, $(\pi/2, 2\pi/3)$ 에서 증가. 극솟값 $h(\pi/2) = 1/3 - \pi/6 = (2-\pi)/6$. $\lim_{x \to 0^+} h(x) = 0$, $h(2\pi/3) = \sqrt 3/3 - 2\pi/9 = (3\sqrt 3 - 2\pi)/9$. **$(2-\pi)/6 < k < (3\sqrt 3 - 2\pi)/9$: $2$ 개; $k = (2-\pi)/6$ 또는 $(3\sqrt 3 - 2\pi)/9 \le k < 0$: $1$ 개; 나머지: $0$ 개**.
+
+### 자연계열 2차 1번 (40 분) — 삼차방정식·급수·접선·내접원
+
+[제시문] 접선 방정식 $y - f(a) = f'(a)(x-a)$. 급수의 부분합 $S_n = \sum_{k=1}^n a_k$, 수렴 시 $\sum a_n = \lim S_n$.
+
+**[1-i]** 두 정수 $a, b$ ($0 \le a, b \le 100$, $a + b > 0$) 에 대해 방정식 $2ax^3 - 3bx^2 + b^2 = 0$ 이 서로 다른 세 실근을 갖도록 하는 순서쌍 $(a, b)$ 의 개수.
+
+??? success "풀이"
+    $f(x) = 2ax^3 - 3bx^2 + b^2$, 세 실근 조건: ① 삼차 ($a \ne 0$), ② 극대·극소 둘 다, ③ 극값 부호 다름. ① → $a \ge 1$. ② $f'(x) = 6x(ax-b) = 0$ → $x = 0, b/a$, 서로 다르려면 $b \ne 0$ → $b \ge 1$. ③ $f(0) = b^2 > 0$ → $f(b/a) < 0$ → $-b^3/a^2 + b^2 < 0$ → $b > a^2$. $a = k$ 일 때 $a^2 < b \le 100$ 이려면 $k^2 < 100$ → $k \le 9$. $a = k$ 의 $b$ 개수 $= 100 - k^2$. **$\sum_{k=1}^9 (100 - k^2) = 900 - 285 = 615$**.
+
+**[1-ii]** 자연수 $n$ 에 대해 $a_n = \int_0^1 x^8 (1-x^3)^n\,dx$. 급수 $\sum a_n$ 의 수렴/발산과 합.
+
+??? success "풀이"
+    $1 - x^3 = t$ 치환, $-3x^2 dx = dt$, $x^9 = (1-t)^3$ 와 $x^8 dx = -x^6 dt/3 = -(1-t)^2 dt/3$. $a_n = \dfrac{1}{3}\int_0^1 (1-t)^2 t^n dt = \dfrac{1}{3}\big(\dfrac{1}{n+1} - \dfrac{2}{n+2} + \dfrac{1}{n+3}\big)$. 부분분수로 $S_n = \dfrac{1}{18} - \dfrac{1}{3(n+2)} + \dfrac{1}{3(n+3)} \to \dfrac{1}{18}$. **수렴, 합 $= \dfrac{1}{18}$**.
+
+**[1-iii]** $1$ 보다 큰 자연수 $n$ 에 대해 곡선 $y = cx^n$ ($x \ge 0$) 위 점 $(a, ca^n)$ 에서의 접선 $l_n$. 곡선과 $l_n$ 및 $x$ 축으로 둘러싸인 도형 넓이 $A_n$, 접선 $l_n$ 과 $x$ 축·$y$ 축으로 둘러싸인 삼각형 넓이 $B_n$. $\displaystyle\lim_{n \to \infty} \dfrac{n^2 A_n}{B_n}$.
+
+??? success "풀이"
+    접선 $y = cna^{n-1}x - c(n-1)a^n$, $y$ 절편 $-c(n-1)a^n$, $x$ 절편 $(n-1)a/n$. $A_n = \int_0^a cx^n dx - (1/2)(a - (n-1)a/n) \cdot ca^n = \dfrac{ca^{n+1}}{n+1} - \dfrac{ca^{n+1}}{2n} = \dfrac{c(n-1)}{2n(n+1)}a^{n+1}$. $B_n = (1/2)c(n-1)a^n \cdot (n-1)a/n = \dfrac{c(n-1)^2 a^{n+1}}{2n}$. $\dfrac{n^2 A_n}{B_n} = \dfrac{n^2}{(n+1)(n-1)} \to \mathbf{1}$.
+
+**[1-iv]** $t > 0$ 일 때 곡선 $y = kx^3$ 위 $\mathrm{P}(t, kt^3)$ 에서의 접선 $l$. $l$ 과 $y = kx^3$ 의 다른 교점 $\mathrm{A}$, $\mathrm{A}$ 에서 $y$ 축에 내린 수선의 발 $\mathrm{B}$, $l$ 의 $y$ 절편 $\mathrm{C}$. 삼각형 $\mathrm{ABC}$ 내접원의 둘레 $L(t)$ 일 때 $\displaystyle\lim_{t \to \infty} \dfrac{L(t)}{t}$.
+
+??? success "풀이"
+    $l: y = 3kt^2 x - 2kt^3$, $\mathrm{C}(0, -2kt^3)$. $kx^3 = 3kt^2 x - 2kt^3 \Rightarrow (x-t)^2(x+2t) = 0 \Rightarrow \mathrm{A}(-2t, -8kt^3)$, $\mathrm{B}(0, -8kt^3)$. $\overline{\mathrm{AB}} = 2t, \overline{\mathrm{BC}} = 6kt^3, \overline{\mathrm{CA}} = 2t\sqrt{1 + 9k^2 t^4}$. 직각삼각형. 내접원 반지름 $r = \dfrac{2 \times \triangle\mathrm{ABC}}{\text{둘레}} = \dfrac{6kt^3}{1 + 3kt^2 + \sqrt{1+9k^2 t^4}}$. $L(t)/t = 2\pi r/t = \dfrac{12\pi k t^2}{1 + 3kt^2 + \sqrt{1+9k^2t^4}}$. $t \to \infty$: 분모/$t^2 \to 3k + 3k = 6k$. **$\dfrac{12\pi k}{6k} = 2\pi$**.
+
+### 자연계열 2차 2번 (60 분) — 미분가능·사차방정식·정적분·도형 거리
+
+[제시문] 두 점 거리 공식. 함수의 극한 (대소 관계·샌드위치). 극대·극소 정의. $e$ 의 정의.
+
+**[2-i]** $f(x) = ax + b$ ($x \le 0$), $x\sqrt x \cos(1/x) + e^x$ ($x > 0$) 이 $x = 0$ 에서 미분가능. $a, b$.
+
+??? success "풀이"
+    연속: $f(0) = b = \lim_{x \to 0^+}(x\sqrt x \cos(1/x) + e^x) = 0 + 1 = 1$. 미분가능: $\lim_{x \to 0^-}(ax)/x = a$, $\lim_{x \to 0^+}(x\sqrt x \cos(1/x) + e^x - 1)/x = \lim(\sqrt x \cos(1/x)) + \lim(e^x-1)/x = 0 + 1 = 1$. **$a = 1, b = 1$**.
+
+**[2-ii]** $g(x) = (1-kx)^2(1-x^2)$ 가 $x = \alpha, x = \beta$ 에서 극댓값. $\alpha\beta = -2/3$ ($0 < k < 1, \alpha \ne \beta$) 일 때 $k$.
+
+??? success "풀이"
+    $g'(x) = 2(1-kx)(2kx^2 - x - k) = -4k^2(x - 1/k)(x - \dfrac{1+\sqrt{1+8k^2}}{4k})(x - \dfrac{1-\sqrt{1+8k^2}}{4k})$. 극댓값 위치: $x = \dfrac{1-\sqrt{1+8k^2}}{4k}$ 와 $x = 1/k$. 곱 $\alpha\beta = \dfrac{1-\sqrt{1+8k^2}}{4k^2} = -2/3$ → $3\sqrt{1+8k^2} = 8k^2+3$ → $9(1+8k^2) = (8k^2+3)^2$ → $k^2(8k^2-3) = 0$. **$k = \sqrt 6/4$**.
+
+**[2-iii]** $0 \le x \le 1$, $\mathrm{P}(x, \sqrt{1-x^2}), \mathrm{A}(a, \sqrt{1-a^2}), \mathrm{B}(a, -\sqrt{1-a^2})$ 에 대해 $p(x) = \overline{\mathrm{PA}} \times \overline{\mathrm{PB}}$. $\int_0^1 p(x)\,dx = 1/2$ 일 때 상수 $a$ ($0 < a < 1$).
+
+??? success "풀이"
+    $\overline{\mathrm{PA}}^2 = 2 - 2ax - 2\sqrt{1-a^2}\sqrt{1-x^2}$, $\overline{\mathrm{PB}}^2 = 2 - 2ax + 2\sqrt{1-a^2}\sqrt{1-x^2}$. $\{p(x)\}^2 = 4(1-ax)^2 - 4(1-a^2)(1-x^2) = 4(x-a)^2$. $p(x) = 2|x-a|$. $\int_0^1 p\,dx = 2\int_0^a(a-x)dx + 2\int_a^1(x-a)dx = 2a^2 - 2a + 1 = 1/2 \Rightarrow (2a-1)^2 = 0$. **$a = 1/2$**.
+
+**[2-iv]** $-1 \le x \le 1$, $\mathrm{Q}(x, \sqrt{1-x^2}), \mathrm{C}(b, \sqrt{1-b^2}), \mathrm{D}(b, -\sqrt{1-b^2})$ 에 대해 $q(x) = \overline{\mathrm{QD}}^4 - \overline{\mathrm{QC}}^4$. 닫힌구간 $[-1, 1]$ 에서 $q(x)$ 의 최댓값 $M$ 이 $\dfrac{M^2}{(1-b^2)(3+\sqrt{1+8b^2})^2} = 15$ 만족 ($0 < b < 1$). $b$.
+
+??? success "풀이"
+    $q(x) = (\overline{\mathrm{QD}}^2 + \overline{\mathrm{QC}}^2)(\overline{\mathrm{QD}}^2 - \overline{\mathrm{QC}}^2) = 16(1-bx)\sqrt{1-b^2}\sqrt{1-x^2}$. $1-bx \ge 0$, $k=b$ 인 문제 [2-ii] 의 $g(x) = (1-bx)^2(1-x^2)$ 와 $q = 16\sqrt{1-b^2}\sqrt{g}$. $g$ 의 극댓값 위치 $x = (1-\sqrt{1+8b^2})/(4b)$ 가 $[-1,1]$ 내. $M^2 = 256(1-b^2)g_{\max}$ 정리하면 $\dfrac{M^2}{(1-b^2)(3+\sqrt{1+8b^2})^2} = 16\big(1 - ((1-\sqrt{1+8b^2})/(4b))^2\big) = 15$ → $((1-\sqrt{1+8b^2})/(4b))^2 = 1/16$ → $(1-\sqrt{1+8b^2})/(4b) = -1/4$ → $\sqrt{1+8b^2} = b+1$ → $b(7b-2) = 0$. **$b = 2/7$**.
