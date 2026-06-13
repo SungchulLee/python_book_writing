@@ -403,3 +403,30 @@ $$
     !!! info "교훈"
         - 부분적분으로 베타함수형 적분의 **점화식**이 도출되고, 그 점화식의 비율이 $1$ 이 되는 $n$ 이 단조성의 전환점.
         - $\int_0^1 x^a(1-x)^b\,dx$ 와 이항계수의 결합으로 결과가 매우 단순해진다 — "**감마-베타 관계의 입문**".
+
+---
+
+**연습문제 (보충 2).** [sin kx 의 접선 + 최댓값-최솟값의 적분]
+자연수 $k$ 에 대하여 $f(x) = \sin kx$. 실수 $t$ 와 직선 $x = 4\pi$, 곡선 $y = f(x)$ 위의 점 $(t, f(t))$ 에서의 접선이 만나는 점의 $y$ 좌표를 $g(t)$ 라 하자. $x < 4\pi$ 인 실수 $x$ 와 $g(t)$ 에 대하여 닫힌구간 $[x, 4\pi]$ 에서의 $g$ 의 최댓값과 최솟값의 차를 $h(x)$ 라 하자. $a = 4\pi - \dfrac{5\pi}{2k}$, $b = 4\pi - \dfrac{3\pi}{2k}$, $C = \displaystyle\int_a^b h(x)\,dx$ 일 때 $2kC$ 를 구하시오.
+
+??? success "연습문제 (보충 2) 풀이 (요약)"
+
+    접선: $y = f'(t)(x - t) + f(t)$ 에 $x = 4\pi$ 대입: $g(t) = k(4\pi - t)\cos kt + \sin kt$.
+
+    $g'(t) = -k^2(4\pi - t)\sin kt$. $g'(t) = 0$ 의 해 $\sin kt = 0$ 또는 $t = 4\pi$. $k$ 가 자연수, $\sin kt = 0$ 의 해 $t = 4\pi - n\pi/k$ ($n = 0, 1, 2, \ldots$).
+
+    $t = 4\pi - \pi/k$ 에서 극소 ($g = -\pi$), $t = 4\pi - 2\pi/k$ 에서 극대 ($g = 2\pi$), $t = 4\pi - 3\pi/k$ 에서 극소·극대 교차, $t = 4\pi - 5\pi/(2k)$ 에서 $g = -1$.
+
+    $[x, 4\pi]$ 에서 $g$ 의 최솟값은 항상 $-\pi$, 최댓값은 $x$ 의 위치에 따라 분기:
+
+    $$
+    h(x) = \begin{cases} 3\pi & \left(4\pi - \dfrac{5\pi}{2k} \le x \le 4\pi - \dfrac{2\pi}{k}\right) \\ g(x) + \pi & \left(4\pi - \dfrac{2\pi}{k} \le x \le 4\pi - \dfrac{3\pi}{2k}\right)\end{cases}
+    $$
+
+    $\int_a^b h dx = 3\pi \cdot \dfrac{\pi}{2k} + \pi \cdot \dfrac{\pi}{2k} + \int_{4\pi-2\pi/k}^{4\pi-3\pi/(2k)} g(x) dx = \dfrac{2\pi^2}{k} + \int g$. 부분적분으로 $\int(k(4\pi-x)\cos kx + \sin kx)dx = (4\pi - x)\sin kx - \dfrac{2}{k}\cos kx$. 평가:
+
+    $$
+    \int_a^b h(x)\,dx = \dfrac{2\pi^2}{k} + \dfrac{3\pi/(2k) + 2/k}{1} = \dfrac{2\pi^2}{k} + \dfrac{3\pi + 4}{2k} = \dfrac{4\pi^2 + 3\pi + 4}{2k}
+    $$
+
+    $\boxed{2kC = 4\pi^2 + 3\pi + 4}\quad\square$

@@ -81,6 +81,8 @@ nav:
             - 격자 위 평면벡터의 내적: ch03/vector_lattice_inner_product/vector_lattice_inner_product.md
         - 3.3 정n각형과 외접원:
             - 정n각형과 외접원: ch03/regular_polygon_circle/regular_polygon_circle.md
+        - 3.4 외접원과 사인법칙:
+            - 외접원과 사인법칙: ch03/circumscribed_circle/circumscribed_circle.md
 
     - 4 확률과 통계:
         - 4.1 점수열과 정규분포 근사:
