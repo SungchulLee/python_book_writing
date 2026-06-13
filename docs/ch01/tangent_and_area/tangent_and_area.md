@@ -349,3 +349,38 @@ $$
     !!! info "교훈"
         - **두 직사각형으로 영역을 끼워 넣고** $k \to 0+$ 의 극한에서 두 경계가 같은 값으로 수렴하는 **조임정리** 의 전형적 활용.
         - 원과 직선의 현 길이는 직선의 기울기에 의존하며, 평행이동 후의 차이는 $O(k)$ 의 1차 항만 남고 호의 곡률 효과는 $O(k^2)$ 로 무시된다.
+
+---
+
+**연습문제 (보충 3).** [삼각형 안에 내접하는 정사각형의 넓이의 최대]
+그림과 같이 삼각형 $\mathrm{ABC}$ 의 변 $\overline{\mathrm{AB}}, \overline{\mathrm{AC}}$ 위에 점 $\mathrm{P, Q}$, 변 $\overline{\mathrm{BC}}$ 위에 두 점 $\mathrm{R, S}$ 가 있고 사각형 $\mathrm{PQRS}$ 가 정사각형이다 (단, 각 $\mathrm{B}$ 와 $\mathrm{C}$ 는 예각).
+
+(1) 양의 실수 $a, b, c$ 에 대하여 삼각형 $\mathrm{ABC}$ 의 세 꼭짓점이 $\mathrm{A}(0, a), \mathrm{B}(-b, 0), \mathrm{C}(c, 0)$ 일 때, 정사각형 $\mathrm{PQRS}$ 의 넓이를 $a, b, c$ 의 식으로 나타내시오.
+
+(2) 삼각형 $\mathrm{ABC}$ 의 넓이가 $1$ 이다. 정사각형 $\mathrm{PQRS}$ 의 넓이가 최대일 때 변 $\overline{\mathrm{BC}}$ 의 길이를 구하시오.
+
+??? success "연습문제 (보충 3) 풀이"
+
+    **(1).** 직선 $\overline{\mathrm{AB}}$ 의 방정식: $\dfrac{x}{-b} + \dfrac{y}{a} = 1$, 즉 $a x - b y + ab = 0$... 정확하게는 $y = \dfrac{a}{b}(x + b)$. $\overline{\mathrm{AC}}$ : $y = -\dfrac{a}{c}(x - c)$.
+
+    정사각형의 한 변 길이를 $s$ 로 두면, 정사각형의 위쪽 꼭짓점 $\mathrm{P}, \mathrm{Q}$ 의 $y$ 좌표 = $s$, 아래쪽 $\mathrm{R, S}$ 의 $y$ 좌표 = $0$.
+
+    $\mathrm{P}$ 가 $\overline{\mathrm{AB}}$ 위에 있고 $y = s$: $s = \dfrac{a}{b}(x_\mathrm{P} + b) \Rightarrow x_\mathrm{P} = \dfrac{sb}{a} - b$. $\mathrm{Q}$ 의 $x$ 좌표: $s = -\dfrac{a}{c}(x_\mathrm{Q} - c) \Rightarrow x_\mathrm{Q} = c - \dfrac{sc}{a}$.
+
+    $\overline{\mathrm{PQ}} = x_\mathrm{Q} - x_\mathrm{P} = (b + c) - \dfrac{s(b + c)}{a} = (b+c)\bigl(1 - s/a\bigr)$.
+
+    정사각형이므로 $\overline{\mathrm{PQ}} = s$:
+
+    $$
+    s = (b + c)\bigl(1 - s/a\bigr) \Rightarrow s\bigl(1 + (b+c)/a\bigr) = b+c \Rightarrow s = \frac{a(b+c)}{a + b + c}
+    $$
+
+    정사각형의 넓이 $= s^2 = \dfrac{a^2(b+c)^2}{(a + b + c)^2}$. $\quad\square$
+
+    **(2).** 삼각형 넓이 $= \dfrac{1}{2}\cdot(b+c)\cdot a = 1 \Rightarrow a(b+c) = 2$. 두 변수 $a, (b+c)$ 가 곱이 $2$ 인 양수.
+
+    $s = \dfrac{a(b+c)}{a + b + c} = \dfrac{2}{a + b + c}$. 분모 $a + b + c$ 를 최소화. $b + c \ge 2\sqrt{bc}$ 인데 $b, c$ 는 독립. 단순화: $a + (b+c)$ 의 최소 — $a(b+c) = 2$ 고정, AM-GM: $a + (b+c) \ge 2\sqrt{2}$, 등호 $a = b + c = \sqrt 2$.
+
+    $s_{\max} = \dfrac{2}{\sqrt 2 + \sqrt 2} = \dfrac{2}{2\sqrt 2} = \dfrac{\sqrt 2}{2}$. 정사각형의 최대 넓이 $= 1/2$.
+
+    이때 $b + c = \sqrt 2$, 즉 $\overline{\mathrm{BC}} = b + c = \sqrt 2 \quad\square$

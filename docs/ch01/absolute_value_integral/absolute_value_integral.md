@@ -529,3 +529,79 @@ $g(x) = \left|\displaystyle\int_a^x f(t)\,dt\right|$ 가 실수 전체에서 미
     !!! info "교훈"
         - **$|h|$ 의 미분가능 조건**: $h$ 가 부호 바뀌는 점에서 동시에 $h'$ 도 $0$ 이어야 함.
         - **적분의 그래프**는 적분으로 정의된 $F$ 의 극값이 $f$ 의 영점에서 나타나며, 부호 분석으로 그래프 개형 결정.
+
+---
+
+**연습문제 10.** [AM-GM 부등식 + 적분의 최대]
+음이 아닌 두 실수 $a, b$ 에 대하여 $\dfrac{a + b}{2} \ge \sqrt{ab}$ (등호 $a = b$) 가 성립한다. 또한 닫힌구간 $[\alpha, \beta]$ 에서 정의된 상수함수가 아닌 연속함수 $f(x)$ 에 대하여 $f(x) \ge 0$ 이고 $f$ 가 상수 아닌 경우 $\displaystyle\int_\alpha^\beta f(x)\,dx > 0$.
+
+구간 $[-1, 1]$ 에서 정의된 연속함수 $f(x)$ 가
+
+$$
+\int_{-1}^1 \bigl\{2(f(x))^2 + \sin^2\pi x\bigr\}\,dx = 2
+$$
+
+를 만족한다. $\displaystyle\int_{-1}^1 f(x)\,|\sin\pi x|\,dx$ 의 값이 최대일 때 $f(x)$ 와 그 최댓값을 구하시오.
+
+??? success "연습문제 10 풀이"
+
+    AM-GM 부등식: $2(f(x))^2 + \sin^2\pi x \ge 2\sqrt{2}\,|f(x)\sin\pi x| = 2\sqrt{2}\,|f(x)||\sin\pi x|$.
+
+    적분하면
+
+    $$
+    2 = \int_{-1}^1\bigl\{2(f(x))^2 + \sin^2\pi x\bigr\}dx \ge 2\sqrt 2\int_{-1}^1 |f(x)\sin\pi x|\,dx \ge 2\sqrt 2\int_{-1}^1 f(x)|\sin\pi x|\,dx
+    $$
+
+    (두 번째 부등식은 $f(x) \le |f(x)|$). 따라서
+
+    $$
+    \int_{-1}^1 f(x)|\sin\pi x|\,dx \le \frac{1}{\sqrt 2} = \frac{\sqrt 2}{2}
+    $$
+
+    **등호 성립 조건**:
+
+    - 첫 번째 부등식 (AM-GM): $\sqrt 2|f(x)| = |\sin\pi x|$, 즉 $|f(x)| = |\sin\pi x|/\sqrt 2$.
+    - 두 번째 부등식: $f(x) \ge 0$, 즉 $f(x) = |f(x)|$.
+
+    이 둘을 결합하면 $f(x) = \dfrac{|\sin\pi x|}{\sqrt 2}$.
+
+    검증: $\int_{-1}^1 2 \cdot \dfrac{\sin^2\pi x}{2}\,dx + \int_{-1}^1 \sin^2\pi x\,dx = 2\int_{-1}^1 \sin^2\pi x\,dx = 2$. $\;\checkmark$
+
+    $$
+    \boxed{f(x) = \frac{|\sin\pi x|}{\sqrt 2},\quad \max = \frac{\sqrt 2}{2}}\quad\square
+    $$
+
+    !!! info "교훈"
+        - **AM-GM 의 적분버전**: 두 양수 함수의 곱의 적분의 상한을 두 함수의 제곱의 적분의 합으로 잡는 방식.
+        - 등호 성립 조건이 두 함수의 비율 관계를 정확히 결정 — $f(x)$ 의 명시적 형태가 직접 도출.
+
+---
+
+**연습문제 11.** [AM-GM + 치환적분으로 적분의 최소]
+실수 전체에서 미분가능하고 도함수가 연속인 함수 $f(x)$ 가:
+
+- $(i)$ 모든 실수 $x$ 에 대하여 $f'(x) f(x) < 0$ (즉 $f^2$ 감소).
+- $(ii)$ $f(0) = 1/\sqrt 2$, $f(2) = 1/(\sqrt 2\, e^2)$.
+
+$\displaystyle\int_0^2\!\!\left\{(2 e^x f'(x))^2 + \dfrac{1}{(e^x f(x))^2}\right\}dx$ 의 값이 최소가 될 때 $f(1)$ 과 그 정적분의 값을 구하시오.
+
+??? success "연습문제 11 풀이"
+
+    AM-GM: $(2e^x f'(x))^2 + \dfrac{1}{(e^x f(x))^2} \ge 2\cdot\dfrac{|2e^x f'(x)|}{e^x|f(x)|} = \dfrac{4|f'(x)|}{|f(x)|}$.
+
+    조건 $(i)$ 로 $f'$ 과 $f$ 가 부호 반대이므로 $\dfrac{f'(x)}{f(x)} < 0$. 즉 $\dfrac{|f'(x)|}{|f(x)|} = -\dfrac{f'(x)}{f(x)} = -\dfrac{d}{dx}\ln|f(x)|$.
+
+    적분하면
+
+    $$
+    \int_0^2\!\!\left\{(2e^x f')^2 + \frac{1}{(e^x f)^2}\right\}dx \ge \int_0^2 -\frac{4 f'(x)}{f(x)}dx = -4[\ln |f(x)|]_0^2 = -4\bigl(\ln\tfrac{1}{\sqrt 2 e^2} - \ln\tfrac{1}{\sqrt 2}\bigr) = -4(-2) = 8
+    $$
+
+    **등호 조건**: $2|e^x f'(x)| = 1/|e^x f(x)|$, 즉 $|2 f'(x) f(x)| = e^{-2x}$. 조건 (i) 으로 $f'f < 0$, $-2f'f = e^{-2x}$, 즉 $-\dfrac{d}{dx}(f^2) = e^{-2x}$. 적분: $f(x)^2 = \dfrac{e^{-2x}}{2} + C$. $f(0)^2 = 1/2 \Rightarrow C = 0$. $f(x)^2 = \dfrac{e^{-2x}}{2}$, $f(x) > 0$ 이므로 (또는 $f(2) > 0$ 일관) $f(x) = \dfrac{e^{-x}}{\sqrt 2}$.
+
+    $f(1) = \dfrac{e^{-1}}{\sqrt 2} = \dfrac{1}{\sqrt 2\,e}$.
+
+    $$
+    \boxed{f(1) = \dfrac{1}{\sqrt 2\,e},\quad \min = 8}\quad\square
+    $$
