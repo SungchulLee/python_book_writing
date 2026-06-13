@@ -1293,4 +1293,115 @@ $X = $ 게임 후 민호의 금, $Y = $ 게임 후 영희의 금.
 ??? success "풀이"
     $S(t) = (t-1)(1-1/e) = 1 \Rightarrow t = 2 + 1/(e-1) \in (2, 3)$. 부등식 $tf^{-1} \le f \cdot f^{-1} \le (t+1)f^{-1}$. $\int_1^{t+1} f^{-1} = S(t) + (t+2)/2 = 1 + (t+2)/2$. $t \cdot (1 + (t+2)/2) > 4 + t > 6$, $(t+1) \cdot (1 + (t+2)/2) < 2t + 8 < 14$. ∎
 
+---
+
+## 카드 27 — 부산대 2026 자연계열 논술 (수학)
+
+> **출처**: 부산대학교 2026학년도 대학별고사(논술) 선행학습 영향평가 자체평가보고서, 부록 문항카드 4~6. 자연계(수학) 3 문항, 각 2 하위문항. 100 분. PDF 모범답안 명시.
+
+### 자연계 1번 — 조합·경우의 수 (조 배정)
+
+[제시문] 서로 다른 $n$ 개에서 $r$ 개를 택하는 조합의 수 $\displaystyle {}_n\mathrm{C}_r = \frac{n!}{r!(n-r)!}$ ($0 \le r \le n$).
+
+네 학생 $A, B, C, D$ 를 포함한 $10$ 명을 연구조 ($4$ 명), 발표조 ($3$ 명), 지원조 ($3$ 명) 으로 배정한다.
+
+**[1-1]** 조건 (가) $A$ 는 $B$ 또는 $C$ 와 같은 조, (나) $B$ 와 $C$ 는 서로 다른 조. 경우의 수.
+
+??? success "풀이"
+    $B$ 가 속한 조 (연·발·지) 와 $C$ 가 속한 조 (다른 두 조 중) 의 6 가지로 분기. 같은 조에 들어가는 $A$ 의 분배까지 나누면 $350 \times 4 + 210 \times 2 = \mathbf{1820}$.
+
+**[1-2]** 조건 (가) $A \in$ 발표조, (나) $B \in$ 연구조 또는 지원조, (다) $C, D$ 서로 다른 조. 경우의 수.
+
+??? success "풀이"
+    (i) $B \in$ 연구조: $A$ 발표·$B$ 연구 배정 ${}_8\mathrm{C}_3 \cdot {}_5\mathrm{C}_2 \cdot {}_3\mathrm{C}_3 = 560$, 그중 $C, D$ 같은 조인 경우 $140$, 차 $= 420$. (ii) $B \in$ 지원조: 같은 방식 $420 - 120 = 300$. 합 $= \mathbf{720}$.
+
+### 자연계 2번 — 접선의 방정식·집합 원소 개수·이차방정식
+
+[제시문] (Ⅰ) 접선 $y - f(a) = f'(a)(x-a)$. (Ⅱ) 집합의 원소 개수 $n(A)$. (Ⅲ) $f'(a) = 0$ 이고 $f'$ 부호 양 → 음이면 $x = a$ 극대, 음 → 양이면 극소.
+
+이차함수 $f(x)$ 에 대해 곡선 $y = f(x)$ 위 점 $\mathrm{P}(t, f(t))$ 에서의 접선과 수직이고 $\mathrm{P}$ 를 지나는 직선의 $x$ 절편을 $g(t)$ 라 하자. 실수 $k$ 에 대해 $A_k = \{t : g(t) = g(k)\}$.
+
+**[2-1]** $f(x) = x^2 + px + \tfrac12 p - \tfrac12$. $n(A_k) = 2$ 인 $k$ 가 존재하는 자연수 $p$ 의 최솟값 $p_1$ 을 구하고, $f(x) = x^2 + p_1 x + \tfrac12 p_1 - \tfrac12$ 에 대해 $n(A_k) = 2$ 인 모든 $k$ 의 합.
+
+??? success "풀이"
+    수직선 $y = -\frac{1}{2t+p}(x-t) + f(t)$. $x$ 절편 $g(t) = 2t^3 + 3pt^2 + (p^2+p)t + \tfrac12 p^2 - \tfrac12 p$. $g$ 가 극값을 가져야 하므로 $g'(t) = 6t^2 + 6pt + p^2 + p = 0$ 판별식 $9p^2 - 6(p^2+p) > 0 \Rightarrow p > 2$. 자연수 최솟값 $p_1 = 3$. $p = 3$ 일 때 $g(t) = 2t^3 + 9t^2 + 12t + 3$, 극값 $g(-1) = -2$, $g(-2) = -1$. $g(t) = -2 \Rightarrow t = -1, -5/2$; $g(t) = -1 \Rightarrow t = -2, -1/2$. **$k$ 의 합 $= -5/2 - 2 - 1 - 1/2 = -6$**.
+
+**[2-2]** $f(x) = x^2 + x - 7$. 집합 $A_k$ 의 원소 중 최댓값 $M_k$, 최솟값 $m_k$. $m_k < k < M_k$ 만족 $k$ 에 대해 $M_k^2 + m_k^2$ 의 최댓값.
+
+??? success "풀이"
+    $g(t) = 2t^3 + 3t^2 - 12t - 7$. $g(t) = g(k) \Leftrightarrow (t-k)\{2t^2 + (2k+3)t + 2k^2 + 3k - 12\} = 0$. $h(t) = 2t^2 + (2k+3)t + 2k^2 + 3k - 12$ 라 하면 $h(k) = 6(k+2)(k-1) < 0 \Leftrightarrow -2 < k < 1$. 이때 $M_k + m_k = -(2k+3)/2$, $M_k m_k = (2k^2 + 3k - 12)/2$ (근과 계수). $M_k^2 + m_k^2 = (M_k+m_k)^2 - 2M_k m_k = \tfrac14(-4k^2 + 57)$. $k = 0$ 일 때 **최댓값 $57/4$**.
+
+### 자연계 3번 — 정적분과 급수의 합 (sec 적분)
+
+[제시문] (Ⅰ) 정적분과 급수: $f$ 가 $[a,b]$ 에서 연속이면 $\displaystyle\lim_{n\to\infty}\sum_{k=1}^n f(x_k)\Delta x = \int_a^b f(x)\,dx$. (Ⅱ) 조임정리.
+
+자연수 $n$ 에 대해 단위원과 직선 $y = (\tan\tfrac{k\pi}{3n})x$ ($k=1,\dots,n$) 의 제 1 사분면 교점을 $\mathrm{A}_k$, 직선 $x = 2$ 와의 교점을 $\mathrm{B}_k$. 사각형 $\mathrm{A}_{k-1}\mathrm{A}_k\mathrm{B}_k\mathrm{B}_{k-1}$ 내부 (또는 경계) 에 포함되며 $\mathrm{A}_{k-1}\mathrm{A}_k$ 를 한 변으로 하는 직사각형의 넓이 최댓값을 $T_k$. ($\mathrm{A}_0 = (1,0)$, $\mathrm{B}_0 = (2,0)$.) $S_n = T_1 + \dots + T_n$.
+
+**[3-1]** $S_1$ 의 값.
+
+??? success "풀이"
+    $n = 1$ 일 때 $\angle \mathrm{A}_0\mathrm{OA}_1 = \pi/3$ 이므로 $\overline{\mathrm{A}_0\mathrm{A}_1} = 1$ (정삼각형). 짧은 변 $= 1$. 긴 변은 $\overline{\mathrm{A}_0\mathrm{B}_0} = 1$ 을 $\cos(\pi/6)$ 으로 나눈 것 $= 2/\sqrt 3 = 2\sqrt 3/3$. **$S_1 = T_1 = 2\sqrt 3/3$**.
+
+**[3-2]** $\displaystyle\lim_{n\to\infty} S_n = 2\int_0^{\pi/3} \sec x\,dx - \frac{\pi}{3}$ 증명.
+
+??? success "풀이"
+    $\delta = \pi/(6n)$. 짧은 변 $\overline{\mathrm{A}_{k-1}\mathrm{A}_k} = 2\sin\delta$. $\theta_k = k\pi/(3n)$, $\theta_{k-1} = \theta_k - \delta$. 긴 변 길이 $= \dfrac{2 - \cos\theta_{k-1}}{\cos\theta_k} = 2\sec\theta_k - \cos\delta - \sin\delta\tan\theta_k$. 따라서
+    $$S_n = 4\sin\delta\sum_{k=1}^n\sec\theta_k - 2n\sin\delta\cos\delta - 2\sin^2\delta\sum_{k=1}^n\tan\theta_k.$$
+    (i) $y = \sec x$ 가 $(0, \pi/3)$ 증가이므로 조임정리로 $\lim 4\sin\delta\sum\sec\tfrac{(2k-1)\pi}{6n} = 2\int_0^{\pi/3}\sec x\,dx$. (ii) $\lim 2n\sin\delta\cos\delta = \pi/3$. (iii) $\tan\theta_k \le \sqrt 3$ 이므로 $0 \le 2\sin^2\delta\sum\tan\theta_k \le 2\sqrt 3 n\sin^2\delta \to 0$. 합쳐서 결론. ∎
+
+---
+
+## 카드 28 — 부산대 2026 의·약학계 논술 (수학) — 지역인재전형
+
+> **출처**: 위 보고서 문항카드 7~9. 의·약학계(수학) 3 문항. 출제범위에 기하 포함. 100 분. PDF 모범답안 명시.
+
+### 의·약학계 1번 — 자연계 2번 확장 ($n(A_k) = 2$ 또는 $m_k < k < M_k$)
+
+[제시문 동일: 접선·집합·극값] 이차함수 $f(x)$, 점 $\mathrm{P}(t, f(t))$ 에서의 수직선의 $x$ 절편 $g(t)$, $A_k = \{t : g(t) = g(k)\}$.
+
+**[1-1]** (자연계 2번 [2-1] 과 동일) $f(x) = x^2 + px + \tfrac12 p - \tfrac12$ 에서 $n(A_k) = 2$ 인 $k$ 존재 자연수 $p$ 최솟값 $p_1 = 3$, $k$ 합 $= -6$.
+
+??? success "풀이"
+    자연계 2번 [2-1] 과 동일. $p_1 = 3$, **$k$ 합 $= -6$**.
+
+**[1-2]** $f(x) = x^2 + x - 7$. $A_k$ 의 최댓값 $M_k$, 최솟값 $m_k$. $n(A_k) = 2$ **또는** $m_k < k < M_k$ 만족 $k$ 에 대해 $M_k^2 + m_k^2$ 의 최댓값 + 최솟값.
+
+??? success "풀이"
+    $g(t) = 2t^3 + 3t^2 - 12t - 7$, $g'(t) = 6(t-1)(t+2)$, 극값 $g(1) = -14$, $g(-2) = 13$.
+    (i) $n(A_k) = 2$: $g(k) = -14 \Rightarrow k = 1, -7/2$; $g(k) = 13 \Rightarrow k = -2, 5/2$. (ii) $m_k < k < M_k$: $h(k) < 0 \Rightarrow -2 < k < 1$. 합치면 $k = -7/2, 5/2$ 또는 $-2 \le k \le 1$. $k = -7/2, 5/2$ 일 때 $g$ 값이 극값과 같으므로 $M_k^2 + m_k^2$ 는 $-2 \le k \le 1$ 범위에서의 값으로 환원. $M_k^2 + m_k^2 = \tfrac14(-4k^2 + 57)$. 최댓값 ($k = 0$) $= 57/4$, 최솟값 ($k = -2$) $= 41/4$. **합 $= 49/2$**.
+
+### 의·약학계 2번 — 합성함수의 미분가능성·그래프 개형
+
+[제시문] 미분계수, 미분가능, 그래프 개형.
+
+$a (a \neq 0), b$ 에 대해 $f(x) = (ax^2 + bx)e^x$, $g(x) = (e^x - e^2)(e^x - 1/e)$. 조건: (가) $f(|g(x)|)$ 가 실수 전체에서 미분가능. (나) $|g(f(x))|$ 가 $x = \alpha$ 에서 미분가능하지 않은 $\alpha$ 의 개수 $= 1$. $|g(f(-2))|$ 의 최댓값 $p$.
+
+**[2-1]** $a$ 의 범위 및 $p$.
+
+??? success "풀이"
+    $g(x) = 0 \Leftrightarrow x = -1, 2$, $g'(-1) \neq 0, g'(2) \neq 0$. 조건 (가) ⇒ $f$ 가 $x = -1, 2$ 에서 미분가능 + 좌·우 극한 일치 ⇒ $f'(0) = 0$, $b = 0$, $f(x) = ax^2 e^x$. 조건 (나) ⇒ $f(\alpha) = -1$ 또는 $2$ 유일. $f'(x) = ax(x+2)e^x$, 극값 $f(-2) = 4ae^{-2}$, $f(0) = 0$. (i) $a < 0$: $f(\alpha) = -1$ 만 존재 ⇒ $-1 \le 4ae^{-2} < 0 \Rightarrow -e^2/4 \le a < 0$. (ii) $a > 0$: 대칭으로 $0 < a \le e^2/2$. $s = f(-2) = 4ae^{-2}$, $g(s)$ 의 최댓값 (음수 절댓값) 은 $s = \ln(e^2/2 + 1/(2e))$ 에서 발생. **$p = (e^2/2 - 1/(2e))^2$**.
+
+**[2-2]** $|g(f(-2))| = p$ 일 때 $h(t) = |\{t : y = t \text{ 와 } y = |g(f(x))| \text{ 교점}\}|$. $\displaystyle\lim_{t \to p+} h(t) + \lim_{t \to p-} h(t) + h(g(0))$.
+
+??? success "풀이"
+    $a = e^2 \ln(e^2/2 + 1/(2e))/4$. $g'(f(x))f'(x) = 0$ 에서 $x = -2, 0, \beta$ ($f(\beta) = \ln(e^2/2 + 1/(2e)) = f(-2)$). 직선 $y = g(0)$ 은 $y = g(f(x))$ 의 점근선. $|g(f(x))|$ 의 그래프는 좌측 봉우리 $p$, 가운데 $|g(0)|$, 우측 봉우리 $p$. $h(t)$ 값표: $t = 0$ 또는 $t > p$ 면 $1$; $0 < t < |g(0)|$ 면 $2$; $t = |g(0)|$ 또는 $t = p$ 면 $3$; $|g(0)| < t < p$ 면 $5$. **$\lim_{t \to p+} h + \lim_{t \to p-} h + h(g(0)) = 1 + 5 + 0 = 6$**.
+
+### 의·약학계 3번 — 정육면체·이면각·정사영
+
+[제시문] (Ⅰ) 이면각의 정의 (반평면 $\alpha, \beta$, 교선 $l$ 위 점 $O$, 수직 반직선의 사이각). (Ⅱ) 코사인법칙 $a^2 = b^2 + c^2 - 2bc\cos A$.
+
+한 변 $4$ 정육면체 $\mathrm{ABCD-EFGH}$. 여섯 선분 $\mathrm{CD, HD, HE, FE, FB, CB}$ 를 $1:3$ 으로 내분 $\mathrm{I, J, K, L, M, N}$ (정육각형). $\mathrm{P}, \mathrm{Q}, \mathrm{R}$ 은 $\mathrm{AD, AE, AB}$ 위 점이고 $\overline{\mathrm{AP}} : \overline{\mathrm{AQ}} : \overline{\mathrm{AR}} = 1 : 3 : 3$.
+
+**[3-1]** 평면 $\mathrm{PQR}$ 과 평면 $\mathrm{IJKLMN}$ 이 이루는 각 $\theta$ 에 대해 $\cos\theta$.
+
+??? success "풀이"
+    직선 $\mathrm{NI}$ 와 $\mathrm{AB}, \mathrm{AD}$ 의 교점 $\mathrm{S}, \mathrm{T}$, $\mathrm{SL}, \mathrm{TK}$ 의 교점 $\mathrm{U}$ 라 하면 사각뿔 $\mathrm{A-STU}$ 의 밑면은 한 변 $7\sqrt 2$ 정삼각형. 평면 $\mathrm{IJKLMN}$ 과 평면 $\mathrm{BDE}$ (한 변 $4\sqrt 2$ 정삼각형) 평행. 비 $1:3:3$ 이므로 $\mathrm{R}=\mathrm{B}, \mathrm{Q}=\mathrm{E}$ 일 때와 같은 각. $\overline{\mathrm{AP}} = 4/3$, $\overline{\mathrm{PD}} = 8/3$, $\overline{\mathrm{DV}} = 2\sqrt 6$ (V = QR 중점), $\overline{\mathrm{PV}} = 2\sqrt{22}/3$. 코사인법칙으로 **$\cos\theta = \dfrac{5\sqrt{33}}{33}$**.
+
+**[3-2]** 삼각형 $\mathrm{PQR}$ 의 평면 $\mathrm{IJKLMN}$ 위로의 정사영이 사각형 $\mathrm{IKLN}$ 의 내부 (경계 포함) 일 때, 정사영 넓이가 최대가 되는 $\mathrm{P}$ 에 대해 $\overline{\mathrm{AP}}$.
+
+??? success "풀이"
+    $\mathrm{A}$ 에서 $\triangle\mathrm{STU}$ 에 내린 발 $\mathrm{A}'$ 는 무게중심. 정사영 $\triangle\mathrm{P'Q'R'}$ ($\mathrm{P'}$ 는 $\mathrm{A'T}$ 위, $\mathrm{A'P'}:\mathrm{A'R'}=1:3$). 정사영 넓이 최대는 $\mathrm{Q}'$ 가 선분 $\mathrm{KL}$ 위 또는 $\mathrm{R}'$ 이 $\mathrm{LN}$ 위일 때.
+    (i) $\mathrm{Q}'$ 이 $\mathrm{KL}$ 위: $\overline{\mathrm{UA}'} = 7\sqrt 6/3$, $\mathrm{U}$ 와 $\mathrm{KL}$ 거리 $3\sqrt 6/2$ ($\triangle\mathrm{ULK}$ 정삼각형, 변 $3\sqrt 2$). $\mathrm{A}'$ 와 $\mathrm{KL}$ 거리 $5\sqrt 6/6$. $\overline{\mathrm{AP}} = k$, $\overline{\mathrm{AQ}} = 3k$ 라 하면 닮음 $\overline{\mathrm{QQ}''} = \sqrt 6 k$. 등호 $\sqrt 6 k = 5\sqrt 6/6 \Rightarrow k = 5/6$.
+    (ii) $\mathrm{R}'$ 이 $\mathrm{LN}$ 위: 코사인법칙 및 닮음으로 같은 방식. 두 경우 합치면 **$\overline{\mathrm{AP}} = 5/6$**.
+
 > 학종 면접 2~4번 (물리·화학·생명) 은 비수학. 한양대 인문계열 (오후1: 임금님 동화/매체 공통지식, 오후2: 주인 도덕/노예 도덕 — 고골 외투), 상경계열 1번 (인공임신중절 도덕적 허용) 도 비수학.
