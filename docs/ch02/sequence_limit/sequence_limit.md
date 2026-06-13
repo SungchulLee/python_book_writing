@@ -484,3 +484,68 @@ $$
     !!! info "교훈"
         - **8제곱 부등식**: $(a+b)^n + (a-b)^n$ 와 $a^n + b^n$ 사이의 관계는 Hardy-Littlewood 형 부등식의 한 사례.
         - 위치벡터의 중점 $\mathrm{M}$ 에 대한 조건이 두 좌표의 8제곱 합에 부과하는 제약을, 다른 좌표 차분의 8제곱 합으로 환원하는 것이 핵심 아이디어.
+
+---
+
+**연습문제 12.** [극값 좌표가 정의하는 수열과 무리수 $e$]
+
+자연수 $n$ 에 대하여 닫힌 구간 $[0, \pi/2]$ 에서 정의된 함수
+
+$$
+f(x) = \sin^n x \cos x
+$$
+
+는 $x = a_n$ ($0 < a_n < \pi/2$) 에서 극값 $b_n$ 을 가진다.
+
+(1) 극한 $\displaystyle\lim_{n\to\infty} \sqrt n\,\tan(2 a_n)$ 의 값을 구하시오.
+
+(2) 극한 $\displaystyle\lim_{n\to\infty} \bigl(1 + \sqrt n\bigr)\,b_n$ 의 값을 구하시오.
+
+??? success "연습문제 12 풀이"
+
+    **준비.** 함수의 곱의 미분법과 삼각함수의 도함수로
+
+    $$
+    f'(x) = n \sin^{n-1} x \cos^2 x - \sin^{n+1} x = \sin^{n-1} x\bigl((n+1)\cos^2 x - 1\bigr)
+    $$
+
+    $(0, \pi/2)$ 에서 $\sin^{n-1} x > 0$ 이므로 $f'(a_n) = 0 \Leftrightarrow \cos^2 a_n = \dfrac{1}{n+1}$. $a_n$ 좌우에서 $f'$ 의 부호가 양→음으로 바뀌므로 $a_n$ 은 극댓값의 위치이다.
+
+    따라서
+
+    $$
+    \cos a_n = \frac{1}{\sqrt{n+1}},\qquad \sin a_n = \sqrt{\frac{n}{n+1}},\qquad \tan a_n = \sqrt n
+    $$
+
+    **(1).** 삼각함수의 덧셈정리
+
+    $$
+    \tan(2 a_n) = \frac{2 \tan a_n}{1 - \tan^2 a_n} = \frac{2 \sqrt n}{1 - n}
+    $$
+
+    이므로
+
+    $$
+    \sqrt n \,\tan(2 a_n) = \frac{2 n}{1 - n} \xrightarrow{n \to \infty} -2\quad\square
+    $$
+
+    **(2).** $b_n = f(a_n) = \sin^n a_n \cos a_n = \left(\dfrac{n}{n+1}\right)^{n/2} \cdot \dfrac{1}{\sqrt{n+1}}$.
+
+    $$
+    \bigl(1 + \sqrt n\bigr)\,b_n = \frac{1 + \sqrt n}{\sqrt{n+1}}\cdot\left(\frac{n}{n+1}\right)^{n/2}
+    $$
+
+    첫 번째 인수: $\dfrac{1 + \sqrt n}{\sqrt{n+1}} \to 1$ ($n \to \infty$).
+
+    두 번째 인수: $\left(\dfrac{n}{n+1}\right)^{n/2} = \left[\left(1 - \dfrac{1}{n+1}\right)^{n+1}\right]^{1/2}\cdot\left(1 - \dfrac{1}{n+1}\right)^{-1/2} \to e^{-1/2}\cdot 1 = \dfrac{1}{\sqrt e}$ (제시문의 무리수 $e$ 정의 $\lim_{x\to 0}(1+x)^{1/x} = e$ 에서 $x = -1/(n+1)$ 로 두면 $(1 - 1/(n+1))^{-(n+1)} \to e$).
+
+    따라서
+
+    $$
+    \lim_{n \to \infty} \bigl(1 + \sqrt n\bigr)\,b_n = 1 \cdot \frac{1}{\sqrt e} = \frac{1}{\sqrt e}\quad\square
+    $$
+
+    !!! info "교훈"
+        - **극값의 위치가 수열을 정의**: $\cos^2 a_n = 1/(n+1)$ 의 형태가 $\sqrt n$ 스케일을 자연스럽게 끌어낸다. $\tan a_n = \sqrt n$ 이 핵심.
+        - **(1) 의 $1/(1-n)$ 폭주**: $a_n \to \pi/2$ 일 때 $2 a_n \to \pi$ 이고 $\tan(2 a_n)$ 은 발산하지만, $\sqrt n$ 이 곱해져 유한 극한 $-2$ 로 수렴한다.
+        - **(2) 의 $e$ 정의 직접 사용**: $(1 - 1/(n+1))^{n+1} \to 1/e$ 가 결정타. 앞의 $\sqrt n$ 인수는 $\sqrt{n+1}$ 과 비교되어 정확히 $1$ 로 수렴, 결과적으로 $1/\sqrt e$.

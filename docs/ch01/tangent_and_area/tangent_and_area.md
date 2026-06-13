@@ -384,3 +384,71 @@ $$
     $s_{\max} = \dfrac{2}{\sqrt 2 + \sqrt 2} = \dfrac{2}{2\sqrt 2} = \dfrac{\sqrt 2}{2}$. 정사각형의 최대 넓이 $= 1/2$.
 
     이때 $b + c = \sqrt 2$, 즉 $\overline{\mathrm{BC}} = b + c = \sqrt 2 \quad\square$
+
+---
+
+**연습문제 (보충 4).** [내접 정사각형 안에 또 한 정사각형 — 넓이 차의 극값]
+
+(보충 3) 의 도형을 그대로 사용한다. 삼각형 $\mathrm{ABC}$ 의 넓이가 $1$ 이다. 선분 $\overline{\mathrm{AP}}$ 위의 점 $\mathrm{X}$ 에서 선분 $\overline{\mathrm{PQ}}$ 위에 내린 수선의 발을 $\mathrm{W}$, 선분 $\overline{\mathrm{AQ}}$ 위의 점 $\mathrm{Y}$ 에서 선분 $\overline{\mathrm{PQ}}$ 위에 내린 수선의 발을 $\mathrm{Z}$ 라 할 때, 사각형 $\mathrm{XYZW}$ 가 정사각형을 이룬다. 정사각형 $\mathrm{PQRS}$ 와 $\mathrm{XYZW}$ 의 넓이의 차가 최대일 때 변 $\overline{\mathrm{BC}}$ 의 길이를 $d$ 라 하자. $d^2$ 의 값을 구하시오.
+
+??? success "연습문제 (보충 4) 풀이"
+
+    **1단계 — 좌표 환산.** (보충 3) 에서 $A(0, a)$, $B(-b, 0)$, $C(c, 0)$, 넓이 $= 1 \Rightarrow a(b+c) = 2$. 정사각형 $\mathrm{PQRS}$ 의 한 변 길이는
+
+    $$
+    s = \frac{a(b+c)}{a + b + c}
+    $$
+
+    이고 $\mathrm{P}, \mathrm{Q}$ 는 $y = s$ 위의 두 점이다.
+
+    **2단계 — $\mathrm{XYZW}$ 의 변 길이.** 선분 $\overline{\mathrm{PQ}}$ 가 $x$ 축에 평행하므로 $\mathrm{PQ}$ 위로 내린 수선의 발은 **연직 방향**이다. $\mathrm{X} \in \overline{\mathrm{AP}}$ 를 매개변수 $r \in [0, 1]$ 로 두면 $\mathrm{X}$ 의 $y$ 좌표는 $a - r(a - s)$, $\mathrm{W}$ 의 $y$ 좌표는 $s$ 이므로 $\mathrm{XW}$ 의 길이는 $(1 - r)(a - s)$. 한편 $\mathrm{X}, \mathrm{Y}$ 의 $y$ 좌표가 같아야 $\mathrm{XYZW}$ 가 직사각형이 되며 ($\mathrm{XY} \parallel \mathrm{WZ}$), 그때 $\mathrm{XY}$ 의 길이는 닮음 비 $r$ 로 $rs$ ($\mathrm{PQ}$ 의 길이 $s$ 의 $r$ 배). 정사각형 조건 $\mathrm{XY} = \mathrm{XW}$:
+
+    $$
+    rs = (1 - r)(a - s)\quad\Longrightarrow\quad r = \frac{a - s}{a}
+    $$
+
+    따라서 $\mathrm{XYZW}$ 의 한 변 길이는 $rs = \dfrac{s(a - s)}{a}$, 그 넓이는 $\dfrac{s^2(a - s)^2}{a^2}$.
+
+    **3단계 — 두 정사각형의 넓이 차.**
+
+    $$
+    D = s^2 - \frac{s^2(a - s)^2}{a^2} = \frac{s^2[a^2 - (a - s)^2]}{a^2} = \frac{s^2 \cdot s(2a - s)}{a^2} = \frac{s^3(2a - s)}{a^2}
+    $$
+
+    **4단계 — 한 변수로 환원.** $a(b+c) = 2$ 와 $s = \dfrac{a(b+c)}{a+b+c} = \dfrac{2}{a + b + c}$ 에서 $b + c = 2/a$ 이므로 $a + b + c = a + 2/a$ 이고
+
+    $$
+    s = \frac{2}{a + 2/a} = \frac{2a}{a^2 + 2},\qquad 2a - s = \frac{2a(a^2 + 1)}{a^2 + 2}
+    $$
+
+    이를 대입하면
+
+    $$
+    D = \frac{1}{a^2}\cdot\frac{8a^3}{(a^2 + 2)^3}\cdot\frac{2a(a^2 + 1)}{a^2 + 2} = \frac{16\,a^2(a^2 + 1)}{(a^2 + 2)^4}
+    $$
+
+    **5단계 — 최댓값 조건.** $u = a^2 > 0$ 로 두고 $D(u) = \dfrac{16\,u(u + 1)}{(u + 2)^4}$. $\log$ 미분:
+
+    $$
+    \frac{D'}{D} = \frac{1}{u} + \frac{1}{u + 1} - \frac{4}{u + 2}
+    $$
+
+    공통분모를 정리하면
+
+    $$
+    (u+1)(u+2) + u(u+2) - 4u(u+1) = -2u^2 + u + 2 = 0
+    $$
+
+    양의 해 $u = \dfrac{1 + \sqrt{17}}{4}$. (다른 한 해는 음수이므로 기각.)
+
+    **6단계 — $d^2$ 계산.** $d = \overline{\mathrm{BC}} = b + c = 2/a$, 즉 $d^2 = \dfrac{4}{a^2} = \dfrac{4}{u} = \dfrac{16}{1 + \sqrt{17}}$. 분모 유리화:
+
+    $$
+    d^2 = \frac{16(\sqrt{17} - 1)}{(\sqrt{17})^2 - 1^2} = \frac{16(\sqrt{17} - 1)}{16} = \sqrt{17} - 1\quad\square
+    $$
+
+    !!! tip "큰 그림"
+        - **수선의 발이 연직**: $\overline{\mathrm{PQ}}$ 가 $x$ 축에 평행이라 $\mathrm{X} \to \mathrm{W}$ 는 단순히 $y$ 좌표를 $s$ 로 내리는 사상. 그래서 $\mathrm{XW}$ 길이 $= y$ 좌표 차.
+        - **닮음 비 $r$ 의 결정**: $\mathrm{AXY}$ 와 $\mathrm{APQ}$ 가 닮음이므로 $\mathrm{XY} = rs$. 정사각형 조건 $\mathrm{XW} = \mathrm{XY}$ 가 $r$ 을 일의적으로 결정한다.
+        - **한 변수로 환원**: 넓이 조건 $a(b+c) = 2$ 가 $(a, b+c)$ 의 곱을 고정. 그러면 $s$ 는 $a$ 만의 함수가 되고, 차 $D$ 도 $a^2 = u$ 만의 함수 $\dfrac{16u(u+1)}{(u+2)^4}$ 로 환원.
+        - **로그 미분의 위력**: $(u+2)^4$ 의 4 제곱을 $\log$ 로 풀면 $1$ 차 분수합으로 바뀌어 4 차 → 2 차 방정식으로 단순화.
