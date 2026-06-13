@@ -1405,3 +1405,209 @@ $a (a \neq 0), b$ 에 대해 $f(x) = (ax^2 + bx)e^x$, $g(x) = (e^x - e^2)(e^x - 
     (ii) $\mathrm{R}'$ 이 $\mathrm{LN}$ 위: 코사인법칙 및 닮음으로 같은 방식. 두 경우 합치면 **$\overline{\mathrm{AP}} = 5/6$**.
 
 > 학종 면접 2~4번 (물리·화학·생명) 은 비수학. 한양대 인문계열 (오후1: 임금님 동화/매체 공통지식, 오후2: 주인 도덕/노예 도덕 — 고골 외투), 상경계열 1번 (인공임신중절 도덕적 허용) 도 비수학.
+
+---
+
+## 카드 29 — 성균관대 2026 논술위주 (수리형) 9 문항
+
+> **출처**: 성균관대학교 2026학년도 선행학습 영향평가 자체평가보고서, 부록-1 문항카드 7~15 (논술시험 수리형, 1교시·2교시·3교시 각 3 문제). 각 30~40 분, 총 100 분 × 3교시. 각 문제 3 하위 ([문제 N-i], [N-ii], [N-iii]). PDF 모범답안 명시. 언어형 (문항카드 1~6) 은 비수학이므로 제외.
+
+### 수리형 1교시 [문제 1] — 직선의 방정식·삼차함수·정적분
+
+[제시문] (1) 정적분 $\int_a^b h\,dx = H(b) - H(a)$. (2) 미분가능 $f$ 에 대해 $g$ 정의: $[-2,-1]$ 에서 $g(x) = f'(-1)(x+1) + f(-1)$, $[-1,1]$ 에서 $f(x)$, $[1,2]$ 에서 $f'(1)(x-1) + f(1)$ (양 끝 접선 연장).
+
+**[1-i]** $f(x) = -2x^2 + 1$ 일 때 $\int_{-2}^{2} g\,dx$.
+
+??? success "풀이"
+    $g(x) = 4x+3$ ($-2\le x\le -1$), $-2x^2+1$ ($-1<x<1$), $-4x+3$ ($1<x\le 2$). 적분 $= 2\big(\int_0^1(-2x^2+1)dx + \int_1^2(-4x+3)dx\big) = 2(1/3 - 3) = \mathbf{-16/3}$.
+
+**[1-ii]** $f$ 는 이차함수, (1) $f(1), f(-1) \in [-1,1]$ (2) $f'(1) = 1/3$, $f'(-1) = -1/2$. $y = g$, $y = -2$, $x = \pm 2$ 로 둘러싸인 도형의 넓이의 최솟값.
+
+??? success "풀이"
+    $f(x) = ax^2 + bx + c$, $f'$ 조건 → $a = 5/24$, $b = -1/12$. 조건 (1) → $-9/8 \le c \le 17/24$. $y = g$ 가 $y = -2$ 위에 있어 도형 넓이 최소화는 $c$ 최소 $-9/8$ 일 때. 영역을 $A$ (사다리꼴, $-2 \le x \le -1$), $B$ (이차곡선 아래, $-1 \le x \le 1$), $C$ (사다리꼴, $1 \le x \le 2$) 로 분해: $A = 17/12$, $B = 17/9$, $C = 7/6$. **합 $= 161/36$**.
+
+**[1-iii]** $f(x) = cx(x-1)$ ($0 < c \le 1$). $G(x) = g(x)$ if $g(x) \le 2$, else $G(x) = 2$. $\int_{-2}^2 (G + 2)dx = 109/10$ 일 $c$.
+
+??? success "풀이"
+    $g$ 계산 후 $g(-2,5c)$ 통과. (1) $c \in (0, 2/5]$: $G = g$, 적분 $= 14c/3 + 8$, $109/10$ 안 됨. (2) $c \in (2/5, 1]$: $\int = 34/3 + c/2 - 2/(3c) = 109/10 \Rightarrow $ **$c = 4/5$**.
+
+### 수리형 1교시 [문제 2] — 등차수열·정삼각형·정적분
+
+[제시문 1] $\{b_n\}$ 첫항 $1$, 공차 $a > 0$ 등차. $S_n = b_1+\cdots+b_n$. 한 변 $b_n$ 정삼각형 $T_n$ 이 $x$ 축 위에 ($T_1$ 은 $(0,0), (S_1,0)$, $n\ge 2$ 면 $(S_{n-1},0), (S_n,0)$ 의 두 꼭짓점). $f$ 는 $T_n$ 의 윗변들로 정의 (조각 V자형). [제시문 2] 직선 $\ell$ 은 $(-1,0)$ 통과 기울기 $m$.
+
+**[2-i]** $a = 2$ 일 때 $\int_0^{134} f\,dx$.
+
+??? success "풀이"
+    $b_k = 2k-1$, $S_n = n^2$. $S_{11} = 121 < 134 < 144 = S_{12}$. $T_1\cdots T_{11}$ 전체 넓이 $+$ $T_{12}$ 일부 (높이 $10\sqrt 3$ 밑변 $10$ 삼각형 제외). 전체 $= \tfrac{\sqrt 3}{4}\sum_{k=1}^{12}(2k-1)^2 = \tfrac{\sqrt 3}{4}\cdot 2300 = 575\sqrt 3$. 제외 $= 50\sqrt 3$. **$= 525\sqrt 3$**.
+
+**[2-ii]** $a = 1, m = \sqrt 3/10$ 일 때 $y = f$ 와 직선 $\ell$ 의 교점 개수.
+
+??? success "풀이"
+    $a = 1$ 면 $b_n = n$, $T_n$ 중점 $x$ 좌표 $n^2/2$, 높이 $\sqrt 3 n/2$. $(-1,0)$ 에서 $T_n$ 꼭짓점 잇는 기울기 $\sqrt 3 n/(n^2+2)$. $> \sqrt 3/10 \Leftrightarrow n^2 - 10n + 2 < 0 \Leftrightarrow n \in \{1,\dots,9\}$. 각 $T_n$ ($n=1,\dots,9$) 과 두 점에서 만남. **$2 \times 9 = 18$**.
+
+**[2-iii]** $m = \sqrt 3/30$ 일 때 $y = f$ 와 $\ell$ 교점 $30$ 개가 되는 $a$ 의 범위.
+
+??? success "풀이"
+    $T_n$ 꼭짓점 잇는 기울기 $\sqrt 3(1-a+na)/(\tfrac12[2n-1+a(n-1)^2]+1)$. $30 = 2(W+1)$ 면 $W = 14$. $n = 15, 16$ 일 때 부등식 풀어 **$1/224 < a < 1/75$**.
+
+### 수리형 1교시 [문제 3] — 코사인법칙·정육각형 회전 운동
+
+[제시문 1] 코사인법칙. [제시문 2] 한 변 $1$ 정육각형 $\mathrm{ABCDEF}$ ($A = (1,0)$). $k \ge 2$ 자연수에 대해 한 변 $k$ 정육각형 $\mathrm{A'B'C'D'E'F'}$ ($A' = (k, 0)$). $P$ 는 $A$ 출발 반시계, $s_P(t) = t^2 + 2t$. $Q$ 는 $A'$ 출발 반시계, $s_Q(t) = 2t^2 + t$.
+
+**[3-i]** $k = 6$, $t = 8$ 분 후 두 선분 $OP, OQ$ 의 사잇각 $\theta$ 에 대해 $\sin\theta$.
+
+??? success "풀이"
+    $s_P(8) = 80, s_Q(8) = 136$. $P(-1/2, \sqrt 3/2)$, $Q(1, -3\sqrt 3)$ (정육각형 둘레 $6$, $36$ 위 위치 계산). $\overline{OP} = 1$, $\overline{OQ} = 2\sqrt 7$, $\overline{PQ} = \sqrt{39}$. 코사인법칙으로 $\cos\theta = -5/(2\sqrt 7)$. **$\sin\theta = \sqrt{21}/14$**.
+
+**[3-ii]** $k$ 자연수, $t = 0\to 10$ 분 동안 사잇각이 $\pi/3$ 되는 횟수 $a_k$. $\sum_{j=3}^{10} a_{5^j}$.
+
+??? success "풀이"
+    $s_P - s_{Q'}(t) = (1-2/k)t^2 + (2 - 1/k)t$ (여기서 $Q'$ 은 보조). 사잇각 $\pi/3$ ↔ $6m+1$ 또는 $6m+5$ 형식. $k > 210$ 면 $s_P - s_{Q'}$ 가 $[0,10]$ 에서 $0 \to 120 - 210/k$ 증가, $a_k = 40$. $k = 125$ 면 $a_{5^3} = 39$. **$\sum = 39 + 40 \cdot 7 = 319$**.
+
+**[3-iii]** $k = 8$, $t = 0\to 6$ 분, $\triangle\mathrm{OPQ}$ 넓이 최대 $\alpha$. (1) $Q \in \overline{C'D'}$ (2) 넓이 $= \alpha$ 만족 경우의 수.
+
+??? success "풀이"
+    넓이 최대 $\alpha = 2\sqrt 3$. 경우 1 ($Q = C'$, $P \in \overline{AB}\cup\overline{DE}$): $2t^2 + t \in \{16, 64\}$ 어느 것도 부등식 (\*) 모순 → 0번. 경우 2 ($Q = D'$): $2t^2 + t \in \{24, 72\}$, $24$ 만족 1번. 경우 3 ($Q$ 가 $C'D'$ 내부): $2t^2 + t \in \{13, 16\}$ → 2번; $\{40, 43\}$ → 1번. **합 $= 0 + 1 + 3 = 4$**.
+
+### 수리형 2교시 [문제 1] — 직선의 방정식 (점이 선분 PQ 위)
+
+[제시문 1] $(a,b)$ 지나 기울기 $m$ 직선 $y = m(x-a) + b$. [제시문 2] $[0,1]$ 에서 정의된 $f$ 와 $t \in [0,1]$ 에 대해 $\mathrm{P}(0,t), \mathrm{Q}(1, f(t))$.
+
+**[1-i]** $f(x) = -x^3 + 1$ 일 때 $(1/3, 44/81)$ 이 $\overline{\mathrm{PQ}}$ 위 점이 되는 $t$.
+
+??? success "풀이"
+    $44/81 = \frac{1}{3}((-t^3 + 1) - t) + t = \frac{1}{3}(-t^3 + 2t + 1)$. $27t^3 - 54t + 17 = (3t-1)(9t^2 + 3t - 17) = 0$. $9t^2 + 3t - 17 = 0$ 의 근 $(-1 \pm \sqrt{69})/6$ 는 $[0,1]$ 밖. **$t = 1/3$**.
+
+**[1-ii]** $f(x) = -x^4 + 1$. $(1/5, b)$ 가 적어도 하나의 $\overline{\mathrm{PQ}}$ 위 점이 되는 $b$ 의 범위.
+
+??? success "풀이"
+    $5b = -t^4 + 4t + 1 =: g(t)$. $g'(t) = -4(t-1)(t^2+t+1)$. $g$ 가 $[0,1]$ 증가, $g(0) = 1, g(1) = 4$. **$1/5 \le b \le 4/5$**.
+
+**[1-iii]** $f(x) = 1$ ($0 \le x < 1/2$), $-2x+2$ ($1/2 \le x \le 1$). $p,q \in \{3,4,5,6\}$ 서로 다른 자연수에 대해 $(1/p, 1/q)$ 가 적어도 한 $\overline{\mathrm{PQ}}$ 위 놓이는 $(p,q)$ 개수.
+
+??? success "풀이"
+    $a \le 1/3$ 인 $a$ 에 대해 $(f(t)-t)a + t$ 가 $t$ 증가 (감소 X), 점 $(a,b) \in \overline{\mathrm{PQ}}$ ↔ $a = f(0) \le b \le f(1) = 1-a$, 즉 $a \le b \le 1-a$. $p \ge 3$ 이므로 $1/p \le 1/3$. $1/p \le 1/q \le 1 - 1/p \Leftrightarrow p/(p-1) \le q \le p$. $p = 3$: 없음. $p = 4$: $q = 3$. $p = 5$: $q = 3, 4$. $p = 6$: $q = 3, 4, 5$. **합 $= 6$**.
+
+### 수리형 2교시 [문제 2] — 평행이동·주기함수·정적분
+
+[제시문 1] 극값. [제시문 2] 정적분. [제시문 3] 연속 $f$ 에 대해 $g$: $g(x+4) = g(x)$, $g(x) = f(x)$ ($-2 \le x \le 0$), $f(-x)$ ($0 < x < 2$). $h(x) = g(x-1)|g(x) - g(x-1)|$.
+
+**[2-i]** $f(x) = x+1$. $2 \le x \le 2026$ 에서 $\int_1^x h(t)dt = 0$ 인 $x$ 의 개수.
+
+??? success "풀이"
+    $g$, $h$ 각각 주기 $4$, $2$. $h(x) = x|1-2x|$ ($0\le x\le 1$), $(2-x)|5-2x|$ ($2\le x\le 3$), $x-4$ ($3\le x\le 4$). $H(1)=0, H(2) = 1/2, H(3) = 1/4, H(4)=-1/4, H(5) = 0$. 따라서 모든 정수 $k$ 에 대해 $\int_1^{4k+1} h = 0$, 증감표 + 사잇값 정리로 $(4k-3, 4k+1)$ 에 $\int_1^x h = 0$ 인 $x$ 가 정확히 $2$ 개. $[2, 2026]$ 에서 **$506 \times 2 = 1012$**.
+
+**[2-ii]** $f(x) = (x+1)^2$. $\int_0^{2025/2} h\,dx$.
+
+??? success "풀이"
+    $h(x) = x^2|1-2x|$ ($0\le x\le 1$), $(x-2)^2|3-2x|$ ($1<x\le 2$). 주기 $2$, $\int_0^2 h = 1/96 + 17/96 = 18/96$. $1012.5 = 506\cdot 2 + 1/2$ 분해 $\int_0^{2025/2} = 506 \cdot 18/96 + \int_0^{1/2} h = 506(1/96 + 17/96) + 1/96$. **$= 18217/96$**.
+
+**[2-iii]** $f(x) = ax + b$ ($1 \le a \le b \le 10$ 자연수). $\int_{2023}^{2025} h\,dx < 0$ 인 모든 순서쌍 $(a,b)$.
+
+??? success "풀이"
+    주기 $4$ 활용 $\int_{2023}^{2025} h = \int_{-1}^{1} h$. 계산 $= a(-7a/4 + 3b/2)$. $a > 0$ 이므로 $a < b < 7a/6$. **$(7,8), (8,9), (9,10)$**.
+
+### 수리형 2교시 [문제 3] — 함수의 그래프·원·접선·사잇값 정리
+
+[제시문 1] $f(x) = x^2-x+2$ ($x\le 1$), $x+1$ ($1<x\le 3/2$), $-x+4$ ($3/2<x\le 2$), $-x^2+3x$ ($x>2$). $D_1 = \{x : f(f(x)) \le f(x)+1\}$, $D_2 = \{x : f(f(x)) \le f(x)\}$. [제시문 2] 원 $C$: $x^2+y^2=1$. 곡선 $y = f$ 위 점 $\mathrm{P}$ 와 $\mathrm{N}(0,1)$ 잇는 직선이 $C$ 와 만나는 $\mathrm{N}$ 아닌 점 $\mathrm{R}$. $\mathrm{P}$ 에서 $C$ 에 그은 두 접선의 접점 중 $\mathrm{N, Q, R}$ 이 시계 방향인 $\mathrm{Q}$. (접하면 $\mathrm{R} = \mathrm{Q} = \mathrm{N}$.) [제시문 3] 사잇값 정리.
+
+**[3-i]** $D_1 = (-\infty, a]$, $D_2 = (-\infty, b] \cup [c, d]$ 일 때 $a, b, c, d$.
+
+??? success "풀이"
+    $f(t) \le t+1 \Leftrightarrow t \ge -1$ (그래프 비교). $f(x) \ge -1$ 의 $x$ 범위 → $x \le (3+\sqrt 5)/2$. **$a = (3+\sqrt 5)/2$**. $f(t) \le t \Leftrightarrow t \ge 2$. $f(x) \ge 2$ ↔ $x \le 0$ 또는 $1 \le x \le 2$. **$b = 0, c = 1, d = 2$**.
+
+**[3-ii]** $\mathrm{P}$ 의 $x$ 좌표 $\in D_1$. $\mathrm{R}$ 의 집합이 만드는 호의 길이 $\theta$ 에 대해 $\tan(\theta/2)$.
+
+??? success "풀이"
+    $\mathrm{N}$ 통과 $y = x^2-x+2$ 접선: 접점 $(t, t^2-t+2)$, 접선 기울기 $2t-1$, $\mathrm{N}(0,1)$ 통과 ↔ $t = \pm 1$. 기울기 $-3$ 또는 $1$. $\mathrm{P}$ 의 $x$ 좌표 $\in [1,2]$ → $m \in [1/2, 1]$; $\mathrm{P}$ 의 $x$ 좌표 $\in (2, a]$ → $m \in [0, 1/2]$. 따라서 $m \le -3$ 또는 $m \ge 0$. $\mathrm{R}$ 의 자취 호 길이 $= \pi + \widehat{R_1 R_2}$. $\tan(\pi/2 + \angle \mathrm{ONR}_1) = -3$ → **$-3$**.
+
+**[3-iii]** $\mathrm{NP}$ 기울기 $m$, $\mathrm{P}$ 의 $x$ 좌표 $\in D_2 \cap (1, \infty) = (1, 2]$. $\triangle\mathrm{NQR}$ 이 $\overline{\mathrm{QR}}$ 빗변 직각삼각형 $\Leftrightarrow$ $m$ 이 $x^3 + px^2 + qx + r = 0$ 의 근. 유리수 $p, q, r$.
+
+??? success "풀이"
+    $\mathrm{R} = (-2m/(1+m^2), (1-m^2)/(1+m^2))$, $\mathrm{Q}$ 는 $\mathrm{R}$ 의 원점 대칭 $(2m/(1+m^2), (m^2-1)/(m^2+1))$. $\mathrm{Q}$ 의 접선과 $\mathrm{NP}$ 교점이 $y = f$ 위. 교점 $\left(2/(m(1+m^2)), (m^2+3)/(m^2+1)\right)$. $1/2 \le m \le 1$ 이면 $y = -x + 4$ 대입: $3m^3 + m - 2 = 0$. **$p = 0, q = 1/3, r = -2/3$**.
+
+### 수리형 3교시 [문제 1] — 미분가능·연속·극소·극대
+
+[제시문 1] 실수 $A,B,P,Q$ 에 대해 $f(x) = -x^2 + Ax + B$ ($x<1$), $x^2 + Px + Q$ ($x\ge 1$). $f$ 실수 전체 미분가능, $y = f$ 와 $y = m$ 이 서로 다른 두 점에서 만나는 모든 $m = \{-6, 2\}$. [제시문 2] 실수 $a,b,c,p,q$ 에 대해 $g(x) = -x^3 + ax^2 + bx + c$ ($x \le 0$), $x^2 + px + q$ ($x > 0$). 조건 (1) 연속, (2) $x=-2$ 에서 극소, (3) $y=g$ 와 $y=m$ 이 서로 다른 네 점에서 만나는 모든 $m$ 의 집합 $= (1, \beta)$, (4) $p + c = a + b$, (5) 그래프가 $(1, -19/2)$ 통과.
+
+**[1-i]** $A, B, P, Q$.
+
+??? success "풀이"
+    $x=1$ 미분가능: $-2 + A = 2 + P$. 연속: $-1 + A + B = 1 + P + Q$. $f$ 두 극값 $2$ (위 포물선 꼭짓점), $-6$ (아래 포물선 꼭짓점) → $B = 2 - A^2/4$, $Q = P^2/4 - 6$. $A^2 + P^2 = 40$, $A - P = 4$ ⟹ $P^2 + 4P - 12 = 0$, $P = -6$, $A = -2$, $Q = 3$, $B = 1$. **$A = -2, B = 1, P = -6, Q = 3$**.
+
+**[1-ii]** $a, b, c, p, q$.
+
+??? success "풀이"
+    $x = 0$ 연속 → $c = q$. $g'(-2) = 0$ → $-12 - 4a + b = 0$. (3) 그래프 개형 → 극솟값 $g(-2) = 1$, 즉 $8 + 4a - 2b + c = 1$. (5) $1 + p + q = -19/2$. 풀면 $a = -9/2, b = -6, c = -1, p = -19/2, q = -1$. **답**.
+
+**[1-iii]** $\beta$.
+
+??? success "풀이"
+    $x<0$ 에서 $g(x) = -x^3 - (9/2)x^2 - 6x - 1$. $g'(x) = -3x^2 - 9x - 6 = 0$ → $x = -1$ 또는 $-2$. $x = -1$ 에서 극댓값 $g(-1) = 1 - 9/2 + 6 - 1 = 3/2$. 따라서 **$\beta = 3/2$**.
+
+### 수리형 3교시 [문제 2] — 사인법칙·코사인법칙 (원과 외접원)
+
+[제시문 1] 원 위 세 점 $\mathrm{A, B, D_1}$, $\angle\mathrm{BAD_1} = 2\theta$ ($0 < \theta < \pi/4$). $\angle\mathrm{BAD_1}$ 이등분선이 원과 만나는 $\mathrm{A}$ 아닌 점 $\mathrm{C_1}$. [제시문 2] $n \ge 2$ 에 대해 $\mathrm{C_n, D_n}$ 귀납적 정의 ($\mathrm{C_{n-1}D_{n-1}}$ 와 평행하지 않다 가정).
+
+**[2-i]** $\overline{\mathrm{AB}} : \overline{\mathrm{AD_1}} = m : 1$ 일 때 $\overline{\mathrm{AB}} \parallel \overline{\mathrm{C_1 D_1}}$ 이면 $m$ 과 $\theta$ 관계식.
+
+??? success "풀이"
+    $\angle\mathrm{AC_1D_1} = \angle\mathrm{BAC_1} = \theta$ (엇각·원주각). 사각형 $\mathrm{ABC_1D_1}$ 내접 등변사다리꼴. 사인법칙: $\overline{\mathrm{AB}}/\sin(3\theta) = \overline{\mathrm{AD_1}}/\sin\theta$. **$\sin(3\theta) = m\sin\theta$**.
+
+**[2-ii]** $\overline{\mathrm{AB}} = \overline{\mathrm{AD_1}} = 2$, $\mathrm{AB}$ 와 $\mathrm{C_1D_1}$ 교점 $\mathrm{P}$. $\overline{\mathrm{AP}}$ 를 $\tan\theta$ 식으로.
+
+??? success "풀이"
+    $\triangle\mathrm{ABC_1} \cong \triangle\mathrm{AD_1C_1}$ 직각삼각형 ($\angle\mathrm{ABC_1} = \angle\mathrm{AD_1C_1} = \pi/2$). $\overline{\mathrm{C_1D_1}} = 2\tan\theta$. $x = \overline{\mathrm{AP}}, t = \tan\theta$, 삼각형 $\mathrm{APD_1}$ 의 각 이등분선: $\overline{\mathrm{PC_1}} : \overline{\mathrm{C_1D_1}} = x : 2$, 따라서 $\overline{\mathrm{PC_1}} = xt$. 원의 할선 관계 $(x-2)x = xt(x+2)t$ → **$\overline{\mathrm{AP}} = \dfrac{2(1+\tan^2\theta)}{1-\tan^2\theta}$**.
+
+**[2-iii]** $\overline{\mathrm{AB}} = 2, \overline{\mathrm{AD_1}} = 3, \theta = \pi/6$. $\angle\mathrm{BAD}_n = 2\pi/3$ 인 자연수 $n$ 의 최솟값과 그때 $\overline{\mathrm{AD}_{n-1}}$.
+
+??? success "풀이"
+    $\overline{\mathrm{AB}} : \overline{\mathrm{AD_n}} = 2 : 1$ 이면 $\overline{\mathrm{AB}} \parallel \overline{\mathrm{C_nD_n}}$. 코사인법칙·닮음 반복: $\overline{\mathrm{AD_2}} = 8/5$, $\overline{\mathrm{AD_3}} = 2/3$. **$n = 4$, $\overline{\mathrm{AD_3}} = 2/3$**.
+
+### 수리형 3교시 [문제 3] — 이차부등식·함수의 극한·정적분·정사각형
+
+[제시문 1] 함수의 좌·우극한. [제시문 2] 임의 실수 $x$ 에 대해 $\{1,2,3\}$ 에서 서로 다른 $a,b,c$ 를 골라 $(x^2 - ax + b)(x-c)$ 의 값이 최대가 되는 값을 $g(x)$. [제시문 3] 한 변 $12$ 정사각형 $\mathrm{ABCD}$: $\mathrm{A}(-2, r), \mathrm{B}(-2, r+12), \mathrm{C}(-14, r+12), \mathrm{D}(-14, r)$.
+
+**[3-i]** $\int_{-1}^{1} g(x)\,dx$.
+
+??? success "풀이"
+    $a > c$ 가 최댓값 조건. $(a,b,c) \in \{(3,1,2), (3,2,1), (2,3,1)\}$. 각 다항식 $P,Q,R$. 부등식 $P > Q, P > R, Q > R$ → 구간별 최댓값. $g(x) = x^3-3x^2+5x-3$ ($x \le -1$), $x^3-4x^2+5x-2$ ($-1<x\le 0$), $x^3-5x^2+7x-2$ ($0<x\le (1+\sqrt 3)/2$), $x^3-3x^2+5x-3$ ($x > (1+\sqrt 3)/2$). $\int_{-1}^1 g = \int_{-1}^0(x^3-4x^2+5x-2) + \int_0^1(x^3-5x^2+7x-2) = \mathbf{-6}$.
+
+**[3-ii]** $\big|\lim_{x \to x_0^-} g'(x) - \lim_{x \to x_0^+} g'(x)\big|$ 가질 수 있는 모든 값.
+
+??? success "풀이"
+    $g'$ 의 부분 미분 후 불연속점 $x_0 \in \{-1, 0, (1+\sqrt 3)/2\}$. 각각 $|g'(-1^-) - g'(-1^+)| = 2$, $|g'(0^-) - g'(0^+)| = 2$, $|g'(c^-) - g'(c^+)| = 2\sqrt 3$. 그 외 $0$. **$\{0, 2, 2\sqrt 3\}$**.
+
+**[3-iii]** $\mathrm{Q}(x_1, y_1) \in y = g$ 위, $\mathrm{R}(x_2, y_2) \in$ 정사각형 변. 조건 (1) $0 \le x_1 \le 1$, (2) $y_1(x_2-1) + y_2(x_1+1) = 2(x_1+x_2)$. 두 점 존재 시 $\mathrm{R}$ 이 놓일 부분 길이 $k(r)$, 없으면 $0$. $k(r)$ 의 최댓값.
+
+??? success "풀이"
+    $y$ 축 대칭 정사각형 $\mathrm{A'B'C'D'}$ 로 환원, 조건 (2)는 $\mathrm{Q}, \mathrm{R'}, \mathrm{S}(-1, 2)$ 공선. $0 \le x_1 \le 1$ 에서 $g(x) = x^3 - 5x^2 + 7x - 2$. $\mathrm{Q}$ 의 자취가 만드는 직선 영역과 정사각형 교차. $-35/2 \le r \le -10$ 에서 $k(r) = -7r/4 + 8$ 가 가능. $r = -35/2$ 에서 **$k(-35/2) = 245/8 + 8 = 309/8$**.
+
+---
+
+## 카드 30 — 성균관대 2026 학생부종합(과학인재) 면접 수학
+
+> **출처**: 위 보고서 문항카드 16, 20 (수시모집 과학인재전형 면접 1교시 1번 + 2교시 1번). 각 6분 구술. PDF 모범답안 명시. 면접 2~4번 (물리·화학·생명) 은 비수학.
+
+### 면접 1교시 1번 — 선분 내분/외분·삼각함수·포물선
+
+[제시문] 삼각형 $\mathrm{ABC}$, 선분 $\mathrm{BC}$ 를 $m : 1$ ($m > 1$) 외분하는 $\mathrm{P}$. $\triangle\mathrm{ABC}$ 외접원이 직선 $\mathrm{AP}$ 와 만나는 $\mathrm{A}$ 아닌 점 $\mathrm{D}$.
+
+**[1-i]** $\overline{\mathrm{AB}} \parallel \overline{\mathrm{CD}}$ 일 때 $1/m$ 을 $\overline{\mathrm{AB}}, \overline{\mathrm{BC}}, \cos(\angle\mathrm{ABC})$ 로 표현.
+
+??? success "풀이"
+    원주각·엇각으로 $\triangle\mathrm{ABQ} \sim \triangle\mathrm{CDQ}$ ($Q = \mathrm{AP} \cap \mathrm{BC}$). $\mathrm{ABCD}$ 등변사다리꼴, $\overline{\mathrm{CD}} = \overline{\mathrm{AB}} - 2\overline{\mathrm{BC}}\cos(\angle\mathrm{ABC})$. $\overline{\mathrm{AB}} : \overline{\mathrm{CD}} = m : 1$ → **$1/m = 1 - 2(\overline{\mathrm{BC}}/\overline{\mathrm{AB}})\cos(\angle\mathrm{ABC})$**.
+
+**[1-ii]** $m = 3$, $\mathrm{A}(-4, 0), \mathrm{B}(0, -3)$, $\mathrm{C} \in x = y^2$. $\overline{\mathrm{AB}} \parallel \overline{\mathrm{CD}}$ 일 때 가능한 모든 $\mathrm{C}$ 의 $y$ 좌표의 곱.
+
+??? success "풀이"
+    $\overline{\mathrm{AB}} = 5$, $1/m = 1/3$ ↔ $\overline{\mathrm{BC}}\cos(\angle\mathrm{ABC}) = 5/3$. $\mathrm{AB}$ 를 $2:1$ 내분하는 점 $\mathrm{E}(-4/3, -2)$. $\mathrm{E}$ 지나 $\mathrm{BE}$ 와 수직인 직선이 $x = y^2$ 과 만나는 점이 $\mathrm{C}$. 직선 $y + 2 = (4/3)(x + 4/3)$ 와 $x = y^2$ 연립 → $12y^2 - 9y - 2 = 0$. 근과 계수: $y$ 좌표의 곱 $= -2/12 = \mathbf{-1/6}$.
+
+### 면접 2교시 1번 — 이차함수·등차수열·극값
+
+[제시문] 자연수 $a$, 양수 $b$ 에 대해 곡선 $y = ax^2 + b$ 위 점 $\mathrm{C}$ 와 두 점 $\mathrm{A}(-1, 0), \mathrm{B}(1, 0)$ 잇는 삼각형 $\mathrm{ABC}$ 가 직각삼각형 되는 $\mathrm{C}$ 가 정확히 네 개 있고, 네 점 $x$ 좌표가 등차수열. 또한 $g(x) = x^3 + ax^2 + b$ 의 극댓값 $M$, 극솟값 $m$ 에 대해 $m < k < M$ 인 정수 $k$ 가 적어도 네 개 존재.
+
+**[1]** 조건 만족 모든 $(a, b)$ 의 개수.
+
+??? success "풀이"
+    직각 위치: $\angle A = \pi/2$ → $\mathrm{C}(-1, a+b)$, $\angle B = \pi/2$ → $\mathrm{C}(1, a+b)$. $\angle C = \pi/2$ → $\mathrm{C}(p,q)$ 에서 $\overrightarrow{\mathrm{CA}} \cdot \overrightarrow{\mathrm{CB}} = 0 \Rightarrow p^2 + q^2 = 1$, $\mathrm{C}$ 가 원 위. 등차수열 조건 → $p = \pm 1/3$, $q = 2\sqrt 2/3$. 이차함수 식 대입 → $a + 9b = 6\sqrt 2$, $a \in \{1,2,\dots,8\}$, $0 < b < 2\sqrt 2/3$. $g'(x) = 3x^2 + 2ax = x(3x+2a) = 0$ → $x = 0, -2a/3$. $m = g(0) = b$, $M = g(-2a/3) = 4a^3/27 + b$. $M - m = 4a^3/27 \ge 4$ ↔ $a \ge 3$. $a = 1, 2$ 제외하면 $a \in \{3,\dots,8\}$ → **순서쌍 6 개**.
