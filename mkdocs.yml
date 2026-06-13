@@ -61,6 +61,8 @@ nav:
             - 조각 곡선의 길이와 넓이: ch01/piecewise_curve_analysis/piecewise_curve_analysis.md
         - 1.9 적분방정식:
             - 적분방정식: ch01/integral_equation/integral_equation.md
+        - 1.10 역함수의 적분과 룔의 정리:
+            - 역함수의 적분과 룔의 정리: ch01/inverse_integration/inverse_integration.md
 
     - 2 미분:
         - 2.1 극한과 합성함수의 미분:
