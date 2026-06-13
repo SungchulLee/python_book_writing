@@ -135,3 +135,50 @@
     !!! info "교훈"
         - **사인 덧셈정리 + 작도** 가 결합되어 한 단계마다의 변 길이 비를 정확히 계산한다.
         - 무한등비급수의 공비가 $1$ 보다 작아야 수렴; 이 문제에서는 공비 $r^2/4 = (12/17)^2/4 = 36/289 < 1$.
+
+---
+
+**연습문제 (보충 2).** [$\sin 2B = \sin 2C$ 또는 $\cos 2B = \cos 2C$ + 외접원 넓이 비]
+
+삼각형 $\mathrm{ABC}$ 가 다음을 만족한다.
+
+> (가) 세 변의 길이 중 가장 짧은 변의 길이는 $3$ 이다.
+> (나) $\sin 2 B = \sin 2 C$ 또는 $\cos 2 B = \cos 2 C$ 이다.
+
+선분 $\overline{\mathrm{AB}}$ 의 중점을 $\mathrm P$, 삼각형 $\mathrm{APC}, \mathrm{BPC}$ 의 외접원의 넓이를 각각 $S_1, S_2$ 라 하자.
+
+(1) $\cos B = \dfrac{1}{3}$ 일 때, $\overline{\mathrm{BC}}$ 가 가질 수 있는 모든 값의 모임 $M$.
+
+(2) $\dfrac{S_1}{S_2}$ 가 $\dfrac{1}{8}, \dfrac{3}{8}, \dfrac{5}{8}$ 일 때 $\overline{\mathrm{BC}}$ 의 최솟값을 각각 $p, q, r$.
+
+??? success "연습문제 (보충 2) 풀이"
+
+    **조건 (나) 분석.** $\sin 2 B = \sin 2 C \Rightarrow 2B = 2C$ 또는 $2B = \pi - 2C$ (즉 $A = \pi/2$). $\cos 2 B = \cos 2 C \Rightarrow 2B = 2C$ 또는 $2B = 2\pi - 2C$ ($A + B + C = \pi$ 와 모순으로 배제). 가능: $B = C$ (이등변) 또는 $A = \pi/2$ (직각).
+
+    **(1) $\cos B = 1/3$.**
+
+    - **직각 ($A = \pi/2$)**: $B$ 는 $\pi/4$ 이상이므로 $B > C$ 즉 $\overline{\mathrm{AB}}$ 가 가장 짧음, 길이 $3$. $\overline{\mathrm{BC}} = \overline{\mathrm{AB}}/\cos B = 3 \cdot 3 = 9$.
+    - **이등변 ($B = C$)**: $B$ 는 $\pi/3$ 이상이므로 $A < B = C$, $\overline{\mathrm{BC}}$ 가 가장 짧음, 길이 $3$.
+
+    $M = \boxed{\{3,\ 9\}}\quad\square$
+
+    **(2) 외접원 비 환원.** $\overline{\mathrm{PC}}$ 를 기준으로 두 삼각형에 사인법칙: $2 R_1 = \overline{\mathrm{PC}}/\sin A$, $2 R_2 = \overline{\mathrm{PC}}/\sin B$. 따라서
+
+    $$
+    \frac{S_1}{S_2} = \frac{R_1^2}{R_2^2} = \frac{\sin^2 B}{\sin^2 A}
+    $$
+
+    $\mathrm{ABC}$ 의 외접원 반지름 $R$ 의 사인법칙으로 $\sin B/\sin A = \overline{\mathrm{AC}}/\overline{\mathrm{BC}}$. 따라서 $\dfrac{S_1}{S_2} = \dfrac{\overline{\mathrm{AC}}^2}{\overline{\mathrm{BC}}^2}$.
+
+    - **직각 시**: $\overline{\mathrm{AB}}^2 + \overline{\mathrm{AC}}^2 = \overline{\mathrm{BC}}^2$.
+    - **이등변 시**: $\overline{\mathrm{AC}} = \overline{\mathrm{AB}}$, $\cos B = \overline{\mathrm{BC}}/(2 \overline{\mathrm{AC}})$, $\dfrac{S_1}{S_2} = \dfrac{1}{4 \cos^2 B}$.
+
+    각 비율별:
+
+    - $S_1/S_2 = 1/8$: 직각 ⇒ $\overline{\mathrm{AC}}^2 : \overline{\mathrm{AB}}^2 : \overline{\mathrm{BC}}^2 = 1 : 7 : 8$. 가장 짧은 변 $\overline{\mathrm{AC}} = 3$, $\overline{\mathrm{BC}} = 3\cdot 2\sqrt 2 = 6\sqrt 2$. 이등변은 $1/(4\cos^2 B) = 1/8 < 1/4$ 불가능. $p = \boxed{6\sqrt 2}$.
+    - $S_1/S_2 = 3/8$: 직각 ⇒ $3 : 5 : 8$, 짧은 변 $\overline{\mathrm{AC}} = 3$, $\overline{\mathrm{BC}} = 2\sqrt 6$. 이등변 ($\cos B = \sqrt 6/3$): $\overline{\mathrm{BC}} = 6 \cos B = 2\sqrt 6$. 두 경우 일치, $q = \boxed{2\sqrt 6}$.
+    - $S_1/S_2 = 5/8$: 직각 ⇒ $5 : 3 : 8$, 짧은 변 $\overline{\mathrm{AB}} = 3$, $\overline{\mathrm{BC}} = 2\sqrt 6$. 이등변 ($\cos B = \sqrt{10}/5$): $\overline{\mathrm{BC}} = 6\sqrt{10}/5 < 2\sqrt 6$. 최소 $r = \boxed{\dfrac{6\sqrt{10}}{5}}$.
+
+    !!! info "교훈"
+        - **$\sin 2B = \sin 2C$ 또는 $\cos 2B = \cos 2C$** ⇔ **이등변 ($B = C$) 또는 직각 ($A = \pi/2$)**. 두 경우 모두 검토 필요.
+        - **사인법칙 두 번 적용**: $\overline{\mathrm{PC}}$ 를 두 삼각형이 공유 ⇒ 외접원 반지름 비가 $\sin^{-1}$ 비. 다시 사인법칙으로 $\overline{\mathrm{AC}}/\overline{\mathrm{BC}}$ 비로 환원.

@@ -59,6 +59,7 @@ book_name/
 | `review <file\|folder\|all>` | Freeze vN snapshot, run both reviewers, print to stdout. No writes. |
 | `write <file\|folder\|all> [if score < N]` | Requires prior `review`. Runs reviewers in-memory, writes improved file, updates score. |
 | `update <file\|folder\|all> [if score < N]` | `review` + `write` in one step. |
+| `fetch-pdf <pdf-path> [<target>]` | Extract math problems from a Korean PDF and produce (or extend) MkDocs section files in the benchmark style, with auto-generated figures. |
 
 **Path convention**: paths are relative to `docs/` — omit the `docs/` prefix.
 
@@ -112,6 +113,7 @@ Full MathJax/admonition rules are in `agents/SKILL.md`. Key points:
 - No LaTeX in `#` headings (breaks TOC)
 - `\$` for currency, never bare `$`
 - QED: `$\square$`
+- **Korean text after inline math**: insert one space between the closing `$` and the following Hangul character. Example: `$ab = 1$ 일 때` (not `$ab = 1$일 때`), `$v = x$ 이므로` (not `$v = x$이므로`). Does not apply when the next character is punctuation, whitespace, English, or another math expression.
 - Every content page ends with `## Exercises` (interleaved solutions, collapsible)
 - Python: module docstring · `# ===` dividers · `if __name__ == "__main__":` guard
 
@@ -128,3 +130,28 @@ Full MathJax/admonition rules are in `agents/SKILL.md`. Key points:
 ### Add a Python example
 1. Create `.py` in the relevant section directory
 2. Educational style: module docstring, `# ===` dividers, `if __name__ == "__main__":` guard
+
+### Ingest a PDF (`fetch-pdf`)
+
+Convert a Korean math PDF (exam booklet, textbook, etc.) into new MkDocs
+section files in the benchmark style. **Full workflow and style requirements:
+see `agents/WRITER.md` § "PDF Ingestion Mode".**
+
+Benchmark file used as the style template:
+`docs/ch01/integration_by_parts/integration_by_parts.md` (intro → 보기 →
+연습문제 with collapsible 풀이, 6–8 figures per topic).
+
+Quick form:
+
+```
+fetch-pdf <pdf-path> <target.md>          # create or extend a single section
+fetch-pdf <pdf-path>                       # read PDF, propose layout, confirm first
+```
+
+Each fetched section produces:
+
+- `docs/<ch>/<section>/<section>.md` (Korean body, ~250–320 lines)
+- `docs/<ch>/<section>/figures/<section>_figures.py`
+- `docs/<ch>/<section>/figures/*.png` (6–8 PNGs)
+- `mkdocs.yml` nav entry added
+- Build verified with `mkdocs build --strict`
