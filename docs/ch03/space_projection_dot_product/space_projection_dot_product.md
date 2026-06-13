@@ -364,3 +364,30 @@ $$
     - **$a \ge 4$**: $\cos\theta = \cos\theta_2 = \sqrt{3(a^2-12)}/(2\sqrt{a^2-9}) = \sqrt 6/3 \Rightarrow 24(a^2 - 9) = 27(a^2 - 12) \Rightarrow a = 6$.
 
     $\boxed{a = \dfrac{3\sqrt 6}{2}\;\text{또는}\;a = 6}\quad\square$
+
+---
+
+**연습문제 (보충 5).** [삼각기둥 안의 평면 예각의 정사영]
+$\overline{\mathrm{AB}} = \overline{\mathrm{BC}} = \overline{\mathrm{DE}} = \overline{\mathrm{EF}} = 3$, $\angle\mathrm{ABC} = \angle\mathrm{DEF} = \pi/2$, $\overline{\mathrm{AD}} = 6$ 인 삼각기둥 $\mathrm{ABC} - \mathrm{DEF}$ 가 있다. 점 $\mathrm{P}$ 는 선분 $\overline{\mathrm{AC}}$ 를 $2:1$ 내분하는 점, 점 $\mathrm{M}$ 은 선분 $\overline{\mathrm{DF}}$ 의 중점. 선분 $\overline{\mathrm{DE}}$ 위의 점 $\mathrm{Q}$ 는 $\overline{\mathrm{EQ}} = t$ ($0 < t < 3$), 선분 $\overline{\mathrm{EF}}$ 위의 점 $\mathrm{R}$ 은 $\overline{\mathrm{ER}} = 3 - t$ 를 만족.
+
+직선 $\mathrm{BM}$ 이 평면 $\mathrm{PQR}$ 과 만나는 점을 $\mathrm{S}$, $\overline{\mathrm{BS}}:\overline{\mathrm{SM}} = 2:1$ 이고, 점 $\mathrm{N}$ 은 직선 $\mathrm{PS}$ 와 직선 $\mathrm{QR}$ 의 교점. 직선 $\mathrm{MN}$ 과 직선 $\mathrm{QR}$ 이 서로 수직일 때 평면 $\mathrm{PQR}$ 이 평면 $\mathrm{DEF}$ 와 이루는 예각의 크기 $\theta$ 에 대하여 $\cos\theta$ 의 값을 구하시오.
+
+??? success "연습문제 (보충 5) 풀이 (요약)"
+
+    두 평면 $\mathrm{ABC}$ 와 $\mathrm{DEF}$ 는 평행. 두 직선 $\mathrm{BM}, \mathrm{PN}$ 은 점 $\mathrm{S}$ 에서 만나 하나의 평면을 결정.
+
+    점 $\mathrm{P}$ 에서 평면 $\mathrm{DEF}$ 에 내린 수선의 발 $\mathrm{P}'$. $\mathrm{P}$ 가 $\overline{\mathrm{AC}}$ 를 $2:1$ 내분, 따라서 $\mathrm{P}'$ 는 $\overline{\mathrm{DF}}$ 를 $2:1$ 내분. $\overline{\mathrm{P}'\mathrm{F}} = \sqrt 2$, $\overline{\mathrm{P}'\mathrm{H}} = \overline{\mathrm{HF}} = 1$, $\overline{\mathrm{EH}} = 2$.
+
+    조건 $\mathrm{EQ}:\mathrm{ER} = \mathrm{EH}:\mathrm{P}'\mathrm{H} \Leftrightarrow t:(3-t) = 2:1 \Rightarrow t = 2$. $\overline{\mathrm{ER}} = 1$, $\overline{\mathrm{RH}} = 1$, $\overline{\mathrm{P}'\mathrm{R}} = \sqrt 2$, $\overline{\mathrm{PR}} = \sqrt{36 + 2} = \sqrt{38}$.
+
+    $\overline{\mathrm{P}'\mathrm{Q}} = \overline{\mathrm{P}'\mathrm{E}} = \sqrt 5$, $\overline{\mathrm{PQ}} = \sqrt{41}$.
+
+    삼각형 $\mathrm{PQR}$ 에서 코사인법칙: $\cos\angle\mathrm{QPR} = \dfrac{41 + 38 - 5}{2\sqrt{41}\cdot\sqrt{38}} = \dfrac{37}{\sqrt{1558}}$, $\sin\angle\mathrm{QPR} = \dfrac{3\sqrt{21}}{\sqrt{1558}}$.
+
+    $\triangle\mathrm{PQR} = \dfrac{1}{2}\overline{\mathrm{PQ}}\,\overline{\mathrm{PR}}\sin\angle\mathrm{QPR} = \dfrac{3\sqrt{21}}{2}$.
+
+    삼각형 $\mathrm{PQR}$ 의 평면 $\mathrm{DEF}$ 위 정사영 = 삼각형 $\mathrm{P}'\mathrm{QR}$. 그 넓이 = $\dfrac{9}{2} - 1 - 1 - 1 = \dfrac{3}{2}$.
+
+    $$
+    \cos\theta = \frac{\triangle\mathrm{P}'\mathrm{QR}}{\triangle\mathrm{PQR}} = \frac{3/2}{3\sqrt{21}/2} = \frac{1}{\sqrt{21}} = \frac{\sqrt{21}}{21}\quad\square
+    $$
