@@ -1953,3 +1953,113 @@ $0 < t < \pi$ 일 때 $\mathrm{P}(2\cos t, 2\sin t)$ 에 대해 직선 $\mathrm{
 
 ??? success "풀이"
     $\mathrm{P}(t, t^2/2)$ 에서 접선 기울기 $t$, $\overline{\mathrm{AP}}$ 기울기 $(t^2/2-b)/(t-a)$. 수직: $t \cdot (t^2/2 - b)/(t-a) = -1$ → $f(t) = t^3 - 2(b-1)t - 2a = 0$. 세 실근 조건: $f'(t) = 3t^2 - 2(b-1) = 0$ → $t = \pm\sqrt{2(b-1)/3}$. $f(t_0) \cdot f(-t_0) < 0$ ↔ $4a^2 < 32(b-1)^3/27$ ↔ $27a^2 < 8(b-1)^3$. $b=5$: $a^2 < 512/27 \approx 18.96$ → $a \le 4$, **$a=4$** ($1$ 개). $b=6$: $a^2 < 1000/27 \approx 37.04$ → $a \le 6$, **$a \in \{4,5,6\}$** ($3$ 개). $b=7$: $a^2 < 1728/27 = 64$ → $a \le 7$, **$a \in \{4,5,6,7\}$** ($4$ 개). 합 **$1+3+4 = 8$**.
+
+---
+
+## 카드 34 — 고려대 세종캠 2026 자연계 논술 수학 (18 문항)
+
+> **출처**: 고려대학교 세종캠퍼스 2026학년도 선행학습 영향평가 결과 보고서, 부록 문항카드 3~11 (논술전형 자연계열 I 문제 1~6 + 자연계열 II/약학 문제 1~3). 각 자연 II 문제는 4 하위문항, 자연 I 단일 문항. PDF 모범답안 명시. 문항카드 1·2 (인문/체능) 및 면접 (재외국민/미래인재/스포츠 인적성) 은 비수학.
+
+### 자연계열 I (문제 1~6, 100분 / 1000점)
+
+[제시문 공통] 합의 법칙·곱의 법칙, 순열·조합. 미분가능성·정적분·치환적분. 로그함수 그래프와 점근선. 위치함수의 도함수는 속도. 내분점·접선의 방정식·곡선과 직선으로 둘러싸인 도형 넓이. 지수함수와 일차함수의 교점, 두 직선의 수직 관계.
+
+**[1] (15분, 160점)** 숫자 $0,1,2,3,4,5,6,7$ 이 적힌 $8$ 장의 카드 중 $5$ 장을 순서대로 뽑아 왼쪽부터 차례대로 나열할 때, 만들어진 숫자가 홀수이고 $25000$ 보다 작을 경우의 수. (단, $0,3,1,5,7$ 순서로 뽑힌 경우 숫자 $03157$ 로 본다.)
+
+??? success "풀이"
+    일의 자리는 $1,3,5,7$ 중 하나. $25000$ 미만 조건은 만의 자리 $\in \{0,1,2\}$. 만의 자리 = $0$: 나머지 $4$ 자리의 일의 자리가 $1,3,5,7$ ($4$ 가지), 나머지 $3$ 자리 $_6\mathrm{P}_3 = 120$ → $4 \cdot 120 = 480$. 만의 자리 = $1$: 일의 자리 $3,5,7$ ($3$ 가지) × $120 = 360$. 만의 자리 = $2$: 천의 자리 가능 = $0,1,3,4$ ($25000$ 미만이므로). (i) 천 $\in \{0, 4\}$: 일의 자리 $4$ 가지(기존), $_5\mathrm{P}_2 = 20$ → $2 \cdot 4 \cdot 20 = 160$. (ii) 천 $\in \{1, 3\}$: 일의 자리 $3$ 가지(천이 홀수 한 개 차지) × $20 = 60$ → $2 \cdot 60 = 120$. 합: $480 + 360 + 160 + 120 = \mathbf{1120}$.
+
+**[2] (15분, 170점)** 이차함수 $f(x)$ 가 $f(1) = 0$ 과 $\int_0^4 \{f(x)\}^2 f'(x)\,dx = 0$ 을 만족. 상수 $a$ ($a \ne 0$) 에 대해 $g(x) = e^x + a$ ($x > 3$), $g(x) = f(x)$ ($x \le 3$). $g$ 가 실수 전체에서 미분가능할 때 $f(\ln a^2)$.
+
+??? success "풀이"
+    $\{f(x)\}^2 f'(x) = \tfrac{1}{3}\frac{d}{dx}\{f(x)\}^3$ → $\int_0^4 = \tfrac{1}{3}(\{f(4)\}^3 - \{f(0)\}^3) = 0$ → $f(4) = f(0)$. 이차함수 → 대칭축 $x = 2$, $f(1) = 0$ 이므로 $f(3) = 0$. $f(x) = k(x-1)(x-3)$. $x = 3$ 미분가능: $f(3) = e^3 + a = 0$ → $a = -e^3$; $f'(3) = e^3$, $f'(x) = k(2x-4)$ → $2k = e^3$, $k = e^3/2$. $f(x) = (e^3/2)(x-1)(x-3)$. $f(\ln a^2) = f(\ln e^6) = f(6) = (e^3/2)(5)(3) = \mathbf{15e^3/2}$.
+
+**[3] (15분, 160점)** 두 상수 $a > 0$, $b > 1$ 에 대해 $f(x) = \ln(ax + b)$ 의 그래프가 $x$ 축, $y$ 축과 만나는 점을 각각 $\mathrm{A}, \mathrm{B}$, 그래프의 점근선과 $x$ 축이 만나는 점을 $\mathrm{H}$. 원점 $\mathrm{O}$ 에 대해 $3\overline{\mathrm{OA}} = \overline{\mathrm{OH}}$, $\overline{\mathrm{OA}} = 2\overline{\mathrm{OB}}$ 일 때 $e^{1/a}$.
+
+??? success "풀이"
+    $f(x) = 0 \Rightarrow ax+b = 1 \Rightarrow x = (1-b)/a$ → $\mathrm{A} = ((1-b)/a, 0)$. $f(0) = \ln b$ → $\mathrm{B} = (0, \ln b)$. 점근선 $x = -b/a$ → $\mathrm{H} = (-b/a, 0)$. $\overline{\mathrm{OA}} = (b-1)/a$, $\overline{\mathrm{OH}} = b/a$. $3(b-1)/a = b/a \Rightarrow b = 3/2$. $(b-1)/a = 2\ln b \Rightarrow 1/(2a) = 2\ln(3/2) \Rightarrow 1/a = 4\ln(3/2)$. $e^{1/a} = (3/2)^4 = \mathbf{81/16}$.
+
+**[4] (25분, 170점)** 수직선 위 두 점 $\mathrm{P}, \mathrm{Q}$ ($t \ge 0$). 양의 정수 $k$ 에 대해 $\mathrm{P}$ 의 위치 $f(t) = t^3 - (k/2)t^2 + 6$, $\mathrm{Q}$ 의 위치 $g(t) = (k/2)t^2 + k/2$. $f(0) - g(0) > 0$, 두 점은 만나지 않는다. $t > 0$ 에서 두 점의 속도가 같으면 그 크기는 양의 정수. 조건 만족 $k$ 와 $\mathrm{P}, \mathrm{Q}$ 사이의 최소거리.
+
+??? success "풀이"
+    $f'(t) = 3t^2 - kt$, $g'(t) = kt$. 속도 같음: $3t^2 = 2kt \Rightarrow t = 2k/3$ ($t > 0$). 속도 크기 $g'(2k/3) = 2k^2/3$ 가 양의 정수 ⇒ $k$ 는 $3$ 의 배수. $h(t) = f(t) - g(t) = t^3 - kt^2 + 6 - k/2$. $h(0) = 6 - k/2 > 0 \Rightarrow k < 12$. $h'(t) = 3t^2 - 2kt = t(3t - 2k)$ → $t = 2k/3$ 에서 극소. 만나지 않음 ⇒ $h(2k/3) > 0 \Rightarrow -4k^3/27 + 6 - k/2 > 0$. $k = 3$ 검증: $-4/(27) \cdot 27 + 6 - 3/2 = -4 + 6 - 1.5 = 0.5 > 0$ ✓. $k = 6$: $-4 \cdot 216/27 + 6 - 3 = -32 + 3 < 0$ ✗. 따라서 $\mathbf{k = 3}$, 최소거리 $h(2) = 8 - 12 + 6 - 3/2 = \mathbf{1/2}$.
+
+**[5] (25분, 170점)** 양수 $a$ 에 대해 $f(x) = x^2 - 2x + a$ 그래프 위 점 $\mathrm{P}(t, f(t))$ 에서 접하고 기울기 $2$ 인 직선 $L_1$. $L_2$ 는 $\mathrm{P}$ 에서 $L_1$ 과 수직. $L_1 \cap y$축 $= \mathrm{A}$, $L_2 \cap x, y$축 $= \mathrm{B}, \mathrm{C}$. 직선 $\mathrm{AB} \parallel$ 직선 $\mathrm{CQ}$ 인 $\mathrm{Q}$ 가 $L_1$ 위에 있을 때 두 삼각형 $\mathrm{PAB}, \mathrm{PCQ}$ 의 넓이 $S_1, S_2$, $S_1/S_2 = 4$. 곡선 $y = f(x)$ 와 $y$ 축, 선분 $\mathrm{BP}$, 선분 $\mathrm{AB}$ 로 둘러싸인 부분의 넓이.
+
+??? success "풀이"
+    $f'(t) = 2t - 2 = 2 \Rightarrow t = 2$, $\mathrm{P}(2, a)$. $L_1: y = 2(x-2) + a$, $\mathrm{A}(0, a-4)$. $L_2: y = -(x-2)/2 + a$, $\mathrm{B}(2a+2, 0), \mathrm{C}(0, a+1)$. $\mathrm{P}$ 가 선분 $\mathrm{CB}$ 를 $m:n$ 내분: $n/m = f(2)$, 닮음비 → $S_1/S_2 = f(2)^2 = 4 \Rightarrow f(2) = a = 2$. 따라서 $a = 2, \mathrm{A}(0,-2), \mathrm{B}(6,0), \mathrm{C}(0,3)$, $f(x) = x^2 - 2x + 2$. 삼각형 $\mathrm{ABC}$ 넓이 $S_3 = \frac{1}{2} \cdot 5 \cdot 6 = 15$. $S_4 = \int_0^2 (-x/2 + 3) - (x^2 - 2x + 2)\,dx = \int_0^2 -x^2 + (3/2)x + 1\,dx = [-x^3/3 + (3/4)x^2 + x]_0^2 = -8/3 + 3 + 2 = 7/3$. 답: $S_3 - S_4 = 15 - 7/3 = \mathbf{38/3}$.
+
+**[6] (25분, 170점)** $f(x) = e^x, g(x) = e^{x-2}$. 직선 $y = t$ ($1 \le t \le 2$) 와 두 곡선의 교점 $\mathrm{A}, \mathrm{B}$, $x$ 축 위 수선의 발 $\mathrm{P}, \mathrm{Q}$. 곡선 $y = g(x)$ 위 점 $\mathrm{C}$ 는 $\mathrm{A}$ 와 $x$ 좌표 같음. $x$ 축 위 점 $\mathrm{D}$ 에 대해 $\angle\mathrm{BDC} = \pi/2$. $\overline{\mathrm{PD}} \times \overline{\mathrm{QD}}$ 의 최솟값.
+
+??? success "풀이"
+    $\mathrm{A}(\ln t, t), \mathrm{B}(\ln t + 2, t), \mathrm{C}(\ln t, t/e^2), \mathrm{P}(\ln t, 0), \mathrm{Q}(\ln t + 2, 0)$. $\overline{\mathrm{PQ}} = 2$. $\mathrm{D}$ 가 $\mathrm{P}, \mathrm{Q}$ 사이, $\overline{\mathrm{PD}} = x$ ($0 < x < 2$) → $\overline{\mathrm{QD}} = 2 - x$. $\overline{\mathrm{CD}} \perp \overline{\mathrm{BD}}$: 기울기 곱 $-1 \Rightarrow -(t/e^2)/x \cdot t/(2-x) = -1 \Rightarrow x(2-x) = t^2/e^2$. 따라서 $\overline{\mathrm{PD}} \times \overline{\mathrm{QD}} = t^2/e^2$, $1 \le t \le 2$ 에서 최솟값 $\mathbf{1/e^2}$.
+
+### 자연계열 II — 약학 (문제 1~3, 100분 / 1000점)
+
+[제시문 공통] 원과 직선의 위치관계, 원주각, 삼각함수 덧셈정리, 평면벡터 내적. 합성함수 미분·치환적분·접선·정적분으로 표현된 넓이·입체의 부피. 등비수열·급수·정규분포의 표준화.
+
+**[1] 원·벡터·삼각함수 (40분, 340점).** 반지름 $3$ 인 두 원 $C, C'$ 의 중심 $\mathrm{O}, \mathrm{O'}$. $\mathrm{O}$ 는 $C'$ 위, $\mathrm{O'}$ 은 $C$ 위. $\mathrm{A}$ 는 두 원 내부의 겹친 부분 경계, $\mathrm{B}$ 는 $C'$ 위 점 ($\mathrm{A} \ne \mathrm{B}$). 점 $\mathrm{P}$ 는 직선 $\mathrm{OO'}$ 위 두 원 외부, $\overline{\mathrm{PO}} = 5$. $\mathrm{P}$ 를 지나는 두 직선이 $C$ 와 $\mathrm{X, Y}$, $C'$ 와 $\mathrm{X', Y'}$ 에서 만남 (단 $\overline{\mathrm{PX}} < \overline{\mathrm{PY}}, \overline{\mathrm{PX'}} < \overline{\mathrm{PY'}}, \mathrm{B} \ne \mathrm{Y'}$).
+
+**[1-1] (80점)** $|\vec{\mathrm{PA}}| \le 7, |\vec{\mathrm{PB}}| \ge \sqrt{73}, |\vec{\mathrm{PY'}}| \ge \sqrt{73}$, $\angle\mathrm{BAY'}$ 가 최대일 때 삼각형 $\mathrm{BAY'}$ 의 넓이 최댓값.
+
+??? success "풀이"
+    두 원 교점 $\mathrm{C, D}$, $\mathrm{H}$ = $\overline{\mathrm{OO'}}$ 중점. 삼각형 $\mathrm{CPH}$ 직각, $\overline{\mathrm{CH}} = 3\sqrt 3/2$, $\overline{\mathrm{PH}} = 13/2$, $\overline{\mathrm{PC}} = 7$. $|\vec{\mathrm{PA}}| \le 7 \Rightarrow \mathrm{A}$ 는 원 $C'$ 의 호 (교점쪽). $\overline{\mathrm{O'P}} = 8$, 원 $C'$ 의 $\overline{\mathrm{PI}} = \sqrt{8^2 - 3^2} = \sqrt{55}$ — 다시: $\mathrm{I, J}$ 가 원 $C'$ 위 가까운/먼 지점이라면 $\overline{\mathrm{PI}}^2 = 8^2 - 3^2 = 55$ 가 아니라, 접선 길이는 $\sqrt{\overline{\mathrm{PO'}}^2 - 3^2} = \sqrt{55}$. 대신 $\overline{\mathrm{PB}} \ge \sqrt{73}$ 조건과 호 위 점: 호 $\mathrm{IJ}$ (원 $\mathrm{O'}$ 의 중심을 지나지 않는 쪽) 위. $\angle\mathrm{BAY'}$ 는 $C'$ 의 원주각이므로 $\overline{\mathrm{BY'}}$ 가 지름일 때 ($\pi/2$) 최대 = $6$. 선분 $\mathrm{AO'} \perp \mathrm{BY'}$ 일 때 $\mathrm{A}$ 에서 $\mathrm{BY'}$ 까지 거리 $= 3$. 넓이 최댓값 $\frac{1}{2} \cdot 6 \cdot 3 = \mathbf{9}$.
+
+**[1-2] (80점)** $\vec{\mathrm{OO'}} \cdot \vec{\mathrm{BA}}$ 가 최댓값일 때 $\overline{\mathrm{AB}}$.
+
+??? success "풀이"
+    $\mathrm{H} = \overline{\mathrm{OO'}}$ 중점, $\vec{\mathrm{BA}} = \vec{\mathrm{BH}} + \vec{\mathrm{HA}}$ → $\vec{\mathrm{OO'}} \cdot \vec{\mathrm{BA}} = -2(\vec{\mathrm{HO'}} \cdot \vec{\mathrm{HB}}) + \vec{\mathrm{OO'}} \cdot \vec{\mathrm{HA}}$. $-2(\vec{\mathrm{HO'}} \cdot \vec{\mathrm{HB}})$ 최대 ↔ $\mathrm{B} = \mathrm{O}$. $\vec{\mathrm{OO'}} \cdot \vec{\mathrm{HA}}$ 최대 ↔ $\mathrm{A} = \mathrm{O'}$. 따라서 $\overline{\mathrm{AB}} = \overline{\mathrm{O'O}} = \mathbf{3}$.
+
+**[1-3] (80점)** 직선 $\mathrm{YO}$ 와 원 $C$ 의 교점 ($\mathrm{Y}$ 가 아닌) 을 $\mathrm{Q}$. $\overline{\mathrm{PY}} = 2\sqrt{13}$ 일 때 삼각형 $\mathrm{YQP}$ 가 직각삼각형임을 보이시오.
+
+??? success "풀이"
+    $\mathrm{P}$ 에서 원 $C$ 에 그은 접선의 접점 $\mathrm{F}$, $\overline{\mathrm{PF}}^2 = \overline{\mathrm{PO}}^2 - 3^2 = 16$ → $\overline{\mathrm{PF}} = 4$. 직선 $\mathrm{OF} \cap C$ 의 다른 점 $\mathrm{G}$, $\overline{\mathrm{FG}} = 6$ (지름). 삼각형 $\mathrm{GFP}$ 직각, $\overline{\mathrm{PG}} = \sqrt{16+36} = 2\sqrt{13}$. 원 $C$ 위 점 중 $\mathrm{P}$ 에서 거리 $2\sqrt{13}$ 인 점은 영역별로 $\mathrm{G}$ 유일 → $\mathrm{Y} = \mathrm{G}$. 직선 $\mathrm{YO}$ 와 원 $C$ 의 다른 교점 = $\mathrm{F} = \mathrm{Q}$. 따라서 $\angle\mathrm{YQP} = \angle\mathrm{GFP} = \pi/2$, 직각삼각형.
+
+**[1-4] (100점)** $\overline{\mathrm{PY}} = 2\sqrt{13}, \sin\angle\mathrm{OPX'} = \sqrt{10}/10$ 일 때 $\vec{\mathrm{XY}} \cdot \vec{\mathrm{X'Y'}}$ 의 모든 값.
+
+??? success "풀이"
+    [1-3] 에서 $\mathrm{PQ} \perp \mathrm{YQ}$, $\overline{\mathrm{PQ}} = 4$. 방멱 $\overline{\mathrm{PX}} \cdot \overline{\mathrm{PY}} = 16 \Rightarrow \overline{\mathrm{PX}} = 8/\sqrt{13}$, $\overline{\mathrm{XY}} = 18\sqrt{13}/13$. 점 $\mathrm{O'}$ 에서 $\overline{\mathrm{X'Y'}}$ 까지 수선의 발 $\mathrm{R}$: $\overline{\mathrm{O'R}} = 3 \sin\angle\mathrm{O'PX'} \cdot \overline{\mathrm{PO'}}/\overline{\mathrm{PO'}}$... 정확히는 $\overline{\mathrm{O'R}} = \overline{\mathrm{PO'}} \sin\angle\mathrm{OPX'} = 8 \cdot \sqrt{10}/10 = 4\sqrt{10}/5$ — 그러나 모범답안 $\overline{\mathrm{O'R}} = 8/\sqrt{10}$ → $\overline{\mathrm{X'Y'}} = 2\sqrt{9 - 64/10} = 2\sqrt{26/10} = (2/5)\sqrt{65}$. 두 직선이 같은 쪽/반대 쪽 영역인지에 따라 사잇각 $\angle\mathrm{YPY'}$ 두 가지. (i) 다른 영역: $\tan\angle\mathrm{YPY'} = 7/9 \Rightarrow \cos = 9/\sqrt{130}$, $\vec{\mathrm{XY}} \cdot \vec{\mathrm{X'Y'}} = (18\sqrt{13}/13)((2/5)\sqrt{65}) \cdot 9/\sqrt{130} = \mathbf{(162/65)\sqrt{26}}$. (ii) 같은 영역: $\tan = 1/57 \Rightarrow \cos = 57/(5\sqrt{130})$, 답 $\mathbf{(1026/325)\sqrt{26}}$.
+
+**[2] 합성함수·치환적분·입체부피 (40분, 340점).** 실수 전체에서 미분가능 $f$ 와 삼차함수 $g$ 가 모든 $x$ 에 대해 $f(g(x)) = (x^2 + 2)e^x$, $x(f'(g(x)) - e^x)/f(g(x)) \le 0$. 최고차계수 $k > 0$, $x = \beta$ 에서 최솟값을 갖는 이차함수 $u(x)$ 와 $v(x) = (ax+b)e^{u(x)}$ ($a < 0$) 가 다음을 만족: 모든 $x$ 에 대해 $m(x-\beta)^2 - v(x)(x-\beta) \ge 0$ 인 $m$ 의 최솟값은 $-1$ ($\beta < 0$). $\int_0^2 v(x)\,dx = \int_{-2u(\beta+1)}^2 v(x)\,dx = (e^{\beta^2} - e^{(\beta-2)^2})/(2k)$ ($u(\beta+1) \ne 0$).
+
+**[2-1] (80점)** 모든 $x$ 에 대해 $x(x^2 + 2x + 2 - g'(x)) \ge 0$ 또는 모든 $x$ 에 대해 $\le 0$ 임을 보이시오.
+
+??? success "풀이"
+    양변 미분: $f'(g(x))g'(x) = (2x + x^2 + 2)e^x = (x^2 + 2x + 2)e^x$. $x^2 + 2x + 2 > 0$ 이므로 $g'(x) \ne 0$, $g'$ 부호 일정. $f'(g(x))/f(g(x)) = (x^2+2x+2)/((x^2+2)g'(x))$. 한편 $e^x/f(g(x)) = 1/(x^2+2)$. 따라서 $(f'(g(x)) - e^x)/f(g(x)) = \frac{1}{x^2+2}((x^2+2x+2)/g'(x) - 1) = (x^2 + 2x + 2 - g'(x))/((x^2+2)g'(x))$. 조건 $x \cdot (\cdot) \le 0$ 와 $g'$ 의 일정 부호로부터, $g' > 0$ 이면 모든 $x$ 에서 $x(x^2+2x+2-g'(x)) \le 0$, $g' < 0$ 이면 $\ge 0$ — 그러나 $g'<0$ 의 경우 $x<0$ 에서 모순이 발생하여 제시문 조건에 맞지 않음. **따라서 결론: 모든 $x$ 에 대해 $x(x^2+2x+2-g'(x)) \le 0$.**
+
+**[2-2] (80점)** $g(1) = g'(1) = 4$ 일 때 $g(3)$. **(출제 오류 — 응시자 전원 정답 처리)**
+
+??? success "풀이 (출제측 안내)"
+    조건 $g(1) = g'(1) = 4$ 를 만족하는 삼차함수는 [2-1] 조건 $x(x^2+2x+2-g'(x)) \le 0$ 을 만족하지 않는 오류가 발생. 따라서 응시자 전원 정답 처리.
+
+**[2-3] (100점)** $u(0) = 1$ 일 때 제시문 $\langle$나$\rangle$ 의 조건을 만족하는 $v(x)$.
+
+??? success "풀이"
+    $u(x) = k(x-\beta)^2 + u(\beta)$, $u(0) = 1$. 부등식 $(x-\beta)(v(x) - m(x-\beta)) \le 0$ → $v \le m(x-\beta)$ ($x \ge \beta$), $v \ge m(x-\beta)$ ($x < \beta$). $v$ 연속 → $v(\beta) = 0 \Rightarrow b = -a\beta$, $v(x) = a(x-\beta)e^{u(x)}$. $v'(\beta) = ae^{u(\beta)}$ 가 $m$ 의 최솟값 $-1$ 과 같음 → $ae^{u(\beta)} = -1$. 치환적분으로 정리하면 $k = 1$, $u(\beta+1) = -\beta$, $\beta^2 - \beta - 2 = 0 \Rightarrow \beta = -1$. $u(0) = 1 \Rightarrow u(x) = (x+1)^2$, $a = -1, b = -1$. 따라서 **$v(x) = -(x+1)e^{(x+1)^2}$, $u(x) = x^2 + 2x + 1$**.
+
+**[2-4] (80점)** [2-3] 의 $v(x), \beta$ 에 대해 곡선 $y = \ln|v(x)/(x-\beta)|$ 와 $x$ 축, 두 직선 $x = \beta+1, x = 2u(\beta+1)$ 로 둘러싸인 부분을 밑면으로 하고 $x$ 축에 수직인 단면이 정사각형인 입체의 부피.
+
+??? success "풀이"
+    $\beta = -1$ → $v(x)/(x-\beta) = -e^{(x+1)^2}$, $\ln|\cdot| = (x+1)^2$. 영역: $0 \le x \le 2$ (밑면 = $(x+1)^2$). 정사각형 단면 넓이 $S(x) = ((x+1)^2)^2 = (x+1)^4$. 부피 $= \int_0^2 (x+1)^4 dx = [(x+1)^5/5]_0^2 = (243 - 1)/5 = \mathbf{242/5}$.
+
+**[3] 등비수열·정규분포 (40분, 340점).** 스마트워치는 질환 $\Omega$ 의 치료성분 $\mathrm{A}$ 의 혈중 농도를 측정. 치료제 $\mathcal{H}$ 한 알에 포함된 치료성분 $\mathrm{A}$ 의 양 $\beta$. 환자 $100$ 명에게 $24$ 시간마다 한 알씩 복용, 시각 $t$ 에서 $\mathrm{A}$ 의 혈중 농도의 평균값 $f(t)$. 복용 직전 농도 $\alpha$ 에 대해 $f(t) = \alpha + 0.27\beta t$ ($0 \le t \le 2$), $(\alpha + 0.54\beta)e^{-\sqrt{(t-2)/10}}$ ($2 < t \le 24$). $n$ 번째 주기에서 최댓값 $a_n$, 최솟값 $b_n$. $10\text{ppm} < f < 100\text{ppm}$ 치료 효과, $\ge 100$ 부작용 가능. 매일 $t = 0$ 복용. $e^{-\sqrt{2.2}} = 0.23$, $\mathrm{P}(|Z| \le 2.58) = 0.99, \mathrm{P}(Z \le 2.33) = 0.99$.
+
+**[3-1] (60점)** $\alpha = 0, \beta = 125$ 일 때 $3$ 번째 약 복용 직전 농도.
+
+??? success "풀이"
+    $1$ 번째 복용 직전 $\alpha = 0$, $1$ 주기 최솟값 $b_1 = 0$. $2$ 번째 복용 직전 = $f(24)$ (with $\alpha = 0$) = $0.54 \cdot 125 \cdot e^{-\sqrt{2.2}} = 0.54 \cdot 125 \cdot 0.23 = b_2$. $3$ 번째 직전: $\alpha = b_2$ 로 한 주기 끝의 $f(24)$ = $0.54 \cdot 125 \cdot 0.23 + 0.54 \cdot 125 \cdot 0.23^2 = 76383/4000 \approx \mathbf{19.1}$.
+
+**[3-2] (80점)** $\alpha = 5, \beta = 100$ 일 때 $\lim a_n, \lim b_n$.
+
+??? success "풀이"
+    $\alpha = 5, \beta = 100$ 부터: $b_1 = 5, a_1 = 5 + 54 = 59$, $b_2 = 59 \cdot 0.23$, $a_2 = 59 \cdot 0.23 + 54$. 일반 $b_n = 59 \cdot 0.23^{n-1} + 54 \cdot 0.23^{n-2} + \dots + 54 \cdot 0.23$, $a_n = b_n + 54$ (실제로는 $a_n = 59(0.23)^{n-1} + 54(0.23)^{n-2} + \dots + 54$). $\lim b_n = (54 \cdot 0.23)/(1 - 0.23) = 12.42/0.77 = 1242/77 \approx \mathbf{16.1}$. $\lim a_n = 54 + \lim b_n = 54 + 16.1 = \mathbf{70.1}$ ($= 5400/77$).
+
+**[3-3] (90점)** $\alpha = 0$ 일 때 부작용 발생 가능성을 없게 하는 $\beta$ 의 최댓값 (정수).
+
+??? success "풀이"
+    $\alpha = 0$ 일 때 $a_n = (54\beta/100)(1 + 0.23 + 0.23^2 + \dots + 0.23^{n-1})$. $\lim a_n = 0.54\beta/0.77 = 54\beta/77$. $\lim a_n < 100 \Rightarrow \beta < 7700/54 \approx 142.6$. 최대 정수 $\beta = \mathbf{142}$.
+
+**[3-4] (90점)** $\alpha = 0, \beta = 100$. $n$ 번째 주기 최대 농도가 정규분포 $\mathrm{N}(a_n, \sigma^2)$. 부작용 가능 인원이 $1$ 명 이하 되는 $\sigma$ 최댓값 (정수).
+
+??? success "풀이"
+    $100$ 명 중 $\le 1$ 명 ↔ $99$ 명 이상 정상 ↔ $\mathrm{P}(X \le 100) \ge 0.99$. $Z = (X - a_n)/\sigma$, $\mathrm{P}(Z \le 2.33) = 0.99 \Rightarrow X \le a_n + 2.33\sigma$. 모든 $n$ 에서 $a_n + 2.33\sigma < 100$ 즉 $\lim(a_n + 2.33\sigma) < 100$. $\lim a_n = 70.1$ → $2.33\sigma < 29.9 \Rightarrow \sigma < 12.83$. 최대 정수 $\sigma = \mathbf{12}$.
