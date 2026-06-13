@@ -588,3 +588,157 @@ $X = $ 게임 후 민호의 금, $Y = $ 게임 후 영희의 금.
 ---
 
 > **참고:** 서울대 면접·구술 5문제 (수학 A~E) 는 PDF 에 출제의도/평가 항목만 명시되고 풀이는 수험생이 구술로 답변. 위 답은 출제의도 + 해설본 기준 추정값이며, 정확한 채점 기준은 서울대 면접 채점 기준표 참조 요.
+
+---
+
+## 세종대 2026 논술우수자전형 (자유전공·자연계 A·B)
+
+### 자유전공 2번 — 합성함수 미분 + 역함수
+
+[문제] $f(x) = x(x-1)^2 e^{2x}$, $g(x) = -\dfrac{x}{\sqrt{1+x^2}}$.
+
+**[2-1]** $g'(x)$, $g$ 의 치역.
+
+??? success "풀이"
+    $g'(x) = -\dfrac{1}{(1+x^2)^{3/2}} < 0$, $g$ 는 감소. $\lim_{x\to\infty}g = -1, \lim_{x\to-\infty}g = 1$. **치역 $\{y\,|\,-1 < y < 1\}$**.
+
+**[2-2]** $g^{-1}(x)$, $h(x) = (g \circ f \circ g^{-1})(x) = 0$ 의 해.
+
+??? success "풀이"
+    $y = -x/\sqrt{1+x^2} \Rightarrow x^2 = y^2/(1-y^2)$, $x, y$ 부호 반대이므로 $x = -y/\sqrt{1-y^2}$. $g^{-1}(x) = -x/\sqrt{1-x^2}$. $h(x) = 0 \Rightarrow f(g^{-1}(x)) = 0 \Rightarrow g^{-1}(x) = 0$ 또는 $1$. **$x = g(0) = 0$ 또는 $x = g(1) = -\sqrt 2/2$**.
+
+**[2-3]** $h$ 의 극댓값·극솟값, $h$ 의 치역.
+
+??? success "풀이"
+    $f'(x) = (x+1)(2x-1)(x-1)e^{2x}$. $g^{-1}(x)$ 의 부호 (감소함수, $g(-1) = \sqrt 2/2, g(1/2) = -\sqrt 5/5, g(1) = -\sqrt 2/2$ 등) 분석. **극댓값 $0$ 과 $\dfrac{4}{\sqrt{e^4+16}}$, 극솟값 $-\dfrac{e}{\sqrt{e^2+64}}$, 치역 $\left\{y\,\Big|\,-1 < y \le \dfrac{4}{\sqrt{e^4+16}}\right\}$**.
+
+---
+
+### 자연계 A 1번 — 역함수의 미분 + 롤의 정리
+
+[문제] $x \ge 0$ 에서 정의된 증가 연속함수 $f$ 의 역함수 $f^{-1}$ 이 다음을 만족:
+(가) $f^{-1}$ 연속, (나) $\int_0^x e^{-t} f^{-1}(t)\,dt = x^2$.
+
+**[1-1]** $f^{-1}(\ln 2)$, $f^{-1}(1/2)$, $f'(f^{-1}(1/2))$.
+
+??? success "풀이"
+    (나) 미분: $e^{-x} f^{-1}(x) = 2x \Rightarrow f^{-1}(x) = 2x e^x$. **$f^{-1}(\ln 2) = 4\ln 2$**, **$f^{-1}(1/2) = \sqrt e$**, 역함수 미분: $f'(\sqrt e) = 1/(f^{-1})'(1/2) = 1/(2(1+1/2)e^{1/2}) = \mathbf{1/(3\sqrt e)}$.
+
+**[1-2]** $\int_0^{\sqrt e} f(x)\,dx$.
+
+??? success "풀이"
+    $f(\sqrt e) = 1/2$. 대칭성 (역함수 그래프) 이용: $\int_0^{\sqrt e} f(x)\,dx = \sqrt e \cdot f(\sqrt e) - \int_0^{1/2} f^{-1}(y)\,dy = \sqrt e/2 - \int_0^{1/2} 2y e^y\,dy = \sqrt e/2 - [(2y-2)e^y]_0^{1/2} = \sqrt e /2 + 2 - \sqrt e = \mathbf{3\sqrt e/2 - 2}$.
+
+**[1-3]** $0 \le x \le 4\ln 2$ 에서 $g(x) = f(x) - x/4$ 의 최댓값을 $g(\alpha)$ 라 할 때 $g(\alpha)$ 의 유리식 표현.
+
+??? success "풀이"
+    $g(0) = 0, g(4\ln 2) = \ln 2 - \ln 2 = 0$. 롤의 정리: $g'(\alpha) = f'(\alpha) - 1/4 = 0$ 인 $\alpha$ 존재. $f^{-1}$ 이 아래로 볼록이므로 $g$ 는 위로 볼록, $\alpha$ 는 유일. $f'(\alpha) = 1/4$, 역함수 미분: $2(1+x)e^x = 4$ 에서 $\alpha = 2xe^x$ (단, $x = f^{-1}(\alpha)$). 정리: **$g(\alpha) = \dfrac{\alpha^2}{4(4 - \alpha)}$**.
+
+---
+
+### 자연계 A 2번 — 정적분 + 그래프 교점
+
+[문제] 미분가능 함수 $f$, 모든 $x$ 에 대해 $\int_0^x (2t - x) f(t)\,dt = (x-2)e^x + ax + b$.
+
+**[2-1]** $a, b, f(2) - f(1)$.
+
+??? success "풀이"
+    $x = 0$ 대입: $0 = -2 + b \Rightarrow b = 2$. 양변 미분 (좌변 $= 2x f(x) - \int_0^x f - x f(x)$): $xf(x) - \int_0^x f = (x-1)e^x + a$. $x = 0$ 대입: $0 = -1 + a \Rightarrow a = 1$. 다시 미분: $f(x) + xf'(x) - f(x) = xe^x \Rightarrow f'(x) = e^x$. $f(x) = e^x + C$. **$a = 1, b = 2, f(2) - f(1) = e^2 - e$**.
+
+**[2-2]** $g(x) = x^2 + 2x + 3$ ($x < 0$), $f(x)$ ($x \ge 0$). $r(x) = \lim_{h \to 0+} (g(x+h) - g(x-2h))/h$ 가 모든 $x$ 에 대해 존재. $f$ 와 $r$.
+
+??? success "풀이"
+    $x = 0$ 연속성: $1 + C = 3 \Rightarrow C = 2$. **$f(x) = e^x + 2$**. $r(0) = \lim (g(h) - g(-2h))/h = e^0 + 5 = \mathbf{5}$ (계산 후). $x \ne 0$: $r(x) = g'(x) + 2g'(x) = 3g'(x)$. **$r(x) = 6x + 6$ ($x < 0$), $5$ ($x = 0$), $3e^x$ ($x > 0$)**.
+
+**[2-3]** $y = e^{2x} + k$ 와 $y = r(x)$ 의 교점 개수 $= 2$ 인 $k$.
+
+??? success "풀이"
+    $x > 0$: $e^{2x} + k = 3e^x \Rightarrow t = e^x$ 로 $t^2 - 3t + k = 0$, $t > 1$ 영역에서 실근 개수. $D = 9 - 4k$. 분석 후 $k = 9/4$ (중근), $k \le 2$ (한 점), $2 < k < 9/4$ (두 점). $x \le 0$ 영역 추가 분석. **$k \le 2$ 또는 $k = 9/4$ 또는 $k = 4$**.
+
+---
+
+### 자연계 A 3번 — 삼각형 내접원 + 정적분
+
+[문제] 정삼각형 $ABC$ (변 2), $AB$ 위 $D$, $AD = x$. $\triangle ACD$ 내접원 $S_1$ 반지름 $r_1(x)$, $\triangle BCD$ 내접원 $S_2$ 반지름 $r_2(x)$. $f(x) = r_1(x) + r_2(x)$ ($0 < x < 2$).
+
+**[3-1]** $f(x)$ 와 $f$ 의 치역.
+
+??? success "풀이"
+    코사인 법칙: $\overline{CD}^2 = x^2 - 2x + 4$. 내접원: $\sqrt 3 x/2 = r_1 (x + 2 + \sqrt{x^2-2x+4})/2$. $r_1(x) = \sqrt 3(x + 2 - \sqrt{x^2-2x+4})/6$. 대칭으로 $r_2(x) = r_1(2-x)$. **$f(x) = \dfrac{\sqrt 3 (3 - \sqrt{x^2 - 2x + 4})}{3}$**, 치역 $\left\{y\,\Big|\,\dfrac{\sqrt 3}{3} \le y \le \sqrt 3 - 1\right\}$.
+
+**[3-2]** $x = 1$ 인 점 $P$ 를 지나는 두 직선이 $y = f(x)$ 와 점 $Q, R$ 에서 접함. $Q$ 의 $x$좌표 $= 1/4$, $\angle QPR = \theta$. $\sin\theta$.
+
+??? success "풀이"
+    $f$ 의 그래프는 $x = 1$ 대칭. $T(1, 0)$ 에 대해 $\angle QPT = \angle RPT$. $f'(1/4) = -1/\sqrt{19}$. $\tan(\theta/2) = 1/\sqrt{19}$, $\sin(\theta/2) = 1/\sqrt{20}$, $\cos(\theta/2) = \sqrt{19}/\sqrt{20}$. **$\sin\theta = 2 \cdot 1/\sqrt{20} \cdot \sqrt{19}/\sqrt{20} = \dfrac{\sqrt{19}}{10}$**.
+
+**[3-3]** $t \in $ ($f$ 치역), $g(t) = \int_0^2 |f(x) - t|\,dx$ 가 $t = a$ 에서 최솟값. $a$.
+
+??? success "풀이"
+    $g(t) = 2\int_0^1 |f - t|\,dx$ ($f$ 대칭). $g'(t) = 2(2f^{-1}(t) - 1)$. $g'(a) = 0 \Rightarrow f^{-1}(a) = 1/2 \Rightarrow a = f(1/2) = \sqrt 3 (3 - \sqrt{13/4})/3$. 정리: **$a = \dfrac{\sqrt 3}{6}(6 - \sqrt{13}) = \sqrt 3 - \dfrac{\sqrt{39}}{6}$**.
+
+---
+
+### 자연계 B 1번 — 부분적분 + 접선 + 그래프 개형
+
+[문제] $f(x) = \int_{\pi/2}^{2\pi} |x - t| \cos(t/2)\,dt$.
+
+**[1-1]** $f(\pi/2)$, $x < \pi/2$ 일 때 $f'(x)$.
+
+??? success "풀이"
+    $f(\pi/2) = \int_{\pi/2}^{2\pi} (t - \pi/2) \cos(t/2)\,dt$. 부분적분: $[2(t-\pi/2)\sin(t/2) + 4\cos(t/2)]_{\pi/2}^{2\pi} = (-3\pi/2)\sin\pi + 4\cos\pi - (4\cos(\pi/4))$ 계산하여 **$f(\pi/2) = -4 - 2\sqrt 2$**. $x < \pi/2$ 일 때 $|x - t| = t - x$, $f'(x) = -\int_{\pi/2}^{2\pi} \cos(t/2)\,dt = \mathbf{\sqrt 2}$.
+
+**[1-2]** $f$ 가 $x = \alpha$ 에서 최댓값. $\cos(\alpha/2)$.
+
+??? success "풀이"
+    $x > 2\pi$ 일 때 $f'(x) = -\sqrt 2$. $\pi/2 \le x \le 2\pi$ 일 때 $f'(x) = 4\sin(x/2) - \sqrt 2$. $f'(\alpha) = 0 \Rightarrow \sin(\alpha/2) = \sqrt 2/4$. $\pi < \alpha < 2\pi$ 이므로 $\alpha/2 \in (\pi/2, \pi)$, $\cos(\alpha/2) < 0$. **$\cos(\alpha/2) = -\sqrt{14}/4$**.
+
+**[1-3]** $y = f(x) - f(\pi/2)$ 와 $y = \sqrt 2 x + k$ 의 교점 개수 $= 1$ 인 $k$.
+
+??? success "풀이"
+    그래프 개형 (변곡점 $\pi$, 극댓값 $\alpha$). 직선 $y = \sqrt 2 x + k$ 가 곡선에 접할 때 $\beta = 3\pi/2$, $k = (8 - 5\pi/2)\sqrt 2$. 또는 $y$절편이 $(\pi/2, 0)$ 보다 작은 경우 $k < -\sqrt 2 \pi/2$. **$k = (8 - 5\pi/2)\sqrt 2$ 또는 $k < -\sqrt 2 \pi/2$**.
+
+---
+
+### 자연계 B 2번 — 극값 + 미분가능 + 정적분
+
+[문제] 삼차함수 $f$, $g(x) = -x/2$ ($x \le 0$), $f(x)$ ($x > 0$) 연속. 조건 (가) $\lim_{x\to\infty} |g(x)|/x^3 = 1$, (나) $g$ 가 극값 갖는 $x$ 는 $\alpha$ 유일, (다) $\int_{-1}^1 g = 0$.
+
+**[2-1]** $f$ 의 최고차항 계수.
+
+??? success "풀이"
+    $g(0) = -0/2 = 0 \Rightarrow f(0) = 0$. (가) $\Rightarrow$ $f$ 최고차 계수 $a = \pm 1$. $a = -1$ 이면 (나) 조건 위배 ($g$ 극값 없음 또는 두 개). $a = 1$ 가능. **$a = 1$**.
+
+**[2-2]** $\alpha$ 의 범위.
+
+??? success "풀이"
+    $f(x) = x^3 - \dfrac{3}{2}(\alpha+\beta) x^2 + 3\alpha\beta x$ ($\beta \le 0$, $\alpha > 0$). 조건 (다): $\int_{-1}^0 (-x/2)dx + \int_0^1 f\,dx = 0 \Rightarrow 1/4 + 1/4 - (\alpha+\beta)/2 + \alpha\beta = 0$. $\alpha + \beta - 3\alpha\beta = 1$ $\Rightarrow \alpha = (1 - \beta)/(1 - 3\beta)$. $\beta \le 0$ 범위에서 $\alpha = 1$ ($\beta = 0$), $\alpha \to 1/3$ ($\beta \to -\infty$). **$1/3 < \alpha \le 1$**.
+
+**[2-3]** $h(x) = |g(x) - f'(0)x|$ 가 미분불가능한 $x = k$ 의 집합 $D$. $|D| = 1$ 인 $\alpha$.
+
+??? success "풀이"
+    $p(x) = g(x) - f'(0)x = g(x) - 3\alpha\beta x$. $x \le 0$ 영역에서 일차함수, $x > 0$ 영역에서 삼차함수. 분석에 따라 $\alpha + \beta = (1 - 3\alpha^2)/(1 - 3\alpha)$. 케이스: $\alpha + \beta \le 0$: $1/3 < \alpha \le \sqrt 3/3$. $\alpha + \beta > 0$: $\sqrt 3/3 < \alpha \le 1$. $\alpha + \beta - 1 = -1/2$: $6\alpha^2 - 3\alpha - 1 = 0 \Rightarrow \alpha = 1/4 + \sqrt{33}/12$. **$1/3 < \alpha \le \sqrt 3/3$ 또는 $\alpha = 1/4 + \sqrt{33}/12$**.
+
+---
+
+### 자연계 B 3번 — 부분적분 + 조합
+
+[문제] $a_n = \int_0^1 (2x)^n (1-x)^{102-n}\,dx$ ($n = 1, 2, \ldots, 101$).
+
+**[3-1]** $\dfrac{a_{98}}{2^{98}} + 3 \cdot \dfrac{a_{99}}{2^{99}} + 3 \cdot \dfrac{a_{100}}{2^{100}} + \dfrac{a_{101}}{2^{101}} = \dfrac{q}{p}$. $p, q$.
+
+??? success "풀이"
+    $a_n/2^n = \int_0^1 x^n (1-x)^{102-n}dx$. 좌변 $= \int_0^1 x^{98}(1-x)((1-x)+x)^3 dx = \int_0^1 (x^{98} - x^{99})dx = 1/99 - 1/100 = \mathbf{1/9900}$. **$p = 9900, q = 1$**.
+
+**[3-2]** $a_n/a_{n+1} \ge 1$ 인 $n$ 모두.
+
+??? success "풀이"
+    $a_n$ 을 부분적분: $a_n = \dfrac{102 - n}{2(n+1)} a_{n+1}$. 비율 $\ge 1 \Leftrightarrow 102 - n \ge 2(n+1) \Leftrightarrow n \le 100/3 \approx 33.33$. **$n = 1, 2, \ldots, 33$**.
+
+**[3-3]** $a_n$ 이 $n = m$ 에서 최솟값. $m$. ${}_{102}C_m \cdot a_m = q/p$. $p, q$.
+
+??? success "풀이"
+    [3-2] 에서 $a_1 > a_2 > \ldots > a_{33} > a_{34}$ 이고 $a_{34} < a_{35} < \ldots$. **$m = 34$**. $a_{101} = \int 2^{101}(x^{101} - x^{102}) dx = 2^{101}/(102 \cdot 103)$. 연쇄 비율로 $a_{34} = 2^{34} \cdot 68! \cdot 34!/103!$. ${}_{102}C_{34} \cdot a_{34} = 102!/(34! 68!) \cdot 2^{34} \cdot 68! \cdot 34!/103! = 2^{34}/103$. **$p = 103, q = 2^{34}$**.
+
+---
+
+> 세종대 면접 (창의소프트학부 만화애니메이션·디자인이노베이션) 은 비수학 (사회·기술가정·미술·통합과학 영역). 미술/디자인 적성 면접이므로 수학 카드에서 제외.
