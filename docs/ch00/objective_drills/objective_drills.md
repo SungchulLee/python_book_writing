@@ -4643,5 +4643,153 @@ $f(x) = \begin{cases} x & (-1 \leq x < 0) \\ d & (x = 0) \\ \frac{a}{2} x^2 + b 
 
 ---
 
+## 카드 66 — 서강대 (2025학년도)
+
+> 출처: 2025학년도 서강대학교 대입전형 선행학습 영향평가 자체평가보고서, 문항카드 5 (자연계열 1차 1번). 출제범위: 수학·수학Ⅰ·미적분·기하 (쌍곡선·접선·삼각함수·미분). 4개 하위문항.
+
+### 쌍곡선 자취·접선·기울기·삼각함수 미분
+
+좌표평면 위의 두 점 $\mathrm{A}(5, 0),\ \mathrm{B}(-5, 0)$ 과 점 $\mathrm{C}$ 에 대해 다음을 만족하는 점 $\mathrm{P}$ 가 있다: (i) $\overline{\mathrm{AC}} = 6$, (ii) 점 $\mathrm{P}$ 는 선분 $\mathrm{AC}$ 위에 있다, (iii) $\overline{\mathrm{BP}} + \overline{\mathrm{CP}} = 8$.
+
+**[66 / 1-1]** 점 $\mathrm{P}$ 의 자취가 나타내는 곡선의 방정식.
+
+??? success "풀이"
+    $\overline{\mathrm{CP}} = 6 - \overline{\mathrm{AP}}$ ((i),(ii)). (iii) 대입 → $\overline{\mathrm{BP}} - \overline{\mathrm{AP}} = 2$. 두 초점 $\mathrm{A}, \mathrm{B}$ 까지의 거리 차가 $2$ 인 쌍곡선 ($\mathrm{A}$ 에 가까운 가지). $a = 1,\ c = 5,\ b^2 = 24$. 답: $\boxed{x^2 - \dfrac{y^2}{24} = 1}$ ($x \ge 1$ 가지).
+
+**[66 / 1-2]** 위 곡선의 제 2 사분면 점 $\mathrm{Q}$ 에서의 접선이 $y$ 축과 만나는 점을 $\mathrm{R}$ 이라 하자. $\overline{\mathrm{QR}}$ 이 최소인 점 $\mathrm{Q}$ 에 대해 $\overline{\mathrm{OQ}}^2$.
+
+??? success "풀이"
+    $\mathrm{Q}(x_0, y_0)$ 에서의 접선 $x_0 x - y_0 y/24 = 1$, $y$ 절편 $-24/y_0$, 즉 $\mathrm{R}(0,\ -24/y_0)$. $\overline{\mathrm{QR}}^2 = x_0^2 + (y_0 + 24/y_0)^2 = 1 + y_0^2/24 + y_0^2 + 48 + 576/y_0^2 = 25 y_0^2/24 + 576/y_0^2 + 49$. AM-GM: $25 y_0^2/24 + 576/y_0^2 \ge 2\sqrt{600} = 20\sqrt{6}$, 등호 $y_0^2 = 48\sqrt{6}/5$. $\overline{\mathrm{OQ}}^2 = x_0^2 + y_0^2 = 1 + 25 y_0^2/24 = 1 + 10\sqrt{6}$. 답: $\boxed{1 + 10\sqrt{6}}$.
+
+**[66 / 1-3]** $\mathrm{C}$ 와 $\mathrm{P}$ 가 일치할 때, 선분 $\mathrm{BC}$ 가 $y$ 축과 만나는 점을 $\mathrm{D}$, $\angle \mathrm{COD} = \alpha$ 일 때 $\cos\alpha$.
+
+??? success "풀이"
+    $\mathrm{C} = \mathrm{P}$ → $\overline{\mathrm{CP}} = 0$, $\overline{\mathrm{BC}} = 8$, $\overline{\mathrm{AC}} = 6$, $\overline{\mathrm{AB}} = 10$. $6^2 + 8^2 = 10^2$ → $\angle \mathrm{C} = \pi/2$. 직각삼각형 $\mathrm{ABC}$ 에서 $\mathrm{C} = (7/5,\ 24/5)$ (제 1 사분면 선택). 직선 $\mathrm{BC}$ 기울기 $= 3/4$, $\mathrm{D}(0,\ 15/4)$. $\overline{\mathrm{OC}} = 5,\ \overline{\mathrm{OD}} = 15/4$, $\overrightarrow{\mathrm{OC}}\cdot\overrightarrow{\mathrm{OD}} = 0 + (24/5)(15/4) = 18$. $\cos\alpha = 18/(5\cdot 15/4) = 72/75 = 24/25$. 답: $\boxed{\cos\alpha = \dfrac{24}{25}}$.
+
+**[66 / 1-4]** $\angle \mathrm{A} = \theta$ 일 때 $\triangle \mathrm{BCP}$ 넓이를 $f(\theta)$ 라 하자. $\cos\beta = 4/5$ 에서 $f'(\beta)$.
+
+??? success "풀이"
+    $\triangle \mathrm{ABP}$ 에서 코사인법칙과 $\overline{\mathrm{BP}} = \overline{\mathrm{AP}} + 2$ 로부터 $\overline{\mathrm{AP}} = 24/(1 + 5\cos\theta)$. $f(\theta) = \triangle\mathrm{ABC} - \triangle\mathrm{ABP} = 30\sin\theta - 120\sin\theta/(1 + 5\cos\theta)$. $f'(\theta) = 30\cos\theta - 120(\cos\theta + 5)/(1 + 5\cos\theta)^2$. $\cos\beta = 4/5 \Rightarrow 1 + 5\cos\beta = 5$, $\cos\beta + 5 = 29/5$. $f'(\beta) = 24 - 120\cdot(29/5)/25 = 24 - 696/25 = -96/25$. 답: $\boxed{f'(\beta) = -\dfrac{96}{25}}$.
+
+---
+
+## 카드 67 — 서강대 (2025학년도)
+
+> 출처: 2025학년도 서강대학교 대입전형 선행학습 영향평가 자체평가보고서, 문항카드 6 (자연계열 1차 2번). 출제범위: 수학·수학Ⅰ·수학Ⅱ·미적분 (이차방정식·삼각함수·함수의 극한·연속·미분계수). 4개 하위문항.
+
+### 삼각함수 → 이차함수 최솟값·연속·미분가능
+
+$g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta < 2\pi)$ 의 최솟값을 $f(t)$ 라 하자. $x = \cos\theta\ (-1 \le x \le 1)$, $h(x) = \{g(\theta)\}^2 = 4(4 - t^2) x^2 - 24 t x + 13 t^2$. $f(t) = \sqrt{\min_{x \in [-1, 1]} h(x)}$.
+
+**[67 / 2-1]** $t = 1$ 일 때 $f(1)$.
+
+??? success "풀이"
+    $h(x) = 12 x^2 - 24 x + 13 = 12(x - 1)^2 + 1$, 꼭짓점 $x = 1 \in [-1, 1]$, $\min h = 1$. 답: $\boxed{f(1) = 1}$.
+
+**[67 / 2-2]** $0 < t < 1$ 일 때 $f(t)$.
+
+??? success "풀이"
+    $4 - t^2 > 0$, $h(x) = 4(4 - t^2)(x - \tfrac{3 t}{4 - t^2})^2 + \tfrac{t^2(16 - 13 t^2)}{4 - t^2}$. $t^2 + 3 t - 4 = (t - 1)(t + 4) < 0$ → $0 < \tfrac{3 t}{4 - t^2} < 1$ (구간 내부), $\min h = \tfrac{t^2(16 - 13 t^2)}{4 - t^2}$. 답: $\boxed{f(t) = \dfrac{t\sqrt{16 - 13 t^2}}{\sqrt{4 - t^2}}}$.
+
+**[67 / 2-3]** $t > 1$ 일 때 $f(t)$.
+
+??? success "풀이"
+    (i) $t = 2$: $h(x) = -48 x + 52$, $\min h = h(1) = 4$, $f(2) = 2$. (ii) $1 < t < 2$: $4 - t^2 > 0$, 꼭짓점 $\tfrac{3 t}{4 - t^2} > 1$ (구간 우측 밖), $x = 1$ 에서 최소: $h(1) = 9 t^2 - 24 t + 16 = (3 t - 4)^2$. (iii) $t > 2$: $4 - t^2 < 0$ (아래로 열림), 꼭짓점 $\tfrac{3 t}{4 - t^2} < 0$, 구간 $[-1, 1]$ 에서 $x = 1$ 이 꼭짓점에서 먼 끝점이므로 최소: $h(1) = (3 t - 4)^2$. 종합: $\boxed{f(t) = |\,4 - 3 t\,|}$.
+
+**[67 / 2-4]** $0 < t < 4/3$ 에서 정의된 $f$ 의 $t = 1$ 에서의 연속성·미분가능성.
+
+??? success "풀이"
+    $f(t) = \begin{cases} t\sqrt{16 - 13 t^2}/\sqrt{4 - t^2}, & 0 < t < 1 \\ 4 - 3 t, & 1 \le t < 4/3 \end{cases}$
+    
+    (i) 연속: $\lim_{t \to 1^-} f(t) = \sqrt{3}/\sqrt{3} = 1$, $\lim_{t \to 1^+} f(t) = 1$, $f(1) = 1$. → $t = 1$ 에서 **연속**.
+    
+    (ii) 미분: 우미분계수 $\lim_{t \to 1^+} (4 - 3 t - 1)/(t - 1) = -3$. 좌미분계수: $[f(t) - 1]/(t - 1)$ 의 분자 유리화하면 $-(13 t^2 - 4)(t - 1)(t + 1)/[\sqrt{4 - t^2}(t\sqrt{16 - 13 t^2} + \sqrt{4 - t^2})]$, $t \to 1^-$ → $-18/(\sqrt{3}\cdot 2\sqrt{3}) = -3$. 좌 $=$ 우 $= -3$, $t = 1$ 에서 **미분가능**, $f'(1) = -3$.
+
+---
+
+## 카드 68 — 서강대 (2025학년도)
+
+> 출처: 2025학년도 서강대학교 대입전형 선행학습 영향평가 자체평가보고서, 문항카드 7 (자연계열 2차 1번). 출제범위: 수학·수학Ⅰ·미적분·기하 (타원의 방정식·초점·접선의 방정식·삼각함수 덧셈정리). 4개 하위문항.
+
+### 타원·직각 조건·코사인법칙·접선·tan 덧셈정리
+
+타원 $\dfrac{x^2}{4 b^2} + \dfrac{y^2}{b^2} = 1$ 의 두 초점은 $\mathrm{F}(\sqrt{3}\, b, 0),\ \mathrm{F}'(-\sqrt{3}\, b, 0)$ (단, $b > 0$).
+
+**[68 / 1-1]** 타원 위의 점 $\mathrm{P}(x_1, y_1)$ ($x_1, y_1 > 0$) 이 $\angle \mathrm{F}'\mathrm{P}\mathrm{F} = 90°$. $\overline{\mathrm{F}'\mathrm{P}} = l_1,\ \overline{\mathrm{FP}} = l_2$ 의 곱과 각각의 값.
+
+??? success "풀이"
+    타원 정의 $l_1 + l_2 = 4 b$, 피타고라스 $l_1^2 + l_2^2 = 12 b^2$. $(l_1 + l_2)^2 - 2 l_1 l_2 = 12 b^2 \Rightarrow l_1 l_2 = 2 b^2$. $l_1, l_2$ 는 $t^2 - 4 b t + 2 b^2 = 0$ 의 근, $t = (2 \pm \sqrt{2}) b$. $l_1 > l_2$ → 답: $\boxed{l_1 l_2 = 2 b^2,\ \ l_1 = (2 + \sqrt{2}) b,\ \ l_2 = (2 - \sqrt{2}) b}$.
+
+**[68 / 1-2]** 점 $\mathrm{P}(x_1, y_1)$ 의 좌표.
+
+??? success "풀이"
+    $\angle \mathrm{F}'\mathrm{PF} = 90°$ → 두 기울기 곱 $-1$: $x_1^2 = 3 b^2 - y_1^2$. 타원식 대입: $(3 b^2 - y_1^2)/(4 b^2) + y_1^2/b^2 = 1 \Rightarrow 3 y_1^2 = b^2 \Rightarrow y_1 = \sqrt{3}\, b/3$. $x_1^2 = 8 b^2/3$, $x_1 = 2\sqrt{6}\, b/3$. 답: $\boxed{\mathrm{P} = \left(\dfrac{2\sqrt{6}}{3} b,\ \dfrac{\sqrt{3}}{3} b\right)}$.
+
+**[68 / 1-3]** 타원 위의 점 $\mathrm{Q}(x_2, y_2)$ ($x_2, y_2 > 0$) 가 $\angle \mathrm{F}'\mathrm{QF} = 135°$. $\overline{\mathrm{F}'\mathrm{Q}} = l_3,\ \overline{\mathrm{FQ}} = l_4$.
+
+??? success "풀이"
+    $l_3 + l_4 = 4 b$. $\triangle \mathrm{QF}'\mathrm{F}$ 에 코사인법칙: $l_3^2 = l_4^2 + 12 b^2 - 4\sqrt{3}\, b l_4 \cos 135° = l_4^2 + 12 b^2 + 2\sqrt{6}\, b l_4$. $l_3 = 4 b - l_4$ 대입·정리 → $l_4 = \dfrac{4 b}{8 + 2\sqrt{6}} = \dfrac{4 - \sqrt{6}}{5} b$, $l_3 = \dfrac{16 + \sqrt{6}}{5} b$. 답: $\boxed{l_3 = \dfrac{16 + \sqrt{6}}{5} b,\ \ l_4 = \dfrac{4 - \sqrt{6}}{5} b}$.
+
+**[68 / 1-4]** 점 $\mathrm{Q}$ 에서의 접선이 $x$ 축과 만나는 점을 $\mathrm{R}$, $\angle \mathrm{FQR} = \theta$ 일 때 $\tan\theta$.
+
+??? success "풀이"
+    직선 $\mathrm{FQ}$ 와 $\mathrm{F}'$ 사이 각이 $\angle \mathrm{QFF}' = 45°$ 이므로 (이등변 분석에서 도출) 직선 $\mathrm{FQ}$ 기울기 $= 1$, 즉 $y = x - \sqrt{3} b$. 타원식 대입: $5 x_2^2 - 8\sqrt{3}\, b x_2 + 8 b^2 = 0 \Rightarrow x_2 = \dfrac{4\sqrt{3} + 2\sqrt{2}}{5} b$ (제 1 사분면), $y_2 = \dfrac{2\sqrt{2} - \sqrt{3}}{5} b$. 접선 $\dfrac{x_2 x}{4 b^2} + \dfrac{y_2 y}{b^2} = 1$, $y = 0$ 에서 $x_\mathrm{R} = (2\sqrt{3} - \sqrt{2}) b$. $\mathrm{Q}$ 에서 $x$ 축에 내린 수선의 발 $\mathrm{S}(x_2, 0)$, $\angle \mathrm{QRS} = \alpha$ → $\tan\alpha = y_2/(x_2 - x_\mathrm{R}) = (2 + \sqrt{6})/2$. $\theta = 135° - \alpha$, [다]의 덧셈정리: $\tan\theta = (\tan 135° - \tan\alpha)/(1 + \tan 135°\tan\alpha) = (-1 - (2 + \sqrt{6})/2)/(1 - (2 + \sqrt{6})/2) = (-(4 + \sqrt{6})/2)/(-\sqrt{6}/2) = (4 + \sqrt{6})/\sqrt{6} = (3 + 2\sqrt{6})/3$. 답: $\boxed{\tan\theta = \dfrac{3 + 2\sqrt{6}}{3}}$.
+
+---
+
+## 카드 69 — 서강대 (2025학년도)
+
+> 출처: 2025학년도 서강대학교 대입전형 선행학습 영향평가 자체평가보고서, 문항카드 8 (자연계열 2차 2번). 출제범위: 수학Ⅰ·수학Ⅱ·미적분 (삼각함수·미분계수·도함수·정적분·합성함수 미분). 4개 하위문항.
+
+### 절댓값 코사인을 통한 $g(x)$ 구성·정적분·미분가능성·실근 개수·합성함수 미분
+
+모든 실수 $x$ 에 대해 (i) $f(x) \le g(x)$, (ii) $\{g(x) - f(x)\}^2 + \sin^2 f(x) = 1$. (ii) 에서 $g(x) - f(x) = |\cos f(x)|$, 즉 $g(x) = f(x) + |\cos f(x)|$.
+
+**[69 / 2-1]** $f(x) = 10 x$ 일 때 $\displaystyle \int_0^{\pi} g(x)\, dx$.
+
+??? success "풀이"
+    $g(x) = 10 x + |\cos 10 x|$. $\int_0^{\pi} 10 x\, dx = 5\pi^2$. $u = 10 x$ 치환 → $\int_0^{\pi} |\cos 10 x|\, dx = (1/10)\int_0^{10\pi} |\cos u|\, du = (1/10)\cdot 5\cdot 4 = 2$ ($|\cos u|$ 의 주기 $\pi$, 한 주기 적분 $= 2$; $[0, 10\pi]$ 는 $10$ 주기 → $20$, $/10 = 2$). 답: $\boxed{5\pi^2 + 2}$.
+
+**[69 / 2-2]** $f(x) = x$ 일 때 $g$ 가 $(0, \pi)$ 에서 미분가능한지 조사하고 $[0, \pi]$ 에서 증가함을 보이시오.
+
+??? success "풀이"
+    $g(x) = x + |\cos x|$. $(0, \pi/2)$: $g = x + \cos x$, $g' = 1 - \sin x \ge 0$. $(\pi/2, \pi)$: $g = x - \cos x$, $g' = 1 + \sin x > 0$. $x = \pi/2$: 좌극한 $g'(x) \to 0$, 우극한 $g'(x) \to 2$, 좌·우 미분계수 불일치 → $x = \pi/2$ 에서 미분 불가능. 따라서 $g$ 는 $(0, \pi) \setminus \{\pi/2\}$ 에서 미분가능.
+    
+    증가성: $g$ 는 $[0, \pi]$ 에서 연속, $(0, \pi) \setminus \{\pi/2\}$ 에서 $g'(x) \ge 0$ (등호 $x = \pi/2$ 한 점). [나]에 의해 $[0, \pi/2]$, $[\pi/2, \pi]$ 각각 증가. $\pi/2$ 에서 연속으로 이어지므로 $[0, \pi]$ 에서 (순)증가. ∎
+
+**[69 / 2-3]** $f(x) = x$ 일 때 방정식 $g(x) - k x + \tfrac{\pi}{2}(k - 1) = 0$ 이 $0 \le x \le \pi$ 에서 오직 하나의 실근을 갖도록 하는 양의 실수 $k$ 의 범위.
+
+??? success "풀이"
+    $\varphi(x) = x + |\cos x| - k x + (\pi/2)(k - 1)$. $\varphi(\pi/2) = 0$ → $x = \pi/2$ 는 항상 근. 다른 근이 없을 조건. $\varphi(0) = 1 + (k - 1)\pi/2$, $\varphi(\pi) = (1 - k)\pi/2 + 1$.
+    
+    좌측 $(0, \pi/2)$ 에서 $\varphi'(x) = (1 - k) - \sin x$.
+    
+    - $0 < k < 1$: 꼭짓점 $x^* = \arcsin(1 - k)$, $\varphi$ 증가 후 감소. $\varphi(0) > 0 \iff k > 1 - 2/\pi$. $\varphi(0) \le 0$ 이면 $\varphi(x^*) > 0$ 이 항상 성립 ($\sin\delta - \delta\cos\delta > 0$, $\delta = \pi/2 - x^*$) → 추가 근. 조건: $1 - 2/\pi < k$.
+    - $k \ge 1$: $\varphi' \le 0$, 감소, $\varphi(0) > 0,\ \varphi(\pi/2) = 0$, 추가 근 없음.
+    
+    우측 $(\pi/2, \pi)$ 에서 $\varphi'(x) = (1 - k) + \sin x$.
+    
+    - $0 < k \le 1$: $\varphi' > 0$, 증가, 추가 근 없음.
+    - $1 < k < 2$: 꼭짓점 $x_M = \pi - \arcsin(k - 1)$, $\varphi$ 증가 후 감소. $\varphi(\pi/2) = 0$, $\varphi(x_M) > 0$. $\varphi(\pi) > 0 \iff k < 1 + 2/\pi$ → 추가 근 없음. $\varphi(\pi) \le 0$ → $(x_M, \pi)$ 에서 부호 변환 (또는 $x = \pi$ 가 근) → 추가 근.
+    - $k \ge 2$: $\varphi' \le 0$, 감소, $\varphi(\pi) < 0$, 추가 근 없음.
+    
+    종합: $\boxed{k \in \left(1 - \dfrac{2}{\pi},\ 1 + \dfrac{2}{\pi}\right) \cup [2, \infty)}$.
+
+**[69 / 2-4]** $g(x) = x$ 일 때 $f'(a) = 2/3$ 인 $a$ 의 값. (단, $\pi/2 < a < \pi + 1$.)
+
+??? success "풀이"
+    $g(x) = x$ → $f(x) + |\cos f(x)| = x$. $y = f(x)$ 로 양변 미분 ([라]의 합성함수 미분 + 절댓값 분기):
+    
+    - $\cos y > 0$: $y' = 1/(1 - \sin y)$.
+    - $\cos y < 0$: $y' = 1/(1 + \sin y)$.
+    
+    $f'(a) = 2/3$ → $1 \mp \sin f(a) = 3/2$.
+    
+    - $\sin f(a) = -1/2$, $\cos f(a) > 0$ → $f(a) = -\pi/6 + 2 n\pi$. $a = f(a) + \cos f(a)$ 가 $(\pi/2, \pi + 1) \approx (1.571, 4.142)$ 안 — 해당 $n$ 없음.
+    - $\sin f(a) = 1/2$, $\cos f(a) < 0$ → $f(a) = 5\pi/6 + 2 n\pi$. $n = 0$: $a = 5\pi/6 + \sqrt{3}/2 \approx 3.484 \in (1.571, 4.142)$ ✓.
+    
+    답: $\boxed{a = \dfrac{5\pi}{6} + \dfrac{\sqrt{3}}{2}}$.
+
+---
 
 
