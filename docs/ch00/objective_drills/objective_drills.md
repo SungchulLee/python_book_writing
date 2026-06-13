@@ -3333,3 +3333,71 @@ $0 < t < \pi$ 일 때 $\mathrm{P}(2\cos t, 2\sin t)$ 에 대해 직선 $\mathrm{
 
 ---
 
+## 카드 45 — 연세대 미래캠퍼스 (2020학년도)
+
+수시 일반논술전형 — 자연계 수학 3문항(소문항 1-3-3) + 의예 수학 2문항(소문항 2-2). 총 10 sub-문항.
+
+### 자연 문제 1 — 부분적분 (미적분II)
+
+**[1 / 자1]** $f(x) = |\sin x|$. $\int_{-\pi/2}^{\pi/2}f(x)e^x\,dx$.
+
+??? success "풀이"
+    부정적분 $\int \sin x\,e^x dx$: 부분적분 2회로 $(\sin x - \cos x)e^x/2$. $\int_{-\pi/2}^{\pi/2}|\sin x|e^x dx = -\int_{-\pi/2}^0 \sin x\,e^x dx + \int_0^{\pi/2}\sin x\,e^x dx = -[(\sin x - \cos x)e^x/2]_{-\pi/2}^0 + [(\sin x - \cos x)e^x/2]_0^{\pi/2} = 1/2 - e^{-\pi/2}/2 + e^{\pi/2}/2 + 1/2 = \mathbf{1 + (e^{\pi/2} - e^{-\pi/2})/2}$.
+
+### 자연 문제 2 — 점·직선 거리·필요조건·원·직선
+
+**[2 / 자2-1]** 점과 직선 $ax + by + c = 0$ 사이 거리 공식 $d = |ax_1 + by_1 + c|/\sqrt{a^2 + b^2}$ 증명. ($a, b \neq 0$)
+
+??? success "풀이"
+    P 에서 $x, y$ 축에 평행하게 그어 직선과 만나는 점 $A, B$: $A = (-(by_1 + c)/a,\,y_1)$, $B = (x_1,\,-(ax_1 + c)/b)$. $\overline{PA} = |ax_1 + by_1 + c|/|a|$, $\overline{PB} = |ax_1 + by_1 + c|/|b|$. 직각삼각형 PAB 넓이: $\overline{AB} \cdot \overline{PH} = \overline{PA} \cdot \overline{PB}$. 정리 $\sqrt{a^2 + b^2}\cdot \overline{PH} = |ax_1 + by_1 + c|$. ∎
+
+**[3 / 자2-2]** $p: x^2 - n \leq 0$, $q: -1 \leq x \leq 3$. $p$ 가 $q$ 이기 위한 필요조건, $n$ 한 자리 자연수. 중심 $(n, 0)$, 반지름 1 인 원 위의 점과 직선 $y = -(3/4)x - 3/4$ 사이 거리 최솟값.
+
+??? success "풀이"
+    $p \supseteq q$: $\{x : -\sqrt n \leq x \leq \sqrt n\} \supseteq \{-1 \leq x \leq 3\}$ → $\sqrt n \geq 3$, $n \geq 9$. 한 자리 자연수 → $n = 9$. 중심 $(9, 0)$과 $3x + 4y + 3 = 0$ 거리 $= |27 + 0 + 3|/5 = 6$. 최소 거리 $= 6 - 1 = \mathbf 5$.
+
+### 자연 문제 3 — sin x/x 극한·도함수 (미적분II)
+
+**[4 / 자3-1]** 도형 부등식 이용 $\lim_{x\to 0}\sin x/x = 1$ 증명.
+
+??? success "풀이"
+    $0 < x < \pi/2$: △AOB $<$ 부채꼴 AOB $<$ △AOT (단위원, T = OB 연장과 A 접선 교점). $\sin x/2 < x/2 < \tan x/2$. 정리 $1 > \sin x/x > \cos x$. 조임정리 + $\cos x \to 1$ → $\lim_{x\to 0^+} = 1$. $x \to 0^-$ 는 $x = -t$ 치환으로 동일. ∎
+
+**[5 / 자3-2]** $\lim_{x\to 0}(1 - \cos x)/x$.
+
+??? success "풀이"
+    분자분모 $(1 + \cos x)$ 곱: $(1 - \cos^2 x)/(x(1 + \cos x)) = (\sin x/x)\cdot \sin x/(1 + \cos x) \to 1 \cdot 0/2 = \mathbf 0$.
+
+**[6 / 자3-3]** 도함수 정의로 $(\sin x)'$.
+
+??? success "풀이"
+    $y' = \lim_{h\to 0}(\sin(x+h) - \sin x)/h = \cos x \cdot \lim \sin h/h - \sin x \cdot \lim (1 - \cos h)/h = \cos x \cdot 1 - \sin x \cdot 0 = \mathbf{\cos x}$.
+
+### 의예 문제 1 — 원과 직선의 위치관계·접선 (미적분II)
+
+**[7 / 의1-1]** 원 $(x-3)^2 + (y-2)^2 = 4$ 와 직선 $tx + y = 2$ 가 접하기 위한 $t$ 와 접점.
+
+??? success "풀이"
+    중심 $(3, 2)$ 거리 $|3t + 2 - 2|/\sqrt{t^2 + 1} = 3|t|/\sqrt{t^2 + 1} = 2$ → $9t^2 = 4(t^2 + 1)$ → $t = \pm 2/\sqrt 5$. 접점: 중심에서 직선에 수선 발 = $(3 + (3/t)/(t^2+1) \cdot (-t),\;2 + (3/t)/(t^2 + 1) \cdot (-1))$… 직접 계산: 접점 $x$ 좌표 $= 3/(t^2 + 1)$, $t^2 = 4/5$: $x = 3/(9/5) = 5/3$, $y = 2 \mp 2/\sqrt 5 \cdot 5/3 = 2 \mp 2\sqrt 5/3 \cdot \dots$ 정리 $(5/3,\;(6 \mp 2\sqrt 5)/3)$.
+
+**[8 / 의1-2]** 직선 $(\sin t)x + y = 12 + 3\sin t$ 가 원 $x^2 + (y-3)^2 = 25$ 에 잘린 선분 길이 최댓값과 그때의 $t \in [0, 2\pi]$.
+
+??? success "풀이"
+    중심 $(0, 3)$ 거리 $d = 3|3 + \sin t|/\sqrt{\sin^2 t + 1}$. 길이 $\ell = 2\sqrt{r^2 - d^2}$ ($r = 5$). $\ell$ 최대 ⇔ $d$ 최소. 미분 분석: $\sin t = -1$ 시 $d = 6/\sqrt 2 = 3\sqrt 2$ (최소). $t = 3\pi/2$. $\ell_\max = 2\sqrt{25 - 18} = \mathbf{2\sqrt 7}$, $t = \mathbf{3\pi/2}$.
+
+### 의예 문제 2 — 정사각뿔 절단 부피 (기하와 벡터)
+
+**[9 / 의2-1]** 모든 모서리 길이 $2$ 인 정사각뿔 $E$-ABCD. 변 AD 를 통과하는 평면 AFGD ($F \in \overline{EB}, G \in \overline{EC}$)로 자르기. $\overline{FB} = 1$ 일 때 $T_1$ (윗 부분 E-AFGD) 과 $T_2$ (아래 부분) 부피.
+
+??? success "풀이"
+    정사각뿔 부피 $V = (1/3)\cdot 4 \cdot \sqrt 2 = 4\sqrt 2/3$. $\overline{FB} = 1$, F, G 중점. $T_2$ = 가운데 삼각기둥 부피 $\sqrt 2/2$ + 양쪽 사각뿔 부피 합 $\sqrt 2/3 \times 2 = \sqrt 2/3$... 풀이에 따르면 $T_2 = \mathbf{\sqrt 2/2}$, $T_1 = V - T_2 = \mathbf{5\sqrt 2/6}$.
+
+**[10 / 의2-2]** $T_1 = T_2$ 일 때 $\overline{FB} = t$.
+
+??? success "풀이"
+    $T_2(t) = -\sqrt 2 t^2/6 + \sqrt 2 t$. $T_2 = V/2 = 2\sqrt 2/3$: $-\sqrt 2 t^2/6 + \sqrt 2 t = 2\sqrt 2/3$ → $t^2 - 6t + 4 = 0$ → $t = 3 \pm \sqrt 5$. $0 \leq t \leq 2$ → $t = \mathbf{3 - \sqrt 5}$.
+
+---
+
+
+
