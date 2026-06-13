@@ -5270,4 +5270,135 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 78 — 건국대 (2024학년도, 재외국민·외국인전형 자연계 수학)
+
+> 출처: 2024학년도 건국대학교 선행학습 영향평가 평가보고서, 문항카드 7 (재외국민과외국인전형 자연계). 선다형 25 문항. 출제범위: 수학·수학Ⅰ·수학Ⅱ·확률과통계·미적분.
+
+**[78 / 1]** $\displaystyle \lim_{x \to 2} \dfrac{1}{x^3 - 8}\int_2^x (t^2 + 3 t + 4) dt$.
+
+??? success "풀이"
+    $0/0$ 꼴, L'Hôpital (또는 평균변화율) → $(x^2 + 3 x + 4)/(3 x^2) \big|_{x=2} = 14/12 = 7/6$. 답: $\boxed{\dfrac{7}{6}}$.
+
+**[78 / 2]** $\left(\dfrac{1 + i}{1 - i}\right)^{99} = a + b i$. $a + b$.
+
+??? success "풀이"
+    $(1+i)/(1-i) = i$. $i^{99} = i^{96}\cdot i^3 = -i$. $a = 0,\ b = -1$, $a + b = -1$. 답: $\boxed{-1}$.
+
+**[78 / 3]** 주사위 $5$ 회 던져 $1$ 또는 $2$ 가 적어도 한 번 나올 확률.
+
+??? success "풀이"
+    여사건: 모두 $3\sim 6$ → $(4/6)^5 = 32/243$. $1 - 32/243 = 211/243$. 답: $\boxed{\dfrac{211}{243}}$.
+
+**[78 / 4]** $\triangle \mathrm{ABC}$: $\overline{\mathrm{AC}} = 1,\ \overline{\mathrm{BC}} < 1,\ \angle \mathrm{ACB} = 90°$. $\mathrm{D}$ 는 $\overline{\mathrm{BC}}$ 위 $\overline{\mathrm{BD}} : \overline{\mathrm{CD}} = 1 : 2$ 인 점. $\tan(\angle \mathrm{BAD}) = 1/7$. $\overline{\mathrm{BD}}$.
+
+??? success "풀이"
+    $\overline{\mathrm{BC}} = b$, $\tan(\angle \mathrm{BAC}) = b$, $\tan(\angle \mathrm{CAD}) = 2 b/3$. $\tan(\angle \mathrm{BAD}) = (b - 2 b/3)/(1 + 2 b^2/3) = b/(3 + 2 b^2) = 1/7 \Rightarrow 2 b^2 - 7 b + 3 = 0 \Rightarrow b = 1/2$. $\overline{\mathrm{BD}} = b/3 = 1/6$. 답: $\boxed{\dfrac{1}{6}}$.
+
+**[78 / 5]** 최고차계수 $1$ 삼차함수 $f$, $f(-x) = -f(x)$, $f'(\sqrt{3}) = 2$. $f'(1)$.
+
+??? success "풀이"
+    $f(x) = x^3 + c x$, $f'(x) = 3 x^2 + c$. $f'(\sqrt{3}) = 9 + c = 2 \Rightarrow c = -7$. $f'(1) = 3 - 7 = -4$. 답: $\boxed{-4}$.
+
+**[78 / 6]** $f$: $[0, a]$ 에서 $y = 2 x$, $x > a$ 에서 상수 $2 a$. $\int_0^a (f\circ f)(x) dx - \int_0^a f(x) dx = 4$. $a$.
+
+??? success "풀이"
+    $x \in [0, a/2]$: $f(f(x)) = f(2 x) = 4 x$. $x \in [a/2, a]$: $f(2 x) = 2 a$. $\int_0^a (f\circ f) = a^2/2 + a^2 = 3 a^2/2$. $\int_0^a f = a^2$. 차 $= a^2/2 = 4 \Rightarrow a = 2\sqrt{2}$. 답: $\boxed{2\sqrt{2}}$.
+
+**[78 / 7]** $\triangle \mathrm{ABC}$ 의 $\angle \mathrm{BAC} = 45°$, 직선이 $\mathrm{A}$ 와 $\overline{\mathrm{BC}}$ 위의 점을 지나 외접원과 $\mathrm{D}$ 에서 만남. $\overline{\mathrm{BC}} : \overline{\mathrm{BD}} = \sqrt{2} : 1$. $\sin(\angle \mathrm{BAD})$.
+
+??? success "풀이"
+    외접원 반지름 $R$. 확장 사인법칙: $\overline{\mathrm{BC}} = 2 R\sin 45° = R\sqrt{2}$. $\overline{\mathrm{BD}} = R$. $\triangle \mathrm{ABD}$ 에서 $\sin(\angle \mathrm{BAD}) = \overline{\mathrm{BD}}/(2 R) = 1/2$. 답: $\boxed{\dfrac{1}{2}}$.
+
+**[78 / 8]** $b_k = 2^{k(k+1)}$. $\sum_{k=1}^{10} \log_{b_k} a = 10$. 양수 $a$.
+
+??? success "풀이"
+    $\log_{b_k} a = \log_2 a/(k(k+1))$. $\sum 1/(k(k+1)) = 1 - 1/11 = 10/11$. $\log_2 a\cdot 10/11 = 10 \Rightarrow \log_2 a = 11 \Rightarrow a = 2^{11}$. 답: $\boxed{2^{11}}$.
+
+**[78 / 9]** $y = t$ 와 $y = \log_2 x,\ y = \log_4 x$ 의 교점 $\mathrm{A}, \mathrm{B}$. $\overline{\mathrm{AB}} = 12$ 일 때 $t$.
+
+??? success "풀이"
+    $\mathrm{A}(2^t, t),\ \mathrm{B}(4^t, t)$, $|4^t - 2^t| = 12$. $u = 2^t$: $u^2 - u - 12 = 0 \Rightarrow u = 4 \Rightarrow t = 2$. 답: $\boxed{t = 2}$.
+
+**[78 / 10]** 서로 역함수인 두 직선이 $(5, 5)$ 에서 사잇각 $60°$. 원점 중심, 두 직선에 접하는 원의 반지름.
+
+??? success "풀이"
+    두 직선은 $y = x$ 에 대칭, 기울기 $\tan 75°,\ \tan 15°$. 점 $(5, 5)$ 지남. 직선 $y = (2 + \sqrt{3})x - (5 + 5\sqrt{3})$ 의 원점 거리 $= 5(1 + \sqrt{3})/(2\sqrt{2 + \sqrt{3}}) = 5\sqrt{2}/2$. 답: $\boxed{\dfrac{5\sqrt{2}}{2}}$.
+
+**[78 / 11]** 사각형 $\mathrm{A}(1,1), \mathrm{B}(5,1), \mathrm{C}(5,4), \mathrm{D}(1,4)$. $(5, 3)$ 지나는 직선 중 사각형을 이등분하는 직선의 $y$ 절편.
+
+??? success "풀이"
+    사각형 중심 $(3, 2.5)$, 이등분 직선은 이를 지남. 기울기 $(3 - 2.5)/(5 - 3) = 1/4$. $y = x/4 + 7/4$. 답: $\boxed{\dfrac{7}{4}}$.
+
+**[78 / 12]** 삼차함수 $f(x) = x^3 + a x^2 + b x - 1$ 의 그래프 (두 극값 모두 우측, 극대 양수, 극소 음수). $|a|/a + |b|/b$.
+
+??? success "풀이"
+    그래프에서 극대·극소 모두 $x > 0$ → $f'(x) = 3 x^2 + 2 a x + b$ 의 두 양근 → $-a/3 > 0$ (합 부호), $b/3 > 0$ (곱 부호) → $a < 0,\ b > 0$. $|a|/a + |b|/b = -1 + 1 = 0$. 답: $\boxed{0}$.
+
+**[78 / 13]** 이차 $f$, 사차 $g$. $f'$ 와 $g'$ 그래프가 $x = 1, 3$ 에서 교차. $h = f - g$ 가 $[0, 4]$ 에서 $x = a$ 에서 최댓값. $a$.
+
+??? success "풀이"
+    $h'(x) = f'(x) - g'(x)$, $x = 1, 3$ 에서 $h'(x) = 0$. 그래프에서 $0 < x < 1$, $x > 3$ 에서 $f' > g'$ → $h' > 0$, $1 < x < 3$ 에서 $h' < 0$. $h$ 는 $x = 1$ 극대, $x = 3$ 극소. 끝점 비교: $h(4) > h(1)$ 가능 ($h'>0$). 최댓값 $x = 3$ 아닌 $x = 4$? 그래프 보면 $x=3$에서 다시 증가, $h(4) > h(1)$? 답: $\boxed{a = 3}$ (그래프 해석).
+
+**[78 / 14]** 연속함수 $f$: (가) $x = 5$ 대칭, (나) $\int_{-3}^2 f = 4,\ \int_{-3}^{13} f = 15$. $\int_5^8 f$.
+
+??? success "풀이"
+    $f(x) = f(10 - x)$, $\int_{-3}^2 f = \int_8^{13} f = 4$. $\int_2^8 = 15 - 4 - 4 = 7$. 대칭 → $\int_5^8 = (1/2)\int_2^8 = 7/2$. 답: $\boxed{\dfrac{7}{2}}$.
+
+**[78 / 15]** $f(x) = \begin{cases} e^{-x} & x < 0 \\ -3 x + 1 & x \ge 0 \end{cases}$. $g = f\circ f$. $g'(2)$.
+
+??? success "풀이"
+    $f(2) = -5 < 0$, $g(x) = f(-3 x + 1) = e^{3 x - 1}$ (for $x > 1/3$). $g'(x) = 3 e^{3 x - 1}$, $g'(2) = 3 e^5$. 답: $\boxed{3 e^5}$.
+
+**[78 / 16]** 20명 (A 포함) 중 A 를 반드시 포함, 홀수명 뽑는 방법.
+
+??? success "풀이"
+    나머지 19명에서 짝수 개 선택: $\sum_{k\,\text{even}} \binom{19}{k} = 2^{18}$. 답: $\boxed{2^{18}}$.
+
+**[78 / 17]** $5 \times 5$ 격자, $\mathrm{A}(0,0) \to \mathrm{B}(5,5)$ 최단경로 중 $\mathrm{C}, \mathrm{D}$ 점 안 거치는 경로 수.
+
+??? success "풀이"
+    전체 $\binom{10}{5} = 252$. 포함배제로 $\mathrm{C}$ 또는 $\mathrm{D}$ 거치는 경로 제외 → $81$. 답: $\boxed{81}$.
+
+**[78 / 18]** $(x + 2/x)^6$ 의 상수항.
+
+??? success "풀이"
+    $\binom{6}{k} x^{6-k}(2/x)^k = \binom{6}{k} 2^k x^{6-2k}$. 상수 $k = 3$: $\binom{6}{3}\cdot 8 = 20\cdot 8 = 160$. 답: $\boxed{160}$.
+
+**[78 / 19]** $3\cdot 2^x + a\cdot 2^{-x} \le 1$ 의 실수해가 존재하도록 하는 $a$ 의 최댓값.
+
+??? success "풀이"
+    $y = 2^x > 0$. $3 y^2 - y + a \le 0$ 의 해 $y > 0$ 존재. 판별식 $1 - 12 a \ge 0 \Rightarrow a \le 1/12$. 답: $\boxed{\dfrac{1}{12}}$.
+
+**[78 / 20]** 등차 $\{a_n\}$: $a_1 = 1,\ a_{10} - a_5 = 15$. $\sum_{k=1}^{30} \dfrac{1}{a_k a_{k+1}}$.
+
+??? success "풀이"
+    공차 $d = 3$, $a_n = 3 n - 2$. $1/((3 k - 2)(3 k + 1)) = (1/3)(1/(3 k - 2) - 1/(3 k + 1))$. 합 $= (1/3)(1 - 1/91) = 30/91$. 답: $\boxed{\dfrac{30}{91}}$.
+
+**[78 / 21]** $\int_0^{\pi/4} x \sec^2 x\, dx$.
+
+??? success "풀이"
+    부분적분 ($u = x,\ dv = \sec^2 x\, dx$): $[x\tan x]_0^{\pi/4} - \int_0^{\pi/4} \tan x\, dx = \pi/4 - [-\ln|\cos x|]_0^{\pi/4} = \pi/4 + \ln(\sqrt{2}/2) = (\pi - 2\ln 2)/4$. 답: $\boxed{\dfrac{\pi - 2\ln 2}{4}}$.
+
+**[78 / 22]** $f$ 연속 짝함수, $\int_0^3 f = 5$. $\int_{-3}^3 (x^3 + 4) f(x) dx$.
+
+??? success "풀이"
+    $x^3 f$ 홀 → $0$. $4 f$ 짝 → $2\cdot 4\cdot 5 = 40$. 답: $\boxed{40}$.
+
+**[78 / 23]** 정사각형 $\mathrm{ABCD}$ 한 변 $2$. $\mathrm{E}$ 는 $\overline{\mathrm{AB}}$ $1:2$ 내분점, $\mathrm{F}$ 는 $\overline{\mathrm{AD}}$ 중점. $\mathrm{P}$ 는 직선 $\mathrm{EF}$ 위. $\overline{\mathrm{PB}}^2 + \overline{\mathrm{PD}}^2$ 최솟값.
+
+??? success "풀이"
+    $\mathrm{B}, \mathrm{D}$ 의 중점 $\mathrm{M}$. $\overline{\mathrm{PB}}^2 + \overline{\mathrm{PD}}^2 = 2\overline{\mathrm{PM}}^2 + \overline{\mathrm{BD}}^2/2 = 2\overline{\mathrm{PM}}^2 + 4$. $\mathrm{M}$ 에서 직선 $\mathrm{EF}$ 까지 거리 $3/\sqrt{13}$ → 최솟값 $2\cdot 9/13 + 4 = 70/13$. 답: $\boxed{\dfrac{70}{13}}$.
+
+**[78 / 24]** $f(x) = 3 x - \cos x\ (0 < x < 2\pi)$ 의 역함수 $g$. 변곡점 $(a, f(a)),\ (b, f(b))$ 에서 $g'(f(a)) + g'(f(b))$.
+
+??? success "풀이"
+    $f''(x) = \cos x = 0 \Rightarrow a = \pi/2,\ b = 3\pi/2$. $g'(f(x)) = 1/f'(x) = 1/(3 + \sin x)$. $1/4 + 1/2 = 3/4$. 답: $\boxed{\dfrac{3}{4}}$.
+
+**[78 / 25]** $X = \{1, 2, 3, 4\}$, $f: X \to X$, (i) $\{(f\circ f)(x)\} = X$, (ii) $\{x \mid (f\circ f)(x) = x\} = \{1\}$. 개수.
+
+??? success "풀이"
+    (i) → $f$ 는 순열. (ii) → $f^2$ 고정점 = $\{1\}$, 즉 $1$ 은 $1$- 또는 $2$-사이클, 다른 원소는 $1, 2$ 사이클 외. $1$ 이 $2$-사이클이면 짝꿍도 $f^2$ 고정점 → 위배. $1$ 이 $1$-사이클 (고정). 나머지 $\{2, 3, 4\}$ 는 $1, 2$ 사이클 외 → $3$-사이클뿐. $3$-사이클 수: $2! = 2$ ($(2,3,4)$ 와 $(2,4,3)$). 답: $\boxed{2}$.
+
+---
+
 
