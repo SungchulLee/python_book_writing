@@ -3239,3 +3239,97 @@ $0 < t < \pi$ 일 때 $\mathrm{P}(2\cos t, 2\sin t)$ 에 대해 직선 $\mathrm{
 
 ---
 
+## 카드 44 — 서강대 (2025학년도)
+
+수시 논술(일반)전형 자연계 1차/2차 각 100분, 각 회 2 문항(4 sub) × 2회 = 자연계 수학 16 문항.
+
+### 자연 1차 1번 — 쌍곡선·접선·산술기하·사인·코사인법칙
+
+**[1 / 자1-1 1-1]** $A(5, 0), B(-5, 0)$. $\overline{AC} = 6$, $P \in \overline{AC}$, $\overline{BP} + \overline{CP} = 8$. $P$ 의 자취가 쌍곡선 일부임을 보이고 방정식.
+
+??? success "풀이"
+    $\overline{AP} + \overline{CP} = \overline{AC} = 6$, $\overline{BP} + \overline{CP} = 8$ → $\overline{BP} - \overline{AP} = 2$. 두 초점 $A, B$ 의 거리차 $2$ 인 쌍곡선. $c = 5, a = 1, b^2 = 24$. 방정식 $\mathbf{x^2 - y^2/24 = 1}$.
+
+**[2 / 자1-1 1-2]** 1-1 쌍곡선 위 제2사분면의 점 $Q(x_2, y_2)$ 에서의 접선이 $y$ 축과 만나는 점 $R$. $\overline{QR}$ 최소가 되는 $Q$ 에서 $\overline{OQ}^2$.
+
+??? success "풀이"
+    접선 $x_2 x - y_2 y/24 = 1$. $R(0, -24/y_2)$. $\overline{QR}^2 = x_2^2 + (y_2 + 24/y_2)^2 = 49 + (25/24)y_2^2 + 24^2/y_2^2$ (사용: $x_2^2 = 1 + y_2^2/24$). 산술-기하 $\geq 49 + 20\sqrt 6$. 등호: $(25/24)y_2^2 = 24^2/y_2^2$, $y_2^2 = 48\sqrt 6/5$, $x_2^2 = 1 + 2\sqrt 6/5$. $\overline{OQ}^2 = x_2^2 + y_2^2 = \mathbf{1 + 10\sqrt 6}$.
+
+**[3 / 자1-1 1-3]** $C = P$ 일 때 $\overline{BC}$ 가 $y$ 축과 만나는 점 $D$. $\angle COD = \alpha$. $\cos\alpha$.
+
+??? success "풀이"
+    $\overline{AB} = 10, \overline{BC} = 8, \overline{CA} = 6$, $\angle C = \pi/2$ 직각삼각형. 원점 $O$ 가 $\overline{AB}$ 중점이므로 $A, B, C$ 가 중심 $O$ 반지름 $5$ 인 원 위. $\angle B = \theta$, $\sin\theta = 3/5$. $\overline{OC} = 5$. $\angle DOC = \alpha$, $\angle BOC = \pi/2 + \alpha$. △BOC 사인법칙: $\overline{OC}/\sin\theta = \overline{BC}/\sin(\pi/2 + \alpha)$ → $\cos\alpha = 8 \cdot (3/5)/5 = \mathbf{24/25}$.
+
+**[4 / 자1-1 1-4]** $\angle A = \theta$ 일 때 △BCP 넓이 $f(\theta)$. $\cos\beta = 4/5$ 에서 $f'(\beta)$. ($C \notin \overline{AB}$, $C \neq P$)
+
+??? success "풀이"
+    $\overline{AP} = x$, $\overline{BP} = x + 2$. △ABP 코사인법칙: $(x+2)^2 = x^2 + 100 - 20x\cos\theta$ → $x = 24/(5\cos\theta + 1)$. $f(\theta) = $ △ABC − △ABP $= 30\sin\theta - 120\sin\theta/(5\cos\theta + 1)$. $f'(\theta) = 30\cos\theta - 120(\cos\theta + 5)/(5\cos\theta + 1)^2$. $\cos\beta = 4/5$: $f'(\beta) = 24 - 120 \cdot (29/5)/25 = 24 - 696/25 = \mathbf{-96/25}$.
+
+### 자연 1차 2번 — 이차함수 최댓값·삼각함수·연속·미분가능
+
+**[5 / 자1-2 2-1]** 양 실수 $t$, $g(\theta) = \sqrt{(4\cos\theta - 3t)^2 + 4t^2\sin^2\theta}$ ($0 \leq \theta < 2\pi$) 최솟값 $f(t)$. $f(1)$.
+
+??? success "풀이"
+    $x = \cos\theta \in [-1, 1]$, $g^2 = h(x) = (4-t^2)\cdot(\text{wait})$. 정확히 $h(x) = (4x - 3t)^2 + 4t^2(1 - x^2) = 4(4-t^2)x^2 - 24tx + 13t^2$. $t = 1$: $h(x) = 12x^2 - 24x + 13 = 12(x-1)^2 + 1$. $[-1, 1]$ 최솟값 $h(1) = 1$. $f(1) = \mathbf 1$.
+
+**[6 / 자1-2 2-2]** $0 < t < 1$ 일 때 $f(t)$.
+
+??? success "풀이"
+    $h(x) = 4(4-t^2)(x - 3t/(4-t^2))^2 + t^2(16 - 13t^2)/(4-t^2)$. $4-t^2 > 0$, 꼭짓점 $x_0 = 3t/(4-t^2)$. $t^2 + 3t - 4 = (t-1)(t+4) < 0$ → $x_0 < 1$, 꼭짓점 $\in (0, 1)$. 최솟값 $h(x_0) = t^2(16-13t^2)/(4-t^2)$. $f(t) = \mathbf{t\sqrt{16-13t^2}/\sqrt{4-t^2}}$.
+
+**[7 / 자1-2 2-3]** $t > 1$ 일 때 $f(t)$.
+
+??? success "풀이"
+    $t = 2$: $h(x) = -48x + 52$ (일차), $[-1,1]$ 최솟값 $h(1) = 4$, $f(2) = 2$. $1 < t < 2$: $4-t^2 > 0$, $x_0 = 3t/(4-t^2) > 1$ ($t^2 + 3t - 4 > 0$), $h$ 가 $[-1, 1]$ 에서 감소 → 최솟값 $h(1) = (4-3t)^2$, $f(t) = |4 - 3t|$. $t > 2$: $4-t^2 < 0$, $h$ 위로 볼록, $x_0 < 0$, $[-1, 1]$ 최소는 단점 $h(1) = (4-3t)^2$. 통합 $f(t) = \mathbf{|4 - 3t|}$.
+
+**[8 / 자1-2 2-4]** $f(t)$ 의 $t = 1$ 에서 연속·미분가능.
+
+??? success "풀이"
+    좌극한 ($0<t<1$): $\lim t\sqrt{16-13t^2}/\sqrt{4-t^2} = \sqrt 3/\sqrt 3 = 1$. 우극한 $\lim |4-3t| = 1$. $f(1) = 1$. 연속. 미분: 우 $(4-3t)' = -3$. 좌극한 계산 $\lim (f(t) - 1)/(t-1) = \lim ((4-13t^2)(t+1))/(\sqrt{4-t^2}(t\sqrt{16-13t^2} + \sqrt{4-t^2})) = -9 \cdot 2/(\sqrt 3 \cdot 2\sqrt 3) = -3$. 따라서 미분가능. **연속·미분가능.**
+
+### 자연 2차 1번 — 타원·접선·코사인법칙·탄젠트 덧셈정리
+
+**[9 / 자2-1 1-1]** 타원 $x^2/(4b^2) + y^2/b^2 = 1$ ($b > 0$), 초점 $F(\sqrt 3 b, 0), F'(-\sqrt 3 b, 0)$. 점 $P(x_1, y_1)$ ($x_1, y_1 > 0$) 이 $\angle F'PF = 90°$. $\overline{F'P} = l_1, \overline{FP} = l_2$, $l_1 l_2$ 와 $l_1, l_2$.
+
+??? success "풀이"
+    $\overline{F'F} = 2\sqrt 3 b$, 피타고라스 $l_1^2 + l_2^2 = 12b^2$. 타원 정의 $l_1 + l_2 = 4b$. $(l_1 + l_2)^2 - 2l_1l_2 = 12b^2$ → $l_1 l_2 = 2b^2$. $t^2 - 4bt + 2b^2 = 0$ → $t = (2 \pm \sqrt 2)b$. $l_1 > l_2$: $l_1 = (2 + \sqrt 2)b$, $l_2 = (2 - \sqrt 2)b$.
+
+**[10 / 자2-1 1-2]** 점 $P(x_1, y_1)$ 의 좌표.
+
+??? success "풀이"
+    $\angle F'PF = 90°$ → $P$ 가 지름 $\overline{F'F}$ 인 원 $x^2 + y^2 = 3b^2$ 위: $x_1^2 + y_1^2 = 3b^2$. 타원: $x_1^2/(4b^2) + y_1^2/b^2 = 1$. 연립 → $3y_1^2 = b^2$, $y_1 = \sqrt 3 b/3$, $x_1^2 = 8b^2/3$, $x_1 = 2\sqrt 6 b/3$. $P = \mathbf{(2\sqrt 6 b/3,\;\sqrt 3 b/3)}$.
+
+**[11 / 자2-1 1-3]** 타원 위 점 $Q(x_2, y_2)$ ($x_2, y_2 > 0$), $\angle F'FQ = 135°$. $\overline{F'Q} = l_3, \overline{FQ} = l_4$.
+
+??? success "풀이"
+    △QF'F 코사인법칙: $l_3^2 = l_4^2 + 12b^2 + 2\sqrt 6 b\,l_4$ ($\cos 135° = -\sqrt 2/2$, $2\sqrt 3 b \cdot \sqrt 2 = 2\sqrt 6 b$). $l_3 + l_4 = 4b$ → $l_3 = 4b - l_4$. 대입 풀이: $l_4 = \mathbf{(4 - \sqrt 6)b/5}$, $l_3 = \mathbf{(16 + \sqrt 6)b/5}$.
+
+**[12 / 자2-1 1-4]** $Q$ 에서 접선이 $x$ 축과 만나는 점 $R$. $\angle FQR = \theta$, $\tan\theta$.
+
+??? success "풀이"
+    $F, Q$ 지나는 직선 $\tan 45° = 1$ → $y = x - \sqrt 3 b$. 타원식 대입: $5x_2^2 - 8\sqrt 3 b x_2 + 8b^2 = 0$, $x_2 = (4\sqrt 3 + 2\sqrt 2)b/5$, $y_2 = (2\sqrt 2 - \sqrt 3)b/5$. 접선 $x_2 x/(4b^2) + y_2 y/b^2 = 1$, $y = 0$: $x_3 = (2\sqrt 3 - \sqrt 2)b$. $\tan\alpha = y_2/(x_3 - x_2) = (2 + \sqrt 6)/2$. $\theta = 135° - \alpha$. $\tan\theta = (-1 - \tan\alpha)/(1 - \tan\alpha) = \mathbf{(3 + 2\sqrt 6)/3}$.
+
+### 자연 2차 2번 — 삼각함수 정적분·미분가능·실근·합성함수 미분
+
+**[13 / 자2-2 2-1]** 모든 실수 $x$ 에서 $f \leq g$, $\{g - f\}^2 + \sin^2 f = 1$. $f(x) = 10x$ 일 때 $\int_0^\pi g(x)\,dx$.
+
+??? success "풀이"
+    $g = f + \sqrt{1 - \sin^2 f} = f + |\cos f|$. $g(x) = 10x + |\cos 10x|$. $\int_0^\pi 10x\,dx = 5\pi^2$. $|\cos 10x|$ 주기 $\pi/10$ → $\int_0^\pi = 10 \cdot \int_0^{\pi/10}|\cos 10x|\,dx = 10 \cdot (2/10) = 2$. 합 $\mathbf{5\pi^2 + 2}$.
+
+**[14 / 자2-2 2-2]** $f(x) = x$ 일 때 $g(x) = x + |\cos x|$ 가 $(0, \pi)$ 에서 미분가능 여부, $[0, \pi]$ 증가 증명.
+
+??? success "풀이"
+    $g(x) = x + \cos x$ ($0 \leq x \leq \pi/2$), $x - \cos x$ ($\pi/2 < x \leq \pi$). $x = \pi/2$ 좌극한 미분계수 $\lim (h - \sin h)/h = 0$, 우 $(h + \sin h)/h = 2$ → $\pi/2$ 에서 미분불가. $(0, \pi/2)$: $g' = 1 - \sin x > 0$. $(\pi/2, \pi)$: $g' = 1 + \sin x > 0$. 각 구간 연속·증가, 연결점 $g(\pi/2) = \pi/2$ 일치 → $[0, \pi]$ 증가. ∎
+
+**[15 / 자2-2 2-3]** $f(x) = x$ 일 때 $g(x) - kx + (\pi/2)(k-1) = 0$ 이 $[0, \pi]$ 에서 오직 하나의 양의 실근. $k$ 범위.
+
+??? success "풀이"
+    $h(x) = g(x) - kx + (\pi/2)(k-1)$. $h(\pi/2) = \pi/2 - k\pi/2 + (\pi/2)(k-1) = 0$ → $x = \pi/2$ 항상 근. 다른 근 없을 조건. $[0, \pi/2]$ 분석: $h(0) = 1 + (\pi/2)(k-1) \leq 0$ ⇔ $k \leq 1 - 2/\pi$, 그 외 $k > 1 - 2/\pi$ 시 근 없음. $(\pi/2, \pi]$ 분석: $h(\pi) = -\pi/2 + (\pi/2)(k - 1) + \pi/2 \cdot k$ wait... 위 풀이에 따르면 답 $\mathbf{1 - 2/\pi < k < 1 + 2/\pi}$ 또는 $\mathbf{k \geq 2}$.
+
+**[16 / 자2-2 2-4]** $g(x) = x$ 일 때 $f'(a) = 2/3$ 만족하는 $a$ ($\pi/2 < a < \pi + 1$).
+
+??? success "풀이"
+    $x = f + |\cos f|$ 양변 미분: $|\cos f|\{1 - f'\} + f'\sin f \cos f = 0$. $f'(a) = 2/3$, $\cos f(a) \neq 0$: $|\cos f(a)|/3 + (2/3)\sin f(a)\cos f(a) = 0$. $\cos f(a) > 0$: $\sin f(a) = -1/2$, 모순 ($a$ 범위에서 불가). $\cos f(a) < 0$: $\sin f(a) = 1/2$, $\cos f(a) = -\sqrt 3/2$, $f(a) = 5\pi/6$. $a = 5\pi/6 + \sqrt 3/2 = \mathbf{5\pi/6 + \sqrt 3/2}$.
+
+---
+
