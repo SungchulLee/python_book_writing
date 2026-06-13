@@ -4316,5 +4316,53 @@ $f(x) = e^{nx} + e^{-nx}$, 점 $P(x, y)$ 에서의 접선 기울기 $= 2n$. $Q$ 
 
 ---
 
+## 카드 56 — 건국대 2019학년도 KU논술 (7 문항)
+
+출처: 2019학년도 건국대 입학전형 선행학습 영향평가 보고서 — KU논술우수자전형
+(인문사회II 수학 3, 자연 수학 4).
+
+### 인문사회II 수학 문제 2 — 수요·공급 곡선·인구구조·총수요총공급 (수학 II, 미적분 I)
+
+**[1 / 인2-1]** 두 재화 $A, B$ 의 가격이 $P_A = 50 - Q_A,\ P_B = 100 - Q_B$. 총구매액 $S = Q_A P_A + Q_B P_B$ 가 $3076 \leq S \leq 3100$ 이고 $0 \leq Q_A \leq 49,\ 0 \leq Q_B \leq 99$ 인 정수 순서쌍 $(Q_A, Q_B)$ 의 개수.
+
+??? success "풀이"
+    $S = -[(Q_A - 25)^2 + (Q_B - 50)^2] + 3125$. 조건은 $5^2 \leq (Q_A - 25)^2 + (Q_B - 50)^2 \leq 7^2$. 중심 $(25, 50)$, 반지름 $5$ 와 $7$ 인 두 원 사이의 환형에 속하는 정수 격자점 수: 1사분면 (내부점) $\times 4$ + (축 위 점) $\times 4$ = $(2 + 2 + 3 + 3 + 4 + 3) \cdot 4 + 3 \cdot 4 = 68 + 12 = \mathbf{80}$.
+
+**[2 / 인2-2]** 100세 까지 인구 분포가 표 형식. 2000년 말 인구 $a$, 2099년 말 인구 $b$. (1) $b - a$ 의 값. (2) 평균연령 $c$ (2000년), $d$ (2099년) 에 대해 $d - c$ 를 소수점 첫째 자리에서 반올림한 값.
+
+??? success "풀이"
+    (1) $a = 100^2 + 99^2 + \cdots + 1^2 = \dfrac{100 \cdot 101 \cdot 201}{6} = 338{,}350$. $b = 1^2 + 2^2 + \cdots + 100^2 = 338{,}350$. 따라서 $b - a = \mathbf 0$. (2) $c = S_{2000}/a$, $S_{2000} = \sum_{k=1}^{100} k^2 (100 - k) = 100 \sum k^2 - \sum k^3$. $\sum k^3 = (100 \cdot 101/2)^2$. $c = 100 - \dfrac{3 \cdot 100 \cdot 101}{2 \cdot 201} \approx 24.62$. $d = S_{2099}/b - $ 대칭으로 $d = \dfrac{3 \cdot 100 \cdot 101}{2 \cdot 201} - 1 \approx 74.37$. $d - c \approx 49.7462 \approx \mathbf{50}$.
+
+**[3 / 인2-3]** 톱니파 $g(t)$ 적분 $F(t) = \int_0^t g(s)\,ds$ (주기 $8$, 최솟값 $2, 10, \ldots$ 최댓값 $6, 14, \ldots$). 총수요 $Y = 3 - 2(X - F(t))$, 총공급 $Y = X^2$. 처음 최저점 시점 $a$ 와 GDP $b$, 처음 최정점 시점 $c$ 와 GDP $d$. $c + d - a - b$ 를 소수점 둘째 자리 반올림.
+
+??? success "풀이"
+    $g(t) = t/2 - 1$ (구간 $[0, 4]$). $F(2) = \int_0^2 (t/2 - 1)\,dt = [t^2/4 - t]_0^2 = -1$. 최저점 시점 $a = 2$, $b = -1 + \sqrt{4 + 2 F(2)} = -1 + \sqrt 2 \approx 0.41$. $F(6) = \int_0^4 g\,dt + \int_4^6 g\,dt = 0 + 1 = 1$. 최정점 시점 $c = 6$, $d = -1 + \sqrt{4 + 2 \cdot 1} = -1 + \sqrt 6 \approx 1.45$. 따라서 $c + d - a - b = 6 + 1.45 - 2 - 0.41 = 5.04 \approx \mathbf{5.0}$.
+
+### 자연 수학 문제 1 — 부등식의 영역·정사영 (수학 I, 기하와 벡터)
+
+**[4 / 자1-1]** 사각형 $ABCD$ ($A(2, 5), B(0, 0), C(4, 0), D(3, 4)$) 의 내부 또는 경계 점 $P$ 에 대해 $\overline{PA} = 1$ 일 때 $\triangle ADP$ 의 넓이와 $\triangle BCP$ 넓이의 합의 최솟값.
+
+??? success "풀이"
+    직선 $AD$: $x + y - 7 = 0$. $\overline{AD} = \sqrt 2$. $\triangle ADP$ 넓이 $= \dfrac{1}{2} \cdot \sqrt 2 \cdot \dfrac{7 - x - y}{\sqrt 2} = \dfrac{7 - x - y}{2}$. $\triangle BCP$ 넓이 $= \dfrac{1}{2} \cdot 4 \cdot y = 2 y$. 합 $k = \dfrac{1}{2}(7 - x + 3 y)$, 즉 직선 $x - 3 y - 7 + 2 k = 0$. $\overline{PA} = 1$ 이므로 $(x - 2)^2 + (y - 5)^2 = 1$ 위에서 직선과 원이 만나는 $k$ 의 최솟값. 대입 후 $10 y^2 + (20 - 12 k) y + 4 k^2 - 20 k + 49 = 0$. 판별식 $\geq 0$: $-4 k^2 + 80 k - 390 \geq 0$ → $10 - \dfrac{\sqrt{10}}{2} \leq k \leq 10 + \dfrac{\sqrt{10}}{2}$. 따라서 최솟값 $= \mathbf{10 - \dfrac{\sqrt{10}}{2}}$.
+
+**[5 / 자1-2]** 공간 사각형 $EFGH$ ($E(-1, 0, 2), F(4, -2, -1), G(4, 1, -4), H(0, 1, 0)$) 내부·경계 점 $Q$ 에 대해 $\triangle EHQ$ 와 $\triangle GFQ$ 넓이 합이 $5\sqrt 3$ 인 점 $Q$ 가 이루는 선분의 길이.
+
+??? success "풀이"
+    평면 $\alpha$ : $x + y + z = 1$. $\alpha$ 와 $xy$ 평면의 이면각 $\theta$ : $\cos\theta = \dfrac{(1, 1, 1) \cdot (0, 0, 1)}{\sqrt 3} = \dfrac{1}{\sqrt 3}$. $E, F, G, H, Q$ 의 $xy$ 정사영 $E', F', G', H', Q'$. 넓이 합 $S \cos\theta = 5\sqrt 3 \cdot \dfrac{1}{\sqrt 3} = 5$. 직선 $E'H'$: $x - y + 1 = 0$, $\overline{E'H'} = \sqrt 2$. $\triangle E'H'Q' = \dfrac{x - y + 1}{2}$. $\triangle G'F'Q' = \dfrac{3(4 - x)}{2}$. 합 $= -x - y/2 + 13/2 = 5$ → $y = -2 x + 3$. 직선 $H'G'$ ($y = 1$) 과의 교점 $I'(1, 1)$, 직선 $E'F'$ ($y = -2 x/5 - 2/5$) 와의 교점 $J'(17/8, -5/4)$. 원래 평면 위 점 $I(1, 1, -1)$, $J(17/8, -5/4, 1/8)$. $\overline{IJ} = \sqrt{(9/8)^2 + (9/4)^2 + (9/8)^2} = \mathbf{\dfrac{9}{8}\sqrt 6}$.
+
+### 자연 수학 문제 2 — 삼각함수 덧셈정리·공간기하 부피 (미적분 II, 기하와 벡터)
+
+**[6 / 자2-1]** 한 변 $1$ 인 정삼각형 $ABC, A'B'C'$ 를 아랫면·윗면으로 하는 높이 $1$ 인 삼각기둥. $P$ 가 $\triangle ABC$ 내부·경계에서 움직일 때 각 $\angle DPA'$ 의 크기가 최대가 되는 점 $P$ 의 모임 (단, $D$ 는 변 $AA'$ 의 중점).
+
+??? success "풀이"
+    $\overline{AP} = a$, $\angle DPA' = \theta$, $\angle DPA = \theta'$. 각 $PAA'$ 가 직각이므로 $\tan\theta' = \dfrac{1}{2 a}$, $\tan(\theta + \theta') = \dfrac{1}{a}$. 덧셈정리: $\tan\theta = \dfrac{a}{2 a^2 + 1}$. $f(a) = \dfrac{a}{2 a^2 + 1}$, $f'(a) = \dfrac{-2 a^2 + 1}{(2 a^2 + 1)^2} = 0$ → $a = \dfrac{1}{\sqrt 2}$ 에서 최댓값. 따라서 점 $P$ 의 모임은 **중심 $A$, 반지름 $\dfrac{1}{\sqrt 2}$ 인 원 위의 점들 중 변 $AC$ 와 변 $AB$ 사이의 호**.
+
+**[7 / 자2-2]** 위 삼각기둥에서 $D, N, F$ 가 각각 $\overline{AA'}, \overline{AB}, \overline{B'C'}$ 의 중점. 평면 $\alpha$ 가 $D, N, F$ 를 지난다. $\alpha$ 가 기둥을 두 조각으로 나눌 때 꼭짓점 $B$ 를 포함하는 조각의 부피.
+
+??? success "풀이"
+    $D(1, 0, 1/2),\ N(3/2, \sqrt 3/4, 0),\ F(1/4, \sqrt 3/4, 1)$. 평면 $\alpha$ 법선벡터 $(2, 8/\sqrt 3, 1)$, 방정식 $4 x + (8/\sqrt 3) y + 2 z - 5 = 0$. 평면과 변 $A'C'$ 교점 $G(3/4, 0, 1)$, 변 $BC$ 교점 $H(5/12, 5\sqrt 3/12, 0)$, 직선 $A'B'$ 위 점 $I(5/4, -\sqrt 3/4, 1)$, 직선 $BB'$ 위 점 $J(1/2, \sqrt 3/2, -1/2)$. 구하는 부피 = (사면체 $FIJB'$) − (사면체 $A'DGI$) − (사면체 $BHNJ$). 사면체 $FIJB' = \dfrac{1}{3} \cdot \dfrac{1}{2} \cdot \dfrac{3}{4} \cdot \dfrac{3}{2} = \dfrac{3\sqrt 3}{32}$. 사면체 $A'DGI = \dfrac{\sqrt 3}{192}$. 사면체 $BHNJ = \dfrac{\sqrt 3}{288}$. 부피 $= \dfrac{3\sqrt 3}{32} - \dfrac{\sqrt 3}{192} - \dfrac{\sqrt 3}{288} = \mathbf{\dfrac{49\sqrt 3}{576}}$.
+
+---
+
 
 
