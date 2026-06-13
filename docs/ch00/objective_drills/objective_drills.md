@@ -3743,5 +3743,96 @@ $f(x) = e^{nx} + e^{-nx}$, 점 $P(x, y)$ 에서의 접선 기울기 $= 2n$. $Q$ 
 
 ---
 
+## 카드 50 — 연세대 미래캠퍼스 (2025학년도)
+
+수시 논술우수자 전형 — 자연계 수학 3문항(소문항 3-2-4 → 9 sub) + 의예 수학 2문항(소문항 2-2 → 4 sub). 총 13 sub-문항.
+
+### 자연 문제 1 — 정적분과 급수의 합·치환적분 (수학I·미적분)
+
+곡선 $y = x^2$ 과 $x$ 축, 직선 $x = 1$ 로 둘러싸인 도형의 넓이를 $S$. 구간 $[0, 1]$ 을 $n$ 등분, 〈그림 1〉 오른쪽 끝점 값을 높이로, 〈그림 2〉 왼쪽 끝점 값을 높이로 하는 직사각형 합.
+
+**[1 / 자1-1]** $n = 5$ 일 때 〈그림 1〉, 〈그림 2〉 의 넓이 합 각각.
+
+??? success "풀이"
+    〈그림 1〉 오른쪽 끝점 $x = k/5$ ($k = 1, \ldots, 5$), 높이 $(k/5)^2$, 합 $A_1 = (1/5)\sum_{k=1}^5 (k/5)^2 = (1 + 4 + 9 + 16 + 25)/125 = 55/125 = \mathbf{11/25}$. 〈그림 2〉 왼쪽 끝점 $x = (k-1)/5$, $k = 1, \ldots, 5$, $A_2 = (1/5)\sum_{k=0}^4 (k/5)^2 = (0 + 1 + 4 + 9 + 16)/125 = 30/125 = \mathbf{6/25}$.
+
+**[2 / 자1-2]** $n = 100$ 일 때 〈그림 1〉, 〈그림 2〉 의 넓이 합 각각.
+
+??? success "풀이"
+    일반식: $A_1 = (1/n^3)\sum_{k=1}^n k^2 = n(n+1)(2n+1)/(6n^3)$, $A_2 = (1/n^3)\sum_{k=1}^{n-1} k^2 = (n-1)n(2n-1)/(6n^3)$. $n = 100$: $A_1 = (100 \cdot 101 \cdot 201)/(6 \cdot 10^6) = \mathbf{338{,}350/10^6}$ ($\approx 0.33835$); $A_2 = (99 \cdot 100 \cdot 199)/(6 \cdot 10^6) = \mathbf{328{,}350/10^6}$ ($\approx 0.32835$).
+
+**[3 / 자1-3]** 구간 $[0, \sqrt{\pi/2}]$ 에서 곡선 $y = x\cos(x^2)$ 과 $x$ 축으로 둘러싸인 도형의 넓이.
+
+??? success "풀이"
+    $S = \int_0^{\sqrt{\pi/2}} x \cos(x^2)\, dx$. $t = x^2$ 치환, $dt = 2x\, dx$. $S = \int_0^{\pi/2} \cos t \cdot (1/2)\, dt = (1/2)[\sin t]_0^{\pi/2} = (1/2)(1 - 0) = \mathbf{1/2}$.
+
+### 자연 문제 2 — 복소수·삼차방정식·삼차함수 극값 (수학·수학II)
+
+(가) 최고차 계수가 1 인 삼차방정식 $x^3 + ax^2 + bx - 4 = 0$ 의 한 허근이 $1 + i$ ($a, b$ 실수). (나) 최고차 계수가 1 인 삼차방정식 $x^3 + cx^2 + 100x + 100 = 0$, $c$ 양의 정수.
+
+**[4 / 자2-1]** $y = x^3 + ax^2 + bx - 4$ 와 $x$ 축, $y$ 축으로 둘러싸인 도형의 넓이.
+
+??? success "풀이"
+    켤레근 $1 - i$ 도 근. 나머지 실근 $x_1$: $(x - (1+i))(x - (1-i))(x - x_1) = x^3 - (x_1 + 2) x^2 + (2 x_1 + 2) x - 2 x_1$. 상수항 비교 $-2 x_1 = -4$ → $x_1 = 2$, 따라서 $a = -(x_1 + 2) = -4$, $b = 2 x_1 + 2 = 6$. 즉 $y = x^3 - 4 x^2 + 6 x - 4$. $x$ 절편 $x = 2$ (실근), $y$ 절편 $-4$. $0 \leq x \leq 2$ 에서 $y \leq 0$, 넓이 $= \int_0^2 |x^3 - 4 x^2 + 6 x - 4|\, dx = \int_0^2 (-x^3 + 4 x^2 - 6 x + 4)\, dx = [-x^4/4 + 4 x^3/3 - 3 x^2 + 4 x]_0^2 = -4 + 32/3 - 12 + 8 = \mathbf{8/3}$.
+
+**[5 / 자2-2]** $y = x^3 + cx^2 + 100 x + 100$ 이 극댓값과 극솟값을 모두 가질 때 $c$ 의 최솟값.
+
+??? success "풀이"
+    $y' = 3 x^2 + 2 c x + 100$ 이 서로 다른 두 실근 → $D/4 = c^2 - 300 > 0$ → $c^2 > 300$. 양의 정수 $c$: $17^2 = 289 < 300 < 324 = 18^2$. 따라서 $c$ 의 최솟값 $= \mathbf{18}$.
+
+### 자연 문제 3 — 매개변수·곡선의 길이·이계도함수 (미적분)
+
+좌표평면 위 점 $P_1$ 의 시각 $t$ 에서의 위치 $(x_1(t), y_1(t))$: $x_1(t) = \int_0^t \theta \sin\theta\, d\theta$, $y_1(t) = \int_0^t \theta \cos\theta\, d\theta$. 점 $P_2$: $(x_2(t), y_2(t)) = (-t \cos t, t \sin t)$. ($t \geq 0$)
+
+**[6 / 자3-1]** 점 $P_1$ 과 원점 사이의 거리.
+
+??? success "풀이"
+    부분적분: $x_1(t) = [-\theta \cos\theta]_0^t + \int_0^t \cos\theta\, d\theta = -t \cos t + \sin t$. $y_1(t) = [\theta \sin\theta]_0^t - \int_0^t \sin\theta\, d\theta = t \sin t + \cos t - 1$. 거리 $s(t) = \sqrt{x_1^2 + y_1^2}$. $x_1^2 = t^2 \cos^2 t - 2 t \cos t \sin t + \sin^2 t$, $y_1^2 = t^2 \sin^2 t + 2 t \sin t \cos t - 2 t \sin t + \cos^2 t - 2 \cos t + 1$. 합 $= t^2 + 1 + 1 - 2 t \sin t - 2 \cos t = t^2 + 2 - 2 t \sin t - 2 \cos t$. $s(t) = \mathbf{\sqrt{t^2 + 2 - 2 t \sin t - 2 \cos t}}$.
+
+**[7 / 자3-2]** 점 $P_1$ 과 원점 사이 거리의 순간변화율이 $0$ 이 되는 시각 $t$.
+
+??? success "풀이"
+    $\dfrac{ds}{dt} = \dfrac{1}{2 s}(2 t - 2 \sin t - 2 t \cos t + 2 \sin t) = \dfrac{t (1 - \cos t)}{s} = 0$. $t(1 - \cos t) = 0$ → $t = 0$ 또는 $\cos t = 1$ → $t = \mathbf{0 \text{ 또는 } 2 n \pi}$ ($n = 1, 2, \ldots$).
+
+**[8 / 자3-3]** $t = 0$ 에서 $t = 2\pi$ 까지 점 $P_1$ 이 움직인 거리.
+
+??? success "풀이"
+    곡선의 길이 $l = \int_0^{2\pi}\sqrt{(dx_1/dt)^2 + (dy_1/dt)^2}\, dt$. $dx_1/dt = -\cos t + t \sin t + \cos t = t \sin t$. $dy_1/dt = \sin t + t \cos t - \sin t = t \cos t$. $(dx_1/dt)^2 + (dy_1/dt)^2 = t^2$. $l = \int_0^{2\pi} t\, dt = [t^2/2]_0^{2\pi} = \mathbf{2 \pi^2}$.
+
+**[9 / 자3-4]** $0 < t \leq 2\pi$ 에서 두 점 $P_1, P_2$ 사이의 거리가 최대가 되는 시각과 그 때의 거리.
+
+??? success "풀이"
+    $x_1 - x_2 = -t \cos t + \sin t - (-t \cos t) = \sin t$, $y_1 - y_2 = t \sin t + \cos t - 1 - t \sin t = \cos t - 1$. 거리 $d(t) = \sqrt{\sin^2 t + (\cos t - 1)^2} = \sqrt{2 - 2 \cos t}$. $d'(t) = \dfrac{2 \sin t}{2 \sqrt{2 - 2 \cos t}} = \dfrac{\sin t}{\sqrt{2 - 2\cos t}} = 0$ → $\sin t = 0$. $0 < t \leq 2\pi$ 에서 $t = \pi$ 또는 $t = 2\pi$. $d(\pi) = 2, d(2\pi) = 0$. 최댓값은 $t = \mathbf{\pi}$, 거리 $= \mathbf{2}$.
+
+### 의예 문제 1 — 쌍곡선·부분적분·치환적분·벡터 (기하·미적분)
+
+두 초점 $F, F'$ 사이 거리 $14$, 주축 길이 $10$ 인 쌍곡선. 위의 점 $P$ 에서 접선 $\ell$ 이 $x$ 축과 만나는 점 $Q$ ($x$ 좌표 양수). $\ell$ 은 $\angle FPF'$ 의 이등분선. $\overline{F'R} = 10$ 인 $R$ ($R$ 은 $\overline{PF'}$ 위), $\overline{F'R}$ 을 지름으로 하는 원이 $Q$ 지남. $P$ 는 제1사분면.
+
+**[10 / 의1-1]** $\angle FPF' = \theta$ 라 할 때 $f(x) = (5/\theta)(5x - 2)^3$ 에 대해 $\int_0^\theta x \cos x \, f'(\sin x)\, dx + \int_{\pi/2 - \theta}^{\pi/2} f(\cos x)\, dx$.
+
+??? success "풀이"
+    쌍곡선 $x^2/25 - y^2/24 = 1$ ($c = 7, a = 5$). $\overline{F'P} - \overline{FP} = 10 = \overline{F'R}$ → $\overline{PR} = \overline{PF}$ → $\triangle PRF$ 이등변. $Q$ 가 $\overline{F'R}$ 지름 원 위 → $\angle F'QR = \pi/2$. 합동 $\triangle PQR \equiv \triangle PQF$ → $\angle PQR = \angle PQF = \pi/4$, $\ell$ 기울기 $\tan(\pi/4) = 1$. 또 $\overline{RQ} = \overline{FQ}$. $Q = (k, 0)$ 두면 $\overline{F'Q} = 7 + k, \overline{FQ} = 7 - k$, 직각 $\triangle RQF'$: $10^2 = (7+k)^2 + (7-k)^2$ → $k = 1$. $\ell: y = x - 1$ 을 쌍곡선에 대입 $\to P = (25, 24)$. $\overline{FP} = 30, \overline{F'P} = 40$. 코사인법칙: $\cos\theta = (30^2 + 40^2 - 14^2)/(2 \cdot 30 \cdot 40) = 24/25$, $\sin\theta = 7/25$. 적분: ($[x f(\sin x)]' = f(\sin x) + x \cos x\, f'(\sin x)$ 부분적분) $\int_0^\theta x \cos x\, f'(\sin x)\, dx = \theta f(\sin\theta) - \int_0^\theta f(\sin x)\, dx$. 또 $x = \pi/2 - t$ 치환 $\int_{\pi/2 - \theta}^{\pi/2} f(\cos x)\, dx = \int_0^\theta f(\sin t)\, dt$. 합 $= \theta f(\sin\theta) = \theta \cdot (5/\theta)(5 \cdot 7/25 - 2)^3 = 5 \cdot (-3/5)^3 = \mathbf{-27/25}$.
+
+**[11 / 의1-2]** $\overline{RF}$ 를 $2 : 1$ 로 내분하는 점 $D$, 직선 $PR$ 에 대한 $D$ 의 대칭점 $E$. $\overrightarrow{PR} = \vec a, \overrightarrow{PF} = \vec b$ 일 때 $\overrightarrow{PE} = k \vec a + l \vec b$. $k + l$.
+
+??? success "풀이"
+    좌표: $P = (25, 24), F = (7, 0), R = (1, 6)$ (∵ $F'(-7, 0)$ 에서 방향벡터 $(P - F')/|PF'| = (32, 24)/40$, $R = F' + 10 \cdot (32, 24)/40 = (-7 + 8, 6) = (1, 6)$). $D = (R + 2F)/3 = (1 + 14, 6 + 0)/3 = (5, 2)$. $\overrightarrow{PD} = (\vec a + 2\vec b)/3$. $\angle DPR = \angle EPR$ 이고 $\overrightarrow{PD} + \overrightarrow{PE} = m \overrightarrow{PR}$ (대칭): $(\vec a + 2\vec b)/3 + (k \vec a + l \vec b) = m \vec a$ → $(1/3 + k - m)\vec a + (2/3 + l)\vec b = 0$. $\vec a, \vec b$ 1차독립이므로 $l = -2/3$, $m = k + 1/3$. 한편 $|\overrightarrow{PD}| = |\overrightarrow{PE}|$: $\overrightarrow{PD} \cdot \overrightarrow{PD} = \overrightarrow{PE} \cdot \overrightarrow{PE}$. $|\vec a| = |\vec b| = 30$ ($\overline{PR} = \overline{PF} = 30$), $\vec a \cdot \vec b = 30 \cdot 30 \cdot 24/25 = 864$. 식 $((\vec a + 2\vec b)/3) \cdot ((\vec a + 2\vec b)/3) = (k \vec a - (2/3)\vec b) \cdot (k \vec a - (2/3)\vec b)$: $(|\vec a|^2 + 4 \vec a \cdot \vec b + 4 |\vec b|^2)/9 = k^2 |\vec a|^2 - (4k/3)\vec a \cdot \vec b + (4/9)|\vec b|^2$. 대입 정리 $\to 225 k^2 - 288 k - 121 = 0$ → $(3k + 1)(75 k - 121) = 0$ → $k = 121/75$ ($k \neq -1/3$). $k + l = 121/75 - 2/3 = 121/75 - 50/75 = \mathbf{71/75}$.
+
+### 의예 문제 2 — 공간도형·삼각함수 극한 (수학I·미적분·기하)
+
+(가) 모선 $l$, 밑면 원의 중심 $M$ 인 원뿔. 밑면 둘레 위 두 점 $A, B$, $\overline{AB}$ 는 $M$ 지남. $A$ 지나고 $\overline{OB}$ 에 수직인 평면 $\alpha$ 가 $\overline{OB}$ 와 만나는 점 $C$ ($\overline{OB}$ 이등분). $\alpha$ 와 원뿔 교선 위 점 $P$, $\overline{AC}$ 대칭점 $Q$. (라) 그 도형 위에 짝수 $n$ 개의 구가 모두 평면 $\beta$ (원기둥 밑면 포함 평면) 와 만나지 않고 모두 모선과 접하고 원기둥과 한 점에서 만남.
+
+**[12 / 의2-1]** $\angle AMK = \theta, \overline{MJ} = t$, $\overline{PQ}$ 길이 $f(\theta)$, 호 $AK$ 길이 $g(\theta)$, $L(\theta) = f(\theta)/g(\theta)$, $\lim_{\theta \to 0+} L(\theta)$.
+
+??? success "풀이"
+    $\triangle OAB$ 정삼각형 ($\overline{OA} = \overline{OB} = l$, $\overline{AC} \perp \overline{OB}$, $C$ 중점). 밑면 반지름 $R = l/2$. 직각삼각형 $MGJ$: $\overline{GM} = t \cos\theta$, $\overline{MJ} = t$, $\angle GMJ = \theta$ → $\overline{JG} = t \sin\theta$. 직사각형 $HGJP$ 에서 $\overline{PH} = \overline{JG} = t \sin\theta$. 대칭점 $Q$ → $\overline{PQ} = 2 \overline{PH} = 2 t \sin\theta$. 호 길이 $g(\theta) = R \theta$. 또 $H \in$ 삼각형 $AB$ 의 평면 (각 $\pi/6$ at $A$), $\overline{AG} = R - t \cos\theta$, $\overline{HG} = (R - t \cos\theta)/\sqrt 3$. $\overline{KJ} = R - t$, $\overline{PJ} = \sqrt 3 (R - t)$. 직사각형: $\overline{HG} = \overline{PJ}$ → $(R - t \cos\theta)/\sqrt 3 = \sqrt 3 (R - t)$ → $R - t \cos\theta = 3 R - 3 t$ → $t = 2 R/(3 - \cos\theta)$. 따라서 $L(\theta) = 2 t \sin\theta/(R \theta) = 4 \sin\theta/(\theta (3 - \cos\theta))$. $\lim_{\theta \to 0+} = \lim (\sin\theta/\theta) \cdot 4/(3 - \cos\theta) = 1 \cdot 4/2 = \mathbf 2$.
+
+**[13 / 의2-2]** 조건을 만족하는 구의 반지름을 $n$ 에 대한 함수로, 구의 반지름을 최대로 하는 $n$.
+
+??? success "풀이"
+    $n$ 개 구 중심 지나는 평면이 원기둥 자른 단면 원 $O_1$ 반지름 $R$, 구 자른 단면 원 $O_2$ 반지름 $r$. 정 $n$ 각형 변 $2 r$, 중심 각 $2\pi/n$. 인접 두 원 $O_2$ 중심 거리 $2 r$, $O_1$ 중심에서 각 $\theta_2 = \pi/n$. $R = r/\sin(\pi/n) + r$ → $r = R \sin(\pi/n)/(1 + \sin(\pi/n))$. 구가 $\beta$ 아래 조건 $\sqrt 3 R > \overline{U_2 W_2} = (3 + \sqrt 3) r$, 정리하면 $1/\sqrt 3 > \sin(\pi/n)$. 표에서 $\sin(\pi/5) \approx 0.5878, \sin(\pi/6) = 0.5, 1/\sqrt 3 \approx 0.5774$. $n \geq 6$ 짝수: $n = \mathbf 6$.
+
+---
+
 
 
