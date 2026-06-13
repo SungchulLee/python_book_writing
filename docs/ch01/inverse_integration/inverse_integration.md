@@ -180,3 +180,82 @@ $$
         - **$g'(x) = \int_k^x f$**: $g(x) = \int_k^x (x-t)f(t)dt$ 는 $x f$ 형 적분에서 $t f$ 형 적분을 빼는 분리로 미분이 깔끔. 사이상수 $-xf + xf$ 가 상쇄됨.
         - **부호 일정 ⇔ $H(k)$ 가 전역 극값**: $F = H - H(k)$ 가 $\ge 0$ 이려면 $H(k)$ 가 $H$ 의 전역 최솟값. 사차 $H$ 의 두 극솟값이 동일 ($x=1,3$ 에서) 이므로 두 값 모두 후보.
         - **$(x-1)^2(x-3)^2$ 인수분해**: $k^4 - 8k^3 + 22k^2 - 24k + 9 = ((k-1)(k-3))^2$ 가 깔끔. 이중근이라 추가 해 없음.
+
+---
+
+**연습문제 3.** [지수·로그의 $y = x$ 대칭이동과 평행사변형]
+
+곡선 $y = 2^x$ 위의 점 $\mathrm{A}$ 를 직선 $y = x$ 에 대하여 대칭이동한 점을 $\mathrm{B}$, 곡선 $y = \log_2(x - 4) + 1$ 위의 점 $\mathrm{C}$ 에서 직선 $y = x$ 에 내린 수선의 발을 $\mathrm{D}$ 라 할 때, 네 점 $\mathrm{A}, \mathrm{B}, \mathrm{C}, \mathrm{D}$ 는
+
+$$
+(\text{직선 } \mathrm{AB} \text{ 의 } y\text{ 절편}) = (\text{직선 } \mathrm{CD} \text{ 의 } y\text{ 절편}) - 5
+$$
+
+를 만족한다.
+
+(1) 점 $\mathrm{A}$ 의 좌표가 $(a, b)$ 일 때, 점 $\mathrm{P}(a + 1, b + 4)$ 는 직선 $\mathrm{CD}$ 와 곡선 $y = 2^{x - 1} + 4$ 의 교점임을 보이시오.
+
+(2) 점 $\mathrm{A}$ 의 좌표가 $(3, 8)$ 일 때, 두 선분 $\overline{\mathrm{AC}}$ 와 $\overline{\mathrm{BD}}$ 의 길이를 구하시오.
+
+(3) 사각형 $\mathrm{ABCD}$ 가 평행사변형일 때, 사각형 $\mathrm{ABCD}$ 의 넓이를 구하시오.
+
+??? success "연습문제 3 풀이"
+
+    **사전 정리.** $\mathrm{A}, \mathrm{B}$ 가 $y = x$ 대칭이고 $\mathrm{C}, \mathrm{D}$ 도 ($\mathrm{D}$ 가 수선의 발이므로) 마찬가지로 $y = x$ 에 수직. 따라서 직선 $\mathrm{AB}$ 와 $\mathrm{CD}$ 모두 기울기 $-1$, 즉 **평행**.
+
+    $\mathrm{A}(a, b)$, $\mathrm{B}(b, a)$. 직선 $\mathrm{AB}$: $y = -(x - a) + b = -x + (a + b)$. $y$ 절편 $= a + b$.
+
+    조건에 의해 직선 $\mathrm{CD}$ 의 $y$ 절편 $= a + b + 5$, 즉 $\mathrm{CD}: y = -x + (a + b + 5)$.
+
+    **(1).** 점 $\mathrm{P}(a + 1, b + 4)$ 가 직선 $\mathrm{CD}$ 위에 있는지: $b + 4 = -(a + 1) + (a + b + 5) = b + 4$ ✓.
+
+    점 $\mathrm{P}$ 가 곡선 $y = 2^{x - 1} + 4$ 위에 있는지: $b + 4 = 2^{(a + 1) - 1} + 4 = 2^a + 4$. $\mathrm{A}(a, b) \in y = 2^x$ 이므로 $b = 2^a$, 따라서 $b + 4 = 2^a + 4$ ✓.
+
+    **(2).** $y = 2^{x-1} + 4$ 와 $y = \log_2(x - 4) + 1$ 은 서로 **역함수** (두 식을 $y \leftrightarrow x$ 로 바꾸면 일치). 따라서 두 곡선은 $y = x$ 대칭. 점 $\mathrm{C}$ 의 $y = x$ 대칭점 (= 직선 $y = x$ 에 대해 거울상) 은 곡선 $y = 2^{x-1} + 4$ 위의 한 점이며, (1) 에서 그 점이 정확히 $\mathrm{P}$ 임을 보였다. 즉
+
+    $$
+    \mathrm{C} = (\mathrm{P} \text{ 의 } y = x \text{ 대칭점}) = (b + 4, a + 1)
+    $$
+
+    $\mathrm{D}$ 는 $\mathrm{C}$ 에서 $y = x$ 에 내린 수선의 발: 두 좌표의 평균
+
+    $$
+    \mathrm{D} = \left(\frac{a + b + 5}{2},\;\frac{a + b + 5}{2}\right)
+    $$
+
+    $\mathrm{A}(3, 8) \Rightarrow a = 3, b = 8$. $\mathrm{B}(8, 3)$, $\mathrm{C}(12, 4)$, $\mathrm{D}(8, 8)$.
+
+    $$
+    \overline{\mathrm{AC}} = \sqrt{(12 - 3)^2 + (4 - 8)^2} = \sqrt{81 + 16} = \sqrt{97}
+    $$
+
+    $$
+    \overline{\mathrm{BD}} = \sqrt{(8 - 8)^2 + (8 - 3)^2} = 5\quad\square
+    $$
+
+    **(3).** 평행사변형 조건은 두 대각선의 중점 일치. 또는 $\vec{\mathrm{AB}} = \vec{\mathrm{DC}}$:
+
+    $$
+    \vec{\mathrm{AB}} = (b - a,\;a - b),\qquad \vec{\mathrm{DC}} = \left(\frac{b - a + 3}{2},\;\frac{a - b - 3}{2}\right)
+    $$
+
+    $\vec{\mathrm{AB}} = \vec{\mathrm{DC}}$: $b - a = \dfrac{b - a + 3}{2} \Rightarrow b - a = 3$.
+
+    이때 $|\overline{\mathrm{AB}}| = \sqrt{(b - a)^2 + (a - b)^2} = (b - a)\sqrt 2 = 3\sqrt 2$.
+
+    두 평행한 직선 $\mathrm{AB}$ ($y = -x + a + b$) 와 $\mathrm{CD}$ ($y = -x + a + b + 5$) 사이의 거리:
+
+    $$
+    \frac{|(a + b + 5) - (a + b)|}{\sqrt{1^2 + 1^2}} = \frac{5}{\sqrt 2} = \frac{5\sqrt 2}{2}
+    $$
+
+    평행사변형 넓이 = 밑변 × 높이:
+
+    $$
+    3\sqrt 2 \times \frac{5\sqrt 2}{2} = \boxed{15}\quad\square
+    $$
+
+    !!! tip "큰 그림"
+        - **두 그래프가 역함수 ⇔ $y = x$ 대칭**: $y = 2^{x-1} + 4$ 와 $y = \log_2(x - 4) + 1$ 은 정확히 서로의 역함수.
+        - **수선의 발 = 두 좌표의 평균**: $(p, q)$ 의 직선 $y = x$ 위 수선의 발은 $\bigl(\tfrac{p+q}{2}, \tfrac{p+q}{2}\bigr)$.
+        - **평행사변형 조건**이 $b - a = 3$ 한 줄로 단순화되며, 넓이는 (밑변 $3\sqrt 2$) × (평행 직선 거리 $5/\sqrt 2$) = $15$ 로 정수.
