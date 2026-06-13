@@ -605,3 +605,36 @@ $\displaystyle\int_0^2\!\!\left\{(2 e^x f'(x))^2 + \dfrac{1}{(e^x f(x))^2}\right
     $$
     \boxed{f(1) = \dfrac{1}{\sqrt 2\,e},\quad \min = 8}\quad\square
     $$
+
+---
+
+**연습문제 12.** [전구간 부등식 + 정적분의 최솟값]
+
+두 함수 $f(x) = x^4 - 2x^3 + x^2$, $g(x) = 12x + k$ ($k$ 상수) 가 모든 실수 $x$ 에 대하여 $f(x) \ge g(x)$ 를 만족한다. $\displaystyle\int_0^1 (f(x) - g(x))\,dx$ 의 최솟값을 구하시오.
+
+??? success "연습문제 12 풀이"
+
+    $h(x) := f(x) - g(x) - (-k) = x^4 - 2x^3 + x^2 - 12x$ 로 두면 $f - g = h(x) - k$.
+
+    $h'(x) = 4x^3 - 6x^2 + 2x - 12 = 2(x - 2)(2x^2 + x + 3)$. $2x^2 + x + 3$ 의 판별식 $1 - 24 < 0$ 이라 항상 양수. 따라서 $h'(x) = 0 \Leftrightarrow x = 2$ 가 유일한 임계점.
+
+    $x < 2$ 에서 $h' < 0$, $x > 2$ 에서 $h' > 0$ 이므로 $h$ 는 $x = 2$ 에서 전구간 최솟값을 가진다.
+
+    $h(2) = 16 - 16 + 4 - 24 = -20$.
+
+    조건 "$\forall x:\;h(x) - k \ge 0$" $\Leftrightarrow h(2) - k \ge 0 \Leftrightarrow k \le -20$.
+
+    $\displaystyle\int_0^1 h(x)\,dx = \tfrac{1}{5} - \tfrac{1}{2} + \tfrac{1}{3} - 6 = \tfrac{6 - 15 + 10}{30} - 6 = \tfrac{1}{30} - 6 = -\tfrac{179}{30}$. 따라서
+
+    $$
+    \int_0^1 (f - g)\,dx = -\frac{179}{30} - k
+    $$
+
+    이는 $k$ 에 대한 감소함수. 최솟값은 $k$ 의 최댓값 $k = -20$ 에서:
+
+    $$
+    -\frac{179}{30} + 20 = -\frac{179}{30} + \frac{600}{30} = \boxed{\frac{421}{30}}\quad\square
+    $$
+
+    !!! tip "핵심"
+        "**전구간 부등식**" 은 한 점 ($x = 2$) 의 부등식으로 환원된다. 적분 최솟값은 $k$ 의 끝값 ($k = -20$) 에서 발생.
