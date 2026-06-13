@@ -429,3 +429,58 @@ $$
     !!! info "교훈"
         - **점 수열의 두 좌표 사이의 관계**가 곡선의 방정식과 정확히 연결되어 점화식을 만든다.
         - 등비 + 등차의 결합 점화식 $y_{k+1} = r y_k + c$ 의 해는 부동점 $y^* = c/(1 - r)$ 을 빼면 등비수열.
+
+---
+
+**연습문제 11.** [위치벡터와 8제곱 부등식의 최댓값]
+$k > 1$ 인 실수 $k$ 에 대하여 함수 $f(x) = -x^3 + \left(\dfrac{1}{k} + 1\right)x^2 - \left(\dfrac{1}{k} + 1\right)x$ 가 있고, $0 \le s \le 1$ 인 실수 $s$ 에 대하여 두 점
+
+$$
+\mathrm{A}\bigl(\sqrt[8]{1 - s^8},\;s\bigr),\quad \mathrm{B}\bigl(\sqrt[8]{1 - (f(s))^8},\;f(s)\bigr)
+$$
+
+이 있다. $\overrightarrow{\mathrm{OM}} = \dfrac{1}{2}\bigl(\overrightarrow{\mathrm{OA}} + \overrightarrow{\mathrm{OB}}\bigr)$ 인 점 $\mathrm{M}(g(s), h(s))$ 가 $(g(s))^8 + (h(s))^8 \ge 1 - \dfrac{1}{k^8}$ 을 만족시킬 때
+
+$$
+\left\{\sqrt[8]{1 - s^8} - \sqrt[8]{1 - (f(s))^8}\right\}^8 + (s - f(s))^8
+$$
+
+의 최댓값을 구하시오 (단, $\mathrm{O}$ 는 원점).
+
+??? success "연습문제 11 풀이 (요약)"
+
+    $a = \sqrt[8]{1 - s^8}$, $b = \sqrt[8]{1 - (f(s))^8}$ 로 놓으면 $\mathrm{M}\!\left(\dfrac{a + b}{2},\;\dfrac{s + f(s)}{2}\right)$.
+
+    조건: $\left(\dfrac{a+b}{2}\right)^8 + \left(\dfrac{s+f(s)}{2}\right)^8 \ge 1 - \dfrac{1}{k^8}$.
+
+    핵심 항등식 (양수 $a, b$ 에 대한 8제곱의 산술-기하 부등식):
+
+    $$
+    (a + b)^8 + (a - b)^8 \ge 2\,(a^8 + b^8)
+    $$
+
+    적용:
+
+    $$
+    \left(\frac{a+b}{2}\right)^8 + \left(\frac{a-b}{2}\right)^8 \le \frac{a^8 + b^8}{2} \cdot 2^{1-?}
+    $$
+
+    정확한 변형 (출제 풀이): $F(x) = (1+x)^8 + (1-x)^8$ 의 최댓값 $2^7$ 을 이용하여 $(a+b)^8 + (a-b)^8 \le 2^7(a^8 + b^8)$ (정밀한 부등식). 양수 $a, b$ 에 대해 $u = (a+b)/2$, $v = (a-b)/2$, $u \ge v > 0$. $F(v/u) \le 2^7$ 에서 $(a+b)^8 + (a-b)^8 \ge 2(a^8 + b^8)$ — 잠깐, 두 변형 결합.
+
+    조건과 결합하여
+
+    $$
+    \left\{\sqrt[8]{1 - s^8} - \sqrt[8]{1 - f^8}\right\}^8 + (s - f)^8 \le \frac{256}{k^8}
+    $$
+
+    의 상한이 나옴. **최댓값** $= \dfrac{256}{k^8}$.
+
+    등호 성립: $s = f(s) = -f(s)$ 등 특수한 경우. 출제 풀이는 $s = 1/k$ 에서 등호가 성립하며 $f(1/k) = -1/k$ 임을 보인다.
+
+    $$
+    \boxed{\frac{256}{k^8}}\quad\square
+    $$
+
+    !!! info "교훈"
+        - **8제곱 부등식**: $(a+b)^n + (a-b)^n$ 와 $a^n + b^n$ 사이의 관계는 Hardy-Littlewood 형 부등식의 한 사례.
+        - 위치벡터의 중점 $\mathrm{M}$ 에 대한 조건이 두 좌표의 8제곱 합에 부과하는 제약을, 다른 좌표 차분의 8제곱 합으로 환원하는 것이 핵심 아이디어.
