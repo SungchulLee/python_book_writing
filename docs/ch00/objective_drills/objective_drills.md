@@ -4988,4 +4988,136 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 72 — 건국대 (2025학년도, KU논술 인문사회II 수학)
+
+> 출처: 2025학년도 건국대학교 선행학습영향평가 평가보고서, 문항카드 5 (KU논술우수자 인문사회II). 출제범위: 수학·수학Ⅰ·수학Ⅱ·확률과통계 (환율·물가·수요공급·등비수열·확률). 6개 수학 하위문항 (문제 2 만; 문제 1 은 인문 분석).
+
+### 환율과 화폐 가치
+
+**[72 / 인2-1-1]** 갑국 치즈 1995년 $5{,}000$ 원/kg → 2025년 $8{,}000$ 원/kg. 갑국 축구선수 건우의 1995년 연봉 $2{,}000$ 만원. 2025년 원화 가치로 환산.
+
+??? success "풀이"
+    1995년 연봉을 치즈 무게로: $2{,}000$ 만원 $/(5{,}000$ 원$/$ kg$) = 4{,}000$ kg. 2025년 원화 가치: $4{,}000 \cdot 8{,}000 = 3{,}200$ 만원. 답: $\boxed{3{,}200\,\text{만원}}$.
+
+**[72 / 인2-1-2]** 을국 치즈 1995년 $4$ 파운드/kg → 2025년 $10$ 파운드/kg. 환율 1995년 $1{,}200$, 2025년 $1{,}600$ 원/파운드. 건호 2025년 연봉 $10$ 만 파운드. 건호 연봉을 치즈 가격을 이용해 1995년 파운드, 1995년 환율로 원화 → 1995년 건우 연봉의 몇 배.
+
+??? success "풀이"
+    $10$ 만 파운드 $/(10$ 파운드$/$ kg$) = 10{,}000$ kg. 1995년 치즈가격 환산: $10{,}000 \cdot 4 = 4$ 만 파운드. 1995년 환율: $4$ 만 파운드 $\cdot 1{,}200 = 4{,}800$ 만원. $4{,}800/2{,}000 = 2.4$. 답: $\boxed{2.4\,\text{배}}$.
+
+### 수요·공급·잉여
+
+**[72 / 인2-2-1]** 공급 $P = Q^2 + 2 Q$, 수요 $P = 10 - Q$. 균형 거래량·가격.
+
+??? success "풀이"
+    $Q^2 + 2 Q = 10 - Q \Rightarrow Q^2 + 3 Q - 10 = 0 \Rightarrow (Q - 2)(Q + 5) = 0 \Rightarrow Q = 2$. $P = 8$. 답: $\boxed{Q = 2,\ P = 8}$.
+
+**[72 / 인2-2-2]** 소비자·생산자 잉여.
+
+??? success "풀이"
+    소비자 잉여 $= \int_0^2 (10 - Q) dQ - 16 = (20 - 2) - 16 = 2$. 생산자 잉여 $= 16 - \int_0^2 (Q^2 + 2 Q) dQ = 16 - (8/3 + 4) = 28/3$. 답: $\boxed{\text{소비자 잉여} = 2,\ \text{생산자 잉여} = \dfrac{28}{3}}$.
+
+### 등비수열과 이산확률
+
+금융상품 A: $a_0$ 가격 $100$ 만원, 매 시점 가격 상승 (× $2$) 또는 하락 (× $1/2$) 확률 각 $0.5$, 독립시행. 시점 $a_4$ 가격을 $X$, 거래 차익 $= X - 100$.
+
+**[72 / 인2-3-1]** $a_4$ 에서 $X = 400$ 만원이 될 확률.
+
+??? success "풀이"
+    상승 $3$ 번, 하락 $1$ 번 → $100 \cdot 2^3 \cdot (1/2)^1 = 400$. 확률 $= \binom{4}{3}(1/2)^3(1/2)^1 = 4/16 = 1/4$. 답: $\boxed{\dfrac{1}{4}}$.
+
+**[72 / 인2-3-2]** 거래 차익의 기댓값 (만 원 단위로 천 원 이하 버림).
+
+??? success "풀이"
+    $X$ 의 분포: $P(X = 25/4) = 1/16,\ P(X = 25) = 1/4,\ P(X = 100) = 3/8,\ P(X = 400) = 1/4,\ P(X = 1600) = 1/16$. $\mathrm{E}(X) = (25/4 + 100 + 600 + 1600 + 1600)/16 = 15620/64 \approx 244$. 거래 차익 기댓값 $\approx 244 - 100 = 144$. 답: $\boxed{144\,\text{만원}}$.
+
+**[72 / 인2-3-3]** 금융상품 B 도 시점마다 $\times 2$ 또는 $\times 1/2$ 의 독립시행이지만 상승 확률 $p$ 는 미지. $a_0$ 에서 B 를 $100$ 만원에 구입, $a_2$ 에서 매도 시 거래 차익 기댓값 $= 0$. $p$.
+
+??? success "풀이"
+    $X \in \{25, 100, 400\}$, 분포 $\{(1-p)^2,\ 2 p(1-p),\ p^2\}$. $\mathrm{E}(X) = 100$ → $25(1-p)^2 + 200 p(1-p) + 400 p^2 = 100 \Rightarrow 3 p^2 + 2 p - 1 = 0 \Rightarrow (3 p - 1)(p + 1) = 0$. $p > 0$ → $p = 1/3$. 답: $\boxed{p = \dfrac{1}{3}}$.
+
+---
+
+## 카드 73 — 건국대 (2025학년도, KU논술 자연계 수학)
+
+> 출처: 2025학년도 건국대학교 선행학습영향평가 평가보고서, 문항카드 6 (KU논술우수자 자연계). 출제범위: 수학·수학Ⅰ·수학Ⅱ·확률과통계·미적분·기하 (미분·적분·곡선 사이의 넓이·삼각함수·코사인법칙·이면각). 4 문제.
+
+### 두 점의 자취 — 코사인 덧셈정리
+
+원 $C$: 중심 $\mathrm{O}$, 반지름 $3$ 위 점 $\mathrm{A}$, 위치 $(3\cos t, 3\sin t)$. 원 (중심 $(7, 0)$, 반지름 $1$) 위 점 $\mathrm{B}$, 위치 $(7 + \cos 3 t, \sin 3 t)$.
+
+**[73 / 1]** $0 \le t \le 2\pi$ 동안 선분 $\mathrm{AB}$ 와 원 $C$ 가 서로 다른 두 점에서 만나는 $t$ 의 범위.
+
+??? success "풀이"
+    선분 $\mathrm{AB}$ 가 원과 두 점에서 만나려면 $\angle \mathrm{OAB}$ 가 예각, 즉 $\overline{\mathrm{AB}}^2 + 3^2 > \overline{\mathrm{OB}}^2$. 좌표 대입·정리: $7\cos t + \cos t\cos 3 t + \sin t \sin 3 t < 3$. 좌변 $= 7\cos t + \cos 2 t = 2\cos^2 t + 7\cos t - 1$ (코사인 덧셈정리). $(2\cos t - 1)(\cos t + 4) < 0 \Rightarrow \cos t < 1/2$. 답: $\boxed{\dfrac{\pi}{3} < t < \dfrac{5\pi}{3}}$.
+
+### 이면각과 삼수선의 정리
+
+한 모서리 길이 $6$ 인 정사면체 $\mathrm{ABCD}$, $\mathrm{E}$ 는 모서리 $\mathrm{BD}$ 위, $\overline{\mathrm{DE}} = 2$. 선분 $\mathrm{PQ}$ 는 평면 $\mathrm{ABC}$ 위에 있고 점 $\mathrm{A}$ 를 지남.
+
+**[73 / 2]** 사면체 $\mathrm{DEPQ}$ 의 부피가 최대일 때 평면 $\mathrm{EPQ}$ 와 평면 $\mathrm{ABC}$ 가 이루는 각 $\theta$ 의 $\cos\theta$.
+
+??? success "풀이"
+    부피 최대 ⇒ 선분 $\mathrm{PQ} \perp$ 선분 $\mathrm{AB}$. $\overline{\mathrm{DH}}$ 의 길이 ($\mathrm{H}$ 는 $\triangle \mathrm{ABC}$ 무게중심): $\mathrm{AH} = 2\sqrt{3}$, $\overline{\mathrm{DH}} = \sqrt{36 - 12} = 2\sqrt{6}$. $\mathrm{E}$ 에서 평면 $\mathrm{ABC}$ 에 내린 수선의 발 $\mathrm{F}$, $\overline{\mathrm{EF}} = (2/3)\overline{\mathrm{DH}} = 4\sqrt{6}/3$. $\overline{\mathrm{FG}}$ (G 는 $\mathrm{F}$ 에서 $\mathrm{PQ}$ 에 내린 수선의 발): $= 6 - 3\cdot(2/3) = 4$. $\overline{\mathrm{EG}} = \sqrt{(4\sqrt{6}/3)^2 + 16} = \sqrt{80}/... = 4\sqrt{15}/3$. $\cos\theta = \overline{\mathrm{FG}}/\overline{\mathrm{EG}} = 4/(4\sqrt{15}/3) = 3/\sqrt{15} = \sqrt{15}/5$. 답: $\boxed{\cos\theta = \dfrac{\sqrt{15}}{5}}$.
+
+### 사각형 대각선 길이의 변화율
+
+사각형 $\mathrm{ABCD}$: $\overline{\mathrm{AB}} = \sqrt{3},\ \overline{\mathrm{BC}} = 2,\ \overline{\mathrm{CD}} = 2,\ \overline{\mathrm{DA}} = 1$. $\angle \mathrm{BAD} = \theta$ 일 때 대각선 $\overline{\mathrm{AC}} = f(\theta)$.
+
+**[73 / 3]** $f'(\pi/2)$.
+
+??? success "풀이"
+    $\angle \mathrm{ABC} = \phi$. 직각삼각형 $\mathrm{CDH}$ 등에서: $4 = (\sqrt{3} - \cos\theta - 2\cos\phi)^2 + (2\sin\phi - \sin\theta)^2$. $\theta$ 에 대해 미분, $\theta = \pi/2$ 대입: $\phi(\pi/2) = \pi/2$, $f(\pi/2) = \sqrt{7}$, $\phi'(\pi/2) = -1/2$ 도출. 코사인법칙 $f(\theta)^2 = 4 + 3 - 4\sqrt{3}\cos\phi$. $\theta = \pi/2$ 에서 $2 f f' = 4\sqrt{3}\phi'\sin\phi = -2\sqrt{3}$. $f'(\pi/2) = -\sqrt{3}/\sqrt{7} = -\sqrt{21}/7$. 답: $\boxed{f'(\pi/2) = -\dfrac{\sqrt{21}}{7}}$.
+
+### 포물선 위 두 점과 도형의 넓이
+
+곡선 $y = x^2\ (x \ge 0)$, 점 $\mathrm{P}(0, 10)$, $\mathrm{A}, \mathrm{B}$ 는 곡선 위, $\angle \mathrm{OPA} = \theta$. [그림 1] 넓이 (곡선·선분 $\mathrm{OP}$·$\mathrm{PA}$) $= f(\theta)$. [그림 2] $\angle \mathrm{APB} = \pi/2$, $g(\theta) = f(\theta + \pi/2) - f(\theta)$.
+
+**[73 / 4-1]** $\mathrm{A}$ 의 $x$ 좌표를 $t$ 라 할 때 $f'(\theta)$ 를 $t$ 로.
+
+??? success "풀이"
+    $\mathrm{A}(t, t^2)$. 사다리꼴 $\mathrm{OPAQ}$ 넓이 (Q $= (t, 0)$) $= (t/2)(10 + t^2)$. $f(\theta) = (t/2)(10 + t^2) - \int_0^t x^2 dx = (1/6)t^3 + 5 t$. $\mathrm{A}$ 에서 $y$ 축에 내린 수선 길이 $t$, $y$ 좌표 차 $10 - t^2$, $\tan\theta = t/(10 - t^2)$. 미분 → $\sec^2\theta = (10 + t^2)\cdot t'/((10 - t^2)^2)$. $\sec^2\theta = 1 + t^2/(10 - t^2)^2 = ((10 - t^2)^2 + t^2)/(10 - t^2)^2$. $dt/d\theta = ((10 - t^2)^2 + t^2)/(10 + t^2)$. $f'(\theta) = ((1/2) t^2 + 5)\cdot dt/d\theta = ((10 - t^2)^2 + t^2)/2$. 답: $\boxed{f'(\theta) = \dfrac{(10 - t^2)^2 + t^2}{2}}$.
+
+**[73 / 4-2]** $g'(\theta) = 0$ 일 때 $\mathrm{A}, \mathrm{B}$ 의 $x$ 좌표를 $a, b$ 라 하면 $a^2 + b^2,\ a b,\ g(\theta)$.
+
+??? success "풀이"
+    $g'(\theta) = 0 \Leftrightarrow f'(\theta + \pi/2) = f'(\theta) \Leftrightarrow ((10 - b^2)^2 + b^2)/2 = ((10 - a^2)^2 + a^2)/2$. 전개 정리 → $(a^2 - b^2)(a^2 + b^2 - 19) = 0$. $a \ne b$ → $a^2 + b^2 = 19$. $\overline{\mathrm{AP}} \perp \overline{\mathrm{BP}}$: $((a^2 - 10)/a)\cdot((b^2 - 10)/b) = -1 \Rightarrow (a^2 - 10)(b^2 - 10) + a b = 0$. 전개 + $a^2 + b^2 = 19$: $(a b)^2 + a b - 90 = 0 \Rightarrow (a b - 9)(a b + 10) = 0$, $a b > 0$ → $a b = 9$. $b - a = 1$, $b^3 - a^3 = (b - a)(a^2 + a b + b^2) = 19 + 9 = 28$. $g(\theta) = ((1/6) b^3 + 5 b) - ((1/6) a^3 + 5 a) = (1/6)(b^3 - a^3) + 5(b - a) = 28/6 + 5 = 29/3$. 답: $\boxed{a^2 + b^2 = 19,\ \ a b = 9,\ \ g(\theta) = \dfrac{29}{3}}$.
+
+---
+
+## 카드 74 — 건국대 (2025학년도, KU자유전공학부 수리논술)
+
+> 출처: 2025학년도 건국대학교 선행학습영향평가 평가보고서, 문항카드 7 (KU논술우수자 자유전공학부). 수학 3 문제 (문제 1 은 인문 통섭 논술이므로 제외).
+
+### 곡선과 직선 위 점 비율의 최솟값
+
+곡선 $y = x^3 + x + 3\ (x \ge 0)$ 위 점 $\mathrm{A}$, 직선 $y = 4 x - 2$ 위 점 $\mathrm{B}$, 선분 $\mathrm{AB}$ 는 원점 $\mathrm{O}$ 를 지남.
+
+**[74 / 2-1]** $\overline{\mathrm{OA}}/\overline{\mathrm{OB}}$ 의 최솟값.
+
+??? success "풀이"
+    $\mathrm{A}(a, a^3 + a + 3)$. 직선 $\mathrm{OA}$ 의 방정식 $y = ((a^3 + a + 3)/a) x$, 직선 $y = 4 x - 2$ 와 교점 $\mathrm{B}$: $x = 2 a/(4 a - (a^3 + a + 3))$. 길이 비 $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = |a^3 - 3 a + 3|/2$. $f(x) = x^3 - 3 x + 3\ (x \ge 0)$, $f'(x) = 3(x - 1)(x + 1)$. $x = 1$ 에서 극솟값 $f(1) = 1$. 최솟값 $|f(1)|/2 = 1/2$ ($a \ne 0$). $a = 0$ 일 때 $\mathrm{A}(0, 3),\ \mathrm{B}(0, -2)$, 비 $= 3/2 > 1/2$. 답: $\boxed{\dfrac{1}{2}}$.
+
+### 카드 합이 $4$ 의 배수인 조합
+
+**[74 / 2-2]** $1\sim 9$ 자연수가 적힌 $9$ 장 카드 중 $4$ 장의 합이 $4$ 의 배수.
+
+??? success "풀이"
+    합의 가능 범위: $1+2+3+4 = 10 \le k \le 6+7+8+9 = 30$. $4$ 의 배수: $k \in \{12, 16, 20, 24, 28\}$. 4 원소 부분합 = $k$ 인 경우를 모두 나열 (포함배제 또는 직접 열거). $k = 12$: $2$ 가지, $k = 16$: $8$, $k = 20$: $12$, $k = 24$: $8$, $k = 28$: $2$. 합 $32$. 답: $\boxed{32\,\text{가지}}$.
+
+### 내접원을 갖는 삼각형 ABC
+
+원 $T$ 반지름 $1$, 선분 $\mathrm{AB}$ 와 $\mathrm{P}$ 에서 접함. $\overline{\mathrm{AB}} = 4$, $\overline{\mathrm{AP}} = t$.
+
+**[74 / 2-3-1]** $t = 1/2$ 일 때 원 $T$ 가 내접원인 삼각형 $\mathrm{ABC}$ 의 넓이.
+
+??? success "풀이"
+    $\mathrm{A}(0, 0)$, $\mathrm{B}(4, 0)$, 원 중심 $\mathrm{E}(1/2, 1)$. 직선 $\mathrm{AC}$ 기울기 $m$, $\mathrm{E}$ 와 거리 $= 1$: $|1 - m/2|/\sqrt{m^2 + 1} = 1 \Rightarrow m = -4/3$. 직선 $\mathrm{BC}$ 기울기 $n$: $|n/2 - 1 - 4 n|/\sqrt{n^2 + 1} = 1$ ... $n = -28/45$. 교점 $\mathrm{C}(-7/2, 14/3)$. 넓이 $= (1/2)\cdot 4\cdot |14/3| = 28/3$. 답: $\boxed{\dfrac{28}{3}}$.
+
+**[74 / 2-3-2]** 원 $T$ 가 내접원인 삼각형 $\mathrm{ABC}$ 가 존재할 $t$ 의 범위.
+
+??? success "풀이"
+    삼각형 존재 조건: $\angle \mathrm{A} + \angle \mathrm{B} < \pi$. 내접원 접점·반지름 이용 $\tan(\angle \mathrm{A}/2) = 1/t,\ \tan(\angle \mathrm{B}/2) = 1/(4 - t)$. $\tan(\pi/2 - \angle \mathrm{A}/2) > \tan(\angle \mathrm{B}/2) \Rightarrow t > 1/(4 - t) \Rightarrow t(4 - t) > 1 \Rightarrow t^2 - 4 t + 1 < 0 \Rightarrow 2 - \sqrt{3} < t < 2 + \sqrt{3}$. 답: $\boxed{2 - \sqrt{3} < t < 2 + \sqrt{3}}$.
+
+---
+
 
