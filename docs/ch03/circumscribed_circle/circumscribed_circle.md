@@ -81,3 +81,22 @@
     - **각의 분기 조건** $\sin 2B = \sin 2C$ 또는 $\cos 2B = \cos 2C$ 가 삼각형을 **직각** 또는 **이등변** 두 경우로 한정.
     - 외접원의 넓이 비는 사인법칙의 변형으로 변의 비로 직접 변환.
     - 최솟값을 구할 때는 두 경우의 후보를 비교한다.
+
+---
+
+**연습문제 (보충).** [넓이와 두 변으로부터 내접원 반지름]
+삼각형 $\mathrm{ABC}$ 에서 $\overline{\mathrm{AB}} = 5$, $\overline{\mathrm{AC}} = 3$, 넓이 $= \sqrt{26}$ 이다. $\angle A$ 가 예각일 때 삼각형 $\mathrm{ABC}$ 의 내접원의 반지름의 길이를 구하시오.
+
+??? success "연습문제 (보충) 풀이"
+
+    $S = \dfrac{1}{2} \cdot 3 \cdot 5 \sin A = \sqrt{26} \Rightarrow \sin A = \dfrac{2\sqrt{26}}{15}$.
+
+    $\angle A$ 예각이므로 $\cos A = \sqrt{1 - 4 \cdot 26/225} = \sqrt{121/225} = \dfrac{11}{15}$.
+
+    코사인법칙: $\overline{\mathrm{BC}}^2 = 9 + 25 - 2 \cdot 3 \cdot 5 \cdot \dfrac{11}{15} = 34 - 22 = 12$, $\overline{\mathrm{BC}} = 2\sqrt 3$.
+
+    내접원 반지름 공식 $S = \dfrac{1}{2}(a + b + c) r$:
+
+    $$
+    r = \frac{2S}{a + b + c} = \frac{2\sqrt{26}}{2\sqrt 3 + 3 + 5} = \frac{2\sqrt{26}}{8 + 2\sqrt 3} = \frac{\sqrt{26}}{4 + \sqrt 3} = \frac{\sqrt{26}(4 - \sqrt 3)}{13} = \frac{4\sqrt{26} - \sqrt{78}}{13}\quad\square
+    $$
