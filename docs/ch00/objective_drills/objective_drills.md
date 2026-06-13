@@ -5401,4 +5401,64 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 79 — 연세대 미래캠퍼스 (2020학년도)
+
+> 출처: 2020학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과보고서, 문항카드 3·4·5·6·7 (일반논술 전형 자연계 + 의예과). 자연계 6 sub-문항 + 의예 4 sub-문항. 총 10 문항.
+
+### 자연계 — 부분적분·점과 직선 거리·삼각함수 극한
+
+**[79 / 자1]** $f(x) = |\sin x|$. $\displaystyle \int_{-\pi/2}^{\pi/2} f(x) e^x\, dx$.
+
+??? success "풀이"
+    부분적분 두 번 → $\int \sin x\cdot e^x\, dx = (\sin x - \cos x)e^x/2$. $\int_{-\pi/2}^{\pi/2}|\sin x| e^x dx = -\int_{-\pi/2}^0 \sin x\, e^x dx + \int_0^{\pi/2}\sin x\, e^x dx = 1/2 - (-e^{-\pi/2}/2) + e^{\pi/2}/2 + 1/2 = 1 + (e^{\pi/2} - e^{-\pi/2})/2$. 답: $\boxed{1 + \dfrac{e^{\pi/2} - e^{-\pi/2}}{2}}$.
+
+**[79 / 자2-1]** 점 $\mathrm{P}(x_1, y_1)$ 과 직선 $l: a x + b y + c = 0$ 사이 거리 $d = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}$ 임을 증명. (단, $a \ne 0,\ b \ne 0$.)
+
+??? success "풀이"
+    $\mathrm{P}$ 에서 $x$ 축·$y$ 축에 평행한 직선이 $l$ 과 만나는 점을 $A, B$. 직각삼각형 $\mathrm{APB}$ 에서 $\overline{\mathrm{AB}}\cdot \overline{\mathrm{PH}} = \overline{\mathrm{AP}}\cdot \overline{\mathrm{BP}}$ ($\mathrm{H}$ 는 $\mathrm{P}$ 에서 $l$ 에 내린 수선의 발). $\overline{\mathrm{AP}} = |a x_1 + b y_1 + c|/|a|$, $\overline{\mathrm{BP}} = |a x_1 + b y_1 + c|/|b|$. $\overline{\mathrm{AB}} = |a x_1 + b y_1 + c|\sqrt{a^2 + b^2}/(|a b|)$. 따라서 $\overline{\mathrm{PH}} = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}$. ∎
+
+**[79 / 자2-2]** 두 명제 $p: x^2 - n \le 0$, $q: -1 \le x \le 3$. $p$ 가 $q$ 이기 위한 필요조건, $n$ 은 한 자리 자연수. 중심 $(n, 0)$ 단위원 위 점과 직선 $y = -3 x/4 - 3/4$ 사이 거리의 최솟값.
+
+??? success "풀이"
+    $p$ 의 진리집합 $P = [-\sqrt{n}, \sqrt{n}] \supset [-1, 3] = Q$ → $\sqrt{n} \ge 3$, $n \ge 9$, 한 자리 자연수 → $n = 9$. 원 중심 $(9, 0)$ 과 직선 $3 x + 4 y + 3 = 0$ 사이 거리 $= |27 + 0 + 3|/5 = 6$. 단위원 반지름 $1$ 뺀 최소거리 $= 5$. 답: $\boxed{n = 9,\ d_{\min} = 5}$.
+
+**[79 / 자3-1]** 단위원에서 $\displaystyle \lim_{x \to 0}\dfrac{\sin x}{x} = 1$ 을 증명.
+
+??? success "풀이"
+    $0 < x < \pi/2$: $\triangle \mathrm{OAB} < \text{부채꼴 OAB} < \triangle \mathrm{OAT}$ → $(1/2)\sin x < x/2 < (1/2)\tan x$. $\sin x$ 로 나누고 역수: $\cos x < \sin x/x < 1$. $x \to 0^+$ 에서 $\cos x \to 1$, 조임 정리 → $\sin x/x \to 1$. $x < 0$ 은 $x = -t$ 치환으로 동일 결과. ∎
+
+**[79 / 자3-2]** $\displaystyle \lim_{x \to 0}\dfrac{1 - \cos x}{x}$.
+
+??? success "풀이"
+    분자·분모에 $1 + \cos x$ 곱 → $(1 - \cos^2 x)/(x(1 + \cos x)) = \sin^2 x/(x(1 + \cos x)) = (\sin x/x)\cdot \sin x/(1 + \cos x) \to 1\cdot 0/2 = 0$. 답: $\boxed{0}$.
+
+**[79 / 자3-3]** 도함수 정의로 $(\sin x)'$ 구하기.
+
+??? success "풀이"
+    $y' = \lim_{h \to 0}(\sin(x + h) - \sin x)/h = \lim_{h \to 0}(\sin x\cos h + \cos x\sin h - \sin x)/h = \cos x\cdot \lim(\sin h/h) - \sin x\cdot \lim((1 - \cos h)/h) = \cos x\cdot 1 - \sin x\cdot 0 = \cos x$. ∎
+
+### 의예과 — 원·접선·삼각함수·정사각뿔 부피
+
+**[79 / 의1-1]** 원 $(x - 3)^2 + (y - 2)^2 = 4$ 와 직선 $t x + y = 2$ 가 접하기 위한 $t$ 와 접점.
+
+??? success "풀이"
+    중심 $(3, 2)$ 와 직선 사이 거리 $|3 t + 2 - 2|/\sqrt{t^2 + 1} = 3|t|/\sqrt{t^2 + 1} = 2 \Rightarrow 9 t^2 = 4(t^2 + 1) \Rightarrow t = \pm 2/\sqrt{5}$. 접점: 중심에서 직선에 수직인 직선 (기울기 $1/t$, 점 $(3, 2)$ 지남) 과 원래 직선의 교점 → $(5/3,\ (6 \mp 2\sqrt{5})/3)$. 답: $\boxed{t = \pm \dfrac{2}{\sqrt{5}},\ \ \text{접점} = \left(\dfrac{5}{3},\ \dfrac{6 \mp 2\sqrt{5}}{3}\right)}$.
+
+**[79 / 의1-2]** 직선 $(\sin t) x + y = 12 + 3\sin t$ 가 원 $x^2 + (y - 3)^2 = 25$ 에 의해 잘린 선분의 길이 최댓값 ($t \in [0, 2\pi]$).
+
+??? success "풀이"
+    잘린 선분 길이 $\ell = 2\sqrt{r^2 - d^2}$ ($r = 5$). $d = |3 - 12 - 3\sin t|/\sqrt{\sin^2 t + 1} = 3(3 + \sin t)/\sqrt{\sin^2 t + 1}$. $d$ 최소 → $\ell$ 최대. 분자·분모 분석 ($\sin t = -1$ 일 때 분자 $6$, $\sin^2 t = 1$ 일 때 분모 $\sqrt{2}$ 최대) → $t = 3\pi/2$ 에서 $d_\min = 6/\sqrt{2} = 3\sqrt{2}$. $\ell_\max = 2\sqrt{25 - 18} = 2\sqrt{7}$. 답: $\boxed{2\sqrt{7}\ (t = 3\pi/2)}$.
+
+**[79 / 의2-1]** 한 모서리 $2$ 인 정사각뿔 $\mathrm{E\text{-}ABCD}$, 밑면 한 변 $\mathrm{AD}$ 지나는 평면이 $\mathrm{EB, EC}$ 와 $\mathrm{F, G}$ 에서 만남. $\overline{\mathrm{FB}} = 1$ 일 때 잘려나간 사각뿔 $T_1 = \mathrm{E\text{-}AFGD}$ 의 부피와 나머지 $T_2$ 의 부피.
+
+??? success "풀이"
+    정사각뿔 부피 $V = (1/3)\cdot 4\cdot \sqrt{2} = 4\sqrt{2}/3$ (높이 $\sqrt{2}$). 좌표화 또는 분할법: $T_1$ 의 사다리꼴 $\mathrm{AFGD}$ 넓이 $= 3\sqrt{11}/4$, $\mathrm{E}$ 에서 평면까지 거리 $2\sqrt{2}/\sqrt{11}$. $T_1 = (1/3)\cdot 3\sqrt{11}/4\cdot 2\sqrt{2}/\sqrt{11} = \sqrt{2}/2$. $T_2 = 4\sqrt{2}/3 - \sqrt{2}/2 = 5\sqrt{2}/6$. 답: $\boxed{T_1 = \dfrac{\sqrt{2}}{2},\ \ T_2 = \dfrac{5\sqrt{2}}{6}}$.
+
+**[79 / 의2-2]** $T_1 = T_2 = V/2 = 2\sqrt{2}/3$ 일 때 $\overline{\mathrm{FB}} = t$.
+
+??? success "풀이"
+    일반화: $T_1(t)$ 또는 $T_2(t)$ 를 $t$ 로 표현. 분할법 ($T_2$ 를 삼각기둥 + 두 직사각뿔로 분할): $T_2(t) = (t(2 - t)/\sqrt{2}) + (\sqrt{2}/3) t^2 = -\sqrt{2}t^2/6 + \sqrt{2}\, t$. $T_2 = 2\sqrt{2}/3$ 두기: $-\sqrt{2}t^2/6 + \sqrt{2}\, t = 2\sqrt{2}/3 \Rightarrow t^2 - 6 t + 4 = 0 \Rightarrow t = 3 \pm \sqrt{5}$. $0 < t < 2$ → $t = 3 - \sqrt{5}$. 답: $\boxed{\overline{\mathrm{FB}} = 3 - \sqrt{5}}$.
+
+---
+
 
