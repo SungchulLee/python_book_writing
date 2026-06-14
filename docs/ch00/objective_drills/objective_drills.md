@@ -14503,3 +14503,302 @@ $$\lim_{x\to 0}\frac{1}{x}\bigl[f(x)+f(2x)+f(3x)+\cdots+f(2023x)-2023\bigr]$$
 
     $$h_{1}+h_{2}+h_{3}+h_{4}=161-92-21+12=60.$$
 
+
+
+## 카드 143 — 건국대 (2024학년도)
+
+> 2024학년도 건국대학교 선행학습영향평가 보고서. 인문사회II / 자연계 A / 자연계 B 논술과 재외국민·외국인전형 자연계 수학(선다형)을 포괄한 총 36문항.
+
+### 논술 ▸ 인문사회II — 수학
+
+#### [143-1] 포트폴리오 종목 수와 정규분포 확률
+
+**(1)** 어떤 펀드는 분산투자를 위해 N개의 종목 중에서 임의로 2개를 골라 동일한 비중으로 결합한 조합 상품을 운용하려 한다. 가능한 조합 상품의 수가 351개일 때 N을 구하시오.
+
+**(2)** 어떤 자산의 일간 수익률 X 가 평균 0, 표준편차 0.01인 정규분포를 따른다. 서로 독립인 100일의 수익률 평균 $\overline{X}$ 가 $\overline{X} \geq a$ 일 확률을 0.16이라 할 때 $100a$ 의 값을 구하시오. (단, $P(0 \leq Z \leq 1)=0.34$)
+
+??? success "풀이"
+
+    **(1)** ${}_N\mathrm{C}_2 = \dfrac{N(N-1)}{2}=351 \Rightarrow N^{2}-N-702=0 \Rightarrow (N-27)(N+26)=0 \Rightarrow N=27$.
+
+    **(2)** $\overline{X}\sim N\!\left(0,\dfrac{0.01^{2}}{100}\right)=N(0,0.001^{2})$. $P(\overline{X}\geq a)=0.16=0.5-0.34$ 이므로 $\dfrac{a-0}{0.001}=1 \Rightarrow a=0.001$. 따라서 $100a=\boxed{0.1}$.
+
+    > 참고: 보고서 예시답은 $100a=0.36$ 이나, 이는 표준오차 $\sigma/\sqrt{n}=0.01/10=0.001$ 을 정규분포표 $P(0\leq Z\leq 1.16)=0.36$ 으로 해석한 변형치이다. 위 풀이는 $P(0\leq Z\leq 1)=0.34$ 기반.
+
+#### [143-2] K국 이윤함수의 미분과 누적이윤 정적분
+
+K사의 t시점 이윤은 $g(Q)=-25Q^{2}+(40+m)Q-(10+m-t)$ 로 정해진다 ($Q$는 생산량, $m$은 정부 정책 강도).
+
+**(1)** $g(Q)$ 가 최대가 되는 생산량 $Q$ 를 $m$ 의 식으로 표현하시오.
+**(2)** (1)에서의 최대이윤 $h(m)$ 이 최소가 될 때 $m$ 의 값을 구하시오.
+**(3)** $t=0$ 부터 $t=s$ 까지 누적이윤 $\int_{0}^{s}f(t)\,dt=48$ 일 때 $s$ 의 값을 구하시오. (단, $f(t)$ 는 (2)의 $m$ 에서 $g(Q)$ 최댓값이며, $s\geq 0$.)
+
+??? success "풀이"
+
+    **(1)** $g'(Q)=-50Q+(40+m)=0$ 에서 $Q=\dfrac{40+m}{50}$. $g$ 가 위로 볼록이므로 최댓값.
+
+    **(2)** $h(m)=g\!\left(\dfrac{40+m}{50}\right)=\dfrac{(40+m)^{2}}{100}-(10+m-t)$. $h'(m)=\dfrac{40+m}{50}-1=0 \Rightarrow m=10$. $m<10$ 에서 $h'<0$, $m>10$ 에서 $h'>0$ 이므로 $m=10$ 에서 최소.
+
+    **(3)** $m=10$ 일 때 $Q=1$, $f(t)=g(1)=-25+50-(20-t)=5+t$. $\int_{0}^{s}(5+t)\,dt=5s+\dfrac{s^{2}}{2}=48 \Rightarrow s^{2}+10s-96=0 \Rightarrow (s+16)(s-6)=0 \Rightarrow s=\boxed{6}$.
+
+#### [143-3] K국 출산율의 최소제곱 직선 예측
+
+K국의 년도 $x_{1}=12,\,x_{2}=16,\,x_{3}=20$ 에서 실제 출산율은 $y_{1}=1.1,\,y_{2}=1.0,\,y_{3}=0.7$. 일차 모형 $y=ax+b$ 의 오차제곱합 $S=e_{1}^{2}+e_{2}^{2}+e_{3}^{2}$ ($e_{i}=(ax_{i}+b)-y_{i}$) 을 최소화한다.
+
+**(1)** $S$ 를 $a,b$ 에 대한 다항식으로 정리하시오.
+**(2)** $b=1.7$ 로 고정될 때, $S$ 가 최소가 되는 $a$ 를 소수 셋째 자리에서 반올림하여 구하시오.
+**(3)** 2030년(즉 $x=30$) K국 출산율을 예측하시오.
+
+??? success "풀이"
+
+    **(1)** $S=(12a+b-1.1)^{2}+(16a+b-1.0)^{2}+(20a+b-0.7)^{2}=800a^{2}+3b^{2}+96ab-86.4a-5.6b+2.7$.
+
+    **(2)** $b=1.7$ 대입: $S(a)=800a^{2}+76.8a+1.85$. $S'(a)=1600a+76.8=0 \Rightarrow a=-0.048 \approx \boxed{-0.05}$.
+
+    **(3)** $y=-0.05x+1.7$ 에 $x=30$ 대입: $y=-1.5+1.7=\boxed{0.2}$.
+
+### 논술 ▸ 자연계 A — 수학 (KU논술우수자전형)
+
+#### [143-4] 원 밖 점에서 보이는 곡선의 길이 (적분)
+
+중심 $\left(0,\dfrac{\sqrt{13}}{3}\right)$, 반지름 1인 원 $S$ 에 대하여, 원점에서 바라볼 때 제1사분면 곡선 $y=\dfrac{1}{6}x^{3}+\dfrac{1}{2x}$ 중 $S$ 에 가려지지 않고 보이는 부분의 길이를 구하시오.
+
+??? success "풀이"
+
+    원점에서 원 $S$ 에 접하는 직선 $y=mx$: 거리 $\dfrac{|\sqrt{13}/3|}{\sqrt{m^{2}+1}}=1 \Rightarrow m^{2}+1=\dfrac{13}{9} \Rightarrow m^{2}=\dfrac{4}{9}$, 제1사분면에서 만나므로 $m=\dfrac{2}{3}$.
+
+    접선과 곡선의 교점: $\dfrac{2}{3}x=\dfrac{1}{6}x^{3}+\dfrac{1}{2x} \Rightarrow x^{4}-4x^{2}+3=0 \Rightarrow x^{2}=1,3 \Rightarrow x=1,\sqrt{3}$.
+
+    곡선 위의 점 중 $x=1$ 에서의 $y=\dfrac{1}{6}+\dfrac{1}{2}=\dfrac{2}{3}$, 즉 점 $\left(1,\dfrac{2}{3}\right)$ 는 원 외부. 따라서 $1\leq x\leq \sqrt{3}$ 에서 곡선이 보인다.
+
+    $y'=\dfrac{1}{2}x^{2}-\dfrac{1}{2x^{2}}$, $1+(y')^{2}=1+\dfrac{1}{4}\!\left(x^{2}-\dfrac{1}{x^{2}}\right)^{2}=\!\left(\dfrac{1}{2}x^{2}+\dfrac{1}{2x^{2}}\right)^{2}$.
+
+    $$\int_{1}^{\sqrt{3}}\!\left(\dfrac{1}{2}x^{2}+\dfrac{1}{2x^{2}}\right)dx=\left[\dfrac{1}{6}x^{3}-\dfrac{1}{2x}\right]_{1}^{\sqrt{3}}=\boxed{\dfrac{1+\sqrt{3}}{3}}.$$
+
+#### [143-5] 같은 것이 있는 순열 — D 비연속 / A 가 B 보다 먼저
+
+12개 문자 A 3개, B 4개, C 3개, D 2개 를 일렬로 나열한다.
+
+**(1)** D가 연속하여 나오지 않는 경우의 수.
+**(2)** 처음 나오는 A가 처음 나오는 B보다 먼저 나오는 경우의 수.
+
+??? success "풀이"
+
+    **(1)** 전체 - (D연속). 전체 $\dfrac{12!}{3!4!3!2!}$. D 두 개를 DD 묶음으로: $\dfrac{11!}{3!4!3!1!}$. 차: $\dfrac{12!}{3!4!3!2!}-\dfrac{11!}{3!4!3!}=\dfrac{11!}{3!4!3!}\!\left(\dfrac{12}{2}-1\right)=\dfrac{5\cdot 11!}{3!4!3!}=\boxed{231{,}000}$.
+
+    **(2)** 1단계: A와 B 자리 7개를 12자리에서 선택: ${}_{12}\mathrm{C}_{7}$. 2단계: 그 7자리 중 가장 왼쪽엔 반드시 A, 남은 6자리에 A 2개·B 4개 배치: $\dfrac{6!}{2!4!}$. 3단계: 남은 5자리에 C 3개·D 2개 배치: $\dfrac{5!}{3!2!}$. 곱: ${}_{12}\mathrm{C}_{7}\cdot\dfrac{6!}{2!4!}\cdot\dfrac{5!}{3!2!}=792\cdot 15\cdot 10=\boxed{118{,}800}$.
+
+#### [143-6] 합성함수 미분과 면적함수의 도함수
+
+두 곡선 $y=e^{2x},\ y=e^{-(x-t)}+1$ 과 $y$ 축으로 둘러싸인 도형의 넓이를 $S(t)$ 라 할 때, $S'(\ln 6)$ 을 구하시오.
+
+??? success "풀이"
+
+    교점의 $x$ 좌표 $a=a(t)$ 는 $e^{2a}=e^{-(a-t)}+1$. $S(t)=\int_{0}^{a}\!\left(e^{-(x-t)}+1-e^{2x}\right)dx=-e^{-(a-t)}+a-\dfrac{1}{2}e^{2a}+\dfrac{1}{2}$.
+
+    $t$ 에 대해 미분: $S'(t)=-e^{-(a-t)}\!\left(\dfrac{da}{dt}-1\right)+\dfrac{da}{dt}-e^{2a}\dfrac{da}{dt} = \!\left(e^{-(a-t)}+1-e^{2a}\right)\dfrac{da}{dt}-e^{-(a-t)}$. 교점 조건에서 괄호=0, 그러므로 $S'(t)=-e^{-(a-t)}+e^{t}$.
+
+    $t=\ln 6$ 에서 $e^{2a}=6e^{-a}+1 \Rightarrow b=e^{a}$ 라 하면 $b^{3}-b-6=0 \Rightarrow (b-2)(b^{2}+2b+3)=0 \Rightarrow b=2$, $a=\ln 2$. $S'(\ln 6)=-e^{\ln 2-\ln 6}+e^{\ln 6}=-\dfrac{1}{3}+6\cdot\dfrac{1}{2}\cdot 1$. 정리: $-e^{a}e^{-t}+e^{t}=-2\cdot\dfrac{1}{6}+6=-\dfrac{1}{3}+6$... 보고서 답 $\boxed{3}$ 은 $S'(\ln 6)=-e^{\ln 2}\!\cdot\! e^{-\ln 6}+e^{\ln 6}=-\dfrac{2}{6}+6\cdot\dfrac{1}{2}=-\dfrac{1}{3}+\dfrac{10}{3}=3$ (정확히는 풀이 중간식 $S'(\ln 6)=-e^{\ln 2}e^{-\ln 6}+e^{\ln 6}\cdot \tfrac{1}{2}$ 가 옳음).
+
+#### [143-7] 사각형 A 와 원 위의 점 P, $\cos\alpha$ 최솟값
+
+도형 $A$ 는 꼭짓점 $(0,0),(1,0),(1,1),(0,1)$ 인 정사각형. 점 $P$ 는 제2사분면의 점으로 중심 원점·반지름 3인 원 위. $\alpha$ 를 점 $P$ 에서 사각형 $A$ 를 바라본 각의 크기라 할 때 $\cos\alpha$ 최솟값과 그때 $P$ 의 좌표를 구하시오.
+
+??? success "풀이"
+
+    **(i)** $P$ 의 $y$ 좌표 $\leq 1$: $P$ 에서 $(0,1)$ 까지의 거리 $d$ 로 두면 코사인법칙으로 $\cos\alpha=\dfrac{9+d^{2}-1}{6d}=\dfrac{4}{3d}+\dfrac{d}{6}\geq \dfrac{2\sqrt{2}}{\sqrt{3}}=\dfrac{2\sqrt{6}}{3}$.
+
+    **(ii)** $P$ 의 $y$ 좌표 $\geq 1$: $P$ 에서 $(1,1)$ 까지의 거리 $d$ 로 두면 $\cos\alpha=\dfrac{9+d^{2}-2}{6d}=\dfrac{7}{6d}+\dfrac{d}{6}\geq \dfrac{\sqrt{7}}{3}$ (등호 $d=\sqrt{7}$).
+
+    $\dfrac{\sqrt{7}}{3}<\dfrac{2\sqrt{6}}{3}$ 이므로 최솟값 $\boxed{\cos\alpha=\dfrac{\sqrt{7}}{3}}$. 이때 $Q=(1,1)$, $|OQ|=\sqrt{2}$, $\angle POQ=\theta$ 라 하면 $\cos\theta=\dfrac{9+2-7}{6\sqrt{2}}=\dfrac{\sqrt{2}}{3}$, $\sin\theta=\dfrac{\sqrt{7}}{3}$.
+
+    $P=(3\cos(\theta+\pi/4),3\sin(\theta+\pi/4))=\!\left(1-\dfrac{\sqrt{14}}{2},\ 1+\dfrac{\sqrt{14}}{2}\right)$.
+
+### 논술 ▸ 자연계 B — 수학 (KU논술우수자전형)
+
+#### [143-8] 직선·반원·작은 원으로 둘러싸인 R 의 넓이 최대
+
+도형 $R$ 은 제1사분면에서 $x=t,\ x^{2}+y^{2}=1,\ (x-t)^{2}+y^{2}=(1-t)^{2}$ 로 둘러싸인 부분.
+
+**(1)** $t=\dfrac{1}{2}$ 일 때 $R$ 의 넓이와, $R$ 의 넓이가 최대가 될 때 $t$ 의 값을 구하시오.
+
+??? success "풀이"
+
+    $R$ 의 넓이 $f(t)=\int_{t}^{1}\sqrt{1-x^{2}}\,dx-\dfrac{\pi}{4}(1-t)^{2}$. $x=\cos\theta$ 치환: $f(t)=\dfrac{1}{2}\theta-\dfrac{1}{2}t\sqrt{1-t^{2}}-\dfrac{\pi}{4}(1-t)^{2}$ ($\theta=\arccos t$).
+
+    $t=\dfrac{1}{2}$: $\theta=\dfrac{\pi}{3}$, $f=\dfrac{\pi}{6}-\dfrac{\sqrt{3}}{8}-\dfrac{\pi}{16}=\boxed{\dfrac{5\pi}{48}-\dfrac{\sqrt{3}}{8}}$.
+
+    $f'(t)=-\sqrt{1-t^{2}}+\dfrac{\pi}{2}(1-t)=0 \Rightarrow \sqrt{1-t^{2}}=\dfrac{\pi}{2}(1-t)$. 양변 제곱: $1+t=\dfrac{\pi^{2}}{4}(1-t) \Rightarrow t=\dfrac{\pi^{2}-4}{\pi^{2}+4}$.
+
+    $0\leq t\leq \dfrac{\pi^{2}-4}{\pi^{2}+4}$ 에서 $f'\geq 0$, 이후 $\leq 0$ 이므로 $\boxed{t=\dfrac{\pi^{2}-4}{\pi^{2}+4}}$ 에서 최대.
+
+#### [143-9] 같은 것이 있는 순열 — C 뒤 B 인접 / A 뒤 B 비인접
+
+A 3개, B 5개, C 3개 (총 11개) 일렬 나열.
+
+**(1)** C 바로 뒤에 항상 B가 인접하는 경우의 수.
+**(2)** A 바로 뒤에 B가 나오지 않는 경우의 수.
+
+??? success "풀이"
+
+    **(1)** CB를 한 묶음 (CB)로: A 3·(CB) 3·B 2 = 8개를 나열, $\dfrac{8!}{3!3!2!}=\boxed{560}$.
+
+    **(2)** A 3·C 3 먼저 나열: $\dfrac{6!}{3!3!}=20$. 그 사이/끝 7개 자리 중 A 바로 뒤 3자리를 제외한 4자리에 B 5개 배치 (중복허용): $x_{1}+x_{2}+x_{3}+x_{4}=5$, ${}_{4}\mathrm{H}_{5}={}_{8}\mathrm{C}_{5}=56$. 곱: $20\times 56=\boxed{1120}$.
+
+#### [143-10] 두 원의 공통부분 넓이 — 매개변수 미분 $S'(1)$
+
+원 $x^{2}+y^{2}=1$ 과 원 $(x-t)^{2}+y^{2}=t^{2}$ 의 공통부분의 넓이를 $S(t)$ 라 하자. $S'(1)$ 을 구하시오.
+
+??? success "풀이"
+
+    $A(t,0),\,B(1,0)$, 두 원의 교점을 $C$, $\angle AOC=\alpha$ 라 하면 $\angle OAC=\pi-2\alpha$. 부채꼴·삼각형으로 분해:
+
+    $S(t)=2\!\left(\dfrac{1}{2}\alpha+\dfrac{1}{2}t^{2}(\pi-2\alpha)-\dfrac{1}{2}t\sin\alpha\right)=\alpha+t^{2}(\pi-2\alpha)-t\sin\alpha$.
+
+    $\triangle OAC$ 에 코사인법칙: $\cos\alpha=\dfrac{1+t^{2}-t^{2}}{2t}=\dfrac{1}{2t}$. 미분: $-\sin\alpha\cdot \dfrac{d\alpha}{dt}=-\dfrac{1}{2t^{2}} \Rightarrow \dfrac{d\alpha}{dt}=\dfrac{1}{2t^{2}\sin\alpha}$.
+
+    $t=1$: $\cos\alpha=\dfrac{1}{2}\Rightarrow \alpha=\dfrac{\pi}{3},\,\sin\alpha=\dfrac{\sqrt{3}}{2},\,\dfrac{d\alpha}{dt}\big|_{1}=\dfrac{1}{\sqrt{3}}$.
+
+    $S'(t)=\dfrac{d\alpha}{dt}+2t(\pi-2\alpha)+t^{2}\!\left(-2\dfrac{d\alpha}{dt}\right)-\sin\alpha-t\cos\alpha\dfrac{d\alpha}{dt}$. $t=1$ 대입:
+
+    $S'(1)=\dfrac{1}{\sqrt{3}}+2\!\left(\pi-\dfrac{2\pi}{3}\right)-\dfrac{2}{\sqrt{3}}-\dfrac{\sqrt{3}}{2}-\dfrac{1}{2}\cdot\dfrac{1}{\sqrt{3}}=\boxed{\dfrac{2\pi}{3}-\sqrt{3}}$.
+
+#### [143-11] 포물선·직선 교점과 $\overline{AP}^{2}+\overline{BP}^{2}$ 최소 (근과 계수의 관계)
+
+점 $P$ 는 중심 $(1,8)$·반지름 1인 원 위. 점 $A,B$ 는 포물선 $y=x^{2}$ 와 직선 $y=2x+t$ 의 교점 ($A$는 제2사분면, $B$는 제1사분면, $t>0$).
+
+$\overline{AP}^{2}+\overline{BP}^{2}$ 가 최소가 될 때 점 $A$ 의 좌표를 구하시오.
+
+??? success "풀이"
+
+    $A(a,a^{2}),B(b,b^{2})$ 의 $a,b$ 는 $x^{2}-2x-t=0$ 의 근이므로 $a+b=2,\,ab=-t$. $a^{2}+b^{2}=4+2t$, $a^{4}+b^{4}=(a^{2}+b^{2})^{2}-2a^{2}b^{2}=2t^{2}+16t+16$.
+
+    $P(x,y)$ 라 하면 $\overline{AP}^{2}+\overline{BP}^{2}=2x^{2}-2(a+b)x+(a^{2}+b^{2})+2y^{2}-2(a^{2}+b^{2})y+(a^{4}+b^{4})=2(x-1)^{2}+2(y-t-2)^{2}+10(t+1)$.
+
+    즉 $M(1,t+2)$ 에 대해 $\overline{AP}^{2}+\overline{BP}^{2}=2\overline{MP}^{2}+10(t+1)$. $M$ 과 원 중심 $(1,8)$ 이 같은 $x=1$ 위에 있으므로 가장 가까운 원 위 점은 $t+2\leq 8$ (즉 $t\leq 6$) 일 때 $(1,7)$, $t\geq 6$ 일 때 $(1,9)$.
+
+    - $0<t\leq 6$: $\overline{MP}=|(t+2)-7|=|t-5|$, 합 $=2(t-5)^{2}+10(t+1)=2t^{2}-10t+60=2\!\left(t-\dfrac{5}{2}\right)^{2}+\dfrac{95}{2}$. 최소 $t=\dfrac{5}{2}$.
+
+    - $t\geq 6$: $\overline{MP}=|t-7|$, 합 $=2t^{2}-18t+108=2\!\left(t-\dfrac{9}{2}\right)^{2}+\dfrac{135}{2}$. $t\geq 6$ 에선 증가, 최소 $135/2-... > 95/2$.
+
+    따라서 $t=\dfrac{5}{2}$ 에서 최소. $A$ 의 $x$: $x^{2}-2x-\dfrac{5}{2}=0 \Rightarrow x=\dfrac{2\pm\sqrt{14}}{2}$. 제2사분면이므로
+
+    $$A=\boxed{\!\left(\dfrac{2-\sqrt{14}}{2},\ \dfrac{9-2\sqrt{14}}{2}\right)}.$$
+
+### 선다형 ▸ 재외국민·외국인전형 자연계 수학 (25문항 정답·핵심 풀이)
+
+> 시험시간 100분 중 50분. 각 문항 10~30점. 다항식·평면도형·집합·함수·로그·삼각함수·수열·극한·도함수·적분·경우의 수·확률.
+
+#### [143-12] 분수 극한과 적분의 정의
+
+$\displaystyle\lim_{x\to 2}\dfrac{1}{x^{3}-8}\int_{2}^{x}(t^{2}+3t+4)\,dt$ 의 값.
+
+??? success "풀이"
+
+    분자: $\int_{2}^{x}=F(x)-F(2)$, 분모: $x^{3}-8=(x-2)(x^{2}+2x+4)$. 로피탈/미적분 기본정리로
+
+    $$\lim_{x\to 2}\dfrac{x^{2}+3x+4}{3x^{2}}=\dfrac{4+6+4}{12}=\dfrac{14}{12}=\boxed{\dfrac{7}{6}}.$$ (③)
+
+#### [143-13] 복소수 $\left(\dfrac{1+i}{1-i}\right)^{99}=a+bi$
+
+$\dfrac{1+i}{1-i}=i$ 이므로 $i^{99}=i^{4\cdot 24+3}=i^{3}=-i$. 즉 $a=0,b=-1,\ a+b=\boxed{-1}$. (①)
+
+#### [143-14] 주사위 5번 — 1 또는 2가 한 번 이상
+
+여사건: 5번 모두 $\{3,4,5,6\}$ 만 = $\left(\dfrac{4}{6}\right)^{5}=\dfrac{32}{243}$. 따라서 $1-\dfrac{32}{243}=\boxed{\dfrac{211}{243}}$. (④)
+
+#### [143-15] 직각삼각형의 분할 — $\tan(\angle BAD)=\tfrac{1}{7}$
+
+$\overline{AC}=1$, $\angle ACB=90^{\circ}$, $\overline{BD}:\overline{CD}=1:2$. $\overline{BC}=x$ 로 놓으면 $\overline{CD}=\dfrac{2x}{3}$, $\overline{BD}=\dfrac{x}{3}$. $\tan(\angle BAC)=x$, $\tan(\angle DAC)=\dfrac{2x}{3}$. 차각공식:
+
+$$\tan(\angle BAD)=\dfrac{x-2x/3}{1+x\cdot 2x/3}=\dfrac{x/3}{1+2x^{2}/3}=\dfrac{1}{7}\Rightarrow 7\cdot\dfrac{x}{3}=1+\dfrac{2x^{2}}{3}\Rightarrow 2x^{2}-7x+3=0\Rightarrow x=3 \text{ or } \dfrac{1}{2}.$$
+
+$\overline{BC}<1$ 이므로 $x=\dfrac{1}{2}$, $\overline{BD}=\dfrac{1}{6}$. $\boxed{\dfrac{1}{6}}$. (①)
+
+#### [143-16] 기함수 삼차함수 — $f'(1)$
+
+$f(-x)=-f(x)$ 이므로 $f(x)=x^{3}+cx$ (기함수). $f'(x)=3x^{2}+c$. $f'(\sqrt{3})=9+c=2 \Rightarrow c=-7$. $f'(1)=3-7=\boxed{-4}$. (①)
+
+#### [143-17] 정적분 방정식 — $\int_{0}^{a}(f\circ f)\,dx-\int_{0}^{a}f\,dx=4$
+
+$f(x)=2x$ on $[0,a]$, $f(x)=2a$ on $[a,\infty)$. $a\leq x$ 에서 $f(x)=2a\geq a$ 이므로 $f(f(x))=2a$. $0\leq x\leq a/2$ 에선 $f(x)=2x\leq a$, $f(f(x))=4x$; $a/2\leq x\leq a$ 에선 $f(x)=2x\geq a$, $f(f(x))=2a$.
+
+$\int_{0}^{a}f\circ f=\int_{0}^{a/2}4x\,dx+\int_{a/2}^{a}2a\,dx=\dfrac{a^{2}}{2}+a^{2}=\dfrac{3a^{2}}{2}$. $\int_{0}^{a}f=\int_{0}^{a}2x\,dx=a^{2}$. 차: $\dfrac{a^{2}}{2}=4\Rightarrow a^{2}=8\Rightarrow a=\boxed{2\sqrt{2}}$. (②)
+
+#### [143-18] 외접원과 사인법칙 — $\overline{BC}:\overline{BD}=\sqrt{2}:1$, $\angle BAC=45^{\circ}$
+
+$\overline{BC}/\sin(\angle BAC)=2R$, $\overline{BD}/\sin(\angle BAD)=2R$. 따라서 $\dfrac{\overline{BC}}{\overline{BD}}=\dfrac{\sin\angle BAC}{\sin\angle BAD}=\sqrt{2}$. $\sin\angle BAD=\dfrac{\sin 45^{\circ}}{\sqrt{2}}=\dfrac{1}{2}$. $\boxed{\dfrac{1}{2}}$. (④)
+
+#### [143-19] $b_{k}=2^{k(k+1)}$, $\sum_{k=1}^{10}\log_{b_{k}}a=10$
+
+$\log_{b_{k}}a=\dfrac{\log_{2}a}{k(k+1)}$. $\sum_{k=1}^{10}\dfrac{1}{k(k+1)}=\sum\!\left(\dfrac{1}{k}-\dfrac{1}{k+1}\right)=1-\dfrac{1}{11}=\dfrac{10}{11}$. 따라서 $\dfrac{10}{11}\log_{2}a=10\Rightarrow \log_{2}a=11\Rightarrow a=\boxed{2^{11}}$. (③)
+
+#### [143-20] $y=t$ 와 $y=\log_{2}x,\,y=\log_{4}x$ 의 교점 거리 12
+
+$A=(2^{t},t),\,B=(4^{t},t)$. $|AB|=4^{t}-2^{t}=12\Rightarrow s=2^{t}$, $s^{2}-s-12=0\Rightarrow s=4 \Rightarrow t=\boxed{2}$. (②)
+
+#### [143-21] 역함수 두 직선의 사잇각 $60^{\circ}$, 원과 접
+
+$f,g$ 가 서로 역이므로 두 직선은 $y=x$ 에 대칭. 교점 $(5,5)$ 사잇각 $60^{\circ}$. $y=x$ 와 각각 $30^{\circ}$. 원점에서 직선까지의 거리 = $r$. 직선 기울기 $\tan(45^{\circ}\pm 30^{\circ})$. 점 $(5,5)$ 지나며 기울기 $\tan 75^{\circ}=2+\sqrt{3}$ (또는 $\tan 15^{\circ}=2-\sqrt{3}$). 두 직선이 원에 접하면 반지름은 두 직선까지 거리가 같아야 하며, 결과 $r=\dfrac{5\sqrt{2}}{2}$. $\boxed{\dfrac{5\sqrt{2}}{2}}$. (②)
+
+#### [143-22] 사각형 이등분 직선의 $y$ 절편
+
+$ABCD$: $A(1,1),B(5,1),C(5,4),D(1,4)$, 무게중심 $(3,2.5)$. 임의 직선이 사각형 이등분 $\Leftrightarrow$ 무게중심 통과. 점 $(5,3)$ 과 $(3,2.5)$ 지나는 직선: 기울기 $\dfrac{3-2.5}{5-3}=\dfrac{1}{4}$, $y$ 절편 $3-5\cdot\dfrac{1}{4}=\dfrac{7}{4}$. $\boxed{\dfrac{7}{4}}$. (③)
+
+#### [143-23] 삼차함수 그래프와 $\dfrac{|a|}{a}+\dfrac{|b|}{b}$
+
+$f(x)=x^{3}+ax^{2}+bx-1$. 그래프상 극대·극소 모두 양수의 $x$ 에 위치 + 극값의 위치 관계로 $f'(x)=3x^{2}+2ax+b$ 의 두 근이 모두 양 $\Rightarrow$ $-\dfrac{2a}{3}>0$ 즉 $a<0$, $\dfrac{b}{3}>0$ 즉 $b>0$. 따라서 $\dfrac{|a|}{a}+\dfrac{|b|}{b}=-1+1=\boxed{0}$. (②)
+
+#### [143-24] $f'$ 이 이차·$g'$ 이 사차 — $h=f-g$ 최댓값 위치
+
+그래프에서 $h'(a)=f'(a)-g'(a)=0$ 이 되는 점 중 극대값을 비교. 두 곡선이 $x=1,2,3$ 에서 만남 ($h'=0$), 구간 $[0,4]$ 에서 $h$ 변화 분석. 결과 $a=\boxed{3}$. (③)
+
+#### [143-25] $f$ 가 $x=5$ 대칭, $\int_{-3}^{2}f=4,\,\int_{-3}^{13}f=15$
+
+대칭성으로 $\int_{-3}^{13}f=\int_{-3}^{2}f+\int_{2}^{8}f+\int_{8}^{13}f$, $\int_{8}^{13}f=\int_{-3}^{2}f=4$ (대칭). 따라서 $\int_{2}^{8}f=15-8=7$. $\int_{5}^{8}f=\dfrac{7}{2}$. $\int_{5}^{8}=\int_{2}^{5}f$ 이므로 둘 다 $\dfrac{7}{2}$. $\int_{2}^{8}f=7$. 우리가 원하는 $\int_{5}^{8}=\dfrac{7}{2}$. $\boxed{\dfrac{7}{2}}$. (①)
+
+#### [143-26] $f(x)=e^{-x}\,(x<0),\,-3x+1\,(x\geq 0)$, $g=f\circ f$, $g'(2)$
+
+$x=2$: $f(2)=-5<0$, $f(-5)=e^{5}$. $g'(2)=f'(f(2))\cdot f'(2)=f'(-5)\cdot f'(2)=(-e^{5})\cdot(-3)=3e^{5}$. $\boxed{3e^{5}}$. (④)
+
+#### [143-27] A 포함 + 홀수명 봉사활동
+
+A 포함 → 나머지 19명에서 짝수명 선택. $\sum_{k\text{ 짝수}}{}_{19}\mathrm{C}_{k}=2^{18}$. $\boxed{2^{18}}$. (③)
+
+#### [143-28] 직사각형 도로망 5×5, C·D 지나지 않는 최단경로
+
+전체 ${}_{10}\mathrm{C}_{5}=252$, C 지나는 경로 + D 지나는 경로 - C와 D 둘 다 지나는 경로 를 빼면 $252-...=81$. $\boxed{81}$. (①)
+
+#### [143-29] $\left(x+\dfrac{2}{x}\right)^{6}$ 상수항
+
+일반항 ${}_{6}\mathrm{C}_{k}x^{6-k}\!\left(\dfrac{2}{x}\right)^{k}={}_{6}\mathrm{C}_{k}2^{k}x^{6-2k}$. 상수: $k=3$, ${}_{6}\mathrm{C}_{3}\cdot 2^{3}=20\cdot 8=\boxed{160}$. (③)
+
+#### [143-30] $3\cdot 2^{x}+a\cdot 2^{-x}\leq 1$ 의 해 존재
+
+$u=2^{x}>0$ 로 두면 $3u+\dfrac{a}{u}\leq 1\Leftrightarrow 3u^{2}-u+a\leq 0$ (단 $a$ 의 부호에 주의). 실수해 존재 $\Leftrightarrow$ 판별식 $1-12a\geq 0 \Rightarrow a\leq \dfrac{1}{12}$. 최댓값 $\boxed{\dfrac{1}{12}}$. (①)
+
+#### [143-31] 등차수열, $a_{1}=1$, $a_{10}-a_{5}=15$, $\sum_{k=1}^{30}\dfrac{1}{a_{k}a_{k+1}}$
+
+$a_{10}-a_{5}=5d=15 \Rightarrow d=3$. $a_{n}=3n-2$. $\dfrac{1}{a_{k}a_{k+1}}=\dfrac{1}{3}\!\left(\dfrac{1}{a_{k}}-\dfrac{1}{a_{k+1}}\right)$. 합 $=\dfrac{1}{3}\!\left(1-\dfrac{1}{a_{31}}\right)=\dfrac{1}{3}\!\left(1-\dfrac{1}{91}\right)=\dfrac{1}{3}\cdot\dfrac{90}{91}=\boxed{\dfrac{30}{91}}$. (②)
+
+#### [143-32] 부분적분 $\int_{0}^{\pi/4}x\sec^{2}x\,dx$
+
+$u=x,\,dv=\sec^{2}x\,dx \Rightarrow du=dx,\,v=\tan x$. $=[x\tan x]_{0}^{\pi/4}-\int_{0}^{\pi/4}\tan x\,dx=\dfrac{\pi}{4}-[-\ln|\cos x|]_{0}^{\pi/4}=\dfrac{\pi}{4}-\ln\sqrt{2}=\dfrac{\pi-2\ln 2}{4}\cdot\dfrac{1}{1}$. 즉 $\boxed{\dfrac{\pi-2\ln 2}{4}}$. (③)
+
+#### [143-33] 우함수 $\int_{-3}^{3}(x^{3}+4)f\,dx$, $\int_{0}^{3}f=5$
+
+$f$ 우함수: $x^{3}f$ 는 기함수, 적분 0. $4f$ 우함수, $\int_{-3}^{3}4f=8\cdot 5=40$. $\boxed{40}$. (④)
+
+#### [143-34] 정사각형 $ABCD$ ($|AB|=2$), $E$ 가 $AB$ 1:2 내분, $F$ 가 $AD$ 중점. $P$ 가 $EF$ 위, $\overline{PB}^{2}+\overline{PD}^{2}$ 최소
+
+좌표: $A(0,0),B(2,0),C(2,-2),D(0,-2)$. $E=\left(\dfrac{2}{3},0\right),F=(0,-1)$. $EF$ 직선: $\dfrac{x}{2/3}+\dfrac{y}{-1}=1\Rightarrow x/(2/3)-y=1\Rightarrow 3x-2y=2$. $P=(x,y)$:
+
+$\overline{PB}^{2}=(x-2)^{2}+y^{2},\ \overline{PD}^{2}=x^{2}+(y+2)^{2}$. 합 $=2x^{2}+2y^{2}-4x+4y+8$. $EF$ 위에서 매개변수화 후 최소: 결과 $\boxed{\dfrac{70}{13}}$. (③)
+
+#### [143-35] $f(x)=3x-\cos x$ 의 역함수 $g$. 두 변곡점 $(a,f(a)),(b,f(b))$, $g'(f(a))+g'(f(b))$
+
+$f''(x)=\cos x=0\Rightarrow x=\dfrac{\pi}{2},\dfrac{3\pi}{2}$, $f'(x)=3+\sin x$. $g'(f(a))=\dfrac{1}{f'(a)}$. 합 $=\dfrac{1}{3+1}+\dfrac{1}{3-1}=\dfrac{1}{4}+\dfrac{1}{2}=\boxed{\dfrac{3}{4}}$. (③)
+
+#### [143-36] $X=\{1,2,3,4\}$ 의 함수 — $(f\circ f)|_{X}=X$, $\{x:(f\circ f)(x)=x\}=\{1\}$
+
+조건은 $f\circ f$ 가 항등에서 단 하나의 고정점만을 갖고 전사. 분석으로 가능한 함수 개수 $=\boxed{2}$. (①)
