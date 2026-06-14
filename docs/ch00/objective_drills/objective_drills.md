@@ -10836,3 +10836,111 @@ $$\mathrm{A}: T_A = 0.2 Y\ (\text{선형});\quad \mathrm{B}: T_B = \begin{cases}
     전개: $25 + 150 p + 225 p^2 = 100$ ⇒ $225 p^2 + 150 p - 75 = 0$ ⇒ $3 p^2 + 2 p - 1 = 0$ ⇒ $(3 p - 1)(p + 1) = 0$. $0\le p\le 1$이므로 $p = \boxed{\dfrac{1}{3}}$.
 
 ---
+
+## 카드 122 — 건국대 (2025, 논술 자연계 수학)
+
+출처: 건국대학교 2025학년도 KU논술우수자전형 — 자연계 수학 (문항카드 6, 문제 1, 2, 3, 4).
+
+---
+
+### 논술 자연 수학 — 코사인 덧셈정리·이면각·합성함수 미분·곡선 사이 넓이
+
+**[1 / 문제 1]** 점 $\mathrm{A}$가 중심 원점, 반지름 $3$인 원 $C$ 위를, 점 $\mathrm{B}$가 중심 $(7, 0)$, 반지름 $1$인 원 위를 움직인다. 시각 $t$에서
+
+$$\mathrm{A} = (3\cos t,\ 3\sin t),\quad \mathrm{B} = (7 + \cos 3 t,\ \sin 3 t).$$
+
+$t\in [0, 2\pi]$에서 선분 $\mathrm{AB}$와 원 $C$가 서로 다른 두 점에서 만나는 $t$의 범위를 구하여라.
+
+??? success "풀이"
+    선분 $\mathrm{AB}$가 원 $C$와 두 점에서 만나려면 $\angle\mathrm{OAB}$가 예각이어야 한다 ($\mathrm{A}$는 원 위, $\mathrm{O}$는 중심). 코사인법칙으로
+
+    $$\overline{\mathrm{OB}}^2 < \overline{\mathrm{OA}}^2 + \overline{\mathrm{AB}}^2 = 9 + \overline{\mathrm{AB}}^2.$$
+
+    좌표 대입:
+
+    $$\overline{\mathrm{OB}}^2 = 50 + 14\cos 3 t,$$
+
+    $$\overline{\mathrm{AB}}^2 = (3\cos t - 7 - \cos 3 t)^2 + (3\sin t - \sin 3 t)^2 = 59 - 42\cos t - 6\cos 2 t + 14\cos 3 t.$$
+
+    (전개 중 $\cos t\cos 3 t + \sin t\sin 3 t = \cos 2 t$ 코사인 덧셈정리 사용.) 부등식 $9 + \overline{\mathrm{AB}}^2 > \overline{\mathrm{OB}}^2$ 정리:
+
+    $$7\cos t + \cos 2 t < 3\ \Leftrightarrow\ 2\cos^2 t + 7\cos t - 4 < 0\ \Leftrightarrow\ (2\cos t - 1)(\cos t + 4) < 0.$$
+
+    $\cos t + 4 > 0$이므로 $\cos t < 1/2$. 따라서
+
+    $$\boxed{\dfrac{\pi}{3} < t < \dfrac{5\pi}{3}}.$$
+
+**[2 / 문제 2]** 한 모서리 길이가 $6$인 정사면체 $\mathrm{ABCD}$, 점 $\mathrm{E}$는 모서리 $\mathrm{BD}$ 위에 있고 $\overline{\mathrm{DE}} = 2$. 일정한 길이의 선분 $\mathrm{PQ}$는 평면 $\mathrm{ABC}$ 위에 있으며 점 $\mathrm{A}$를 지난다. 사면체 $\mathrm{DEPQ}$의 부피가 최대일 때 평면 $\mathrm{EPQ}$와 평면 $\mathrm{ABC}$가 이루는 각 $\theta$에 대하여 $\cos\theta$의 값을 구하여라.
+
+??? success "풀이"
+    $\triangle\mathrm{PDE}$의 넓이는 $\triangle\mathrm{PDB}$의 $1/3$이므로 사면체 $\mathrm{DEPQ}$ 부피 = 사면체 $\mathrm{BDPQ}$ 부피의 $1/3$. $\mathrm{D}$에서 평면 $\mathrm{ABC}$에 내린 수선의 발을 $\mathrm{H}$ (정사면체이므로 $\mathrm{H}$는 $\triangle\mathrm{ABC}$의 무게중심). 사면체 $\mathrm{BDPQ}$ 부피 $= \dfrac{1}{3}\cdot\triangle\mathrm{BPQ}\cdot\overline{\mathrm{DH}}$. 따라서 $\triangle\mathrm{BPQ}$가 최대일 때 부피 최대 → 선분 $\mathrm{PQ}\perp\mathrm{AB}$일 때.
+
+    선분 $\mathrm{PQ}\perp\mathrm{AB}$ 가정. $\mathrm{E}$에서 평면 $\mathrm{ABC}$에 내린 수선의 발을 $\mathrm{F}$, $\mathrm{F}$에서 직선 $\mathrm{PQ}$에 내린 수선의 발 $\mathrm{G}$. 삼수선의 정리로 $\mathrm{EG}\perp\mathrm{PQ}$, $\cos\theta = \overline{\mathrm{FG}}/\overline{\mathrm{EG}}$.
+
+    $\mathrm{F}$에서 $\mathrm{AB}$에 내린 수선의 발 $\mathrm{F}'$이면 $\overline{\mathrm{FG}} = \overline{\mathrm{AF}'} = \overline{\mathrm{AB}} - \overline{\mathrm{BF}'} = 6 - 3\cdot(2/3) = 4$ (E가 BD를 $2 : 4$로 내분하므로). $\mathrm{H}$는 $\triangle\mathrm{ABC}$의 무게중심: $\overline{\mathrm{AH}} = (2/3)\overline{\mathrm{AM}} = (2/3)\cdot 3\sqrt{3} = 2\sqrt{3}$ ($\mathrm{M}$은 $\mathrm{BC}$ 중점). $\overline{\mathrm{AD}} = 6$이므로 $\overline{\mathrm{DH}} = \sqrt{36 - 12} = 2\sqrt{6}$. $\overline{\mathrm{EF}} = (2/3)\overline{\mathrm{DH}} = 4\sqrt{6}/3$.
+
+    $\overline{\mathrm{EG}} = \sqrt{\overline{\mathrm{EF}}^2 + \overline{\mathrm{FG}}^2} = \sqrt{32/3 + 16} = \sqrt{80/3} = 4\sqrt{15}/3$.
+
+    $$\cos\theta = \dfrac{\overline{\mathrm{FG}}}{\overline{\mathrm{EG}}} = \dfrac{4}{4\sqrt{15}/3} = \dfrac{3}{\sqrt{15}} = \boxed{\dfrac{\sqrt{15}}{5}}.$$
+
+**[3 / 문제 3]** 사각형 $\mathrm{ABCD}$에서 $\overline{\mathrm{AB}} = \sqrt{3}$, $\overline{\mathrm{BC}} = 2$, $\overline{\mathrm{CD}} = 2$, $\overline{\mathrm{DA}} = 1$. $\angle\mathrm{BAD} = \theta$일 때 대각선 $\overline{\mathrm{AC}} = f(\theta)$. $f'(\pi/2)$를 구하여라.
+
+??? success "풀이"
+    $\angle\mathrm{ABC} = \phi$로 두자. $\mathrm{C}$에서 $\mathrm{AD}$ 연장선에 내린 수선의 발을 $\mathrm{H}$. $\overline{\mathrm{DH}} = \sqrt{3} - \cos\theta - 2\cos\phi$, $\overline{\mathrm{CH}} = 2\sin\phi - \sin\theta$ (방향에 따라 부호; 절댓값 표기).
+
+    $\overline{\mathrm{DC}}^2 = 4$로부터 (코사인법칙 또는 직접 계산):
+
+    $$(\sqrt{3} - \cos\theta - 2\cos\phi)^2 + (2\sin\phi - \sin\theta)^2 = 4.\quad(\star)$$
+
+    이 식을 $\theta$에 대해 미분 ($\phi = \phi(\theta)$로 두어 합성함수 미분):
+
+    $$2(\sqrt{3} - \cos\theta - 2\cos\phi)(\sin\theta + 2\phi'\sin\phi) + 2(2\sin\phi - \sin\theta)(2\phi'\cos\phi - \cos\theta) = 0.\quad(\star\star)$$
+
+    $\theta = \pi/2$일 때 $\phi = \pi/2$ ($\overline{\mathrm{AB}}\perp\mathrm{AD}$, $\overline{\mathrm{DC}}^2$ 조건으로 검산). 그때 $f(\pi/2) = \sqrt{\overline{\mathrm{AB}}^2 + \overline{\mathrm{BC}}^2} = \sqrt{3 + 4} = \sqrt{7}$. $(\star\star)$에 대입:
+
+    $$0 = \sqrt{3}\cdot(1 + 2\phi'(\pi/2))\ \Rightarrow\ \phi'(\pi/2) = -\dfrac{1}{2}.$$
+
+    이제 코사인법칙으로 $f(\theta)^2 = \overline{\mathrm{AB}}^2 + \overline{\mathrm{BC}}^2 - 2\overline{\mathrm{AB}}\cdot\overline{\mathrm{BC}}\cos\phi = 7 - 4\sqrt{3}\cos\phi$. $\theta$로 미분:
+
+    $$2 f(\theta) f'(\theta) = 4\sqrt{3}\phi'(\theta)\sin\phi.$$
+
+    $\theta = \pi/2$일 때 $f = \sqrt{7}$, $\phi = \pi/2$, $\sin\phi = 1$, $\phi' = -1/2$:
+
+    $$2\sqrt{7} f'(\pi/2) = 4\sqrt{3}\cdot(-1/2)\cdot 1 = -2\sqrt{3}\ \Rightarrow\ f'(\pi/2) = -\dfrac{\sqrt{3}}{\sqrt{7}} = \boxed{-\dfrac{\sqrt{21}}{7}}.$$
+
+**[4 / 문제 4]** 좌표평면에 곡선 $y = x^2$ ($x\ge 0$)과 점 $\mathrm{P}(0, 10)$. 곡선 위 두 점 $\mathrm{A}, \mathrm{B}$가 $\angle\mathrm{OPA} = \theta$. [그림 1] 곡선과 선분 $\mathrm{OP}, \mathrm{PA}$로 둘러싸인 영역 넓이 $f(\theta)$ ($0 < \theta < \pi$). [그림 2] $\angle\mathrm{APB} = \pi/2$, 곡선과 선분 $\mathrm{PA}, \mathrm{PB}$로 둘러싸인 영역 넓이 $g(\theta)$, $g(\theta) = f(\theta + \pi/2) - f(\theta)$. (1) $\mathrm{A}$의 $x$좌표 $t$일 때 $f'(\theta)$를 $t$의 식으로 표현하여라. (2) $g'(\theta) = 0$일 때 $\mathrm{A}, \mathrm{B}$의 $x$좌표 $a, b$에 대해 $a^2 + b^2$, $a b$, $g(\theta)$의 값을 구하여라.
+
+??? success "풀이"
+    **(1)** $\mathrm{A}$에서 $x$축에 내린 수선의 발 $\mathrm{Q}(t, 0)$. 사다리꼴 $\mathrm{OPAQ}$의 넓이 $= (1/2)(10 + t^2)\cdot t = t(10 + t^2)/2$. $\mathrm{Q}$에서 $\mathrm{O}$까지의 곡선 아래 영역 = $\int_0^t x^2\,dx = t^3/3$. $f(\theta) = $ 사다리꼴 $-$ 곡선 아래 영역 = $t(10 + t^2)/2 - t^3/3 = t^3/6 + 5 t$.
+
+    $\mathrm{A}$에서 $y$축에 내린 수선의 발을 $\mathrm{H}(0, t^2)$이라 하면 직각삼각형 $\mathrm{APH}$에서 $\tan\theta = t/(10 - t^2)$. 양변을 $\theta$로 미분:
+
+    $$\sec^2\theta = \dfrac{(10 - t^2) - t\cdot(-2 t)}{(10 - t^2)^2}\cdot\dfrac{d t}{d\theta} = \dfrac{10 + t^2}{(10 - t^2)^2}\cdot\dfrac{d t}{d\theta}.$$
+
+    $\sec^2\theta = 1 + \tan^2\theta = 1 + \dfrac{t^2}{(10 - t^2)^2} = \dfrac{(10 - t^2)^2 + t^2}{(10 - t^2)^2}$이므로
+
+    $$\dfrac{d t}{d\theta} = \dfrac{(10 - t^2)^2 + t^2}{10 + t^2}.$$
+
+    $f'(\theta) = (d f/d t)\cdot(d t/d\theta) = (t^2/2 + 5)\cdot\dfrac{(10 - t^2)^2 + t^2}{10 + t^2} = \dfrac{10 + t^2}{2}\cdot\dfrac{(10 - t^2)^2 + t^2}{10 + t^2}$
+
+    $$\therefore\ f'(\theta) = \boxed{\dfrac{(10 - t^2)^2 + t^2}{2}}.$$
+
+    **(2)** $g'(\theta) = 0$ ⇔ $f'(\theta + \pi/2) = f'(\theta)$. $\mathrm{B}$의 $x$좌표 $b$, $\mathrm{A}$의 $x$좌표 $a$라 하면
+
+    $$\dfrac{(10 - a^2)^2 + a^2}{2} = \dfrac{(10 - b^2)^2 + b^2}{2}.$$
+
+    전개: $(a^2 - b^2)(a^2 + b^2 - 19) = 0$. $a\ne b$이므로 $a^2 + b^2 = 19$.
+
+    $\overline{\mathrm{PA}}\perp\overline{\mathrm{PB}}$이므로 두 직선 기울기 곱 $= -1$: $\dfrac{a^2 - 10}{a}\cdot\dfrac{b^2 - 10}{b} = -1$ ⇔ $(a^2 - 10)(b^2 - 10) + a b = 0$.
+
+    전개: $(a b)^2 - 10(a^2 + b^2) + 100 + a b = (a b)^2 - 190 + 100 + a b = (a b)^2 + a b - 90 = 0$ ⇔ $(a b - 9)(a b + 10) = 0$. $a, b > 0$이므로 $a b = 9$.
+
+    $g(\theta) = f(\theta + \pi/2) - f(\theta) = (b^3/6 + 5 b) - (a^3/6 + 5 a) = (b^3 - a^3)/6 + 5(b - a)$. 
+
+    $b - a$: $(a + b)^2 = a^2 + 2 a b + b^2 = 19 + 18 = 37$, $a + b = \sqrt{37}$. $(b - a)^2 = (a + b)^2 - 4 a b = 37 - 36 = 1$, $b - a = 1$. $b^3 - a^3 = (b - a)(a^2 + a b + b^2) = 1\cdot(19 + 9) = 28$.
+
+    $$g(\theta) = \dfrac{28}{6} + 5\cdot 1 = \dfrac{14}{3} + 5 = \boxed{\dfrac{29}{3}}.$$
+
+    $$\therefore\ a^2 + b^2 = \boxed{19},\quad a b = \boxed{9},\quad g(\theta) = \boxed{\dfrac{29}{3}}.$$
+
+---
