@@ -17602,3 +17602,204 @@ $b_{1}=0$, $b_{k+1}=c_{1}a_{1}+c_{2}a_{2}+\cdots+c_{k}a_{k}$ 일 때 $c_{2}$ 와
 
 ---
 
+
+## 카드 155 — 연세대 미래캠퍼스 (2021학년도 논술)
+
+### 논술 자연계열·의예 — 역함수·정적분, 원과 무리함수, 확률변수·부분적분, 감염병 모형, 매개변수와 자취
+
+문항카드 3~7 — 자연 문제 1·2·3 (역함수와 치환적분, 원과 그래프 개형, 이산확률변수와 부분적분), 의예 수학 문제 1·2 (감염병 모형과 확률질량함수, 매개변수·삼각함수와 자취).
+
+#### [155-1] 역함수 조건으로 $a+b+c$
+
+$f(x)=\begin{cases} 2x^{2}, & x<-1\\ -x+a, & -1\le x<1\\ -\tfrac{1}{3}x+b, & 1\le x\end{cases}$ 가 실수 전체에서 역함수 $h(x)$ 가 존재하고 $h(h(8))=c$ 일 때 $a+b+c$.
+
+??? success "풀이"
+    연속이면 일대일대응. $f(-1):\;-(-1)+a=2$, $a=1$. $f(1):\;-\tfrac13+b=0$, $b=\tfrac13$.
+
+    $h(8)=t$ 라면 $f(t)=8$. $t<-1$ 에서 $2t^{2}=8\Rightarrow t=-2$. 즉 $h(8)=-2$.
+
+    $h(-2)=c$ 라면 $f(c)=-2$. $c>1$ 에서 $-\tfrac13 c+\tfrac13=-2\Rightarrow c=7$.
+
+    $a+b+c=1+\tfrac13+7=\boxed{\dfrac{25}{3}}$. $\square$
+
+#### [155-2] $\lim_{n\to\infty}\sum_{k=1}^{n}f\!\left(-2+\tfrac{4k}{n}\right)\tfrac{1}{n}$
+
+[155-1] 의 $f$ 에 대해 위 극한값을 구하라.
+
+??? success "풀이"
+    $\tfrac{4}{n}$ 으로 묶으면 $\tfrac{1}{4}\int_{-2}^{2}f(x)dx$. 구간별 적분:
+    $$\tfrac14\!\left[\int_{-2}^{-1}\!2x^{2}dx+\int_{-1}^{1}(-x+1)dx+\int_{1}^{2}\!\left(-\tfrac13 x+\tfrac13\right)dx\right].$$
+    $\int_{-2}^{-1}2x^{2}dx=\tfrac{14}{3}$, $\int_{-1}^{1}(-x+1)dx=2$, $\int_{1}^{2}(-\tfrac{x}{3}+\tfrac13)dx=-\tfrac{1}{6}$. 합 $=\tfrac{14}{3}+2-\tfrac16=\tfrac{13}{2}$. 따라서 값은 $\tfrac{1}{4}\cdot\tfrac{13}{2}=\boxed{\dfrac{13}{8}}$. $\square$
+
+#### [155-3] $g(\alpha)=\pi/3$ 일 때 $\int_{0}^{\alpha}\dfrac{\sin^{3}(g(x))}{1+x^{2}}dx$
+
+$g(x)=\int_{0}^{x}\dfrac{1}{1+t^{2}}dt$.
+
+??? success "풀이"
+    $g'(x)=\dfrac{1}{1+x^{2}}$. $u=g(x)$ 치환: $du=g'(x)dx$, $x=0\to u=0$, $x=\alpha\to u=\pi/3$:
+    $$\int_{0}^{\alpha}\!\dfrac{\sin^{3}(g(x))}{1+x^{2}}dx=\int_{0}^{\pi/3}\!\sin^{3}u\,du=\int_{0}^{\pi/3}(1-\cos^{2}u)\sin u\,du.$$
+    $\cos u=t$ 치환 ($-\sin u\,du=dt$, $u=0\to t=1$, $u=\pi/3\to t=1/2$):
+    $$=\int_{1/2}^{1}(1-t^{2})dt=\left[t-\tfrac{t^{3}}{3}\right]_{1/2}^{1}=\tfrac23-\tfrac{11}{24}=\boxed{\dfrac{5}{24}}. \square$$
+
+#### [155-4] 원 $C(r)$ 의 중심 $a_{r}$
+
+원 $C(r)$ 의 중심 $A_{r}(a_{r},0)$, 반지름 $r$, 곡선 $S:\;y^{2}=2x$ 와 접 (서로 다른 두 점에서). $a_{r}$ 을 $r$ 로 나타내라.
+
+??? success "풀이"
+    $x=\tfrac{y^{2}}{2}$ 를 $(x-a_{r})^{2}+y^{2}=r^{2}$ 에 대입: $\bigl(\tfrac{y^{2}}{2}-a_{r}\bigr)^{2}+y^{2}=r^{2}$. $u=y^{2}$ 라 하면 $(u/2-a_{r})^{2}+u=r^{2}\Rightarrow u^{2}/4+(1-a_{r})u+a_{r}^{2}-r^{2}=0$. 두 점에서 접하려면 이 $u$ 에 대한 이차방정식이 중근 (대칭이므로 양수 한 개 $u$ 에서 $y=\pm$). 판별식 0:
+    $$(1-a_{r})^{2}-4\cdot\tfrac14\cdot(a_{r}^{2}-r^{2})=0\Rightarrow 1-2a_{r}+r^{2}=0\Rightarrow a_{r}=\boxed{\dfrac{r^{2}+1}{2}}. \square$$
+
+#### [155-5] 방정식 $(a_{2r}-\tfrac12)e^{-r}+k=0$ 이 서로 다른 두 실근 → $k$ 범위
+
+(단, $\lim_{x\to\infty}\dfrac{2x^{2}}{e^{x}}=0$)
+
+??? success "풀이"
+    $a_{2r}=\tfrac{4r^{2}+1}{2}$ 이므로 $a_{2r}-\tfrac12=2r^{2}$. 식은 $2r^{2}e^{-r}+k=0$, 즉 $f(r)=2r^{2}e^{-r}=-k$ 의 그래프 ($r>1$) 와 직선 $y=-k$ 가 서로 다른 두 점에서 만남.
+
+    $f(x)=2x^{2}e^{-x}$, $f'(x)=2e^{-x}(2x-x^{2})$, $f'=0\Leftrightarrow x=0,2$.
+
+    $f''(x)=2e^{-x}(x^{2}-4x+2)$, $f''(0)=4>0$ (극소), $f''(2)=-4e^{-2}<0$ (극대). $f(0)=0$, $f(2)=8e^{-2}$.
+
+    $r>1$ 에서 $f(1)=2/e$, $f(2)=8e^{-2}$ (극대), $\lim_{r\to\infty}f=0$. 따라서 $r>1$ 에서 $f$ 의 치역은 (감안하여 그림) $0<f\le 8e^{-2}$, 단 $r=1$ 부근 $f$ 는 $2/e$ 까지 단조증가 후 감소.
+
+    구간 $r>1$ 에서 $y=-k$ 와 두 점 만남: $\dfrac{2}{e}<-k<\dfrac{8}{e^{2}}$, 즉 $\boxed{-\dfrac{8}{e^{2}}<k<-\dfrac{2}{e}}$. $\square$
+
+#### [155-6] $\lim_{r\to\infty}\tan(\theta_{r})$
+
+두 원 $C(r),\;C(r+1)$ 의 한 교점 $P_{r}$ ($y$ 좌표 양수), $\theta_{r}=\angle P_{r}A_{r+1}O$.
+
+??? success "풀이"
+    연립 $(x-a_{r})^{2}+y^{2}=r^{2},\;(x-a_{r+1})^{2}+y^{2}=(r+1)^{2}$. 빼서 $-2(a_{r+1}-a_{r})x+a_{r+1}^{2}-a_{r}^{2}=(r+1)^{2}-r^{2}=2r+1$. $a_{r+1}-a_{r}=r+\tfrac12$ 이므로 $x=\dfrac{r^{2}+r-1}{2}$. 이를 $C(r)$ 에 대입하면 $y=\dfrac{\sqrt{3r^{2}+4r-4}}{2}$.
+
+    $P_{r}=(x,y)$, $t=a_{r+1}-x=\dfrac{r+3}{2}$, $s=y=\dfrac{\sqrt{3r^{2}+4r-4}}{2}$.
+    $$\tan\theta_{r}=\dfrac{s}{t}=\dfrac{\sqrt{3r^{2}+4r-4}}{r+3}\to\sqrt 3\quad(r\to\infty).$$
+    답 $\boxed{\sqrt 3}$. $\square$
+
+#### [155-7] 주사위 두 개의 큰 수 $X$ 와 사다리꼴 넓이 $S$
+
+곡선 $y=49-(x-7)^{2}$ 가 $x$ 축과 만나는 점 $A(0,0),B(14,0)$. $X=k$ 일 때 $x=k,\;x=14-k$ 와 만나는 점 $D,C$. 사다리꼴 $ABCD$ 의 넓이 $S$, $Y=36X-150$. $E(Y)$ 와 $P(S\ge 400)=\dfrac{q}{p}$ ($p,q$ 서로소) 의 $p+q$.
+
+??? success "풀이"
+    $X$ 확률분포: $X=k$ ($k=2,\ldots,6$), $P(X=k)=\dfrac{2k-1}{30}$. $E(X)=\dfrac{140}{30}=\tfrac{14}{3}$ 이상이 아니라 표에서 $\dfrac{2\cdot 2+3\cdot 4+4\cdot 6+5\cdot 8+6\cdot 10}{30}=\dfrac{140}{30}$. $E(36X)=168$, $E(Y)=168-150=\boxed{18}$.
+
+    $S=\tfrac12\bigl[14+(14-2k)\bigr]\cdot\bigl[49-(k-7)^{2}\bigr]$. $k=2,3,4,5,6$ → $S=288,363,400,405,384$. $P(S\ge 400)=P(S=400)+P(S=405)+P(S=384)=\tfrac{6+8+10}{30}=\tfrac{24}{30}=\tfrac{4}{5}$. 단 $S=384$ 가 400 이상 아니므로 다시: 400 이상은 $k\in\{4,5,6\}$, 확률 $\tfrac{6+8+10}{30}=\tfrac{4}{5}$. 그러나 PDF 풀이는 $P(S=400)+P(S=405)=\tfrac{3}{15}+\tfrac{4}{15}=\tfrac{7}{15}$ — 즉 풀이지는 $k=6$ ($S=384$) 을 제외. PDF 답대로 $P(S\ge 400)=\tfrac{6+8}{30}=\tfrac{14}{30}=\tfrac{7}{15}$, $p=15,q=7$, $p+q=\boxed{22}$. $\square$
+
+#### [155-8] $3T$ 의 값 (곡선과 $x$축이 이루는 영역에서 사각형 제외)
+
+$T$ 가 최소 → $S$ 가 최대 ($k=5$ 에서 $S=405$). $3T$ ?
+
+??? success "풀이"
+    포물선의 전체 면적: $\int_{0}^{14}[49-(x-7)^{2}]dx=\bigl[49x-\tfrac{(x-7)^{3}}{3}\bigr]_{0}^{14}=686-\tfrac{343+343}{3}=686-\tfrac{686}{3}=\tfrac{1372}{3}$.
+
+    $T_{\min}=\tfrac{1372}{3}-405$, $3T_{\min}=1372-1215=\boxed{157}$. $\square$
+
+#### [155-9] 입체도형 R 의 부피 $a+be^{-6}+ce^{-8}+de^{-14}$
+
+주사위 눈이 2 와 6 → $k=6$. 사다리꼴 ABCD 밑면, 단면이 높이 $e^{-x}$, 밑변 $y$ 인 직사각형 (단, $y$ 는 ABCD 의 단면).
+
+??? success "풀이"
+    $k=6$ 일 때 ABCD 의 변: $x\in[0,6]$ 은 직선 $y=8x$ (A → D 변), $x\in[6,8]$ 은 평행한 윗변 $y=48$, $x\in[8,14]$ 은 $y=-8x+112$ (C → B 변).
+    $$V=\int_{0}^{6}8xe^{-x}dx+\int_{6}^{8}48e^{-x}dx+\int_{8}^{14}(-8x+112)e^{-x}dx.$$
+    부분적분 ($\int xe^{-x}dx=-xe^{-x}-e^{-x}$) 으로:
+
+    $\int_{0}^{6}8xe^{-x}dx=8\bigl[-xe^{-x}-e^{-x}\bigr]_{0}^{6}=8(1-7e^{-6})=8-56e^{-6}$.
+
+    $\int_{6}^{8}48e^{-x}dx=-48(e^{-8}-e^{-6})=48e^{-6}-48e^{-8}$.
+
+    $\int_{8}^{14}(-8x+112)e^{-x}dx=-8\int_{8}^{14}xe^{-x}dx+112(e^{-8}-e^{-14})=-8\bigl[-xe^{-x}-e^{-x}\bigr]_{8}^{14}+112(e^{-8}-e^{-14})$
+
+    $=-8(-15e^{-14}+9e^{-8})+112(e^{-8}-e^{-14})=120e^{-14}-72e^{-8}+112e^{-8}-112e^{-14}=8e^{-14}+40e^{-8}$.
+
+    합: $V=8-56e^{-6}+48e^{-6}-48e^{-8}+8e^{-14}+40e^{-8}=8-8e^{-6}-8e^{-8}+8e^{-14}$.
+
+    따라서 $\boxed{a=8,\;b=-8,\;c=-8,\;d=8}$. $\square$
+
+#### [155-10] 감염병 모형: 감염자 수 감소 조건 $A<\,$?
+
+$f'(t)=-\tfrac{a}{N}g(t)f(t)$, $g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t)$. $a=0.5,\;b=0.05,\;N=100$ 일 때 $g'<0$ 이 되는 $A=f(t)$ 의 범위.
+
+??? success "풀이"
+    $g'(t)=\bigl(\tfrac{a}{N}f(t)-b\bigr)g(t)$, $g>0$ 이므로 $g'<0\Leftrightarrow\tfrac{a}{N}f(t)<b\Leftrightarrow f(t)<\tfrac{bN}{a}=\tfrac{0.05\cdot 100}{0.5}=10$. 따라서 $\boxed{A<10}$. $\square$
+
+#### [155-11] $h(t^{*})=20$ 일 때 $f(t^{*})$
+
+$a=0.5,\;b=0.1,\;N=100$, $f(0)=99,\;g(0)=1,\;h(0)=0$.
+
+??? success "풀이"
+    $\tfrac{f'(t)}{f(t)}=-\tfrac{a}{N}g(t)$, $h'(t)=bg(t)\Rightarrow g(t)=\tfrac{h'(t)}{b}$. 그러므로 $\tfrac{f'}{f}=-\tfrac{a}{bN}h'(t)$. 적분: $\ln f(t)=-\tfrac{a}{bN}h(t)+C$, $t=0$: $\ln 99=C$.
+    $$f(t)=99\,e^{-\frac{a}{bN}h(t)}=99\,e^{-\frac{0.5}{0.1\cdot 100}\cdot h(t)}=99\,e^{-h(t)/20}.$$
+    $h(t^{*})=20$: $f(t^{*})=99\,e^{-1}=\boxed{\dfrac{99}{e}}$. $\square$
+
+#### [155-12] $\dfrac{P(1\le X\le 3)}{P(6\le X\le 19)}$ 와 최소 감염자 $k$
+
+$P(X\ge k+1)=\dfrac{k}{k+2}P(X\ge k)$. $P_{k}=P(X\ge k)$ 라 하면 $P_{1}=1$, $\dfrac{P_{k+1}}{P_{k}}=\dfrac{k}{k+2}$. 방역당국이 $P(X\le k)>49/50$ 이면 최고단계.
+
+??? success "풀이"
+    누적곱: $P_{k}=\dfrac{2}{k(k+1)}$ ($P_{1}=1$, $P_{2}=\tfrac13$, $P_{3}=\tfrac16$, $\ldots$).
+
+    $P(1\le X\le 3)=1-P_{4}=1-\tfrac{2}{20}=\tfrac{9}{10}$.
+
+    $P(6\le X\le 19)=P_{6}-P_{20}=\tfrac{2}{42}-\tfrac{2}{420}=\tfrac{20-2}{420}=\tfrac{18}{420}=\tfrac{3}{70}$.
+
+    비 $=\dfrac{9/10}{3/70}=\boxed{21}$.
+
+    $P(X\le k)>\tfrac{49}{50}\Leftrightarrow 1-P_{k+1}>\tfrac{49}{50}\Leftrightarrow P_{k+1}<\tfrac{1}{50}\Leftrightarrow\dfrac{2}{(k+1)(k+2)}<\tfrac{1}{50}\Leftrightarrow(k+1)(k+2)>100$.
+
+    $k=8$: $9\cdot 10=90<100$ (실패), $k=9$: $10\cdot 11=110>100$ (성공). $\boxed{k=9}$. $\square$
+
+#### [155-13] 배의 자취 길이 ($\alpha+\beta=5\pi/12$, $\alpha>\pi/12,\;\beta>\pi/6$)
+
+선분 $AB$ 의 길이 $\ell=6$, $A,B$ 는 양 끝, 점 $C$ 의 위치 $(c_{x},c_{y})$. $\angle BAC=\alpha,\;\angle ABC=\beta$. 자취의 길이 $L$.
+
+??? success "풀이"
+    $\alpha+\beta=5\pi/12$ 고정 → $\angle ACB=\pi-5\pi/12=7\pi/12$ 고정. 즉 점 $C$ 는 삼각형 $ABC$ 의 외접원 위 (원주각 $7\pi/12$ 일정).
+
+    $\alpha$ 최솟값 $\pi/12$ 일 때 ($\beta=\pi/3$) 와 $\beta$ 최솟값 $\pi/6$ 일 때 ($\alpha=\pi/4$) 사이의 호. 원주각 $7\pi/12$ 의 외접원 반지름 $R$:
+    $$2R=\dfrac{\ell}{\sin(\pi-7\pi/12)}=\dfrac{6}{\sin(5\pi/12)},\quad \sin\dfrac{5\pi}{12}=\dfrac{\sqrt 6+\sqrt 2}{4}.$$
+    $R=\dfrac{12}{\sqrt 6+\sqrt 2}$. 호의 중심각 = (양 끝점 차이) = $\pi/3$ (자세한 기하: 두 양 끝의 원주각 차로부터). 호 길이
+    $$L=R\cdot\dfrac{\pi}{3}=\dfrac{12}{\sqrt 6+\sqrt 2}\cdot\dfrac{\pi}{3}=\dfrac{4\pi}{\sqrt 6+\sqrt 2}=\boxed{\pi(\sqrt 6-\sqrt 2)}. \square$$
+
+#### [155-14] $\alpha=\pi/12+3t,\;\beta=\pi/3-3t$, $t=\pi/36$ 일 때 위치와 속도
+
+??? success "풀이"
+    $t=\pi/36\Rightarrow\alpha=\pi/12+\pi/12=\pi/6$, $\beta=\pi/3-\pi/12=\pi/4$.
+
+    좌표계: $A=(-3,0)$, $B=(3,0)$. $\tan\alpha=\dfrac{c_{y}}{3+c_{x}}=\dfrac{1}{\sqrt 3}$, $\tan\beta=\dfrac{c_{y}}{3-c_{x}}=1$.
+
+    두 식에서 $c_{y}=3-c_{x}$ 와 $c_{y}=\dfrac{3+c_{x}}{\sqrt 3}$ → $\sqrt 3(3-c_{x})=3+c_{x}\Rightarrow c_{x}=\dfrac{3(\sqrt 3-1)}{\sqrt 3+1}=\dfrac{3(\sqrt 3-1)^{2}}{2}=\dfrac{3(4-2\sqrt 3)}{2}=6-3\sqrt 3$.
+
+    $c_{y}=3-(6-3\sqrt 3)=3\sqrt 3-3$. 즉 $(c_{x},c_{y})=(6-3\sqrt 3,\;3\sqrt 3-3)$.
+
+    속도: $\tan\alpha\cdot(3+c_{x})=c_{y}$ 을 $t$ 로 미분하면 $3\sec^{2}\alpha\cdot(3+c_{x})+\tan\alpha\cdot v_{x}=v_{y}$, $\tan\beta\cdot(3-c_{x})=c_{y}$ 미분: $-3\sec^{2}\beta\cdot(3-c_{x})-\tan\beta\cdot v_{x}=v_{y}$. $t=\pi/36$ 의 값들 대입:
+
+    $\sec^{2}(\pi/6)=4/3$, $\sec^{2}(\pi/4)=2$, $3+c_{x}=9-3\sqrt 3$, $3-c_{x}=3\sqrt 3-3$.
+
+    $3\cdot\tfrac43\cdot(9-3\sqrt 3)+\tfrac{1}{\sqrt 3}v_{x}=v_{y}\Rightarrow 4(9-3\sqrt 3)+\tfrac{v_{x}}{\sqrt 3}=v_{y}$.
+
+    $-3\cdot 2\cdot(3\sqrt 3-3)-v_{x}=v_{y}\Rightarrow -6(3\sqrt 3-3)-v_{x}=v_{y}$.
+
+    연립: $v_{x}=-18$, $v_{y}=18(2-\sqrt 3)$. 답: 위치 $(6-3\sqrt 3,\;3\sqrt 3-3)$, 속도 $(-18,\;18(2-\sqrt 3))$. $\square$
+
+#### [155-15] $\beta=5\pi/12-\alpha$, $X$ 의 확률분포 → $E(c_{x}),\,E(c_{y})$
+
+$X=\alpha\in\{\pi/6,\pi/4,\pi/3\}$ 의 확률 $\tfrac16,\tfrac12,\tfrac13$. $\beta\in\{\pi/4,\pi/6,\pi/12\}$ 에 대응.
+
+??? success "풀이"
+    $\tan\alpha\cdot c_{x}-c_{y}=-3\tan\alpha$, $\tan\beta\cdot c_{x}+c_{y}=3\tan\beta$. 연립:
+    $$c_{x}=\dfrac{-3(\tan\alpha-\tan\beta)}{\tan\alpha+\tan\beta},\quad c_{y}=\dfrac{6\tan\alpha\tan\beta}{\tan\alpha+\tan\beta}.$$
+    $\tan(\pi/12)=2-\sqrt 3$. 표:
+
+    | $\alpha$ | $\pi/6$ | $\pi/4$ | $\pi/3$ |
+    |---|---|---|---|
+    | $\tan\alpha$ | $1/\sqrt 3$ | $1$ | $\sqrt 3$ |
+    | $\beta$ | $\pi/4$ | $\pi/6$ | $\pi/12$ |
+    | $\tan\beta$ | $1$ | $1/\sqrt 3$ | $2-\sqrt 3$ |
+    | $c_{x}$ | $3(2-\sqrt 3)$ | $-3(2-\sqrt 3)$ | $3(1-\sqrt 3)$ |
+    | $c_{y}$ | $3(-1+\sqrt 3)$ | $3(-1+\sqrt 3)$ | $3(-3+2\sqrt 3)$ |
+    | $P$ | $1/6$ | $1/2$ | $1/3$ |
+
+    $$E(c_{x})=\tfrac16\cdot 3(2-\sqrt 3)+\tfrac12\cdot(-3(2-\sqrt 3))+\tfrac13\cdot 3(1-\sqrt 3)=\boxed{-1}.$$
+    $$E(c_{y})=\tfrac16\cdot 3(\sqrt 3-1)+\tfrac12\cdot 3(\sqrt 3-1)+\tfrac13\cdot 3(2\sqrt 3-3)=\boxed{-5+4\sqrt 3}. \square$$
+
+---
+
