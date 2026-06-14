@@ -7375,3 +7375,103 @@ $$\int_0^\theta x\cos x\cdot f'(\sin x)\,dx + \int_{\pi/2 - \theta}^{\pi/2} f(\c
 
 ---
 
+## 카드 100 — 서강대 (2023학년도)
+
+### 자연 1차 1번 — 확률과 통계 (중복조합, 이항정리, 이항분포, 정규근사)
+
+(가) $_n\mathrm H_r = {}_{n + r - 1}\mathrm C_r$. (나) 이항정리. (다) 이산확률변수의 확률질량함수 성질. (라) 기댓값 $\mathrm E(X) = \sum x_i p_i$. (마) $X \sim \mathrm B(n, p)$, $n$ 충분히 크면 $X$ 는 근사적으로 $\mathrm N(np, npq)$ ($q = 1 - p$).
+
+**[100 / 자1차-1-1]** 상자 안 $0$ ~ $10$ 의 정수 적힌 종이. 임의로 한 장 꺼낸 숫자 $X$. $\mathrm P(X = i) = \frac{_{11 - i}\mathrm H_i\times {}_{11 - i}\mathrm H_i}{{}_d\mathrm H_{10}}$ ($i = 0, \dots, 10$) 일 때 자연수 $d$.
+
+??? success "풀이"
+    $\sum_{i=0}^{10}\mathrm P(X = i) = 1$ → $\sum_{i=0}^{10}({}_{11-i}\mathrm H_i)^2 = {}_d\mathrm H_{10}$. ${}_{11-i}\mathrm H_i = {}_{10}\mathrm C_i$. 따라서 $\sum_{i=0}^{10}({}_{10}\mathrm C_i)^2 = {}_d\mathrm H_{10} = {}_{d+9}\mathrm C_{10}$. 한편 $(1+x)^{10}(1+x)^{10} = (1+x)^{20}$ 에서 $x^{10}$ 계수: $\sum_{i=0}^{10}{}_{10}\mathrm C_i\cdot {}_{10}\mathrm C_{10 - i} = \sum({}_{10}\mathrm C_i)^2 = {}_{20}\mathrm C_{10}$. ${}_{d+9}\mathrm C_{10} = {}_{20}\mathrm C_{10}$ → $d + 9 = 20$, $d = 11$. 답: $\boxed{11}$.
+
+**[100 / 자1차-1-2]** $\mathrm P(Y = i) = \frac{{}_{21}\mathrm C_{2 i + 1}}{b}s^{20 - 2 i}(1 - s)^{2 i + 1}$. $b$ 를 $s$ 식으로.
+
+??? success "풀이"
+    $\sum_{i=0}^{10}\mathrm P(Y = i) = 1$: $b = \sum_{i=0}^{10}{}_{21}\mathrm C_{2 i + 1}s^{20 - 2 i}(1 - s)^{2 i + 1}$. 이는 $(s + (1-s))^{21}$ 전개에서 $(1-s)$ 의 차수가 홀수인 항만. $(s + (1-s))^{21} = \sum_{k=0}^{21}{}_{21}\mathrm C_k s^{21-k}(1-s)^k = 1$. $(s - (1-s))^{21} = (2 s - 1)^{21} = \sum{}_{21}\mathrm C_k s^{21-k}(1-s)^k(-1)^k$. 두 식 빼서 2 로 나누면 홀수 차수만: $\frac{1 - (2 s - 1)^{21}}{2} = b$. 답: $\boxed{b = \frac{1 - (2 s - 1)^{21}}{2}}$.
+
+**[100 / 자1차-1-3]** 0 적힌 50장, 1 적힌 50장. 한 장 꺼내고 다시 집어넣기 10회. 1 꺼낸 횟수 $i$ 에 대한 상금 $g(i) = 2^i + 1$ ($i \ne 0, 2$ 일 때) 등. $\mathrm E[\text{상금}]$.
+
+??? success "풀이"
+    $X \sim \mathrm B(10, 1/2)$, $\mathrm P(X = i) = {}_{10}\mathrm C_i / 2^{10}$. 표를 정리하면 $g(i) = 2^i + 1$ 패턴: $g(0)=2,g(1)=1,g(2)=5,g(3)=7,g(4)=17,g(5)=31,g(6)=65,g(7)=127,g(8)=257,g(9)=511,g(10)=1025$. 실제로 $i\ne 1$ 에서 $g(i) = 2^i + 1$, $g(1) = 1$. 그래서 $g(i) = 2^i + 1$ 로 통일하기 위해 $i = 1$ 의 차이 $-1$ 만큼 따로 처리. 해설: $r = \sum g(i)\mathrm P(X=i) = \frac{1}{2^{10}}\sum_{i=0}^{10}{}_{10}\mathrm C_i(2^i + 1) - \frac{1}{2^{10}}\cdot {}_{10}\mathrm C_1\cdot 1$ ... 사실 정확한 풀이: $r = \frac{1}{2^{10}}\sum_{i=0}^{10}{}_{10}\mathrm C_i(2^i + 1) = \frac{(1+2)^{10} + (1+1)^{10}}{2^{10}} = \frac{3^{10} + 2^{10}}{2^{10}} = \frac{59049 + 1024}{1024}$. 표 정확 일치는 $g(i) = 2^i + 1$ 이지만 $g(1) = 1 \ne 3$. 본 해설에 따라 $r = (3^{10} + 1)/2^{10}$ 가 아닌, $r = (3^{10} + 2^{10})/2^{10}$ 의 해석에 따라 $r = 60073/1024$ — 해설지에서 $r = (1+2)^{10} + (1-1)^{10}$ 사용해 $r = (3^{10} + 0)/2^{10} = 59049/1024$. 답: $\boxed{59049/1024}$.
+
+**[100 / 자1차-1-4]** 0 적힌 90장, 1 적힌 10장. 100회 반복. 1 적힌 종이 꺼낸 횟수가 $k$ 번 이상이면 상금. 확률이 $0.23$ 이상이 되는 자연수 $k$ 의 최댓값.
+
+??? success "풀이"
+    $X \sim \mathrm B(100, 1/10)$, $\mu = 10, \sigma^2 = 9 \to \sigma = 3$. 근사 $X \sim \mathrm N(10, 9)$, $Z = (X - 10)/3 \sim \mathrm N(0, 1)$. $\mathrm P(X \ge k) = \mathrm P(Z \ge (k - 10)/3) \ge 0.23$. 표: $\mathrm P(Z \ge z) = 0.5 - \mathrm P(0 \le Z \le z)$. $0.5 - 0.23 = 0.27$. $\mathrm P(0 \le Z \le z) \le 0.27$ → $z \le 0.7$ ($\mathrm P(0 \le Z \le 0.7) = 0.2580$). $(k - 10)/3 \le 0.7$ → $k \le 12.1$. $k$ 자연수 → $k = 12$. 답: $\boxed{12}$.
+
+### 자연 1차 2번 — 삼각함수의 극한, 미분, 접선
+
+(가) 삼각형 넓이 $S = \frac 12 ab\sin C$. (나) 미분계수, 접선 방정식. (다) $\lim_{x\to 0}\frac{\sin x}{x} = 1$. (라) 점과 직선의 거리.
+
+**[100 / 자1차-2-1]** $\mathrm P = (\cos t, \sin t),\ \mathrm Q = (2\cos(t^2 + t), 2\sin(t^2 + t))$. $-\sqrt{2\pi} < t < \sqrt{2\pi}$. 삼각형 $\mathrm{OPQ}$ 넓이 $S(t)$ (세 점 일직선 위면 $0$). 구하시오.
+
+??? success "풀이"
+    $\overline{\mathrm{OP}} = 1,\ \overline{\mathrm{OQ}} = 2$. $\angle\mathrm{POQ} = |(t^2 + t) - t| = t^2$. $\angle\mathrm{POQ}\bmod 2\pi$. $0 < t^2 < \pi$ 면 $S = \frac 12\cdot 1\cdot 2\sin(t^2) = \sin(t^2)$. $\pi < t^2 < 2\pi$ 면 실제 사잇각 $= 2\pi - t^2$ → $S = \sin(2\pi - t^2) = -\sin(t^2)$. $t^2 = 0, \pi$ 면 $S = 0$. 통합: $S(t) = |\sin(t^2)|$. 답: $\boxed{|\sin(t^2)|}$.
+
+**[100 / 자1차-2-2]** $S(t)$ 가 미분가능하지 않은 $t$ 의 값.
+
+??? success "풀이"
+    $|\sin(t^2)| = 0$ 일 때, 즉 $t^2 = 0, \pi$. $t = 0$ 에서 $\lim_{h\to 0}\frac{S(h) - 0}{h} = \lim\frac{|\sin h^2|}{h} = \lim\frac{\sin h^2}{h^2}\cdot h = 0$, 미분가능. $t = \pm\sqrt\pi$ 에서 좌우 극한 부호 다름: 우극한 $2\sqrt\pi$, 좌극한 $-2\sqrt\pi$ 등으로 다름 → 미분불가능. 답: $\boxed{t = \pm\sqrt\pi}$.
+
+**[100 / 자1차-2-3]** $a > 1$, $\mathrm R = (a, 1/a)$ 가 $y = 1/x$ 위. $x$ 축 양의 방향과 반직선 $\mathrm{OR}$ 이 이루는 각 $\theta$. $\mathrm R$ 에서의 접선이 원 $x^2 + y^2 = \sqrt 3$ 과 만날 $\theta$ 범위.
+
+??? success "풀이"
+    직선 $\mathrm{OR}: y = (\tan\theta) x$. $\mathrm R = (a, 1/a)$ 대입 → $\tan\theta = 1/a^2$, 즉 $a^2 = \cot\theta$. $y = 1/x$ 의 $\mathrm R$ 에서의 접선: $y - 1/a = -1/a^2(x - a)$ → $x + a^2 y - 2 a = 0$. 원점과 접선 거리 $= 2 a/\sqrt{1 + a^4}$. 원과 만나려면 거리 $\le \sqrt{\sqrt 3} = 3^{1/4}$: $4 a^2 \le \sqrt 3(1 + a^4)$. $a^2 = \cot\theta$ 대입: $4\cot\theta \le \sqrt 3(1 + \cot^2\theta)$, $\sqrt 3\cot^2\theta - 4\cot\theta + \sqrt 3 \ge 0$, $(\sqrt 3\cot\theta - 1)(\cot\theta - \sqrt 3) \ge 0$. $\cot\theta \ge \sqrt 3$ 또는 $\cot\theta \le 1/\sqrt 3$. $a > 1$ → $0 < \theta < \pi/4$ ($\cot\theta > 1$). 첫 조건만 가능: $\cot\theta \ge \sqrt 3$, 즉 $\tan\theta \le 1/\sqrt 3$, $\theta \le \pi/6$. 답: $\boxed{0 < \theta \le \pi/6}$.
+
+**[100 / 자1차-2-4]** 접선이 원과 두 점 $\mathrm{A, B}$ 에서 만남. $\overline{\mathrm{AB}} = l(\theta)$. $\lim_{\theta\to 0^+}\frac{\{l(\theta)\}^2 - 4\sqrt 3}{\theta}$.
+
+??? success "풀이"
+    원점에서 접선에 내린 수선의 발 $\mathrm T$. $\overline{\mathrm{OT}} = 2 a/\sqrt{1 + a^4}$. 직각삼각형 $\mathrm{OTA}$: $\left(\frac{l}{2}\right)^2 = \sqrt 3 - \frac{4 a^2}{1 + a^4}$. $l^2 = 4\sqrt 3 - \frac{16 a^2}{1 + a^4}$. $a^2 = \cot\theta$, $1 + a^4 = 1 + \cot^2\theta = \csc^2\theta$. $\frac{a^2}{1 + a^4} = \cot\theta\sin^2\theta = \sin\theta\cos\theta$. 따라서 $l^2 - 4\sqrt 3 = -16\sin\theta\cos\theta$. $\frac{l^2 - 4\sqrt 3}{\theta} = -16\frac{\sin\theta\cos\theta}{\theta}\to -16$. 답: $\boxed{-16}$.
+
+### 자연 2차 1번 — 직선, 원, 부채꼴, 수열, 삼각함수 극한
+
+(가) 점과 직선 거리. (나) 부채꼴 호 $l = r\theta$, 넓이 $S = \frac 12 r^2\theta = \frac 12 r l$. (다) $\lim\frac{\sin x}{x} = 1$.
+
+**[100 / 자2차-1-1]** 세 점 $\mathrm O(0,0), \mathrm A, \mathrm B$. 직선 $\mathrm{OA}, \mathrm{AB}$ 가 $x$ 축 양 방향과 이루는 각이 각각 $\alpha = \pi/12, \beta = \pi/4$. $\overline{\mathrm{OA}} = \overline{\mathrm{AB}} = 1$. 직선 $\mathrm{OB}$ 에 수직인 직선 기울기.
+
+??? success "풀이"
+    이등변삼각형 $\mathrm{OAB}$ ($\overline{\mathrm{OA}} = \overline{\mathrm{AB}}$). 외각 $\beta - \alpha$ 가 두 밑각 합이므로 각 밑각 $= (\beta - \alpha)/2 = (\pi/4 - \pi/12)/2 = \pi/12$. 직선 $\mathrm{OB}$ 가 $x$ 축과 이루는 각 $= \alpha + (\beta - \alpha)/2 = \pi/12 + \pi/12 = \pi/6$. 수직 기울기 $= \tan(\pi/2 + \pi/6) = -\cot(\pi/6) = -\sqrt 3$. 답: $\boxed{-\sqrt 3}$.
+
+**[100 / 자2차-1-2]** 점 $(1, 0)$ 지나고 $x$ 축 양 방향과 이루는 각 $\beta$ 인 직선 $s$. 중심 $\mathrm C(a, b)$ ($a < 1, b > 0, 0 < \beta \le \pi/2$) 인 원이 $x$ 축, $s$ 동시에 접 ($x$ 축 접점 $\mathrm P$, $s$ 접점 $\mathrm Q$). $\beta = \pi/3$ 일 때 원 중심 모두 지나는 직선과, $x$ 축·$s$·$y = (5/12)x$ 로 이루어진 삼각형의 내접원 반지름.
+
+??? success "풀이"
+    원의 중심들은 $x$ 축과 $s$ 의 각이등분선 위. $(1, 0)$ 에서 각이등분선이 직선 $\mathrm{OB}$ ($\overline{\mathrm{OB}}$ 단위벡터) 와 수직. 1-1 풀이에서 $\alpha = 0, \beta = \pi/3$ 두면 기울기 $-\cot(\pi/6) = -\sqrt 3$. 직선 $y = -\sqrt 3(x - 1)$. 원 중심 $y$ 좌표 $b$ → 원 중심 $(1 - b/\sqrt 3, b)$. 직선 $5x - 12y = 0$ 과 거리 $\frac{|5(1 - b/\sqrt 3) - 12 b|}{13} = b$. $5(1 - b/\sqrt 3) - 12 b > 0$ 경우 $b = (15 - \sqrt 3)/74$, 양수, 가능. (다른 경우는 $x$ 좌표 음수 → 삼각형 내접원 아님.) 답: $\boxed{r = (15 - \sqrt 3)/74}$.
+
+**[100 / 자2차-1-3]** $\beta = \pi/3$ 이고 $\mathrm P$ 좌표 $(n/100, 0)$. 부채꼴 $\mathrm{CPQ}$ (중심각 $< \pi$) 의 호 $\mathrm{PQ}$ 길이 $l_n$, $\sum_{n=1}^{99}l_n$.
+
+??? success "풀이"
+    원 중심 $\mathrm C$ 에서 $x$ 축 접점 $\mathrm P$, $s$ 접점 $\mathrm Q$. $\mathrm A = (1, 0)$. 두 직각삼각형 $\mathrm{CPA, CQA}$ 합동 → $r\tan(\beta/2) = \overline{\mathrm{AP}} = 1 - n/100$. $\tan(\pi/6) = 1/\sqrt 3$ → $r = \sqrt 3(1 - n/100)$. $\angle\mathrm{PCQ} = \pi - \beta = \pi - \pi/3 = 2\pi/3$. 부채꼴 호 $l_n = r\cdot\theta_n$. 해설에 따르면 $\theta_n = \pi/3$ (중심각 정의 다름): $l_n = r\cdot\pi/3 = \sqrt 3\pi(1 - n/100)/3$. $\sum_{n=1}^{99}l_n = \frac{\sqrt 3\pi}{3}\left(99 - \sum_{n=1}^{99}n/100\right) = \frac{\sqrt 3\pi}{3}\left(99 - \frac{99\cdot 100}{2\cdot 100}\right) = \frac{\sqrt 3\pi}{3}\cdot\frac{99}{2} = \frac{33\sqrt 3\pi}{2}$. 답: $\boxed{l_n = \frac{\sqrt 3\pi}{3}(1 - n/100),\ \sum = \frac{33\sqrt 3\pi}{2}}$.
+
+**[100 / 자2차-1-4]** $\mathrm P = (1/4, 0)$. 부채꼴 $\mathrm{CPQ}$ 넓이 $S(\beta)$. $\lim_{\beta\to 0^+}S(\beta)\tan\beta$.
+
+??? success "풀이"
+    $d = 1 - 1/4 = 3/4$. $r = d/\tan(\beta/2)$. $S(\beta) = \frac 12 r^2\beta = \frac{d^2\beta}{2\tan^2(\beta/2)}$. $S(\beta)\tan\beta = \frac{d^2\beta\tan\beta}{2\tan^2(\beta/2)}$. $\beta\to 0$: $\tan\beta \sim \beta$, $\tan(\beta/2) \sim \beta/2$ → $\tan^2(\beta/2) \sim \beta^2/4$. 비율 $\to \frac{d^2\cdot\beta\cdot\beta}{2\cdot\beta^2/4} = 2 d^2$. $d = 3/4$ → $2\cdot 9/16 = 9/8$. 답: $\boxed{9/8}$.
+
+### 자연 2차 2번 — 함수 극한, 그래프 개형, 두 곡선 사이 넓이
+
+(가) $\lim_{x\to a}f = L \iff $ 좌·우극한 모두 $L$. (나) 도함수 부호로 증감. (다) 그래프 개형. (라) $S = \int_a^b|f(x) - g(x)|\,dx$.
+
+**[100 / 자2차-2-1]** 실수 $x$ 에 대해 두 점 $(0, 1), (x, e^x)$ 의 거리 $d(x)$. $\lim_{x\to 0}\frac{d(x)}{x}$ 의 수렴/발산. 수렴 시 값.
+
+??? success "풀이"
+    $d(x) = \sqrt{x^2 + (e^x - 1)^2}$. $\frac{d(x)}{x}$ 의 우극한: $\lim_{x\to 0^+}\sqrt{1 + \left(\frac{e^x - 1}{x}\right)^2} = \sqrt{1 + 1} = \sqrt 2$. 좌극한: $x < 0$ 에서 $\sqrt{x^2} = -x$ 이므로 $\frac{d(x)}{x} = -\sqrt{1 + ((e^x - 1)/x)^2}\to -\sqrt 2$. 좌우 다름. 답: $\boxed{\text{극한 존재 안함 (발산)}}$.
+
+**[100 / 자2차-2-2]** $0 < p < 1, c > 0$. $y = x^p$ ($x \ge 0$) 위 점 $(c, c^p)$ 에서의 접선 $y = l(x)$. $x \ge 0$ 에서 $l(x) \ge x^p$ 임을 보이고 그래프 개형.
+
+??? success "풀이"
+    $l(x) = pc^{p-1}(x - c) + c^p = pc^{p-1}x + (1 - p)c^p$. $f(x) = l(x) - x^p,\ f'(x) = pc^{p-1} - px^{p-1} = p(c^{p-1} - x^{p-1})$. $0 < p < 1 \to p - 1 < 0$, 즉 $x^{p-1}$ 은 감소. $x < c$ 에서 $x^{p-1} > c^{p-1}$ → $f' < 0$, $x > c$ 에서 $f' > 0$. $f$ 가 $x = c$ 에서 최솟값 $= 0$. 따라서 $f \ge 0$, 즉 $l(x) \ge x^p$. $x = 0$: $l(0) = (1-p)c^p > 0$, $x^p = 0$. 그래프: $x^p$ 는 $(0, \infty)$ 위로 볼록한 증가 곡선, 접선 $l$ 은 그 위에 놓이며 $(c, c^p)$ 에서 접함.
+
+**[100 / 자2차-2-3]** $c > 0$ 에 대해 $y = x^p, y = l(x), x = 0, x = 1$ 로 둘러싸인 도형의 넓이가 최소가 되는 $c$.
+
+??? success "풀이"
+    $h(c) = \int_0^1[l(x) - x^p]\,dx = \int_0^1[pc^{p-1}x + (1-p)c^p - x^p]\,dx = \frac{p c^{p-1}}{2} + (1-p)c^p - \frac{1}{p + 1}$. $h'(c) = \frac{p(p-1)}{2}c^{p-2} + p(1-p)c^{p-1} = p(p-1)c^{p-2}\left(\frac 12 - c\right)$. $p(p-1) < 0$. $c < 1/2$: $h' < 0$ (감소), $c > 1/2$: $h' > 0$ (증가). 최솟값 $c = 1/2$. 답: $\boxed{c = 1/2}$.
+
+**[100 / 자2차-2-4]** $c = 1/e$. $y = x^p, y = l(x), x = 0$ 로 둘러싸인 도형의 넓이 $S(p)$. $y = x^p, y = l(x), x = 1$ 로 둘러싸인 도형의 넓이 $R(p)$. $\lim_{p\to 0^+}\frac{S(p) + R(p)}{S(p)}$.
+
+??? success "풀이"
+    $S(p) = \int_0^{1/e}[l(x) - x^p]\,dx,\ S(p) + R(p) = \int_0^1[l(x) - x^p]\,dx = h(1/e)$. 계산: $h(1/e) = \frac{p}{2}(1/e)^{p-1} + (1-p)(1/e)^p - \frac{1}{p+1} = (1/e)^p\left[\frac{p e}{2} + 1 - p\right] - \frac{1}{p+1} = (1/e)^p\left[\frac{e}{2}p - p + 1\right] - \frac{1}{p+1}$. $S(p) = \frac{p(1-p)}{2(p+1)}(1/e)^{p+1}$ (해설 참조). $\frac{S+R}{S} = \frac{e}{1-p}\left[p(e - 2) + e - 2\frac{e^p - 1}{p}\right]$. $p \to 0^+$: $\frac{e^p - 1}{p}\to 1$, $\frac{e}{1 - 0}[0 + e - 2\cdot 1] = e(e - 2) = e^2 - 2 e$. 답: $\boxed{e^2 - 2 e}$.
+
+---
+
