@@ -10944,3 +10944,70 @@ $t\in [0, 2\pi]$에서 선분 $\mathrm{AB}$와 원 $C$가 서로 다른 두 점�
     $$\therefore\ a^2 + b^2 = \boxed{19},\quad a b = \boxed{9},\quad g(\theta) = \boxed{\dfrac{29}{3}}.$$
 
 ---
+
+## 카드 123 — 건국대 (2025, 논술 KU자유전공학부)
+
+출처: 건국대학교 2025학년도 KU논술우수자전형 — 자유전공학부 (문항카드 7, 문제 2-1, 2-2, 2-3).
+
+---
+
+### 논술 자유전공 수학 — 곡선·직선 비율·합 조합·내접원 삼각형
+
+**[1 / 문제 2-1]** 점 $\mathrm{A}$는 곡선 $y = x^3 + x + 3$ ($x\ge 0$) 위에 있고, 점 $\mathrm{B}$는 직선 $y = 4 x - 2$ 위에 있다. 선분 $\mathrm{AB}$는 원점 $\mathrm{O}$를 지난다. $\overline{\mathrm{OA}}/\overline{\mathrm{OB}}$의 최솟값을 구하여라.
+
+??? success "풀이"
+    $\mathrm{A}(a, a^3 + a + 3)$로 두자.
+
+    **(i) $a = 0$**: $\mathrm{A}(0, 3)$, 선분 $\mathrm{AB}$가 $y$축 위. $\mathrm{B} = (0, -2)$. $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = 3/2$.
+
+    **(ii) $a\ne 0$**: 직선 $\mathrm{OA}$ 기울기 $(a^3 + a + 3)/a$. 직선과 $y = 4 x - 2$ 교점 $\mathrm{B}$의 $x$좌표
+
+    $$\dfrac{a^3 + a + 3}{a}\cdot x = 4 x - 2\ \Rightarrow\ x = \dfrac{2 a}{4 a - (a^3 + a + 3)} = \dfrac{-2 a}{a^3 - 3 a + 3}.$$
+
+    $\overline{\mathrm{OA}} = \sqrt{a^2 + (a^3 + a + 3)^2}$. $\overline{\mathrm{OB}} = \sqrt{x_{\mathrm{B}}^2(1 + ((a^3 + a + 3)/a)^2)} = \dfrac{2\sqrt{a^2 + (a^3 + a + 3)^2}}{|a^3 - 3 a + 3|}$.
+
+    $$\dfrac{\overline{\mathrm{OA}}}{\overline{\mathrm{OB}}} = \dfrac{|a^3 - 3 a + 3|}{2}.$$
+
+    $f(x) = x^3 - 3 x + 3$ ($x\ge 0$). $f'(x) = 3(x^2 - 1)$, $f'(1) = 0$, $f' < 0$ on $(0, 1)$, $f' > 0$ on $(1, \infty)$. $f(0) = 3$, $f(1) = 1$, $f$는 $x = 1$에서 최솟값 $1$. $x\ge 0$에서 $f\ge 1 > 0$이므로 $|f| = f$. $\min(\overline{\mathrm{OA}}/\overline{\mathrm{OB}}) = 1/2$ ($a = 1$).
+
+    $(i)$의 $3/2$와 비교하여 전체 최솟값 $= \boxed{\dfrac{1}{2}}$.
+
+**[2 / 문제 2-2]** $1$부터 $9$까지 자연수가 적힌 $9$장의 카드에서 $4$장을 동시에 뽑을 때 카드에 적힌 수의 합이 $4$의 배수가 되는 경우의 수를 구하여라.
+
+??? success "풀이"
+    $4$장의 합 최솟값 $1 + 2 + 3 + 4 = 10$, 최댓값 $6 + 7 + 8 + 9 = 30$. 따라서 가능한 $4$의 배수: $12, 16, 20, 24, 28$. 각 경우의 4-부분집합을 직접 셈하면:
+
+    - $k = 12$: $\{1, 2, 3, 6\}, \{1, 2, 4, 5\}$ — $2$개
+    - $k = 16$: $\{1, 2, 4, 9\}, \{1, 2, 5, 8\}, \{1, 2, 6, 7\}, \{1, 3, 4, 8\}, \{1, 3, 5, 7\}, \{1, 4, 5, 6\}, \{2, 3, 4, 7\}, \{2, 3, 5, 6\}$ — $8$개
+    - $k = 20$: $a = 1$: $\{1, 2, 8, 9\}, \{1, 3, 7, 9\}, \{1, 4, 6, 9\}, \{1, 4, 7, 8\}, \{1, 5, 6, 8\}$ ($5$개). $a = 2$: $\{2, 3, 6, 9\}, \{2, 3, 7, 8\}, \{2, 4, 5, 9\}, \{2, 4, 6, 8\}, \{2, 5, 6, 7\}$ ($5$개). $a = 3$: $\{3, 4, 5, 8\}, \{3, 4, 6, 7\}$ ($2$개). 합 $12$개.
+    - $k = 24$: $\{1, 6, 8, 9\}, \{2, 5, 8, 9\}, \{2, 6, 7, 9\}, \{3, 4, 8, 9\}, \{3, 5, 7, 9\}, \{3, 6, 7, 8\}, \{4, 5, 6, 9\}, \{4, 5, 7, 8\}$ — $8$개
+    - $k = 28$: $\{4, 7, 8, 9\}, \{5, 6, 8, 9\}$ — $2$개
+
+    $$2 + 8 + 12 + 8 + 2 = \boxed{32}.$$
+
+**[3 / 문제 2-3]** 반지름이 $1$인 원 $T$가 선분 $\mathrm{AB}$와 점 $\mathrm{P}$에서 접한다. $\overline{\mathrm{AB}} = 4$, $\overline{\mathrm{AP}} = t$. (1) $t = 1/2$일 때 원 $T$가 내접원인 삼각형 $\mathrm{ABC}$의 넓이를 구하여라. (2) 원 $T$가 내접원인 삼각형 $\mathrm{ABC}$가 존재할 $t$의 범위를 구하여라.
+
+??? success "풀이"
+    좌표: $\mathrm{A}(0, 0)$, $\mathrm{B}(4, 0)$, 원 중심 $\mathrm{E}(t, 1)$.
+
+    **(1)** $t = 1/2$. 직선 $\mathrm{AC}$ 기울기 $m$, 방정식 $y = m x$. $\mathrm{E}$와 거리 $= 1$:
+
+    $$\dfrac{|m\cdot(1/2) - 1|}{\sqrt{m^2 + 1}} = 1\ \Rightarrow\ (m/2 - 1)^2 = m^2 + 1\ \Rightarrow\ -\dfrac{3 m^2}{4} - m = 0\ \Rightarrow\ m = -\dfrac{4}{3}.$$
+
+    직선 $\mathrm{BC}$ 기울기 $n$, 방정식 $y = n(x - 4)$. $\mathrm{E}$와 거리 $= 1$:
+
+    $$\dfrac{|n(1/2 - 4) - 1|}{\sqrt{n^2 + 1}} = 1\ \Rightarrow\ (7 n/2 + 1)^2 = n^2 + 1\ \Rightarrow\ \dfrac{45 n^2}{4} + 7 n = 0\ \Rightarrow\ n = -\dfrac{28}{45}.$$
+
+    교점 $\mathrm{C}$: $-\dfrac{4}{3}x = -\dfrac{28}{45}(x - 4)$ ⇔ $-60 x = -28(x - 4)$ ⇔ $-32 x = 112$ ⇔ $x = -\dfrac{7}{2}$, $y = \dfrac{14}{3}$. $\mathrm{C}(-7/2, 14/3)$.
+
+    $$\triangle\mathrm{ABC} = \dfrac{1}{2}\cdot\overline{\mathrm{AB}}\cdot|y_{\mathrm{C}}| = \dfrac{1}{2}\cdot 4\cdot\dfrac{14}{3} = \boxed{\dfrac{28}{3}}.$$
+
+    **(2)** 삼각형 $\mathrm{ABC}$가 만들어지려면 $\mathrm{A} + \mathrm{B} < \pi$, 즉 $\mathrm{A}/2 + \mathrm{B}/2 < \pi/2$ ⇔ $\pi/2 - \mathrm{A}/2 > \mathrm{B}/2$ ⇔ $\tan(\pi/2 - \mathrm{A}/2) > \tan(\mathrm{B}/2)$ ⇔ $\cot(\mathrm{A}/2) > \tan(\mathrm{B}/2)$ ⇔ $\tan(\mathrm{A}/2)\tan(\mathrm{B}/2) < 1$.
+
+    원 $T$의 중심이 $\angle\mathrm{A}$의 이등분선 위에 있으므로 $\tan(\mathrm{A}/2) = 1/t$, $\tan(\mathrm{B}/2) = 1/(4 - t)$.
+
+    $$\dfrac{1}{t}\cdot\dfrac{1}{4 - t} < 1\ \Leftrightarrow\ t(4 - t) > 1\ \Leftrightarrow\ t^2 - 4 t + 1 < 0\ \Leftrightarrow\ (t - 2)^2 < 3.$$
+
+    $$\therefore\ \boxed{2 - \sqrt{3} < t < 2 + \sqrt{3}}.$$
+
+---
