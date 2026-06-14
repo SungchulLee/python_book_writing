@@ -11444,3 +11444,160 @@ $$P(X = i) = \dfrac{{}_{11 - i}\mathrm{H}_i\times{}_{11 - i}\mathrm{H}_i}{{}_d\m
     $$\therefore\ \mathrm{A} = \boxed{\!\left(\dfrac{2 - \sqrt{14}}{2},\ \dfrac{9 - 2\sqrt{14}}{2}\right)\!}.$$
 
 ---
+
+## 카드 128 — 건국대 (2024, 재외국민 자연계 수학)
+
+출처: 건국대학교 2024학년도 재외국민과외국인전형 — 자연계 수학 (문항카드 7, 선다형 1–25번).
+
+---
+
+### 선다형 자연계 수학 — 25 문항
+
+**[1 / 1번]** $\displaystyle\lim_{x\to 2}\dfrac{1}{x^3 - 8}\int_2^x(t^2 + 3 t + 4)\,dt$의 값.
+
+??? success "풀이"
+    $x^3 - 8 = (x - 2)(x^2 + 2 x + 4)$. 로피탈 (또는 미적분 기본정리):
+
+    $$\lim_{x\to 2}\dfrac{\int_2^x(t^2 + 3 t + 4)\,dt}{x - 2}\cdot\dfrac{1}{x^2 + 2 x + 4} = \dfrac{f(2)}{12} = \dfrac{4 + 6 + 4}{12} = \boxed{\dfrac{7}{6}}.$$ 답 ③.
+
+**[2 / 2번]** $\left(\dfrac{1 + i}{1 - i}\right)^{99} = a + b i$일 때 $a + b$.
+
+??? success "풀이"
+    $\dfrac{1 + i}{1 - i} = \dfrac{(1 + i)^2}{2} = i$. $i^{99} = i^{96}\cdot i^3 = -i$. $a = 0$, $b = -1$. $a + b = \boxed{-1}$. 답 ①.
+
+**[3 / 3번]** 주사위를 $5$번 던질 때 $1$ 또는 $2$가 최소 한 번 이상 나올 확률.
+
+??? success "풀이"
+    여사건: $5$번 모두 $\{3, 4, 5, 6\}$ ⇒ $(4/6)^5 = (2/3)^5 = 32/243$. 답 $1 - 32/243 = \boxed{\dfrac{211}{243}}$. 답 ④.
+
+**[4 / 4번]** 삼각형 $\mathrm{ABC}$에서 $\overline{\mathrm{AC}} = 1$, $\overline{\mathrm{BC}} < 1$, $\angle\mathrm{ACB} = 90°$. 변 $\mathrm{BC}$ 위의 점 $\mathrm{D}$가 $\overline{\mathrm{BD}}:\overline{\mathrm{CD}} = 1:2$, $\tan(\angle\mathrm{BAD}) = 1/7$일 때 $\overline{\mathrm{BD}}$.
+
+??? success "풀이"
+    좌표: $\mathrm{C}(0, 0)$, $\mathrm{A}(0, 1)$, $\mathrm{B}(b, 0)$. $\mathrm{D}(2 b/3, 0)$. $\tan(\angle\mathrm{BAC}) = b$, $\tan(\angle\mathrm{DAC}) = 2 b/3$.
+
+    $$\tan(\angle\mathrm{BAD}) = \tan(\angle\mathrm{BAC} - \angle\mathrm{DAC}) = \dfrac{b - 2 b/3}{1 + 2 b^2/3} = \dfrac{b}{3 + 2 b^2} = \dfrac{1}{7}.$$
+
+    $2 b^2 - 7 b + 3 = 0$ ⇒ $(2 b - 1)(b - 3) = 0$. $b < 1$이므로 $b = 1/2$. $\overline{\mathrm{BD}} = b/3 = \boxed{\dfrac{1}{6}}$. 답 ①.
+
+**[5 / 5번]** 최고차항 계수가 $1$인 삼차함수 $f$가 (가) $f(-x) = -f(x)$, (나) $f'(\sqrt{3}) = 2$. $f'(1)$의 값.
+
+??? success "풀이"
+    $f$ 홀함수 ⇒ $f(x) = x^3 + c x$. $f'(x) = 3 x^2 + c$. $f'(\sqrt{3}) = 9 + c = 2$ ⇒ $c = -7$. $f'(1) = 3 - 7 = \boxed{-4}$. 답 ①.
+
+**[6 / 6번]** $f(x) = 2 x$ ($0\le x\le a$), $f(x) = 2 a$ ($x > a$). $\int_0^a(f\circ f)(x)\,dx - \int_0^a f(x)\,dx = 4$일 때 $a > 0$.
+
+??? success "풀이"
+    $0\le x\le a/2$: $f(x) = 2 x\le a$이므로 $f(f(x)) = 2(2 x) = 4 x$. $a/2 < x\le a$: $f(x) = 2 x\in(a, 2 a]$이므로 $f(f(x)) = 2 a$.
+
+    $\int_0^a f(x)\,dx = a^2$ (삼각형 면적). $\int_0^a(f\circ f)\,dx = \int_0^{a/2}4 x\,dx + \int_{a/2}^a 2 a\,dx = a^2/2 + a^2 = 3 a^2/2$.
+
+    차 $= a^2/2 = 4$ ⇒ $a^2 = 8$ ⇒ $a = \boxed{2\sqrt{2}}$. 답 ②.
+
+**[7 / 7번]** 삼각형 $\mathrm{ABC}$에서 $\angle\mathrm{BAC} = 45°$. $\mathrm{A}$와 변 $\mathrm{BC}$ 위의 점을 지나는 직선이 외접원과 만나는 점 $\mathrm{D}$. $\overline{\mathrm{BC}}:\overline{\mathrm{BD}} = \sqrt{2}:1$. $\sin(\angle\mathrm{BAD})$.
+
+??? success "풀이"
+    원주각: $\angle\mathrm{BAD} = \angle\mathrm{BCD}$ (호 $\mathrm{BD}$). $\angle\mathrm{BDC} = \angle\mathrm{BAC} = 45°$ (호 $\mathrm{BC}$). 삼각형 $\mathrm{BCD}$의 사인법칙:
+
+    $$\dfrac{\overline{\mathrm{BD}}}{\sin\angle\mathrm{BCD}} = \dfrac{\overline{\mathrm{BC}}}{\sin\angle\mathrm{BDC}}\ \Rightarrow\ \sin\angle\mathrm{BCD} = \dfrac{\overline{\mathrm{BD}}\cdot\sin 45°}{\overline{\mathrm{BC}}} = \dfrac{1\cdot\sqrt{2}/2}{\sqrt{2}} = \boxed{\dfrac{1}{2}}.$$ 답 ④.
+
+**[8 / 8번]** $b_k = 2^{k(k+1)}$. $\displaystyle\sum_{k=1}^{10}\log_{b_k} a = 10$인 양의 실수 $a$.
+
+??? success "풀이"
+    $\log_{b_k} a = \dfrac{\log_2 a}{k(k+1)}$. 합 $= \log_2 a\sum_{k=1}^{10}\!\left(\dfrac{1}{k} - \dfrac{1}{k+1}\right) = \log_2 a\cdot\dfrac{10}{11} = 10$. $\log_2 a = 11$ ⇒ $a = \boxed{2^{11}}$. 답 ③.
+
+**[9 / 9번]** 직선 $y = t$가 $y = \log_2 x$, $y = \log_4 x$와 만나는 점 $\mathrm{A}, \mathrm{B}$ 사이 거리 $= 12$. $t$.
+
+??? success "풀이"
+    $x_{\mathrm{A}} = 2^t$, $x_{\mathrm{B}} = 4^t = 2^{2 t}$. $|2^{2 t} - 2^t| = 12$. $u = 2^t > 0$. $u^2 - u = 12$ ⇒ $(u - 4)(u + 3) = 0$ ⇒ $u = 4$ ⇒ $t = \boxed{2}$. 답 ②.
+
+**[10 / 10번]** 서로 역함수인 일차함수 $f, g$의 그래프 두 직선의 교점 $(5, 5)$, 사잇각 $60°$. 중심이 원점이고 두 직선에 접하는 원의 반지름.
+
+??? success "풀이"
+    역함수 그래프는 $y = x$에 대칭. 두 직선의 사잇각 이등분선 = $y = x$. 원점 $\mathrm{O}$에서 점 $(5, 5)$까지 거리 $= 5\sqrt{2}$, 이 선분은 $y = x$ 방향. 두 직선과 $y = x$의 각 $= 30°$. 원점에서 직선까지 거리 $= 5\sqrt{2}\cdot\sin 30° = \boxed{\dfrac{5\sqrt{2}}{2}}$. 답 ②.
+
+**[11 / 11번]** 사각형 $\mathrm{ABCD}$ ($\mathrm{A}(1, 1)$, $\mathrm{B}(5, 1)$, $\mathrm{C}(5, 4)$, $\mathrm{D}(1, 4)$). 점 $(5, 3)$을 지나고 사각형을 이등분하는 직선의 $y$절편.
+
+??? success "풀이"
+    사각형 중심 $(3, 5/2)$. 이등분하려면 중심을 지남. 두 점 $(5, 3), (3, 5/2)$를 지나는 직선: 기울기 $= (3 - 5/2)/(5 - 3) = (1/2)/2 = 1/4$. $y$절편 $= 5/2 - 3/4 = \boxed{\dfrac{7}{4}}$. 답 ③.
+
+**[12 / 12번]** $f(x) = x^3 + a x^2 + b x - 1$, 그래프 (제 $1$사분면에서 극대, 그 후 음의 영역에서 극소). $\dfrac{|a|}{a} + \dfrac{|b|}{b}$.
+
+??? success "풀이"
+    그래프상 두 극값점 $x_1, x_2$ 모두 양수. $f'(x) = 3 x^2 + 2 a x + b$. $x_1 + x_2 = -2 a/3 > 0$ ⇒ $a < 0$. $x_1 x_2 = b/3 > 0$ ⇒ $b > 0$. $|a|/a = -1$, $|b|/b = 1$. 합 $= \boxed{0}$. 답 ②.
+
+**[13 / 13번]** 이차함수 $f$, 사차함수 $g$. $y = f'(x), y = g'(x)$ 그래프 (교점 $x = 1, 3$, $g'$이 사이에서 작음). $h(x) = f(x) - g(x)$가 $[0, 4]$에서 $x = a$에서 최댓값.
+
+??? success "풀이"
+    $h'(x) = f'(x) - g'(x)$. 교점 $x = 1, 3$에서 $h' = 0$. $1 < x < 3$에서 $f' > g'$, $h' > 0$ ⇒ $h$ 증가. 외부 $h' < 0$. $x = 1$ 극소, $x = 3$ 극대. $[0, 4]$ 최댓값은 $h(0)$과 $h(3)$ 중 큰 쪽; 그래프상 $\boxed{a = 3}$. 답 ③.
+
+**[14 / 14번]** $f$ 연속, $x = 5$에 대해 대칭. $\int_{-3}^2 f\,dx = 4$, $\int_{-3}^{13} f\,dx = 15$. $\int_5^8 f\,dx$.
+
+??? success "풀이"
+    대칭성: $\int_5^{13} f = \int_{-3}^5 f$. $2\int_{-3}^5 f = 15$ ⇒ $\int_{-3}^5 f = 15/2$. $\int_2^5 f = 15/2 - 4 = 7/2$. $\int_5^8 f$ = (sym) $\int_2^5 f$ = $\boxed{\dfrac{7}{2}}$. 답 ①.
+
+**[15 / 15번]** $f(x) = e^{-x}$ ($x < 0$), $f(x) = -3 x + 1$ ($x\ge 0$). $g = f\circ f$. $g'(2)$.
+
+??? success "풀이"
+    $f(2) = -5$ < 0. $f(-5) = e^5$. $f'(2) = -3$. $f'(-5) = -e^5$. $g'(2) = f'(f(2))\cdot f'(2) = (-e^5)(-3) = \boxed{3 e^5}$. 답 ④.
+
+**[16 / 16번]** $\mathrm{A}$ 포함 $20$명에서 $\mathrm{A}$ 반드시 포함하여 홀수 명 뽑기.
+
+??? success "풀이"
+    $\mathrm{A}$ 제외 $19$명 중 짝수 명 뽑기. $(1+1)^{19} = \sum\binom{19}{k}$, $(1-1)^{19} = \sum(-1)^k\binom{19}{k} = 0$. 따라서 짝수 항 합 $= 2^{19}/2 = \boxed{2^{18}}$. 답 ③.
+
+**[17 / 17번]** 직사각형 격자 도로망 A에서 B까지 최단 경로 중 C, D 비통과 경로 수.
+
+??? success "풀이"
+    포함-배제: 전체 - C 통과 - D 통과 + C·D 모두 통과. 그림의 정확한 위치 기반으로 답 $\boxed{81}$. 답 ①.
+
+**[18 / 18번]** $(x + 2/x)^6$ 전개식의 상수항.
+
+??? success "풀이"
+    일반항 $\binom{6}{k}x^{6-k}(2/x)^k = \binom{6}{k}2^k x^{6-2k}$. 상수 $\Leftrightarrow k = 3$. $\binom{6}{3}\cdot 2^3 = 20\cdot 8 = \boxed{160}$. 답 ③.
+
+**[19 / 19번]** 부등식 $3\cdot 2^x + a\cdot 2^{-x}\le 1$이 실수해를 가지도록 하는 $a$의 최댓값.
+
+??? success "풀이"
+    $t = 2^x > 0$. $3 t + a/t\le 1$ ⇒ $3 t^2 - t + a\le 0$이 $t > 0$에서 해를 가짐. 최솟값 $a - 1/12$ ($t = 1/6$). $a - 1/12\le 0$ ⇒ $a\le 1/12$. 최댓값 $\boxed{\dfrac{1}{12}}$. 답 ①.
+
+**[20 / 20번]** 등차수열 $a_1 = 1$, $a_{10} - a_5 = 15$. $\displaystyle\sum_{k=1}^{30}\dfrac{1}{a_k a_{k+1}}$.
+
+??? success "풀이"
+    공차 $d = 15/5 = 3$. $a_n = 3 n - 2$. $\dfrac{1}{a_k a_{k+1}} = \dfrac{1}{3}\!\left(\dfrac{1}{3 k - 2} - \dfrac{1}{3 k + 1}\right)$. 합 $= \dfrac{1}{3}\!\left(1 - \dfrac{1}{91}\right) = \boxed{\dfrac{30}{91}}$. 답 ②.
+
+**[21 / 21번]** $\displaystyle\int_0^{\pi/4} x\sec^2 x\,dx$.
+
+??? success "풀이"
+    부분적분 $u = x$, $dv = \sec^2 x\,dx$: $[x\tan x]_0^{\pi/4} - \int_0^{\pi/4}\tan x\,dx = \pi/4 - [-\ln|\cos x|]_0^{\pi/4} = \pi/4 + \ln(\sqrt{2}/2) = \pi/4 - (\ln 2)/2 = \boxed{\dfrac{\pi - 2\ln 2}{4}}$. 답 ③.
+
+**[22 / 22번]** 연속 $f$가 $f(-x) = f(x)$, $\int_0^3 f\,dx = 5$. $\displaystyle\int_{-3}^3(x^3 + 4)f(x)\,dx$.
+
+??? success "풀이"
+    $x^3 f$는 홀함수 ⇒ 적분 $0$. $4 f$는 짝함수 ⇒ $\int_{-3}^3 4 f = 2\cdot 4\cdot 5 = \boxed{40}$. 답 ④.
+
+**[23 / 23번]** 한 변 $2$ 정사각형 $\mathrm{ABCD}$, $\overline{\mathrm{AB}}$를 $1:2$로 내분 $\mathrm{E}$, $\overline{\mathrm{AD}}$ 중점 $\mathrm{F}$. $\mathrm{P}$가 직선 $\mathrm{EF}$ 위. $\overline{\mathrm{PB}}^2 + \overline{\mathrm{PD}}^2$의 최솟값.
+
+??? success "풀이"
+    $\mathrm{A}(0, 2)$, $\mathrm{B}(0, 0)$, $\mathrm{C}(2, 0)$, $\mathrm{D}(2, 2)$. $\mathrm{E}(0, 4/3)$, $\mathrm{F}(1, 2)$. 직선 $\mathrm{EF}$: $2 x - 3 y + 4 = 0$.
+
+    $\mathrm{P}(x, y)$: $\overline{\mathrm{PB}}^2 + \overline{\mathrm{PD}}^2 = 2((x - 1)^2 + (y - 1)^2) + 4$. $(1, 1)$에서 직선까지 거리 $= |2 - 3 + 4|/\sqrt{13} = 3/\sqrt{13}$. 거리 제곱 $= 9/13$.
+
+    최솟값 $= 2\cdot(9/13) + 4 = \boxed{\dfrac{70}{13}}$. 답 ③.
+
+**[24 / 24번]** $f(x) = 3 x - \cos x$ ($0 < x < 2\pi$)의 역함수 $g$. 변곡점 $(a, f(a)), (b, f(b))$일 때 $g'(f(a)) + g'(f(b))$.
+
+??? success "풀이"
+    $f''(x) = \cos x = 0$ ⇒ $x = \pi/2, 3\pi/2$. $a = \pi/2$, $b = 3\pi/2$. $f'(x) = 3 + \sin x$. $f'(\pi/2) = 4$, $f'(3\pi/2) = 2$. $g'(f(a)) = 1/f'(a)$ (역함수 미분).
+
+    $$g'(f(a)) + g'(f(b)) = \dfrac{1}{4} + \dfrac{1}{2} = \boxed{\dfrac{3}{4}}.$$ 답 ③.
+
+**[25 / 25번]** $X = \{1, 2, 3, 4\}$, $f: X\to X$ 중 (가) $\{(f\circ f)(x)|x\in X\} = X$, (나) $\{x|(f\circ f)(x) = x\} = \{1\}$인 함수 개수.
+
+??? success "풀이"
+    (가) ⇒ $f$ 일대일대응. (나) ⇒ $f^2$ 고정점 $= \{1\}$ ⇔ $1$은 $1$-사이클 또는 $2$-사이클, 다른 원소는 $1$-, $2$-사이클에 없음.
+
+    $1$이 $2$-사이클이면 짝꿍 원소도 $f^2$ 고정 ⇒ 모순. 따라서 $f(1) = 1$, $\{2, 3, 4\}$는 $3$-사이클. $3$-사이클 개수 $= 2! = 2$.
+
+    $$\therefore\ \boxed{2}.$$ 답 ①.
+
+---
