@@ -11831,3 +11831,278 @@ $$P(X = i) = \dfrac{{}_{11 - i}\mathrm{H}_i\times{}_{11 - i}\mathrm{H}_i}{{}_d\m
     $x$는 정수이므로 $x = 8$까지 증가, $x = 9$부터 감소. 최댓값은 $\boxed{x = 8}$.
 
 ---
+
+## 카드 130 — 연세대학교 미래캠퍼스 (2021학년도)
+
+2021학년도 연세대학교 미래캠퍼스 논술고사(자연·의예 일반논술 전형)와 학생부종합 SW창의인재 면접 기출. 출처: 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서. 자연 문제 1·2·3, 의예 수학 문제 1·2, SW창의인재 면접 문제 2 — 총 6개 문항카드, 17 sub-문항.
+
+### 논술 자연 1차 1번 — 역함수·정적분과 급수·치환적분 (문항카드 3)
+
+함수 $f(x)$, $g(x)$를 다음과 같이 정의한다 (단, $a, b$는 상수).
+
+$$
+f(x) = \begin{cases} 2x^2, & x < -1 \\ -x + a, & -1 \le x < 1 \\ -\dfrac{1}{3}x + b, & 1 \le x \end{cases}, \qquad g(x) = \int_0^x \dfrac{1}{1 + t^2}\, dt.
+$$
+
+**[1 / 자연 문제 1-1]** 함수 $f(x)$는 정의역과 공역이 실수 전체의 집합이다. $f(x)$는 역함수 $h(x)$가 존재하고 $h(h(8)) = c$를 만족시킬 때, $a + b + c$의 값을 구하시오.
+
+??? success "풀이"
+    $f$의 역함수가 존재하므로 $f$는 일대일대응이고, $x = -1$, $x = 1$에서 연속이어야 한다.
+
+    $x = -1$: $2(-1)^2 = 1 + a$ 에서 $a = 1$.
+
+    $x = 1$: $-1 + a = -\dfrac{1}{3} + b$. $a = 1$이므로 $b = \dfrac{1}{3}$.
+
+    $h(8) = t$라 하면 $f(t) = 8$. 그래프에서 $t < -1$이어야 $f(t) = 2t^2 = 8$, $t = -2$.
+
+    $h(h(8)) = h(-2) = c$에서 $f(c) = -2$. $c > 1$이어야 $-\dfrac{c}{3} + \dfrac{1}{3} = -2$, $c = 7$.
+
+    따라서 $a + b + c = 1 + \dfrac{1}{3} + 7 = \boxed{\dfrac{25}{3}}$.
+
+**[2 / 자연 문제 1-2]** $\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n} f\!\left(-2 + \dfrac{4k}{n}\right)\dfrac{1}{n}$의 값을 구하시오.
+
+??? success "풀이"
+    구간 $[-2, 2]$를 $n$등분 (각 $\Delta x = 4/n$)한 리만 합. $\dfrac{1}{n} = \dfrac{\Delta x}{4}$이므로
+
+    $$\lim_{n\to\infty}\sum_{k=1}^{n} f\!\left(-2 + \dfrac{4k}{n}\right)\dfrac{1}{n} = \dfrac{1}{4}\int_{-2}^{2} f(x)\, dx.$$
+
+    구간을 나누면:
+
+    - $\displaystyle\int_{-2}^{-1} 2x^2\, dx = \left[\dfrac{2x^3}{3}\right]_{-2}^{-1} = \dfrac{-2}{3} - \dfrac{-16}{3} = \dfrac{14}{3}$.
+    - $\displaystyle\int_{-1}^{1} (-x + 1)\, dx = \left[-\dfrac{x^2}{2} + x\right]_{-1}^{1} = \dfrac{1}{2} - \left(-\dfrac{3}{2}\right) = 2$.
+    - $\displaystyle\int_{1}^{2}\left(-\dfrac{x}{3} + \dfrac{1}{3}\right)dx = \left[-\dfrac{x^2}{6} + \dfrac{x}{3}\right]_{1}^{2} = 0 - \dfrac{1}{6} = -\dfrac{1}{6}$.
+
+    합 $= \dfrac{14}{3} + 2 - \dfrac{1}{6} = \dfrac{28 + 12 - 1}{6} = \dfrac{39}{6} = \dfrac{13}{2}$. $\dfrac{1}{4}$ 배 $= \boxed{\dfrac{13}{8}}$.
+
+**[3 / 자연 문제 1-3]** $g(\alpha) = \dfrac{\pi}{3}$일 때 $\displaystyle\int_0^{\alpha} \dfrac{\sin^3(g(x))}{1 + x^2}\, dx$의 값을 구하시오.
+
+??? success "풀이"
+    $g'(x) = \dfrac{1}{1 + x^2}$. $u = g(x)$로 치환하면 $du = g'(x)\, dx$, $x = 0 \Rightarrow u = 0$, $x = \alpha \Rightarrow u = \pi/3$:
+
+    $$\int_0^{\alpha}\dfrac{\sin^3(g(x))}{1 + x^2}\, dx = \int_0^{\pi/3}\sin^3 u\, du.$$
+
+    $\sin^3 u = (1 - \cos^2 u)\sin u$. $t = \cos u$로 치환하면 $dt = -\sin u\, du$, $u = 0 \Rightarrow t = 1$, $u = \pi/3 \Rightarrow t = 1/2$:
+
+    $$\int_0^{\pi/3}(1 - \cos^2 u)\sin u\, du = \int_{1/2}^{1}(1 - t^2)\, dt = \left[t - \dfrac{t^3}{3}\right]_{1/2}^{1} = \dfrac{2}{3} - \dfrac{11}{24} = \boxed{\dfrac{5}{24}}.$$
+
+### 논술 자연 1차 2번 — 원의 방정식·그래프 개형·수열 극한 (문항카드 4)
+
+$1$보다 큰 실수 $r$에 대해 $C(r)$은 좌표평면에서 중심 $A_r(a_r, 0)$, 반지름 $r$인 원이다. 곡선 $S$는 $y = \sqrt{2x}$와 $y = -\sqrt{2x}$로 이루어진 곡선 (즉 $y^2 = 2x$). 원 $C(r)$과 곡선 $S$는 서로 다른 두 점에서 접한다. 두 원 $C(r)$과 $C(r+1)$의 한 교점을 $P_r$ ($y$좌표는 양수)이라 하고 $\theta_r = \angle P_r A_{r+1} O$.
+
+**[4 / 자연 문제 2-1]** $A_r(a_r, 0)$에 대해서 $a_r$을 $r$로 나타내시오.
+
+??? success "풀이"
+    $S$: $y^2 = 2x$를 $C(r)$의 식 $(x - a_r)^2 + y^2 = r^2$에 대입하면 $(x - a_r)^2 + 2x = r^2$, 즉
+
+    $$x^2 + (2 - 2a_r)x + a_r^2 - r^2 = 0.$$
+
+    두 점에서 접한다는 것은 이 $x$에 대한 이차방정식이 중근을 가져야 한다는 것 (각 $x$에 대해 $y$가 두 개). 판별식 $D/4 = (a_r - 1)^2 - (a_r^2 - r^2) = -2a_r + 1 + r^2 = 0$. 따라서 $\boxed{a_r = \dfrac{r^2 + 1}{2}}$.
+
+**[5 / 자연 문제 2-2]** $1$보다 큰 모든 실수 $r$에 대한 방정식 $\left(a_{2r} - \dfrac{1}{2}\right)e^{-r} + k = 0$이 서로 다른 두 실근을 갖도록 하는 실수 $k$의 범위를 구하시오. (단, $\displaystyle\lim_{x\to\infty} \dfrac{2x^2}{e^x} = 0$.)
+
+??? success "풀이"
+    $a_{2r} - \dfrac{1}{2} = \dfrac{4r^2 + 1}{2} - \dfrac{1}{2} = 2r^2$. 방정식은 $2r^2 e^{-r} = -k$.
+
+    $f(x) = 2x^2 e^{-x}$ ($x > 1$). $f'(x) = 2e^{-x}(2x - x^2) = -2xe^{-x}(x - 2)$. $f'(x) = 0$에서 $x = 0$ (제외) 또는 $x = 2$.
+
+    구간 $(1, 2)$에서 $f'(x) > 0$ (증가), $(2, \infty)$에서 $f'(x) < 0$ (감소). $f(1) = 2/e$, $f(2) = 8/e^2$, $\lim_{x\to\infty} f(x) = 0$.
+
+    직선 $y = -k$가 $f$의 그래프 ($x > 1$)와 서로 다른 두 점에서 만나려면 $\dfrac{2}{e} < -k < \dfrac{8}{e^2}$, 즉 $\boxed{-\dfrac{8}{e^2} < k < -\dfrac{2}{e}}$.
+
+**[6 / 자연 문제 2-3]** $\displaystyle\lim_{r\to\infty}\tan(\theta_r)$을 구하시오.
+
+??? success "풀이"
+    두 원의 교점 좌표는 두 원 방정식의 차로부터:
+
+    $(x - a_{r+1})^2 - (x - a_r)^2 = (r + 1)^2 - r^2 = 2r + 1$.
+
+    $a_{r+1} - a_r = \dfrac{(r+1)^2 + 1}{2} - \dfrac{r^2 + 1}{2} = \dfrac{2r + 1}{2}$.
+
+    정리하면 $x = \dfrac{r^2 + r - 1}{2}$, $y = \dfrac{\sqrt{3r^2 + 4r - 4}}{2}$.
+
+    $A_{r+1}$의 $x$좌표는 $a_{r+1} = \dfrac{r^2 + 2r + 2}{2}$, $P_r$에서 $A_{r+1}$까지 수평 거리 $t = a_{r+1} - x = \dfrac{r + 3}{2}$.
+
+    $\tan\theta_r = \dfrac{y}{t} = \dfrac{\sqrt{3r^2 + 4r - 4}}{r + 3}$. $\displaystyle\lim_{r\to\infty}\tan\theta_r = \boxed{\sqrt{3}}$.
+
+### 논술 자연 1차 3번 — 이산확률변수·정적분·부분적분 (문항카드 5)
+
+곡선 $y = 49 - (x - 7)^2$이 $x$축과 만나는 점은 $A(0, 0)$, $B(14, 0)$. 두 개의 주사위 (눈이 서로 다른 경우)를 던져서 나오는 눈 중 큰 수를 확률변수 $X$라 하고 그 값을 $k$라 할 때 (즉 표본공간 $30$가지), 곡선이 직선 $x = k$, $x = 14 - k$와 만나는 점을 각각 $D$, $C$라 한다. 이때 사각형 $ABCD$의 넓이 $S$는 이산확률변수가 된다.
+
+**[7 / 자연 문제 3-1]** 확률변수 $X$에 대해서 $Y = 36X - 150$일 때 $\mathrm{E}(Y)$를 구하시오. 또 $\mathrm{P}(S \ge 400) = \dfrac{q}{p}$일 때 $p + q$를 구하시오 (단, $p, q$는 서로소인 자연수).
+
+??? success "풀이"
+    확률변수 $X$의 분포 ($k = 2, 3, 4, 5, 6$, 각 $k$에 두 순서쌍): $\mathrm{P}(X = k) = \dfrac{2(k - 1)}{30}$.
+
+    $\mathrm{E}(X) = \dfrac{1}{30}\sum_{k=2}^{6} k \cdot 2(k - 1) = \dfrac{4 + 12 + 24 + 40 + 60}{30} = \dfrac{140}{30}$.
+
+    $\mathrm{E}(Y) = 36 \mathrm{E}(X) - 150 = 168 - 150 = \boxed{18}$.
+
+    사각형 $ABCD$는 사다리꼴: 윗변 $14 - 2k$ (= $|CD|$), 아랫변 $14$, 높이 $49 - (k - 7)^2$. 넓이
+
+    $$S = \dfrac{1}{2}[14 + (14 - 2k)][49 - (k - 7)^2].$$
+
+    | $k$ | 2 | 3 | 4 | 5 | 6 |
+    |---|---|---|---|---|---|
+    | $S$ | 288 | 363 | 400 | 405 | 384 |
+    | $\mathrm{P}$ | 2/30 | 4/30 | 6/30 | 8/30 | 10/30 |
+
+    $\mathrm{P}(S \ge 400) = \mathrm{P}(S = 400) + \mathrm{P}(S = 405) = \dfrac{6 + 8}{30} = \dfrac{14}{30} = \dfrac{7}{15}$.
+
+    $p = 15$, $q = 7$, $p + q = \boxed{22}$.
+
+**[8 / 자연 문제 3-2]** 곡선과 $x$축으로 둘러싸인 부분에서 사각형 $ABCD$를 제외한 넓이를 $T$라 할 때, $T$를 최소로 하는 $k$값을 찾고, 그 때의 $3T$ 값을 구하시오.
+
+??? success "풀이"
+    포물선 면적: $\displaystyle\int_0^{14}[49 - (x - 7)^2]\, dx = \dfrac{1372}{3}$.
+
+    $T = \dfrac{1372}{3} - S$. $T$ 최소 ⟺ $S$ 최대. 표에서 $S$는 $k = 5$에서 $S = 405$로 최대.
+
+    $3T = 3\left(\dfrac{1372}{3} - 405\right) = 1372 - 1215 = \boxed{157}$ (이때 $k = 5$).
+
+**[9 / 자연 문제 3-3]** 두 주사위를 한 번 던져 나온 눈이 $2$와 $6$이라 하자 ($k = 6$). 사각형 $ABCD$를 밑면, $x$축에 수직인 평면으로 자르면 단면이 높이 $e^{-x}$, 밑변 $y$인 직사각형이 되는 입체도형 $R$의 부피를 $a + be^{-6} + ce^{-8} + de^{-14}$로 나타낼 때 $a, b, c, d$의 값을 구하시오 (단, $a, b, c, d$는 유리수).
+
+??? success "풀이"
+    $k = 6$일 때 사각형 $ABCD$: $A(0, 0)$, $B(14, 0)$, $C(8, 48)$, $D(6, 48)$. 변 $AD$의 직선 $y = 8x$ ($x \in [0, 6]$), 윗변 $y = 48$ ($x \in [6, 8]$), 변 $CB$의 직선 $y = -8x + 112$ ($x \in [8, 14]$).
+
+    $$V = \int_0^6 8x\, e^{-x}\, dx + \int_6^8 48\, e^{-x}\, dx + \int_8^{14}(-8x + 112)e^{-x}\, dx.$$
+
+    부분적분 $\displaystyle\int x e^{-x}\, dx = -x e^{-x} - e^{-x} + C$를 이용해 계산:
+
+    - $\displaystyle\int_0^6 8x e^{-x}\, dx = 8[-x e^{-x} - e^{-x}]_0^6 = 8(-6e^{-6} - e^{-6} + 1) = 8 - 56e^{-6}$.
+    - $\displaystyle\int_6^8 48 e^{-x}\, dx = -48[e^{-x}]_6^8 = 48e^{-6} - 48e^{-8}$.
+    - $\displaystyle\int_8^{14}(-8x + 112)e^{-x}\, dx = -8[-xe^{-x} - e^{-x}]_8^{14} + 112[-e^{-x}]_8^{14}$
+      $= -8(-14e^{-14} - e^{-14} + 8e^{-8} + e^{-8}) - 112(e^{-14} - e^{-8})$
+      $= 120e^{-14} - 72e^{-8} - 112e^{-14} + 112e^{-8} = 8e^{-14} + 40e^{-8}$.
+
+    합: $V = 8 - 56e^{-6} + 48e^{-6} - 48e^{-8} + 8e^{-14} + 40e^{-8} = 8 - 8e^{-6} - 8e^{-8} + 8e^{-14}$.
+
+    답: $\boxed{a = 8,\ b = -8,\ c = -8,\ d = 8}$.
+
+### 논술 의예 수학 1번 — COVID 전염병 모형·치환적분·확률 (문항카드 6)
+
+시각 $t$에서 $f(t)$는 감염 가능한 사람의 수, $g(t)$는 감염자 수, $h(t)$는 치료된 사람의 수. 전염병 모형:
+
+$$f'(t) = -\dfrac{a}{N} g(t) f(t), \qquad g'(t) = \dfrac{a}{N} g(t) f(t) - bg(t), \qquad h'(t) = bg(t).$$
+
+$a$는 감염률, $b$는 회복율 (모두 양의 실수), $N$은 총 인구수 (상수). 또 감염자 수 확률변수 $X$의 확률질량함수 $\mathrm{P}(X = x)$ ($x = 1, 2, \ldots, 100$)는 $\mathrm{P}(X \ge k + 1) = \dfrac{k}{k + 2}\mathrm{P}(X \ge k)$ ($k = 1, 2, \ldots, 99$)를 만족하고, 방역당국은 $\mathrm{P}(X \le k) > \dfrac{49}{50}$이면 경보단계를 최고단계로 격상한다.
+
+**[10 / 의예 문제 1-1]** $a = 0.5$, $b = 0.05$, $N = 100$일 때, 감염 가능한 사람의 수를 $A$라 하자. 감염자 수가 감소하는 $A$의 범위를 구하시오 (단, $A > 0$).
+
+??? success "풀이"
+    감염자 수 감소 ⟺ $g'(t) < 0$. $g'(t) = g(t)\left[\dfrac{a}{N}f(t) - b\right]$이고 $g > 0$이므로 $\dfrac{a}{N}f(t) < b$, 즉 $f(t) < \dfrac{bN}{a} = \dfrac{0.05 \cdot 100}{0.5} = 10$.
+
+    답: $\boxed{A < 10}$.
+
+**[11 / 의예 문제 1-2]** $a = 0.5$, $b = 0.1$, $N = 100$, $f(0) = 99$, $g(0) = 1$, $h(0) = 0$이고, 어떤 실수 $t^*$에 대해서 $h(t^*) = 20$일 때, $f(t^*)$의 값을 구하시오.
+
+??? success "풀이"
+    $\dfrac{f'(t)}{h'(t)} = \dfrac{-\dfrac{a}{N}g(t)f(t)}{bg(t)} = -\dfrac{a}{bN}f(t)$.
+
+    즉 $\dfrac{f'(t)}{f(t)} = -\dfrac{a}{bN}h'(t)$. 양변 적분: $\ln f(t) = -\dfrac{a}{bN}h(t) + C$.
+
+    $t = 0$: $\ln 99 = C$. 따라서 $f(t) = 99\exp\!\left(-\dfrac{a}{bN}h(t)\right) = 99\exp\!\left(-\dfrac{h(t)}{20}\right)$ (여기서 $\dfrac{a}{bN} = \dfrac{0.5}{0.1 \cdot 100} = \dfrac{1}{20}$).
+
+    $h(t^*) = 20$: $f(t^*) = 99e^{-1} = \boxed{\dfrac{99}{e}}$.
+
+**[12 / 의예 문제 1-3]** $\dfrac{\mathrm{P}(1 \le X \le 3)}{\mathrm{P}(6 \le X \le 19)}$의 값을 구하시오. 그리고 방역당국이 전염병 경보단계를 최고단계로 격상시키는 최소 감염자 수 $k$를 구하시오.
+
+??? success "풀이"
+    $P_k := \mathrm{P}(X \ge k)$. $P_1 = 1$, $\dfrac{P_{k+1}}{P_k} = \dfrac{k}{k + 2}$.
+
+    $$P_k = \prod_{j=1}^{k - 1}\dfrac{j}{j + 2} = \dfrac{1 \cdot 2 \cdot 3 \cdots (k - 1)}{3 \cdot 4 \cdot 5 \cdots (k + 1)} = \dfrac{2}{k(k + 1)}.$$
+
+    - $\mathrm{P}(1 \le X \le 3) = 1 - P_4 = 1 - \dfrac{1}{10} = \dfrac{9}{10}$.
+    - $\mathrm{P}(6 \le X \le 19) = P_6 - P_{20} = \dfrac{2}{42} - \dfrac{2}{420} = \dfrac{20 - 2}{420} = \dfrac{18}{420} = \dfrac{3}{70}$.
+
+    비율 $= \dfrac{9/10}{3/70} = \dfrac{9 \cdot 70}{10 \cdot 3} = \boxed{21}$.
+
+    $\mathrm{P}(X \le k) = 1 - P_{k+1} = 1 - \dfrac{2}{(k + 1)(k + 2)} > \dfrac{49}{50}$ ⟺ $(k + 1)(k + 2) > 100$.
+
+    $k = 8$: $9 \cdot 10 = 90 < 100$. $k = 9$: $10 \cdot 11 = 110 > 100$. 최소 $\boxed{k = 9}$.
+
+### 논술 의예 수학 2번 — 사인법칙·매개변수·이산확률변수 (문항카드 7)
+
+해변가의 두 학생 $A$, $B$가 거리 $\ell$만큼 떨어져 있고 바다 위의 배 $C$를 바라본다. 각도 $\angle BAC = \alpha$, $\angle ABC = \beta$. 선분 $\overline{AB}$의 중점이 원점인 좌표계에서 $C$의 위치는 $(c_x, c_y)$, 속도는 $(v_x, v_y)$.
+
+**[13 / 의예 문제 2-1]** $\ell = 6$, $\alpha + \beta = \dfrac{5\pi}{12}$, $\alpha > \dfrac{\pi}{12}$, $\beta > \dfrac{\pi}{6}$일 때 배 $C$의 자취의 길이를 구하시오.
+
+??? success "풀이"
+    $\angle ACB = \pi - (\alpha + \beta) = \dfrac{7\pi}{12}$로 일정. 따라서 $C$는 $\triangle ABC$의 외접원 호 위.
+
+    외접원의 반지름은 사인법칙: $2R = \dfrac{\ell}{\sin\angle ACB} = \dfrac{6}{\sin(7\pi/12)} = \dfrac{6}{\sin(5\pi/12)} = \dfrac{6}{(\sqrt{6} + \sqrt{2})/4} = \dfrac{24}{\sqrt{6} + \sqrt{2}}$.
+
+    분모 유리화: $R = \dfrac{12(\sqrt{6} - \sqrt{2})}{4} = 3(\sqrt{6} - \sqrt{2})$.
+
+    호의 중심각 = (원주각 차) $\times 2$. 두 경계점은 $\alpha = \pi/12$일 때와 $\beta = \pi/6$일 때이고, 원주각 폭은 $\beta$ 범위 (혹은 $\alpha$ 범위)인 $\pi/6$. 호의 중심각 $= 2 \cdot \pi/6 = \pi/3$.
+
+    호의 길이 $L = R \cdot \dfrac{\pi}{3} = 3(\sqrt{6} - \sqrt{2}) \cdot \dfrac{\pi}{3} = \boxed{\pi(\sqrt{6} - \sqrt{2})}$.
+
+**[14 / 의예 문제 2-2]** $\ell = 6$, $\alpha = \dfrac{\pi}{12} + 3t$, $\beta = \dfrac{\pi}{3} - 3t$ ($0 < t < \pi/9$), $t = \dfrac{\pi}{36}$일 때 $(c_x, c_y)$와 $(v_x, v_y)$를 구하시오.
+
+??? success "풀이"
+    $t = \pi/36$: $\alpha = \pi/6$, $\beta = \pi/4$. $A = (-3, 0)$, $B = (3, 0)$.
+
+    $\tan\alpha = \dfrac{c_y}{c_x + 3}$, $\tan\beta = \dfrac{c_y}{3 - c_x}$:
+
+    $$\dfrac{1}{\sqrt 3} = \dfrac{c_y}{c_x + 3}, \qquad 1 = \dfrac{c_y}{3 - c_x}.$$
+
+    각각 $c_x + 3 = \sqrt 3 c_y$, $3 - c_x = c_y$. 더하면 $6 = (\sqrt 3 + 1)c_y$, $c_y = \dfrac{6}{\sqrt 3 + 1} = 3(\sqrt 3 - 1)$.
+
+    $c_x = 3 - c_y = 6 - 3\sqrt 3$.
+
+    속도는 두 식 $\tan(\pi/12 + 3t)(3 + c_x) = c_y$, $\tan(\pi/3 - 3t)(3 - c_x) = c_y$를 $t$로 미분하고 $t = \pi/36$ 대입하여 연립:
+
+    $$3\sec^2(\pi/6) = \dfrac{v_y(3 + c_x) - v_x c_y}{(3 + c_x)^2}, \qquad -3\sec^2(\pi/4) = \dfrac{v_y(3 - c_x) + v_x c_y}{(3 - c_x)^2}.$$
+
+    $\sec^2(\pi/6) = 4/3$, $\sec^2(\pi/4) = 2$. 계산하면 $v_x = -18$, $v_y = 18(2 - \sqrt 3)$.
+
+    답: 위치 $(c_x, c_y) = \boxed{(6 - 3\sqrt 3,\ 3\sqrt 3 - 3)}$, 속도 $(v_x, v_y) = \boxed{(-18,\ 18(2 - \sqrt 3))}$.
+
+**[15 / 의예 문제 2-3]** 각도 $\angle CAB = \alpha$가 가질 수 있는 값은 $\dfrac{\pi}{6}, \dfrac{\pi}{4}, \dfrac{\pi}{3}$이고 확률변수 $X$의 분포는
+
+| $X$ | $\pi/6$ | $\pi/4$ | $\pi/3$ |
+|---|---|---|---|
+| $\mathrm{P}$ | $1/6$ | $1/2$ | $1/3$ |
+
+이다. $\ell = 6$, $\beta = \dfrac{5\pi}{12} - \alpha$일 때 $\mathrm{E}(c_x)$, $\mathrm{E}(c_y)$를 구하시오.
+
+??? success "풀이"
+    $\tan\alpha (c_x + 3) = c_y$, $\tan\beta (3 - c_x) = c_y$. 연립하면:
+
+    $$c_x = \dfrac{-3(\tan\alpha - \tan\beta)}{\tan\alpha + \tan\beta}, \qquad c_y = \dfrac{6\tan\alpha\tan\beta}{\tan\alpha + \tan\beta}.$$
+
+    $\alpha + \beta = 5\pi/12$이므로 가능한 $(\alpha, \beta)$: $(\pi/6, \pi/4)$, $(\pi/4, \pi/6)$, $(\pi/3, \pi/12)$. $\tan(\pi/12) = 2 - \sqrt 3$.
+
+    | $\alpha$ | $\beta$ | $c_x$ | $c_y$ |
+    |---|---|---|---|
+    | $\pi/6$ | $\pi/4$ | $3(2 - \sqrt 3)$ | $3(\sqrt 3 - 1)$ |
+    | $\pi/4$ | $\pi/6$ | $-3(2 - \sqrt 3)$ | $3(\sqrt 3 - 1)$ |
+    | $\pi/3$ | $\pi/12$ | $3(1 - \sqrt 3)$ | $3(2\sqrt 3 - 3)$ |
+
+    $\mathrm{E}(c_x) = \dfrac{1}{6}\cdot 3(2 - \sqrt 3) + \dfrac{1}{2}\cdot(-3(2 - \sqrt 3)) + \dfrac{1}{3}\cdot 3(1 - \sqrt 3) = (2 - \sqrt 3)\left(\dfrac{1}{2} - \dfrac{3}{2}\right) + (1 - \sqrt 3) = -(2 - \sqrt 3) + (1 - \sqrt 3) = \boxed{-1}$.
+
+    $\mathrm{E}(c_y) = \dfrac{1}{6}\cdot 3(\sqrt 3 - 1) + \dfrac{1}{2}\cdot 3(\sqrt 3 - 1) + \dfrac{1}{3}\cdot 3(2\sqrt 3 - 3) = (\sqrt 3 - 1)\cdot 2 + (2\sqrt 3 - 3) = 2\sqrt 3 - 2 + 2\sqrt 3 - 3 = \boxed{-5 + 4\sqrt 3}$.
+
+### 면접 SW창의인재 문제 2 — 정삼각형 내접 직사각형·등비수열 (문항카드 13)
+
+한 변의 길이가 $4$인 정삼각형 $ABC$. 점 $E, F$는 밑변 $BC$ 위의 점, 점 $D, G$는 각각 변 $AB$, $AC$ 위의 점이고 $DEFG$는 직사각형.
+
+**[16 / 면접 SW창의인재 문제 2-1]** 직사각형 $DEFG$의 넓이의 최댓값을 구하시오.
+
+??? success "풀이"
+    좌표축을 잡되 $BC$를 $x$축, $A = (0, 2\sqrt 3)$, $B = (-2, 0)$, $C = (2, 0)$. 변 $AC$의 직선식 $y = -\sqrt 3 x + 2\sqrt 3$.
+
+    $G(x, y)$ ($x > 0$)이라 하면 $y = -\sqrt 3 x + 2\sqrt 3$. 대칭성으로 $D(-x, y)$. 직사각형 넓이
+
+    $$A(x) = 2x \cdot y = 2x(-\sqrt 3 x + 2\sqrt 3) = -2\sqrt 3 x^2 + 4\sqrt 3 x.$$
+
+    $A'(x) = -4\sqrt 3 x + 4\sqrt 3 = 0$에서 $x = 1$, $y = \sqrt 3$. 최댓값 $A(1) = -2\sqrt 3 + 4\sqrt 3 = \boxed{2\sqrt 3}$.
+
+**[17 / 면접 SW창의인재 문제 2-2]** 정삼각형 $ABC$ 내부에 [문제 2-1]에서 구한 최대 넓이 직사각형 $DEFG$를 $R_1$이라 하고, 정삼각형 $ADG$ 내부에 같은 방법으로 최대 넓이 직사각형 $R_2$를 그린다. 이 과정을 반복해 $R_3, R_4, \ldots, R_{10}$을 그릴 때, $10$개 직사각형 $R_1, R_2, \ldots, R_{10}$의 넓이의 합을 구하시오.
+
+??? success "풀이"
+    각 단계에서 정삼각형의 변의 길이가 $\dfrac{1}{2}$ 배 (변 $AD = AG = 2$). 닮음비 $1/2$이므로 넓이비 $1/4$. 따라서 $R_n$의 넓이는 초항 $R_1 = 2\sqrt 3$, 공비 $\dfrac{1}{4}$인 등비수열.
+
+    $$S_{10} = \sum_{n=1}^{10} R_n = \dfrac{2\sqrt 3 \left(1 - (1/4)^{10}\right)}{1 - 1/4} = \boxed{\dfrac{8\sqrt 3}{3}\left(1 - \dfrac{1}{4^{10}}\right)}.$$
+
+---
