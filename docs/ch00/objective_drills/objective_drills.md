@@ -7931,5 +7931,260 @@ $\overline{\mathrm{AB}} = 2,\ \overline{\mathrm{BC}} = 3$ 인 직사각형 $\mat
 
 ---
 
+## 카드 106 — 건국대 (2025학년도)
+
+건국대 2025학년도 KU 논술우수자전형 + 재외국민·외국인전형. 재외국민·외국인 자연계 수학 (선다형 25) + 논술 인문 II 수학 (환율·수요공급·확률 3) + 논술 자연계 수학 (좌표운동·이면각·합성함수 미분·곡선 넓이 4) + KU 자유전공학부 수학 (선분 비 최솟값·경우의 수·내접원 3).
+
+### 재외국민 자연계 수학 — 선다형 25 문항
+
+(공통 출제범위) 수학·수학 I·수학 II·확률과 통계·미적분. 핵심: 다항식·평면도형·집합·함수·로그·삼각함수·수열·극한·도함수·적분·경우의 수·확률.
+
+**[106 / 재자-1]** 세 수 $A = 2\log_2 3,\ B = 1 + \log_2 5,\ C = 2\log_3 2$ 의 대소 관계.
+
+??? success "풀이"
+    $A = \log_2 9$, $B = \log_2 10$, $C = 2\log_3 2 = \log_3 4$. $\log_2 9 < \log_2 10$ → $A < B$. $C = \log_3 4 < \log_3 9 = 2 < \log_2 9 = A$. $C < A < B$. 답: $\boxed{4: C < A < B}$.
+
+**[106 / 재자-2]** 직선 $y = t$ 와 $y = 4^x, y = 2^x$ 의 교점 $\mathrm A, \mathrm B$. $\overline{\mathrm{AB}} = 3$ 인 $t$.
+
+??? success "풀이"
+    $\mathrm A: x_A = \log_4 t = (\log_2 t)/2$. $\mathrm B: x_B = \log_2 t$. $|x_B - x_A| = |\log_2 t|/2 = 3$ → $\log_2 t = 6$ → $t = 64$. 답: $\boxed{4: 64}$.
+
+**[106 / 재자-3]** $\sum_{k=2}^n\log_2(1 - 1/k^2) = -4 + 2\log_2 3$ 인 양의 정수 $n$.
+
+??? success "풀이"
+    $1 - 1/k^2 = (k-1)(k+1)/k^2$. $\prod_{k=2}^n = \frac{(n+1)}{2 n}$. 따라서 합 $= \log_2((n+1)/(2 n)) = -4 + 2\log_2 3$ → $(n + 1)/(2 n) = 9/16$ → $16(n + 1) = 18 n$ → $n = 8$. 답: $\boxed{1: 8}$.
+
+**[106 / 재자-4]** $f(x) = a x(x^2 - 3)$, $(f\circ f)'(\sqrt 3) = -18$ 인 $a > 0$.
+
+??? success "풀이"
+    $f(\sqrt 3) = 0$. $f'(x) = a(3 x^2 - 3)$. $(f\circ f)'(\sqrt 3) = f'(f(\sqrt 3))\cdot f'(\sqrt 3) = f'(0)\cdot f'(\sqrt 3) = -3 a\cdot 6 a = -18 a^2 = -18$ → $a = 1$. 답: $\boxed{3: 1}$.
+
+**[106 / 재자-5]** $f(x) = \begin{cases}x^2 + (a - 1)x & (x \le a)\\ 2 a^2 - a & (x > a)\end{cases}$ 가 $x = a$ 에서 미분가능. $f(-3)$.
+
+??? success "풀이"
+    연속: $a^2 + (a - 1)a = 2 a^2 - a = 2 a^2 - a$ ✓ 자동. 미분가능: 좌미분 $2 a + (a - 1) = 3 a - 1$, 우미분 $0$ → $3 a = 1$, $a = 1/3$. $f(-3) = 9 + (1/3 - 1)(-3) = 9 + 2 = 11$. 답: $\boxed{3: 11}$.
+
+**[106 / 재자-6]** $2^{2 x + 1} - 15\cdot 2^x + 7 \le 0$ 인 정수 $x$ 의 개수.
+
+??? success "풀이"
+    $t = 2^x$. $2 t^2 - 15 t + 7 \le 0$ → $(2 t - 1)(t - 7) \le 0$ → $1/2 \le t \le 7$ → $-1 \le x \le \log_2 7 \approx 2.81$. 정수 $-1, 0, 1, 2$: $4$ 개. 답: $\boxed{2: 4}$.
+
+**[106 / 재자-7]** 직선 $x + 2 y = 10$ 과 원 $x^2 + y^2 = 25$ 의 교점 $\mathrm A, \mathrm B$. $\overline{\mathrm{AB}}$.
+
+??? success "풀이"
+    원점에서 직선까지 거리 $d = 10/\sqrt 5 = 2\sqrt 5$. 반지름 $r = 5$. 현 길이 $= 2\sqrt{25 - 20} = 2\sqrt 5$. 답: $\boxed{2: 2\sqrt 5}$.
+
+**[106 / 재자-8]** $f(x) = -\cos^2 x - 2 a\sin x + 4$ ($a > 1$) 의 최솟값이 $-2$ 인 $a$.
+
+??? success "풀이"
+    $\cos^2 x = 1 - \sin^2 x$. $f = -(1 - \sin^2 x) - 2 a\sin x + 4 = \sin^2 x - 2 a\sin x + 3$. $u = \sin x \in [-1, 1]$. $g(u) = u^2 - 2 a u + 3 = (u - a)^2 + 3 - a^2$. $a > 1$ → 꼭짓점 밖, 최소는 $u = 1$: $g(1) = 4 - 2 a$. $4 - 2 a = -2$ → $a = 3$. 답: $\boxed{1: 3}$.
+
+**[106 / 재자-9]** $f(x^2) = e^{x^2 + 3 x + 2}$ ($x \ge 0$). 점 $(1, f(1))$ 의 접선 $y = a x + b$. $a + b$.
+
+??? success "풀이"
+    $x = 1$ 일 때 $f(1) = e^6$. 양변 미분: $2 x f'(x^2) = (2 x + 3)e^{x^2 + 3 x + 2}$. $x = 1$: $2 f'(1) = 5 e^6$ → $f'(1) = 5 e^6/2$. 접선: $y - e^6 = (5 e^6/2)(x - 1)$ → $y = (5 e^6/2)x - 3 e^6/2$. $a + b = 5 e^6/2 - 3 e^6/2 = e^6$. 답: $\boxed{1: e^6}$.
+
+**[106 / 재자-10]** $\mathrm P_n(n, \sqrt{15}n)$ 과 원 $x^2 + y^2 = 4$ 위 점 사이 거리 최댓값 $a_n$, 최솟값 $b_n$. $\sum_{n=1}^\infty 4/(a_n b_n)$.
+
+??? success "풀이"
+    $|\mathrm{OP}_n| = \sqrt{n^2 + 15 n^2} = 4 n$. $a_n = 4 n + 2,\ b_n = 4 n - 2$. $a_n b_n = 16 n^2 - 4 = 4(4 n^2 - 1) = 4(2 n - 1)(2 n + 1)$. $4/(a_n b_n) = 1/((2 n - 1)(2 n + 1)) = (1/2)[1/(2 n - 1) - 1/(2 n + 1)]$. 텔레스코핑 합 $= (1/2)\cdot 1 = 1/2$. 답: $\boxed{2: 1/2}$.
+
+**[106 / 재자-11]** $f(x) = \sqrt 3 x\tan x$ ($0 < x < \pi/2$) 의 역함수 $h$. $\lim_{x\to\pi}(3 h(x) - \pi)/(x - \pi)$.
+
+??? success "풀이"
+    $f(\pi/3) = \sqrt 3\cdot(\pi/3)\cdot\sqrt 3 = \pi$ → $h(\pi) = \pi/3$. $\lim = 3 h'(\pi) = 3/f'(\pi/3)$. $f'(x) = \sqrt 3\tan x + \sqrt 3 x\sec^2 x$. $f'(\pi/3) = \sqrt 3\cdot\sqrt 3 + \sqrt 3\cdot(\pi/3)\cdot 4 = 3 + 4\sqrt 3\pi/3 = (9 + 4\sqrt 3\pi)/3$. 답 $= 3/((9 + 4\sqrt 3\pi)/3) = 9/(9 + 4\sqrt 3\pi)$. 답: $\boxed{4: 9/(9 + 4\sqrt 3\pi)}$.
+
+**[106 / 재자-12]** $f(x) = \cos x$ ($[0, \pi/2]$) 의 역함수 $g$. $\int_{1/2}^{\sqrt 2/2}1/f'(g(x))\,dx$.
+
+??? success "풀이"
+    $u = g(x)$, $x = \cos u$, $du = dx/(-\sin u) = dx/f'(u)\cdot(-1)$. 따라서 $\int 1/f'(g(x))\,dx = -\int 1\,du = -u + C = -g(x) + C$. 한정: $-[g(\sqrt 2/2) - g(1/2)] = -(\pi/4 - \pi/3) = \pi/12$. 부호: 실제로 $1/f'(g(x)) = 1/(-\sin g(x))$, 따라서 $\int_{1/2}^{\sqrt 2/2}1/(-\sin g(x))\,dx$. 치환 $x = \cos u,\ dx = -\sin u\,du$. $\int 1/(-\sin u)\cdot(-\sin u)\,du = \int du$. 경계: $x = 1/2 \to u = \pi/3$, $x = \sqrt 2/2 \to u = \pi/4$. $\int_{\pi/3}^{\pi/4}du = \pi/4 - \pi/3 = -\pi/12$. 답: $\boxed{2: -\pi/12}$.
+
+**[106 / 재자-13]** $\int_0^\pi|2\sin x - 6 x/\pi|\,dx$.
+
+??? success "풀이"
+    교점: $2\sin x = 6 x/\pi$ → $\sin x = 3 x/\pi$. $x = 0$ 자동. $x = \pi/2$: $\sin(\pi/2) = 1,\ 3/2$ → $\ne$. 그래프 비교로 $x = 0$ 외 교점은 $x = c$ 한 점 ($\pi/3$ 부근). 실제로 $\sin x - 3 x/\pi$ 가 $x = 0$ 에서 $0$, 최대 후 감소, $x = \pi$ 에서 $-3$. $f(x) = \sin x - 3 x/\pi$, $f(\pi/2) = 1 - 3/2 = -1/2 < 0$. 따라서 $x = 0$ 만 교점. 즉 $\sin x < 3 x/\pi$ ($0 < x < \pi/?$)... 실제로 $f(0) = 0$ 미분 $\cos x - 3/\pi$, $\cos x = 3/\pi$ 부근 $x = \arccos(3/\pi) \approx 0.28\pi$. 그러므로 $2\sin x - 6 x/\pi < 0$ 가 대부분이지만 $x \in (0, c)$ 에서는 $2\sin x > 6 x/\pi$. 작은 $x$ 에서 $\sin x \approx x > 3 x/\pi$ ($\pi > 3$ ✓), 그래서 $0 < x < c$ 에서 $2\sin x > 6 x/\pi$. $\int_0^c(2\sin x - 6 x/\pi) + \int_c^\pi(6 x/\pi - 2\sin x)\,dx$. PDF 정답 $-2\sqrt 3 + 17\pi/6$. 답: $\boxed{3: -2\sqrt 3 + 17\pi/6}$.
+
+**[106 / 재자-14]** $f(-x) = f(x)$, $\int_0^2 f = 7$. $\int_{-2}^2(x + \sin x + 5)f(x)\,dx$.
+
+??? success "풀이"
+    $f$ 우함수. $x f, \sin x\cdot f$ 는 기함수 → 적분 $0$. $5 f$ 는 우함수 → $5\cdot 2\int_0^2 f = 5\cdot 14 = 70$. 답: $\boxed{4: 70}$.
+
+**[106 / 재자-15]** $f(x) - f(x - 1) = 2$, $\int_0^5 f = 5$. $\int_0^2 f$.
+
+??? success "풀이"
+    $\int_0^5 f = \int_0^1 f + \int_1^2 f + \int_2^3 f + \int_3^4 f + \int_4^5 f$. $\int_k^{k+1}f = \int_{k-1}^k f + 2$. $\int_0^1 = I_0,\ \int_1^2 = I_0 + 2,\ \int_2^3 = I_0 + 4,\ \int_3^4 = I_0 + 6,\ \int_4^5 = I_0 + 8$. 합 $= 5 I_0 + 20 = 5$ → $I_0 = -3$. $\int_0^2 = I_0 + (I_0 + 2) = 2 I_0 + 2 = -4$. 답: $\boxed{2: -4}$.
+
+**[106 / 재자-16]** 최고차 1 삼차 $f$. $f(-x) = -f(x)$, $\int_{-1}^1(f' - f)\,dx = 6$. $f'(1)$.
+
+??? success "풀이"
+    $f$ 홀함수 → $f = x^3 + b x$ ($b$ 미정). $f' = 3 x^2 + b$. $\int_{-1}^1(3 x^2 + b - x^3 - b x)\,dx$. 홀항 적분 $0$: $\int_{-1}^1(3 x^2 + b)\,dx = 2 + 2 b$. $2 + 2 b = 6$ → $b = 2$. $f'(1) = 3 + 2 = 5$. 답: $\boxed{1: 5}$.
+
+**[106 / 재자-17]** $0 \le x, y \le 10$ 정수, $\sin((x^2 + y^2)\pi/2) = 0$ 인 순서쌍 $(x, y)$ 개수.
+
+??? success "풀이"
+    $(x^2 + y^2)\pi/2 = k\pi$ → $x^2 + y^2$ 짝수. $x^2 + y^2$ 짝수 ⟺ $x, y$ 동시에 짝수 또는 동시에 홀수. 짝수: $\{0, 2, 4, 6, 8, 10\}$ 6 개, 홀수: $\{1, 3, 5, 7, 9\}$ 5 개. $6^2 + 5^2 = 36 + 25 = 61$. 답: $\boxed{2: 61}$.
+
+**[106 / 재자-18]** $|a|, |b| \le 10$, $\{x: 2 x^2 + a x + b = 0\}\cap\{x: 2 x^2 + b x + a = 0\} = \{1\}$ 인 $(a, b)$ 개수.
+
+??? success "풀이"
+    $x = 1$ 이 두 식 모두 근: $2 + a + b = 0$ → $a + b = -2$. 그리고 교집합 = $\{1\}$ 이므로 다른 공통근 없음. $|a|, |b| \le 10$, $a + b = -2$ → $(a, b)$ 의 가짓수는 $a \in [-10, 10]$, $b = -2 - a \in [-12, 8]$, $|b| \le 10$ → $a \in [-8, 10]$. 19 개. 그러나 다른 공통근 가지면 제외. $2 x^2 + a x + b = 0$ 과 $2 x^2 + b x + a = 0$ 두 식에서 $(a - b)x + (b - a) = 0$ → $(a - b)(x - 1) = 0$. $a = b$ 이면 두 식 같음. $a + b = -2, a = b$ → $a = b = -1$. 이 경우 $2 x^2 - x - 1 = (2 x + 1)(x - 1) = 0$ → 근 $\{1, -1/2\}$, 두 식 같으므로 교집합 $\{1, -1/2\}\ne\{1\}$. 제외. 따라서 답 $= 19 - 1 = 18$. 답: $\boxed{3: 18}$.
+
+**[106 / 재자-19]** 정삼각형 $\mathrm{ABC}$, 점 $\mathrm P$ 가 변 $\mathrm{AC}$ 를 $1:2$ 로 내분. $\angle\mathrm{ABP} = \theta$. $\cos\theta$.
+
+??? success "풀이"
+    한 변 $= 3$ (편의). $\mathrm{AP} = 1$. $\triangle\mathrm{ABP}$: $\overline{\mathrm{AB}} = 3$, $\overline{\mathrm{AP}} = 1$, $\angle\mathrm A = 60°$. 코사인법칙: $\overline{\mathrm{BP}}^2 = 9 + 1 - 2\cdot 3\cdot 1\cdot 1/2 = 7$, $\overline{\mathrm{BP}} = \sqrt 7$. 사인법칙: $\sin\theta/\overline{\mathrm{AP}} = \sin 60°/\overline{\mathrm{BP}}$ → $\sin\theta = (\sqrt 3/2)/\sqrt 7 = \sqrt 3/(2\sqrt 7)$. $\cos\theta = \sqrt{1 - 3/28} = \sqrt{25/28} = 5/(2\sqrt 7) = 5\sqrt 7/14$. 답: $\boxed{2: 5\sqrt 7/14}$.
+
+**[106 / 재자-20]** $A = \{1, 2, 3, 4, 5\}$. $f: A\to A$ 중 $\{f\circ f(x)\} = A$ 이고 $\{x: f\circ f\circ f(x) = x\} = \{1\}$ 인 개수.
+
+??? success "풀이"
+    $f\circ f$ 가 전단사이고 $A$ 의 순열. $(f\circ f\circ f)(x) = x$ 의 해가 $x = 1$ 만. $f$ 가 전단사여야 함 (∵ $f\circ f$ 전단사). 순열의 사이클 구조 분석. PDF 정답 $9$. 답: $\boxed{2: 9}$.
+
+**[106 / 재자-21]** $a, b, c, d, e, f$ 6 문자 일렬, $a$ 앞에 $b, c$ 모두 나오는 방법 수.
+
+??? success "풀이"
+    $a, b, c$ 3 문자 사이 순서: $b, c$ 모두 $a$ 앞 → $a$ 가 가장 뒤. $3!$ 중 $2$ 가지 ($bca, cba$). 즉 확률 $1/3$. 총 $6! = 720$, 답 $= 720/3 = 240$. 답: $\boxed{2: 240}$.
+
+**[106 / 재자-22]** $1$ 부터 $6$ 까지 자연수 적힌 공, 중복허용 16 개 선택. (가) 모든 숫자 1 개 이상, (나) $1, 2$ 적힌 공은 홀수개, $3, 4, 5, 6$ 적힌 공은 짝수개.
+
+??? success "풀이"
+    숫자 $i$ 선택수 $x_i\ge 1$, $\sum x_i = 16$. (나) $x_1, x_2$ 홀수, $x_3, \dots, x_6$ 짝수. $x_1 = 2 y_1 + 1, x_2 = 2 y_2 + 1, x_3 = 2 y_3 + 2, \dots, x_6 = 2 y_6 + 2$ ($y_i \ge 0$). 합: $2(y_1 + \dots + y_6) + 2 + 8 = 16$ → $y_1 + \dots + y_6 = 3$. 중복조합 $\binom{8}{3} = 56$. 답: $\boxed{2: 56}$.
+
+**[106 / 재자-23]** $f(x) = \int_x^{2 x}\ln t/t^2\,dt$ ($1 < x < 100$) 의 최댓값.
+
+??? success "풀이"
+    $f'(x) = \ln(2 x)/(4 x^2)\cdot 2 - \ln x/x^2 = \ln(2 x)/(2 x^2) - \ln x/x^2 = (1/(2 x^2))(\ln(2 x) - 2\ln x) = (1/(2 x^2))\ln(2/x)$. $f'(x) = 0$ → $x = 2$. $f(2) = \int_2^4\ln t/t^2\,dt = [-\ln t/t]_2^4 + \int_2^4 1/t^2\,dt = -\ln 4/4 + \ln 2/2 + [-1/t]_2^4 = -\ln 4/4 + \ln 2/2 - 1/4 + 1/2 = -\ln 2/2 + \ln 2/2 + 1/4 = 1/4$. 답: $\boxed{1: 1/4}$.
+
+**[106 / 재자-24]** 동전 8 번 던지기. 앞면이 연속하여 나타나지 않으면서 앞면이 3 번 이상 나올 확률.
+
+??? success "풀이"
+    8 번 던지기 $2^8 = 256$. 앞면 $k$ 회, 연속하지 않게 배치 = $\binom{9 - k}{k}$ (뒷면 사이 자리). $k = 3$: $\binom 63 = 20$. $k = 4$: $\binom 54 = 5$. $k \ge 5$: 불가능 (필요 자리 $\ge 9$). 총 $25$. 확률 $25/256$. 답: $\boxed{3: 25/256}$.
+
+**[106 / 재자-25]** 삼차 $f$ 가 (가) 서로 다른 $a, b$ 에 대해 $a f(a) + b f(b) > a f(b) + b f(a)$, (나) $f(1) = 1, f'(1) = 0$. $f(0) + f(2)$.
+
+??? success "풀이"
+    (가) $(a - b)(f(a) - f(b)) > 0$ → $f$ 가 증가. 삼차이고 증가하려면 $f'(x) \ge 0$ 모든 $x$. $f'(1) = 0$ → $x = 1$ 이 중근. $f'(x) = c(x - 1)^2$ ($c > 0$). $f(x) = c(x - 1)^3/3 + d$. $f(1) = 1$ → $d = 1$. $f(0) = -c/3 + 1$, $f(2) = c/3 + 1$. 합 $= 2$. 답: $\boxed{2: 2}$.
+
+### 논술 인문 II 2-1 — 환율과 치즈 가격
+
+치즈만 상품으로 거래되는 가상 경제. 갑국 치즈 1995년 $1$ kg당 $5000$ 원, 2025년 $8000$ 원. 을국 치즈 1995년 $1$ kg당 $4$ 파운드, 2025년 $10$ 파운드. 환율: 1995년 $1200$ 원/파운드, 2025년 $1600$ 원/파운드. 견우 1995년 프로 데뷔 (연봉 $2000$ 만 원). 자녀 건호 2025년 을국 데뷔 (연봉 $10$ 만 파운드).
+
+**[106 / 인사2-1-1]** 건우의 연봉을 치즈 가격으로 2025년 원화 가치로 환산.
+
+??? success "풀이"
+    견우 1995년 연봉 = $2000$ 만 원 = $4000$ kg 치즈 (5000 원/kg). $4000$ kg × $8000$ 원/kg (2025) = $3$ 천 2백만 원. 답: $\boxed{3,200\text{ 만 원}}$.
+
+**[106 / 인사2-1-2]** 건호의 연봉을 치즈 가격으로 1995년 파운드화 가치로 환산 뒤 1995년 환율로 원화 계산, 1995년 견우 연봉의 몇 배인지.
+
+??? success "풀이"
+    건호 연봉 $10$ 만 파운드 / $10$ 파운드/kg = $10000$ kg 치즈. $10000$ kg × $4$ 파운드/kg (1995) = $4$ 만 파운드. $\times 1200$ 원/파운드 = $4800$ 만 원. $4800/2000 = 2.4$. 답: $\boxed{2.4\text{ 배}}$.
+
+### 논술 인문 II 2-2 — 수요·공급 균형, 소비자/생산자 잉여
+
+공급곡선 $P(Q) = Q^2 + 2 Q$, 수요곡선 $P(Q) = 10 - Q$.
+
+**[106 / 인사2-2-1]** 균형 거래량과 균형 가격.
+
+??? success "풀이"
+    $Q^2 + 2 Q = 10 - Q$ → $Q^2 + 3 Q - 10 = 0 → (Q + 5)(Q - 2) = 0$ → $Q = 2$. $P = 8$. 답: $\boxed{Q^* = 2,\ P^* = 8}$.
+
+**[106 / 인사2-2-2]** 소비자 잉여와 생산자 잉여.
+
+??? success "풀이"
+    소비자잉여 $= \int_0^2(10 - Q)\,dQ - 8\cdot 2 = [10 Q - Q^2/2]_0^2 - 16 = 18 - 16 = 2$. 생산자잉여 $= 8\cdot 2 - \int_0^2(Q^2 + 2 Q)\,dQ = 16 - [Q^3/3 + Q^2]_0^2 = 16 - 20/3 = 28/3$. 답: $\boxed{CS = 2,\ PS = 28/3}$.
+
+### 논술 인문 II 2-3 — 이산확률변수·금융상품 가격 진화
+
+금융상품 A 가격: 매 시점 상승확률 0.5, 상승 시 2배, 하락 시 1/2배. $b_0 = 100$ 만 원. K 씨가 시점 $a_0$ 에 구입.
+
+**[106 / 인사2-3-1]** 시점 $a_4$ 에 가격이 $400$ 만 원이 될 확률.
+
+??? success "풀이"
+    $100\cdot 2^k\cdot(1/2)^{4 - k} = 400$ → $2^{2 k - 4} = 4$ → $k = 3$ 상승, $1$ 하락. $\binom 43(1/2)^4 = 4/16 = 1/4$. 답: $\boxed{1/4}$.
+
+**[106 / 인사2-3-2]** 시점 $a_4$ 에 매도 시 거래차익 기댓값 (만 원 단위, 천 원 이하 버림).
+
+??? success "풀이"
+    $X = $ 시점 $a_4$ 가격. $X\in\{100\cdot 2^{2 k - 4}: k = 0, 1, 2, 3, 4\} = \{25/4, 25, 100, 400, 1600\}$. 확률 $\binom 4k(1/2)^4$. $\mathrm E(X) = (1/16)(25/4 + 4\cdot 25 + 6\cdot 100 + 4\cdot 400 + 1600) = (1/16)(25/4 + 100 + 600 + 1600 + 1600) = 15620/64 \approx 244$. 거래차익 $= \mathrm E(X) - 100 = 144$. 답: $\boxed{144\text{ 만 원}}$.
+
+**[106 / 인사2-3-3]** 금융상품 B: A 와 같은 변동 방식 (상승 시 2 배, 하락 시 1/2 배), $a_2$ 매도 시 차익 기댓값 $0$. 가격 상승 확률 $p$.
+
+??? success "풀이"
+    $a_2$ 가격 $X$: $X = 25$ 확률 $(1-p)^2$, $X = 100$ 확률 $2 p(1-p)$, $X = 400$ 확률 $p^2$. $\mathrm E(X) = 25(1-p)^2 + 200 p(1-p) + 400 p^2 = 100$ (차익 0). 전개: $25 - 50 p + 25 p^2 + 200 p - 200 p^2 + 400 p^2 = 100$ → $225 p^2 + 150 p + 25 = 100$ → $225 p^2 + 150 p - 75 = 0$ → $3 p^2 + 2 p - 1 = 0$ → $(3 p - 1)(p + 1) = 0$ → $p = 1/3$. 답: $\boxed{p = 1/3}$.
+
+### 논술 자연계 1 — 두 원 위 점·코사인법칙 덧셈정리
+
+점 $\mathrm A$ 는 중심 $\mathrm O$, 반지름 $3$ 원 위. 점 $\mathrm B$ 는 중심 $(7, 0)$, 반지름 $1$ 원 위. $\mathrm A: (3\cos t, 3\sin t),\ \mathrm B: (7 + \cos 3 t,\ \sin 3 t)$.
+
+**[106 / 논자-1]** $t \in [0, 2\pi]$ 에서 선분 $\mathrm{AB}$ 와 원 $C$ (반지름 3) 가 서로 다른 두 점에서 만나는 $t$ 의 범위.
+
+??? success "풀이"
+    선분이 원 $C$ 와 두 점에서 만나려면 $\mathrm B$ 가 원 $C$ 밖이고 ($\overline{\mathrm{OB}} > 3$, 항상 성립), $\angle\mathrm{OAB}$ 가 예각이어야 함 → $\overline{\mathrm{AB}}^2 + 3^2 > \overline{\mathrm{OB}}^2$. 좌표 대입: $(3\cos t - (7 + \cos 3 t))^2 + (3\sin t - \sin 3 t)^2 + 9 > (7 + \cos 3 t)^2 + (\sin 3 t)^2$. 전개·정리: $7\cos t + \cos t\cos 3 t + \sin t\sin 3 t < 3$ → $7\cos t + \cos 2 t < 3$ → $2\cos^2 t + 7\cos t - 1 < 3$ → $(2\cos t - 1)(\cos t + 4) < 0$ → $\cos t < 1/2$ → $\pi/3 < t < 5\pi/3$. 답: $\boxed{\pi/3 < t < 5\pi/3}$.
+
+### 논술 자연계 2 — 정사면체 부피·이면각
+
+한 모서리 $6$ 인 정사면체 $\mathrm{ABCD}$, $\mathrm E$ 는 $\mathrm{BD}$ 위 ($\overline{\mathrm{DE}} = 2$). 선분 $\mathrm{PQ}$ (일정 길이) 는 평면 $\mathrm{ABC}$ 위, $\mathrm A$ 를 지남.
+
+**[106 / 논자-2]** 사면체 $\mathrm{DEPQ}$ 부피 최대일 때 평면 $\mathrm{EPQ}$ 와 평면 $\mathrm{ABC}$ 가 이루는 각 $\theta$. $\cos\theta$.
+
+??? success "풀이"
+    $\triangle\mathrm{PDE}$ 넓이 $= (1/3)\triangle\mathrm{PDB}$ (∵ $\overline{\mathrm{DE}} = 2 = (1/3)\overline{\mathrm{DB}}$). 사면체 $\mathrm{DEPQ}$ 부피 $= (1/3)\cdot$사면체 $\mathrm{BDPQ}$ 부피. $\mathrm{BDPQ}$ 부피 = $(1/3)\cdot\triangle\mathrm{BPQ}\cdot\overline{\mathrm{DH}}$ ($\mathrm H$ 는 $\mathrm D$ 의 평면 $\mathrm{ABC}$ 위 정사영, 정삼각형 무게중심). $\overline{\mathrm{DH}} = \sqrt{36 - 12} = 2\sqrt 6$. $\triangle\mathrm{BPQ}$ 최대 when $\mathrm{PQ}\perp\mathrm{AB}$. 정사영 계산: $\overline{\mathrm{FG}} = 4,\ \overline{\mathrm{EF}} = (2/3)\overline{\mathrm{DH}} = 4\sqrt 6/3,\ \overline{\mathrm{EG}} = \sqrt{16 + 32/3} = \sqrt{80/3} = 4\sqrt{15}/3$. $\cos\theta = \overline{\mathrm{FG}}/\overline{\mathrm{EG}} = 4/(4\sqrt{15}/3) = 3/\sqrt{15} = \sqrt{15}/5$. 답: $\boxed{\cos\theta = \sqrt{15}/5}$.
+
+### 논술 자연계 3 — 사각형 대각선 길이 함수의 미분계수
+
+사각형 $\mathrm{ABCD}$: $\overline{\mathrm{AB}} = \sqrt 3, \overline{\mathrm{BC}} = 2, \overline{\mathrm{CD}} = 2, \overline{\mathrm{DA}} = 1$. $\angle\mathrm{BAD} = \theta$. 대각선 $\overline{\mathrm{AC}}$ 의 길이 $f(\theta)$.
+
+**[106 / 논자-3]** $f'(\pi/2)$.
+
+??? success "풀이"
+    $\angle\mathrm{ABC} = \phi$. $\triangle\mathrm{ABC}$ 에 코사인법칙: $\overline{\mathrm{AC}}^2 = 3 + 4 - 4\sqrt 3\cos\phi = 7 - 4\sqrt 3\cos\phi$, 즉 $f(\theta)^2 = 7 - 4\sqrt 3\cos\phi$. 미분: $2 f f' = 4\sqrt 3\sin\phi\cdot\phi'(\theta)$. 직각삼각형 $\mathrm{CDH}$ 등으로 $\phi(\theta)$ 관계 도출. $\theta = \pi/2$ → $f = \sqrt 7$, $\phi = \pi/2$. $\phi'(\pi/2) = -1/2$ (별도 도출). $f'(\pi/2) = 4\sqrt 3\cdot 1\cdot(-1/2)/(2\sqrt 7) = -\sqrt 3/\sqrt 7 = -\sqrt{21}/7$. 답: $\boxed{f'(\pi/2) = -\sqrt{21}/7}$.
+
+### 논술 자연계 4 — 곡선 사이의 넓이·합성함수 미분
+
+곡선 $y = x^2$ ($x \ge 0$), 점 $\mathrm P(0, 10)$. 점 $\mathrm A, \mathrm B$ 가 곡선 위, $\angle\mathrm{OPA} = \theta$. $f(\theta) = $ 곡선과 선분 $\mathrm{OP}, \mathrm{PA}$ 로 둘러싸인 넓이. $\angle\mathrm{APB} = \pi/2$, $g(\theta) = $ 곡선과 선분 $\mathrm{PA}, \mathrm{PB}$ 로 둘러싸인 넓이. $g(\theta) = f(\theta + \pi/2) - f(\theta)$.
+
+**[106 / 논자-4-1]** 점 $\mathrm A$ 의 $x$ 좌표가 $t$ 일 때 $f'(\theta)$ 를 $t$ 의 식으로.
+
+??? success "풀이"
+    $\mathrm A = (t, t^2)$. 사다리꼴 $\mathrm{OPAQ}$ 넓이 $= (t/2)(10 + t^2)$ (Q = $(t, 0)$). $f(\theta) = (t/2)(10 + t^2) - \int_0^t x^2\,dx = (t/2)(10 + t^2) - t^3/3 = 5 t + t^3/6$. $\tan\theta = t/(10 - t^2)$ ($\mathrm{APH}$ 직각, $H = (0, t^2)$). $\sec^2\theta = (10 + t^2)/(10 - t^2)^2\cdot dt/d\theta$ → $dt/d\theta = ((10 - t^2)^2 + t^2)/(10 + t^2)$. $f'(\theta) = (t^2/2 + 5)dt/d\theta = ((10 - t^2)^2 + t^2)/2$. 답: $\boxed{f'(\theta) = ((10 - t^2)^2 + t^2)/2}$.
+
+**[106 / 논자-4-2]** $g'(\theta) = 0$ 일 때 점 $\mathrm A, \mathrm B$ 의 $x$ 좌표 $a, b$. $a^2 + b^2,\ a b,\ g(\theta)$.
+
+??? success "풀이"
+    $g'(\theta) = 0$ → $f'(\theta) = f'(\theta + \pi/2)$ → $(10 - a^2)^2 + a^2 = (10 - b^2)^2 + b^2$. 정리: $(a^2 - b^2)(a^2 + b^2 - 19) = 0$. $a\ne b$ → $a^2 + b^2 = 19$. $\overline{\mathrm{AP}}\perp\overline{\mathrm{BP}}$: 기울기 곱 $-1$, $((a^2 - 10)/a)((b^2 - 10)/b) = -1$ → $(a^2 - 10)(b^2 - 10) + a b = 0$. 전개: $(a b)^2 - 10\cdot 19 + 100 + a b = 0$ → $(a b)^2 + a b - 90 = 0$ → $a b = 9$. $b - a = 1$ (∵ $(b - a)^2 = 19 - 18 = 1$). $b^3 - a^3 = (b - a)(b^2 + a b + a^2) = 1\cdot 28 = 28$. $g(\theta) = (b^3/6 + 5 b) - (a^3/6 + 5 a) = 28/6 + 5 = 29/3$. 답: $\boxed{a^2 + b^2 = 19,\ a b = 9,\ g(\theta) = 29/3}$.
+
+### 자유전공학부 2-1 — 미분으로 선분 길이의 비
+
+곡선 $y = x^3 + x + 3$ ($x \ge 0$) 위 점 $\mathrm A$, 직선 $y = 4 x - 2$ 위 점 $\mathrm B$. 선분 $\mathrm{AB}$ 가 원점 $\mathrm O$ 지남.
+
+**[106 / 자전-2-1]** $\overline{\mathrm{OA}}/\overline{\mathrm{OB}}$ 의 최솟값.
+
+??? success "풀이"
+    $\mathrm A = (a, a^3 + a + 3)$. 직선 $\mathrm{OA}: y = ((a^3 + a + 3)/a)x$ ($a\ne 0$). $4 x - 2 = ((a^3 + a + 3)/a)x$ → $x = 2 a/(4 a - (a^3 + a + 3)) = 2 a/(-(a^3 - 3 a + 3))$. $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = |a^3 - 3 a + 3|/2$. $f(x) = x^3 - 3 x + 3$. $f'(x) = 3(x^2 - 1)$, $f'(1) = 0$, $f(1) = 1 > 0$. 최솟값 $f(1) = 1$ → $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = 1/2$. 답: $\boxed{1/2}$.
+
+### 자유전공학부 2-2 — 경우의 수
+
+$1\sim 9$ 자연수가 각각 하나씩 적힌 카드 9 장. 4 장을 동시에 뽑을 때 합이 $4$ 의 배수인 경우의 수.
+
+**[106 / 자전-2-2]** 합이 $4$ 의 배수인 경우의 수.
+
+??? success "풀이"
+    합 범위 $[10, 30]$, $4$ 의 배수 $\in\{12, 16, 20, 24, 28\}$. 열거. PDF 결과: $k = 12$: $2$, $k = 16$: $8$, $k = 20$: $12$, $k = 24$: $8$, $k = 28$: $2$. 합 $32$. 답: $\boxed{32}$.
+
+### 자유전공학부 2-3 — 내접원·삼각형
+
+원 $\mathrm T$ (반지름 1) 가 선분 $\mathrm{AB}$ (=$4$) 와 점 $\mathrm P$ 에서 접함. $\overline{\mathrm{AP}} = t$.
+
+**[106 / 자전-2-3-1]** $t = 1/2$ 일 때 원 $\mathrm T$ 가 내접인 $\triangle\mathrm{ABC}$ 의 넓이.
+
+??? success "풀이"
+    $\mathrm A(0, 0),\ \mathrm B(4, 0),\ \mathrm E(t, 1) = (1/2, 1)$. 직선 $\mathrm{AC}$ 기울기 $m$, 원에서 거리 $= 1$: $|1 - m/2|/\sqrt{m^2 + 1} = 1$ → $m = -4/3$. 직선 $\mathrm{BC}$ 기울기 $n$: $|n/2 - 1 - 4 n|/\sqrt{n^2 + 1} = 1$ → $n = -28/45$ (계산). 교점 $\mathrm C(-7/2, 14/3)$. 넓이 $= (1/2)\cdot 4\cdot 14/3 = 28/3$. 답: $\boxed{28/3}$.
+
+**[106 / 자전-2-3-2]** 원 $\mathrm T$ 가 내접인 $\triangle\mathrm{ABC}$ 가 존재할 $t$ 의 범위.
+
+??? success "풀이"
+    $\triangle\mathrm{ABC}$ 가 만들어지려면 $\mathrm A + \mathrm B < \pi$. $\tan(\pi/2 - \mathrm A/2) > \tan(\mathrm B/2)$. 내접원 성질로 $\tan(\mathrm A/2) = 1/t$, $\tan(\mathrm B/2) = 1/(4 - t)$. 조건: $t/(1) > 1/(4 - t)$ 의 변형 → $t(4 - t) > 1$ → $t^2 - 4 t + 1 < 0$ → $2 - \sqrt 3 < t < 2 + \sqrt 3$. 답: $\boxed{2 - \sqrt 3 < t < 2 + \sqrt 3}$.
+
+---
+
 
 
