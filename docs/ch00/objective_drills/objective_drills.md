@@ -10495,3 +10495,144 @@ $2000$년 말 총인구를 $a$, $2099$년 말 총인구를 $b$라 하고, 각 �
     $$V = \dfrac{(162 - 9 - 6)\sqrt{3}}{1728} = \dfrac{147\sqrt{3}}{1728} = \boxed{\dfrac{49\sqrt{3}}{576}}.$$
 
 ---
+
+## 카드 119 — 건국대 (2020)
+
+출처: 건국대학교 2020학년도 KU논술우수자전형 — 인문사회계열 II 수학(문항카드 2), 자연계열 수학(문항카드 3).
+
+---
+
+### 논술 인문 II 수학 1 — 연립방정식·누진세·등비수열과 정적분
+
+**[1 / 문제 2-1]** 3세 미만 아동을 보육원에 종일 맡길 경우 한 달에 $10$만원, 반나절만 맡길 경우 $5$만원을 보조한다. 원래 지원금 총액이 $5000$만원이고 $800$가구에 지원되어야 한다. 그런데 행정 실수로 지원금 $5000$만원이 모두 $600$가구에 지급되었다. 원래 $10$만원을 받아야 할 가구 수를 $a$, $5$만원을 받아야 할 가구 수를 $b$; 실제로 $10$만원을 받아야 하는데 $5$만원을 받은 가구 수를 $c$, $5$만원을 받아야 하는데 $10$만원을 받은 가구 수를 $d$라 하자. $a - b + c - d$의 값을 구하여라.
+
+??? success "풀이"
+    원래 보조금 분포:
+
+    $$\begin{cases}a + b = 800\\ 10 a + 5 b = 5000\end{cases}\ \Rightarrow\ a = 200,\quad b = 600.$$
+
+    지급된 분포에서 $600$가구에 $5000$만원 전액이 지급되었으므로
+
+    $$\begin{cases}c + d = 600\\ 5 c + 10 d = 5000\end{cases}\ \Rightarrow\ c = 200,\quad d = 400.$$
+
+    즉 $10$만원을 받아야 하는 $200$가구는 이미 모두 $5$만원으로 잘못 지급받았고, $5$만원을 받아야 하는데 $10$만원으로 잘못 지급받은 가구는 $400$가구이므로, 아직 보조금을 지급받지 못한 가구는 $5$만원을 지급받는 $200$가구만 남아 있다.
+
+    $$\therefore\ a - b + c - d = 200 - 600 + 200 - 400 = \boxed{-600}.$$
+
+**[2 / 문제 2-2]** 두 나라 $\mathrm{A}, \mathrm{B}$에 각각 $100$명씩의 국민이 있고, 소득 $Y$($\mathrm{A}$국가 국민)는 $0$부터 분포한다. 각국의 세금:
+
+$$\mathrm{A}: T_A = 0.2 Y\ (\text{선형});\quad \mathrm{B}: T_B = \begin{cases}0 & Y\le 1000\\ 0.2(Y - 1000) & 1000 < Y\le 5000\\ 0.2(4000) + 0.4(Y - 5000) & Y > 5000\end{cases}.$$
+
+이주비용 $600 - 0.1 Y$. 사람들은 본인의 (세금 + 이주비용)이 줄어드는 경우에만 이주한다. 소득 구간별로 이주 인원을 계산하여 $\mathrm{A}$국가, $\mathrm{B}$국가 최종 인구를 구하여라. ($\mathrm{A}$국 국민 분포는 각 $\$1000$ 구간마다 $14$명, $\mathrm{B}$국도 마찬가지라 가정.)
+
+??? success "풀이"
+    **구간 1**: $Y < 1000$. $\mathrm{A}$국가에서 세금 더 높음. 이주 조건 $0.2 Y > 0 + (600 - 0.1 Y)$ ⇔ $Y > 2000$. 그러나 $Y < 1000$이므로 해당 구간은 이주하지 않음.
+
+    **구간 2**: $1000 < Y < 5000$. 이주 조건 $0.2 Y > 0.2(Y - 1000) + (600 - 0.1 Y)$ ⇔ $Y > 4000$. 따라서 $4000 < Y < 5000$인 $\mathrm{A}$국 국민 $14$명이 $\mathrm{B}$국으로 이주.
+
+    **구간 3-1**: $5000 < Y < 6000$. 이주 조건 $0.2 Y > 0.2(4000) + 0.4(Y - 5000) + (600 - 0.1 Y)$ ⇔ $Y < 6000$. 따라서 $5000 < Y < 6000$인 $14$명이 $\mathrm{A}\to\mathrm{B}$로 이주.
+
+    **구간 3-2**: $Y > 6000$. 이주 조건 (역방향, $\mathrm{B}$국 → $\mathrm{A}$국). $\mathrm{B}$국에서 $Y > 6000$ 인원에 대해 $\mathrm{A}$국으로 이주 조건 $Y - 0.2 Y > Y - [0.2(4000) + 0.4(Y - 5000)]$ ⇔ $Y > 6000$. 따라서 $\mathrm{B}$국에서 $Y > 6000$인 $38$명이 $\mathrm{A}$국으로 이주.
+
+    종합: $\mathrm{A}\to\mathrm{B}$ $28$명, $\mathrm{B}\to\mathrm{A}$ $38$명.
+
+    $$\mathrm{A}\text{국 인구} = 100 - 28 + 38 = \boxed{110},\quad \mathrm{B}\text{국 인구} = 100 + 28 - 38 = \boxed{90}.$$
+
+**[3 / 문제 2-3]** 수요곡선 $Y = f(X) = 2^{2 k}(X - 1)^2 = B^2(X - 1)^2$ ($B = 2^k$, $0\le X\le 1$). (1) $k = 1$일 때, 가격이 $1$원에서 $P_1$로 변동된 결과로 수요량이 $Q_0$에서 $Q_1$로 변하였다. $Q_1$이 $Q_0$의 도함수에서의 기울기 $-2$로 결정되는 상황의 가격 탄력성을 구하여라. (2) $k = 2$일 때, $n$개월 후 $n$번째 제품의 가격은 $P_n = 1 - \sum_{m=1}^n(1/3)^m$. $n = 10$에서의 소비자 잉여 $Z_{10} = \int_0^{Q_{10}}f(X)\,dX - P_{10}\cdot Q_{10}$의 값을 $a = (1/3)^{10}$를 이용하여 나타내어라. (보고서의 (2)는 등비수열 합 $\Delta R$ 계산이며 풀이 일부를 발췌.)
+
+??? success "풀이"
+    **(1) 가격탄력성.** $k = 1$이므로 $Y = 4(X - 1)^2$. $P_0 = 1$일 때 수요량 $1 = 4(X - 1)^2$ ⇔ $X = 1\pm 1/2 = 3/2, 1/2$. $0\le X\le 1$이므로 $Q_0 = 1/2$. 도함수 $f'(X) = 8(X - 1)$, $f'(Q_1) = -2$ ⇔ $Q_1 = 3/4$. 그때 $P_1 = 4(3/4 - 1)^2 = 1/4$.
+
+    $$\dfrac{\Delta P}{P_0} = \dfrac{(1/4) - 1}{1} = -\dfrac{3}{4},\quad \dfrac{\Delta Q}{Q_0} = \dfrac{(3/4) - (1/2)}{1/2} = \dfrac{1}{2}.$$
+
+    $$\text{가격탄력성} = -\dfrac{\Delta Q/Q}{\Delta P/P} = -\dfrac{1/2}{-3/4} = \boxed{\dfrac{2}{3}}.$$
+
+    **(2) $n = 10$에서의 소비자 잉여.** $k = 2$이므로 $f(X) = 16(X - 1)^2$.
+
+    $$P_n = 1 - \sum_{m = 1}^n (1/3)^m = 1 - \dfrac{(1/3)(1 - (1/3)^n)}{1 - 1/3} = \dfrac{1}{2} + \dfrac{1}{2}\cdot(1/3)^n.$$
+
+    $a = (1/3)^{10}$로 두면 $P_{10} = (1 + a)/2$. $P_{10} = 16(X - 1)^2$ ⇔ $X = 1 - \sqrt{(1 + a)/2}/4$, 즉 $Q_{10} = 1 - \sqrt{(1 + a)/2}/4$. (보고서 표기 $Q_{10} = -\sqrt{(1 + a)/2}/4 + 1$.)
+
+    $$Z_{10} = \int_0^{Q_{10}} 16(X - 1)^2\, dX - P_{10}\cdot Q_{10} = \dfrac{16}{3}[(X - 1)^3]_0^{Q_{10}} - P_{10}\cdot Q_{10}.$$
+
+    보고서의 정리된 결과:
+
+    $$Z_{10} = \dfrac{29}{6} - \dfrac{a}{2} + \dfrac{\sqrt{2}\,(1 + a)^{3/2}}{24}.$$
+
+    $a = (1/3)^{10}$의 값은 매우 작으므로 ($a\approx 1.7\times 10^{-5}$), 근사적으로 $Z_{10}\approx 29/6 + \sqrt{2}/24\approx \boxed{4.892}$.
+
+---
+
+### 논술 자연 수학 1 — 타원과 직각삼각형·중점·접선 기울기
+
+**[4 / 문제 1-1]** 타원 $\dfrac{x^2}{9} + \dfrac{y^2}{4} = 1$의 두 초점 $\mathrm{F}(-\sqrt{5}, 0)$, $\mathrm{F}'(\sqrt{5}, 0)$. 점 $\mathrm{A}$($y$좌표 양수)가 타원 위에 있고 $\angle\mathrm{FAB} = \pi/2$가 되도록 점 $\mathrm{B}$가 타원 위에 있으며 직선 $\mathrm{AB}$가 $\mathrm{F}'$을 지난다. $\triangle\mathrm{FAB}$의 넓이 $S$의 값을 모두 구하여라.
+
+??? success "풀이"
+    타원 위 점에서 두 초점까지 거리 합 $= 2 a = 6$. $\overline{\mathrm{FA}} = a$, $\overline{\mathrm{F}'\mathrm{A}} = b$로 놓으면
+
+    $$a + b = 6,\qquad a^2 + b^2 = (\overline{\mathrm{FF}'})^2 = (2\sqrt{5})^2 = 20.$$
+
+    $(a + b)^2 - 2 a b = 20$ ⇔ $36 - 2 a b = 20$ ⇔ $a b = 8$. 따라서 $a, b$는 $t^2 - 6 t + 8 = 0$의 두 근. $(a, b) = (4, 2)$ 또는 $(2, 4)$.
+
+    **경우 (1)** $\overline{\mathrm{FA}} = 4$, $\overline{\mathrm{F}'\mathrm{A}} = 2$. $\overline{\mathrm{FB}} = x$, $\overline{\mathrm{F}'\mathrm{B}} = y$ 두면 $x + y = 6$, $4^2 + (2 + y)^2 = x^2$ (피타고라스, $\mathrm{F}'$이 $\mathrm{AB}$ 위, $\overline{\mathrm{AB}} = 2 + y$). 두 식을 연립하여 $y = 1$. 따라서 $\overline{\mathrm{AB}} = 2 + 1 = 3$이고
+
+    $$S = \dfrac{1}{2}\cdot\overline{\mathrm{FA}}\cdot\overline{\mathrm{AB}} = \dfrac{1}{2}\cdot 4\cdot 3 = 6.$$
+
+    **경우 (2)** $\overline{\mathrm{FA}} = 2$, $\overline{\mathrm{F}'\mathrm{A}} = 4$. 같은 방식으로 $x + y = 6$, $2^2 + (4 + y)^2 = x^2$ ⇒ $y = 4/5$. $\overline{\mathrm{AB}} = 4 + 4/5 = 24/5$.
+
+    $$S = \dfrac{1}{2}\cdot 2\cdot\dfrac{24}{5} = \dfrac{24}{5}.$$
+
+    $$\therefore\ S = \boxed{6\ \text{또는}\ \dfrac{24}{5}}.$$
+
+**[5 / 문제 1-2]** 타원 $\dfrac{x^2}{2} + y^2 = 1$의 두 초점 $\mathrm{F}(-1, 0)$, $\mathrm{F}'(1, 0)$. $\mathrm{F}'$을 지나는 직선이 타원과 두 점 $\mathrm{A}, \mathrm{B}$에서 만난다. 선분 $\mathrm{AB}$의 중점을 $\mathrm{M}$이라 할 때 직선 $\mathrm{FM}$의 기울기의 최댓값을 구하여라.
+
+??? success "풀이"
+    $\mathrm{F}'$을 지나는 직선 $y = m(x - 1)$. 타원 방정식 $x^2 + 2 y^2 = 2$에 대입:
+
+    $$x^2 + 2 m^2(x - 1)^2 = 2\ \Leftrightarrow\ (1 + 2 m^2) x^2 - 4 m^2 x + (2 m^2 - 2) = 0.$$
+
+    두 근의 합으로 중점 $\mathrm{M}$의 $x$좌표 $= \dfrac{4 m^2}{2(1 + 2 m^2)} = \dfrac{2 m^2}{1 + 2 m^2}$. $\mathrm{M}$의 $y$좌표 $= m(x_{\mathrm{M}} - 1) = m\cdot\dfrac{-1}{1 + 2 m^2} = \dfrac{-m}{1 + 2 m^2}$.
+
+    직선 $\mathrm{FM}$의 기울기 ($\mathrm{F}(-1, 0)$):
+
+    $$f(m) = \dfrac{(-m)/(1 + 2 m^2)}{2 m^2/(1 + 2 m^2) + 1} = \dfrac{-m}{1 + 4 m^2}.$$
+
+    $f'(m) = \dfrac{-(1 + 4 m^2) - (-m)(8 m)}{(1 + 4 m^2)^2} = \dfrac{4 m^2 - 1}{(1 + 4 m^2)^2}$. $f'(m) = 0$ ⇔ $m = \pm 1/2$. 부호 검토로 $m = -1/2$에서 $f$가 최댓값:
+
+    $$f(-1/2) = \dfrac{1/2}{1 + 1} = \boxed{\dfrac{1}{4}}.$$
+
+---
+
+### 논술 자연 수학 2 — 사면체 정사영·삼수선의 정리
+
+**[6 / 문제 2-1]** 사면체 $\mathrm{ABCD}$에서 점 $\mathrm{B}$와 직선 $\mathrm{AC}$ 사이의 거리는 $6$이고 $\overline{\mathrm{DP}} = 4$ (점 $\mathrm{P}$는 선분 $\mathrm{BD}$ 위에 있고 선분 $\mathrm{CD}$가 평면 $\mathrm{ABC}$와 수직이라 하자). 점 $\mathrm{P}$의 평면 $\mathrm{ABC}$ 위로의 정사영을 $\mathrm{Q}$, 점 $\mathrm{P}$에서 직선 $\mathrm{AC}$에 내린 수선의 발을 $\mathrm{R}$이라 하자. $\overline{\mathrm{CQ}} = 2$, $\overline{\mathrm{CR}} = 1$일 때 선분 $\mathrm{CD}$의 길이를 구하여라.
+
+??? success "풀이"
+    $\overline{\mathrm{CD}}\perp$평면 $\mathrm{ABC}$이므로 $\mathrm{Q}$는 직선 $\mathrm{BC}$ 위. 삼수선의 정리로 $\mathrm{R}$는 $\mathrm{Q}$에서 직선 $\mathrm{AC}$에 내린 수선의 발. $\triangle\mathrm{CRQ}$는 직각삼각형 ($\angle\mathrm{R} = 90^\circ$):
+
+    $$\overline{\mathrm{QR}} = \sqrt{\overline{\mathrm{CQ}}^2 - \overline{\mathrm{CR}}^2} = \sqrt{4 - 1} = \sqrt{3}.$$
+
+    $\mathrm{B}$에서 직선 $\mathrm{AC}$에 내린 수선의 발을 $\mathrm{E}$이라 하면 $\triangle\mathrm{CRQ}\sim\triangle\mathrm{CEB}$ (모두 $\angle\mathrm{C}$ 공통, 직각). $\overline{\mathrm{BE}} = 6$이므로
+
+    $$\overline{\mathrm{BC}} = \overline{\mathrm{CQ}}\cdot\dfrac{\overline{\mathrm{BE}}}{\overline{\mathrm{QR}}} = 2\cdot\dfrac{6}{\sqrt{3}} = 4\sqrt{3}.$$
+
+    $\angle\mathrm{CBD} = \theta$로 두면 $\overline{\mathrm{CQ}}/\overline{\mathrm{DP}} = \cos\theta$이므로 (보고서 표기) $\cos\theta = 2/4 = 1/2$, $\theta = \pi/3$. $\angle\mathrm{BCD} = 90^\circ$ ($\mathrm{CD}\perp$평면 $\mathrm{ABC}$, $\mathrm{BC}$는 그 평면 위 직선) 이므로
+
+    $$\overline{\mathrm{CD}} = \overline{\mathrm{BC}}\tan\theta = 4\sqrt{3}\cdot\sqrt{3} = \boxed{12}.$$
+
+**[7 / 문제 2-2]** 사면체 $\mathrm{ABCE}$ 안에 점 $\mathrm{D}$가 선분 $\mathrm{CE}$ 위에 있어 $\triangle\mathrm{ABC} = 5$, $\triangle\mathrm{ABE} = 3$이다. $\overline{\mathrm{CD}} = 2$이고 선분 $\mathrm{CD}$의 평면 $\mathrm{ABE}$ 위로의 정사영의 길이가 $1$이다. 점 $\mathrm{D}$와 평면 $\mathrm{ABC}$ 사이의 거리를 구하여라.
+
+??? success "풀이"
+    점 $\mathrm{C}$에서 평면 $\mathrm{ABE}$에 내린 수선의 발 $\mathrm{G}$, 점 $\mathrm{D}$에서 직선 $\mathrm{CG}$에 내린 수선의 발 $\mathrm{H}$. $\overline{\mathrm{DH}}$ = 선분 $\mathrm{CD}$의 평면 $\mathrm{ABE}$ 위 정사영의 길이 = $1$. $\triangle\mathrm{CHD}$가 직각삼각형이므로
+
+    $$\overline{\mathrm{CH}} = \sqrt{\overline{\mathrm{CD}}^2 - \overline{\mathrm{DH}}^2} = \sqrt{4 - 1} = \sqrt{3}.$$
+
+    사면체 $\mathrm{ABCD}$의 부피 = 사면체 $\mathrm{ABCE}$의 부피 $-$ 사면체 $\mathrm{ABED}$의 부피
+
+    $$= \dfrac{1}{3}\cdot\triangle\mathrm{ABE}\cdot\overline{\mathrm{CG}} - \dfrac{1}{3}\cdot\triangle\mathrm{ABE}\cdot\overline{\mathrm{HG}} = \dfrac{1}{3}\cdot 3\cdot(\overline{\mathrm{CG}} - \overline{\mathrm{HG}}) = \dfrac{1}{3}\cdot 3\cdot\overline{\mathrm{CH}} = \sqrt{3}.$$
+
+    한편 $\mathrm{D}$와 평면 $\mathrm{ABC}$ 사이의 거리를 $d$라 하면 사면체 $\mathrm{ABCD}$의 부피 $= \dfrac{1}{3}\cdot\triangle\mathrm{ABC}\cdot d = \dfrac{5}{3}\,d$.
+
+    $$\dfrac{5}{3}\,d = \sqrt{3}\ \Rightarrow\ d = \boxed{\dfrac{3\sqrt{3}}{5}}.$$
+
+---
