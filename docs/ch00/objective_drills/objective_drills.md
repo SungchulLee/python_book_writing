@@ -6402,3 +6402,69 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 90 — 건국대 (2019학년도)
+
+> KU논술우수자전형 인문사회II·자연계 수학 문항. 인문(부등식 영역과 원·수열의 합·정적분과 함수 극값) 3개 문제 4 sub + 자연(정사영·삼각함수 덧셈정리·공간도형 부피) 2개 문제 4 sub.
+
+### 인문계 문제 1 — 두 재화 구매량 (부등식 영역·원의 방정식)
+
+> 제시문 [라]: 가계의 소비는 소득의 범위 내에서 이루어짐. 두 재화 $\mathrm{A}, \mathrm{B}$ 의 가격 $P_A = 50 - Q_A$, $P_B = 100 - Q_B$. 단, $Q_A, Q_B$ 음 아닌 정수, $0 \le Q_A \le 49$, $0 \le Q_B \le 99$.
+
+**[90 / 인1-1]** 총 구매액이 $3076$ 이상 $3100$ 이하가 되도록 하는 $(Q_A, Q_B)$ 의 순서쌍의 개수.
+
+??? success "풀이"
+    $x = Q_A, y = Q_B$. $S = x(50 - x) + y(100 - y) = -[(x - 25)^2 + (y - 50)^2] + 625 + 2500 = 3125 - [(x - 25)^2 + (y - 50)^2]$. $S \le 3100$ → $(x - 25)^2 + (y - 50)^2 \ge 25 = 5^2$. $S \ge 3076$ → $(x - 25)^2 + (y - 50)^2 \le 49 = 7^2$. 정수점 $(x, y)$ 가 만족: $5^2 \le (x - 25)^2 + (y - 50)^2 \le 7^2$, $0 \le x \le 50, 0 \le y \le 100$. 중심 $(25, 50)$ 기준, 거리 $r = \sqrt{(x-25)^2 + (y-50)^2}$ 가 $[5, 7]$ 정수 거리 — 각 사분면 동치, 1사분면 내부점 갯수 $\times 4 + $ 축 위 점 $\times 4$. PDF 계산: $(2 + 2 + 3 + 3 + 4 + 4)\cdot 4 + 3\cdot 4 = 68 + 12 = 80$. 답: $\boxed{80}$.
+
+### 인문계 문제 2 — 인구 분포·평균 연령 (수열의 합)
+
+> 제시문 [마]: 인구 구조 변화. $2000$ 년 말 인구분포 — $k$ 세 $(100 - k)^2$ 만 명 ($k = 0, 1, \ldots, 99$). 모든 사람 $99$ 세까지 생존. $n$ 년에 $(2100 - n)^2$ 만 명 출생. $\sum k^2 = n(n+1)(2 n + 1)/6$, $\sum k^3 = (n(n+1)/2)^2$.
+
+**[90 / 인2-1]** $2000$ 년 말 총인구 $a$, $2099$ 년 말 총인구 $b$ 일 때 $b - a$.
+
+??? success "풀이"
+    $a = 100^2 + 99^2 + \cdots + 1^2 = \sum_{k = 1}^{100}k^2 = 100\cdot 101\cdot 201/6 = 338350$. $2099$ 년 말 ($n = 99$): 출생 $(2100 - n)^2$ 누적, 모두 생존 → $0$ 세는 $2099$ 년 출생 $= 1^2$, $1$ 세는 $2098$ 년 출생 $= 2^2$, ..., $99$ 세는 $2000$ 년 출생 $= 100^2$. $b = 1^2 + 2^2 + \cdots + 100^2 = 338350$. $b - a = 0$. 답: $\boxed{0}$.
+
+**[90 / 인2-2]** $2000$ 년 말 평균 연령 $c$, $2099$ 년 말 평균 연령 $d$ 일 때 $d - c$ (소수점 아래 첫 번째 자리에서 반올림).
+
+??? success "풀이"
+    $S_{2000} = \sum_{k = 0}^{99}k\cdot (100 - k)^2 = \sum_{k = 1}^{100}(100 - k)k^2 = 100\sum k^2 - \sum k^3 = 100\cdot 100\cdot 101\cdot 201/6 - (100\cdot 101/2)^2$. $c = S_{2000}/a = 100 - \sum k^3/\sum k^2 = 100 - 3\cdot 100\cdot 101/(2\cdot 201) \approx 24.62$. $S_{2099} = \sum_{k = 0}^{99}k\cdot (k + 1)^2 = \sum_{k = 1}^{100}(k - 1)k^2 = \sum k^3 - \sum k^2$. $d = S_{2099}/b = \sum k^3/\sum k^2 - 1 = 3\cdot 100\cdot 101/(2\cdot 201) - 1 \approx 74.37$. $d - c = 2\cdot 3\cdot 100\cdot 101/(2\cdot 201) - 101 = 30300/201 - 101 \approx 49.7462$. 반올림 → $50$. 답: $\boxed{d - c = 50}$.
+
+### 인문계 문제 3 — 경기변동 (정적분과 함수 극값)
+
+> 제시문 [바]: 총공급 $\mathrm{AS}: Y = X^2$ ($X \ge 0$). 총수요 $\mathrm{AD}_t: Y = 3 - 2(X - F(t))$, $F(t) = \int_0^t g(s)d s$. $g(s) = 1 - |s - 4|/2$ ($0 \le s \le 8$), $1 - |s - 12|/2$ ($8 < s \le 16$), $\cdots$ (주기 $8$).
+
+**[90 / 인3-1]** $F(t)$ 가 처음으로 최솟값 시점 $a$, 이때 실질 GDP $b$. $F(t)$ 가 처음으로 최댓값 시점 $c$, 이때 실질 GDP $d$. $c + d - a - b$ ($\sqrt 2 = 1.41, \sqrt 6 = 2.45$, 소수점 아래 둘째 자리에서 반올림).
+
+??? success "풀이"
+    $g(s)$ 가 $0$ 이 되는 점: $|s - 4| = 2$, $s = 2$ 또는 $6$. 첫 주기 $[0, 8]$ 에서 $F'(t) = g(t)$, $F$ 는 $[0, 2]$ 감소, $[2, 6]$ 증가, $[6, 8]$ 감소. 첫 최솟값 시점 $a = 2$, $F(2) = \int_0^2 (s/2 - 1)d s = [s^2/4 - s]_0^2 = 1 - 2 = -1$. 첫 최댓값 시점 $c = 6$, $F(6) = F(2) + \int_2^6 g(s)d s = -1 + 2 = 1$. 교점 $X$: $X^2 + 2 X - 3 = 2 F(t)$ → $X = -1 + \sqrt{4 + 2 F(t)}$. $b = -1 + \sqrt{4 + 2(-1)} = -1 + \sqrt 2 \approx 0.41$. $d = -1 + \sqrt{4 + 2(1)} = -1 + \sqrt 6 \approx 1.45$. $c + d - a - b = 6 + 1.45 - 2 - 0.41 = 5.04 \approx 5.0$. 답: $\boxed{5.0}$.
+
+### 자연계 문제 1 — 정사영·이차방정식 (원과 직선·평면도형 넓이)
+
+> 제시문 1 [가] 정사영 공식 $S' = S\cos\theta$. [나] 평면 점 $\mathrm{A}(2, 5), \mathrm{B}(0, 0), \mathrm{C}(4, 0), \mathrm{D}(3, 4)$ 사각형 $\mathrm{ABCD}$, $\mathrm{P}$ 는 내부 또는 경계. [다] 공간 점 $\mathrm{E}(-1, 0, 2), \mathrm{F}(4, -2, -1), \mathrm{G}(4, 1, -4), \mathrm{H}(0, 1, 0)$ 사각형 $\mathrm{EFGH}$, $\mathrm{Q}$ 내부.
+
+**[90 / 자1-1]** [그림 1] 에서 $\overline{\mathrm{PA}} = 1$ 일 때 $\triangle\mathrm{ADP}$ 와 $\triangle\mathrm{BCP}$ 넓이 합의 최솟값.
+
+??? success "풀이"
+    직선 $\mathrm{AD}$ 방정식: $x + y - 7 = 0$. $\mathrm{P}(x, y)$ 에서 $\mathrm{AD}$ 까지 거리 $= |x + y - 7|/\sqrt 2 = (7 - x - y)/\sqrt 2$ (사각형 내부). $\overline{\mathrm{AD}} = \sqrt 2$. $\triangle\mathrm{ADP} = (1/2)\sqrt 2\cdot (7 - x - y)/\sqrt 2 = (7 - x - y)/2$. $\triangle\mathrm{BCP} = (1/2)\cdot 4\cdot y = 2 y$. 합 $k = (7 - x + 3 y)/2$ → $x - 3 y - 7 + 2 k = 0$. $\overline{\mathrm{PA}} = 1$ → $(x - 2)^2 + (y - 5)^2 = 1$. 직선과 원이 만나는 $k$ 의 범위: $x = 3 y + 7 - 2 k$ 대입 → $10 y^2 + (20 - 12 k)y + 4 k^2 - 20 k + 49 = 0$. 판별식 $\ge 0$: $(20 - 12 k)^2 - 40(4 k^2 - 20 k + 49) \ge 0$ → $-4 k^2 + 80 k - 390 \ge 0$ → $k^2 - 20 k + 97.5 \le 0$ → $10 - \sqrt{10}/2 \le k \le 10 + \sqrt{10}/2$. 최솟값 $\boxed{10 - \sqrt{10}/2}$.
+
+**[90 / 자1-2]** [그림 2] 에서 $\triangle\mathrm{EHQ} + \triangle\mathrm{GFQ} = 5\sqrt 3$ 인 점 $\mathrm{Q}$ 모임 선분의 길이.
+
+??? success "풀이"
+    평면 $\alpha$ (사각형 $\mathrm{EFGH}$ 포함) 의 방정식: $x + y + z = 1$. $xy$ 평면과 이루는 이면각 $\theta$: $\cos\theta = (1, 1, 1)\cdot (0, 0, 1)/\sqrt 3 = 1/\sqrt 3$. $\mathrm{E, F, G, H, Q}$ 의 $xy$ 평면 정사영 $\mathrm{E', F', G', H', Q'}$ → $S' = S\cos\theta = 5\sqrt 3\cdot 1/\sqrt 3 = 5$ ($\triangle\mathrm{E'H'Q'} + \triangle\mathrm{G'F'Q'}$). 직선 $\mathrm{E'H'}$: $x - y + 1 = 0$, 직선 $\mathrm{G'F'}$: $x = 4$. $\mathrm{Q'}(x, y)$ 에서: $\triangle\mathrm{E'H'Q'} = (1/2)\sqrt 2\cdot (x - y + 1)/\sqrt 2 = (x - y + 1)/2$, $\triangle\mathrm{G'F'Q'} = (1/2)\cdot 3\cdot (4 - x) = (3/2)(4 - x)$. 합 $= -x - y/2 + 13/2 = 5$ → $y = -2 x + 3$. $\mathrm{Q'}$ 모임은 직선 $y = -2 x + 3$ 위 선분. 끝점: 직선 $\mathrm{H'G'}$ ($y = 1$) 교점 $\mathrm{I'}(1, 1)$, 직선 $\mathrm{E'F'}$ ($y = -2 x/5 - 2/5$) 교점 $\mathrm{J'}(17/8, -5/4)$. 평면 $\alpha$ 위 끝점: $\mathrm{I}(1, 1, -1)$, $\mathrm{J}(17/8, -5/4, 1/8)$. $\overline{\mathrm{IJ}} = \sqrt{(9/8)^2 + (9/4)^2 + (9/8)^2} = (9/8)\sqrt 6$. 답: $\boxed{9\sqrt 6/8}$.
+
+### 자연계 문제 2 — 정삼각기둥 (삼각함수 덧셈정리·공간도형 부피)
+
+> 제시문 2 [가] 미분가능 함수 $f'(a) = 0$ 좌우 부호변화로 극대·극소 판정. [나] 한 변 $1$, 높이 $1$ 인 정삼각기둥 $\mathrm{ABC-A'B'C'}$. $\mathrm{D}$ 는 $\overline{\mathrm{AA'}}$ 중점, $\mathrm{N}$ 은 $\overline{\mathrm{AB}}$ 중점, $\mathrm{F}$ 는 $\overline{\mathrm{B'C'}}$ 중점. $\mathrm{A}(1, 0, 0), \mathrm{B}(1/2, \sqrt 3/2, 0), \mathrm{C}(0, 0, 0), \mathrm{A'}(1, 0, 1), \cdots$
+
+**[90 / 자2-1]** $\mathrm{P}$ 가 $\triangle\mathrm{ABC}$ 내부 또는 경계에 있을 때 $\angle\mathrm{DPA'}$ 가 최대가 되는 점 $\mathrm{P}$ 모임.
+
+??? success "풀이"
+    $\overline{\mathrm{AP}} = a$. $\angle\mathrm{DPA} = \theta, \angle\mathrm{A'PA} = \theta + \theta'$ 잠시 정리: $\tan\theta' = \overline{\mathrm{AA'}}/\overline{\mathrm{AP}} = 1/a$ — PDF 풀이의 표기 따라: $\tan\theta' = 1/(2 a)$, $\tan(\theta + \theta') = 1/a$ (각 $\mathrm{DAP} = \mathrm{A'AP}$ 가 직각). 덧셈정리: $1/a = (\tan\theta + 1/(2 a))/(1 - (1/(2 a))\tan\theta)$ → $\tan\theta = a/(2 a^2 + 1)$. $f(a) = a/(2 a^2 + 1)$ 최댓값: $f'(a) = (-2 a^2 + 1)/(2 a^2 + 1)^2 = 0$ → $a = 1/\sqrt 2$. $0 < a < 1/\sqrt 2$ 에서 $f' > 0$, $a > 1/\sqrt 2$ 에서 $f' < 0$ → $a = 1/\sqrt 2$ 에서 최댓값 $1/(2\sqrt 2)$. $\mathrm{P}$ 는 $\overline{\mathrm{AP}} = 1/\sqrt 2$ 인 점들, 즉 $\mathrm{A}$ 중심·반지름 $1/\sqrt 2$ 원 위에서 변 $\mathrm{AC}$ 와 변 $\mathrm{AB}$ 사이의 호. 답: $\boxed{\mathrm{A} \text{ 중심, 반지름 } 1/\sqrt 2 \text{ 인 원의 호 (}\triangle\mathrm{ABC}\text{ 내부)}}$.
+
+**[90 / 자2-2]** 세 점 $\mathrm{D}, \mathrm{N}, \mathrm{F}$ 를 지나는 평면 $\alpha$ 가 삼각기둥을 두 조각으로 나눔. 꼭짓점 $\mathrm{B}$ 를 포함하는 조각의 부피.
+
+??? success "풀이"
+    좌표: $\mathrm{D}(1, 0, 1/2), \mathrm{N}(3/4, \sqrt 3/4, 0), \mathrm{F}(1/4, \sqrt 3/4, 1)$. 평면 $\alpha$ 법선 $(2, 4/\sqrt 3, 1) \propto (2\sqrt 3, 4, \sqrt 3)$. 방정식 $4 x + 8 y/\sqrt 3 + 2 z - 5 = 0$. 변 $\mathrm{A'C'}$ 위 점 $(x, 0, 1)$ 대입 → $\mathrm{G}(3/4, 0, 1)$. 변 $\mathrm{BC}$ 위 점 $(x, \sqrt 3 x, 0)$ → $\mathrm{H}(5/12, 5\sqrt 3/12, 0)$. 변 $\mathrm{A'B'}$ 위 점 $(t + 1, -\sqrt 3 t, 1)$ → $\mathrm{I}(5/4, -\sqrt 3/4, 1)$. 변 $\mathrm{BB'}$ 위 점 $(1/2, \sqrt 3/2, t)$ → $\mathrm{J}(1/2, \sqrt 3/2, -1/2)$. (참고: $\mathrm{I}, \mathrm{J}$ 는 삼각기둥 밖이지만 외삽 사면체 부피 계산용.) 사면체 $\mathrm{FIJB'}$ 의 부피 $= (1/3)\cdot \triangle\mathrm{FIB'}\cdot \overline{\mathrm{B'J}}\cdot 3/2$ — PDF 정리: $= (1/3)(1/2\cdot 3\cdot \sqrt 3/4)\cdot (3/2) = 3\sqrt 3/32$. 사면체 $\mathrm{A'DGI} = (1/3)(1/2\cdot 1/2\cdot \sqrt 3/8)\cdot (1/2) = \sqrt 3/192$. 사면체 $\mathrm{BHNJ} = (1/3)(1/2\cdot 1/2\cdot \sqrt 3/12)\cdot (1/2) = \sqrt 3/288$. 구하는 부피 $= 3\sqrt 3/32 - \sqrt 3/192 - \sqrt 3/288 = (54 - 3 - 2)\sqrt 3/576 = 49\sqrt 3/576$. 답: $\boxed{49\sqrt 3/576}$.
+
+---
+
