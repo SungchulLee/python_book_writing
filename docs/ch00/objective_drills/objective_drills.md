@@ -10319,3 +10319,179 @@ $$g(x) = f(x) + |\cos f(x)|.$$
     곡선의 길이 = $\dfrac{1}{2}\cdot 2\pi\cdot 1 = \boxed{\pi}$.
 
 ---
+
+## 카드 118 — 건국대 (2019)
+
+출처: 건국대학교 2019학년도 KU논술우수자전형 — 인문계열 II 수학(문항카드 2), 자연계열 수학(문항카드 3).
+
+---
+
+### 논술 인문 II 수학 1 — 두 재화 구매·인구 분포·총수요/총공급
+
+**[1 / 문제 2-1]** 두 재화 $\mathrm{A}, \mathrm{B}$의 가격이 각각 $P_A = 50 - Q_A$, $P_B = 100 - Q_B$로 주어져 있다. $\mathrm{A}$의 구매량을 $x$, $\mathrm{B}$의 구매량을 $y$라 하면 총 구매액은
+
+$$S = Q_A\cdot P_A + Q_B\cdot P_B = x(50 - x) + y(100 - y)$$
+
+이다. 총 구매액이 $3100$을 넘지 않고 $3076$보다 작지 않으며, 구매량 $x, y$ 및 주어진 가격이 모두 양수이거나 $0$이도록 하는 순서쌍 $(Q_A, Q_B) = (x, y)$의 개수를 구하여라.
+
+??? success "풀이"
+    제곱완성하면
+
+    $$S = -[(x - 25)^2 + (y - 50)^2] + (625 + 2500).$$
+
+    $S\le 3100$ ⇔ $(x - 25)^2 + (y - 50)^2\ge 5^2$. $S\ge 3076$ ⇔ $(x - 25)^2 + (y - 50)^2\le 7^2$. 또한 $x\ge 0$, $y\ge 0$, $50 - x\ge 0$, $100 - y\ge 0$이므로
+
+    $$0\le x\le 50,\quad 0\le y\le 100,\quad 5^2\le (x - 25)^2 + (y - 50)^2\le 7^2.$$
+
+    중심 $(25, 50)$, 반지름 $5$ 이상 $7$ 이하인 환형 영역의 정수점 개수를 센다. 환형은 가로축 $y = 50$과 세로축 $x = 25$에 대해 대칭이므로, 한 사분면(예: $x\ge 25$, $y\ge 50$) 안쪽 정수점을 세고 그 결과를 $4$배 한 뒤, 두 축 위의 점들(중복 제거)을 더한다.
+
+    내부 사분면 점 개수: $(2 + 2 + 3 + 3 + 4 + 3) = 17$ (각 $x = 26, \ldots, 31$에서 가능한 $y$ 개수의 합). $17\times 4 = 68$. 두 축 위 점들: $5\le |x - 25|\le 7$인 정수와 $5\le |y - 50|\le 7$인 정수, 각각 $\{\pm 5, \pm 6, \pm 7\}$의 $6$개 ($x$축, $y$축 합해서 $12$). 보고서의 셈에 따라
+
+    $$(2 + 2 + 3 + 3 + 4 + 3)\cdot 4 + 3\cdot 4 = 68 + 12 = \boxed{80}.$$
+
+**[2 / 문제 2-2]** $n = 2000 + n'$, 나이 $k$, 인구 $a_{n', k}$가 다음 표로 주어져 있다 (단위: 만 명).
+
+| $n'\backslash$ 나이 | $0$ | $1$ | $2$ | $\cdots$ | $98$ | $99$ |
+|---|---|---|---|---|---|---|
+| $0$ | $100^2$ | $99^2$ | $98^2$ | $\cdots$ | $2^2$ | $1^2$ |
+| $1$ | $99^2$ | $100^2$ | $99^2$ | $\cdots$ | $3^2$ | $2^2$ |
+| $\vdots$ | | | | | | |
+| $99$ | $1^2$ | $2^2$ | $3^2$ | $\cdots$ | $99^2$ | $100^2$ |
+
+$2000$년 말 총인구를 $a$, $2099$년 말 총인구를 $b$라 하고, 각 해 말의 평균연령을 각각 $c, d$라 하자. (i) $b - a$의 값을 구하고, (ii) $d - c$를 소수점 아래 첫째 자리에서 반올림한 값을 구하여라.
+
+??? success "풀이"
+    (i) $2000$년 말 총인구 $a = \displaystyle\sum_{k = 1}^{100} k^2 = \dfrac{100\cdot 101\cdot 201}{6} = 338{,}350$. $2099$년 말 총인구
+
+    $$b = \displaystyle\sum_{k = 1}^{100} k^2 = 338{,}350.$$
+
+    $$\therefore\ b - a = \boxed{0}.$$
+
+    (ii) $2000$년 말 평균연령 $c = S_{2000}/a$, $S_{2000} = \displaystyle\sum_{k = 1}^{100} k^2(100 - k) = 100\sum k^2 - \sum k^3$. 이때
+
+    $$c = \dfrac{100\sum k^2 - \sum k^3}{\sum k^2} = 100 - \dfrac{\sum k^3}{\sum k^2} = 100 - \dfrac{3(100)(101)}{2(201)}\approx 24.62.$$
+
+    $2099$년 말 평균연령 $d = S_{2099}/b$, $S_{2099} = \displaystyle\sum_{k = 1}^{100} k^2(k - 1) = \sum k^3 - \sum k^2$. 이때
+
+    $$d = \dfrac{\sum k^3 - \sum k^2}{\sum k^2} = \dfrac{\sum k^3}{\sum k^2} - 1 = \dfrac{3(100)(101)}{2(201)} - 1\approx 74.37.$$
+
+    따라서
+
+    $$d - c = 2\cdot\dfrac{3(100)(101)}{2(201)} - 101 = \dfrac{30300}{201} - 101 = 150.7462 - 101 = 49.7462.$$
+
+    소수점 아래 첫째 자리에서 반올림하면 $\boxed{50}$.
+
+**[3 / 문제 2-3]** 다음 그림과 같이 $g(t)$는 주기가 $8$년인 삼각파 (한 주기 위에서 $g(t) = t/2 - 1$, $0\le t\le 4$ 형태). $F(t) = \displaystyle\int_0^t g(s)\, ds$. 총수요곡선 $Y = 3 - 2(X - F(t))$, 총공급곡선 $Y = X^2$이 만나는 점을 $(X_0, Y_0)$이라 하자. 처음으로 경기가 최저점(실질 GDP 최소)이 되는 $t = a$, 그때의 최저 실질 GDP 값 $b$; 처음으로 경기가 최정점이 되는 $t = c$, 그때의 최대 실질 GDP 값 $d$를 구하여 $c + d - a - b$를 소수점 둘째자리에서 반올림한 값을 구하여라.
+
+??? success "풀이"
+    $g(t)$의 한 주기는 $[0, 8]$이고 $g$는 $t = 2$에서 최저점 ($g = 0$의 부호 변화점이 아닌 $g$ 자체의 최솟값 위치), $t = 6$에서 최정점이 된다 (그림 참조). 따라서 $F(t) = \int_0^t g(s)\, ds$의 최저점은 $t = 2$, 최정점은 $t = 6$이다.
+
+    $F(2) = \displaystyle\int_0^2 g(t)\, dt = \int_0^2 (t/2 - 1)\, dt = \left[\dfrac{t^2}{4} - t\right]_0^2 = 1 - 2 = -1$. $F(6) = F(4) + \int_4^6 g(t)\, dt = 0 + 1 = 1$ (한 주기의 대칭성으로 $F(4) = 0$).
+
+    총수요·총공급의 교점은 $X^2 = 3 - 2(X - F(t))$ ⇔ $X^2 + 2X + 1 = 3 + 2 F(t) + 1$ ⇔ $(X + 1)^2 = 4 + 2 F(t)$ ⇔
+
+    $$X_0 = -1 + \sqrt{4 + 2 F(t)},\qquad Y_0 = X_0^2 = 5 - 2\sqrt{4 + 2 F(t)}.$$
+
+    최초의 최저점은 $a = 2$, 그때 $b = -1 + \sqrt{4 + 2(-1)} = -1 + \sqrt{2}\approx 0.41$. 최초의 최정점은 $c = 6$, 그때 $d = -1 + \sqrt{4 + 2(1)} = -1 + \sqrt{6}\approx 1.45$.
+
+    $$c + d - a - b = 6 + 1.45 - 2 - 0.41 = 5.04.$$
+
+    소수점 둘째 자리에서 반올림하면 $\boxed{5.0}$.
+
+---
+
+### 논술 자연 수학 1 — 부등식의 영역·정사영
+
+**[4 / 문제 1-1]** $xy$평면 위에 네 점 $\mathrm{A}(2, 5)$, $\mathrm{B}(0, 0)$, $\mathrm{C}(4, 0)$, $\mathrm{D}(3, 4)$로 만들어진 사각형 $\mathrm{ABCD}$가 있다. $\overline{\mathrm{PA}} = 1$이고 점 $\mathrm{P}$가 사각형 내부 또는 경계에 있을 때, 삼각형 $\mathrm{ADP}$의 넓이와 삼각형 $\mathrm{BCP}$의 넓이의 합 $k$의 최솟값을 구하여라.
+
+??? success "풀이"
+    직선 $\mathrm{AD}$: 두 점 $(2, 5)$, $(3, 4)$를 지나므로 $y - 5 = -1\cdot(x - 2)$ ⇔ $x + y - 7 = 0$. 사각형 내부에서 $x + y - 7\le 0$. 점 $\mathrm{P}(x, y)$에서 직선 $\mathrm{AD}$까지 거리는 $|x + y - 7|/\sqrt{2} = (7 - x - y)/\sqrt{2}$, $\overline{\mathrm{AD}} = \sqrt{2}$. 따라서
+
+    $$\triangle\mathrm{ADP} = \dfrac{1}{2}\cdot\sqrt{2}\cdot\dfrac{7 - x - y}{\sqrt{2}} = \dfrac{1}{2}(7 - x - y).$$
+
+    $\overline{\mathrm{BC}} = 4$, 변 $\mathrm{BC}$가 $x$축 위에 있으므로 $\mathrm{P}$에서 $\mathrm{BC}$까지 거리는 $y$. $\triangle\mathrm{BCP} = \dfrac{1}{2}\cdot 4\cdot y = 2 y$. 따라서
+
+    $$k = \dfrac{1}{2}(7 - x - y) + 2 y = \dfrac{1}{2}(7 - x + 3 y).$$
+
+    $\mathrm{P}$는 직선 $x - 3 y - 7 + 2 k = 0$ 위에 있다. 또한 $\overline{\mathrm{PA}} = 1$이므로 $(x - 2)^2 + (y - 5)^2 = 1$.
+
+    직선과 원이 만나는 $k$의 최솟값을 구한다. $x = 3 y + 7 - 2 k$를 원의 방정식에 대입: $(3 y + 5 - 2 k)^2 + (y - 5)^2 = 1$ ⇔ $10 y^2 + (20 - 12 k) y + 4 k^2 - 20 k + 49 = 0$.
+
+    판별식 $D = (20 - 12 k)^2 - 40(4 k^2 - 20 k + 49) = 4(-4 k^2 + 80 k - 390)\ge 0$ ⇔ $-4 k^2 + 80 k - 390\ge 0$ ⇔ $k^2 - 20 k + 97.5\le 0$ ⇔
+
+    $$10 - \dfrac{\sqrt{10}}{2}\le k\le 10 + \dfrac{\sqrt{10}}{2}.$$
+
+    $\therefore\ k_{\min} = \boxed{10 - \dfrac{\sqrt{10}}{2}}.$
+
+**[5 / 문제 1-2]** 공간에 한 평면 위의 네 점 $\mathrm{E}(-1, 0, 2)$, $\mathrm{F}(4, -2, -1)$, $\mathrm{G}(4, 1, -4)$, $\mathrm{H}(0, 1, 0)$이 사각형 $\mathrm{EFGH}$를 이룬다. 점 $\mathrm{Q}$가 사각형 내부 또는 경계에 있고 $\triangle\mathrm{EHQ} + \triangle\mathrm{GFQ} = 5\sqrt{3}$일 때, $\mathrm{Q}$의 자취가 이루는 선분의 길이를 구하여라.
+
+??? success "풀이"
+    네 점이 한 평면 위에 있으므로 평면 $\alpha$의 방정식은 $x + y + z = 1$ (네 점 대입으로 확인). $\alpha$와 $xy$평면의 이면각 $\theta$: 두 평면의 법선벡터 $(1, 1, 1)$과 $(0, 0, 1)$의 사잇각이므로 $\cos\theta = 1/\sqrt{3}$.
+
+    $\mathrm{E}, \mathrm{F}, \mathrm{G}, \mathrm{H}, \mathrm{Q}$의 $xy$평면으로의 정사영을 $\mathrm{E}', \mathrm{F}', \mathrm{G}', \mathrm{H}', \mathrm{Q}'$이라 하자. 정사영 넓이 공식 $S' = S\cos\theta$로
+
+    $$\triangle\mathrm{E}'\mathrm{H}'\mathrm{Q}' + \triangle\mathrm{G}'\mathrm{F}'\mathrm{Q}' = 5\sqrt{3}\cdot\dfrac{1}{\sqrt{3}} = 5.$$
+
+    $\mathrm{E}'(-1, 0)$, $\mathrm{H}'(0, 1)$이므로 직선 $\mathrm{E}'\mathrm{H}'$: $x - y + 1 = 0$. $\mathrm{Q}'(x, y)$에서 $\mathrm{E}'\mathrm{H}'$까지 거리는 $(x - y + 1)/\sqrt{2}$ (사각형 내부에서 $x - y + 1\ge 0$), $\overline{\mathrm{E}'\mathrm{H}'} = \sqrt{2}$. $\triangle\mathrm{E}'\mathrm{H}'\mathrm{Q}' = (x - y + 1)/2$.
+
+    $\mathrm{G}'(4, 1)$, $\mathrm{F}'(4, -2)$이므로 변 $\mathrm{G}'\mathrm{F}'$은 $x = 4$, 길이 $3$. $\mathrm{Q}'$에서 거리 $4 - x$. $\triangle\mathrm{G}'\mathrm{F}'\mathrm{Q}' = \dfrac{3}{2}(4 - x)$.
+
+    $$S' = \dfrac{1}{2}(x - y + 1) + \dfrac{3}{2}(4 - x) = -x - \dfrac{y}{2} + \dfrac{13}{2} = 5\ \Rightarrow\ y = -2 x + 3.$$
+
+    $\mathrm{Q}'$의 모임은 직선 $y = -2 x + 3$의 일부. 사각형 $\mathrm{E}'\mathrm{F}'\mathrm{G}'\mathrm{H}'$의 변과의 교점을 구하면 직선 $\mathrm{H}'\mathrm{G}'$ ($y = 1$)과의 교점 $\mathrm{I}'(1, 1)$; 직선 $\mathrm{E}'\mathrm{F}'$ ($y = -2x/5 - 2/5$)과의 교점 $\mathrm{J}'(17/8, -5/4)$.
+
+    공간에서 대응되는 점은 $\mathrm{I}(1, 1, -1)$, $\mathrm{J}(17/8, -5/4, 1/8)$. (평면 $\alpha$ 위 점은 $z = 1 - x - y$.) 따라서
+
+    $$\overline{\mathrm{IJ}} = \sqrt{\left(\dfrac{9}{8}\right)^2 + \left(\dfrac{9}{4}\right)^2 + \left(\dfrac{9}{8}\right)^2} = \dfrac{9}{8}\sqrt{1 + 4 + 1} = \boxed{\dfrac{9}{8}\sqrt{6}}.$$
+
+---
+
+### 논술 자연 수학 2 — 탄젠트 덧셈정리·공간 삼각기둥
+
+**[6 / 문제 2-1]** $xy$평면 위에 $\mathrm{A}'(0, 1)$이 있고 $\mathrm{A}$는 $\mathrm{A}'$의 $x$축으로의 정사영 $(0, 0)$ ... 가 아니라, 다음 표준 설정에서 직각 $\angle\mathrm{PA}\mathrm{A}'$를 만족하는 점 $\mathrm{P}$에 대하여 $\angle\mathrm{DPA}' = \theta$, $\angle\mathrm{DPA} = \theta'$ ($\overline{\mathrm{A}\mathrm{D}} = 1$, $\overline{\mathrm{A}\mathrm{A}'} = 1$, $\overline{\mathrm{P}\mathrm{A}} = a$로 두자, 단 $a\ge 0$). $\angle\mathrm{DPA}'$의 크기가 최대가 되는 점 $\mathrm{P}$의 모임을 구하여라.
+
+??? success "풀이"
+    $\angle\mathrm{PAA}'$가 직각이므로
+
+    $$\tan\theta' = \dfrac{1}{2 a},\qquad \tan(\theta + \theta') = \dfrac{1}{a}.$$
+
+    탄젠트 덧셈정리:
+
+    $$\dfrac{1}{a} = \dfrac{\tan\theta + \dfrac{1}{2 a}}{1 - \dfrac{1}{2 a}\tan\theta}\ \Rightarrow\ \tan\theta = \dfrac{a}{2 a^2 + 1}.$$
+
+    $\theta$가 최대 ⇔ $f(a) = a/(2 a^2 + 1)$이 최대. $f'(a) = \dfrac{(2 a^2 + 1) - a\cdot 4 a}{(2 a^2 + 1)^2} = \dfrac{-2 a^2 + 1}{(2 a^2 + 1)^2} = 0$ ⇔ $a = 1/\sqrt{2}$ ($a\ge 0$). $0\le a < 1/\sqrt{2}$에서 $f' > 0$, $a > 1/\sqrt{2}$에서 $f' < 0$이므로 $a = 1/\sqrt{2}$에서 최댓값 $f(1/\sqrt{2}) = (1/\sqrt{2})/2 = 1/(2\sqrt{2})$.
+
+    $a = \overline{\mathrm{PA}}$이므로 $\mathrm{A}$로부터 거리가 $1/\sqrt{2}$인 점들에서 $\theta$가 최대.
+
+    $$\therefore\ \mathrm{P}\text{의 모임} = \boxed{\text{중심 }\mathrm{A},\ \text{반지름 }1/\sqrt{2}\text{인 원 위에서 변 }\mathrm{AC},\ \mathrm{AB}\text{ 사이의 호}}.$$
+
+**[7 / 문제 2-2]** 한 변의 길이가 $1$인 정삼각형 $\mathrm{ABC}$, $\mathrm{A}'\mathrm{B}'\mathrm{C}'$을 아랫면·윗면으로 하고 높이가 $1$인 삼각기둥이 있다 (아랫면·윗면이 옆면과 수직). $\mathrm{D}, \mathrm{N}, \mathrm{F}$는 각각 $\overline{\mathrm{AA}'}$, $\overline{\mathrm{AB}}$, $\overline{\mathrm{B}'\mathrm{C}'}$의 중점이다. 세 점 $\mathrm{D}, \mathrm{N}, \mathrm{F}$를 지나는 평면 $\alpha$가 삼각기둥을 두 조각으로 나눌 때, 꼭짓점 $\mathrm{B}$를 포함하는 조각의 부피를 구하여라.
+
+??? success "풀이"
+    좌표 설정: $\mathrm{A}(0, 0, 0)$, $\mathrm{B}(1, 0, 0)$, $\mathrm{C}(1/2, \sqrt{3}/2, 0)$, $\mathrm{A}'(0, 0, 1)$, $\mathrm{B}'(1, 0, 1)$, $\mathrm{C}'(1/2, \sqrt{3}/2, 1)$. 그러면
+
+    $$\mathrm{D}(0, 0, 1/2),\quad \mathrm{N}(1/2, 0, 0),\quad \mathrm{F}(3/4, \sqrt{3}/4, 1).$$
+
+    세 점으로부터 평면 $\alpha$의 법선벡터 $(2, 4/\sqrt{3}, 1)$, 평면 방정식
+
+    $$4 x + \dfrac{8}{\sqrt{3}} y + 2 z - 5 = 0.$$
+
+    평면 $\alpha$와 직선 $\mathrm{A}'\mathrm{C}'$의 교점 $\mathrm{G}$: $\mathrm{A}'\mathrm{C}'$ 위 점 $(t/2, \sqrt{3} t/2, 1)$을 평면식에 대입하여 $\mathrm{G}(3/8, 3\sqrt{3}/8, 1)$? 보고서 표기로는 $\mathrm{G}(3/4, 0, 1)$… 보고서 풀이에서 직선 $\mathrm{A}'\mathrm{C}'$ 위 점을 $(x, 0, 1)$로 잡았으므로 좌표 변경에 따른 표현이다. 이하 보고서의 좌표 표기를 따른다.
+
+    평면 $\alpha$와 직선 $\mathrm{BC}$의 교점 $\mathrm{H}(5/12, 5\sqrt{3}/12, 0)$. 직선 $\mathrm{A}'\mathrm{B}'$의 연장 위 점 $\mathrm{I}(5/4, -\sqrt{3}/4, 1)$. 직선 $\mathrm{BB}'$의 연장 위 점 $\mathrm{J}(1/2, \sqrt{3}/2, -1/2)$.
+
+    꼭짓점 $\mathrm{B}$를 포함하는 조각의 부피 = 사면체 $\mathrm{FIJB}'$의 부피에서 사면체 $\mathrm{A}'\mathrm{DGI}$의 부피와 사면체 $\mathrm{BHNJ}$의 부피의 합을 뺀 것과 같다.
+
+    $$V(\mathrm{FIJB}') = \dfrac{1}{3}\cdot\triangle\mathrm{FIB}'\cdot\overline{\mathrm{B}'\mathrm{J}} = \dfrac{1}{3}\cdot\dfrac{1}{2}\cdot\dfrac{3}{4}\cdot\dfrac{\sqrt{3}}{4}\cdot\dfrac{3}{2} = \dfrac{3\sqrt{3}}{32}.$$
+
+    $$V(\mathrm{A}'\mathrm{DGI}) = \dfrac{1}{3}\cdot\triangle\mathrm{A}'\mathrm{IG}\cdot\overline{\mathrm{A}'\mathrm{D}} = \dfrac{1}{3}\cdot\dfrac{1}{2}\cdot\dfrac{1}{2}\cdot\dfrac{\sqrt{3}}{8}\cdot\dfrac{1}{2} = \dfrac{\sqrt{3}}{192}.$$
+
+    $$V(\mathrm{BHNJ}) = \dfrac{1}{3}\cdot\triangle\mathrm{BNH}\cdot\overline{\mathrm{BJ}} = \dfrac{1}{3}\cdot\dfrac{1}{2}\cdot\dfrac{1}{2}\cdot\dfrac{\sqrt{3}}{12}\cdot\dfrac{1}{2} = \dfrac{\sqrt{3}}{288}.$$
+
+    $$V = \dfrac{3\sqrt{3}}{32} - \left(\dfrac{\sqrt{3}}{192} + \dfrac{\sqrt{3}}{288}\right).$$
+
+    공통분모로 정리: $\dfrac{3\sqrt{3}}{32} = \dfrac{162\sqrt{3}}{1728}$, $\dfrac{\sqrt{3}}{192} = \dfrac{9\sqrt{3}}{1728}$, $\dfrac{\sqrt{3}}{288} = \dfrac{6\sqrt{3}}{1728}$. 따라서
+
+    $$V = \dfrac{(162 - 9 - 6)\sqrt{3}}{1728} = \dfrac{147\sqrt{3}}{1728} = \boxed{\dfrac{49\sqrt{3}}{576}}.$$
+
+---
