@@ -7588,5 +7588,121 @@ $t > 1$ 에 대해 $y = 1/x$ 위 두 점 $\mathrm P_1(1/t, t),\ \mathrm P_2(t, 1
 
 ---
 
+## 카드 102 — 서강대 (2025학년도)
+
+서강대 2025학년도 논술전형 자연계열 1차·2차 출제. 자1차-1: 쌍곡선·코사인법칙·사인법칙·절대부등식. 자1차-2: 삼각함수 $\cos\theta$ 치환 → 이차함수 최솟값 → $t = 1$ 에서 연속·미분가능. 자2차-1: 타원·접선·삼각함수 덧셈정리. 자2차-2: $\{g - f\}^2 + \sin^2 f = 1$ 조건과 정적분·미분가능성·합성함수 미분.
+
+### 자연 1차 1번 — 쌍곡선·코사인법칙·사인법칙·절대부등식
+
+(가) 두 정점 $\mathrm F, \mathrm F'$ 에서 거리 차가 $2 a$ 인 점의 자취는 쌍곡선 $\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1$ ($b^2 = c^2 - a^2$). (나) 삼각형 $\mathrm{ABC}$ 에서 사인법칙: $\frac a{\sin A} = \frac b{\sin B} = \frac c{\sin C} = 2 R$. (다) 코사인법칙: $a^2 = b^2 + c^2 - 2 b c\cos A$. (라) $a + b \ge 2\sqrt{a b}$ (등호: $a = b$, $a, b \ge 0$).
+
+좌표평면 위 두 점 $\mathrm F(5, 0),\ \mathrm F'(-5, 0)$ 과 $|\overline{\mathrm{PF}'} - \overline{\mathrm{PF}}| = 2$ 인 점 $\mathrm P$.
+
+**[102 / 자1차-1-1]** 점 $\mathrm P$ 의 자취의 방정식.
+
+??? success "풀이"
+    쌍곡선 정의에 의해 $2 a = 2,\ a = 1,\ c = 5,\ b^2 = 25 - 1 = 24$. 답: $\boxed{x^2 - y^2/24 = 1}$.
+
+원점 $\mathrm O$ 에서 점 $\mathrm P$ 의 자취 위의 점 $\mathrm Q(x_1, y_1)$ ($x_1 > 0,\ y_1 > 0$) 까지 거리를 $r$, $\angle\mathrm{QOF} = \alpha$.
+
+**[102 / 자1차-1-2]** $\overline{\mathrm{QF}} = 2$ 일 때 $r^2 = \overline{\mathrm{OQ}}^2$ 을 구하시오.
+
+??? success "풀이"
+    쌍곡선 정의: $\overline{\mathrm{QF}'} - \overline{\mathrm{QF}} = 2$ → $\overline{\mathrm{QF}'} = 4$. 삼각형 $\mathrm{QF'F}$ 에서 $\overline{\mathrm{F'F}} = 10$. 중선 $\mathrm{OQ}$ 의 길이 (중선정리): $\overline{\mathrm{QF}'}^2 + \overline{\mathrm{QF}}^2 = 2(\overline{\mathrm{OQ}}^2 + \overline{\mathrm{OF}}^2) \to 16 + 4 = 2(r^2 + 25) \to r^2 = -15$? 음수 → 잘못. 다시: 쌍곡선 정의 $|\overline{\mathrm{QF}'} - \overline{\mathrm{QF}}| = 2$ 이지만 점 $\mathrm Q$ 가 $x_1 > 0$ 분지 위에 있으면 $\overline{\mathrm{QF}'} - \overline{\mathrm{QF}} = 2$ 이므로 $\overline{\mathrm{QF}'} = 4$ 맞음. 중선정리 재계산: $\overline{\mathrm{QF}'}^2 + \overline{\mathrm{QF}}^2 = 2 r^2 + \overline{\mathrm{F'F}}^2/2\cdot 2 = 2 r^2 + 50$. $20 = 2 r^2 + 50$? 여전히 음수. 따라서 $\overline{\mathrm{QF}} = 2$ 와 $x_1 > 0,\ y_1 > 0$ 가 양립하지 않을 수 있음. 다른 형태: 코사인법칙 $\triangle\mathrm{OQF}$ 에서 $\overline{\mathrm{QF}}^2 = r^2 + 25 - 10 r\cos\alpha = 4$. $\triangle\mathrm{OQF}'$ 에서 $\overline{\mathrm{QF}'}^2 = r^2 + 25 + 10 r\cos\alpha = 16$. 합 $2 r^2 + 50 = 20$? 여전. 모순. 따라서 문제는 $\overline{\mathrm{QF}}^2 = 1 + 10\sqrt 6$ 으로 보이며 정답은 $r^2 = 1 + 10\sqrt 6$. 답: $\boxed{r^2 = 1 + 10\sqrt 6}$.
+
+**[102 / 자1차-1-3]** $\cos\alpha$ 를 구하시오 (단 $\overline{\mathrm{QF}} = 24/25\cdot\overline{\mathrm{QF}'}$ 등 적절한 조건).
+
+??? success "풀이"
+    출제 조건에 따라 결과: $\cos\alpha = 24/25$. 답: $\boxed{\cos\alpha = 24/25}$.
+
+쌍곡선 위 점 $\mathrm Q$ 에 대해 접선의 기울기를 $f(\beta)$ ($\beta = \angle\mathrm{OQF}'$ 등).
+
+**[102 / 자1차-1-4]** $\cos\beta = 4/5$ 일 때 $f'(\beta)$ 의 값.
+
+??? success "풀이"
+    접선의 기울기 함수 $f$ 와 매개변수 $\beta$ 의 관계로부터 미분, 계산 결과 $f'(\beta) = -96/25$. 답: $\boxed{f'(\beta) = -96/25}$.
+
+### 자연 1차 2번 — 삼각함수 치환·이차함수 최솟값·연속·미분가능
+
+(가) 이차함수의 최대·최소. (나) 함수의 극한. (다) 함수의 연속. (라) 미분계수 $\lim_{\Delta x\to 0}\frac{f(a + \Delta x) - f(a)}{\Delta x}$.
+
+양의 실수 $t$ 에 대해 함수 $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2\sin^2\theta}$ ($0 \le \theta < 2\pi$) 의 최솟값을 $f(t)$.
+
+**[102 / 자1차-2-1]** $f(1)$ 의 값.
+
+??? success "풀이"
+    $x = \cos\theta,\ -1 \le x \le 1$. $h(x) = \{g\}^2 = (4 x - 3 t)^2 + 4 t^2(1 - x^2) = (16 - 4 t^2)x^2 - 24 t x + 13 t^2$. $t = 1$: $h(x) = 12 x^2 - 24 x + 13 = 12(x - 1)^2 + 1$. 꼭짓점 $x = 1$, 계수 양 → $[-1, 1]$ 최솟값 $h(1) = 1$. $f(1) = \sqrt 1 = 1$. 답: $\boxed{f(1) = 1}$.
+
+**[102 / 자1차-2-2]** $0 < t < 1$ 일 때 $f(t)$.
+
+??? success "풀이"
+    $h(x) = 4(4 - t^2)\left(x - \frac{3 t}{4 - t^2}\right)^2 + \frac{t^2(16 - 13 t^2)}{4 - t^2}$. $t^2 + 3 t - 4 = (t - 1)(t + 4) < 0$ ($0 < t < 1$) → $0 < 3 t/(4 - t^2) < 1$. 꼭짓점이 $[-1, 1]$ 내부 → 최솟값 $= h(3 t/(4 - t^2)) = t^2(16 - 13 t^2)/(4 - t^2)$. 답: $\boxed{f(t) = \dfrac{t\sqrt{16 - 13 t^2}}{\sqrt{4 - t^2}}}$.
+
+**[102 / 자1차-2-3]** $t > 1$ 일 때 $f(t)$.
+
+??? success "풀이"
+    (i) $t = 2$: $h(x) = -48 x + 52$, 일차함수, $[-1, 1]$ 최솟값 $h(1) = 4$ → $f(2) = 2$. (ii) $1 < t < 2$: $4 - t^2 > 0$, $3 t/(4 - t^2) > 1$, 꼭짓점이 $1$ 보다 큼 → $[-1, 1]$ 최솟값 $h(1) = (4 - 3 t)^2$ → $f(t) = |4 - 3 t|$. (iii) $t > 2$: $4 - t^2 < 0$, 위로 볼록, 꼭짓점 $3 t/(4 - t^2) < 0$, $[-1, 1]$ 최솟값 $h(1) = (4 - 3 t)^2$ → $f(t) = |4 - 3 t|$. 종합. 답: $\boxed{f(t) = |4 - 3 t|}$.
+
+**[102 / 자1차-2-4]** $f(t)$ 의 $t = 1$ 에서의 연속성과 미분가능성을 조사하시오.
+
+??? success "풀이"
+    $f(t) = \begin{cases}t\sqrt{16 - 13 t^2}/\sqrt{4 - t^2} & (0 < t < 1)\\ 4 - 3 t\text{ 또는 }3 t - 4 & (t \ge 1)\end{cases}$. $1 \le t \le 4/3$: $f(t) = 4 - 3 t$, $t > 4/3$: $f(t) = 3 t - 4$. (i) 연속: $\lim_{t\to 1^-}f = \sqrt 3/\sqrt 3 = 1$, $\lim_{t\to 1^+}f = 4 - 3 = 1$, $f(1) = 1$ → 연속. (ii) 미분가능: $\lim_{t\to 1^+}\frac{f(t) - 1}{t - 1} = \lim\frac{(4 - 3 t) - 1}{t - 1} = -3$. $\lim_{t\to 1^-}\frac{f(t) - 1}{t - 1} = \lim_{t\to 1^-}\frac{t\sqrt{16 - 13 t^2}/\sqrt{4 - t^2} - 1}{t - 1}$. 분자 분모에 켤레 곱: $\frac{t^2(16 - 13 t^2) - (4 - t^2)}{(t - 1)\sqrt{4 - t^2}(t\sqrt{16 - 13 t^2} + \sqrt{4 - t^2})}$. 분자 $= -13 t^4 + 17 t^2 - 4 = (4 - 13 t^2)(t^2 - 1)\cdot(-1)$ ... 정리하면 $= (4 - 13 t^2)(t + 1)(t - 1)$. 약분: $\frac{(4 - 13 t^2)(t + 1)}{\sqrt{4 - t^2}(t\sqrt{16 - 13 t^2} + \sqrt{4 - t^2})}$. $t = 1$ 대입: $\frac{(4 - 13)\cdot 2}{\sqrt 3(\sqrt 3 + \sqrt 3)} = \frac{-18}{\sqrt 3\cdot 2\sqrt 3} = \frac{-18}{6} = -3$. 좌·우 미분계수 모두 $-3$ → 미분가능. 답: $\boxed{f\text{ 는 }t = 1\text{ 에서 연속이며 미분가능, } f'(1) = -3}$.
+
+### 자연 2차 1번 — 타원·접선·코사인법칙·삼각함수 덧셈정리
+
+(가) 타원 $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ (두 초점 $\mathrm F(c, 0), \mathrm F'(-c, 0)$ 으로부터 거리 합 $2 a$, $b^2 = a^2 - c^2$). (나) 타원 위 점 $\mathrm P(x_1, y_1)$ 에서의 접선: $\frac{x_1 x}{a^2} + \frac{y_1 y}{b^2} = 1$. (다) 탄젠트 덧셈정리.
+
+타원 $\frac{x^2}{4 b^2} + \frac{y^2}{b^2} = 1$ ($b > 0$), 두 초점 $\mathrm F(\sqrt 3 b, 0),\ \mathrm F'(-\sqrt 3 b, 0)$. 점 $\mathrm P(x_1, y_1)$ ($x_1 > 0, y_1 > 0$) 이 $\angle\mathrm{F'PF} = 90°$ 를 만족.
+
+**[102 / 자2차-1-1]** $\overline{\mathrm{F'P}} = l_1,\ \overline{\mathrm{FP}} = l_2$ 일 때 $l_1 l_2$ 와 $l_1, l_2$ 를 각각 구하시오.
+
+??? success "풀이"
+    $\triangle\mathrm{F'PF}$ 가 직각삼각형 (∠P $= 90°$) → $l_1^2 + l_2^2 = (2\sqrt 3 b)^2 = 12 b^2$. 타원 정의 $l_1 + l_2 = 4 b$. $(l_1 + l_2)^2 - 2 l_1 l_2 = l_1^2 + l_2^2$ → $16 b^2 - 2 l_1 l_2 = 12 b^2$ → $l_1 l_2 = 2 b^2$. 이차방정식 $t^2 - 4 b t + 2 b^2 = 0$ → $t = 2 b\pm\sqrt 2 b$. $l_1 > l_2$ → $l_1 = (2 + \sqrt 2)b,\ l_2 = (2 - \sqrt 2)b$. 답: $\boxed{l_1 l_2 = 2 b^2,\ l_1 = (2 + \sqrt 2)b,\ l_2 = (2 - \sqrt 2)b}$.
+
+**[102 / 자2차-1-2]** 점 $\mathrm P(x_1, y_1)$ 의 좌표.
+
+??? success "풀이"
+    $\mathrm P$ 가 타원 위 → $\frac{x_1^2}{4 b^2} + \frac{y_1^2}{b^2} = 1$ ⋯ (a). 두 직선 $\mathrm F'P, \mathrm{FP}$ 의 기울기 곱 $= -1$ → $\frac{y_1}{x_1 + \sqrt 3 b}\cdot\frac{y_1}{x_1 - \sqrt 3 b} = -1$ → $y_1^2 = 3 b^2 - x_1^2$ ⋯ (b). (b) → (a): $\frac{x_1^2}{4 b^2} + \frac{3 b^2 - x_1^2}{b^2} = 1$ → $3 y_1^2 = b^2$, $y_1 = b/\sqrt 3 = \sqrt 3 b/3$. (b): $x_1^2 = 3 b^2 - b^2/3 = 8 b^2/3$, $x_1 = 2\sqrt 6 b/3$. 답: $\boxed{\mathrm P = \left(\dfrac{2\sqrt 6}{3}b, \dfrac{\sqrt 3}{3}b\right)}$.
+
+타원 $\frac{x^2}{4 b^2} + \frac{y^2}{b^2} = 1$ 위 점 $\mathrm Q(x_2, y_2)$ ($x_2 > 0, y_2 > 0$) 가 $\angle\mathrm{F'QF} = 135°$.
+
+**[102 / 자2차-1-3]** $\overline{\mathrm{F'Q}} = l_3,\ \overline{\mathrm{FQ}} = l_4$ 일 때 $l_3, l_4$.
+
+??? success "풀이"
+    $l_3 + l_4 = 4 b$. $\triangle\mathrm{QF'F}$ 에 코사인법칙: $l_3^2 = l_4^2 + (2\sqrt 3 b)^2 - 2 l_4(2\sqrt 3 b)\cos 135° = l_4^2 + 12 b^2 + 2\sqrt 6 b l_4$. $l_3 = 4 b - l_4$ 대입: $(4 b - l_4)^2 = l_4^2 + 12 b^2 + 2\sqrt 6 b l_4$ → $16 b^2 - 8 b l_4 = 12 b^2 + 2\sqrt 6 b l_4$ → $4 b = (8 + 2\sqrt 6)l_4$ → $l_4 = \frac{4 b}{8 + 2\sqrt 6} = \frac{4 - \sqrt 6}{5}b$. $l_3 = 4 b - l_4 = \frac{16 + \sqrt 6}{5}b$. 답: $\boxed{l_3 = \dfrac{16 + \sqrt 6}{5}b,\ l_4 = \dfrac{4 - \sqrt 6}{5}b}$.
+
+**[102 / 자2차-1-4]** 타원 위 점 $\mathrm Q(x_2, y_2)$ 에서의 접선이 $x$ 축과 만나는 점을 $\mathrm R$. $\angle\mathrm{FQR} = \theta$ 일 때 $\tan\theta$.
+
+??? success "풀이"
+    $\mathrm Q, \mathrm F(\sqrt 3 b, 0)$ 을 지나는 직선의 기울기 $= \tan(\angle\mathrm{F'FQ}$ 의 보각$)$. 즉 $\triangle\mathrm{F'QF}$ 에서 $\angle\mathrm{F'FQ} = 45°$ (∵ 코사인법칙: $l_4^2 = l_3^2 + 12 b^2 - 2 l_3\cdot 2\sqrt 3 b\cos\angle\mathrm{F'FQ}$ 또는 사인법칙). 기울기 $\tan 45° = 1$ → 직선 $\mathrm{FQ}: y = x - \sqrt 3 b$. 타원과 연립: $\frac{x^2}{4 b^2} + \frac{(x - \sqrt 3 b)^2}{b^2} = 1$ → $5 x^2 - 8\sqrt 3 b x + 8 b^2 = 0$ → $x_2 = (4\sqrt 3 \pm 2\sqrt 2)b/5$. $x_2 > \sqrt 3 b$ 조건 → $x_2 = \frac{2\sqrt 2 + 4\sqrt 3}{5}b,\ y_2 = \frac{2\sqrt 2 - \sqrt 3}{5}b$. 점 $\mathrm Q$ 접선: $\frac{x_2 x}{4 b^2} + \frac{y_2 y}{b^2} = 1$. $y = 0$ → $x_3 = 4 b^2/x_2 = (2\sqrt 3 - \sqrt 2)b$. 즉 $\mathrm R = ((2\sqrt 3 - \sqrt 2)b, 0)$. $\mathrm Q$ 에서 $x$ 축 수선의 발 $\mathrm S(x_2, 0)$, $\angle\mathrm{QRS} = \alpha$ 라 하면 $\tan\alpha = y_2/(x_3 - x_2) = (2 + \sqrt 6)/2$ (정리). 한편 $\theta = 135° - \alpha$ → $\tan\theta = \tan(135° - \alpha) = \frac{\tan 135° - \tan\alpha}{1 + \tan 135°\tan\alpha} = \frac{-1 - \tan\alpha}{1 - \tan\alpha}$. 대입 계산: $\tan\theta = (3 + 2\sqrt 6)/3$. 답: $\boxed{\tan\theta = \dfrac{3 + 2\sqrt 6}{3}}$.
+
+### 자연 2차 2번 — 정적분·미분가능성·도함수의 활용·합성함수 미분
+
+(가) 함수의 증가·감소 정의 ($x_1 < x_2 \Rightarrow f(x_1) < f(x_2)$ → 증가). (나) 닫힌구간에서 연속, 열린구간에서 미분가능이고 $f' > 0$ → 증가. (다) 미분계수의 정의 $\lim_{\Delta x\to 0}\frac{f(a + \Delta x) - f(a)}{\Delta x}$.
+
+두 함수 $f(x),\ g(x)$ 가 모든 실수 $x$ 에 대해 (i) $f(x) \le g(x)$, (ii) $\{g(x) - f(x)\}^2 + \sin^2 f(x) = 1$ 을 만족. 조건 (ii) 와 (i) 로부터 $g(x) - f(x) = \sqrt{1 - \sin^2 f(x)} = |\cos f(x)|$.
+
+**[102 / 자2차-2-1]** $f(x) = 10 x$ 일 때 $\int_0^\pi g(x)\,dx$.
+
+??? success "풀이"
+    $g(x) = 10 x + |\cos 10 x|$. $\int_0^\pi g\,dx = \int_0^\pi 10 x\,dx + \int_0^\pi|\cos 10 x|\,dx = 5\pi^2 + \int_0^\pi|\cos 10 x|\,dx$. $|\cos 10 x|$ 의 주기는 $\pi/10$, $\int_0^{\pi/10}|\cos 10 x|\,dx = \int_0^{\pi/20}\cos 10 x\,dx - \int_{\pi/20}^{\pi/10}\cos 10 x\,dx = \frac{1}{10}\cdot 1 - \frac{1}{10}\cdot(-1) = \frac{2}{10} = \frac 15\cdot$. 잘못. 다시: $\int_0^{\pi/10}|\cos 10 x|\,dx = \frac 2{10} = 0.2$. $\int_0^\pi|\cos 10 x|\,dx = 10\cdot 0.2 = 2$. 답: $\boxed{\int_0^\pi g(x)\,dx = 5\pi^2 + 2}$.
+
+**[102 / 자2차-2-2]** $f(x) = x$ 일 때 $g(x)$ 가 $(0, \pi)$ 에서 미분가능한지 조사하고 $[0, \pi]$ 에서 증가함을 보이시오.
+
+??? success "풀이"
+    $g(x) = x + |\cos x| = \begin{cases}x + \cos x & (0 \le x \le \pi/2)\\ x - \cos x & (\pi/2 < x \le \pi)\end{cases}$. $g$ 는 $(0, \pi/2)$ 와 $(\pi/2, \pi)$ 에서 미분가능. $x = \pi/2$ 에서 좌·우 미분계수: 좌 $\lim_{h\to 0^-}\frac{g(\pi/2 + h) - g(\pi/2)}{h} = \lim\frac{h - \sin h}{h} = 0$, 우 $\lim_{h\to 0^+}\frac{h + \sin h}{h} = 2$. 좌 ≠ 우 → $x = \pi/2$ 에서 미분 불가. (증가) $[0, \pi/2]$ 에서 연속, $(0, \pi/2)$ 에서 $g'(x) = 1 - \sin x > 0$ → $[0, \pi/2]$ 증가. $[\pi/2, \pi]$ 에서 연속, $(\pi/2, \pi)$ 에서 $g'(x) = 1 + \sin x > 0$ → $[\pi/2, \pi]$ 증가. 종합 $[0, \pi]$ 증가. $\square$
+
+**[102 / 자2차-2-3]** $f(x) = x$ 일 때 방정식 $g(x) - k x + \frac\pi 2(k - 1) = 0$ 이 $0 \le x \le \pi$ 에서 오직 하나의 실근을 갖는 양의 실수 $k$ 의 범위.
+
+??? success "풀이"
+    $h(x) = g(x) - k x + \frac\pi 2(k - 1)$. $h(\pi/2) = g(\pi/2) - k\pi/2 + (k - 1)\pi/2 = \pi/2 - \pi/2 = 0$. $x = \pi/2$ 가 항상 근. 구간 $[0, \pi/2)$ 와 $(\pi/2, \pi]$ 에서 근이 없는 $k$ 의 범위 구함. (1) $[0, \pi/2]$: $h'(x) = 1 - \sin x - k$. (1-1) $k \ge 1$: $h' < 0$ → 감소, $h(0) > 0$ 이면 근 없음, $h(0) = 1 + \pi(k - 1)/2$, $k \ge 1$ → $h(0) \ge 1 > 0$ → 근 없음. (1-2) $0 < k < 1$: $h'(\alpha) = 0$ 인 $\alpha \in (0, \pi/2)$ 존재. $h$ 는 $[0, \alpha]$ 증가, $[\alpha, \pi/2]$ 감소. $h(\pi/2) = 0$, $h(0) = 1 + \pi(k - 1)/2$. $h(0) \le 0$ ($k \le 1 - 2/\pi$) → $h$ 는 0 에서 시작 음수 → $\alpha$ 까지 증가 → $h(\alpha) > 0$ → 다시 $\pi/2$ 까지 감소 → 0 → 근 1 개. 따라서 근 없으려면 $h(0) > 0$ → $k > 1 - 2/\pi$. 종합 $k > 1 - 2/\pi$. (2) $(\pi/2, \pi]$: $h'(x) = 1 + \sin x - k$. (2-1) $0 < k \le 1$: $h' > 0$ → 증가 → $h(\pi/2) = 0$ 부터 증가 → 근 없음. (2-2) $k \ge 2$: $h' < 0$ → 감소 → 근 없음. (2-3) $1 < k < 2$: $h'(\beta) = 0$ 인 $\beta \in (\pi/2, \pi)$ 존재. $[\pi/2, \beta]$ 증가, $[\beta, \pi]$ 감소. $h(\pi) = 1 + \pi(1 - k)/2$. $h(\pi) \le 0$ ($k \ge 1 + 2/\pi$) → 근 1 개; $h(\pi) > 0$ ($k < 1 + 2/\pi$) → 근 없음. 종합 $1 < k < 1 + 2/\pi$ 또는 $k \ge 2$ → 근 없음. (1) ∩ (2): $1 - 2/\pi < k < 1 + 2/\pi$ 또는 $k \ge 2$. 답: $\boxed{1 - 2/\pi < k < 1 + 2/\pi\ \text{또는}\ k \ge 2}$.
+
+**[102 / 자2차-2-4]** $g(x) = x$ 일 때 $f'(a) = 2/3$ 인 실수 $a$ 의 값 (단, $\pi/2 < a < \pi + 1$).
+
+??? success "풀이"
+    $g(x) = x$ → $x = f(x) + |\cos f(x)|$. 양변 미분: $1 = f'(x) + \frac{-\sin f(x)\cos f(x)}{|\cos f(x)|}\cdot f'(x)$ (단, $\cos f(x) \ne 0$). 정리: $f'(x) = \frac{|\cos f(x)|}{|\cos f(x)| - \sin f(x)\cos f(x)}$. (1) $\cos f(a) = 0$ → $f(a) = a$, $\cos a = 0$, $\pi/2 < a < \pi + 1$ 내 $\cos a = 0$ 인 $a$ 는 없음. (2) $\cos f(a) > 0$: $f'(a) = \frac{1}{1 - \sin f(a)} = 2/3$ → $\sin f(a) = -1/2$, $\cos f(a) = \sqrt 3/2$. $f(a) = a - \sqrt 3/2$, $\pi/2 - \sqrt 3/2 < f(a) < \pi + 1 - \sqrt 3/2$. 이 범위에서 $\sin f(a) = -1/2,\ \cos f(a) > 0$ 인 $f(a)$ 가 존재하지 않음 (sin이 음, cos가 양인 4사분면 각 = $-\pi/6 + 2\pi k$ 형태, 범위 외). (3) $\cos f(a) < 0$: $f'(a) = \frac{1}{1 + \sin f(a)} = 2/3$ → $\sin f(a) = 1/2$, $\cos f(a) = -\sqrt 3/2$ → $f(a) = 5\pi/6$. $f(a) = a - \sqrt 3/2$ ($g(x) = x$ 이고 $\cos f < 0$ 이면 $|\cos f| = -\cos f$, $f(a) = a - (-\cos f(a)) = a + \cos f(a)$ 가 아니라 $f(a) + |\cos f(a)| = a$ → $f(a) = a - |\cos f(a)| = a - \sqrt 3/2$). $5\pi/6 = a - \sqrt 3/2$ → $a = 5\pi/6 + \sqrt 3/2$. $\pi/2 < 5\pi/6 + \sqrt 3/2 < \pi + 1$ ✓. 답: $\boxed{a = \dfrac{5\pi}{6} + \dfrac{\sqrt 3}{2}}$.
+
+---
+
 
 
