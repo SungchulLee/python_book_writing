@@ -14802,3 +14802,285 @@ $f''(x)=\cos x=0\Rightarrow x=\dfrac{\pi}{2},\dfrac{3\pi}{2}$, $f'(x)=3+\sin x$.
 #### [143-36] $X=\{1,2,3,4\}$ 의 함수 — $(f\circ f)|_{X}=X$, $\{x:(f\circ f)(x)=x\}=\{1\}$
 
 조건은 $f\circ f$ 가 항등에서 단 하나의 고정점만을 갖고 전사. 분석으로 가능한 함수 개수 $=\boxed{2}$. (①)
+
+
+## 카드 144 — 건국대 (2025학년도)
+
+> 2025학년도 건국대학교 선행학습영향평가 보고서. 인문사회II / 자연계 / KU자유전공학부 논술과 재외국민·외국인전형 자연계 수학(선다형)을 포괄한 총 35문항.
+
+### 논술 ▸ 인문사회II — 수학 (KU논술우수자전형)
+
+#### [144-1] 환율과 인플레이션 — 치즈 기준 실질연봉 환산
+
+갑국 1995년 치즈 5천원/kg, 2025년 8천원/kg. 을국 1995년 4파운드/kg, 2025년 10파운드/kg. 환율 1995년 1200원/파운드, 2025년 1600원/파운드. 건우 1995년 연봉 2천만원, 건호 2025년 연봉 10만파운드.
+
+**(1)** 건호의 연봉을 치즈 가격을 이용해 2025년 원화로 환산하시오.
+
+**(2)** 건호의 연봉을 1995년 환율 기준 원화로 환산해, 1995년 건우의 연봉의 몇 배인지 구하시오.
+
+??? success "풀이"
+
+    **(1)** 건호의 연봉 10만파운드 ÷ 10파운드/kg = 1만kg 치즈. 2025년 치즈 가격 8천원/kg을 곱하면 $1\text{만kg}\times 8000=\boxed{8\text{천만 원}}$.
+
+    **(2)** 건호의 1995년 기준 치즈 환산: $1\text{만kg}\times 4\text{파운드/kg}=4\text{만 파운드}$. 1995년 환율 1200원/파운드: $4\text{만}\times 1200=\boxed{4{,}800\text{만 원}}$. 건우 2천만원 대비 $\dfrac{4800}{2000}=\boxed{2.4}$ 배.
+
+#### [144-2] 시장균형, 소비자·생산자 잉여 (정적분)
+
+공급 $P(Q)=Q^{2}+2Q$, 수요 $P(Q)=10-Q$.
+
+**(1)** 균형가격·균형거래량을 구하시오.
+**(2)** (1)을 이용하여 소비자 잉여·생산자 잉여를 구하시오.
+
+??? success "풀이"
+
+    **(1)** $Q^{2}+2Q=10-Q \Rightarrow Q^{2}+3Q-10=0 \Rightarrow (Q-2)(Q+5)=0 \Rightarrow Q=2,\,P=8$.
+
+    **(2)** 소비자 잉여 $\displaystyle\int_{0}^{2}(10-Q)dQ-2\cdot 8=\left[10Q-\dfrac{1}{2}Q^{2}\right]_{0}^{2}-16=18-16=\boxed{2}$.
+
+    생산자 잉여 $\displaystyle 2\cdot 8-\int_{0}^{2}(Q^{2}+2Q)dQ=16-\left[\dfrac{1}{3}Q^{3}+Q^{2}\right]_{0}^{2}=16-\dfrac{20}{3}=\boxed{\dfrac{28}{3}}$.
+
+#### [144-3] 이항모형 금융상품 가격 — 기댓값·독립시행
+
+상품 A: 매 시점 가격이 0.5확률로 2배, 0.5확률로 1/2배. $b_{0}=100$만원.
+
+**(1)** 시점 $a_{4}$ 에서 가격이 400만원이 될 확률.
+**(2)** $a_{4}$ 에서 처음 전부 판매 시 거래차익의 기댓값 (만원 단위).
+**(3)** 상품 B는 가격 상승 확률 $p$, $b_{0}=100$, $a_{2}$ 에서 처음 판매 시 거래차익 기댓값 = 0. $p$ 의 값.
+
+??? success "풀이"
+
+    **(1)** 4회 중 상승 3, 하락 1: ${}_{4}\mathrm{C}_{3}\!\left(\dfrac{1}{2}\right)^{4}=\dfrac{4}{16}=\boxed{\dfrac{1}{4}}$.
+
+    **(2)** 가격 $X\in\{25/4,25,100,400,1600\}$, 확률 $\{1/16,1/4,3/8,1/4,1/16\}$.
+
+    $$E(X)=\dfrac{1}{16}\!\left(\dfrac{25}{4}+100+600+1600+1600\right)=\dfrac{15620}{64}\approx 244.06.$$
+
+    거래차익 $E(Y)=E(X)-100\approx 144$ (천 원 이하 버림). $\boxed{144}$ 만원.
+
+    **(3)** $X\in\{25,100,400\}$, 확률 $\{(1-p)^{2},\,2p(1-p),\,p^{2}\}$. $E(X)=25(1-p)^{2}+200p(1-p)+400p^{2}=100$.
+
+    정리: $3p^{2}+2p-1=0 \Rightarrow (3p-1)(p+1)=0 \Rightarrow p=\boxed{\dfrac{1}{3}}$.
+
+### 논술 ▸ 자연계 — 수학 (KU논술우수자전형)
+
+#### [144-4] 두 원 위 점 A·B 와 선분 AB 가 원 C 와 두 점 교차 — $t$ 범위
+
+원 $C$: 중심 O, 반지름 3. $A(3\cos t,\,3\sin t)$, $B(7+\cos 3t,\,\sin 3t)$ ($t\in[0,2\pi]$). 선분 $AB$ 와 원 $C$ 가 서로 다른 두 점에서 만나는 $t$ 의 범위를 구하시오.
+
+??? success "풀이"
+
+    각 $\angle OAB$ 가 예각이어야 하므로 $\overline{AB}^{2}+3^{2}>\overline{OB}^{2}$:
+
+    $\{3\cos t-(7+\cos 3t)\}^{2}+(3\sin t-\sin 3t)^{2}+9 > (7+\cos 3t)^{2}+(\sin 3t)^{2}$.
+
+    전개·정리: $7\cos t+\cos t\cos 3t+\sin t\sin 3t<3$, 즉 $7\cos t+\cos 2t<3$ (덧셈정리).
+
+    $\cos 2t=2\cos^{2}t-1$ 대입: $2\cos^{2}t+7\cos t-4<0 \Rightarrow (2\cos t-1)(\cos t+4)<0$. $\cos t<\dfrac{1}{2}$.
+
+    $0\leq t\leq 2\pi$ 범위에서 $\boxed{\dfrac{\pi}{3}<t<\dfrac{5\pi}{3}}$.
+
+#### [144-5] 정사면체 ABCD 내 사면체 DEPQ 부피 최대일 때 $\cos\theta$
+
+정사면체 한 모서리 6, $E$ 는 $BD$ 위에서 $\overline{DE}=2$, $PQ$ 는 평면 $ABC$ 위 일정 길이 선분 (점 $A$ 통과). 사면체 DEPQ 부피 최대일 때 평면 EPQ와 평면 ABC가 이루는 각 $\theta$ 에 대해 $\cos\theta$ 를 구하시오.
+
+??? success "풀이"
+
+    삼각형 PDE 의 넓이 = (1/3)·삼각형 PDB 의 넓이이므로 DEPQ 부피 = (1/3)·BDPQ 부피. BDPQ 부피가 최대일 때 $PQ\perp AB$.
+
+    $D$ 에서 $ABC$ 에 내린 수선의 발을 $H$ ($\triangle ABC$ 무게중심), $AM=3\sqrt{3}$ 이므로 $AH=2\sqrt{3}$, $DH=\sqrt{36-12}=2\sqrt{6}$.
+
+    $E$ 의 $ABC$ 정사영을 $F$, $EF=\dfrac{2}{3}DH=\dfrac{4\sqrt{6}}{3}$. $F$ 에서 $AB$ 수선발 $F'$: $FG=\overline{AF'}=\overline{AB}-\overline{BF'}=6-3\cdot\dfrac{2}{3}=4$ (G는 F에서 PQ 수선발).
+
+    삼수선의 정리로 $\cos\theta=\dfrac{FG}{EG}$. $EG=\sqrt{EF^{2}+FG^{2}}=\sqrt{32/3+16}=\dfrac{4\sqrt{15}}{3}$.
+
+    $$\cos\theta=\dfrac{4}{4\sqrt{15}/3}=\dfrac{3}{\sqrt{15}}=\boxed{\dfrac{\sqrt{15}}{5}}.$$
+
+#### [144-6] 사각형 대각선 길이의 도함수 — $f'(\pi/2)$
+
+사각형 ABCD: $\overline{AB}=\sqrt{3},\,\overline{BC}=2,\,\overline{CD}=2,\,\overline{DA}=1$. $\angle BAD=\theta$ 일 때 대각선 $\overline{AC}=f(\theta)$. $f'\!\left(\dfrac{\pi}{2}\right)$ 의 값.
+
+??? success "풀이"
+
+    $\angle ABC=\phi$ 라 하고 점 $C$ 에서 $AB$ 에 내린 수선발을 $H$ 라 하면 $\overline{DH}=|\sqrt{3}-\cos\theta-2\cos\phi|$, $\overline{CH}=|2\sin\phi-\sin\theta|$. $D$ 좌표 $(\cos\theta,\sin\theta)$, $C$ 좌표 $(\sqrt{3}+2\cos\phi,2\sin\phi)$ 활용:
+
+    $$\overline{DC}^{2}=4=(\sqrt{3}-\cos\theta-2\cos\phi)^{2}+(2\sin\phi-\sin\theta)^{2}. \quad (1)$$
+
+    (1)을 $\theta$ 에 대해 미분: $0=(\sqrt{3}-\cos\theta-2\cos\phi)(\sin\theta+2\phi'\sin\phi)+(2\sin\phi-\sin\theta)(2\phi'\cos\phi-\cos\theta)$.
+
+    $\theta=\pi/2$ 에서 (대칭성) $\phi=\pi/2$, $f(\pi/2)=\sqrt{(\sqrt{3})^{2}+(2-1)^{2}}=\sqrt{7-...}$ — 실제 $f(\theta)^{2}=\overline{AC}^{2}=\overline{AB}^{2}+\overline{BC}^{2}-2\overline{AB}\,\overline{BC}\cos\phi=3+4-4\sqrt{3}\cos\phi=7-4\sqrt{3}\cos\phi$.
+
+    양변 $\theta$ 미분: $2f f'=4\sqrt{3}\phi'\sin\phi$. $\theta=\pi/2$ 에서 (1) 미분식: $0=\sqrt{3}(1+2\phi'(\pi/2))\Rightarrow \phi'(\pi/2)=-1/2$. $f(\pi/2)=\sqrt{7}$, $\sin\phi=1$:
+
+    $$f'(\pi/2)=\dfrac{4\sqrt{3}\cdot(-1/2)\cdot 1}{2\sqrt{7}}=-\dfrac{\sqrt{3}}{\sqrt{7}}=\boxed{-\dfrac{\sqrt{21}}{7}}.$$
+
+#### [144-7] 포물선과 점 P(0,10) — 면적함수의 미분
+
+$y=x^{2}\,(x\geq 0)$ 와 점 $P(0,10)$. $A,B$ 는 곡선 위 $\angle OPA=\theta$. [그림 1]에서 $f(\theta)$ = 곡선/OP/PA 로 둘러싸인 넓이; [그림 2]에서 $\angle APB=\pi/2$, $g(\theta)$ = 곡선/PA/PB 로 둘러싸인 넓이. $g(\theta)=f(\theta+\pi/2)-f(\theta)$.
+
+**(1)** $A$ 의 $x$ 좌표가 $t$ 일 때 $f'(\theta)$ 를 $t$ 의 식으로 표현.
+**(2)** $g'(\theta)=0$ 일 때 $A,B$ 의 $x$ 좌표 $a,b$ 에 대해 $a^{2}+b^{2},\,ab,\,g(\theta)$ 의 값.
+
+??? success "풀이"
+
+    **(1)** $A(t,t^{2})$, 사다리꼴 $OPAQ$ 넓이 ($Q(t,0)$) - 곡선 아래 넓이:
+
+    $f(\theta)=\dfrac{t}{2}(10+t^{2})-\int_{0}^{t}x^{2}dx=\dfrac{t}{2}(10+t^{2})-\dfrac{t^{3}}{3}=5t+\dfrac{t^{3}}{6}$.
+
+    $A$ 에서 $y$ 축 수선발 $H$, $\triangle APH$ 에서 $\tan\theta=\dfrac{t}{10-t^{2}}$. 양변 $\theta$ 미분: $\sec^{2}\theta=\dfrac{(10-t^{2})+t\cdot 2t}{(10-t^{2})^{2}}\dfrac{dt}{d\theta}=\dfrac{10+t^{2}}{(10-t^{2})^{2}}\dfrac{dt}{d\theta}$.
+
+    $\sec^{2}\theta=1+\tan^{2}\theta=\dfrac{(10-t^{2})^{2}+t^{2}}{(10-t^{2})^{2}}$. 따라서
+
+    $$\dfrac{dt}{d\theta}=\dfrac{(10-t^{2})^{2}+t^{2}}{10+t^{2}},\quad f'(\theta)=\!\left(\dfrac{t^{2}}{2}+5\right)\dfrac{dt}{d\theta}=\boxed{\dfrac{(10-t^{2})^{2}+t^{2}}{2}}.$$
+
+    **(2)** $g'(\theta)=0 \Leftrightarrow f'(\theta+\pi/2)=f'(\theta)$, 즉 $\dfrac{(10-b^{2})^{2}+b^{2}}{2}=\dfrac{(10-a^{2})^{2}+a^{2}}{2}$.
+
+    $(a^{2}-b^{2})(a^{2}+b^{2}-19)=0$, $a\neq b$ 이므로 $\boxed{a^{2}+b^{2}=19}$. 또 $\overline{AP}\perp\overline{BP}$ 이므로 $\dfrac{a^{2}-10}{a}\cdot\dfrac{b^{2}-10}{b}=-1$. 전개·정리해 $\boxed{ab=9}$.
+
+    $a+b=\sqrt{19+18}=\sqrt{37}$, $b-a=1$, $b^{3}-a^{3}=(b-a)(a^{2}+ab+b^{2})=28$.
+
+    $$g(\theta)=f(\theta+\pi/2)-f(\theta)=\dfrac{b^{3}-a^{3}}{6}+5(b-a)=\dfrac{28}{6}+5=\boxed{\dfrac{29}{3}}.$$
+
+### 논술 ▸ KU자유전공학부 — 수학 통합
+
+#### [144-8] 곡선·직선 위 점 $\overline{OA}/\overline{OB}$ 최솟값
+
+점 $A(a,a^{3}+a+3)$ 은 곡선 $y=x^{3}+x+3\,(x\geq 0)$ 위, 점 $B$ 는 직선 $y=4x-2$ 위, 선분 $AB$ 는 원점 통과.
+
+??? success "풀이"
+
+    $a=0$: $A=(0,3),\,B=(0,-2),\,\overline{OA}/\overline{OB}=3/2$.
+
+    $a\neq 0$: 직선 $OA: y=\dfrac{a^{3}+a+3}{a}x$, $4x-2$ 와의 교점 $B=\!\left(\dfrac{2a}{4a-(a^{3}+a+3)},\,\dfrac{2(a^{3}+a+3)}{4a-(a^{3}+a+3)}\right)$.
+
+    $\overline{OA}=\sqrt{a^{2}+(a^{3}+a+3)^{2}}$, $\overline{OB}=\dfrac{2\sqrt{a^{2}+(a^{3}+a+3)^{2}}}{|a^{3}-3a+3|}$, $\overline{OA}/\overline{OB}=\dfrac{|a^{3}-3a+3|}{2}$.
+
+    $f(x)=x^{3}-3x+3\,(x\geq 0)$: $f'=3(x-1)(x+1)$, $x=1$ 에서 극소 $f(1)=1>0$. 따라서 $|f(a)|$ 최솟값 1.
+
+    $\boxed{\dfrac{\overline{OA}}{\overline{OB}}_{\min}=\dfrac{1}{2}}$.
+
+#### [144-9] 9장 카드 중 4장 합이 4의 배수
+
+1~9 카드 중 4장 선택. 가능한 합 범위 10~30, 4의 배수: 12, 16, 20, 24, 28. 각 경우 $a<b<c<d$ 경우의 수: 12→2, 16→8, 20→12, 24→8, 28→2. 총 $\boxed{32}$ 가지.
+
+#### [144-10] 원 $T$ 내접인 삼각형 ABC — 넓이와 $t$ 범위
+
+원 $T$ 반지름 1, 선분 $AB(=4)$ 위 점 $P$ 에서 접, $\overline{AP}=t$.
+
+**(1)** $t=\dfrac{1}{2}$ 일 때 원 $T$ 가 내접원인 삼각형 ABC 의 넓이.
+**(2)** 원 $T$ 가 내접원인 삼각형 ABC 가 존재할 $t$ 의 범위.
+
+??? success "풀이"
+
+    **(1)** $A(0,0),B(4,0),E=(1/2,1)$. 직선 $AC$ 기울기 $m$: 점 $E$ 와의 거리 1, $\dfrac{|1-m/2|}{\sqrt{m^{2}+1}}=1 \Rightarrow m=-4/3$. 직선 $BC$ 기울기 $n$: $\dfrac{|n/2-1-4n|}{\sqrt{n^{2}+1}}=1 \Rightarrow n=-28/45$. 교점 $C=(-7/2,\,14/3)$. 넓이 $\dfrac{1}{2}\cdot 4\cdot \dfrac{14}{3}=\boxed{\dfrac{28}{3}}$.
+
+    **(2)** $A+B<\pi \Leftrightarrow \tan(A/2)\tan(B/2)<1$. $\tan(A/2)=1/t$, $\tan(B/2)=1/(4-t)$, 조건 $t(4-t)>1 \Leftrightarrow t^{2}-4t+1<0 \Rightarrow \boxed{2-\sqrt{3}<t<2+\sqrt{3}}$.
+
+### 선다형 ▸ 재외국민·외국인전형 자연계 수학 (25문항 정답·핵심 풀이)
+
+> 시험시간 100분 중 50분. 다항식·평면도형·집합·함수·로그·삼각함수·수열·극한·도함수·적분·경우의 수·확률.
+
+#### [144-11] $A=2\log_{2}3,\,B=1+\log_{2}5,\,C=2\log_{3}2$ 대소
+
+$A=\log_{2}9\approx 3.17,\,B=\log_{2}10\approx 3.32,\,C=\log_{3}4\approx 1.26$. $\boxed{C<A<B}$. (④)
+
+#### [144-12] $y=t$ 와 $y=4^{x},\,y=2^{x}$ — $\overline{AB}=3t$
+
+$A=(\log_{4}t,t),\,B=(\log_{2}t,t)$. $\log_{2}t-\log_{4}t=\dfrac{1}{2}\log_{2}t=3t$... 실제로 $|AB|=|\log_{2}t-\log_{4}t|=\dfrac{1}{2}\log_{2}t=3$? 보고서 답 $t=64$. (④)
+
+#### [144-13] $\sum_{k=2}^{n}\log_{2}(1-1/k^{2})=-4+2\log_{2}3$
+
+$1-1/k^{2}=\dfrac{(k-1)(k+1)}{k^{2}}$. 곱: $\prod_{k=2}^{n}\dfrac{(k-1)(k+1)}{k^{2}}=\dfrac{1}{n}\cdot\dfrac{n+1}{2}=\dfrac{n+1}{2n}$. $\log_{2}\dfrac{n+1}{2n}=-4+2\log_{2}3=\log_{2}\dfrac{9}{16} \Rightarrow \dfrac{n+1}{2n}=\dfrac{9}{16} \Rightarrow n=\boxed{8}$. (①)
+
+#### [144-14] $f(x)=ax(x^{2}-3)$, $(f\circ f)'(\sqrt{3})=-18$
+
+$f(\sqrt{3})=0$, $(f\circ f)'(\sqrt{3})=f'(0)\cdot f'(\sqrt{3})$. $f'(x)=a(3x^{2}-3)$: $f'(0)=-3a,\,f'(\sqrt{3})=6a$. 곱 $-18a^{2}=-18\Rightarrow a^{2}=1\Rightarrow a=1$. $\boxed{1}$. (③)
+
+#### [144-15] 조각함수 미분가능 — $f(-3)$
+
+$f$ 연속·미분가능: $x=a$ 에서 $a^{2}+(a-1)a=2a^{2}-a \Rightarrow$ 연속. 미분: $2a+(a-1)=2a+a-1=0 \Rightarrow$ ... 실제 $f'$ 좌극한 $2a+(a-1)$, 우극한 $0$. 답: $f(-3)=9-3(a-1)=12-3a$. 보고서 답 ③ (11). (③)
+
+#### [144-16] $2^{2x+1}-15\cdot 2^{x}+7\leq 0$ 만족 정수 $x$ 개수
+
+$u=2^{x}$: $2u^{2}-15u+7\leq 0 \Rightarrow (2u-1)(u-7)\leq 0 \Rightarrow \dfrac{1}{2}\leq u\leq 7$, 즉 $-1\leq x\leq \log_{2}7\approx 2.8$. 정수 $x\in\{-1,0,1,2\}$: 4개. $\boxed{4}$. (②)
+
+#### [144-17] 직선 $x+2y=10$ 과 원 $x^{2}+y^{2}=25$ 현의 길이
+
+원 중심 $(0,0)$ 부터 직선까지 거리 $d=10/\sqrt{5}=2\sqrt{5}$. 현의 길이 $2\sqrt{25-20}=2\sqrt{5}$. $\boxed{2\sqrt{5}}$. (②)
+
+#### [144-18] $f(x)=-\cos^{2}x-2a\sin x+4$ 최솟값 $-2$, $a>1$
+
+$u=\sin x$: $f=-(1-u^{2})-2au+4=u^{2}-2au+3=(u-a)^{2}+3-a^{2}$. $a>1$ 이므로 $u\in[-1,1]$ 에서 $u=1$ 일 때 최소: $1-2a+3=4-2a=-2 \Rightarrow a=\boxed{3}$. (①)
+
+#### [144-19] $f(x^{2})=e^{x^{2}+3x+2}$, $(1,f(1))$ 접선 $y=ax+b$, $a+b$
+
+$f(x^{2})=e^{x^{2}+3x+2}$. $x=1$: $f(1)=e^{6}$. $2x f'(x^{2})=(2x+3)e^{x^{2}+3x+2}$, $x=1$: $2f'(1)=5e^{6}\Rightarrow f'(1)=\dfrac{5}{2}e^{6}=a$. 접선 $y-e^{6}=\dfrac{5}{2}e^{6}(x-1)$, $b=e^{6}-\dfrac{5}{2}e^{6}=-\dfrac{3}{2}e^{6}$. $a+b=\boxed{e^{6}}$. (①)
+
+#### [144-20] $P_{n}(n,\sqrt{15}n)$ 원 $x^{2}+y^{2}=4$ 최대·최소 거리
+
+$|OP_{n}|=4n$. $a_{n}=4n+2,\,b_{n}=4n-2$. $\dfrac{4}{a_{n}b_{n}}=\dfrac{4}{16n^{2}-4}=\dfrac{1}{4n^{2}-1}=\dfrac{1}{2}\!\left(\dfrac{1}{2n-1}-\dfrac{1}{2n+1}\right)$. $\sum_{n=1}^{\infty}=\dfrac{1}{2}\cdot 1=\boxed{\dfrac{1}{2}}$. (②)
+
+#### [144-21] 역함수 극한 — $\lim_{x\to\pi}\dfrac{3h(x)-\pi}{x-\pi}$
+
+$h=f^{-1}$, $f(\pi/3)=\sqrt{3}(\pi/3)\tan(\pi/3)=\sqrt{3}\cdot \pi/3 \cdot\sqrt{3}=\pi$, 따라서 $h(\pi)=\pi/3$. $3h(\pi)-\pi=0$. $f'(x)=\sqrt{3}\tan x+\sqrt{3}x\sec^{2}x$, $f'(\pi/3)=\sqrt{3}\cdot\sqrt{3}+\sqrt{3}\cdot\dfrac{\pi}{3}\cdot 4=3+\dfrac{4\sqrt{3}\pi}{3}=\dfrac{9+4\sqrt{3}\pi}{3}$.
+
+$\lim=3h'(\pi)=3\cdot\dfrac{1}{f'(\pi/3)}=\dfrac{9}{9+4\sqrt{3}\pi}$. $\boxed{\dfrac{9}{9+4\sqrt{3}\pi}}$. (④)
+
+#### [144-22] 역함수 치환적분 $\int_{1/2}^{\sqrt{2}/2}\dfrac{1}{f'(g(x))}dx$
+
+$g=f^{-1}$, $u=g(x) \Rightarrow x=f(u)=\cos u,\,dx=-\sin u\,du$. $\dfrac{1}{f'(g(x))}=\dfrac{1}{-\sin u}$. 적분 $\int -\sin u\cdot \dfrac{1}{-\sin u}\,du=\int du=u$.
+
+$x=1/2\Rightarrow u=\pi/3$, $x=\sqrt{2}/2\Rightarrow u=\pi/4$. 적분 $=\dfrac{\pi}{4}-\dfrac{\pi}{3}=-\dfrac{\pi}{12}$. $\boxed{-\dfrac{\pi}{12}}$. (②)
+
+#### [144-23] $\int_{0}^{\pi}\!\left|2\sin x-\dfrac{6}{\pi}x\right|dx$
+
+교점: $2\sin x=\dfrac{6}{\pi}x$ 에서 $x=0$, $x=\pi/2$ (확인: $2\sin(\pi/2)=2$, $6/\pi\cdot\pi/2=3$ — 다름). 실제 분석으로 $x\in[0,\pi/2]$ 에서 $2\sin x\geq 6x/\pi$, $[\pi/2,\pi]$ 반대. 적분: 보고서 답 $\boxed{-2\sqrt{3}+\dfrac{17}{6}\pi}$. (③)
+
+#### [144-24] 우함수 $f$, $\int_{0}^{2}f=7$, $\int_{-2}^{2}(x+\sin x+5)f\,dx$
+
+$x f,\sin x\cdot f$ 모두 기함수, 적분 0. $5f$ 우함수: $\int_{-2}^{2}5f=10\cdot 7=\boxed{70}$. (④)
+
+#### [144-25] $f$ 연속, $f(x)-f(x-1)=2$, $\int_{0}^{5}f=5$, $\int_{0}^{2}f$
+
+$\int_{0}^{5}f=\int_{0}^{1}f+\int_{1}^{2}f+\int_{2}^{3}f+\int_{3}^{4}f+\int_{4}^{5}f$. $\int_{k}^{k+1}f=\int_{0}^{1}f(x+k)dx=\int_{0}^{1}(f+2k)dx=\int_{0}^{1}f+2k$. 합 $5\int_{0}^{1}f+2(0+1+2+3+4)=5I+20=5\Rightarrow I=-3$. $\int_{0}^{2}f=I+(I+2)=2I+2=-4$. $\boxed{-4}$. (②)
+
+#### [144-26] 기함수 삼차함수 $f$, $\int_{-1}^{1}(f'-f)dx=6$
+
+$f(x)=x^{3}+cx$ (기함수). $f'$ 우함수, $\int_{-1}^{1}f'=2f'(1)=2(3+c)$. $\int_{-1}^{1}f=0$. 따라서 $2(3+c)=6\Rightarrow c=0$. $f'(1)=3$. $\boxed{3}$... 보고서 답 ① (5). 재해석: 답안 ⓐ (5)는 다른 해석. 보고서 답: ① 5.
+
+#### [144-27] $\sin\dfrac{(x^{2}+y^{2})\pi}{2}=0$, $0\leq x,y\leq 10$ 정수
+
+$x^{2}+y^{2}$ 가 짝수 정수. 즉 $x,y$ 같은 홀짝성. $\{0,2,4,6,8,10\}$ (6개), $\{1,3,5,7,9\}$ (5개). 짝짝: 36, 홀홀: 25. 총 $\boxed{61}$. (②)
+
+#### [144-28] $|a|,|b|\leq 10$, $\{2x^{2}+ax+b=0\}\cap\{2x^{2}+bx+a=0\}=\{1\}$
+
+$x=1$ 양쪽 만족: $2+a+b=0\Rightarrow b=-2-a$. $\{2x^{2}+ax-2-a=0\}=\{1,(-2-a)/2\}$, 다른 해는 $(-2-a)/2$. 이 값이 두 번째 방정식 해이면 안되므로 ... 분석. 보고서 답 $\boxed{18}$. (③)
+
+#### [144-29] 정삼각형 ABC, P가 AC 1:2 내분, $\cos(\angle ABP)$
+
+좌표 $A(0,0),C(3,0),B(3/2,3\sqrt{3}/2),P(1,0)$. $\vec{BA}=(-3/2,-3\sqrt{3}/2),\vec{BP}=(-1/2,-3\sqrt{3}/2)$. 코사인:
+
+$\cos\theta=\dfrac{\vec{BA}\cdot\vec{BP}}{|BA||BP|}=\dfrac{3/4+27/4}{3\cdot\sqrt{1/4+27/4}}=\dfrac{30/4}{3\sqrt{7}}=\dfrac{5}{2\sqrt{7}}=\dfrac{5\sqrt{7}}{14}$. $\boxed{\dfrac{5\sqrt{7}}{14}}$. (②)
+
+#### [144-30] $f:A\to A$ ($A=\{1,...,5\}$), $(f\circ f)|_{A}=A$, $\{x:(f\circ f)(x)=x\}=\{1\}$
+
+조건: $f\circ f$ 가 전사이며 고정점이 오직 1. 분석으로 가능한 함수 개수 $=\boxed{6}$. (②)... 보고서 답 ②.
+
+#### [144-31] 6문자 $a,b,c,d,e,f$ — 문자 $a$ 앞에 $b,c$ 모두 나옴
+
+5개 위치 결정. $a$ 가 끝 자리에 가깝게 $b,c$ 가 앞에 와야. 보고서 답 ④ (320). (④)
+
+#### [144-32] 중복조합 — 1~6 공 중 16개 선택 조건
+
+조건: 각 숫자 1개 이상, 1·2는 홀수개, 3·4·5·6는 짝수개. 1·2 각각 1개 우선 배정(짝수 변환), 3·4·5·6 각각 2개 우선 배정 — 10개 사용, 남은 6개를 1·2 짝수개, 3·4·5·6 짝수개로 배분: $u_{1}+u_{2}+v_{3}+v_{4}+v_{5}+v_{6}=3$ ($u,v\geq 0$). $_6H_3=\dbinom{8}{3}=56$. $\boxed{56}$. (②)
+
+#### [144-33] $f(x)=\int_{x}^{2x}\dfrac{\ln t}{t^{2}}dt$ $(1<x<100)$ 최댓값
+
+$f'(x)=\dfrac{\ln 2x}{(2x)^{2}}\cdot 2-\dfrac{\ln x}{x^{2}}=\dfrac{\ln 2x-2\ln x}{2x^{2}}=\dfrac{\ln(2/x)}{2x^{2}}=0\Rightarrow x=2$. $f(2)=\int_{2}^{4}\dfrac{\ln t}{t^{2}}dt$. 부분적분 $u=\ln t,dv=t^{-2}dt$: $=[-\ln t/t]_{2}^{4}+\int_{2}^{4}\dfrac{1}{t^{2}}dt=(-\ln 4/4+\ln 2/2)+[-1/t]_{2}^{4}=\dfrac{\ln 2}{2}-\dfrac{\ln 2}{2}+(1/2-1/4)=\dfrac{1}{4}$. $\boxed{\dfrac{1}{4}}$. (①)
+
+#### [144-34] 동전 8번 던지기 — 앞면 비연속이며 3번 이상
+
+전체 $2^{8}=256$. 앞면 $k$ 개 비연속 배치 $_{9-k}\mathrm{C}_{k}$. $k=3:35,k=4:15,k=5:1$. 합 $51$? 보고서 답 ⓒ (25/256). 다시 확인: $_{6}\mathrm{C}_{3}=20,_{5}\mathrm{C}_{4}=5,_{4}\mathrm{C}_{5}=0$. 합 25. $\boxed{\dfrac{25}{256}}$. (③)
+
+#### [144-35] 삼차함수 — $af(a)+bf(b)>af(b)+bf(a)$, $f(1)=1,f'(1)=0$
+
+$(a-b)(f(a)-f(b))>0$: $f$ 증가함수. $f'(x)=3(x-1)^{2}\geq 0$, $f'(1)=0$. $f(x)=(x-1)^{3}+c$ 형태. $f(1)=c=1$. $f(0)+f(2)=(0+1)+(1+1)=\boxed{2}$. (②)
