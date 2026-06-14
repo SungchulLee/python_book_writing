@@ -7201,3 +7201,82 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 98 — 연세대 미래캠 (2024학년도)
+
+### 자연계 문제 1 — 무리함수, 입체도형 부피 (정삼각형 단면)
+
+> 제시문 (가) 단면 넓이가 $S(x)$ 인 입체도형의 부피 $V = \int_a^b S(x) dx$. (나) 무리함수 $y = 2\sqrt{3x}, y = 2\sqrt x$. (라) 점 $\mathrm{A}(p, 0)$ 에서 수직인 직선이 $y = 2\sqrt{3x}$ 와 만나는 점을 $\mathrm{D}$, 선분 $\mathrm{AD}$ 를 한 변으로 하는 정사각형 $\mathrm{ABCD}$ 를 그리면 $\mathrm{C}$ 가 $y = 2\sqrt x$ 위. (마) 도형 $\mathrm{CDE}$ 를 밑면으로 하는 입체도형의 선분 $\mathrm{CD}$ 에 수직인 평면 단면은 정삼각형.
+
+**[98 / 자1-1]** 양수 $p$ 의 값.
+
+??? success "풀이"
+    정사각형 한 변 $q$, $\mathrm{D}(p, q)$ 는 $y = 2\sqrt{3x}$ 위 → $q = 2\sqrt{3p}$. $\mathrm{B}(p+q, 0), \mathrm{C}(p+q, q)$ 는 $y = 2\sqrt x$ 위 → $q = 2\sqrt{p+q}$. 두 식: $2\sqrt{3p} = 2\sqrt{p+q}$ → $3p = p + q$ → $q = 2p$. $q = 2\sqrt{3p}$ 에 대입: $2p = 2\sqrt{3p}$ → $p^2 = 3p$ → $p = 3$. 답: $\boxed{p = 3}$.
+
+**[98 / 자1-2]** 유리수 $m, n$ 에 대해 입체도형의 부피 $= m + n\sqrt 3$ 일 때 $m + n$.
+
+??? success "풀이"
+    $p = 3, q = 6$. $\mathrm{D}(3, 6), \mathrm{C}(9, 6)$. 닫힌구간 $[3, 9]$ 의 점 $x$ 에서 단면 정삼각형의 한 변 $\ell(x) = q - 2\sqrt x = 6 - 2\sqrt x$. 단면 넓이 $S(x) = \frac{\sqrt 3}{4}(6 - 2\sqrt x)^2 = \sqrt 3(3 - \sqrt x)^2 = \sqrt 3(9 - 6\sqrt x + x)$. 부피 $V = \int_3^9 \sqrt 3(9 - 6\sqrt x + x) dx = \sqrt 3[9x - 4x^{3/2} + x^2/2]_3^9 = \sqrt 3[(81 - 108 + 81/2) - (27 - 12\sqrt 3 + 9/2)] = \sqrt 3[(81 - 108 + 40.5) - (31.5 - 12\sqrt 3)] = \sqrt 3[13.5 - 31.5 + 12\sqrt 3] = \sqrt 3[-18 + 12\sqrt 3] = -18\sqrt 3 + 36 = 36 - 18\sqrt 3$. $m = 36, n = -18$. $m + n = 18$. 답: $\boxed{18}$.
+
+### 자연계 문제 2 — 도함수의 정의, 삼각함수의 극한
+
+> 제시문 (가) $\lim_{h\to 0}\sin h/h = 1, \lim_{h\to 0}(\cos h - 1)/h = 0$. (나) $f'(a) = \lim_{h\to 0}(f(a+h) - f(a))/h$.
+
+**[98 / 자2-1]** 도함수의 정의를 이용하여 $y = \cos 2x$ 의 도함수 유도.
+
+??? success "풀이"
+    $y' = \lim_{h\to 0}\frac{\cos 2(x+h) - \cos 2x}{h} = \lim\frac{\cos 2x\cos 2h - \sin 2x\sin 2h - \cos 2x}{h} = \cos 2x\cdot\lim\frac{\cos 2h - 1}{h} - \sin 2x\cdot\lim\frac{\sin 2h}{h}$. $\lim\frac{\cos 2h - 1}{h} = \lim\frac{\cos 2h - 1}{2h}\cdot 2 = 0$. $\lim\frac{\sin 2h}{h} = \lim\frac{\sin 2h}{2h}\cdot 2 = 2$. 따라서 $y' = -2\sin 2x$. 답: $\boxed{-2\sin 2x}$.
+
+**[98 / 자2-2]** $f(x) = e^{-x}\cos 2x$ 일 때 $\displaystyle\lim_{x\to 0}\frac{1}{x}[f(x) + f(2x) + f(3x) + \cdots + f(2023 x) - 2023]$.
+
+??? success "풀이"
+    $f(0) = 1, f'(x) = -e^{-x}\cos 2x - 2 e^{-x}\sin 2x$ → $f'(0) = -1$. $2023 = 2023\cdot f(0)$ 이므로 식 $= \lim_{x\to 0}\frac{1}{x}\sum_{k=1}^{2023}(f(kx) - f(0)) = \sum_{k=1}^{2023}\lim_{x\to 0}\frac{f(kx) - f(0)}{kx}\cdot k = \sum_{k=1}^{2023} k f'(0) = -\sum_{k=1}^{2023} k = -\frac{2023\cdot 2024}{2} = -2{,}047{,}276$. 답: $\boxed{-2{,}047{,}276}$.
+
+### 자연계 문제 3 — 귀류법, 일대일대응, 합·곱의 법칙
+
+> 제시문 (가) 명제 (참/거짓 판별), 증명 (귀류법). (*) "$a, b$ 실수, $a^2 + b^2 = 0$ 이면 $a = 0$ 이고 $b = 0$". (나) 일대일대응: 일대일함수 ∧ 치역 = 공역. (다) 합의 법칙·곱의 법칙.
+
+**[98 / 자3-1]** 제시문 (가) 의 (*) 명제를 귀류법으로 증명 (빈칸 채워 완성).
+
+??? success "풀이"
+    (Ⅲ) 결론을 부정하여 "$a \neq 0$ 또는 $b \neq 0$" 이라고 하자. (Ⅳ) ① $a \neq 0, b = 0$ → $a^2 > 0, b^2 = 0$ → $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \neq 0$. ② $a = 0, b \neq 0$ → $a^2 = 0, b^2 > 0$ → $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \neq 0$. ③ $a \neq 0, b \neq 0$ → $a^2 > 0, b^2 > 0$ → $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \neq 0$. (Ⅰ) 세 가지 경우 모두 $a^2 + b^2 = 0$ 가정에 모순. (Ⅱ) 따라서 (*). 답: $\boxed{\text{귀류법 완성}}$.
+
+**[98 / 자3-2]** $X = \{x \mid -c \leq x \leq c, c > 0\}, Y = \{y \mid -8 \leq y \leq 0\}, f(x) = px + q$ 가 일대일대응일 때 $q/p$ 의 모든 값.
+
+??? success "풀이"
+    두 점 $(c, 0), (-c, -8)$ 지남 → $p = 8/(2c) = 4/c, q = -4$. $q/p = -4/(4/c) = -c$. 또는 두 점 $(-c, 0), (c, -8)$ 지남 → $p = -4/c, q = -4$. $q/p = -4/(-4/c) = c$. 답: $\boxed{q/p = \pm c}$.
+
+**[98 / 자3-3]** 삼각형 세 변 $x_1, x_2, x_3$ 가 자연수, $x_1 \geq x_2 \geq x_3, x_1 + x_2 + x_3 = 36$ 인 삼각형 개수.
+
+??? success "풀이"
+    $x_1 \geq x_2 \geq x_3 \geq 1$ 이므로 $3x_1 \geq 36$ → $x_1 \geq 12$. 삼각부등식 $x_2 + x_3 > x_1$, $x_2 + x_3 = 36 - x_1$ → $36 - x_1 > x_1$ → $x_1 < 18$. $12 \leq x_1 \leq 17$. 각 $x_1$ 에 대해 $x_2 \geq x_3, x_2 + x_3 = 36 - x_1, x_2 \leq x_1$ 만족하는 $(x_2, x_3)$ 개수: $x_1 = 12$: 1개, $13$: 2, $14$: 4, $15$: 5, $16$: 7, $17$: 8. 합 $= 1 + 2 + 4 + 5 + 7 + 8 = 27$. 답: $\boxed{27}$.
+
+### 의예과 문제 1 — 집합 순서쌍 (조합, 합의 법칙, 자연수 거듭제곱의 합)
+
+> 제시문 (가) $U_{k+1} = \{1, 2, \ldots, k+1\}$ 의 두 부분집합 $A, B$ 가 $A \cup B = U_{k+1}, n(A) = 2$ 인 $(A, B)$ 개수 $= a_k$. 같은 조건에서 $n(A) = 3$ 인 $\langle A, B\rangle$ 개수 $= b_k$. (나) $b_1 = 0,\ b_{k+1} = c_1 a_1 + c_2 a_2 + \cdots + c_k a_k$ 가 성립하는 양수 $c_1, c_2, \ldots, c_k$ 존재.
+
+**[98 / 의1-1]** 제시문 (나) 의 $c_2$ 와 $b_3$ 를 구하는 데 사용된 $\langle A, B\rangle$ 모두 찾기.
+
+??? success "풀이"
+    $a_k = {}_{k+1}\mathrm{C}_2\cdot 4 = 2k(k+1)$. $a_1 = 4, a_2 = 12$. $b_2$ 는 $U_3$ 의 부분집합 $A$ ($n(A) = 3$, 즉 $A = U_3$) 의 $A \cup B = U_3$ → $B$ 임의 = $2^3 = 8$. 따라서 $b_2 = 8$. 그런데 $b_2 = c_1 a_1 = 4 c_1$ → $c_1 = 2$. $b_3$: $U_4$ 의 $n(A) = 3$ 집합 ${}_4\mathrm{C}_3 = 4$ 개, 각각 $B$ 는 $A^c$ 원소 포함 + $A$ 의 부분집합 자유 = $2^3 = 8$ 개. $b_3 = 4\cdot 8 = 32$. $b_3 = c_1 a_1 + c_2 a_2 = 2\cdot 4 + 12 c_2 = 8 + 12 c_2 = 32$ → $c_2 = 2$. $\langle A, B\rangle$ 표: $A \in \{\{1,2,3\}, \{1,2,4\}, \{1,3,4\}, \{2,3,4\}\}$, 각 $A$ 에 대해 $B$ 는 $A^c$ 포함 + $A$ 부분집합 = $2^3 = 8$ 개. 총 32개. 답: $\boxed{c_2 = 2,\ b_3 = 32}$.
+
+**[98 / 의1-2]** 양수 $c_1, c_2, \ldots, c_k$ 의 곱 $c_1 c_2 \cdots c_k$.
+
+??? success "풀이"
+    $a_k = 2 k(k+1)$. $b_k = {}_{k+1}\mathrm{C}_3\cdot 8 = \frac{4}{3}(k-1)k(k+1)$. $\sum_{i=1}^k a_i = 2\sum i(i+1) = 2(\frac{k(k+1)(2k+1)}{6} + \frac{k(k+1)}{2}) = \frac{2}{3}k(k+1)(k+2) = \frac{1}{2}b_{k+1}$. 따라서 $b_{k+1} = 2\sum_{i=1}^k a_i$ → 모든 $c_i = 2$. $c_1 c_2 \cdots c_k = 2^k$. 답: $\boxed{2^k}$.
+
+### 의예과 문제 2 — 타원, 쌍곡선, 직사각형 공원 (이차곡선, 삼각함수 덧셈정리)
+
+> 제시문 (가)~(사) 직사각형 공원 $\mathrm{ABCD}$. $\overline{\mathrm{DA}} = 180$ m, 점 $\mathrm{P, Q}$ 가 $\mathrm{DA}$ 위에서 $\overline{\mathrm{PA}} = \overline{\mathrm{QD}}$. 두 게양대 ($\mathrm{P}, \mathrm{Q}$). 거리 합 $180$ m 인 황톳길 (타원), 거리 차 $60$ m 인 꽃길 (쌍곡선), 파란 꽃길은 $\mathrm{DA}$ 위 한 점에서 시작해 $\mathrm{B}$ 에서 종료. 황톳길·파란 꽃길 만나는 점 $\mathrm{R}$ 에 음수대. $\triangle\mathrm{PQR}$ 직각삼각형 ($\overline{\mathrm{PQ}}$ 빗변).
+
+**[98 / 의2-1]** 두 게양대 사이의 거리와 공원의 세로 길이.
+
+??? success "풀이"
+    타원: 초점 $\mathrm{P, Q}$, 장축 $\overline{\mathrm{DA}} = 180$ → $a = 90$. 쌍곡선: 초점 $\mathrm{P, Q}$, 주축 $60$ → $a' = 30$. 좌표축 잡으면 타원 $x^2/a^2 + y^2/b^2 = 1$, 쌍곡선 $x^2/a'^2 - y^2/b'^2 = 1$. 초점 $(\pm c, 0)$, $c^2 = a^2 - b^2 = a'^2 + b'^2$. $\overline{\mathrm{PR}} = u, \overline{\mathrm{QR}} = v$, 직각삼각형 $\mathrm{PQR}$ 빗변 $\overline{\mathrm{PQ}} = 2c$ → $(2c)^2 = u^2 + v^2$. 점 $\mathrm{R}$ 은 타원·쌍곡선 위 → $u + v = 2a = 180, v - u = 2a' = 60$. $u = 60, v = 120$ → $4c^2 = 3600 + 14400 = 18000$ → $c^2 = 4500$ → $c = 30\sqrt 5$. $\overline{\mathrm{PQ}} = 2c = 60\sqrt 5$. 공원의 세로 길이 $= \overline{\mathrm{AB}}$. 쌍곡선 $x^2/900 - y^2/(c^2 - 900) = 1$ 즉 $x^2/900 - y^2/3600 = 1$. $x = 90$ 대입: $90^2/900 - y^2/3600 = 1$ → $9 - y^2/3600 = 1$ → $y^2 = 28800$ → $y = 120\sqrt 2$. 답: $\boxed{\overline{\mathrm{PQ}} = 60\sqrt 5,\ \overline{\mathrm{AB}} = 120\sqrt 2}$.
+
+**[98 / 의2-2]** $\mathrm{B}$ 지면에서 $\mathrm{P}$ 게양대 꼭대기 바라본 각 $15°$, 꼭대기 높이 $h$. $h^2 = 1800(h_1 + h_2\sqrt 3 + h_3\sqrt 5 + h_4\sqrt{15})$ 일 때 $h_1 + h_2 + h_3 + h_4$.
+
+??? success "풀이"
+    $\tan 15° = \tan(45° - 30°) = \frac{1 - 1/\sqrt 3}{1 + 1/\sqrt 3} = \frac{\sqrt 3 - 1}{\sqrt 3 + 1} = \frac{(\sqrt 3 - 1)^2}{2} = 2 - \sqrt 3$. $\overline{\mathrm{PA}} = 90 - 30\sqrt 5, \overline{\mathrm{AB}} = 120\sqrt 2$. 직각삼각형 $\triangle\mathrm{PAB}$: $\overline{\mathrm{BP}}^2 = (90 - 30\sqrt 5)^2 + (120\sqrt 2)^2 = 30^2(3 - \sqrt 5)^2 + 28800 = 900(9 - 6\sqrt 5 + 5) + 28800 = 900\cdot 14 - 5400\sqrt 5 + 28800 = 12600 - 5400\sqrt 5 + 28800 = 41400 - 5400\sqrt 5 = 1800(23 - 3\sqrt 5)$. $h^2 = \tan^2 15°\cdot\overline{\mathrm{BP}}^2 = (2 - \sqrt 3)^2\cdot 1800(23 - 3\sqrt 5) = (7 - 4\sqrt 3)\cdot 1800(23 - 3\sqrt 5) = 1800\cdot(7\cdot 23 - 7\cdot 3\sqrt 5 - 4\sqrt 3\cdot 23 + 4\sqrt 3\cdot 3\sqrt 5) = 1800\cdot(161 - 21\sqrt 5 - 92\sqrt 3 + 12\sqrt{15})$. $h_1 = 161, h_2 = -92, h_3 = -21, h_4 = 12$. $h_1 + h_2 + h_3 + h_4 = 161 - 92 - 21 + 12 = 60$. 답: $\boxed{60}$.
+
+---
+
