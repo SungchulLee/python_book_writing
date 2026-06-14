@@ -11011,3 +11011,203 @@ $t\in [0, 2\pi]$에서 선분 $\mathrm{AB}$와 원 $C$가 서로 다른 두 점�
     $$\therefore\ \boxed{2 - \sqrt{3} < t < 2 + \sqrt{3}}.$$
 
 ---
+
+## 카드 124 — 서강대 (2023)
+
+출처: 서강대학교 2023학년도 논술(일반)전형 — 자연계열 수학 (문항카드 5, 6, 7, 8).
+
+---
+
+### 논술 자연 1차 1번 — 확률과 통계
+
+**[1 / 문제 1-1]** 상자에 $0$부터 $10$까지의 정수 중 하나를 적은 종이가 여러 장 있다 (각 숫자가 적힌 종이의 개수는 다를 수 있다). 임의로 한 장을 꺼낼 때 적힌 숫자를 확률변수 $X$라 하자. $X$의 확률질량함수가
+
+$$P(X = i) = \dfrac{{}_{11 - i}\mathrm{H}_i\times{}_{11 - i}\mathrm{H}_i}{{}_d\mathrm{H}_{10}}\ (i = 0, 1, \ldots, 10)$$
+
+일 때 자연수 $d$의 값을 구하여라.
+
+??? success "풀이"
+    중복조합 $_n\mathrm{H}_r = {}_{n + r - 1}\mathrm{C}_r$. ${}_{11 - i}\mathrm{H}_i = {}_{10}\mathrm{C}_i$, ${}_d\mathrm{H}_{10} = {}_{d + 9}\mathrm{C}_{10}$. $\sum P(X = i) = 1$이므로
+
+    $$\sum_{i = 0}^{10}({}_{10}\mathrm{C}_i)^2 = {}_{d + 9}\mathrm{C}_{10}.$$
+
+    이항정리 $(1 + x)^{10}(1 + x)^{10} = (1 + x)^{20}$에서 $x^{10}$의 계수는 좌변 $\sum({}_{10}\mathrm{C}_i)^2$, 우변 ${}_{20}\mathrm{C}_{10}$. 따라서 $d + 9 = 20$ ⇒ $d = \boxed{11}$.
+
+**[2 / 문제 1-2]** $P(Y = i) = \dfrac{{}_{21}\mathrm{C}_{2 i + 1}}{b}\, s^{20 - 2 i}(1 - s)^{2 i + 1}$ ($i = 0, 1, \ldots, 10$). $b$를 $s$에 관한 식으로 나타내어라 ($0 < s < 1$).
+
+??? success "풀이"
+    $\sum P(Y = i) = 1$이므로
+
+    $$b = \sum_{i = 0}^{10}{}_{21}\mathrm{C}_{2 i + 1}\,s^{20 - 2 i}(1 - s)^{2 i + 1}.$$
+
+    이항정리 $(a + b)^{21}$에서 $b$의 홀수 차수 항들의 합:
+
+    $$\dfrac{1}{2}[(s + (1 - s))^{21} - (s - (1 - s))^{21}] = \boxed{\dfrac{1 - (2 s - 1)^{21}}{2}}.$$
+
+**[3 / 문제 1-3]** 숫자 $0$이 적힌 종이 $50$장, $1$이 적힌 종이 $50$장 들어있는 상자에서 임의로 한 장 꺼내 확인하고 다시 집어넣는 시행을 $10$회 반복. $10$회 시행 후 $1$이 적힌 종이를 꺼낸 횟수 $i$에 대한 상금 $g(i)$가 다음과 같을 때 상금의 기댓값을 구하여라.
+
+| $i$ | $0$ | $1$ | $2$ | $3$ | $4$ | $5$ | $6$ | $7$ | $8$ | $9$ | $10$ |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| $g(i)$ | $2$ | $1$ | $5$ | $7$ | $17$ | $31$ | $65$ | $127$ | $257$ | $511$ | $1025$ |
+
+??? success "풀이"
+    $X\sim B(10, 1/2)$, $P(X = i) = {}_{10}\mathrm{C}_i/2^{10}$. 표에서 $g(i) = 2^i + (-1)^i$ 확인. 따라서
+
+    $$E[g(X)] = \dfrac{1}{2^{10}}\sum_{i=0}^{10}{}_{10}\mathrm{C}_i(2^i + (-1)^i) = \dfrac{(1 + 2)^{10} + (1 - 1)^{10}}{2^{10}} = \dfrac{3^{10}}{1024} = \boxed{\dfrac{59049}{1024}}.$$
+
+**[4 / 문제 1-4]** 숫자 $0$이 $90$장, $1$이 $10$장 들어있는 상자에서 한 장씩 꺼내고 집어넣는 시행을 $100$회 반복. $1$이 나온 횟수가 $k$번 이상이면 상금. 상금받을 확률 $\ge 23\%$가 되는 자연수 $k$의 최댓값. (표준정규분포표 $P(0\le Z\le z)$ 주어짐.)
+
+??? success "풀이"
+    $X\sim B(100, 1/10)$, 평균 $10$, 분산 $9$. 정규분포 근사 $N(10, 9)$, $Z = (X - 10)/3\sim N(0, 1)$.
+
+    $$P(X\ge k) = P\!\left(Z\ge\dfrac{k - 10}{3}\right)\ge 0.23.$$
+
+    $P(0\le Z\le z)\le 0.27$을 만족하는 최대 $z$: 표에서 $z = 0.7$ ($P = 0.2580$). $z = 0.8$ ($P = 0.2881 > 0.27$). 따라서 $(k - 10)/3\le 0.7$ ⇒ $k\le 12.1$. 자연수 $k$의 최댓값 $\boxed{12}$.
+
+    검증: $P(X\ge 13) = P(Z\ge 1) = 0.1587 < 0.23$ ⇒ $k = 13$은 불가.
+
+---
+
+### 논술 자연 1차 2번 — 매개변수곡선·미분가능·접선·극한
+
+**[5 / 문제 2-1]** 원점 $\mathrm{O}$, $\mathrm{P} = (\cos t, \sin t)$, $\mathrm{Q} = (2\cos(t^2 + t), 2\sin(t^2 + t))$. 세 점이 일직선 위에 있지 않을 때 $S(t)$를 삼각형 $\mathrm{OPQ}$의 넓이로 정의하고 일직선 위에 있을 때 $S(t) = 0$이라 한다. $-\sqrt{2\pi} < t < \sqrt{2\pi}$일 때 $S(t)$를 구하여라.
+
+??? success "풀이"
+    $\angle\mathrm{POQ} = (t^2 + t) - t = t^2$ (mod $2\pi$). $\overline{\mathrm{OP}} = 1$, $\overline{\mathrm{OQ}} = 2$. $0\le t^2 < 2\pi$에서:
+
+    - $0 < t^2 < \pi$: $S(t) = (1/2)\cdot 1\cdot 2\cdot\sin(t^2) = \sin(t^2)$.
+    - $\pi < t^2 < 2\pi$: 각도가 $2\pi - t^2$, $S(t) = \sin(2\pi - t^2) = -\sin(t^2)$.
+    - $t^2 = 0, \pi$: 일직선이므로 $S(t) = 0$.
+
+    $$\therefore\ S(t) = \boxed{|\sin(t^2)|}.$$
+
+**[6 / 문제 2-2]** 위 $S(t)$가 미분가능하지 않은 $t$의 값을 모두 구하여라 ($-\sqrt{2\pi} < t < \sqrt{2\pi}$).
+
+??? success "풀이"
+    $S(t) = |\sin(t^2)|$. $\sin(t^2) = 0$인 점에서만 절댓값 때문에 미분가능성 문제. $-\sqrt{2\pi} < t < \sqrt{2\pi}$ 내에서 $\sin(t^2) = 0$은 $t^2 = 0, \pi$ ⇒ $t = 0, \pm\sqrt{\pi}$.
+
+    **$t = 0$**: $\lim_{h\to 0}|\sin(h^2)|/h = \lim h^2/h\cdot(\sin(h^2)/h^2) = 0$. 미분가능.
+
+    **$t = \sqrt{\pi}$**: $\sin(\pi + 2\sqrt{\pi}h + h^2) = -\sin(2\sqrt{\pi}h + h^2)$. $h\to 0^+$에서 $2\sqrt{\pi}h + h^2\in(0, \pi)$ 작은 양수이므로
+
+    $$\lim_{h\to 0^+}\dfrac{|\sin(2\sqrt{\pi}h + h^2)|}{h} = \lim\dfrac{\sin(2\sqrt{\pi}h + h^2)}{h} = 2\sqrt{\pi}.$$
+
+    $h\to 0^-$에서 $2\sqrt{\pi}h + h^2$ 작은 음수이므로 $|\sin(\cdot)| = -\sin(\cdot)$이고 극한 $= -2\sqrt{\pi}$. 좌·우극한 다름 ⇒ 미분불가능.
+
+    대칭성으로 $t = -\sqrt{\pi}$에서도 미분불가능.
+
+    $$\therefore\ t = \boxed{\pm\sqrt{\pi}}.$$
+
+**[7 / 문제 2-3]** $a > 1$, 곡선 $y = 1/x$ 위 점 $\mathrm{R}(a, 1/a)$. $x$축의 양의 방향과 반직선 $\mathrm{OR}$이 이루는 각이 $\theta$ (라디안). $\mathrm{R}$에서의 접선이 원 $x^2 + y^2 = \sqrt{3}$과 만날 $\theta$의 범위를 구하여라.
+
+??? success "풀이"
+    $\tan\theta = 1/a^2$ ⇒ $\cot\theta = a^2$. $\mathrm{R}$에서 접선: $y - 1/a = -(1/a^2)(x - a)$ ⇔ $x + a^2 y - 2 a = 0$. 원점에서 접선까지 거리 $d = 2 a/\sqrt{1 + a^4}$. 원과 만남 ⇔ $d\le 3^{1/4}$ ⇔ $4 a^2/(1 + a^4)\le\sqrt{3}$ ⇔ $\sqrt{3}\,a^4 - 4 a^2 + \sqrt{3}\ge 0$.
+
+    인수분해: $(\sqrt{3}\,a^2 - 1)(a^2 - \sqrt{3})\ge 0$ ⇒ $a^2\le 1/\sqrt{3}$ 또는 $a^2\ge\sqrt{3}$. $a > 1$이므로 $a^2 > 1 > 1/\sqrt{3}$, 즉 $\cot\theta = a^2\ge\sqrt{3}$.
+
+    $a > 1$이므로 $\tan\theta = 1/a^2 < 1$ ⇒ $0 < \theta < \pi/4$. $\cot\theta\ge\sqrt{3}$ ⇔ $\theta\le\pi/6$.
+
+    $$\therefore\ \boxed{0 < \theta\le\dfrac{\pi}{6}}.$$
+
+**[8 / 문제 2-4]** 위 접선이 원과 서로 다른 두 점 $\mathrm{A}, \mathrm{B}$에서 만날 때 $\overline{\mathrm{AB}} = l(\theta)$. $\displaystyle\lim_{\theta\to 0^+}\dfrac{\{l(\theta)\}^2 - 4\sqrt{3}}{\theta}$의 값을 구하여라.
+
+??? success "풀이"
+    원점에서 접선까지 거리 $\overline{\mathrm{OT}} = 2 a/\sqrt{1 + a^4}$. 피타고라스로 $(l/2)^2 = \sqrt{3} - \overline{\mathrm{OT}}^2 = \sqrt{3} - 4 a^2/(1 + a^4)$. 따라서
+
+    $$l^2 - 4\sqrt{3} = -\dfrac{16 a^2}{1 + a^4}.$$
+
+    $a^2 = \cot\theta$, $1 + a^4 = 1 + \cot^2\theta = \csc^2\theta = 1/\sin^2\theta$. 따라서 $a^2/(1 + a^4) = \cot\theta\cdot\sin^2\theta = \sin\theta\cos\theta$.
+
+    $$\lim_{\theta\to 0^+}\dfrac{l^2 - 4\sqrt{3}}{\theta} = \lim\dfrac{-16\sin\theta\cos\theta}{\theta} = -16\cdot 1\cdot 1 = \boxed{-16}.$$
+
+---
+
+### 논술 자연 2차 1번 — 직선·원·부채꼴·수열
+
+**[9 / 문제 1-1]** 좌표평면에 $\mathrm{O}(0, 0)$, $\mathrm{A}, \mathrm{B}$. 직선 $\mathrm{OA}$, 직선 $\mathrm{AB}$가 $x$축 양의 방향과 이루는 각이 각각 $\alpha = \pi/12$, $\beta = \pi/4$. $\overline{\mathrm{OA}} = \overline{\mathrm{AB}} = 1$. 직선 $\mathrm{OB}$에 수직인 직선의 기울기를 구하여라.
+
+??? success "풀이"
+    이등변삼각형 $\mathrm{OAB}$ ($\overline{\mathrm{OA}} = \overline{\mathrm{AB}}$). 외각 정리: 직선 $\mathrm{AB}$가 $\mathrm{OA}$ 연장선과 이루는 외각 $= \beta - \alpha = \pi/4 - \pi/12 = \pi/6$. 이등변삼각형의 두 밑각 = $(\beta - \alpha)/2 = \pi/12$.
+
+    직선 $\mathrm{OB}$가 $x$축과 이루는 각 = $\alpha + \pi/12 = \pi/6$. 기울기 $= \tan(\pi/6) = 1/\sqrt{3}$. 수직 직선 기울기 $= -\sqrt{3}$.
+
+    $$\therefore\ \boxed{-\sqrt{3}}.$$
+
+**[10 / 문제 1-2]** 점 $(1, 0)$을 지나고 $x$축의 양의 방향과 각 $\beta = \pi/3$인 직선 $s$. 중심 $\mathrm{C}(a, b)$인 원이 $x$축과 $s$에 동시에 접 ($a < 1$, $b > 0$). 모든 원의 중심을 지나는 직선의 방정식과, 이 직선·$x$축·$s$·$y = (5/12)x$로 이루어진 삼각형의 내접원 반지름을 구하여라.
+
+??? success "풀이"
+    문제 [9]의 결과로 두 점 $\mathrm{C}, (1, 0)$을 지나는 직선의 기울기 $= -\cot(\pi/6) = -\sqrt{3}$. 직선: $y = -\sqrt{3}(x - 1)$.
+
+    내접원 중심이 직선 $y = -\sqrt{3}(x - 1)$ 위. 중심 $= (1 - b/\sqrt{3}, b)$. 직선 $5 x - 12 y = 0$과의 거리 $= |5(1 - b/\sqrt{3}) - 12 b|/13$, 반지름 $= b$.
+
+    $13 b = 5(1 - b/\sqrt{3}) - 12 b$ (부호 조건으로 결정): $25 b + 5 b/\sqrt{3} = 5$ ⇒ $b(25\sqrt{3} + 5) = 5\sqrt{3}$ ⇒ $b = \sqrt{3}/(5\sqrt{3} + 1) = (15 - \sqrt{3})/74$.
+
+    $$\therefore\ r = \boxed{\dfrac{15 - \sqrt{3}}{74}}.$$
+
+**[11 / 문제 1-3]** $\beta = \pi/3$, $\mathrm{P} = (n/100, 0)$. 중심각이 $\pi$보다 작은 부채꼴 $\mathrm{CPQ}$에서 호 $\mathrm{PQ}$의 길이 $l_n$과 $\sum_{n = 1}^{99} l_n$을 구하여라.
+
+??? success "풀이"
+    카이트 $\mathrm{APCQ}$ ($\mathrm{A} = (1, 0)$, $\mathrm{P}, \mathrm{Q}$는 접점, $\mathrm{C}$는 중심)에서 $\mathrm{P}, \mathrm{Q}$ 직각, $\angle\mathrm{PAQ} + \angle\mathrm{PCQ} = \pi$. $\mathrm{C}$가 있는 사분면의 $\mathrm{A}$에서 내부 각 $= \pi - \beta = 2\pi/3$이므로 $\angle\mathrm{PCQ} = \pi - 2\pi/3 = \pi/3 = \beta$.
+
+    직각삼각형 $\mathrm{CPA}$: $r\tan(\beta/2) = \overline{\mathrm{AP}} = 1 - n/100$ ⇒ $r = \sqrt{3}(1 - n/100)$. 호 $\mathrm{PQ}$ 길이
+
+    $$l_n = r\cdot(\pi/3) = \dfrac{\sqrt{3}\pi}{3}(1 - n/100).$$
+
+    $$\sum_{n = 1}^{99} l_n = \dfrac{\sqrt{3}\pi}{3}\!\left(99 - \dfrac{99\cdot 100/2}{100}\right) = \dfrac{\sqrt{3}\pi}{3}\cdot\dfrac{99}{2} = \boxed{\dfrac{33\sqrt{3}\pi}{2}}.$$
+
+**[12 / 문제 1-4]** $\mathrm{P} = (1/4, 0)$. 부채꼴 $\mathrm{CPQ}$ 넓이 $S(\beta)$. $\displaystyle\lim_{\beta\to 0^+} S(\beta)\tan\beta$의 값을 구하여라.
+
+??? success "풀이"
+    $\overline{\mathrm{AP}} = 3/4 = d$. $r = d/\tan(\beta/2)$. $\angle\mathrm{PCQ} = \beta$. $S(\beta) = (1/2)r^2\beta = d^2\beta/(2\tan^2(\beta/2))$.
+
+    $\beta\to 0^+$: $\tan\beta\approx\beta$, $\tan(\beta/2)\approx\beta/2$, $\tan^2(\beta/2)\approx\beta^2/4$.
+
+    $$S(\beta)\tan\beta = \dfrac{d^2\beta\tan\beta}{2\tan^2(\beta/2)}\to\dfrac{d^2\cdot\beta\cdot\beta}{2\cdot\beta^2/4} = 2 d^2 = 2\cdot\dfrac{9}{16} = \boxed{\dfrac{9}{8}}.$$
+
+---
+
+### 논술 자연 2차 2번 — 함수의 극한·접선·곡선 넓이
+
+**[13 / 문제 2-1]** $d(x) = $ 두 점 $(0, 1)$, $(x, e^x)$ 사이 거리. $\displaystyle\lim_{x\to 0}\dfrac{d(x)}{x}$의 수렴·발산을 조사하고, 수렴하면 극한값을 구하여라.
+
+??? success "풀이"
+    $d(x) = \sqrt{x^2 + (e^x - 1)^2}$. $\lim_{x\to 0}(e^x - 1)/x = 1$.
+
+    **$x\to 0^+$**: $d(x)/x = \sqrt{1 + ((e^x - 1)/x)^2}\to\sqrt{2}$.
+
+    **$x\to 0^-$**: $\sqrt{x^2}/x = -1$이므로 $d(x)/x = -\sqrt{1 + ((e^x - 1)/x)^2}\to -\sqrt{2}$.
+
+    좌·우극한 다름 ⇒ $\boxed{\text{극한값이 존재하지 않는다.}}$
+
+**[14 / 문제 2-2]** $0 < p < 1$, $c > 0$. 곡선 $y = x^p$ ($x\ge 0$) 위 점 $(c, c^p)$에서의 접선 $y = l(x)$. $x\ge 0$일 때 $l(x)\ge x^p$임을 보여라.
+
+??? success "풀이"
+    $l(x) = p c^{p - 1}(x - c) + c^p = p c^{p - 1}x + (1 - p) c^p$. $f(x) = l(x) - x^p$ 두면 $f(c) = 0$, $f'(x) = p c^{p - 1} - p x^{p - 1} = p(c^{p - 1} - x^{p - 1})$.
+
+    $0 < p < 1$이므로 $x^{p - 1}$ 감소 ($p - 1 < 0$): $x < c$ ⇒ $x^{p - 1} > c^{p - 1}$ ⇒ $f'(x) < 0$; $x > c$ ⇒ $f'(x) > 0$. 따라서 $f$는 $x = c$에서 최솟값 $0$을 가지므로 $x\ge 0$에서 $f(x)\ge 0$, 즉 $l(x)\ge x^p$. (그래프: $y = x^p$ 위로 볼록한 곡선, 접선은 항상 위에 있음.) $\boxed{\square}$
+
+**[15 / 문제 2-3]** 두 함수 $y = x^p, y = l(x)$와 두 직선 $x = 0, x = 1$로 둘러싸인 넓이가 최소가 되는 $c > 0$의 값을 구하여라.
+
+??? success "풀이"
+    넓이
+
+    $$h(c) = \int_0^1(l(x) - x^p)\,dx = \dfrac{p}{2}c^{p - 1} + (1 - p)c^p - \dfrac{1}{p + 1}.$$
+
+    $h'(c) = (p(p - 1)/2)c^{p - 2} + p(1 - p)c^{p - 1} = p(1 - p)c^{p - 2}(c - 1/2)$.
+
+    $p(1 - p) > 0$, $c^{p - 2} > 0$. $h'(c) < 0$ for $0 < c < 1/2$, $h'(c) > 0$ for $c > 1/2$. 따라서 $c = \boxed{1/2}$에서 최소.
+
+**[16 / 문제 2-4]** $c = 1/e$. $S(p) = $ 두 함수와 $x = 0$으로 둘러싸인 넓이, $R(p) = $ 두 함수와 $x = 1$로 둘러싸인 넓이. $\displaystyle\lim_{p\to 0^+}\dfrac{S(p) + R(p)}{S(p)}$의 값을 구하여라.
+
+??? success "풀이"
+    $l(x) > x^p$ on $[0, 1/e)\cup(1/e, 1]$. $S(p) = \int_0^{1/e}(l(x) - x^p)\,dx$:
+
+    $$S(p) = \dfrac{p(1 - p)}{2(p + 1)}\!\left(\dfrac{1}{e}\right)^{p + 1}.$$
+
+    $S(p) + R(p) = h(1/e) = (p/2)(1/e)^{p - 1} + (1 - p)(1/e)^p - 1/(p + 1) = ((e p/2) - p + 1)(1/e)^p - 1/(p + 1)$.
+
+    공통 분모로 비를 정리하면 ($\lim_{p\to 0}(e^p - 1)/p = 1$ 이용):
+
+    $$\lim_{p\to 0^+}\dfrac{S(p) + R(p)}{S(p)} = \boxed{e^2 - 2 e}.$$
+
+---
