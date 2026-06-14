@@ -5461,4 +5461,107 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 80 — 연세대 미래캠퍼스 (2021학년도)
+
+> 출처: 2021학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과보고서, 문항카드 3·4·5·6·7 (일반논술 자연계 9 + 의예 6) + 문항카드 13 (학생부종합 SW창의인재 면접 수학 2). 총 17 문항.
+
+### 자연계 문제 1 — 역함수·정적분과 급수의 합·치환적분
+
+**[80 / 자1-1]** 함수 $f(x) = \begin{cases} 2x^2 & (x < -1) \\ -x + a & (-1 \le x < 1) \\ -\dfrac{x}{3} + b & (x \ge 1) \end{cases}$ 의 역함수 $h$ 가 존재할 때, $h(h(8))$ 의 값을 $c$ 라 하자. $a + b + c$ 를 구하시오.
+
+??? success "풀이"
+    역함수 존재 ⇔ $f$ 가 일대일대응. $x = -1$ 에서 연속·일대일: 좌극한 $2(-1)^2 = 2$ 와 중간식 값 $-(-1) + a = 1 + a$ 일치 → $a = 1$. $x = 1$ 에서: 중간식 $-1 + 1 = 0$ 과 우식 $-1/3 + b$ 일치 → $b = 1/3$. 세 구간의 치역 $(2, \infty)$, $[0, 2]$, $(-\infty, 0]$ 으로 서로소 → 일대일. $h(8) = t$ 라면 $f(t) = 8$, $8 > 2$ 이므로 $t < -1$ 구간: $2 t^2 = 8 \Rightarrow t = -2$. $h(-2) = c$ 이면 $f(c) = -2 < 0$ → $c \ge 1$ 구간: $-c/3 + 1/3 = -2 \Rightarrow c = 7$. $a + b + c = 1 + 1/3 + 7 = 25/3$. 답: $\boxed{\dfrac{25}{3}}$.
+
+**[80 / 자1-2]** 위 $f$ 에 대하여 $\displaystyle \lim_{n \to \infty}\sum_{k=1}^{n}f\!\left(-2 + \dfrac{4k}{n}\right)\dfrac{1}{n}$.
+
+??? success "풀이"
+    리만 합 → $(1/4)\int_{-2}^{2}f(x)\, dx$. 세 구간 적분: $\int_{-2}^{-1}2 x^2 dx = (2/3)(-1 + 8) = 14/3$. $\int_{-1}^{1}(-x + 1)dx = 2$. $\int_{1}^{2}(-x/3 + 1/3)dx = [-x^2/6 + x/3]_1^2 = (-4/6 + 2/3) - (-1/6 + 1/3) = -1/6$. 합 $14/3 + 2 - 1/6 = 13/2$. $(1/4)\cdot 13/2 = 13/8$. 답: $\boxed{\dfrac{13}{8}}$.
+
+**[80 / 자1-3]** $g(x) = \displaystyle\int_0^x \dfrac{1}{1 + t^2}\, dt$ ($= \arctan x$). $\displaystyle \int_0^{\sqrt{3}}\dfrac{\sin^3(g(x))}{1 + x^2}\, dx$.
+
+??? success "풀이"
+    $g'(x) = 1/(1 + x^2)$ → 적분 = $\int_0^{\sqrt 3}g'(x)\sin^3(g(x))dx$. $u = g(x)$ 치환, $x = 0 \to u = 0$, $x = \sqrt 3 \to u = \pi/3$. $= \int_0^{\pi/3}\sin^3 u\, du = \int_0^{\pi/3}(1 - \cos^2 u)\sin u\, du$. $\cos u = t$, $-\sin u\, du = dt$, $u = 0 \to t = 1$, $u = \pi/3 \to t = 1/2$. $= \int_{1/2}^{1}(1 - t^2)dt = [t - t^3/3]_{1/2}^{1} = (2/3) - (1/2 - 1/24) = 2/3 - 11/24 = 5/24$. 답: $\boxed{\dfrac{5}{24}}$.
+
+### 자연계 문제 2 — 원의 자취·지수함수 그래프·tan 극한
+
+**[80 / 자2-1]** $r > 1$ 에 대해 원 $C(r): (x - a_r)^2 + y^2 = r^2$ 가 곡선 $S: y^2 = 2 x$ 와 서로 다른 두 점에서 접한다. $a_r$ 을 $r$ 로 표현.
+
+??? success "풀이"
+    $y^2 = 2 x$ 를 원에 대입: $(x - a_r)^2 + 2 x = r^2$. 같은 $x$ 에서 $y = \pm\sqrt{2 x}$ 두 점이 동시에 접하려면 $x$ 에 대한 이차방정식 $x^2 - 2(a_r - 1)x + (a_r^2 - r^2) = 0$ 의 판별식 $= 0$: $D/4 = (a_r - 1)^2 - (a_r^2 - r^2) = -2 a_r + 1 + r^2 = 0 \Rightarrow a_r = (r^2 + 1)/2$. 답: $\boxed{a_r = \dfrac{r^2 + 1}{2}}$.
+
+**[80 / 자2-2]** 1 보다 큰 모든 실수 $r$ 에 대해 방정식 $\left(a_{2 r} - \dfrac{1}{2}\right)e^{-r} + k = 0$ 이 서로 다른 두 실근을 갖도록 하는 $k$ 의 범위. ($\displaystyle \lim_{x \to \infty}(2 x^2/e^x) = 0$ 사용)
+
+??? success "풀이"
+    $a_{2 r} = (4 r^2 + 1)/2$ → $a_{2 r} - 1/2 = 2 r^2$. 방정식 $\Leftrightarrow f(r) := 2 r^2 e^{-r} = -k$. $f'(r) = 2 r(2 - r)e^{-r}$. $r > 1$ 에서 $r = 2$ 가 극대 (이전 증가, 이후 감소). $f(1) = 2/e$, $f(2) = 8/e^2$, $r \to \infty$ 에서 $f \to 0$. $r > 1$ 위에서 곡선이 $2/e$ 부터 시작해 $8/e^2$ 까지 증가 후 $0$ 으로 감소 ($2/e < 8/e^2$ 이므로 봉우리 형태). 수평선 $y = -k$ 가 두 점에서 만나려면 $2/e < -k < 8/e^2$ → $-8/e^2 < k < -2/e$. 답: $\boxed{-\dfrac{8}{e^2} < k < -\dfrac{2}{e}}$.
+
+**[80 / 자2-3]** 두 원 $C(r), C(r + 1)$ 의 교점을 $\mathrm{P}_r$ ($y$ 좌표 $> 0$), $\theta_r = \angle \mathrm{P}_r \mathrm{A}_{r + 1}\mathrm{O}$ ($\mathrm{A}_{r + 1} = (a_{r + 1}, 0)$). $\displaystyle \lim_{r \to \infty}\tan(\theta_r)$.
+
+??? success "풀이"
+    두 원 방정식 빼기: $(x - a_{r + 1})^2 - (x - a_r)^2 = (r + 1)^2 - r^2 = 2 r + 1$. $a_{r + 1} - a_r = (2 r + 1)/2$ 이용해 좌변 인수분해 정리 → $2 x = a_r + a_{r + 1} - 2 = (2 r^2 + 2 r - 1)/2$, $x = (2 r^2 + 2 r - 1)/4$. $\mathrm{P}_r$ 의 좌표: $s = y_{P_r} = \sqrt{r^2 - (x - a_r)^2}$, $t = a_{r + 1} - x$. $\tan\theta_r = s/t$. 둘 다 $r$ 의 1차식 또는 1차 비율: $t = (2 r + 5)/4$, $s = \sqrt{12 r^2 + 12 r - 9}/4$. $\displaystyle \lim_{r \to \infty}\dfrac{s}{t} = \lim \dfrac{\sqrt{12 r^2 + 12 r - 9}}{2 r + 5} = \dfrac{\sqrt{12}}{2} = \sqrt 3$. 답: $\boxed{\sqrt 3}$.
+
+### 자연계 문제 3 — 이산확률변수·정적분 넓이·부분적분 부피
+
+**[80 / 자3-1]** 주사위 2 개를 던져 큰 눈을 확률변수 $X$ 라 하고 $Y = 36 X - 150$. 곡선 $y = 49 - (x - 7)^2$ 과 직선 $x = k, x = 14 - k$ 가 만드는 사각형 ($k = X$) 의 넓이를 $S$. $\mathrm{E}(Y)$ 와 $\mathrm{P}(S \ge 400) = q/p$ ($p, q$ 서로소) 에 대한 $p + q$.
+
+??? success "풀이"
+    $X \in \{2, 3, 4, 5, 6\}$, $\mathrm{P}(X = k) = (2 k - 2)/30$ → $(2, 4, 6, 8, 10)/30$. $\mathrm{E}(X) = (4 + 12 + 24 + 40 + 60)/30 = 140/30 = 14/3$. $\mathrm{E}(Y) = 36\cdot 14/3 - 150 = 168 - 150 = 18$. 사다리꼴 넓이 $S(k) = (1/2)(14 + (14 - 2 k))(49 - (k - 7)^2)$ → $S(2) = 288$, $S(3) = 363$, $S(4) = 400$, $S(5) = 405$, $S(6) = 384$. $S \ge 400$ 은 $X \in \{4, 5\}$ → 확률 $= 6/30 + 8/30 = 14/30 = 7/15$. $p = 15, q = 7$, $p + q = 22$. 답: $\boxed{\mathrm{E}(Y) = 18,\ \ p + q = 22}$.
+
+**[80 / 자3-2]** 곡선 $y = 49 - (x - 7)^2$ 과 $x$ 축으로 둘러싸인 부분에서 위 사각형을 뺀 넓이 $T = T(k)$. $T$ 를 최소로 하는 $k$ 와 그 때의 $3 T$.
+
+??? success "풀이"
+    포물선 면적 $= \int_0^{14}(49 - (x - 7)^2)dx = 2\int_0^{7}(49 - u^2)du = 2(343 - 343/3) = 1372/3$. $T(k) = 1372/3 - S(k)$. $S$ 가 최대인 $k = 5$ 일 때 $T$ 최소. $3 T_{\min} = 3(1372/3 - 405) = 1372 - 1215 = 157$. 답: $\boxed{k = 5,\ \ 3 T = 157}$.
+
+**[80 / 자3-3]** 두 주사위 결과가 $\{2, 6\}$ 일 때 $X = 6$. 사각형 $\mathrm{ABCD}$ 를 밑면, 점 $\mathrm{P}(x, 0), \mathrm{Q}(x, y)$ 통과·$x$ 축에 수직인 평면이 직사각형 (높이 $e^{-x}$, 밑면 $y$) 단면을 갖는 입체 $\mathrm{R}$ 의 부피 $= a + b e^{-6} + c e^{-8} + d e^{-14}$. $a, b, c, d$.
+
+??? success "풀이"
+    $k = 6$: $x$ 범위에 따라 단면 직사각형 높이가 직선의 방정식: $[0, 6]$ 에서 $y = 8 x$ (AD 위의 선), $[6, 8]$ 에서 $y = 48$ (DC), $[8, 14]$ 에서 $y = -8 x + 112$ (CB). 부피 $V = \int_0^6(8 x)e^{-x}dx + \int_6^8 48 e^{-x}dx + \int_8^{14}(-8 x + 112)e^{-x}dx$. 부분적분 ($\int x e^{-x}dx = -x e^{-x} - e^{-x}$) 으로 각 항 계산 후 정리: $V = 8 - 8 e^{-6} - 8 e^{-8} + 8 e^{-14}$. 답: $\boxed{a = 8,\ b = -8,\ c = -8,\ d = 8}$.
+
+### 의예과 문제 1 — 감염병 SIR 모형: 부등식·변수분리·점화식 확률
+
+**[80 / 의1-1]** SIR 형 모형 $f'(t) = -(a/N)g(t)f(t),\ g'(t) = (a/N)g(t)f(t) - b\, g(t),\ h'(t) = b\, g(t)$. $a = 0.5, b = 0.05, N = 100, f > 0, g > 0$. 감염자 $g(t)$ 가 감소할 ($g'(t) < 0$) 때 감염 가능한 $f(t) = A$ 의 범위.
+
+??? success "풀이"
+    $g'(t) = g(t)\,((a/N)f(t) - b)$. $g > 0$ 이므로 $g' < 0 \Leftrightarrow (a/N)f - b < 0 \Leftrightarrow f < b N/a = 0.05\cdot 100/0.5 = 10$. 답: $\boxed{A < 10}$.
+
+**[80 / 의1-2]** $a = 0.5, b = 0.1, N = 100, f(0) = 99, g(0) = 1, h(0) = 0$. 어떤 $t^*$ 에서 $h(t^*) = 20$ 일 때 $f(t^*)$.
+
+??? success "풀이"
+    $f'/h' = (-(a/N)g f)/(b g) = -a f/(b N)$ → $f'(t)/f(t) = -(a/(b N)) h'(t)$. 양변 적분: $\ln f = -(a/(b N))h + C$, 즉 $f = e^C e^{-(a/(b N))h(t)}$. $t = 0$: $f(0) = 99 = e^C$ ($h(0) = 0$). $a/(b N) = 0.5/(0.1\cdot 100) = 1/20$. $f(t^*) = 99 e^{-h(t^*)/20} = 99 e^{-1} = 99/e$. 답: $\boxed{\dfrac{99}{e}}$.
+
+**[80 / 의1-3]** 확률질량함수 $\mathrm{P}(X \ge k + 1) = \dfrac{k}{k + 2}\mathrm{P}(X \ge k)$ ($k = 1, \dots, 99$). $X$ 범위 $\{1, \dots, 100\}$. (1) $\dfrac{\mathrm{P}(1 \le X \le 3)}{\mathrm{P}(6 \le X \le 19)}$. (2) $\mathrm{P}(X \le k) > 49/50$ 이 되는 최소 $k$.
+
+??? success "풀이"
+    $P_k := \mathrm{P}(X \ge k)$ 라 하면 $P_{k + 1}/P_k = k/(k + 2)$, $P_1 = 1$. 점화식 풀면 $P_k = \dfrac{(k - 1)!\cdot 2}{(k + 1)!/1!} = \dfrac{2}{k(k + 1)}$ (예: $P_2 = 1/3, P_3 = 2/12 = 1/6, P_4 = 1/10$, …). 즉 $P_k = 2/(k(k + 1))$. (1) $\mathrm{P}(1 \le X \le 3) = 1 - P_4 = 1 - 1/10 = 9/10$. $\mathrm{P}(6 \le X \le 19) = P_6 - P_{20} = 2/42 - 2/420 = 20/420 - 2/420 = 18/420 = 3/70$. 비율 $= (9/10)/(3/70) = 21$. (2) $\mathrm{P}(X \le k) = 1 - P_{k + 1} = 1 - 2/((k + 1)(k + 2)) > 49/50 \Leftrightarrow (k + 1)(k + 2) > 100$. $k = 9$ 에서 $10\cdot 11 = 110 > 100$ ✓, $k = 8$ 에서 $9\cdot 10 = 90 < 100$ ✗. 답: $\boxed{\text{비율} = 21,\ \ k_{\min} = 9}$.
+
+### 의예과 문제 2 — 사인법칙·매개변수 속도·삼각함수 덧셈정리·기댓값
+
+**[80 / 의2-1]** $\overline{\mathrm{AB}} = \ell = 6$, $\angle \mathrm{BAC} = \alpha$, $\angle \mathrm{ABC} = \beta$, $\alpha + \beta = 5\pi/12$, $\alpha > \pi/12, \beta > \pi/6$ 일 때 점 $\mathrm{C}$ 의 자취의 길이.
+
+??? success "풀이"
+    $\alpha + \beta$ 고정 → $\angle \mathrm{ACB} = \pi - 5\pi/12 = 7\pi/12$ 일정. 원주각 일정 → $\mathrm{C}$ 는 $\triangle \mathrm{ABC}$ 의 외접원 호 위. 사인법칙: $2 R = \ell/\sin(7\pi/12) = 6/\sin(5\pi/12)$. $\sin(5\pi/12) = \sin(\pi/6 + \pi/4) = (1/2)(\sqrt 2/2) + (\sqrt 3/2)(\sqrt 2/2) = (\sqrt 2 + \sqrt 6)/4$. $2 R = 24/(\sqrt 2 + \sqrt 6) = 6(\sqrt 6 - \sqrt 2)$ (유리화). $R = 3(\sqrt 6 - \sqrt 2)$. 호의 중심각 (자취 양 끝점이 $\alpha = \pi/12, \beta = \pi/6$ 경계일 때 두 위치 $\mathrm{C}_1, \mathrm{C}_2$ 사이): 호 $\mathrm{C}_1\mathrm{C}_2$ 의 원주각 = $\angle \mathrm{C}_1\mathrm{BC}_2 = \pi/6$ → 중심각 $\pi/3$. 자취 길이 $L = R\cdot \pi/3 = 3(\sqrt 6 - \sqrt 2)\cdot \pi/3 = \pi(\sqrt 6 - \sqrt 2)$. 답: $\boxed{L = \pi(\sqrt 6 - \sqrt 2)}$.
+
+**[80 / 의2-2]** 좌표계 원점을 $\overline{\mathrm{AB}}$ 중점에 두고 $\mathrm{A} = (-3, 0), \mathrm{B} = (3, 0)$. $\alpha = \pi/12 + 3 t,\ \beta = \pi/3 - 3 t$ ($0 < t < \pi/9$). $t = \pi/36$ 일 때 $\mathrm{C}$ 의 위치 $(c_x, c_y)$ 와 속도 $(v_x, v_y)$.
+
+??? success "풀이"
+    $t = \pi/36$: $\alpha = \pi/6$, $\beta = \pi/4$. $\tan\alpha = c_y/(3 + c_x), \tan\beta = c_y/(3 - c_x)$. 즉 $c_y = (3 + c_x)/\sqrt 3 = (3 - c_x)$ → $3 + c_x = \sqrt 3(3 - c_x) \Rightarrow c_x(1 + \sqrt 3) = 3\sqrt 3 - 3 = 3(\sqrt 3 - 1)$ → $c_x = 3(\sqrt 3 - 1)/(1 + \sqrt 3) = 3(\sqrt 3 - 1)^2/2 = 3(4 - 2\sqrt 3)/2 = 6 - 3\sqrt 3$. $c_y = 3 - c_x = 3 - (6 - 3\sqrt 3) = 3\sqrt 3 - 3 = 3(\sqrt 3 - 1)$. 속도: $\tan(\pi/12 + 3 t) = c_y/(3 + c_x)$ 양변 $t$ 미분, $\tan(\pi/3 - 3 t) = c_y/(3 - c_x)$ 도 미분. $3\sec^2\alpha = (v_y(3 + c_x) - v_x c_y)/(3 + c_x)^2$, $-3\sec^2\beta = (v_y(3 - c_x) + v_x c_y)/(3 - c_x)^2$. $\alpha = \pi/6, \beta = \pi/4$ 대입 ($\sec^2(\pi/6) = 4/3, \sec^2(\pi/4) = 2$), $c_x, c_y$ 대입 후 연립 → $v_x = -18, v_y = 18(2 - \sqrt 3)$. 답: $\boxed{(c_x, c_y) = (6 - 3\sqrt 3,\ 3\sqrt 3 - 3),\ (v_x, v_y) = (-18,\ 18(2 - \sqrt 3))}$.
+
+**[80 / 의2-3]** 같은 좌표계, $\ell = 6$, $\beta = 5\pi/12 - \alpha$. 확률변수 $X = \alpha \in \{\pi/6, \pi/4, \pi/3\}$, $\mathrm{P}(X = \alpha) = \{1/6, 1/2, 1/3\}$. $\mathrm{E}(c_x), \mathrm{E}(c_y)$.
+
+??? success "풀이"
+    $\alpha = \pi/12 + \pi/12 = \pi/6$ 에 대응하는 $\beta = \pi/4$, $\alpha = \pi/4 \to \beta = \pi/6$, $\alpha = \pi/3 \to \beta = \pi/12$. $\tan(\pi/12)$ 는 $\tan(\pi/6) = 2\tan(\pi/12)/(1 - \tan^2(\pi/12))$ → $\tan^2(\pi/12) + 2\sqrt 3\tan(\pi/12) - 1 = 0$ → $\tan(\pi/12) = 2 - \sqrt 3$. $c_x = -3(\tan\alpha - \tan\beta)/(\tan\alpha + \tan\beta)$, $c_y = 6\tan\alpha\tan\beta/(\tan\alpha + \tan\beta)$ ($\tan\alpha\cdot(3 + c_x)\cdot ... $ 연립 결과). 표 작성: $\alpha = \pi/6$ 일 때 $(c_x, c_y) = (3(2 - \sqrt 3),\ 3(-1 + \sqrt 3))$; $\alpha = \pi/4$ 에서 $(-3(2 - \sqrt 3),\ 3(-1 + \sqrt 3))$; $\alpha = \pi/3$ 에서 $(3(1 - \sqrt 3),\ 3(-3 + 2\sqrt 3))$. 기댓값: $\mathrm{E}(c_x) = (1/6)\cdot 3(2 - \sqrt 3) + (1/2)\cdot (-3)(2 - \sqrt 3) + (1/3)\cdot 3(1 - \sqrt 3) = -1$. $\mathrm{E}(c_y) = (1/6)\cdot 3(\sqrt 3 - 1) + (1/2)\cdot 3(\sqrt 3 - 1) + (1/3)\cdot 3(2\sqrt 3 - 3) = -5 + 4\sqrt 3$. 답: $\boxed{\mathrm{E}(c_x) = -1,\ \ \mathrm{E}(c_y) = -5 + 4\sqrt 3}$.
+
+### 면접 (SW창의인재) — 정삼각형 내접 직사각형: 미분·등비수열의 합
+
+**[80 / 면2-1]** 한 변의 길이 $4$ 인 정삼각형 $\mathrm{ABC}$. 점 $\mathrm{E, F} \in \overline{\mathrm{BC}}$, $\mathrm{D} \in \overline{\mathrm{AB}}$, $\mathrm{G} \in \overline{\mathrm{AC}}$ 인 직사각형 $\mathrm{DEFG}$ 의 넓이 최댓값.
+
+??? success "풀이"
+    $\overline{\mathrm{BC}}$ 의 중점을 원점, $\mathrm{B} = (-2, 0), \mathrm{C} = (2, 0), \mathrm{A} = (0, 2\sqrt 3)$. 직선 $\mathrm{AC}: y = -\sqrt 3 x + 2\sqrt 3$. $\mathrm{G} = (x, y)$ ($0 < x < 2$) 이면 $y = -\sqrt 3 x + 2\sqrt 3$, $\overline{\mathrm{DG}} = 2 x$, 높이 $= y$. 넓이 $A(x) = 2 x(-\sqrt 3 x + 2\sqrt 3) = -2\sqrt 3 x^2 + 4\sqrt 3 x$. $A'(x) = -4\sqrt 3 x + 4\sqrt 3 = 0 \Rightarrow x = 1, y = \sqrt 3$. $A(1) = 2\sqrt 3$. 답: $\boxed{2\sqrt 3}$.
+
+**[80 / 면2-2]** $\mathrm{R}_1$ 을 위 최대 직사각형. 정삼각형 $\mathrm{ADG}$ 내부에 같은 방법으로 $\mathrm{R}_2$, 다시 그 위 작은 정삼각형에서 $\mathrm{R}_3, \dots$ 라 할 때 $\mathrm{R}_1 + \mathrm{R}_2 + \cdots + \mathrm{R}_{10}$ 의 넓이의 합.
+
+??? success "풀이"
+    $\mathrm{R}_1$ 위 작은 정삼각형 $\mathrm{ADG}$ 한 변 $\overline{\mathrm{AD}} = \sqrt{1 + (2\sqrt 3 - \sqrt 3)^2} = \sqrt{1 + 3} = 2$ → 원래 변 $4$ 의 $1/2$. 닮음비 $1/2$ → 넓이비 $1/4$. $\mathrm{R}_n$ 의 넓이는 첫째항 $2\sqrt 3$, 공비 $1/4$ 인 등비수열. $S_{10} = 2\sqrt 3\cdot \dfrac{1 - (1/4)^{10}}{1 - 1/4} = \dfrac{8\sqrt 3}{3}\!\left(1 - \dfrac{1}{4^{10}}\right)$. 답: $\boxed{S_{10} = \dfrac{8\sqrt 3}{3}\!\left(1 - \dfrac{1}{4^{10}}\right)}$.
+
+---
+
 
