@@ -5740,4 +5740,91 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 83 — 연세대 미래캠퍼스 (2024학년도)
+
+> 출처: 2024학년도 연세대학교 미래캠퍼스 선행학습 영향평가 자체평가 보고서, 문항카드 3·4·5 (논술 창의인재 자연계 7) + 6·7 (논술 창의인재 의예 4). 총 11 문항. 2024학년도부터 SW창의인재 면접 카드가 인성·가치관 면접으로 대체되어 수학 면접 문항은 없음.
+
+### 자연계 문제 1 — 무리함수·정적분 부피
+
+**[83 / 자1-1]** 점 $\mathrm{A}(p, 0)$ ($p > 0$) 에서 $x$ 축에 수직인 직선이 $y = 2\sqrt{3 x}$ 와 만나는 점을 $\mathrm{D}$, 선분 $\overline{\mathrm{AD}}$ 를 한 변으로 하는 정사각형 $\mathrm{ABCD}$ 를 만들면 점 $\mathrm{C}$ 가 $y = 2\sqrt x$ 위에 있다. $p$ 의 값.
+
+??? success "풀이"
+    정사각형 한 변 길이 $= q$ 라 하면 $\mathrm{A}(p, 0), \mathrm{B}(p + q, 0), \mathrm{C}(p + q, q), \mathrm{D}(p, q)$. $\mathrm{D}$ 가 $y = 2\sqrt{3 x}$ 위 → $q = 2\sqrt{3 p}$, 즉 $q^2 = 12 p$. $\mathrm{C}$ 가 $y = 2\sqrt x$ 위 → $q = 2\sqrt{p + q}$, 즉 $q^2 = 4(p + q)$. 두 식 빼면 $12 p - 4(p + q) = 0 \Rightarrow 8 p = 4 q \Rightarrow p = q/2$. 첫 식 대입: $q^2 = 6 q \Rightarrow q = 6$, $p = 3$. 답: $\boxed{p = 3}$.
+
+**[83 / 자1-2]** 도형 $\mathrm{CDE}$ ($\mathrm{E}$ 는 사각형 안 $y = 2\sqrt x$ 위 점) 를 밑면으로 하고, $\overline{\mathrm{CD}}$ 에 수직인 단면이 정삼각형인 입체도형의 부피가 $m + n\sqrt 3$ 일 때 $m + n$ ($m, n$ 유리수).
+
+??? success "풀이"
+    위에서 $p = 3, q = 6, p + q = 9$. $[3, 9]$ 의 임의 점 $x$ 에서 단면 정삼각형의 한 변의 길이 $\ell(x) = q - 2\sqrt x = 6 - 2\sqrt x$. 단면의 넓이 $S(x) = \dfrac{\sqrt 3}{4}\ell(x)^2 = \dfrac{\sqrt 3}{4}(6 - 2\sqrt x)^2$. 부피
+    $$V = \int_3^9 \dfrac{\sqrt 3}{4}(6 - 2\sqrt x)^2\, dx = \dfrac{\sqrt 3}{4}\int_3^9(36 - 24\sqrt x + 4 x)\, dx.$$
+    적분: $\int_3^9 36\, dx = 216$, $\int_3^9 24\sqrt x\, dx = 24\cdot \dfrac{2}{3}[x^{3/2}]_3^9 = 16(27 - 3\sqrt 3) = 432 - 48\sqrt 3$, $\int_3^9 4 x\, dx = 2[x^2]_3^9 = 144$. 합 $= 216 - 432 + 48\sqrt 3 + 144 = -72 + 48\sqrt 3$. $V = \dfrac{\sqrt 3}{4}(-72 + 48\sqrt 3) = -18\sqrt 3 + 36 = 36 - 18\sqrt 3$. $m = 36, n = -18, m + n = 18$. 답: $\boxed{m + n = 18}$.
+
+### 자연계 문제 2 — 도함수의 정의·삼각함수 덧셈정리
+
+**[83 / 자2-1]** 도함수의 정의를 이용하여 함수 $y = \cos 2 x$ 의 도함수를 유도하시오.
+
+??? success "풀이"
+    $y' = \displaystyle \lim_{h \to 0}\dfrac{\cos 2(x + h) - \cos 2 x}{h}$. 덧셈정리: $\cos 2(x + h) = \cos 2 x\cos 2 h - \sin 2 x\sin 2 h$. 따라서
+    $$y' = \lim_{h \to 0}\dfrac{\cos 2 x(\cos 2 h - 1) - \sin 2 x\sin 2 h}{h} = \cos 2 x\lim_{h \to 0}\dfrac{\cos 2 h - 1}{h} - \sin 2 x\lim_{h \to 0}\dfrac{\sin 2 h}{h}.$$
+    $\lim_{h \to 0}(\cos 2 h - 1)/h = \lim 2 h\cdot (\cos 2 h - 1)/(2 h)^2\cdot 2 \to 0$. $\lim_{h \to 0}\sin 2 h/h = 2$. 따라서 $y' = 0 - 2\sin 2 x = -2\sin 2 x$. 답: $\boxed{y' = -2\sin 2 x}$.
+
+**[83 / 자2-2]** $f(x) = e^{-x}\cos 2 x$ 일 때, 도함수의 정의를 이용하여 $\displaystyle \lim_{x \to 0}\dfrac{1}{x}\!\left[f(x) + f(2 x) + f(3 x) + \cdots + f(2023 x) - 2023\right]$.
+
+??? success "풀이"
+    $f(0) = e^0\cos 0 = 1$. $f'(x) = -e^{-x}\cos 2 x - 2 e^{-x}\sin 2 x$, $f'(0) = -1$. $2023 = 2023 f(0)$ 로 쓰면 분자 $= \sum_{k = 1}^{2023}(f(k x) - f(0))$. 합성함수의 도함수 정의: $\displaystyle \lim_{x \to 0}\dfrac{f(k x) - f(0)}{x} = \lim_{x \to 0}\dfrac{f(k x) - f(0)}{k x}\cdot k = k\cdot f'(0) = -k$. 합 $= -\sum_{k = 1}^{2023}k = -\dfrac{2023\cdot 2024}{2} = -2{,}047{,}276$. 답: $\boxed{-2{,}047{,}276}$.
+
+### 자연계 문제 3 — 귀류법·일대일대응·삼각형 개수
+
+**[83 / 자3-1]** 명제 (∗) "$a, b$ 가 실수일 때, $a^2 + b^2 = 0$ 이면 $a = 0$ 이고 $b = 0$ 이다" 의 귀류법 증명에서 (I)~(IV) 의 빈칸과 순서를 완성.
+
+??? success "풀이"
+    (III) 결론을 부정하여 $a \ne 0$ 또는 $b \ne 0$ 이라고 하자. (IV) ① $a \ne 0, b = 0$ 이면 $a^2 > 0, b^2 = 0$ 이므로 $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \ne 0$. ② $a = 0, b \ne 0$ 이면 $a^2 = 0, b^2 > 0$ 이므로 $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \ne 0$. ③ $a \ne 0, b \ne 0$ 이면 $a^2 > 0, b^2 > 0$ 이므로 $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \ne 0$. (I) 이때 세 가지 경우 모두 $a^2 + b^2 = 0$ 이라는 가정에 모순이다. (II) 따라서 $a, b$ 가 실수일 때, $a^2 + b^2 = 0$ 이면 $a = 0$ 이고 $b = 0$ 이다. 증명 순서: (III) → (IV) → (I) → (II).
+
+**[83 / 자3-2]** $X = \{x \mid -c \le x \le c, c > 0\}$, $Y = \{y \mid -8 \le y \le 0\}$. 일차함수 $f(x) = p x + q$ 가 $f: X \to Y$ 의 일대일대응일 때, $\dfrac{q}{p}$ 의 값을 모두 구하시오 ($p, q$ 실수).
+
+??? success "풀이"
+    일대일대응 → 일차함수의 그래프가 $(-c, 0), (c, -8)$ 또는 $(-c, -8), (c, 0)$ 을 지남. 경우 ①: $(c, 0), (-c, -8)$ → 기울기 $p = 8/(2 c) = 4/c$, $0 = (4/c)c + q \Rightarrow q = -4$. $q/p = -4\cdot c/4 = -c$. 경우 ②: $(-c, 0), (c, -8)$ → $p = -4/c$, $0 = (-4/c)(-c) + q \Rightarrow q = -4$. $q/p = -4\cdot (-c/4) = c$. 답: $\boxed{q/p = \pm c}$.
+
+**[83 / 자3-3]** 삼각형의 세 변의 길이 $x_1, x_2, x_3$ 이 자연수일 때 $x_1 \ge x_2 \ge x_3$, $x_1 + x_2 + x_3 = 36$ 을 만족시키는 삼각형의 개수.
+
+??? success "풀이"
+    삼각부등식 $x_1 < x_2 + x_3 = 36 - x_1 \Rightarrow x_1 < 18$. 정렬 조건 $x_1 \ge x_2 \ge x_3 \ge 1$ → $3 x_1 \ge 36 \Rightarrow x_1 \ge 12$. 즉 $x_1 \in \{12, 13, \dots, 17\}$. 각 $x_1$ 에 대해 $x_2 + x_3 = 36 - x_1, x_1 \ge x_2 \ge x_3 \ge 1$ 인 쌍의 개수:
+    - $x_1 = 12$: $(12, 12)$ → 1.
+    - $x_1 = 13$: $(13, 10), (12, 11)$ → 2.
+    - $x_1 = 14$: $(14, 8), (13, 9), (12, 10), (11, 11)$ → 4.
+    - $x_1 = 15$: $(15, 6), (14, 7), (13, 8), (12, 9), (11, 10)$ → 5.
+    - $x_1 = 16$: $(16, 4), (15, 5), (14, 6), (13, 7), (12, 8), (11, 9), (10, 10)$ → 7.
+    - $x_1 = 17$: $(17, 2), (16, 3), (15, 4), (14, 5), (13, 6), (12, 7), (11, 8), (10, 9)$ → 8.
+
+    합 $= 1 + 2 + 4 + 5 + 7 + 8 = 27$. 답: $\boxed{27}$.
+
+### 의예과 문제 1 — 집합 부분집합과 점화식
+
+> 전체집합 $U_{k + 1} = \{1, 2, \dots, k + 1\}$ 의 부분집합 $A, B$ 에 대해 $A \cup B = U_{k + 1}$ 과 $n(A) = 2$ 를 만족시키는 $(A, B)$ 의 개수를 $a_k$, $n(A) = 3$ 을 만족시키는 $\langle A, B\rangle$ 의 개수를 $b_k$. $b_1 = 0$, $b_{k + 1} = c_1 a_1 + c_2 a_2 + \cdots + c_k a_k$ 인 양수 $c_1, c_2, \dots, c_k$ 가 존재한다고 한다.
+
+**[83 / 의1-1]** $c_2$ 의 값.
+
+??? success "풀이"
+    $a_k$ 는 $U_{k + 1}$ 의 원소 중 2 개를 택해 $A$ 로 정한 후, $A \cup B = U_{k + 1}$ 인 $B$ 의 개수 (= $A^c$ 의 원소는 반드시 $B$ 에 속하고, $A$ 의 두 원소는 각각 $B$ 에 속하거나 속하지 않을 수 있음, 즉 $2^2 = 4$). 따라서 $a_k = {}_{k + 1}\mathrm{C}_2\cdot 4 = 2 k(k + 1)$. 마찬가지로 $b_k = {}_{k + 1}\mathrm{C}_3\cdot 2^3 = \dfrac{4}{3}(k - 1)k(k + 1)$. 검증: $a_1 = 4, a_2 = 12, b_2 = 8, b_3 = 32$. $b_3 = c_1 a_1 + c_2 a_2 = 4 c_1 + 12 c_2 = 32$. $k = 1$ 식: $b_2 = c_1 a_1 = 4 c_1 = 8 \Rightarrow c_1 = 2$. 따라서 $4\cdot 2 + 12 c_2 = 32 \Rightarrow c_2 = 2$. 답: $\boxed{c_2 = 2}$.
+
+**[83 / 의1-2]** $c_1 c_2 \cdots c_k$ 의 값과 그 이유.
+
+??? success "풀이"
+    $\sum_{i = 1}^{k}a_i = \sum_{i = 1}^{k}2 i(i + 1) = 2\!\left(\dfrac{k(k + 1)(2 k + 1)}{6} + \dfrac{k(k + 1)}{2}\right) = \dfrac{2}{3}k(k + 1)(k + 2)$. 한편 $\dfrac{1}{2}b_{k + 1} = \dfrac{1}{2}\cdot \dfrac{4}{3}k(k + 1)(k + 2) = \dfrac{2}{3}k(k + 1)(k + 2)$. 따라서 $b_{k + 1} = 2\sum_{i = 1}^{k}a_i = 2 a_1 + 2 a_2 + \cdots + 2 a_k$. 주어진 식 $b_{k + 1} = c_1 a_1 + c_2 a_2 + \cdots + c_k a_k$ 와 비교 (계수 유일성: $a_i$ 가 일차독립이거나 $k$ 에 대한 귀납으로 차분) → $c_i = 2$ ($1 \le i \le k$). 따라서 $c_1 c_2 \cdots c_k = 2^k$. 답: $\boxed{c_1 c_2 \cdots c_k = 2^k}$.
+
+### 의예과 문제 2 — 이차곡선·삼각함수 덧셈정리
+
+> 원주시 평지에 직사각형 공원 $\mathrm{ABCD}$ ($\overline{\mathrm{DA}} = 180\,\mathrm{m}$). $\overline{\mathrm{DA}}$ 위 $\mathrm{P}, \mathrm{Q}$ ($\overline{\mathrm{PA}} = \overline{\mathrm{QD}}$) 에 국기게양대. 두 게양대로부터 거리의 합이 $180$ 인 점들의 자취가 황톳길, 거리의 차가 $60$ 인 점들의 자취가 꽃길 (파란 꽃길은 $\overline{\mathrm{DA}}$ 한 점에서 시작해 점 $\mathrm{B}$ 에서 종료). 두 길이 만나는 점에 음수대, 음수대와 두 게양대가 만드는 삼각형은 $\overline{\mathrm{PQ}}$ 를 빗변으로 하는 직각삼각형.
+
+**[83 / 의2-1]** 두 국기게양대 사이의 거리 $\overline{\mathrm{PQ}}$ 와 공원의 세로 길이 $\overline{\mathrm{AB}}$ 의 값.
+
+??? success "풀이"
+    $\overline{\mathrm{DA}}$ 의 중점을 원점, $\overline{\mathrm{DA}}$ 를 $x$ 축으로 놓으면 황톳길은 초점 $\mathrm{P}, \mathrm{Q}$ 의 타원 (장축 $2 a = 180$, 즉 $a = 90$), 파란 꽃길은 같은 초점의 쌍곡선의 한 가지 (주축 $2 a' = 60$, 즉 $a' = 30$). 두 곡선의 공통 초점 $\mathrm{P}(-c, 0), \mathrm{Q}(c, 0)$ ($c > 0$). $\overline{\mathrm{PQ}} = 2 c$. 음수대를 점 $\mathrm{R}$, $\overline{\mathrm{PR}} = u, \overline{\mathrm{QR}} = v$. 직각삼각형 조건: $u^2 + v^2 = (2 c)^2$. 타원: $u + v = 2 a = 180$, 쌍곡선: $v - u = 2 a' = 60$ → $u = 60, v = 120$. $4 c^2 = 3600 + 14400 = 18000 \Rightarrow c^2 = 4500, c = 30\sqrt 5$. $\overline{\mathrm{PQ}} = 60\sqrt 5$. 쌍곡선 $b'^2 = c^2 - a'^2 = 4500 - 900 = 3600, b' = 60$. 점 $\mathrm{B}$ 의 $x$ 좌표 $= 90$ 이고 쌍곡선 $x^2/900 - y^2/3600 = 1$ 에 대입: $9 - y^2/3600 = 1 \Rightarrow y^2 = 28800 \Rightarrow y = 120\sqrt 2$. 답: $\boxed{\overline{\mathrm{PQ}} = 60\sqrt 5,\ \overline{\mathrm{AB}} = 120\sqrt 2}$.
+
+**[83 / 의2-2]** $\mathrm{B}$ 지면에서 $\mathrm{P}$ 지점 게양대 꼭대기를 바라본 각이 $15°$ 이고 게양대 높이가 $h$ 일 때 $h^2 = 1800(h_1 + h_2\sqrt 3 + h_3\sqrt 5 + h_4\sqrt{15})$ ($h_i$ 유리수). $h_1 + h_2 + h_3 + h_4$.
+
+??? success "풀이"
+    게양대 꼭대기 $\mathrm{H}$, 직각삼각형 $\triangle \mathrm{PBH}$ ($\angle \mathrm{PBH} = 15°$) → $h^2 = \tan^2 15°\cdot \overline{\mathrm{BP}}^2$. 덧셈정리: $\tan 15° = \tan(45° - 30°) = (1 - 1/\sqrt 3)/(1 + 1/\sqrt 3) = (\sqrt 3 - 1)/(\sqrt 3 + 1) = (\sqrt 3 - 1)^2/2 = 2 - \sqrt 3$. $\tan^2 15° = (2 - \sqrt 3)^2 = 7 - 4\sqrt 3$. 직각삼각형 $\triangle \mathrm{PAB}$ ($\angle \mathrm{A} = 90°$): $\overline{\mathrm{PA}} = a - c = 90 - 30\sqrt 5, \overline{\mathrm{AB}} = 120\sqrt 2$. $\overline{\mathrm{BP}}^2 = (90 - 30\sqrt 5)^2 + (120\sqrt 2)^2 = 12600 - 5400\sqrt 5 + 28800 = 41400 - 5400\sqrt 5 = 1800(23 - 3\sqrt 5)$. $h^2 = (7 - 4\sqrt 3)\cdot 1800(23 - 3\sqrt 5) = 1800\cdot (7 - 4\sqrt 3)(23 - 3\sqrt 5)$. 전개: $(7 - 4\sqrt 3)(23 - 3\sqrt 5) = 161 - 21\sqrt 5 - 92\sqrt 3 + 12\sqrt{15}$. 따라서 $h_1 = 161, h_2 = -92, h_3 = -21, h_4 = 12$. 합 $= 161 - 92 - 21 + 12 = 60$. 답: $\boxed{60}$.
+
+---
+
 
