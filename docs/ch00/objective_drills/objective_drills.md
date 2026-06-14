@@ -7113,3 +7113,91 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 97 — 연세대 미래캠 (2023학년도)
+
+### 자연계 문제 1 — 조임 정리, 부분합 (수열의 극한, 급수)
+
+> 제시문 (가) 두 수열 $\{x_n\}, \{z_n\}$ 에 대해 $\lim x_n = \lim z_n = \alpha$ ($\alpha$ 상수) 일 때, $\{y_n\}$ 이 모든 자연수 $n$ 에 대해 $x_n \leq y_n \leq z_n$ 이면 $\lim y_n = \alpha$. (나) 무한급수 $\sum_{n=1}^\infty x_n$ 의 수렴, 발산은 부분합 $S_n = \sum_{k=1}^n x_k$ 의 수렴, 발산으로 정의한다.
+
+**[97 / 자1-1]** $\displaystyle\lim_{n\to\infty}\left(\frac{1}{n^2 + 1} + \frac{2}{n^2 + 2} + \cdots + \frac{n}{n^2 + n}\right)$.
+
+??? success "풀이"
+    $1 \leq k \leq n$ 에서 $\frac{1}{n^2 + n} \leq \frac{1}{n^2 + k} \leq \frac{1}{n^2 + 1}$ 이므로 $k$ 를 곱하고 합하면 $\frac{1 + 2 + \cdots + n}{n^2 + n} \leq \sum_{k=1}^n \frac{k}{n^2 + k} \leq \frac{1 + 2 + \cdots + n}{n^2 + 1}$. 양 끝 극한 $\lim \frac{n(n+1)/2}{n^2 + n} = 1/2$, $\lim \frac{n(n+1)/2}{n^2 + 1} = 1/2$. 조임 정리에 의해 답 $1/2$. 답: $\boxed{1/2}$.
+
+**[97 / 자1-2]** 급수 $\displaystyle\sum_{n=1}^\infty \frac{2}{(2n-1)(2n+3)}$ 의 수렴, 발산 조사 및 수렴 시 극한값.
+
+??? success "풀이"
+    $\frac{2}{(2n-1)(2n+3)} = \frac{1}{2}\left(\frac{1}{2n-1} - \frac{1}{2n+3}\right)$. $S_n = \frac{1}{2}\sum_{k=1}^n \left(\frac{1}{2k-1} - \frac{1}{2k+3}\right) = \frac{1}{2}\left(1 + \frac{1}{3} - \frac{1}{2n+1} - \frac{1}{2n+3}\right)$. $\lim S_n = \frac{1}{2}\cdot\frac{4}{3} = \frac{2}{3}$. 답: $\boxed{\text{수렴, 합 } 2/3}$.
+
+### 자연계 문제 2 — 연속함수와 도함수 연속, 정적분 넓이
+
+> 제시문 (가) $h(x)$ 가 $x_0$ 에서 정의되고 $\lim_{x\to x_0} h(x)$ 가 존재하며 $\lim_{x\to x_0} h(x) = h(x_0)$ 일 때 $h(x)$ 는 $x_0$ 에서 연속이라 한다. (나) 함수가 열린구간 모든 점에서 연속일 때 그 구간에서 연속이라 한다. (다) 실수 $a, b, c, d$ 와 양수 $k > 0$ 에 대해 $f(x) = ax + b\ (x < -3),\ -x^2 + 9\ (-3 \leq x < 0),\ cx + d\ (0 \leq x)$ 이고 $g(x) = k(x - 1) + 12$.
+
+**[97 / 자2-1]** $f(x)$ 와 $f'(x)$ 가 모든 실수에서 연속이 되도록 하는 $a, b, c, d$ 와 $f(x)$ 와 $g(x)$ 가 접하도록 하는 $k$ 의 값.
+
+??? success "풀이"
+    $x = -3$ 에서 $f'$ 연속: $\lim_{x\to -3^+} f'(x) = -2\cdot(-3) = 6 = a$. $f$ 연속: $-3a + b = -18 + b = (-9 + 9) = 0$ → $b = 18$. $x = 0$ 에서 $f'$ 연속: $\lim_{x\to 0^+} f'(x) = c$, $\lim_{x\to 0^-} f'(x) = 0$ → $c = 0$. $f$ 연속: $d = 9$. 접선 조건: $-x^2 + 9 = kx + 12 - k$ → $x^2 + kx + 3 - k = 0$ 의 판별식 $D = k^2 + 4k - 12 = (k - 2)(k + 6) = 0$, $k > 0$ → $k = 2$. 답: $\boxed{a = 6, b = 18, c = 0, d = 9, k = 2}$.
+
+**[97 / 자2-2]** $f(x), g(x)$ 의 그래프와 직선 $y = 0$ 으로 둘러싸인 영역의 넓이.
+
+??? success "풀이"
+    $f(x) = -x^2 + 9 = 0$ → $x = -3$. $g(x) = 2x + 10 = 0$ → $x = -5$. 접점: $2x + 10 = -x^2 + 9$ → $(x + 1)^2 = 0$ → $x = -1$. 넓이 $= \int_{-5}^{-3} (2x + 10) dx + \int_{-3}^{-1} \{(2x + 10) - (-x^2 + 9)\} dx = [x^2 + 10x]_{-5}^{-3} + [\frac{x^3}{3} + x^2 + x]_{-3}^{-1} = (-21 - (-25)) + ((-1/3 + 1 - 1) - (-9 + 9 - 3)) = 4 + (-1/3 + 3) = 4 + 8/3 = 20/3$. 답: $\boxed{20/3}$.
+
+### 자연계 문제 3 — 합성함수, 사인함수, 절댓값 그래프 (최대최소, 극값)
+
+> 제시문 (가) $h(x, y) = 0$ 의 $x$ 방향 $a$, $y$ 방향 $b$ 평행이동: $h(x - a, y - b) = 0$. (나) 절댓값 정의. (다) 극대/극소 정의. (라) $f(x) = x^3 - 2x^2 - 5,\ g(x) = \frac{5}{2}|f(x - 1) + 3|$.
+
+**[97 / 자3-1]** $y = f(2\sin(x/5) + 3)$ 의 최댓값 $M$ 과 최솟값 $m$ 에 대해 $27m + M$.
+
+??? success "풀이"
+    $t = 2\sin(x/5) + 3$, $t \in [1, 5]$. $f(t) = t^3 - 2t^2 - 5$, $f'(t) = 3t^2 - 4t = t(3t - 4)$, $t = 4/3$ 에서 극소. $f(1) = -6, f(4/3) = (4/3)^3 - 2(4/3)^2 - 5 = 64/27 - 32/9 - 5 = 64/27 - 96/27 - 135/27 = -167/27$. $f(5) = 125 - 50 - 5 = 70$. 따라서 $m = -167/27, M = 70$. $27m + M = -167 + 70 = -97$. 답: $\boxed{-97}$.
+
+**[97 / 자3-2]** $g(x) = \frac{5}{2}|f(x - 1) + 3|$ 가 극값을 갖는 $x$ 의 개수 $\alpha$, $g(x)$ 의 극솟값을 모두 더한 값 $\beta$. $\alpha\beta$.
+
+??? success "풀이"
+    $f(x) = x^3 - 2x^2 - 5$ 는 $x = 0$ 에서 극댓값 $-5$, $x = 4/3$ 에서 극솟값 $-167/27$. $f(x - 1) + 3$ 은 $x = 1$ 에서 극댓값 $-2$, $x = 7/3$ 에서 극솟값 $-167/27 + 3 = -86/27$. $|f(x - 1) + 3|$ 는 절댓값에 의해 $x$ 절편에서 꺾인다. $f(x - 1) + 3 = 0$ 의 실근은 한 개 (예: $x = \mathrm{C}$). 따라서 $g(x)$ 그래프는 극솟값 두 개 ($x = \mathrm{A}, x = \mathrm{C}$, 즉 본래 극솟점과 절댓값 꺾임점), 극댓값 한 개 ($x = \mathrm{B}$, 본래 극댓점). 즉 $\alpha = 3$. $g(1) = (5/2)|f(0) + 3| = (5/2)|-2| = 5$, $g(\mathrm{C}) = 0$. $\beta = 5 + 0 = 5$. $\alpha\beta = 3\cdot 5 = 15$. 답: $\boxed{15}$.
+
+### 의예과 문제 1 — 지수함수와 포물선 (미분계수, 자연로그)
+
+> 제시문 (가) $e = 2.71828\ldots$ 는 무리수. (나) $f(x) = e^{nx} + e^{-nx}$ ($n = 1, 2, 3, \ldots$) 위의 점 $\mathrm{P}(x, y)$ 에서의 접선의 기울기가 $2n$. $\mathrm{P}$ 를 $y$ 축 대칭한 점을 $\mathrm{Q}$. $\triangle\mathrm{OPQ}$ 넓이 최대일 때 $\mathrm{P, Q}$ 를 각각 $\mathrm{P}', \mathrm{Q}'$. (다) $g(x) = \frac{1}{n}\ln f(x)$.
+
+**[97 / 의1-1]** $f(x)$ 위의 점 $\mathrm{P}$ 의 $x$ 좌표 $a_n$, $\displaystyle\lim_{n\to 0}\left(\frac{1}{a_n} + 1\right)^{1/n} = \alpha$. 닫힌구간 $[0, k]$ 에서 $g'(x)$ 의 최댓값이 $\frac{1}{3} e^{1/\ln \alpha}$ 일 때 $k$.
+
+??? success "풀이"
+    $f'(x) = n(e^{nx} - e^{-nx}) = 2n$ → $e^{nx} - e^{-nx} = 2$ → $X = e^{nx}$ ($X > 0$) 두면 $X^2 - 2X - 1 = 0$, $X = 1 + \sqrt 2$. $a_n = \frac{1}{n}\ln(1 + \sqrt 2)$. $\lim_{n\to 0}\left(\frac{1}{a_n} + 1\right)^{1/n}$: $a_n \to \infty$ as $n \to 0$ (since $1/n \to \infty$). 변형 $\left(\frac{1}{a_n} + 1\right)^{a_n\cdot\frac{1}{n a_n}} \to e^{\lim 1/(n a_n)} = e^{\lim 1/\ln(1+\sqrt 2)} = e^{1/\ln(1+\sqrt 2)}$. 즉 $\alpha = e^{1/\ln(1+\sqrt 2)}$. $g'(x) = \frac{f'(x)}{n f(x)} = \frac{e^{nx} - e^{-nx}}{e^{nx} + e^{-nx}} = 1 - \frac{2 e^{-nx}}{e^{nx} + e^{-nx}}$ 는 증가함수. $[0, k]$ 에서 최댓값 $g'(k) = (1/3) e^{1/\ln\alpha} = (1/3)\cdot(1 + \sqrt 2) = (1 + \sqrt 2)/3$. $1 - \frac{2 e^{-nk}}{e^{nk} + e^{-nk}} = \frac{1 + \sqrt 2}{3}$. $\frac{e^{nk} - e^{-nk}}{e^{nk} + e^{-nk}} = \frac{1 + \sqrt 2}{3}$. $e^{2nk} = (3 + 1 + \sqrt 2)/(3 - 1 - \sqrt 2) = (4 + \sqrt 2)/(2 - \sqrt 2)$. 유리화: $\cdot(2 + \sqrt 2)/(2 + \sqrt 2)$ → $(4 + \sqrt 2)(2 + \sqrt 2)/(4 - 2) = (8 + 4\sqrt 2 + 2\sqrt 2 + 2)/2 = (10 + 6\sqrt 2)/2 = 5 + 3\sqrt 2$. $k = \frac{1}{2n}\ln(5 + 3\sqrt 2)$. 답: $\boxed{k = \ln(5 + 3\sqrt 2)/(2n)}$.
+
+**[97 / 의1-2]** 포물선 $y^2 = 12x$ 위의 점 $(a, b)$ 의 접선과 $f(x)$ 의 점 $\mathrm{Q}'$ 의 접선이 수직. $\triangle\mathrm{OP}'\mathrm{Q}'$ 넓이 $S$. $S\sqrt{ab}$.
+
+??? success "풀이"
+    $\mathrm{P}$ 좌표 $(a_n, 2\sqrt 2)$, $\mathrm{Q}$ 좌표 $(-a_n, 2\sqrt 2)$ (왜? $f(a_n) = e^{n a_n} + e^{-n a_n} = (1 + \sqrt 2) + 1/(1 + \sqrt 2) = (1 + \sqrt 2) + (\sqrt 2 - 1) = 2\sqrt 2$). 삼각형 넓이 $= \frac{1}{2}\cdot 2 a_n\cdot 2\sqrt 2 = 2\sqrt 2\cdot a_n = 2\sqrt 2/n\cdot\ln(1 + \sqrt 2)$. $n$ 자연수이므로 최대값은 $n = 1$. 따라서 $\mathrm{P}'(\ln(1+\sqrt 2), 2\sqrt 2), \mathrm{Q}'(-\ln(1+\sqrt 2), 2\sqrt 2)$. $\mathrm{P}'$ 접선: $y - 2\sqrt 2 = 2(x - \ln(1+\sqrt 2))$. $y$ 축 대칭 → $\mathrm{Q}'$ 접선 기울기 $-2$. 포물선 $y^2 = 12x$ 위 $(a, b)$ 접선 $y = (6/b)x + 6a/b$, 수직: $(6/b)\cdot(-2) = -1$ → $b = 12$. $b^2 = 12a$ → $144 = 12a$ → $a = 12$. $S = 2\sqrt 2\cdot\ln(1+\sqrt 2)$. $S\sqrt{ab} = 2\sqrt 2\cdot\ln(1+\sqrt 2)\cdot 12 = 24\sqrt 2\cdot\ln(1+\sqrt 2)$. 답: $\boxed{24\sqrt 2\ln(1 + \sqrt 2)}$.
+
+### 의예과 문제 2 — 스프링클러 (호도법, 코사인법칙, 삼각함수 덧셈정리)
+
+> 제시문 (가) 스프링클러: 노즐 중심 반지름 = 살수반경. (나) 정삼각형 잔디밭 $\triangle\mathrm{ABC}$. (다) 살수반경 $2$ m 스프링클러 $2$ 개를 선분 $\mathrm{AB}, \mathrm{BC}$ 위에 (중심 $\mathrm{O}_1, \mathrm{O}_2$). (라) 중심 $\mathrm{O}_1$ 원은 점 $\mathrm{A}$ 를, 중심 $\mathrm{O}_2$ 원은 점 $\mathrm{B}$ 를 지나며 두 원은 접한다. (마) 물이 뿌려지지 않은 두 영역 큰 것 $S_1$, 작은 것 $S_2$.
+
+**[97 / 의2-1]** $S_1$ 과 $S_2$ 의 넓이.
+
+??? success "풀이"
+    $\overline{\mathrm{O}_1\mathrm{B}} = x$ 라 하면 $\overline{\mathrm{O}_1\mathrm{O}_2} = 4$ (두 원의 반지름 합), $\overline{\mathrm{O}_2\mathrm{B}} = 2$, $\angle\mathrm{B} = \pi/3$. 코사인법칙: $16 = x^2 + 4 - 4x\cdot(1/2) = x^2 - 2x + 4$ → $x^2 - 2x - 12 = 0$ → $x = 1 + \sqrt{13}$. 정삼각형 한 변 $= \sqrt{13} + 3$. 정삼각형 넓이 $= (\sqrt{13} + 3)^2\sqrt 3/4 = (22 + 6\sqrt{13})\sqrt 3/4$. $\triangle\mathrm{AO}_1\mathrm{P}_1, \triangle\mathrm{BO}_2\mathrm{P}_2$ (정삼각형, 한 변 $2$): 넓이 $\sqrt 3$ 씩. 부채꼴 $\mathrm{O}_1\mathrm{P}_1\mathrm{Q}_1, \mathrm{O}_2\mathrm{P}_2\mathrm{Q}_2$ (반지름 $2$, 원주각 $2\pi/3$): 넓이 $\frac{1}{2}\cdot 4\cdot\frac{2\pi}{3} = 4\pi/3$ 씩. $S_1 + S_2 = (22 + 6\sqrt{13})\sqrt 3/4 - 2\sqrt 3 - 8\pi/3 = (22\sqrt 3 + 6\sqrt{39})/4 - 2\sqrt 3 - 8\pi/3 = (22\sqrt 3 + 6\sqrt{39} - 8\sqrt 3)/4 - 8\pi/3 = (14\sqrt 3 + 6\sqrt{39})/4 - 8\pi/3 = 7\sqrt 3/2 + 3\sqrt{39}/2 - 8\pi/3$. 직각삼각형 $\mathrm{HO}_1\mathrm{O}_2$ (밑변 $\sqrt{13}$, 높이 $\sqrt 3$), 부채꼴 ($\theta, \pi/3 - \theta$, 반지름 2). $S_2 = \frac{1}{2}\sqrt{13}\sqrt 3 - \frac{1}{2}\sqrt 3 - 2\theta - 2(\pi/3 - \theta) = \sqrt{39}/2 - \sqrt 3/2 - 2\pi/3$. $S_1 = (S_1 + S_2) - S_2 = (7\sqrt 3/2 + 3\sqrt{39}/2 - 8\pi/3) - (\sqrt{39}/2 - \sqrt 3/2 - 2\pi/3) = 4\sqrt 3 + \sqrt{39} - 2\pi$. 답: $\boxed{S_1 = 4\sqrt 3 + \sqrt{39} - 2\pi,\ S_2 = \sqrt{39}/2 - \sqrt 3/2 - 2\pi/3}$.
+
+**[97 / 의2-2]** $S_1$ 에 물을 뿌리기 위해 점 $\mathrm{C}$ 에 새 노즐을 놓을 때 살수반경의 최솟값 $r$, $r^2$.
+
+??? success "풀이"
+    $r = \max(\overline{\mathrm{CP}_1}, \overline{\mathrm{CD}})$. $\overline{\mathrm{CP}_1} = (\sqrt{13} + 3) - 2 = \sqrt{13} + 1$, $\overline{\mathrm{CP}_1}^2 = 14 + 2\sqrt{13}$. $\triangle\mathrm{O}_2\mathrm{CD}$ 코사인법칙: $\overline{\mathrm{O}_2\mathrm{C}} = \sqrt{13} + 1, \overline{\mathrm{O}_2\mathrm{D}} = 2, \angle\mathrm{CO}_2\mathrm{D} = \theta + \pi/3$. $\overline{\mathrm{CD}}^2 = (\sqrt{13} + 1)^2 + 4 - 4(\sqrt{13} + 1)\cos(\theta + \pi/3)$. 덧셈정리: $\cos(\theta + \pi/3) = \cos\theta\cos\pi/3 - \sin\theta\sin\pi/3 = (\cos\theta - \sqrt 3\sin\theta)/2$. $\triangle\mathrm{HO}_1\mathrm{O}_2$ 에서 $\sin\theta = \sqrt 3/4, \cos\theta = \sqrt{13}/4$. $\cos(\theta + \pi/3) = (\sqrt{13}/4 - \sqrt 3\cdot\sqrt 3/4)/2 = (\sqrt{13} - 3)/8$. $\overline{\mathrm{CD}}^2 = (18 + 2\sqrt{13}) - 4(\sqrt{13} + 1)\cdot(\sqrt{13} - 3)/8 = (18 + 2\sqrt{13}) - (\sqrt{13} + 1)(\sqrt{13} - 3)/2 = (18 + 2\sqrt{13}) - (13 - 3\sqrt{13} + \sqrt{13} - 3)/2 = (18 + 2\sqrt{13}) - (10 - 2\sqrt{13})/2 = 18 + 2\sqrt{13} - 5 + \sqrt{13} = 13 + 3\sqrt{13}$. $\overline{\mathrm{CD}}^2 - \overline{\mathrm{CP}_1}^2 = (13 + 3\sqrt{13}) - (14 + 2\sqrt{13}) = \sqrt{13} - 1 > 0$. 따라서 $r = \overline{\mathrm{CD}}$, $r^2 = 13 + 3\sqrt{13}$. 답: $\boxed{r^2 = 13 + 3\sqrt{13}}$.
+
+### 면접 SW창의인재 문제 — 매개변수 곡선 (합성함수 미분, 속도와 거리, 등비수열, 급수)
+
+> 제시문 (가) 매개변수 $x = f(t), y = g(t)$, 점 $\mathrm{P}$ 의 속력 $\sqrt{f'(t)^2 + g'(t)^2}$, $t = a$ 에서 $t = b$ 까지 움직인 거리 $s = \int_a^b \sqrt{f'(t)^2 + g'(t)^2} dt$. (나) 급수의 정의.
+
+**[97 / SW2-1]** $x = e^{-t}\cos t, y = e^{-t}\sin t$ 일 때 $t = 0$ 에서 $t = \pi$ 까지 점 $\mathrm{P}$ 가 움직인 거리.
+
+??? success "풀이"
+    $dx/dt = -e^{-t}\cos t - e^{-t}\sin t = -e^{-t}(\cos t + \sin t)$, $dy/dt = -e^{-t}\sin t + e^{-t}\cos t = e^{-t}(\cos t - \sin t)$. $(dx/dt)^2 + (dy/dt)^2 = e^{-2t}\{(\cos t + \sin t)^2 + (\cos t - \sin t)^2\} = e^{-2t}\cdot 2 = 2 e^{-2t}$. $s = \int_0^\pi \sqrt 2\cdot e^{-t} dt = \sqrt 2 [-e^{-t}]_0^\pi = \sqrt 2(1 - e^{-\pi})$. 답: $\boxed{\sqrt 2(1 - e^{-\pi})}$.
+
+**[97 / SW2-2]** 자연수 $n$ 에 대해 $t = (n-1)\pi$ 에서 $t = n\pi$ 까지 거리를 $a_n$, $\sum_{n=1}^\infty a_n$ 의 수렴/발산.
+
+??? success "풀이"
+    $a_n = \int_{(n-1)\pi}^{n\pi} \sqrt 2\cdot e^{-t} dt = \sqrt 2[-e^{-t}]_{(n-1)\pi}^{n\pi} = \sqrt 2(e^{-(n-1)\pi} - e^{-n\pi}) = \sqrt 2\cdot e^{-(n-1)\pi}(1 - e^{-\pi})$. $\{a_n\}$ 은 초항 $\sqrt 2(1 - e^{-\pi})$, 공비 $r = e^{-\pi}$ 인 등비수열. $|r| < 1$ 이므로 무한등비급수 수렴, 합 $= \frac{\sqrt 2(1 - e^{-\pi})}{1 - e^{-\pi}} = \sqrt 2$. 답: $\boxed{\text{수렴, 합 } \sqrt 2}$.
+
+---
+
