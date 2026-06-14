@@ -7783,5 +7783,79 @@ $A$ 지자체: 3 세 미만 아동을 어린이집에 종일 맡기는 가구에
 
 ---
 
+## 카드 104 — 건국대 (2019학년도)
+
+건국대 2019학년도 KU 논술우수자전형. 인문 II 수학 (부등식의 영역·자연수 거듭제곱의 합·총수요/총공급과 정적분) 3 sub, 자연계 수학 (원과 직선·정사영·삼각함수 덧셈정리·공간도형 부피) 4 sub.
+
+### 인문 II 2-1 — 부등식의 영역·격자점 개수
+
+두 재화 $A, B$: $P_A = 50 - Q_A,\ P_B = 100 - Q_B$. 총 구매액 $3076 \le S \le 3100$. $Q_A, Q_B \in \mathbb Z_{\ge 0}$, $Q_A \le 49, Q_B \le 99$.
+
+**[104 / 인사2-2-1]** 조건을 모두 만족하는 순서쌍 $(Q_A, Q_B)$ 의 개수.
+
+??? success "풀이"
+    $S = Q_A P_A + Q_B P_B = x(50 - x) + y(100 - y)$ ($x = Q_A, y = Q_B$). 정리: $S = -[(x - 25)^2 + (y - 50)^2] + 3125$. $S \le 3100$ → $(x - 25)^2 + (y - 50)^2 \ge 25 = 5^2$. $S \ge 3076$ → $(x - 25)^2 + (y - 50)^2 \le 49 = 7^2$. 두 원 사이 환형. $0 \le x \le 49,\ 0 \le y \le 99$ 격자점. 4 분면 대칭으로 1 사분면 내부점 ($(x - 25)$, $(y - 50)$ 모두 양수): $(2 + 2 + 3 + 3 + 4 + 3)\cdot 4 = 68$, 축 위 점: $3\cdot 4 = 12$. 총 $80$. 답: $\boxed{80\text{ 개}}$.
+
+### 인문 II 2-2 — 자연수 거듭제곱의 합·인구 분포
+
+$2000$ 년 말 인구 분포: $k$ 세 인구 $(100 - k)^2$ 만 명 ($k = 0, \dots, 99$). 모든 사람 $99$ 세까지 생존, $n$ 년에 $(2100 - n)^2$ 만 명 출생.
+
+**[104 / 인사2-2-2-1]** $2000$ 년 말 총인구 $a$, $2099$ 년 말 총인구 $b$. $b - a$.
+
+??? success "풀이"
+    $a = \sum_{k=0}^{99}(100 - k)^2 = \sum_{k=1}^{100}k^2 = \frac{100\cdot 101\cdot 201}{6}$. $2099$ 년 말: $n$ 세 ($n = 0, \dots, 99$) 인구 $= $ $(2099 - n)$ 년 출생 → $(2100 - (2099 - n))^2 = (n + 1)^2$. $b = \sum_{n=0}^{99}(n + 1)^2 = \sum_{k=1}^{100}k^2 = a$. $b - a = 0$. 답: $\boxed{b - a = 0}$.
+
+**[104 / 인사2-2-2-2]** $2000$ 년 말 평균 연령 $c$, $2099$ 년 말 평균 연령 $d$. $d - c$ (소수점 첫째 자리 반올림).
+
+??? success "풀이"
+    $S_{2000} = \sum_{k=0}^{99}(100 - k)^2\cdot k = \sum_{k=1}^{100}k^2(100 - k) = 100\sum_{k=1}^{100}k^2 - \sum_{k=1}^{100}k^3$. $\sum k^2 = 100\cdot 101\cdot 201/6$, $\sum k^3 = (100\cdot 101/2)^2$. $c = S_{2000}/a = 100 - \frac{\sum k^3}{\sum k^2} = 100 - \frac{3\cdot 100\cdot 101}{2\cdot 201}\approx 24.62$. $S_{2099} = \sum_{n=0}^{99}(n + 1)^2\cdot n = \sum_{k=1}^{100}k^2(k - 1) = \sum k^3 - \sum k^2$. $d = S_{2099}/b = \frac{\sum k^3}{\sum k^2} - 1 = \frac{3\cdot 100\cdot 101}{2\cdot 201} - 1\approx 74.37$. $d - c \approx 49.7462$ → 반올림 $50$. 답: $\boxed{d - c\approx 50}$.
+
+### 인문 II 2-3 — 정적분·총수요 총공급과 GDP
+
+총공급곡선 $Y = X^2$ ($X \ge 0$). $t$ 시점 총수요곡선 $Y = 3 - 2(X - F(t))$, $F(t) = \int_0^t g(s)\,ds$, $g(s) = 1 - |s - (4 m + 4)|/2$ ($m$ 은 적절한 자연수로 $8$ 년 주기 삼각파). $F(t)$ 가 처음으로 최솟값을 가지는 시점 $a$, 그때 실질 GDP $b$. $F(t)$ 가 처음으로 최댓값을 가지는 시점 $c$, 그때 실질 GDP $d$. $c + d - a - b$ (소수점 둘째 자리 반올림; $\sqrt 2 = 1.41,\ \sqrt 6 = 2.45$).
+
+**[104 / 인사2-2-3]** $c + d - a - b$.
+
+??? success "풀이"
+    $g$ 는 $8$ 년 주기 삼각파, $F(t) = \int_0^t g$ 는 $2$ 차 다항식 조각으로 $8$ 년 주기. $F$ 는 $t = 2, 10, \dots$ 에서 최솟값, $t = 6, 14, \dots$ 에서 최댓값. $a = 2$: $F(2) = \int_0^2(t/2 - 1)\,dt$... 잘못. 다시: $g(s) = 1 - |s - 4|/2$ for $0 \le s \le 8$, period 8. $F(2) = \int_0^2 g\,ds$. $0 \le s \le 4$: $g(s) = 1 - (4 - s)/2 = s/2 - 1$. $\int_0^2(s/2 - 1)\,ds = [s^2/4 - s]_0^2 = 1 - 2 = -1$. $F(6) = \int_0^6 g\,ds = F(4) + \int_4^6 g\,ds$. $\int_0^4(s/2 - 1)\,ds = 4 - 4 = 0$. $4 \le s \le 8$: $g(s) = 1 - (s - 4)/2$. $\int_4^6(1 - (s - 4)/2)\,ds = [s - (s - 4)^2/4]_4^6 = (6 - 1) - 4 = 1$. $F(6) = 0 + 1 = 1$. 교점: $X^2 = 3 - 2(X - F)$ → $X^2 + 2 X - 3 - 2 F = 0$, $X = -1 + \sqrt{4 + 2 F}$ ($X \ge 0$). $b = X(a = 2) = -1 + \sqrt{4 - 2} = -1 + \sqrt 2 \approx 0.41$. $d = X(c = 6) = -1 + \sqrt{4 + 2} = -1 + \sqrt 6 \approx 1.45$. $c + d - a - b = 6 + 1.45 - 2 - 0.41 = 5.04$ → $5.0$. 답: $\boxed{c + d - a - b\approx 5.0}$.
+
+### 자연계 수학 1-1 — 원과 직선·부등식의 영역
+
+사각형 $\mathrm{ABCD}$: $\mathrm A(2, 5), \mathrm B(0, 0), \mathrm C(4, 0), \mathrm D(3, 4)$. 점 $\mathrm P$ 는 사각형 내부/경계, $\overline{\mathrm{PA}} = 1$. 삼각형 $\mathrm{ADP}$ 의 넓이와 삼각형 $\mathrm{BCP}$ 의 넓이의 합의 최솟값.
+
+**[104 / 자수-1-1]** 두 삼각형 넓이 합 $k$ 의 최솟값.
+
+??? success "풀이"
+    직선 $\mathrm{AD}$: $\mathrm A(2, 5), \mathrm D(3, 4)$ → 기울기 $-1$, 방정식 $x + y - 7 = 0$. $\mathrm P(x, y)$ 에서 직선 $\mathrm{AD}$ 까지 거리 $= |x + y - 7|/\sqrt 2$. 내부에서 $x + y - 7 \le 0$. $\overline{\mathrm{AD}} = \sqrt 2$. $\triangle\mathrm{ADP}$ 넓이 $= \frac 12\cdot\sqrt 2\cdot(7 - x - y)/\sqrt 2 = (7 - x - y)/2$. $\overline{\mathrm{BC}} = 4$, $\mathrm P$ 에서 $\mathrm{BC}$ ($y = 0$) 까지 거리 $= y$. $\triangle\mathrm{BCP}$ 넓이 $= 2 y$. $k = (7 - x - y)/2 + 2 y = (7 - x + 3 y)/2$. $\mathrm P$ 는 $(x - 2)^2 + (y - 5)^2 = 1$ 위. $x - 3 y - 7 + 2 k = 0$ 이 원과 만나면. $x = 3 y + 7 - 2 k$ 를 원에 대입: $(3 y + 5 - 2 k)^2 + (y - 5)^2 = 1$ → $10 y^2 + (20 - 12 k)y + (4 k^2 - 20 k + 49) = 0$. 판별식 $\ge 0$: $(20 - 12 k)^2 - 40(4 k^2 - 20 k + 49) \ge 0$ → $-4 k^2 + 80 k - 390 \ge 0$ → $k^2 - 20 k + 97.5 \le 0$ → $k = 10\pm\sqrt{10}/2$. 최솟값 $10 - \sqrt{10}/2$. 답: $\boxed{k_{\min} = 10 - \sqrt{10}/2}$.
+
+### 자연계 수학 1-2 — 정사영과 선분의 자취
+
+공간 평면 위 점 $\mathrm E(-1, 0, 2),\ \mathrm F(4, -2, -1),\ \mathrm G(4, 1, -4),\ \mathrm H(0, 1, 0)$ 의 사각형 $\mathrm{EFGH}$. $\mathrm Q$ 는 사각형 내부/경계. $\triangle\mathrm{EHQ}$ 넓이 $+\triangle\mathrm{GFQ}$ 넓이 $= 5\sqrt 3$ 인 $\mathrm Q$ 의 모임은 선분. 그 선분의 길이.
+
+**[104 / 자수-1-2]** $\mathrm Q$ 의 모임이 이루는 선분의 길이.
+
+??? success "풀이"
+    사각형 평면 $\alpha$: 세 점 (E, F, G) 으로 법선벡터 $(1, 1, 1)$, 방정식 $x + y + z = 1$. $xy$ 평면과 이루는 각 $\theta$: $\cos\theta = 1/\sqrt 3$. 두 삼각형 넓이 합 $= S$ → $xy$ 평면으로 정사영 넓이 합 $= S\cos\theta$. $S = 5\sqrt 3$ → 정사영 합 $= 5\sqrt 3\cdot 1/\sqrt 3 = 5$. 정사영 좌표: $\mathrm E'(-1, 0), \mathrm F'(4, -2), \mathrm G'(4, 1), \mathrm H'(0, 1)$. $\overline{\mathrm{E'H'}} = \sqrt 2$, 직선 $\mathrm{E'H'}: x - y + 1 = 0$. $\mathrm Q'(x, y)$ 에 대해 $\triangle\mathrm{E'H'Q'} = \frac 12\sqrt 2\cdot(x - y + 1)/\sqrt 2 = (x - y + 1)/2$. $\overline{\mathrm{G'F'}} = 3$, $\triangle\mathrm{G'F'Q'} = (3/2)(4 - x)$. 합 $= (x - y + 1)/2 + (3/2)(4 - x) = -x - y/2 + 13/2 = 5$ → $y = -2 x + 3$. 사각형 내부 $\mathrm{E'H'}$ 와 만남 ($y = 1$): $\mathrm I'(1, 1)$. 직선 $\mathrm{E'F'}$ ($y = -2 x/5 - 2/5$) 와 만남: $\mathrm J'(17/8, -5/4)$. $\mathrm Q'$ 모임은 $\overline{\mathrm{I'J'}}$. 평면 $\alpha$ 에서 $\mathrm Q$ 의 모임 길이 $= \overline{\mathrm{I'J'}}/\cos\theta = ?$. 실제 $\mathrm I, \mathrm J$ 의 $z$ 좌표는 $z = 1 - x - y$. $\mathrm I(1, 1, -1), \mathrm J(17/8, -5/4, 1/8)$. $\overline{\mathrm{IJ}} = \sqrt{(9/8)^2 + (9/4)^2 + (9/8)^2} = (9/8)\sqrt{1 + 4 + 1} = (9/8)\sqrt 6$. 답: $\boxed{\overline{\mathrm{IJ}} = \dfrac{9\sqrt 6}{8}}$.
+
+### 자연계 수학 2-1 — 삼각함수 덧셈정리·도함수 활용
+
+정삼각형 $\mathrm{ABC}$ 와 $\mathrm{A'B'C'}$ 를 아랫면·윗면으로 하는 한 변 $1$, 높이 $1$ 의 삼각기둥. $\mathrm A'$ 에서 직선 $\mathrm{PA}$ 와 $\mathrm{PA'}$ 사이 각... 정확히는: $\mathrm P\in\triangle\mathrm{ABC}$, $\angle\mathrm{DPA'}$ 가 최대 ($\mathrm D$ 는 $\mathrm{AA'}$ 중점). $\angle\mathrm{DPA'}$ 의 크기가 최대가 되는 $\mathrm P$ 의 모임.
+
+**[104 / 자수-2-1]** $\angle\mathrm{DPA'}$ 가 최대가 되는 점 $\mathrm P$ 의 모임.
+
+??? success "풀이"
+    $\overline{\mathrm{AP}} = a$. $\angle\mathrm{DPA'} = \theta,\ \angle\mathrm{DPA} = \theta'$. $\triangle\mathrm{PAA'}$ 가 직각 ($\mathrm{AA'}\perp$ 밑면): $\tan\theta' = 1/(2 a),\ \tan(\theta + \theta') = 1/a$. 덧셈정리: $\frac 1a = \frac{\tan\theta + 1/(2 a)}{1 - \tan\theta/(2 a)}$. 정리: $\tan\theta = a/(2 a^2 + 1)$. $\theta$ 의 최댓값 = $\tan\theta$ 의 최댓값. $f(a) = a/(2 a^2 + 1)$, $f'(a) = (1 - 2 a^2)/(2 a^2 + 1)^2$. $f'(a) = 0$ → $a = 1/\sqrt 2$, 최댓값 $1/(2\sqrt 2)$. 따라서 $\mathrm A$ 에서 거리 $1/\sqrt 2$ 인 $\mathrm P$ 의 자취는 원호. 답: $\boxed{xy\text{ 평면에서 중심 }\mathrm A,\text{ 반지름 }1/\sqrt 2,\text{ 변 }\mathrm{AC}\text{ 와 }\mathrm{AB}\text{ 사이 호}}$.
+
+### 자연계 수학 2-2 — 공간도형 절단 부피
+
+세 점 $\mathrm D, \mathrm N, \mathrm F$ ($\mathrm{AA'}, \mathrm{AB}, \mathrm{B'C'}$ 의 중점) 를 지나는 평면 $\alpha$ 가 삼각기둥을 두 조각으로 나눈다. 꼭짓점 $\mathrm B$ 를 포함하는 조각의 부피.
+
+**[104 / 자수-2-2]** $\mathrm B$ 를 포함하는 조각의 부피.
+
+??? success "풀이"
+    좌표: $\mathrm A(0, 0, 0), \mathrm B(1, 0, 0)$ 등. $\mathrm D(1, 0, 1/2)$... (PDF 좌표로) $\mathrm D(1, 0, 1/2),\ \mathrm N(3/4, \sqrt 3/4, 0),\ \mathrm F(1/4, \sqrt 3/4, 1)$. 평면 $\alpha$ 법선 $(2, 4/\sqrt 3, 1)$, 방정식 $4 x + (8/\sqrt 3)y + 2 z - 5 = 0$. 평면 $\alpha$ 와 직선 $\mathrm{A'C'}$ 교점 $\mathrm G(3/4, 0, 1)$, 직선 $\mathrm{BC}$ 교점 $\mathrm H(5/12, 5\sqrt 3/12, 0)$, 직선 $\mathrm{A'B'}$ 교점 $\mathrm I(5/4, -\sqrt 3/4, 1)$ (연장선상), 직선 $\mathrm{BB'}$ 교점 $\mathrm J(1, \sqrt 3/2, -1/2)$ (연장선상). 절단면은 $\mathrm{D, N, F}$ 가 정의하지만 $\mathrm B$ 를 포함하는 조각은 평면 $\alpha$ 와 삼각기둥의 면들의 교점에 의해 결정. 답안: 사면체 $\mathrm{FIJB'}$ 부피 $-$ 사면체 $\mathrm{A'DGI}$ 부피 $-$ 사면체 $\mathrm{BHNJ}$ 부피. 계산하여 $V = 49\sqrt 3/576$. 답: $\boxed{V = \dfrac{49\sqrt 3}{576}}$.
+
+---
+
 
 
