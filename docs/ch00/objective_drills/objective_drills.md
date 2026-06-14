@@ -5662,4 +5662,82 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 82 — 연세대 미래캠퍼스 (2023학년도)
+
+> 출처: 2023학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과보고서, 문항카드 3·4·5 (논술 자연 6) + 6·7 (논술 의예 4) + 13 (SW창의인재 면접 수학 2). 총 12 문항.
+
+### 자연계 문제 1 — 조임 정리·부분분수 급수
+
+**[82 / 자1-1]** $\displaystyle \lim_{n \to \infty}\!\left(\dfrac{1}{n^2 + 1} + \dfrac{2}{n^2 + 2} + \cdots + \dfrac{n}{n^2 + n}\right)$.
+
+??? success "풀이"
+    $1 \le k \le n$ 에서 $\dfrac{k}{n^2 + n} \le \dfrac{k}{n^2 + k} \le \dfrac{k}{n^2 + 1}$. $\sum_{k = 1}^{n}k = n(n + 1)/2$. 따라서 $\dfrac{n(n + 1)/2}{n^2 + n} \le \sum \dfrac{k}{n^2 + k} \le \dfrac{n(n + 1)/2}{n^2 + 1}$. 양 끝 모두 $\to 1/2$. 조임 정리에 의해 극한 $= 1/2$. 답: $\boxed{\dfrac{1}{2}}$.
+
+**[82 / 자1-2]** 급수 $\displaystyle \sum_{n = 1}^{\infty}\dfrac{2}{(2 n - 1)(2 n + 3)}$ 의 수렴 여부와 합.
+
+??? success "풀이"
+    부분분수 $\dfrac{2}{(2 n - 1)(2 n + 3)} = \dfrac{1}{2}\!\left(\dfrac{1}{2 n - 1} - \dfrac{1}{2 n + 3}\right)$. 부분합 $S_n = \dfrac{1}{2}\!\left(1 + \dfrac{1}{3} - \dfrac{1}{2 n + 1} - \dfrac{1}{2 n + 3}\right)$ (텔레스코핑 두 항씩). $n \to \infty$ 에서 $\dfrac{1}{2}(1 + 1/3) = 2/3$. 답: $\boxed{\text{수렴},\ \ \dfrac{2}{3}}$.
+
+### 자연계 문제 2 — 연속함수와 도함수의 연속·접선·정적분 넓이
+
+**[82 / 자2-1]** $f(x) = \begin{cases} a x + b & (x < -3) \\ -x^2 + 9 & (-3 \le x < 0) \\ c x + d & (x \ge 0) \end{cases}$, $g(x) = k(x - 1) + 12$ ($k > 0$). $f, f'$ 가 모든 실수에서 연속이고 $f$ 와 $g$ 가 접하도록 하는 $a, b, c, d, k$.
+
+??? success "풀이"
+    $f'$ 연속: $x = -3$ 에서 $a = -2(-3) = 6$. $x = 0$ 에서 $c = -2(0) = 0$. $f$ 연속: $x = -3$ 에서 $-3 a + b = 0 \Rightarrow b = 18$. $x = 0$ 에서 $d = 9$. 즉 $x \ge 0$ 에서 $f(x) = 9$ (상수). 한편 $-3 \le x < 0$ 구간 $y = -x^2 + 9$ 과 직선 $y = k x + 12 - k$ 가 접 → $-x^2 + 9 = k x + 12 - k \Rightarrow x^2 + k x + 3 - k = 0$, $D = k^2 - 4(3 - k) = k^2 + 4 k - 12 = (k + 6)(k - 2) = 0 \Rightarrow k = 2$ ($k > 0$). 답: $\boxed{a = 6,\ b = 18,\ c = 0,\ d = 9,\ k = 2}$.
+
+**[82 / 자2-2]** 위 $f, g$ 와 직선 $y = 0$ 으로 둘러싸인 영역의 넓이.
+
+??? success "풀이"
+    $f \cap y = 0$: $-x^2 + 9 = 0 \Rightarrow x = -3$. $g \cap y = 0$: $2 x + 10 = 0 \Rightarrow x = -5$. $f, g$ 접점: $x^2 + 2 x + 1 = 0 \Rightarrow x = -1$. 영역 $= \int_{-5}^{-3}g\, dx + \int_{-3}^{-1}(g - f)dx = \int_{-5}^{-3}(2 x + 10)dx + \int_{-3}^{-1}((2 x + 10) - (-x^2 + 9))dx$ $= [x^2 + 10 x]_{-5}^{-3} + [x^3/3 + x^2 + x]_{-3}^{-1} = (9 - 30 - 25 + 50) + ((-1/3 + 1 - 1) - (-9 + 9 - 3)) = 4 + (- 1/3 + 3) = 4 + 8/3 = 20/3$. 답: $\boxed{\dfrac{20}{3}}$.
+
+### 자연계 문제 3 — 합성·치환 최댓값·절댓값 함수 극값
+
+**[82 / 자3-1]** $f(x) = x^3 - 2 x^2 - 5$. 함수 $y = f(2\sin(x/5) + 3)$ 의 최댓값 $M$, 최솟값 $m$. $27 m + M$.
+
+??? success "풀이"
+    $t = 2\sin(x/5) + 3$ 두면 $1 \le t \le 5$. $f(t) = t^3 - 2 t^2 - 5$, $f'(t) = 3 t^2 - 4 t = t(3 t - 4)$. $f'(t) = 0$ 은 $t = 0, 4/3$. $[1, 5]$ 에서는 $t = 4/3$ 만 유효. $f(1) = -6, f(4/3) = 64/27 - 32/9 - 5 = 64/27 - 96/27 - 135/27 = -167/27, f(5) = 125 - 50 - 5 = 70$. $m = -167/27, M = 70$. $27 m + M = -167 + 70 = -97$. 답: $\boxed{-97}$.
+
+**[82 / 자3-2]** $g(x) = (5/2)|f(x - 1) + 3|$. $g$ 의 극값을 갖는 $x$ 가 $\alpha$ 개이고 $g$ 의 극솟값들의 합 $\beta$. $\alpha\beta$.
+
+??? success "풀이"
+    $f(x - 1) + 3$ 는 $f$ 를 우 $1$ 위 $3$ 평행이동. $f$ 의 극대 $f(0) = -5 + 3 = -2$, 극소 $f(4/3) + 3 = -167/27 + 3 = -86/27 \approx -3.19$. $f(x - 1) + 3$ 의 극대 $-2$ (at $x = 1$), 극소 $-86/27$ (at $x = 7/3$). $x$ 절편 (방정식 $f(x - 1) + 3 = 0$ 의 실근) 은 한 개 $x = C > 7/3$. $|f(x - 1) + 3|$ 는 음수 구간을 양수로 뒤집어 → 추가 극값 발생 (원래 극소 두 점이 극대 위치). 자세히: 극값 점은 $x = 1$ (극소, $|f| = 2$), $x = 7/3$ (극대, $|f| = 86/27$), $x = C$ (극소, $|f| = 0$). $g = (5/2)|f|$ 도 같은 위치. 극솟값 $g(1) = (5/2)\cdot 2 = 5$, $g(C) = 0$. 극값 갖는 $x$ 개수 $\alpha = 3$, 극솟값 합 $\beta = 5 + 0 = 5$. $\alpha\beta = 15$. 답: $\boxed{15}$.
+
+### 의예과 문제 1 — 지수함수 접선·미분계수·포물선
+
+**[82 / 의1-1]** $f_n(x) = e^{n x} + e^{-n x}$ 의 점 $\mathrm{P}(x, y)$ 에서 접선의 기울기가 $2 n$ 인 점 $\mathrm{P}$ 의 $x$ 좌표 $a_n$. $\displaystyle \lim_{a_n \to \infty}\!\left(\dfrac{1}{a_n} + 1\right)^{1/n} = \alpha$. $g(x) = (1/n)\ln f_n(x)$, $[0, k]$ 에서 $g'(x)$ 의 최댓값이 $(1/3)e^{1/\ln\alpha}$ 일 때 $k$.
+
+??? success "풀이"
+    $f_n'(x) = n(e^{n x} - e^{-n x}) = 2 n \Rightarrow e^{n x} - e^{-n x} = 2$. $X = e^{n x} > 0$ 두면 $X^2 - 2 X - 1 = 0 \Rightarrow X = 1 + \sqrt 2$. $a_n = (1/n)\ln(1 + \sqrt 2)$. $a_n \to \infty$ 가 아니라 $n \to 0^+$ 일 때 $a_n \to \infty$ (단, $a_n \to \infty$ 한정). 그러면 $(1/a_n + 1)^{1/n} = ((1 + 1/a_n)^{a_n})^{1/(n a_n)} \to e^{1/(n a_n)} = e^{1/\ln(1 + \sqrt 2)}$, 즉 $\alpha = e^{1/\ln(1 + \sqrt 2)}$, $\ln\alpha = 1/\ln(1 + \sqrt 2)$. $g'(x) = f_n'(x)/(n f_n(x)) = (e^{n x} - e^{-n x})/(e^{n x} + e^{-n x}) = 1 - 2 e^{-n x}/(e^{n x} + e^{-n x})$ 는 $x$ 증가에 따라 증가 → $[0, k]$ 에서 최댓값은 $x = k$. $g'(k) = (1/3)e^{\ln(1 + \sqrt 2)} = (1 + \sqrt 2)/3$. $1 - 2 e^{-n k}/(e^{n k} + e^{-n k}) = (1 + \sqrt 2)/3$, 정리: $(2 - \sqrt 2)/6 = e^{-n k}/(e^{n k} + e^{-n k})$. 풀어내면 $e^{2 n k} = (1 - t)/t$ ($t = (2 - \sqrt 2)/6$), 계산 후 $e^{2 n k} = 5 + 3\sqrt 2$. $k = (1/(2 n))\ln(5 + 3\sqrt 2)$. 답: $\boxed{k = \dfrac{1}{2 n}\ln(5 + 3\sqrt 2)}$.
+
+**[82 / 의1-2]** $f_n(x) = e^{n x} + e^{-n x}$ 의 점 $\mathrm{P}$ 의 $y$ 축 대칭점을 $\mathrm{Q}$, 원점 $\mathrm{O}$. $\triangle \mathrm{OPQ}$ 넓이 최대일 때 $\mathrm{P} = \mathrm{P}'$, $\mathrm{Q} = \mathrm{Q}'$. 포물선 $y^2 = 12 x$ 위 점 $(a, b)$ 의 접선과 $\mathrm{Q}'$ 에서의 접선이 수직. $\triangle \mathrm{OP}'\mathrm{Q}'$ 넓이 $S$. $S\sqrt{a b}$.
+
+??? success "풀이"
+    $\mathrm{P}(a_n, 2\sqrt 2)$, $\mathrm{Q}(-a_n, 2\sqrt 2)$ (반대칭). $\triangle \mathrm{OPQ}$ 밑변 $\overline{\mathrm{PQ}} = 2 a_n$, 높이 $2\sqrt 2$. 넓이 $= 2\sqrt 2\cdot a_n = 2\sqrt 2\cdot (1/n)\ln(1 + \sqrt 2)$. $n = 1$ 일 때 최대 ($n = 1, 2, \dots$ 중). $\mathrm{P}'(\ln(1 + \sqrt 2), 2\sqrt 2)$, $\mathrm{Q}'(-\ln(1 + \sqrt 2), 2\sqrt 2)$. $\mathrm{P}'$ 에서 접선 기울기 $= 2$ ($n = 1$ 의 정의). $\mathrm{Q}'$ 에서 접선 기울기 $= -2$ ($y$ 축 대칭). 포물선 $y^2 = 12 x$ 위 $(a, b)$ 의 접선 음함수 미분: $2 y y' = 12 \Rightarrow y' = 6/b$. $\mathrm{Q}'$ 접선과 수직: $(6/b)\cdot (-2) = -1 \Rightarrow b = 12$. 그리고 $b^2 = 12 a \Rightarrow 144 = 12 a \Rightarrow a = 12$. $S = (1/2)\cdot 2\ln(1 + \sqrt 2)\cdot 2\sqrt 2 = 2\sqrt 2\ln(1 + \sqrt 2)$. $S\sqrt{a b} = 2\sqrt 2\ln(1 + \sqrt 2)\cdot \sqrt{144} = 24\sqrt 2\ln(1 + \sqrt 2)$. 답: $\boxed{24\sqrt 2\ln(1 + \sqrt 2)}$.
+
+### 의예과 문제 2 — 스프링클러 코사인법칙·삼각함수 덧셈정리
+
+**[82 / 의2-1]** 정삼각형 $\mathrm{ABC}$ 내부, 변 $\overline{\mathrm{AB}}$ 위에 중심 $\mathrm{O}_1$, $\overline{\mathrm{BC}}$ 위에 중심 $\mathrm{O}_2$ 인 두 원 (반지름 $2$, $\overline{\mathrm{O}_1\mathrm{O}_2} = 4$, 원 $\mathrm{C}(\mathrm{O}_1)$ 은 $\mathrm{A}$ 지나고 $\mathrm{C}(\mathrm{O}_2)$ 는 $\mathrm{B}$ 지나며 두 원이 접). 잔디밭 (= 삼각형) 에서 물이 뿌려지지 않는 두 영역 큰 것 $S_1$, 작은 것 $S_2$.
+
+??? success "풀이"
+    삼각형 $\mathrm{O}_1\mathrm{BO}_2$: $\overline{\mathrm{O}_1\mathrm{O}_2} = 4, \overline{\mathrm{O}_2\mathrm{B}} = 2, \angle\mathrm{B} = \pi/3$. 코사인법칙: $16 = \overline{\mathrm{O}_1\mathrm{B}}^2 + 4 - 4\overline{\mathrm{O}_1\mathrm{B}}\cdot (1/2)$ → $\overline{\mathrm{O}_1\mathrm{B}}^2 - 2\overline{\mathrm{O}_1\mathrm{B}} - 12 = 0 \Rightarrow \overline{\mathrm{O}_1\mathrm{B}} = 1 + \sqrt{13}$. 정삼각형 변 $= 1 + (\overline{\mathrm{O}_1\mathrm{B}} - 2) + 2 = 1 + \overline{\mathrm{O}_1\mathrm{B}} + 2 - 2 = \overline{\mathrm{O}_1\mathrm{B}} + 3$? 정확히: $\overline{\mathrm{AB}} = \overline{\mathrm{AO}_1} + \overline{\mathrm{O}_1\mathrm{B}} = 2 + (1 + \sqrt{13}) = 3 + \sqrt{13}$. $S_1 + S_2 = (정삼각형 넓이) - 2\cdot(반지름 2 정삼각형) - 2\cdot(원주각 2\pi/3 부채꼴)$ $= ((3 + \sqrt{13})^2 \sqrt 3/4) - 2\cdot \sqrt 3 - 2\cdot (1/2)\cdot 4\cdot 2\pi/3 = (22 + 6\sqrt{13})\sqrt 3/4 - 2\sqrt 3 - 8\pi/3$ $= (7\sqrt 3 + 3\sqrt{39})/2 - 8\pi/3$. $S_2$ (직각삼각형 $\mathrm{HO}_1\mathrm{O}_2$ 빼기 — $\mathrm{H}$ 는 $\mathrm{O}_2$ 에서 $\overline{\mathrm{AB}}$ 에 내린 수선의 발) 분석 후 $S_2 = \sqrt{39}/2 - \sqrt 3/2 - 2\pi/3$. 따라서 $S_1 = (7\sqrt 3 + 3\sqrt{39})/2 - 8\pi/3 - \sqrt{39}/2 + \sqrt 3/2 + 2\pi/3 = 4\sqrt 3 + \sqrt{39} - 2\pi$. 답: $\boxed{S_1 = 4\sqrt 3 + \sqrt{39} - 2\pi}$.
+
+**[82 / 의2-2]** $S_1$ 에 물 뿌리기 위해 점 $\mathrm{C}$ 에 노즐 추가. 살수반경 최솟값 $r$ 에 대해 $r^2$.
+
+??? success "풀이"
+    $r = \max(\overline{\mathrm{CP}_1}, \overline{\mathrm{CD}})$ 여기서 $\mathrm{P}_1$ 은 원 $\mathrm{O}_1$ 의 $\overline{\mathrm{AC}}$ 와 가장 먼 점, $\mathrm{D}$ 는 두 원의 접점. $\overline{\mathrm{CP}_1} = \overline{\mathrm{AC}} - r_{\mathrm{O}_1} = (3 + \sqrt{13}) - 2 = 1 + \sqrt{13}$, $\overline{\mathrm{CP}_1}^2 = 14 + 2\sqrt{13}$. $\overline{\mathrm{CD}}^2$ 는 $\triangle \mathrm{O}_2\mathrm{CD}$ 에 코사인법칙: $\overline{\mathrm{O}_2\mathrm{C}} = 1 + \sqrt{13}, \overline{\mathrm{O}_2\mathrm{D}} = 2, \angle\mathrm{CO}_2\mathrm{D} = \theta + \pi/3$ ($\theta = \angle\mathrm{O}_1\mathrm{O}_2\mathrm{H}$, $\sin\theta = \sqrt 3/4, \cos\theta = \sqrt{13}/4$). $\cos(\theta + \pi/3) = (1/2)(\cos\theta - \sqrt 3\sin\theta) = (1/2)((\sqrt{13} - 3)/4) = (\sqrt{13} - 3)/8$. $\overline{\mathrm{CD}}^2 = (1 + \sqrt{13})^2 + 4 - 4(1 + \sqrt{13})\cdot (\sqrt{13} - 3)/8 = 18 + 2\sqrt{13} - (1 + \sqrt{13})(\sqrt{13} - 3)/2$. 마지막 항 $= (\sqrt{13} - 3 + 13 - 3\sqrt{13})/2 = (10 - 2\sqrt{13})/2 = 5 - \sqrt{13}$. $\overline{\mathrm{CD}}^2 = 18 + 2\sqrt{13} - 5 + \sqrt{13} = 13 + 3\sqrt{13}$. 비교: $\overline{\mathrm{CD}}^2 - \overline{\mathrm{CP}_1}^2 = (13 + 3\sqrt{13}) - (14 + 2\sqrt{13}) = \sqrt{13} - 1 > 0$. $r^2 = 13 + 3\sqrt{13}$. 답: $\boxed{13 + 3\sqrt{13}}$.
+
+### 면접 (SW창의인재) — 매개변수 곡선 길이·등비급수
+
+**[82 / 면2-1]** 점 $\mathrm{P}(x, y)$ 가 $x = e^{-t}\cos t$, $y = e^{-t}\sin t$ 위를 움직임. $t = 0$ 에서 $t = \pi$ 까지 $\mathrm{P}$ 가 움직인 거리.
+
+??? success "풀이"
+    $\dot x = -e^{-t}\cos t - e^{-t}\sin t$, $\dot y = -e^{-t}\sin t + e^{-t}\cos t$. $\dot x^2 + \dot y^2 = e^{-2 t}((\cos t + \sin t)^2 + (\sin t - \cos t)^2) = e^{-2 t}\cdot 2$. 곡선 길이 $= \int_0^{\pi}\sqrt 2\, e^{-t}dt = \sqrt 2[-e^{-t}]_0^{\pi} = \sqrt 2(1 - e^{-\pi})$. 답: $\boxed{\sqrt 2(1 - e^{-\pi})}$.
+
+**[82 / 면2-2]** $t = (n - 1)\pi$ 부터 $t = n\pi$ 까지 $\mathrm{P}$ 가 움직인 거리를 $a_n$. $\sum_{n = 1}^{\infty}a_n$ 의 수렴 여부와 합.
+
+??? success "풀이"
+    $a_n = \int_{(n - 1)\pi}^{n\pi}\sqrt 2\, e^{-t}dt = \sqrt 2(e^{-(n - 1)\pi} - e^{-n\pi}) = \sqrt 2 e^{-(n - 1)\pi}(1 - e^{-\pi})$. 첫째항 $\sqrt 2(1 - e^{-\pi})$, 공비 $e^{-\pi}$ 인 등비수열. $|e^{-\pi}| < 1$ → 수렴, 합 $= \sqrt 2(1 - e^{-\pi})/(1 - e^{-\pi}) = \sqrt 2$. 답: $\boxed{\text{수렴},\ \ \sqrt 2}$.
+
+---
+
 
