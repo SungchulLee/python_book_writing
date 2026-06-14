@@ -6331,3 +6331,74 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 89 — 건국대 (2018학년도)
+
+> KU논술우수자전형 인문사회II·자연계 수학 문항. 인문(연립일차방정식·정적분과 지니계수·수열과 기댓값 극한) 3개 + 자연(평면도형·미분 부피·공간좌표 거리·구와 평면 자취) 4개.
+
+### 인문계 문제 1 — 주식 투자 (연립일차방정식)
+
+> 제시문: $\mathrm{K}$ 씨가 $600$ 만 원으로 $\mathrm{A}, \mathrm{B}, \mathrm{C}$ 세 종목 (각 $1$ 만, $3$ 만, $9$ 만 원, 수익률 $5\%, 6\%, 10\%$) 의 주식 $120$ 주를 구매. 종목별 수량 $x, y, z$ ($x, y, z \ge 0$).
+
+**[89 / 인1-1]** $x + y + z = 120$, $x + 3 y + 9 z = 600$ 으로부터 $x, y$ 를 $z$ 의 식으로.
+
+??? success "풀이"
+    두 식을 빼면 $2 y + 8 z = 480 \Rightarrow y = -4 z + 240$. 다시 $x = 120 - y - z = 120 - (-4 z + 240) - z = 3 z - 120$. 답: $\boxed{x = 3 z - 120,\ y = -4 z + 240}$.
+
+**[89 / 인1-2]** 총 수익 $T$ (만 원) 의 최댓값과 최솟값.
+
+??? success "풀이"
+    $T = 0.05 x + 0.18 y + 0.9 z = 0.05(3 z - 120) + 0.18(-4 z + 240) + 0.9 z = 0.33 z + 37.2$. $x, y \ge 0$ → $3 z - 120 \ge 0$ 와 $-4 z + 240 \ge 0$ → $40 \le z \le 60$. $T$ 는 $z$ 의 증가함수이므로 $z = 40$ 일 때 최솟값 $T = 50.4$, $z = 60$ 일 때 최댓값 $T = 57$. 답: $\boxed{T_{\min} = 50.4,\ T_{\max} = 57}$.
+
+### 인문계 문제 2 — 로렌츠 곡선·지니계수 (정적분과 매개변수)
+
+> 제시문: 로렌츠 곡선 $L(x) = x^{m^2 - (2 k + 4)m + k^2 + 4 k + 6}$ ($0 \le x \le 1$). 지니계수 $G = \int_0^1 (x - L(x))d x/(1/2)$. $\mathrm{C}$ 국이 $2017$ 년부터 $k$ 년간 정책을 시행하고 $m$ 은 정책 시행 후 경과 연수.
+
+**[89 / 인2-1]** $k = 1$ 일 때 $2018, 2019, 2020$ 년도의 지니계수.
+
+??? success "풀이"
+    $k = 1$: 지수 $= m^2 - 6 m + 1 + 4 + 6 = m^2 - 6 m + 11$. 잠시 PDF 정리: 지수 $= (m - 3)^2 + 2$ → $L(x) = x^{(m - 3)^2 + 2}$. $\int_0^1 (x - x^{n})d x = 1/2 - 1/(n + 1)$ → $G = 2(1/2 - 1/((m - 3)^2 + 3)) = 1 - 2/((m - 3)^2 + 3)$. $m = 1$: $1 - 2/7 = 5/7$. $m = 2$: $1 - 2/4 = 1/2$. $m = 3$: $1 - 2/3 = 1/3$. 답: $\boxed{5/7,\ 1/2,\ 1/3}$.
+
+**[89 / 인2-2]** $2027$ 년 ($m = 10$) 의 지니계수가 $0.4$ 미만이 되도록 하는 자연수 $k$.
+
+??? success "풀이"
+    $m = 10$ 일 때 지수 $= 100 - 10(2 k + 4) + k^2 + 4 k + 6 = k^2 - 16 k + 66$ → $L(x) = x^{k^2 - 16 k + 66}$. $G = 1 - 2/(k^2 - 16 k + 67) < 0.4$ → $k^2 - 16 k + 67 < 10/3$ → $(k - 8)^2 < 1/3$ → $8 - 1/\sqrt 3 < k < 8 + 1/\sqrt 3$, 약 $7.42 < k < 8.58$. $k$ 정수 → $\boxed{k = 8}$.
+
+### 인문계 문제 3 — 최저임금·노동시장 (수열·극한·기댓값)
+
+> 제시문: 최저임금 $L_n$ 에서 노동수요량 $X_D = -L_n + a_n$, 노동공급량 $X_S = L_n - b_n$, 초과공급량 $Q_n = X_S - X_D = 2 L_n - (a_n + b_n)$. $L_n = L + \sum_{k = 1}^n 2^{-k}\cdot 2^{-k}/(1 - 2^{-n})$ 와 같은 형태. 조건 $3^{-n} < 4 b_n - L < 4 a_n - 5 L < 2^{-n}$.
+
+**[89 / 인3-1]** $E(Q_n) = 2 E(L_n) - (a_n + b_n)$ 의 극한값 $\lim_{n \to \infty}E(Q_n)$.
+
+??? success "풀이"
+    급수: $\sum_{k = 1}^n 2^{-k} = 1 - 2^{-n}$, $\sum_{k = 1}^n 4^{-k} = (1/3)(1 - 4^{-n})$. $E(L_n) = \sum_{k = 1}^n (L + 2^{-k})\cdot 2^{-k}/(1 - 2^{-n}) = L + (1/3)(1 - 4^{-n})/(1 - 2^{-n}) = L + (1/3)(1 + 2^{-n})$. $E(Q_n) = 2 E(L_n) - (a_n + b_n) = 2 L + (2/3)(1 + 2^{-n}) - (a_n + b_n)$. 조건 $3^{-n} < 4 b_n - L < 4 a_n - 5 L < 2^{-n}$ 와 $\lim 3^{-n} = \lim 2^{-n} = 0$ → 압축정리로 $\lim(4 a_n - 5 L) = 0$, $\lim(4 b_n - L) = 0$, 즉 $\lim a_n = 5 L/4$, $\lim b_n = L/4$. $\lim(a_n + b_n) = 3 L/2$. $\lim E(Q_n) = 2 L + 2/3 - 3 L/2 = L/2 + 2/3$. 답: $\boxed{L/2 + 2/3}$.
+
+### 자연계 문제 1 — 직사각형 종이접기·사각뿔 부피 (삼각함수·미분 응용)
+
+> 제시문: 직사각형 $\mathrm{ABCD}$ 종이를 대각선 따라 접음 ([그림 1]). $\mathrm{AD}$ 위 점 $\mathrm{E}$ 선택하여 $\mathrm{CE}$ 따라 접으면 꼭짓점 $\mathrm{D}$ 가 $\mathrm{F}$ 로 이동 ([그림 2], $\mathrm{CEF} \perp \mathrm{ABCD}$).
+
+**[89 / 자1-1]** [그림 1] 에서 $\overline{\mathrm{AB}} = a, \overline{\mathrm{BC}} = b$ 일 때 빗금 친 부분 ($\triangle\mathrm{GBD}$) 넓이를 $a, b$ 식으로.
+
+??? success "풀이"
+    종이를 접었으므로 $\angle\mathrm{GBD} = \angle\mathrm{DBC} = \theta$. $\triangle\mathrm{BCD}$ 에서 $\tan\theta = a/b$. $\angle\mathrm{GDB} + \angle\mathrm{CDB} = \pi/2$ 와 $\angle\mathrm{CDB} + \theta = \pi/2$ → $\angle\mathrm{GDB} = \theta$ → $\triangle\mathrm{GBD}$ 가 이등변삼각형. 높이 $h = \tan\theta\cdot \overline{\mathrm{BD}}/2 = (a/b)\cdot \sqrt{a^2 + b^2}/2 = a\sqrt{a^2 + b^2}/(2 b)$. 넓이 $= (1/2)\sqrt{a^2 + b^2}\cdot a\sqrt{a^2 + b^2}/(2 b) = a(a^2 + b^2)/(4 b)$. 답: $\boxed{a(a^2 + b^2)/(4 b)}$.
+
+**[89 / 자1-2]** [그림 2] 에서 $\overline{\mathrm{AB}} = 2, \overline{\mathrm{BC}} = 3$ 일 때 사각형 $\mathrm{ABCE}$ 가 밑면, $\mathrm{F}$ 가 꼭짓점인 사각뿔 $\mathrm{F-ABCE}$ 의 부피의 최댓값.
+
+??? success "풀이"
+    $\overline{\mathrm{DE}} = x$ ($0 \le x \le 3$). 밑면 넓이 $= 3\cdot 2 - (1/2)\cdot 2\cdot x = 6 - x$. $\overline{\mathrm{CE}} = \sqrt{x^2 + 4}$. $\triangle\mathrm{CDE}$ 에서 $\mathrm{F}$ 부터 $\overline{\mathrm{CE}}$ 까지 거리 (높이) $h$: $(1/2)\overline{\mathrm{CE}}\cdot h = (1/2)\cdot 2\cdot x$ → $h = 2 x/\sqrt{x^2 + 4}$. $V(x) = (1/3)(6 - x)\cdot 2 x/\sqrt{x^2 + 4} = (2/3)(6 x - x^2)/\sqrt{x^2 + 4}$. $V'(x) = (2/3)(2 - x)(x^2 + 2 x + 12)/(x^2 + 4)^{3/2}$. $x^2 + 2 x + 12 > 0$, $V'(x) > 0$ ($0 < x < 2$), $V'(x) < 0$ ($2 < x < 3$) → $x = 2$ 에서 최댓값 $V(2) = (2/3)\cdot 8/\sqrt 8 = 4\sqrt 2/3$. 답: $\boxed{4\sqrt 2/3}$.
+
+### 자연계 문제 2 — 구와 평면의 만남 (공간좌표·정사영)
+
+> 제시문: 구의 중심에서 평면까지 거리 $d$, 구의 반지름 $r$. $d < r$ 이면 평면과 구가 만나서 원 생김. 원의 중심은 구의 중심에서 평면에 내린 수선의 발.
+
+**[89 / 자2-1]** 구 $x^2 + y^2 + z^2 = 9$ 와 평면 $x + y + z = 3$ 이 만나서 생기는 원 $C$, 점 $\mathrm{A}(2, 2, 1)$ 에서 $C$ 위 점까지 거리의 최솟값.
+
+??? success "풀이"
+    구의 중심 $\mathrm{O}(0, 0, 0)$, 원 $C$ 의 중심 $\mathrm{O'}$ 는 $\mathrm{O}$ 의 평면 정사영. 평면 법선벡터 $(1, 1, 1)$ → $\mathrm{O'} = (t, t, t)$, 평면 위 → $t = 1$, $\mathrm{O'}(1, 1, 1)$, $\overline{\mathrm{OO'}} = \sqrt 3$. $\mathrm{A}$ 의 평면 정사영 $\mathrm{H} = \mathrm{A} + t(1, 1, 1)$, 평면 위 → $t = -2/3$, $\mathrm{H}(4/3, 4/3, 1/3)$. $\overline{\mathrm{AH}} = \sqrt{3\cdot (2/3)^2} = 2/\sqrt 3$. $\overline{\mathrm{O'H}} = \sqrt{3\cdot (1/3)^2} = \sqrt 6/3$. 원의 반지름 $r' = \sqrt{9 - 3} = \sqrt 6$. $\mathrm{H}$ 가 원 내부면 (확인: $\overline{\mathrm{O'H}} = \sqrt 6/3 < \sqrt 6$, OK) $\mathrm{H}$ 와 가장 먼/가까운 원 위 점 $\mathrm{Q}$ 까지 거리는 $\overline{\mathrm{O'Q}} \pm \overline{\mathrm{O'H}}$. 가장 가까운 점: $\overline{\mathrm{HQ}} = r' - \overline{\mathrm{O'H}} = \sqrt 6 - \sqrt 6/3 = 2\sqrt 6/3$. $\overline{\mathrm{AQ}} = \sqrt{\overline{\mathrm{AH}}^2 + \overline{\mathrm{HQ}}^2} = \sqrt{4/3 + 24/9} = \sqrt{12/9 + 24/9} = \sqrt{36/9} = 2$. 답: $\boxed{2}$.
+
+**[89 / 자2-2]** 구 $(x - 2)^2 + y^2 + z^2 = 2$ 와 평면 $m x - y = 0$ 이 만나는 원의 중심 $\mathrm{P}$ 가 $m$ 변할 때 그리는 곡선의 길이.
+
+??? success "풀이"
+    평면 법선벡터 $(m, -1, 0)$. $\mathrm{P}$ 는 구의 중심 $(2, 0, 0)$ 의 평면 정사영 → $\mathrm{P} = (2, 0, 0) + t(m, -1, 0)$, 평면 위 → $m(2 + m t) - (-t) = 0$ → $t = -2 m/(m^2 + 1)$, $\mathrm{P} = (2/(m^2 + 1), 2 m/(m^2 + 1), 0)$. $x_P = 2/(m^2 + 1), y_P = 2 m/(m^2 + 1)$. $x_P^2 + y_P^2 = (4 + 4 m^2)/(m^2 + 1)^2 = 4/(m^2 + 1) = 2 x_P$ → $(x_P - 1)^2 + y_P^2 = 1$ ($xy$ 평면 위, 중심 $(1, 0, 0)$, 반지름 $1$ 인 원의 호). 구와 평면이 만날 조건: $d \le r$, 즉 $|2 m|/\sqrt{m^2 + 1} \le \sqrt 2$ → $4 m^2 \le 2(m^2 + 1)$ → $m^2 \le 1$, $-1 \le m \le 1$. 끝점: $m = -1$ 일 때 $\mathrm{P}(1, -1, 0)$, $m = 1$ 일 때 $\mathrm{P}(1, 1, 0)$. $\mathrm{P}$ 는 $(x - 1)^2 + y^2 = 1$ 의 오른쪽 반원 (반원호) 을 따라 움직임. 길이 $= (1/2)\cdot 2\pi\cdot 1 = \pi$. 답: $\boxed{\pi}$.
+
+---
+
