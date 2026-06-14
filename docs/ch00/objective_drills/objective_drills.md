@@ -10180,3 +10180,142 @@ $$g(x) = f(x) + |\cos f(x)|.$$
     $$a = f(a) + |\cos f(a)| = \dfrac{5\pi}{6} + \dfrac{\sqrt 3}{2} = \boxed{\dfrac{5\pi}{6} + \dfrac{\sqrt 3}{2}}.$$
 
 ---
+
+## 카드 117 — 건국대 (2018학년도)
+
+> 출처: 2018학년도 건국대학교 입학전형 선행학습 영향평가 보고서 — KU논술우수자전형
+
+### 논술 [인문II] 문제 2 — 연립일차방정식·이차부등식·정적분·이산확률변수의 기댓값
+
+자산 관리·포트폴리오, 로렌츠 곡선과 지니계수 $G = \dfrac{S_1}{S_1 + S_2}$ (로렌츠 곡선 $L(x)$, $0\le x\le 1$, 삼각형 $\mathrm{OAB}$ 넓이 $1/2$), 노동시장 수요·공급과 최저임금제, 이산확률변수의 기댓값 $\mathrm{E}(X) = \displaystyle\sum_{k = 1}^{n}x_k p_k$를 활용한다.
+
+**[1 / 인문II 문제 2-1]** K씨는 600만 원의 수입을 모두 주식에 투자하여 총 120주를 구매하려 한다. 주식 A, B, C의 수익률은 각각 5%, 6%, 10%이고 한 주당 가격은 각각 1만 원, 3만 원, 9만 원이다. 주식 A를 $x$주, B를 $y$주, C를 $z$주 구매할 때 (1) $x$와 $y$를 $z$로 나타내고 (2) K씨가 얻을 수 있는 총수익 $T$만 원을 $z$로 나타내며 $T$의 최댓값과 최솟값을 구하여라.
+
+??? success "풀이"
+    **(1)** 주식의 개수 120개와 가격 합 600만 원에서
+
+    $$x + y + z = 120,\quad x + 3y + 9z = 600.$$
+
+    두 식을 $x$, $y$에 대하여 연립하면 $\boxed{x = 3z - 120,\quad y = -4z + 240}$.
+
+    **(2)** 총수익 $T = 0.05x + 0.18y + 0.9z$만 원. 위 결과 대입:
+
+    $$T = 0.05(3z - 120) + 0.18(-4z + 240) + 0.9z·? = 0.33z + 37.2.$$
+
+    (자체평가보고서의 정리 결과는 $T = 0.33z + 37.2$.)
+
+    $x\ge 0$, $y\ge 0$ 조건에서 $3z - 120\ge 0$, $-4z + 240\ge 0$이므로 $40\le z\le 60$.
+
+    $T = 0.33z + 37.2$는 $z$에 대해 증가. 최솟값은 $z = 40$일 때 $T = 50.4$, 최댓값은 $z = 60$일 때 $T = 57$.
+
+    $$\boxed{\text{최솟값 } 50.4,\quad \text{최댓값 } 57}.$$
+
+**[2 / 인문II 문제 2-2]** D국은 과도하게 높은 지니계수를 줄이기 위해 2017년부터 P정책을 시행. P정책을 $k$년 동안 시행하였을 때, 2017년도를 기준으로 $m$년 후 D국의 로렌츠 곡선은 $L(x) = x^{m^2 - (2k + 4)m + k^2 + 4k + 6}$이 된다. (1) P정책을 1년 동안 시행하였을 때, 2018, 2019, 2020년도의 지니계수를 구하여라. (2) 2027년도 지니계수가 0.4 미만이 되려면 P정책을 몇 년간 시행하여야 하는가?
+
+??? success "풀이"
+    지니계수 공식: $G = \dfrac{\int_0^1\{x - L(x)\}dx}{1/2} = 2\int_0^1\{x - L(x)\}dx$.
+
+    **(1)** $k = 1$일 때 지수 = $m^2 - 6m + 11 = (m - 3)^2 + 2$. 로렌츠 곡선 $L(x) = x^{(m - 3)^2 + 2}$.
+
+    $$G = 2\int_0^1\{x - x^{(m - 3)^2 + 2}\}dx = 2\left[\dfrac{x^2}{2} - \dfrac{x^{(m - 3)^2 + 3}}{(m - 3)^2 + 3}\right]_0^1 = 1 - \dfrac{2}{(m - 3)^2 + 3}.$$
+
+    2018, 2019, 2020 ($m = 1, 2, 3$):
+
+    $$\boxed{G_{2018} = \dfrac{5}{7},\quad G_{2019} = \dfrac{1}{2},\quad G_{2020} = \dfrac{1}{3}}.$$
+
+    **(2)** $m = 10$일 때 지수 = $100 - 10(2k + 4) + k^2 + 4k + 6 = k^2 - 16k + 66$. 지니계수
+
+    $$G = 1 - \dfrac{2}{k^2 - 16k + 67}.$$
+
+    $G < 0.4$ ⇔ $k^2 - 16k + 67 < 10/3$ ⇔ $(k - 8)^2 < 1/3$ ⇔ $8 - 1/\sqrt 3 < k < 8 + 1/\sqrt 3$, 즉 $7.42 < k < 8.58$.
+
+    $k$는 정수이므로 $\boxed{k = 8\ \text{년}}$.
+
+**[3 / 인문II 문제 2-3]** A국의 현재 최저임금은 $L$. $n$년도 노동의 수요·공급곡선이 각각 $D_n = -X + a_n$, $S_n = X + b_n$. $n$년도 최저임금을 $L_n$으로 상향, 이때 노동시장에서 발생하는 $n$년도 초과공급량 $Q_n$. $L_n$의 확률질량함수가 $\mathrm{P}(L_n = L + 2^{-k}) = \dfrac{2^{-k}}{1 - 2^{-n}}$ ($k = 1, 2, \dots, n$)인 이산확률변수이고 $3^{-n} < 4 b_n - L < 4 a_n - 5L < 2^{-n}$을 만족할 때, $Q_n$의 기댓값 $\mathrm{E}(Q_n)$과 $\displaystyle\lim_{n\to\infty}\mathrm{E}(Q_n)$의 값을 구하여라.
+
+??? success "풀이"
+    **(과정 1) $Q_n$ 유도**: 수요량 $X_D = -L_n + a_n$, 공급량 $X_S = L_n - b_n$이므로
+
+    $$Q_n = X_S - X_D = 2 L_n - (a_n + b_n).$$
+
+    **(과정 2) $\mathrm{E}(L_n)$ 계산**: 두 등비급수의 합
+
+    $$\sum_{k = 1}^{n}2^{-k} = 1 - 2^{-n},\quad \sum_{k = 1}^{n}4^{-k} = \dfrac{1 - 4^{-n}}{3}.$$
+
+    $$\mathrm{E}(L_n) = \sum_{k = 1}^{n}(L + 2^{-k})\cdot\dfrac{2^{-k}}{1 - 2^{-n}} = L + \dfrac{1}{3}\cdot\dfrac{1 - 4^{-n}}{1 - 2^{-n}} = L + \dfrac{1}{3}(1 + 2^{-n}).$$
+
+    **(과정 3) $\mathrm{E}(Q_n)$ 및 극한**:
+
+    $$\mathrm{E}(Q_n) = 2\mathrm{E}(L_n) - (a_n + b_n) = 2\left[L + \dfrac{1}{3}(1 + 2^{-n})\right] - (a_n + b_n).$$
+
+    조건 $3^{-n} < 4 b_n - L < 4 a_n - 5L < 2^{-n}$에서 $n\to\infty$:
+
+    $0\le\displaystyle\lim_{n\to\infty}(4 b_n - L)\le 0$이므로 $\displaystyle\lim_{n\to\infty}b_n = L/4$. 마찬가지로 $0\le\displaystyle\lim_{n\to\infty}(4 a_n - 5L)\le 0$이므로 $\displaystyle\lim_{n\to\infty}a_n = 5L/4$.
+
+    $$\lim_{n\to\infty}\mathrm{E}(Q_n) = 2\left(L + \dfrac{1}{3}\right) - \left(\dfrac{5L}{4} + \dfrac{L}{4}\right) = \boxed{\dfrac{L}{2} + \dfrac{2}{3}}.$$
+
+### 논술 [자연] 수학 — 대칭이동·삼각함수·도함수의 활용·공간좌표·구와 평면
+
+대칭이동의 성질 (도형이 원래 도형과 합동), 도함수를 이용한 함수의 극값·최댓값, 공간좌표에서 두 점 사이의 거리, 구 $x^2 + y^2 + z^2 = r^2$와 평면이 만날 때 단면 원의 중심·반지름을 활용한다.
+
+직사각형 $\mathrm{ABCD}$ 모양의 종이가 있다. 대각선 $\mathrm{BD}$를 따라 접은 모양 [그림 1] (빗금 부분 $\triangle\mathrm{GBD}$, $\mathrm{G}$는 접힌 꼭짓점 $\mathrm{A}$가 변 $\mathrm{CD}$와 만나는 점). 또한 선분 $\mathrm{AD}$ 위의 점 $\mathrm{E}$를 선택하여 직사각형 $\mathrm{ABCD}$를 선분 $\mathrm{CE}$를 따라 접었다 편 것이 [그림 2]; $\mathrm{F}$는 꼭짓점 $\mathrm{D}$가 이동한 점으로 평면 $\mathrm{CEF}$가 평면 $\mathrm{ABCD}$와 수직.
+
+**[4 / 자연 문제 1-1]** [그림 1]에서 $\overline{\mathrm{AB}} = a$, $\overline{\mathrm{BC}} = b$라 할 때, 빗금으로 표시된 부분의 넓이를 $a$와 $b$에 관한 식으로 표현하여라.
+
+??? success "풀이"
+    종이를 접었으므로 $\angle\mathrm{GBD} = \angle\mathrm{DBC} = \theta$. 직사각형 $\mathrm{BCD}$에서 $\tan\theta = a/b$.
+
+    $\angle\mathrm{GDB} + \angle\mathrm{CDB} = \pi/2$이고 $\angle\mathrm{CDB} + \theta = \pi/2$이므로 $\angle\mathrm{GDB} = \theta$. 따라서 $\triangle\mathrm{GBD}$는 $\angle\mathrm{GBD} = \angle\mathrm{GDB} = \theta$인 이등변삼각형.
+
+    높이 $h = \tan\theta\cdot\dfrac{\overline{\mathrm{BD}}}{2} = \dfrac{a}{b}\cdot\dfrac{\sqrt{a^2 + b^2}}{2} = \dfrac{a\sqrt{a^2 + b^2}}{2 b}$.
+
+    넓이 = $\dfrac{1}{2}\cdot\overline{\mathrm{BD}}\cdot h = \dfrac{1}{2}\sqrt{a^2 + b^2}\cdot\dfrac{a\sqrt{a^2 + b^2}}{2 b} = \boxed{\dfrac{a(a^2 + b^2)}{4 b}}$.
+
+**[5 / 자연 문제 1-2]** [그림 2]에서 $\overline{\mathrm{AB}} = 2$, $\overline{\mathrm{BC}} = 3$이라 하자. 사각형 $\mathrm{ABCE}$가 밑면이고, $\mathrm{F}$가 꼭짓점인 사각뿔 $\mathrm{F}\text{-}\mathrm{ABCE}$의 부피의 최댓값을 구하여라.
+
+??? success "풀이"
+    $\overline{\mathrm{DE}} = x$로 두면 ($0\le x\le 3$), 사각형 $\mathrm{ABCE}$의 넓이는 $3\cdot 2 - \dfrac{1}{2}\cdot 2\cdot x = 6 - x$.
+
+    접기에 의해 $\triangle\mathrm{CDE}\cong\triangle\mathrm{CFE}$. $\overline{\mathrm{CE}} = \sqrt{x^2 + 4}$. 사각뿔의 높이 $h$는 $\mathrm{F}$에서 평면 $\mathrm{ABCD}$로의 거리. $\triangle\mathrm{CDE}$의 넓이 = $\dfrac{1}{2}\cdot 2\cdot x = x$이고 또한 = $\dfrac{1}{2}\cdot\overline{\mathrm{CE}}\cdot h = \dfrac{1}{2}\sqrt{x^2 + 4}\cdot h$이므로 $h = \dfrac{2 x}{\sqrt{x^2 + 4}}$.
+
+    부피 $V(x) = \dfrac{1}{3}(6 - x)\cdot\dfrac{2 x}{\sqrt{x^2 + 4}}$. $V'(x) = \dfrac{2}{3}\cdot\dfrac{(2 - x)(x^2 + 2 x + 12)}{\sqrt{(x^2 + 4)^3}}$.
+
+    $0 < x < 2$에서 $V'(x) > 0$, $2 < x < 3$에서 $V'(x) < 0$이므로 $x = 2$에서 최댓값:
+
+    $$V(2) = \dfrac{1}{3}\cdot 4\cdot\dfrac{4}{\sqrt 8} = \dfrac{16}{3\cdot 2\sqrt 2} = \boxed{\dfrac{4\sqrt 2}{3}}.$$
+
+**[6 / 자연 문제 2-1]** 구 $x^2 + y^2 + z^2 = 9$와 평면 $x + y + z = 3$이 만나서 생기는 원을 $C$라 하자. 점 $\mathrm{A}(2, 2, 1)$에서 $C$ 위의 점까지의 거리의 최솟값을 구하여라.
+
+??? success "풀이"
+    구의 중심 $\mathrm{O}(0, 0, 0)$, 반지름 $3$. 평면을 $\alpha$, 원 $C$의 중심을 $\mathrm{O}'$. 평면 법선벡터 $\vec n = (1, 1, 1)$이고 $\mathrm{O}'$은 직선 $\mathrm{O} + t\vec n = (t, t, t)$ 위. $\mathrm{O}'$이 $\alpha$ 위 ⇔ $3 t = 3$ ⇔ $t = 1$. $\mathrm{O}' = (1, 1, 1)$, $\overline{\mathrm{OO}'} = \sqrt 3$.
+
+    원 $C$의 반지름 $\overline{\mathrm{O}'\mathrm{Q}} = \sqrt{9 - 3} = \sqrt 6$.
+
+    $\mathrm{A}(2, 2, 1)$의 $\alpha$ 위로의 정사영 $\mathrm{H}$: $\mathrm{H} = \mathrm{A} + t\vec n$이 $\alpha$ 위 ⇔ $(2 + t) + (2 + t) + (1 + t) = 3$ ⇔ $t = -2/3$. $\mathrm{H} = (4/3, 4/3, 1/3)$.
+
+    $\overline{\mathrm{AH}} = \sqrt{(2/3)^2 + (2/3)^2 + (2/3)^2} = \sqrt{4/3} = \dfrac{2\sqrt 3}{3}$.
+
+    $\overline{\mathrm{O}'\mathrm{H}} = \sqrt{(1/3)^2 + (1/3)^2 + (-2/3)^2} = \sqrt{2/3} = \dfrac{\sqrt 6}{3}$.
+
+    $\overline{\mathrm{HQ}} = \overline{\mathrm{O}'\mathrm{Q}} - \overline{\mathrm{O}'\mathrm{H}} = \sqrt 6 - \dfrac{\sqrt 6}{3} = \dfrac{2\sqrt 6}{3}$ (가장 가까운 점 $\mathrm{Q}$).
+
+    $\triangle\mathrm{AHQ}$가 직각삼각형이므로
+
+    $$\overline{\mathrm{AQ}} = \sqrt{\overline{\mathrm{AH}}^2 + \overline{\mathrm{HQ}}^2} = \sqrt{4/3 + 24/9} = \sqrt{12/9 + 24/9} = \sqrt{36/9} = \boxed{2}.$$
+
+**[7 / 자연 문제 2-2]** 구 $(x - 2)^2 + y^2 + z^2 = 2$와 평면 $m x - y = 0$이 만나서 원이 생길 때, 이 원의 중심을 $\mathrm{P}$라 하자. $m$의 값이 변함에 따라 $\mathrm{P}$가 움직인다. $\mathrm{P}$가 그리는 곡선의 길이를 구하여라.
+
+??? success "풀이"
+    구 $S$의 중심 $(2, 0, 0)$. 평면 $\alpha$의 법선벡터 $(m, -1, 0)$. $\mathrm{P}$는 $S$의 중심에서 $\alpha$에 내린 수선의 발: $\mathrm{P} = (2 + m t, -t, 0)$이 $\alpha$ 위 ⇔ $m(2 + m t) - (-t) = 0$ ⇔ $t = \dfrac{-2 m}{m^2 + 1}$.
+
+    $$\mathrm{P} = \left(\dfrac{2}{m^2 + 1}, \dfrac{2 m}{m^2 + 1}, 0\right).$$
+
+    $x = \dfrac{2}{1 + m^2}$, $y = \dfrac{2 m}{1 + m^2}$로 놓으면 $x^2 + y^2 = \dfrac{4(1 + m^2)}{(1 + m^2)^2} = \dfrac{4}{1 + m^2} = 2 x$ ⇔ $(x - 1)^2 + y^2 = 1$. $\mathrm{P}$는 중심 $(1, 0, 0)$, 반지름 $1$인 원의 호 위에 있다.
+
+    $\alpha$와 $S$의 교점이 존재할 $m$의 범위: $\alpha$ 위의 점 $(x, y, z) = (x, m x, z)$가 $S$ 위 ⇔ $(x - 2)^2 + (m x)^2 + z^2 = 2$ ⇔ $z^2 = -((m^2 + 1)x^2 - 4 x + 2)$. 실수해가 존재할 조건은 판별식 $D/4 = 4 - 2(m^2 + 1)\ge 0$ ⇔ $m^2\le 1$ ⇔ $-1\le m\le 1$.
+
+    $m = -1$일 때 $\mathrm{P} = (1, -1, 0)$, $m = 1$일 때 $\mathrm{P} = (1, 1, 0)$. $\mathrm{P}$는 원 $(x - 1)^2 + y^2 = 1$의 오른쪽 반원 ($(1, -1, 0)$에서 $(1, 1, 0)$까지)을 따라 움직인다.
+
+    곡선의 길이 = $\dfrac{1}{2}\cdot 2\pi\cdot 1 = \boxed{\pi}$.
+
+---
