@@ -16204,3 +16204,421 @@ $\ell=6,\,\beta=5\pi/12-\alpha$. $\alpha$ 의 분포 $P(\alpha=\pi/6)=1/6,\,P(\a
 
     $S_{10}=\dfrac{2\sqrt{3}(1-(1/4)^{10})}{1-1/4}=\boxed{\dfrac{8\sqrt{3}}{3}\!\left(1-\dfrac{1}{4^{10}}\right)}$.
 
+
+---
+
+## 카드 149 — 연세대 미래캠퍼스 (2020학년도)
+
+[2020학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과보고서] · 자연계 논술 3문항(미적분II, 수학·수학II, 미적분II) + 의예과 논술 2문항(수학·미적분II, 기하와 벡터) + 자연계 교과면접(확률과 통계) + 의예과 교과면접(확률과 통계). 부분적분, 점-직선 거리, 삼각함수 극한, 원-직선 접/잘림, 정사각뿔 절단, 주사위 이항분포.
+
+### 논술 자연 — 부분적분과 절댓값
+
+#### [149-1] 정적분 $\displaystyle\int_{-\pi/2}^{\pi/2}|\sin x|e^{x}\,dx$
+
+**문제.** 두 함수 $f(x),\,g(x)$ 가 미분가능할 때
+
+$$
+\int f(x)g'(x)\,dx \;=\; f(x)g(x)-\int f'(x)g(x)\,dx
+$$
+
+가 성립한다(부분적분법). 함수 $f(x)=|\sin x|$ 에 대하여 정적분
+
+$$
+\int_{-\pi/2}^{\pi/2}f(x)e^{x}\,dx
+$$
+
+의 값을 구하시오.
+
+??? success "풀이"
+
+    먼저 $\int \sin x\,e^{x}\,dx$ 를 부분적분으로 계산한다. $u=\sin x,\,dv=e^{x}dx$ 로 두면 $du=\cos x\,dx,\,v=e^{x}$ 이므로
+
+    $$
+    \int \sin x\,e^{x}\,dx \;=\; \sin x\,e^{x}-\int \cos x\,e^{x}\,dx.
+    $$
+
+    한 번 더 $u=\cos x,\,dv=e^{x}dx$ 로 부분적분하면
+
+    $$
+    \int \cos x\,e^{x}\,dx \;=\; \cos x\,e^{x}+\int \sin x\,e^{x}\,dx,
+    $$
+
+    따라서
+
+    $$
+    \int \sin x\,e^{x}\,dx \;=\; \sin x\,e^{x}-\cos x\,e^{x}-\int \sin x\,e^{x}\,dx
+    $$
+
+    이고, 양변에 $\int \sin x\,e^{x}\,dx$ 를 더해 정리하면
+
+    $$
+    \int \sin x\,e^{x}\,dx \;=\; \frac{(\sin x-\cos x)e^{x}}{2}+C.
+    $$
+
+    이제 $f(x)=|\sin x|$ 이므로 적분구간을 부호에 맞춰 둘로 가른다.
+
+    $$
+    \int_{-\pi/2}^{\pi/2}|\sin x|e^{x}\,dx \;=\; -\int_{-\pi/2}^{0}\sin x\,e^{x}\,dx+\int_{0}^{\pi/2}\sin x\,e^{x}\,dx.
+    $$
+
+    각각 대입하면
+
+    $$
+    -\left[\frac{(\sin x-\cos x)e^{x}}{2}\right]_{-\pi/2}^{0}=-\Bigl(\tfrac{-1\cdot 1}{2}-\tfrac{(-1-0)e^{-\pi/2}}{2}\Bigr)=\tfrac12-\tfrac{e^{-\pi/2}}{2},
+    $$
+
+    $$
+    \left[\frac{(\sin x-\cos x)e^{x}}{2}\right]_{0}^{\pi/2}=\tfrac{(1-0)e^{\pi/2}}{2}-\tfrac{(-1)}{2}=\tfrac{e^{\pi/2}}{2}+\tfrac12.
+    $$
+
+    합치면
+
+    $$
+    \int_{-\pi/2}^{\pi/2}|\sin x|e^{x}\,dx \;=\; 1+\frac{e^{\pi/2}-e^{-\pi/2}}{2}.
+    $$
+
+    답: $\boxed{\,1+\dfrac{e^{\pi/2}-e^{-\pi/2}}{2}\,}$. $\square$
+
+### 논술 자연 — 점과 직선 사이의 거리 + 원-직선 최단거리
+
+#### [149-2] (문제 2-1) 점과 직선 사이의 거리 공식 증명
+
+**문제.** 좌표평면 위의 점 $\mathrm{P}(x_1,y_1)$ 과 직선 $\ell:\,ax+by+c=0$ 사이의 거리 $d$ 는
+
+$$
+d \;=\; \frac{|ax_1+by_1+c|}{\sqrt{a^{2}+b^{2}}}
+$$
+
+임을 보이시오 (단, $a\neq 0,\,b\neq 0$).
+
+??? success "풀이"
+
+    점 $\mathrm P$ 에서 $x$ 축, $y$ 축에 평행한 직선을 그어 직선 $\ell$ 과의 교점을 각각 $A,B$ 라 하자. $A$ 의 $x$ 좌표는 $-\dfrac{by_1+c}{a}$ 이고 $B$ 의 $y$ 좌표는 $-\dfrac{ax_1+c}{b}$ 이다.
+
+    $$
+    \overline{AP}=\left|x_1+\tfrac{by_1+c}{a}\right|=\left|\tfrac{ax_1+by_1+c}{a}\right|,\quad
+    \overline{BP}=\left|\tfrac{ax_1+by_1+c}{b}\right|.
+    $$
+
+    $\overline{AB}=\sqrt{\overline{AP}^{2}+\overline{BP}^{2}}$ 이고 직각삼각형 $APB$ 의 넓이는
+
+    $$
+    \overline{AB}\cdot\overline{PH}=\overline{AP}\cdot\overline{BP}
+    $$
+
+    이다. $k:=ax_1+by_1+c$ 라 두면 $\overline{AP}=|k/a|,\,\overline{BP}=|k/b|$ 이므로
+
+    $$
+    \sqrt{\tfrac{k^{2}}{a^{2}}+\tfrac{k^{2}}{b^{2}}}\cdot\overline{PH} \;=\; \tfrac{|k|}{|a|}\cdot\tfrac{|k|}{|b|}
+    \;\Longrightarrow\; \tfrac{|k|\sqrt{a^{2}+b^{2}}}{|ab|}\cdot\overline{PH}=\tfrac{k^{2}}{|ab|}
+    $$
+
+    $$
+    \Longrightarrow\; \overline{PH}=\frac{|k|}{\sqrt{a^{2}+b^{2}}}=\frac{|ax_1+by_1+c|}{\sqrt{a^{2}+b^{2}}}.\qquad\square
+    $$
+
+#### [149-3] (문제 2-2) 단위원 위 점과 직선의 최단거리
+
+**문제.** 두 조건
+
+$$
+p:\,x^{2}-n\le 0,\qquad q:\,-1\le x\le 3
+$$
+
+에 대하여 $p$ 가 $q$ 이기 위한 필요조건이고 $n$ 이 한 자리 자연수일 때, 중심이 $(n,0)$ 인 단위원 위의 점과 직선 $y=-\tfrac34x-\tfrac34$ 사이의 거리의 최솟값을 구하시오.
+
+??? success "풀이"
+
+    $p$ 가 $q$ 이기 위한 필요조건이므로 진리집합 사이의 포함관계 $Q\subset P$ 가 성립한다. 즉
+
+    $$
+    \{x:-1\le x\le 3\}\subset\{x:-\sqrt n\le x\le \sqrt n\}
+    \;\Longrightarrow\; 3\le\sqrt n\;\Longrightarrow\; n\ge 9.
+    $$
+
+    $n$ 이 한 자리 자연수이므로 $n=9$.
+
+    중심 $(9,0)$ 인 단위원의 반지름은 $1$. 직선 $y=-\tfrac34x-\tfrac34$ 를 $3x+4y+3=0$ 으로 쓰면 중심과 직선의 거리는
+
+    $$
+    \frac{|3\cdot 9+4\cdot 0+3|}{\sqrt{3^{2}+4^{2}}}=\frac{30}{5}=6.
+    $$
+
+    원 위의 점과 직선의 최단거리는 중심-직선거리에서 반지름을 빼므로
+
+    $$
+    d_{\min}=6-1=\boxed{5}.\qquad\square
+    $$
+
+### 논술 자연 — 삼각함수의 극한과 사인의 도함수
+
+#### [149-4] (문제 3-1) $\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$ 증명
+
+**문제.** 단위원 위의 도형의 넓이의 대소 관계와 함수의 극한의 대소 관계에 대한 성질을 이용하여 $\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$ 임을 보이시오.
+
+??? success "풀이"
+
+    **(1) $0<x<\pi/2$ 의 경우.** 단위원 $O$ 의 중심각 $\angle AOB=x$ 라 하고 $A$ 에서 원 $O$ 에 그은 접선과 $\overline{OB}$ 의 연장선의 교점을 $T$ 라 하자. 그러면
+
+    $$
+    \triangle AOB \;<\;(\text{부채꼴 }AOB)\;<\;\triangle AOT
+    $$
+
+    이다. 넓이를 각각 계산하면 $\tfrac12\sin x<\tfrac{x}{2}<\tfrac12\tan x$. $\sin x>0$ 이므로 양변을 $\tfrac12\sin x$ 로 나누고 역수를 취하면
+
+    $$
+    1>\frac{\sin x}{x}>\cos x.
+    $$
+
+    $\lim_{x\to 0^+}\cos x=1$ 이므로 샌드위치 정리에 의해 $\lim_{x\to 0^+}\dfrac{\sin x}{x}=1$.
+
+    **(2) $-\pi/2<x<0$ 의 경우.** $x=-t$ 로 치환하면 $t\to 0^+$ 이고
+
+    $$
+    \lim_{x\to 0^-}\frac{\sin x}{x}=\lim_{t\to 0^+}\frac{\sin(-t)}{-t}=\lim_{t\to 0^+}\frac{\sin t}{t}=1.
+    $$
+
+    따라서 $\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$. $\square$
+
+#### [149-5] (문제 3-2) $\displaystyle\lim_{x\to 0}\frac{1-\cos x}{x}$
+
+**문제.** (문제 3-1)을 이용하여 극한 $\displaystyle\lim_{x\to 0}\frac{1-\cos x}{x}$ 를 구하시오.
+
+??? success "풀이"
+
+    분자·분모에 $1+\cos x$ 를 곱하면
+
+    $$
+    \lim_{x\to 0}\frac{1-\cos x}{x}=\lim_{x\to 0}\frac{1-\cos^{2}x}{x(1+\cos x)}=\lim_{x\to 0}\frac{\sin^{2}x}{x(1+\cos x)}
+    $$
+
+    $$
+    =\lim_{x\to 0}\frac{\sin x}{x}\cdot\frac{\sin x}{1+\cos x}=1\cdot\frac{0}{2}=\boxed{0}.\qquad\square
+    $$
+
+#### [149-6] (문제 3-3) $(\sin x)'$ 의 유도
+
+**문제.** 도함수의 정의를 이용하여 삼각함수 $y=\sin x$ 의 도함수를 구하시오.
+
+??? success "풀이"
+
+    덧셈정리 $\sin(x+h)=\sin x\cos h+\cos x\sin h$ 를 사용하면
+
+    $$
+    y'=\lim_{h\to 0}\frac{\sin(x+h)-\sin x}{h}=\lim_{h\to 0}\frac{\cos x\sin h-\sin x(1-\cos h)}{h}
+    $$
+
+    $$
+    =\cos x\lim_{h\to 0}\frac{\sin h}{h}-\sin x\lim_{h\to 0}\frac{1-\cos h}{h}=\cos x\cdot 1-\sin x\cdot 0=\boxed{\cos x}.\qquad\square
+    $$
+
+### 논술 의예 — 원-직선의 접·잘림
+
+#### [149-7] (의예 문제 1-1) 원 $(x-3)^{2}+(y-2)^{2}=4$ 와 직선 $tx+y=2$ 의 접점
+
+**문제.** 원 $(x-3)^{2}+(y-2)^{2}=4$ 와 직선 $tx+y=2$ 가 접하기 위한 실수 $t$ 의 값과 접점의 좌표를 구하시오.
+
+??? success "풀이"
+
+    원의 중심 $(3,2)$ 과 직선 $tx+y-2=0$ 사이의 거리는
+
+    $$
+    d=\frac{|3t+2-2|}{\sqrt{t^{2}+1}}=\frac{3|t|}{\sqrt{t^{2}+1}}.
+    $$
+
+    접조건 $r=d$ ($r=2$)에서
+
+    $$
+    2=\frac{3|t|}{\sqrt{t^{2}+1}}\;\Longrightarrow\; 9t^{2}=4(t^{2}+1)\;\Longrightarrow\; t=\pm\frac{2}{\sqrt 5}.
+    $$
+
+    접점을 구하기 위해, 주어진 직선 $y=-tx+2$ 에 수직이고 원의 중심 $(3,2)$ 를 지나는 직선 $y=\tfrac{x-3}{t}+2$ 를 그어 교점을 구한다. 두 식을 같이 풀면
+
+    $$
+    -tx+2=\tfrac{x}{t}+2-\tfrac{3}{t}\;\Longrightarrow\; (t+\tfrac1t)x=\tfrac3t\;\Longrightarrow\; x=\frac{3}{t^{2}+1}.
+    $$
+
+    $t=\pm 2/\sqrt 5$ 에서 $t^{2}=4/5$ 이므로 $x=\dfrac{3}{9/5}=\dfrac{5}{3}$ 이고
+
+    $$
+    y=-t\cdot\tfrac53+2=\tfrac{6\mp 2\sqrt 5}{3}.
+    $$
+
+    답: $t=\pm\dfrac{2}{\sqrt 5}$ 이고, 접점은 $\boxed{\left(\dfrac{5}{3},\;\dfrac{6\mp 2\sqrt 5}{3}\right)}$. $\square$
+
+#### [149-8] (의예 문제 1-2) 직선 $(\sin t)x+y=12+3\sin t$ 가 원 $x^{2}+(y-3)^{2}=25$ 에서 자르는 현의 최댓값
+
+**문제.** 직선 $(\sin t)x+y=12+3\sin t$ 가 원 $x^{2}+(y-3)^{2}=25$ 에 의하여 잘린 선분의 길이의 최댓값을 구하시오. 이때 $t\in[0,2\pi]$.
+
+??? success "풀이"
+
+    잘린 선분의 길이는 피타고라스에 의해 $\ell=\sqrt{r^{2}-d^{2}}$ 이므로 $r=5$ 가 상수일 때 $\ell$ 이 최댓값을 가지려면 $d$ 가 최솟값이어야 한다.
+
+    원의 중심 $(0,3)$ 과 직선 사이의 거리는
+
+    $$
+    d=\frac{|3-12-3\sin t|}{\sqrt{\sin^{2}t+1}}=\frac{3(3+\sin t)}{\sqrt{\sin^{2}t+1}}.
+    $$
+
+    분자는 $\sin t=-1$ 일 때 $3\cdot 2=6$ 으로 최솟값, 분모는 $\sin^{2}t=1$ 일 때 $\sqrt 2$ 로 최댓값. 두 조건은 동시에 $\sin t=-1$ 즉 $t=3\pi/2$ 에서 만족된다. 그때
+
+    $$
+    d_{\min}=\frac{6}{\sqrt 2}=3\sqrt 2,
+    $$
+
+    $$
+    \ell_{\max}=2\sqrt{r^{2}-d^{2}}=2\sqrt{25-18}=\boxed{2\sqrt 7},\quad t=\tfrac{3\pi}{2}.\qquad\square
+    $$
+
+### 논술 의예 — 정사각뿔의 절단과 부피
+
+#### [149-9] (의예 문제 2-1) $\overline{FB}=1$ 일 때 두 도형의 부피
+
+**문제.** 모든 모서리의 길이가 $2$ 인 정사각뿔 $E\text{-}ABCD$ 를 밑면의 한 변인 $AD$ 를 지나는 평면으로 두 조각으로 분할한다. 평면 $AFGD$ 에 의해 잘린 사각뿔 $E\text{-}AFGD$ 를 $T_1$, 정사각뿔 $E\text{-}ABCD$ 에서 $T_1$ 을 제외한 도형을 $T_2$ 라 하자. $\overline{FB}=1$ 일 때 두 도형의 부피를 구하시오.
+
+??? success "풀이"
+
+    삼각형 $AEC$ 는 밑변이 $2\sqrt 2$ 이고 등변이 $2$ 인 이등변삼각형. $E$ 에서 $\overline{AC}$ 의 수직이등분선을 그어 만나는 점을 $K$ 라 하면 $\overline{EK}=\sqrt 2$ 이고 이것이 정사각뿔의 높이이므로
+
+    $$
+    V_{\text{정사각뿔}}=\frac13\cdot 4\cdot\sqrt 2=\frac{4\sqrt 2}{3}.
+    $$
+
+    $T_2$ 의 부피는 가운데 삼각기둥(높이 $\sqrt 2/2$, 부피 $\tfrac12\cdot 2\cdot\tfrac{\sqrt 2}{2}\cdot 1=\tfrac{\sqrt 2}{2}$)과, 양 옆의 두 조각을 합친 직사각뿔(부피 $\tfrac13\cdot 2\cdot 1\cdot\tfrac{\sqrt 2}{2}=\tfrac{\sqrt 2}{3}$)의 합이므로
+
+    $$
+    V(T_2)=\frac{\sqrt 2}{2}+\frac{\sqrt 2}{3}=\frac{5\sqrt 2}{6},\qquad
+    V(T_1)=\frac{4\sqrt 2}{3}-\frac{5\sqrt 2}{6}=\boxed{\frac{\sqrt 2}{2}}.
+    $$
+
+    답: $V(T_1)=\dfrac{\sqrt 2}{2},\;V(T_2)=\dfrac{5\sqrt 2}{6}$. $\square$
+
+#### [149-10] (의예 문제 2-2) 두 도형의 부피가 같아지는 $\overline{FB}$
+
+**문제.** 도형 $T_1$ 과 $T_2$ 의 부피가 서로 같을 때, 선분 $FB$ 의 길이를 구하시오.
+
+??? success "풀이"
+
+    $\overline{FB}=t$ 라 하면 $F=\bigl(2-\tfrac t2,\tfrac t2,\tfrac{t}{\sqrt 2}\bigr)$ 이고, (문제 2-1)과 같은 분해로
+
+    $$
+    V(T_2)=\frac{t(2-t)}{\sqrt 2}+\frac{1}{3}\cdot 2\cdot t\cdot\frac{t}{\sqrt 2}\cdot\frac{1}{?}
+    $$
+
+    정확히 계산하면 가운데 삼각기둥은 부피 $\tfrac12\cdot 2\cdot\tfrac{t}{\sqrt 2}\cdot(2-t)=\tfrac{t(2-t)}{\sqrt 2}$, 양 옆의 직사각뿔은 부피 $\tfrac13\cdot 2\cdot t\cdot\tfrac{t}{\sqrt 2}=\tfrac{\sqrt 2}{3}t^{2}$ 이므로
+
+    $$
+    V(T_2)=\frac{t(2-t)}{\sqrt 2}+\frac{\sqrt 2}{3}t^{2}=-\frac{\sqrt 2}{6}t^{2}+\sqrt 2\,t.
+    $$
+
+    이를 정사각뿔의 절반 $\tfrac{2}{3}\sqrt 2$ 와 같게 놓으면
+
+    $$
+    -\frac{\sqrt 2}{6}t^{2}+\sqrt 2\,t=\frac{2\sqrt 2}{3}\;\Longrightarrow\; t^{2}-6t+4=0\;\Longrightarrow\; t=3\pm\sqrt 5.
+    $$
+
+    $0<t\le 2$ 의 범위에서 $t=3-\sqrt 5\approx 0.76$ 만 적합하므로
+
+    $$
+    \overline{FB}=\boxed{3-\sqrt 5}.\qquad\square
+    $$
+
+### 면접 자연 — 주사위와 이항분포
+
+#### [149-11] (면접 자연 문제 2-1) $P(A),\,P(B)$
+
+**문제.** 서로 다른 두 개의 주사위를 동시에 던질 때, 두 주사위 눈의 합이 짝수일 사건을 $A$, 두 주사위 눈의 곱이 짝수일 사건을 $B$ 라 하자. $P(A),\,P(B)$ 를 구하시오.
+
+??? success "풀이"
+
+    각 주사위 눈이 홀수일 확률과 짝수일 확률이 각각 $1/2$. $(\text{홀},\text{홀}),(\text{홀},\text{짝}),(\text{짝},\text{홀}),(\text{짝},\text{짝})$ 의 네 경우는 각각 $1/4$ 의 확률.
+
+    합이 짝수: $\{(\text{홀},\text{홀}),(\text{짝},\text{짝})\}$ 이므로 $P(A)=\tfrac{1}{4}+\tfrac{1}{4}=\boxed{\tfrac12}$.
+
+    곱이 짝수: 곱이 홀수인 사건 $\{(\text{홀},\text{홀})\}$ 의 여사건이므로 $P(B)=1-\tfrac14=\boxed{\tfrac34}$. $\square$
+
+#### [149-12] (면접 자연 문제 2-2) $Y=2X-2$ 의 평균·분산과 $P(X=3)/P(X=2)$
+
+**문제.** 위 사건 $B$ 의 발생 횟수에 대한 독립시행을 $8$ 번 할 때, 곱이 짝수인 횟수를 확률변수 $X$ 라 하자.
+
+(가) $Y=2X-2$ 의 평균과 분산을 구하시오.
+
+(나) $\dfrac{P(X=3)}{P(X=2)}$ 를 구하시오.
+
+??? success "풀이"
+
+    $X\sim B(8,3/4)$.
+
+    **(가)** $E(X)=8\cdot\tfrac34=6,\;V(X)=8\cdot\tfrac34\cdot\tfrac14=\tfrac32$. 따라서
+
+    $$
+    E(Y)=2E(X)-2=12-2=\boxed{10},\qquad V(Y)=2^{2}V(X)=4\cdot\tfrac32=\boxed{6}.
+    $$
+
+    **(나)** $P(X=x)={}_8C_x(3/4)^{x}(1/4)^{8-x}$ 이므로
+
+    $$
+    \frac{P(X=3)}{P(X=2)}=\frac{{}_8C_3}{{}_8C_2}\cdot\frac{3/4}{1/4}=\frac{56}{28}\cdot 3=\boxed{6}.\qquad\square
+    $$
+
+### 면접 의예 — 일반화된 주사위 합·곱 + 최빈값
+
+#### [149-13] (면접 의예 문제 3-1) $P_2,\,Q_2$ 와 $\displaystyle\sum_{k=2}^{5}(64P_k-32Q_k)$
+
+**문제.** 서로 다른 $k$ 개의 주사위를 동시에 던질 때, 눈의 합이 짝수일 사건의 확률을 $P_k$, 눈의 곱이 짝수일 사건의 확률을 $Q_k$ 라 하자.
+
+(가) $P_2,\,Q_2$ 를 구하시오.
+
+(나) $\displaystyle\sum_{k=2}^{5}(64P_k-32Q_k)$ 를 구하시오.
+
+??? success "풀이"
+
+    **(가)** [149-11]과 동일하게 $P_2=\boxed{\tfrac12},\;Q_2=\boxed{\tfrac34}$.
+
+    **(나)** 일반적으로 각 주사위 눈이 홀수일 확률은 $1/2$. 합이 짝수가 되려면 홀수의 눈이 짝수 개여야 하므로 이항전개의 짝수 차수 항 합 $\frac{(1+1)^{k}+(1-1)^{k}}{2}\cdot\frac{1}{2^{k}}=\frac{1}{2}$. 따라서 모든 $k\ge 1$ 에 대해 $P_k=\tfrac12$.
+
+    한편 곱이 홀수가 되려면 모든 주사위가 홀수여야 하므로 곱이 홀수일 확률은 $(1/2)^{k}$. 따라서 $Q_k=1-(1/2)^{k}$.
+
+    대입하면
+
+    $$
+    \sum_{k=2}^{5}\bigl(64\cdot\tfrac12-32(1-(1/2)^{k})\bigr)=\sum_{k=2}^{5}\bigl(32-32+32\cdot(1/2)^{k}\bigr)=32\sum_{k=2}^{5}(1/2)^{k}.
+    $$
+
+    $\sum_{k=2}^{5}(1/2)^{k}=\dfrac{(1/2)^{2}\bigl(1-(1/2)^{4}\bigr)}{1-1/2}=\dfrac12\cdot\dfrac{15}{16}=\dfrac{15}{32}$, 따라서
+
+    $$
+    \sum_{k=2}^{5}(64P_k-32Q_k)=32\cdot\tfrac{15}{32}=\boxed{15}.\qquad\square
+    $$
+
+#### [149-14] (면접 의예 문제 3-2) $X\sim B(10,3/4)$ 의 비와 최빈값
+
+**문제.** 서로 다른 두 개의 주사위를 동시에 던지는 독립시행을 $10$ 번 할 때, 곱이 짝수인 횟수를 $X$ 라 하자.
+
+(가) $\dfrac{P(X=3)}{P(X=2)}$ 를 구하시오.
+
+(나) 확률질량함수 $P(X=x)$ 가 최대가 되는 $x$ 를 구하고 풀이과정을 설명하시오.
+
+??? success "풀이"
+
+    $X\sim B(10,3/4)$ 이므로 $P(X=x)={}_{10}C_x(3/4)^{x}(1/4)^{10-x}$.
+
+    **(가)**
+
+    $$
+    \frac{P(X=3)}{P(X=2)}=\frac{{}_{10}C_3}{{}_{10}C_2}\cdot\frac{3/4}{1/4}=\frac{120}{45}\cdot 3=\frac{8}{3}\cdot 3=\boxed{8}.
+    $$
+
+    **(나)** 인접비를 계산하면
+
+    $$
+    \frac{P(X=x)}{P(X=x-1)}=\frac{{}_{10}C_x}{{}_{10}C_{x-1}}\cdot\frac{3/4}{1/4}=\frac{11-x}{x}\cdot 3.
+    $$
+
+    이 비가 $1$ 이상이 되는 최대 정수 $x$ 를 찾으면
+
+    $$
+    \frac{11-x}{x}\cdot 3\ge 1\;\Longleftrightarrow\; 3(11-x)\ge x\;\Longleftrightarrow\; x\le\frac{33}{4}=8.25.
+    $$
+
+    따라서 정수 $x$ 의 최댓값은 $x=\boxed{8}$ 이고, 이때 $P(X=x)$ 가 최댓값을 갖는다. $\square$
