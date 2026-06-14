@@ -17803,3 +17803,144 @@ $X=\alpha\in\{\pi/6,\pi/4,\pi/3\}$ 의 확률 $\tfrac16,\tfrac12,\tfrac13$. $\be
 
 ---
 
+
+## 카드 156 — 연세대 미래캠퍼스 (2022학년도 논술)
+
+### 논술 자연계열·의예 — 조건부확률, 접선·정적분, 등비급수와 변곡점, 징검다리 게임, $\cos(\pi x)$ 와 확률밀도함수
+
+문항카드 3~7 — 자연 문제 1·2·3 (주머니 조건부확률, 이차함수 접선·내분점 극한, 등비급수·부분적분·변곡점), 의예 수학 문제 1·2 (오징어 게임형 징검다리, $\cos(\pi x)$ 접선의 평균변화율과 확률밀도함수).
+
+#### [156-1] 주머니 A, B, C 와 1번 공 — $P(D_{1})$ 과 $P(C|D_{1})$
+
+주머니 A (공 1,2,3,4), B (1,1,2,3), C (1,1,1,1). 임의로 주머니 하나 고른 후 그 주머니에서 임의로 한 번 꺼냈을 때 1번 공이 나올 확률, 그리고 1번 공이었을 때 주머니가 C 였을 확률.
+
+??? success "풀이"
+    $P(D_{1})=\tfrac13\cdot\tfrac14+\tfrac13\cdot\tfrac24+\tfrac13\cdot 1=\tfrac13(\tfrac14+\tfrac12+1)=\tfrac{7}{12}$.
+
+    $P(C|D_{1})=\dfrac{P(C\cap D_{1})}{P(D_{1})}=\dfrac{1/3}{7/12}=\boxed{\dfrac{4}{7}}$, $P(D_{1})=\boxed{\dfrac{7}{12}}$. $\square$
+
+#### [156-2] $n$ 번 모두 1번 공 → $P(C|D_{n})$
+
+??? success "풀이"
+    $P(D_{n})=\tfrac13\cdot(\tfrac14)^{n}+\tfrac13\cdot(\tfrac12)^{n}+\tfrac13$. $P(C\cap D_{n})=\tfrac13$. 그러므로
+    $$P(C|D_{n})=\dfrac{1/3}{(1/3)\bigl[(1/4)^{n}+(1/2)^{n}+1\bigr]}=\boxed{\dfrac{4^{n}}{1+2^{n}+4^{n}}}. \square$$
+
+#### [156-3] 주머니 C 주장의 확률 0.9 이상이 되는 최소 $n$
+
+??? success "풀이"
+    $n=1$: $4/7\approx 0.57$. $n=2$: $16/21\approx 0.76$. $n=3$: $64/73\approx 0.87$. $n=4$: $256/273\approx 0.937\ge 0.9$.
+
+    따라서 $4$ 회 이상 반복 시 주장 신빙성 0.9 이상. 최소 $\boxed{n=4}$. $\square$
+
+#### [156-4] 이차함수 $y=x^{2}$ 의 두 점 $A(a,a^{2}),\;B(b,b^{2})$ 의 접선과 둘러싸인 넓이
+
+$0\le a<b$.
+
+??? success "풀이"
+    $A$ 에서의 접선 $y=2ax-a^{2}$, $B$ 에서의 접선 $y=2bx-b^{2}$. 교점 $x=\dfrac{a+b}{2}$.
+
+    넓이 $=\int_{a}^{(a+b)/2}\!\!(x-a)^{2}dx+\int_{(a+b)/2}^{b}\!\!(x-b)^{2}dx=\tfrac{2}{3}\!\left(\tfrac{b-a}{2}\right)^{3}=\boxed{\dfrac{(b-a)^{3}}{12}}. \square$
+
+#### [156-5] 내분점 좌표 $f(t)$, $\lim_{t\to\infty}f(t)$
+
+$a=\dfrac{-t+\sqrt{t^{2}+16t}}{8}$, $b=\dfrac{-3t+3\sqrt{t^{2}+4t}}{8}$. AB 를 $m:n$ 으로 내분: $f(t)=\dfrac{mb+na}{m+n}$.
+
+??? success "풀이"
+    $\lim_{t\to\infty}(t-\sqrt{t^{2}+4t})=\lim\dfrac{-4t}{t+\sqrt{t^{2}+4t}}=-2$, 마찬가지 $\lim(t-\sqrt{t^{2}+16t})=-8$.
+
+    $a=\tfrac{1}{8}(-t+\sqrt{t^{2}+16t})=\tfrac{1}{8}(-(t-\sqrt{t^{2}+16t}))\to\tfrac{8}{8}=1$.
+
+    $b=\tfrac{3}{8}(-(t-\sqrt{t^{2}+4t}))\to\tfrac{3}{8}\cdot 2=\tfrac{3}{4}$.
+
+    그러나 PDF 의 공식
+    $$\lim_{t\to\infty}f(t)=\dfrac{1}{8(m+n)}\bigl\{(-3)\cdot(-2)\cdot m-n\cdot(-8)\bigr\}=\dfrac{6m+8n}{8(m+n)}=\boxed{\dfrac{3m+4n}{4(m+n)}}. \square$$
+
+#### [156-6] 플라스틱 재활용 (등비급수)
+
+1500톤 중 매번 $0.65\times 0.8=0.52$ 가 재활용. 반복 무한대.
+
+??? success "풀이"
+    $\sum_{n=1}^{\infty}1500\cdot 0.52^{n}=\dfrac{1500\cdot 0.52}{1-0.52}=\dfrac{780}{0.48}=\boxed{1625\text{톤}}. \square$
+
+#### [156-7] $A(x)=\int_{1.5}^{x}(10t^{2}-9t-9)e^{-t}dt$ 의 $\lim_{x\to\infty}A(x)$
+
+(단, $\lim x^{2}e^{-x}=0$).
+
+??? success "풀이"
+    부분적분 두 번:
+    $$A(x)=\bigl[-(10t^{2}-9t-9)e^{-t}\bigr]_{1.5}^{x}+\int_{1.5}^{x}(20t-9)(-e^{-t})\,(\cdot -1)\,dt.$$
+    실제 계산:
+    $$A(x)=-(10x^{2}-9x-9)e^{-x}+(10\cdot 1.5^{2}-9\cdot 1.5-9)e^{-1.5}+\int_{1.5}^{x}(20t-9)e^{-t}dt.$$
+    재귀적으로 부분적분: $\int(20t-9)e^{-t}dt=-(20t-9)e^{-t}-20e^{-t}$. 결과 정리하면
+    $$A(x)=(-10x^{2}-11x-2)e^{-x}+41e^{-1.5}.$$
+    $\lim_{x\to\infty}(-10x^{2}-11x-2)e^{-x}=0$ 이므로
+    $$\lim_{x\to\infty}A(x)=\boxed{41e^{-1.5}}. \square$$
+
+#### [156-8] $f(t)=(10t^{2}-9t-9)e^{-t}$ 의 변곡점 $x$-좌표
+
+??? success "풀이"
+    $f'(t)=(-10t^{2}+29t)e^{-t}$, $f''(t)=(10t^{2}-49t+29)e^{-t}$. $f''(t)=0\Leftrightarrow 10t^{2}-49t+29=0$:
+    $$t=\dfrac{49\pm\sqrt{49^{2}-4\cdot 10\cdot 29}}{20}=\dfrac{49\pm\sqrt{1241}}{20}.$$
+    $t\ge 1.5$ 에서 부호 변화하는 점은 $a=\boxed{\dfrac{49+\sqrt{1241}}{20}}$. $\square$
+
+#### [156-9] 징검다리 18명·20줄, 마지막 사람 생존 확률 $1-\dfrac{a}{2^{40}}$
+
+강화유리 찾을 확률 $p=3/4$, 일반유리 $1/4$. $m$ 개 (=20) 의 유리줄에서 $i$ 번째 사람 생존 확률은 앞 사람 $i-1$ 명이 일반유리 자리를 깬 후 강화유리 위치를 모두 안 상태로 통과한다.
+
+??? success "풀이"
+    $i$ 번째 사람의 생존 확률 $=\sum_{r=0}^{i-1}\binom{m}{r}p^{m-r}(1-p)^{r}$. $i=18,m=20,p=3/4$:
+    $$\sum_{r=0}^{17}\binom{20}{r}(3/4)^{20-r}(1/4)^{r}=1-\sum_{r=18}^{20}\binom{20}{r}(3/4)^{20-r}(1/4)^{r}.$$
+    $$\sum_{r=18}^{20}\binom{20}{r}3^{20-r}/4^{20}=\dfrac{\binom{20}{18}3^{2}+\binom{20}{19}3+\binom{20}{20}}{4^{20}}=\dfrac{190\cdot 9+60+1}{4^{20}}=\dfrac{1771}{2^{40}}.$$
+    따라서 $a=\boxed{1771}$. $\square$
+
+#### [156-10] 시간 그래프 → 14, 15, 16 만 생존, $b_{1}-\sum_{j=2}^{8}b_{j}$
+
+PDF 풀이로부터 $q=1/200$, $p=0.6$. 14,15,16번 사람만 생존 = 13번 사람 탈락하고 14번 생존 = $\binom{20}{13}0.6^{7}0.4^{13}$.
+
+??? success "풀이"
+    $\binom{20}{13}=77520=2^{4}\cdot 3\cdot 5\cdot 17\cdot 19$. $0.6^{7}=\tfrac{2^{7}\cdot 3^{7}}{10^{7}}$, $0.4^{13}=\tfrac{2^{26}}{10^{13}}$. 곱:
+    $$\dfrac{2^{4}\cdot 3\cdot 5\cdot 17\cdot 19\cdot 2^{7}\cdot 3^{7}\cdot 2^{26}}{10^{20}}=\dfrac{2^{37}\cdot 3^{8}\cdot 5\cdot 17\cdot 19}{10^{20}}.$$
+    그러므로 $b_{1}=37,\;b_{2}=8,\;b_{3}=1,\;b_{4}=b_{5}=b_{6}=0,\;b_{7}=1,\;b_{8}=1$. (소수 11, 13 이 등장하지 않으므로 $b_{4}=b_{5}=b_{6}=0$.)
+
+    $b_{1}-(b_{2}+b_{3}+b_{4}+b_{5}+b_{6}+b_{7}+b_{8})=37-(8+1+0+0+0+1+1)=\boxed{26}$. $\square$
+
+#### [156-11] $f(0)=1/2$, $\int_{a}^{x}f(t)dt=-\tfrac{\sin x+\cos x}{2}e^{x}+f(x)$ ($x\le t^{*}$), $f(x)=1$ ($x>t^{*}$)
+
+$f$ 를 구하라.
+
+??? success "풀이"
+    조건 (다) 미분: $f(x)=-\tfrac{\cos x-\sin x}{2}e^{x}-\tfrac{\sin x+\cos x}{2}e^{x}+f'(x)=-e^{x}\cos x+f'(x)$.
+
+    즉 $f-f'=-e^{x}\cos x$. $g(x)=e^{-x}f(x)$ 라 하면 $g'(x)=e^{-x}(f'(x)-f(x))=\cos x$, $g(x)=\sin x+C$, $f(x)=e^{x}(\sin x+C)$.
+
+    $f(0)=C=1/2$. 따라서 $\boxed{f(t)=\begin{cases}e^{t}(\sin t+\tfrac12), & t\le t^{*}\\ 1, & t>t^{*}\end{cases}}$. $\square$
+
+#### [156-12] $h(x)$ 의 좌·우극한 불연속점
+
+$f(x)=\cos(\pi x)$ ($x\ge 0$). $S=\{y\mid f'(x)=\dfrac{f(x)-f(y)}{x-y},\;y>x\}$, $h(x)=|S|$ ($0\le x\le 1$). $\lim_{x\to a-}h\ne h(a)$, $\lim_{x\to a+}h=h(a)$ 인 $a$.
+
+??? success "풀이"
+    $h(x)$ 는 $x$ 에서의 접선이 $f(x)$ 와 다시 만나는 점의 개수. $f(x)=\cos(\pi x)$ 는 주기 2, 1/2에서 $f'(1/2)=-\pi$, 접선이 다른 점에서 $f$ 와 접하지 않으면 만남 개수 홀수, 접하면 짝수.
+
+    $x=1/2$ 에서 접선은 $(1/2,0)$ 에서 $f$ 와 접점 외에 다시 만나지 않으므로 $h(1/2)=0$. 좌극한은 1 (그래프), 우극한은 0. 좌극한 불연속, 우극한 연속. 따라서 $a=\boxed{\dfrac{1}{2}}$. $\square$
+
+#### [156-13] $p(x)=ke^{x}f(x)$ 가 $[u,v]=[1/2,1]$ 에서 확률밀도함수가 되도록 하는 $k$
+
+??? success "풀이"
+    $\int_{1/2}^{1}ke^{x}\cos(\pi x)\,dx=1$. $I=\int_{1/2}^{1}e^{x}\cos(\pi x)dx$. 부분적분 두 번:
+    $$I=[e^{x}\cos(\pi x)]_{1/2}^{1}+\pi\int_{1/2}^{1}e^{x}\sin(\pi x)dx=-e+\pi\bigl([e^{x}\sin(\pi x)]_{1/2}^{1}-\pi I\bigr).$$
+    $=-e+\pi(0-\sqrt e)-\pi^{2}I$, 즉 $(1+\pi^{2})I=-e-\pi\sqrt e$, $I=-\dfrac{e+\pi\sqrt e}{1+\pi^{2}}$.
+
+    $kI=1\Rightarrow k=\boxed{-\dfrac{1+\pi^{2}}{e+\pi\sqrt e}}. \square$
+
+#### [156-14] $h(b)=8$ 일 때 $b\pi+\cot(b\pi)$
+
+??? success "풀이"
+    $h(b)=8$ 이려면 점 $(b,f(b))$ 의 접선이 $f$ 와 다른 한 점 $(c,f(c))$ 에서 접해야 한다. $f(x)=\cos(\pi x)$ 이므로 $f'(b)=f'(c)\Rightarrow \sin(\pi b)=\sin(\pi c)$. $c=9-b$ (그래프 규칙성).
+
+    평균변화율 $=$ 순간변화율: $\dfrac{f(b)-f(c)}{b-c}=f'(b)$. $f(c)=\cos(\pi(9-b))=-\cos(\pi b)$:
+    $$\dfrac{2\cos(\pi b)}{2b-9}=-\pi\sin(\pi b)\Rightarrow\dfrac{\cos(\pi b)}{\sin(\pi b)}=-\pi\dfrac{2b-9}{2}\Rightarrow\cot(\pi b)=-\pi(b-\tfrac{9}{2}).$$
+    즉 $\cot(\pi b)+\pi b=\pi\cdot\tfrac{9}{2}=\boxed{\dfrac{9\pi}{2}}. \square$
+
+---
+
