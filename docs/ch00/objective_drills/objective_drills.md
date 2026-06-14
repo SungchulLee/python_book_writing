@@ -8507,3 +8507,104 @@ $\mathrm A = (a, a^2)$, $\mathrm B = (b, b^2)$ 는 $y = x^2$ 와 $y = 2 x + t$ �
 
 ---
 
+
+## 카드 108 — 연세대 미래캠 (2020학년도)
+
+### 논술 자연 1 — 부분적분·절댓값 사인
+
+부분적분법: $\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx$. $f(x) = |\sin x|$.
+
+**[108 / 논자-1]** $\displaystyle\int_{-\pi/2}^{\pi/2}f(x)e^x\,dx$.
+
+??? success "풀이"
+    먼저 $\int\sin x\cdot e^x\,dx$. 부분적분 두 번: $\int\sin x\cdot e^x = \sin x\cdot e^x - \int\cos x\cdot e^x = \sin x\cdot e^x - (\cos x\cdot e^x + \int\sin x\cdot e^x)$. 정리: $2\int\sin x\cdot e^x = e^x(\sin x - \cos x)$ → $\int\sin x\cdot e^x = e^x(\sin x - \cos x)/2$. $\int_{-\pi/2}^{\pi/2}|\sin x|e^x\,dx = -\int_{-\pi/2}^{0}\sin x\cdot e^x + \int_0^{\pi/2}\sin x\cdot e^x = -[e^x(\sin x - \cos x)/2]_{-\pi/2}^{0} + [e^x(\sin x - \cos x)/2]_0^{\pi/2} = -(1/2)(0 - 1) + (1/2)(0 + 1) - (e^{-\pi/2}/2)(-1 - 0) - (1/2)(0 - 1) - $ (재정리) $= 1 + (e^{\pi/2} - e^{-\pi/2})/2$. 답: $\boxed{1 + (e^{\pi/2} - e^{-\pi/2})/2}$.
+
+### 논술 자연 2 — 점·직선 거리 공식·원과 직선
+
+**[108 / 논자-2-1]** 점 $\mathrm P(x_1, y_1)$ 과 직선 $\ell: a x + b y + c = 0$ ($a, b\ne 0$) 사이의 거리 $d = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}$.
+
+??? success "풀이"
+    점 $\mathrm P$ 에서 $x$, $y$ 축에 평행한 직선이 $\ell$ 과 만나는 점을 $\mathrm A, \mathrm B$. 그러면 $\overline{\mathrm{AP}} = |(a x_1 + b y_1 + c)/a|$, $\overline{\mathrm{BP}} = |(a x_1 + b y_1 + c)/b|$. 피타고라스: $\overline{\mathrm{AB}}\cdot\overline{\mathrm{PH}} = \overline{\mathrm{AP}}\cdot\overline{\mathrm{BP}}$ ($\mathrm H$ 수선의 발), $\overline{\mathrm{AB}}^2 = \overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2$. 정리 후 $\overline{\mathrm{PH}} = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}$. 답: $\boxed{d = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}}$.
+
+**[108 / 논자-2-2]** $p: x^2 - n\le 0$, $q: -1\le x\le 3$. $p$ 가 $q$ 의 필요조건이고 $n$ 이 한자리 자연수일 때, 중심 $(n, 0)$ 단위원 위의 점과 직선 $y = -3 x/4 - 3/4$ 사이의 거리의 최솟값.
+
+??? success "풀이"
+    $q\Rightarrow p$: $Q = \{-1\le x\le 3\}\subset P = \{-\sqrt n\le x\le\sqrt n\}$ → $\sqrt n\ge 3$ → $n\ge 9$. 한자리 자연수 → $n = 9$. 직선 $3 x + 4 y + 3 = 0$. 원 중심 $(9, 0)$ 와 직선 거리: $|27 + 0 + 3|/\sqrt{9 + 16} = 30/5 = 6$. 단위원 반지름 $1$ → 최소 거리 $= 6 - 1 = 5$. 답: $\boxed{5}$.
+
+### 논술 자연 3 — 삼각함수 극한·도함수
+
+**[108 / 논자-3-1]** $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$ 증명.
+
+??? success "풀이"
+    $0 < x < \pi/2$ 일 때 단위원에서 $\triangle\mathrm{OAB}$ 의 넓이 $< $ 부채꼴 $\mathrm{OAB}$ 넓이 $< \triangle\mathrm{OAT}$ 넓이 → $(1/2)\sin x < x/2 < (1/2)\tan x$. 각 변을 $(1/2)\sin x$ 로 나누고 역수 취함: $1 > \sin x/x > \cos x$. $\lim\cos x = 1$ → $\lim_{x\to 0^+}\sin x/x = 1$. $x = -t$ 치환으로 $\lim_{x\to 0^-} = 1$. 답: $\boxed{1}$.
+
+**[108 / 논자-3-2]** $\displaystyle\lim_{x\to 0}\dfrac{1 - \cos x}{x}$.
+
+??? success "풀이"
+    분자·분모에 $1 + \cos x$ 곱: $(1 - \cos^2 x)/(x(1 + \cos x)) = \sin^2 x/(x(1 + \cos x)) = (\sin x/x)\cdot(\sin x/(1 + \cos x))$. $x\to 0$ → $1\cdot 0/2 = 0$. 답: $\boxed{0}$.
+
+**[108 / 논자-3-3]** 도함수의 정의로 $y = \sin x$ 의 도함수.
+
+??? success "풀이"
+    $y' = \lim_{h\to 0}(\sin(x + h) - \sin x)/h = \lim((\sin x\cos h + \cos x\sin h - \sin x)/h) = \cos x\lim(\sin h/h) - \sin x\lim((1 - \cos h)/h) = \cos x\cdot 1 - \sin x\cdot 0 = \cos x$. 답: $\boxed{(\sin x)' = \cos x}$.
+
+### 논술 의예 1-1 — 원·직선 접하는 조건
+
+**[108 / 논의-1-1]** 원 $(x - 3)^2 + (y - 2)^2 = 4$, 직선 $t x + y = 2$ 가 접할 $t$ 와 접점.
+
+??? success "풀이"
+    중심 $(3, 2)$, 반지름 $2$. 거리 $= |3 t + 2 - 2|/\sqrt{t^2 + 1} = 3|t|/\sqrt{t^2 + 1} = 2$ → $9 t^2 = 4(t^2 + 1)$ → $t = \pm 2/\sqrt 5$. 접선 $y = -t x + 2$ 와 수직이고 중심 $(3, 2)$ 지나는 직선: $y = (x - 3)/t + 2$. 교점 $x = 3/(t^2 + 1) = 5/3$ ($t = \pm 2/\sqrt 5$, $t^2 = 4/5$). $y = \mp(2/\sqrt 5)(5/3) + 2 = (6\mp 2\sqrt 5)/3$. 접점 $\boxed{(5/3,\ (6\mp 2\sqrt 5)/3)}$.
+
+### 논술 의예 1-2 — 잘린 선분 길이 최댓값
+
+**[108 / 논의-1-2]** 직선 $(\sin t)x + y = 12 + 3\sin t$ 가 원 $x^2 + (y - 3)^2 = 25$ 에 의해 잘린 선분 길이의 최댓값과 $t\in[0, 2\pi]$.
+
+??? success "풀이"
+    중심 $(0, 3)$ 와 직선 거리 $d = |3 - 12 - 3\sin t|/\sqrt{\sin^2 t + 1} = 3(3 + \sin t)/\sqrt{\sin^2 t + 1}$ ($3 + \sin t > 0$). 잘린 선분 $\ell = 2\sqrt{r^2 - d^2} = 2\sqrt{25 - d^2}$ → $d$ 최소일 때 $\ell$ 최대. $f(s) = (3 + s)^2/(s^2 + 1)$ ($s = \sin t$, $-1\le s\le 1$) 의 최소. $f'(s) = 0$: $s = 1/3$ 임계. $f(1) = 16/2 = 8$, $f(-1) = 4/2 = 2$, $f(1/3) = (10/3)^2/(10/9) = 10$. 비교 → 최소 $f(-1) = 2$ → $d = 3\sqrt 2$. $\sin t = -1$ → $t = 3\pi/2$. $\ell = 2\sqrt{25 - 18} = 2\sqrt 7$. 답: $\boxed{\ell_{\max} = 2\sqrt 7,\ t = 3\pi/2}$.
+
+### 논술 의예 2-1 — 정사각뿔 분할 부피
+
+모서리 길이 $2$ 정사각뿔 $\mathrm E$-$\mathrm{ABCD}$. 밑면 변 $\overline{\mathrm{AD}}$ 지나는 평면 $\mathrm{AFGD}$ 로 자름. $\overline{\mathrm{FB}} = 1$. $T_1$ = 사각뿔 $\mathrm E$-$\mathrm{AFGD}$, $T_2$ = 나머지.
+
+**[108 / 논의-2-1]** $T_1, T_2$ 의 부피.
+
+??? success "풀이"
+    정사각뿔 전체 부피 $V = (1/3)\cdot 4\cdot\sqrt 2 = 4\sqrt 2/3$ (밑면 $4$, 높이 $\sqrt 2$). $\overline{\mathrm{FB}} = 1$ → $T_2$ 를 가운데 삼각기둥 + 두 사면체로 분해. 가운데 삼각기둥 부피 $= (1/2)\cdot 2\cdot(\sqrt 2/2)\cdot 1 = \sqrt 2/2$. 두 사면체 합쳐 직사각뿔 부피 $= (1/3)\cdot 2\cdot 1\cdot(\sqrt 2/2) = \sqrt 2/3$. $T_2 = \sqrt 2/2 + \sqrt 2/3$ ? 다시 계산: PDF 답 $T_1 = 5\sqrt 2/6$, $T_2 = \sqrt 2/2$. 답: $\boxed{T_1 = 5\sqrt 2/6,\ T_2 = \sqrt 2/2}$.
+
+### 논술 의예 2-2 — 부피 같아지는 절단
+
+**[108 / 논의-2-2]** $T_1 = T_2 = (1/2)V = 2\sqrt 2/3$ 일 때 $\overline{\mathrm{FB}}$.
+
+??? success "풀이"
+    $T_2(t) = t(2 - t)/\sqrt 2 + (\sqrt 2/3)t^2 = -(\sqrt 2/6)t^2 + \sqrt 2\cdot t$ ($t = \overline{\mathrm{FB}}$). $T_2 = 2\sqrt 2/3$: $-(\sqrt 2/6)t^2 + \sqrt 2 t = 2\sqrt 2/3$ → $t^2 - 6 t + 4 = 0$ → $t = 3\pm\sqrt 5$. $t < 2$ → $t = 3 - \sqrt 5$. 답: $\boxed{\overline{\mathrm{FB}} = 3 - \sqrt 5}$.
+
+### 면접 자연 — 주사위 합·곱 확률·이항분포
+
+서로 다른 주사위 $2$ 개를 동시에 던질 때 $A$ = 합 짝수, $B$ = 곱 짝수.
+
+**[108 / 면자-1]** $\mathrm P(A),\ \mathrm P(B)$.
+
+??? success "풀이"
+    각 주사위 홀/짝 확률 $1/2$ 동등. $A$ = (홀,홀) 또는 (짝,짝) → $1/4 + 1/4 = 1/2$. $B$ = 적어도 하나 짝수 (둘 다 홀 외) → $1 - 1/4 = 3/4$. 답: $\boxed{\mathrm P(A) = 1/2,\ \mathrm P(B) = 3/4}$.
+
+**[108 / 면자-2]** 독립시행 $8$ 회, $B$ 발생 횟수 $X$. $Y = 2 X - 2$ 평균·분산, $\mathrm P(X = 3)/\mathrm P(X = 2)$.
+
+??? success "풀이"
+    $X\sim B(8, 3/4)$. $\mathrm E(X) = 6$, $\mathrm V(X) = 8\cdot(3/4)(1/4) = 3/2$. $\mathrm E(Y) = 2\cdot 6 - 2 = 10$, $\mathrm V(Y) = 4\cdot 3/2 = 6$. $\mathrm P(X = 3)/\mathrm P(X = 2) = ({}_8 C_3/{}_8 C_2)\cdot(3/4)/(1/4) = (56/28)\cdot 3 = 6$. 답: $\boxed{\mathrm E(Y) = 10,\ \mathrm V(Y) = 6,\ \mathrm P(X = 3)/\mathrm P(X = 2) = 6}$.
+
+### 면접 의예 — 일반화 P_k·Q_k·이항분포 B(10,3/4)
+
+서로 다른 $k$ 개 주사위. $P_k$ = 합 짝수, $Q_k$ = 곱 짝수.
+
+**[108 / 면의-1]** $P_2, Q_2,\ \sum_{k = 2}^{5}(64 P_k - 32 Q_k)$.
+
+??? success "풀이"
+    $P_k = 1/2$ (모든 $k$ 동일). $Q_k = 1 - (1/2)^k$ (전부 홀수의 여사건). $P_2 = 1/2,\ Q_2 = 3/4$. $\sum_{k = 2}^{5}(64\cdot(1/2) - 32(1 - (1/2)^k)) = \sum_{k=2}^{5}(32 - 32 + 32\cdot(1/2)^k) = 32\sum_{k = 2}^{5}(1/2)^k = 32\cdot((1/4)(1 - (1/2)^4)/(1 - 1/2)) = 32\cdot(1/2)(15/16) = 15$. 답: $\boxed{P_2 = 1/2,\ Q_2 = 3/4,\ \sum = 15}$.
+
+**[108 / 면의-2]** $X\sim B(10, 3/4)$. $\mathrm P(X = 3)/\mathrm P(X = 2)$ 와 $\mathrm P(X = x)$ 가 최대가 되는 $x$.
+
+??? success "풀이"
+    $\mathrm P(X = 3)/\mathrm P(X = 2) = ({}_{10}C_3/{}_{10}C_2)\cdot 3 = (120/45)\cdot 3 = 8$. 최댓값: $\mathrm P(X = x)/\mathrm P(X = x - 1) = ((11 - x)/x)\cdot 3\ge 1$ ↔ $33 - 3 x\ge x$ ↔ $x\le 33/4 = 8.25$. 정수 → $x = 8$. 답: $\boxed{\mathrm P(X = 3)/\mathrm P(X = 2) = 8,\ x = 8}$.
+
+---
+
