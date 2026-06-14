@@ -17944,3 +17944,169 @@ $f(x)=\cos(\pi x)$ ($x\ge 0$). $S=\{y\mid f'(x)=\dfrac{f(x)-f(y)}{x-y},\;y>x\}$,
 
 ---
 
+
+## 카드 157 — 연세대 미래캠퍼스 (2023학년도 논술 · 창의인재(자연·의예))
+
+> 출처: 「2023학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서」 문항카드 3·4·5(자연계열 문제 1·2·3) 및 문항카드 6·7(의예과 수학 문제 1·2). 자연계열은 *수열의 극한·정적분·사인함수의 활용*을, 의예과는 *지수함수의 미분과 포물선의 접선·코사인법칙과 호도법*을 평가한다.
+
+---
+
+#### [157-1] 자연 문제 1-1 — 거듭제곱의 합과 비교부등식으로 본 극한
+
+자연수 $n$에 대하여 부등식
+$$\frac{1}{n^2+n}\;\le\;\frac{1}{n^2+k}\;\le\;\frac{1}{n^2+1}\quad(1\le k\le n)$$
+이 성립한다. 이를 이용하여 극한
+$$\lim_{n\to\infty}\Big(\frac{1}{n^2+1}+\frac{2}{n^2+2}+\cdots+\frac{n}{n^2+n}\Big)$$
+의 값을 구하시오.
+
+??? success "풀이"
+    부등식 $\dfrac{1}{n^2+n}\le \dfrac{1}{n^2+k}\le \dfrac{1}{n^2+1}$의 양변에 $k$를 곱한 뒤 $k=1,2,\ldots,n$에 대하여 더하면
+    $$\frac{1+2+\cdots+n}{n^2+n}\;\le\;\sum_{k=1}^{n}\frac{k}{n^2+k}\;\le\;\frac{1+2+\cdots+n}{n^2+1}.$$
+    그런데
+    $$\lim_{n\to\infty}\frac{\tfrac{n(n+1)}{2}}{n^2+n}=\lim_{n\to\infty}\frac{n+1}{2(n+1)}=\frac{1}{2},\qquad \lim_{n\to\infty}\frac{\tfrac{n(n+1)}{2}}{n^2+1}=\frac{1}{2}.$$
+    조임정리에 의하여
+    $$\lim_{n\to\infty}\sum_{k=1}^{n}\frac{k}{n^2+k}=\boxed{\tfrac{1}{2}}.\;\square$$
+
+#### [157-2] 자연 문제 1-2 — 부분분수 분해와 망원합
+
+급수 $\displaystyle\sum_{n=1}^{\infty}\frac{2}{(2n-1)(2n+3)}$의 수렴/발산을 조사하고, 수렴하면 그 합을 구하시오.
+
+??? success "풀이"
+    부분분수 분해
+    $$\frac{2}{(2n-1)(2n+3)}=\frac{1}{2}\Big(\frac{1}{2n-1}-\frac{1}{2n+3}\Big).$$
+    부분합 $S_n=\displaystyle\sum_{k=1}^{n}\frac{1}{2}\Big(\frac{1}{2k-1}-\frac{1}{2k+3}\Big)$는 망원급수이므로
+    $$S_n=\tfrac{1}{2}\Big(\tfrac{1}{1}+\tfrac{1}{3}-\tfrac{1}{2n+1}-\tfrac{1}{2n+3}\Big).$$
+    따라서 $\lim_{n\to\infty}S_n=\tfrac{1}{2}\big(1+\tfrac{1}{3}\big)=\boxed{\dfrac{2}{3}}$, 급수는 수렴. $\square$
+
+#### [157-3] 자연 문제 2-1 — 도함수가 연속이 되는 조각함수의 미정계수
+
+세 구간에서 정의된 함수
+$$f(x)=\begin{cases}ax+b & (x<-3)\\ -x^2+9 & (-3\le x<0)\\ cx+d & (0\le x)\end{cases}$$
+와 $g(x)=k(x-1)+12\;(k>0)$가 있다. $f$와 $f'$가 모든 실수에서 연속이고 $f(x)$와 $g(x)$가 접하도록 하는 $a,b,c,d,k$를 구하시오.
+
+??? success "풀이"
+    **$x=-3$:** $f'(x)=-2x$이므로 $f'$ 연속 ⇒ $a=f'(-3^-)=\;f'(-3^+)=-2(-3)=6$. $f$ 연속 ⇒ $-3a+b=-(-3)^2+9=0$, 즉 $b=18$.
+    
+    **$x=0$:** $f'$ 연속 ⇒ $c=f'(0^-)=-2\cdot 0=0$. $f$ 연속 ⇒ $d=-0^2+9=9$.
+    
+    **접선 조건:** 이차 $y=-x^2+9$와 직선 $y=kx+12-k$가 접 ⇒ $-x^2+9=kx+12-k$ ⇒ $x^2+kx+3-k=0$의 판별식 $D=k^2+4k-12=(k-2)(k+6)=0$. $k>0$이므로 $k=2$.
+    
+    $$\boxed{a=6,\;b=18,\;c=0,\;d=9,\;k=2}. \square$$
+
+#### [157-4] 자연 문제 2-2 — 정적분으로 본 곡선과 직선 사이의 넓이
+
+[157-3]의 $a,b,c,d,k$에 대해 두 함수 $f(x), g(x)=2x+10$의 그래프와 직선 $y=0$으로 둘러싸인 영역의 넓이를 구하시오.
+
+??? success "풀이"
+    교점 구하기. $f(x)=0\Leftrightarrow -x^2+9=0\;(-3\le x<0)\Rightarrow x=-3$. $g(x)=0\Leftrightarrow x=-5$. 접점: $-x^2+9=2x+10\Rightarrow x^2+2x+1=0\Rightarrow x=-1$.
+    
+    영역은 $-5\le x\le -3$에서 $g(x)$와 $x$축 사이, $-3\le x\le -1$에서 $g(x)$와 $f(x)$ 사이로 갈라진다.
+    $$A=\int_{-5}^{-3}(2x+10)\,dx+\int_{-3}^{-1}\bigl((2x+10)-(-x^2+9)\bigr)\,dx.$$
+    첫 항 $=\bigl[x^2+10x\bigr]_{-5}^{-3}=(9-30)-(25-50)=-21+25=4$.
+    둘째 항 $=\int_{-3}^{-1}(x^2+2x+1)\,dx=\bigl[\tfrac{x^3}{3}+x^2+x\bigr]_{-3}^{-1}=(-\tfrac{1}{3}+1-1)-(-9+9-3)=-\tfrac{1}{3}+3=\tfrac{8}{3}$.
+    합하면 $A=4+\tfrac{8}{3}=\boxed{\dfrac{20}{3}}$. $\square$
+
+#### [157-5] 자연 문제 3-1 — 사인함수 치환과 삼차함수의 최대·최소
+
+$f(x)=x^3-2x^2-5$일 때 $y=f\!\Big(2\sin\dfrac{x}{5}+3\Big)$의 최댓값 $M$, 최솟값 $m$을 구하고 $27m+M$의 값을 구하시오.
+
+??? success "풀이"
+    $t=2\sin\tfrac{x}{5}+3$ 으로 놓으면 $t\in[1,5]$. 닫힌 구간 $[1,5]$에서 $f(t)=t^3-2t^2-5$의 최대·최소를 찾는다.
+    $$f'(t)=3t^2-4t=t(3t-4)\Rightarrow f'(t)=0\Leftrightarrow t=\tfrac{4}{3}\;(\in[1,5]).$$
+    증감표: $f$는 $[1,\tfrac{4}{3}]$에서 감소, $[\tfrac{4}{3},5]$에서 증가. 후보값
+    $$f(1)=1-2-5=-6,\quad f\!\Big(\tfrac{4}{3}\Big)=\tfrac{64}{27}-\tfrac{32}{9}-5=-\tfrac{167}{27},\quad f(5)=125-50-5=70.$$
+    따라서 $m=-\tfrac{167}{27},\;M=70$이고
+    $$27m+M=27\!\cdot\!\Big(-\tfrac{167}{27}\Big)+70=-167+70=\boxed{-97}. \square$$
+
+#### [157-6] 자연 문제 3-2 — 절댓값 합성함수의 극값 개수와 극솟값 합
+
+$f(x)=x^3-2x^2-5$, $g(x)=\dfrac{5}{2}\,|f(x-1)+3|$이라 하자. $g$가 극값을 갖는 $x$가 $\alpha$개일 때, $g$의 극솟값들의 합을 $\beta$라 할 때 $\alpha\beta$를 구하시오.
+
+??? success "풀이"
+    [157-5]에서 $f$는 $x=0$에서 극댓값 $-5$, $x=\tfrac{4}{3}$에서 극솟값 $-\tfrac{167}{27}$를 가진다. $f(x-1)+3$은 $f$를 가로 $+1$, 세로 $+3$ 만큼 평행이동한 그래프이므로 극값은 $x=1$에서 $-5+3=-2$, $x=\tfrac{4}{3}+1=\tfrac{7}{3}$에서 $-\tfrac{167}{27}+3=-\tfrac{86}{27}$.
+    
+    $|f(x-1)+3|$의 그래프 개형은 $y=f(x-1)+3$이 음수인 부분을 $x$축에 대칭이동한 것. 이 함수가 $0$이 되는 $x$의 좌표를 $A<B<C$라 하면 $g(x)=\tfrac{5}{2}|f(x-1)+3|$은 $x=A,C$에서 극솟값 $0$, $x=B$에서 극댓값을 가진다(그림 4 참고). 또한 원래 극값 $-2,-\tfrac{86}{27}$이 절댓값을 거치며 극댓값 둘로 바뀐다 — 하지만 그 사이의 극솟값 후보는 결국 $A,B,C$에서의 영점 패턴이다.
+    
+    실제로 보고서의 그림 분석에 따르면 $g$의 극값은 세 점에서 발생: 두 극솟값은 $x=A,C$에서 $g=0$, 한 극댓값은 $x=B$에서. 따라서 $\alpha=3$. 추가로 $g(1)=\tfrac{5}{2}|f(0)+3|=\tfrac{5}{2}\cdot|-5+3|=\tfrac{5}{2}\cdot2=5$가 또 다른 극솟값으로 잡힌다(그림 4의 두 골짜기 중 하나). 따라서 극솟값들의 합 $\beta=0+5=5$.
+    
+    그러므로 $\alpha\beta=3\times 5=\boxed{15}. \square$
+
+#### [157-7] 의예 문제 1-1 — 지수함수 접선과 미분계수의 기하
+
+$f(x)=e^{nx}+e^{-nx}\;(n=1,2,\ldots)$의 점 $P(x,y)$에서의 접선의 기울기가 $2n$이라 할 때 $P$의 $x$좌표를 $a_n$이라 한다. $\displaystyle\lim_{n\to 0}\!\Big(\dfrac{1}{a_n}+1\Big)^{1/n}=\alpha$ 라 두고 $g(x)=\dfrac{1}{n}\ln f(x)$라 한다. 닫힌 구간 $[0,k]$에서 $g'$의 최댓값이 $\tfrac{1}{3}e^{1/\ln\alpha}$일 때 $k$를 구하시오.
+
+??? success "풀이"
+    **$a_n$ 구하기.** $f'(x)=n(e^{nx}-e^{-nx})=2n\Rightarrow e^{nx}-e^{-nx}=2$. $X=e^{nx}$로 치환하면 $X^2-2X-1=0\Rightarrow X=1+\sqrt{2}$ ($X>0$). 따라서 $a_n=\tfrac{1}{n}\ln(1+\sqrt{2})$.
+    
+    **$\alpha$ 구하기.** $\lim_{n\to 0}\!\Big(\tfrac{1}{a_n}+1\Big)^{1/n}=\lim_{a_n\to\infty}\!\Big(\tfrac{1}{a_n}+1\Big)^{a_n/(\ln(1+\sqrt{2}))\cdot 1/a_n\cdot a_n}=e^{1/\ln(1+\sqrt{2})}$. 즉 $\alpha=e^{1/\ln(1+\sqrt{2})}$이므로 $\ln\alpha=\tfrac{1}{\ln(1+\sqrt{2})}$.
+    
+    **$g'$의 최댓값.** $g'(x)=\tfrac{f'(x)}{n\,f(x)}=\tfrac{e^{nx}-e^{-nx}}{e^{nx}+e^{-nx}}=1-\tfrac{2e^{-nx}}{e^{nx}+e^{-nx}}=1-\tfrac{2}{e^{2nx}+1}$. $x$가 증가하면 $e^{nx}+e^{-nx}$가 증가하므로 $g'$도 증가. 그러므로 $[0,k]$에서 $g'$의 최댓값은 $g'(k)$이고
+    $$g'(k)=1-\tfrac{2e^{-nk}}{e^{nk}+e^{-nk}}=\tfrac{1}{3}e^{1/\ln\alpha}=\tfrac{1}{3}e^{\ln(1+\sqrt{2})}=\tfrac{1+\sqrt{2}}{3}.$$
+    $1-\tfrac{2e^{-nk}}{e^{nk}+e^{-nk}}=\tfrac{1+\sqrt{2}}{3}\Rightarrow\tfrac{2e^{-nk}}{e^{nk}+e^{-nk}}=\tfrac{2-\sqrt{2}}{3}\Rightarrow\tfrac{e^{-nk}}{e^{nk}+e^{-nk}}=\tfrac{2-\sqrt{2}}{6}$.
+    
+    $t=\tfrac{2-\sqrt{2}}{6}$라 하면 $te^{nk}=(1-t)e^{-nk}$ ⇒ $e^{2nk}=\tfrac{1-t}{t}=\tfrac{1-(2-\sqrt{2})/6}{(2-\sqrt{2})/6}=\tfrac{4+\sqrt{2}}{2-\sqrt{2}}=\tfrac{(4+\sqrt{2})(2+\sqrt{2})}{(2-\sqrt{2})(2+\sqrt{2})}=\tfrac{10+6\sqrt{2}}{2}=5+3\sqrt{2}$.
+    
+    따라서 $k=\boxed{\dfrac{1}{2n}\ln(5+3\sqrt{2})}. \square$
+
+#### [157-8] 의예 문제 1-2 — 포물선의 접선과 삼각형 넓이
+
+[157-7]의 $f(x)=e^{nx}+e^{-nx}$ 그래프 위의 점 $P$의 $y$축 대칭점을 $Q$, $P, Q$가 모두 양수가 되도록 하는 $n$일 때 삼각형 $OPQ$의 넓이가 최대인 경우의 $P, Q$를 $P', Q'$이라 한다. 포물선 $y^2=12x$ 위의 점 $(a,b)$에서의 접선과 $f$의 $Q'$에서의 접선이 서로 수직일 때, 삼각형 $OP'Q'$의 넓이를 $S$라 두고 $S\sqrt{ab}$를 구하시오.
+
+??? success "풀이"
+    [157-7]에서 $P$의 $x$좌표는 $a_n=\tfrac{1}{n}\ln(1+\sqrt{2})$, $y$좌표는 $f(a_n)=e^{na_n}+e^{-na_n}=(1+\sqrt{2})+\tfrac{1}{1+\sqrt{2}}=(1+\sqrt{2})+(\sqrt{2}-1)=2\sqrt{2}$.
+    $Q$의 좌표는 $\bigl(-\tfrac{1}{n}\ln(1+\sqrt{2}),\,2\sqrt{2}\bigr)$.
+    
+    삼각형 $OPQ$의 넓이 $=\tfrac{1}{2}\cdot|PQ|\cdot 2\sqrt{2}=\tfrac{1}{2}\cdot\tfrac{2}{n}\ln(1+\sqrt{2})\cdot 2\sqrt{2}=\tfrac{2\sqrt{2}\ln(1+\sqrt{2})}{n}$. 이 값이 최대인 경우는 $n=1$일 때이며,
+    $$P'\bigl(\ln(1+\sqrt{2}),2\sqrt{2}\bigr),\qquad Q'\bigl(-\ln(1+\sqrt{2}),2\sqrt{2}\bigr).$$
+    
+    **접선 기울기:** $f'(x)=e^x-e^{-x}$ ($n=1$). $f'(\ln(1+\sqrt{2}))=(1+\sqrt{2})-\tfrac{1}{1+\sqrt{2}}=(1+\sqrt{2})-(\sqrt{2}-1)=2$. $P'$에서의 접선은 $y-2\sqrt{2}=2(x-\ln(1+\sqrt{2}))$이고, $f$가 우함수이므로 $Q'$에서의 접선은 $P'$의 접선을 $y$축 대칭한 것, 즉 기울기 $-2$.
+    
+    **포물선 접선:** $y^2=12x$ 위의 점 $(a,b)$에서의 접선의 방정식은 $y\cdot b=6(x+a)$ ⇒ $y=\tfrac{6}{b}x+\tfrac{6a}{b}$. 이 접선이 $Q'$의 접선(기울기 $-2$)과 수직이므로 $\tfrac{6}{b}=\tfrac{1}{2}\Rightarrow b=12$. $b^2=12a$이므로 $144=12a\Rightarrow a=12$.
+    
+    **삼각형 $OP'Q'$의 넓이:** $S=\tfrac{1}{2}\cdot|P'Q'|\cdot 2\sqrt{2}=\tfrac{1}{2}\cdot 2\ln(1+\sqrt{2})\cdot 2\sqrt{2}=2\sqrt{2}\ln(1+\sqrt{2})$.
+    
+    그러므로 $S\sqrt{ab}=2\sqrt{2}\ln(1+\sqrt{2})\cdot\sqrt{144}=\boxed{24\sqrt{2}\ln(1+\sqrt{2})}. \square$
+
+#### [157-9] 의예 문제 2-1 — 두 스프링클러가 만드는 두 영역의 넓이
+
+한 변의 길이를 모르는 정삼각형 $ABC$ 모양의 잔디밭에서, 살수반경이 $2\,\text{m}$인 두 스프링클러를 선분 $AB$ 위의 점 $O_1$과 선분 $BC$ 위의 점 $O_2$에 놓고 두 원이 서로 접하도록 한다. 또 원 $O_1$은 점 $A$를 지나고 원 $O_2$는 점 $B$를 지난다. 잔디밭에서 물이 뿌려지지 않는 두 영역 중 큰 영역을 $S_1$, 작은 영역을 $S_2$라 할 때 $S_1, S_2$의 넓이를 구하시오.
+
+??? success "풀이"
+    삼각형 $O_1BO_2$에서 $\overline{O_1B}=x$, $\overline{O_1O_2}=4$, $\overline{O_2B}=2$, $\angle B=\tfrac{\pi}{3}$이므로 코사인법칙에 의해 $4^2=x^2+2^2-4x\cos\tfrac{\pi}{3}=x^2+4-2x$. 즉 $x^2-2x-12=0\Rightarrow x=1+\sqrt{13}$. 한 변의 길이 $\overline{AB}=x+1=\sqrt{13}+3$.
+    
+    원 $O_1$에서 정삼각형에 포함된 부분은 정삼각형 $AO_1P_1$ + 부채꼴 $O_1P_1Q_1$ (반지름 $2$, 중심각 $\tfrac{2\pi}{3}$). 원 $O_2$도 대칭으로 같음.
+    
+    **$S_1+S_2$ (=정삼각형 − 원 두 개 안의 잔디 부분):**
+    $$S_1+S_2=\tfrac{(\sqrt{13}+3)^2\sqrt{3}}{4}-2\!\cdot\!\tfrac{2^2\sqrt{3}}{4}-2\!\cdot\!\tfrac{1}{2}\!\cdot\!2^2\!\cdot\!\tfrac{2\pi}{3}=\tfrac{(22+6\sqrt{13})\sqrt{3}}{4}-2\sqrt{3}-\tfrac{8\pi}{3}=\tfrac{7\sqrt{3}}{2}+\tfrac{3\sqrt{39}}{2}-\tfrac{8\pi}{3}.$$
+    
+    **$S_2$ 구하기.** $S_2$는 직각삼각형 $H O_1 O_2$에서 삼각형 $HO_2P_2$, 부채꼴 $O_1Q_1D$, 부채꼴 $O_2P_2D$를 뺀 영역. 부채꼴 $O_1Q_1D$의 중심각을 $\theta$라 하면 부채꼴 $O_2P_2D$의 중심각은 $\tfrac{\pi}{3}-\theta$. 직각삼각형 $H O_1 O_2$에서 밑변 $\overline{O_1B}-\overline{HB}=x-1=\sqrt{13}$, 높이 $\overline{O_2H}=\sqrt{3}$이고 삼각형 $HO_2P_2$의 밑변 $1$·높이 $\sqrt{3}$이므로
+    $$S_2=\tfrac{1}{2}\!\cdot\!\sqrt{13}\!\cdot\!\sqrt{3}-\tfrac{1}{2}\!\cdot\!1\!\cdot\!\sqrt{3}-\tfrac{1}{2}\!\cdot\!2^2\!\cdot\!\theta-\tfrac{1}{2}\!\cdot\!2^2\!\cdot\!\bigl(\tfrac{\pi}{3}-\theta\bigr)=\tfrac{\sqrt{39}}{2}-\tfrac{\sqrt{3}}{2}-\tfrac{2\pi}{3}.$$
+    
+    **$S_1$:**
+    $$S_1=(S_1+S_2)-S_2=\Bigl(\tfrac{7\sqrt{3}}{2}+\tfrac{3\sqrt{39}}{2}-\tfrac{8\pi}{3}\Bigr)-\Bigl(\tfrac{\sqrt{39}}{2}-\tfrac{\sqrt{3}}{2}-\tfrac{2\pi}{3}\Bigr)=4\sqrt{3}+\sqrt{39}-2\pi.$$
+    
+    $$\boxed{S_1=4\sqrt{3}+\sqrt{39}-2\pi,\quad S_2=\tfrac{\sqrt{39}}{2}-\tfrac{\sqrt{3}}{2}-\tfrac{2\pi}{3}}.\;\square$$
+
+#### [157-10] 의예 문제 2-2 — 코사인법칙과 삼각함수의 덧셈정리로 본 살수반경의 최솟값
+
+[157-9]의 영역 $S_1$에 물을 뿌리기 위해 점 $C$에 새로운 스프링클러를 놓는다. 그 노즐의 살수반경의 최솟값을 $r$이라 할 때 $r^2$을 구하시오.
+
+??? success "풀이"
+    $r=\max(\overline{CP_1},\overline{CD})$. $\overline{CP_1}$은 한 변의 길이에서 원 $O_1$의 반지름을 뺀 값:
+    $$\overline{CP_1}=(\sqrt{13}+3)-2=\sqrt{13}+1\Rightarrow \overline{CP_1}^{\,2}=14+2\sqrt{13}.$$
+    
+    **$\overline{CD}^2$:** 삼각형 $O_2CD$에 코사인법칙 적용. $\overline{O_2C}=(\sqrt{13}+3)-2=\sqrt{13}+1$, $\overline{O_2D}=2$, $\angle CO_2D=\theta+\tfrac{\pi}{3}$.
+    $$\overline{CD}^{\,2}=(\sqrt{13}+1)^2+4-4(\sqrt{13}+1)\cos\!\Big(\theta+\tfrac{\pi}{3}\Big)=18+2\sqrt{13}-4(\sqrt{13}+1)\cos\!\Big(\theta+\tfrac{\pi}{3}\Big).$$
+    
+    덧셈정리:
+    $$\cos\!\Big(\theta+\tfrac{\pi}{3}\Big)=\cos\theta\cos\tfrac{\pi}{3}-\sin\theta\sin\tfrac{\pi}{3}=\tfrac{\cos\theta-\sqrt{3}\sin\theta}{2}.$$
+    직각삼각형 $H O_1 O_2$에서 $\sin\theta=\tfrac{\sqrt{3}}{4}$, $\cos\theta=\tfrac{\sqrt{13}}{4}$이므로
+    $$\cos\!\Big(\theta+\tfrac{\pi}{3}\Big)=\tfrac{1}{2}\!\cdot\!\Bigl(\tfrac{\sqrt{13}}{4}-\sqrt{3}\!\cdot\!\tfrac{\sqrt{3}}{4}\Bigr)=\tfrac{\sqrt{13}-3}{8}.$$
+    
+    그러므로
+    $$\overline{CD}^{\,2}=18+2\sqrt{13}-4(\sqrt{13}+1)\cdot\tfrac{\sqrt{13}-3}{8}=18+2\sqrt{13}-\tfrac{(\sqrt{13}+1)(\sqrt{13}-3)}{2}=18+2\sqrt{13}-\tfrac{10-2\sqrt{13}}{2}=13+3\sqrt{13}.$$
+    
+    $\overline{CD}^2-\overline{CP_1}^2=(13+3\sqrt{13})-(14+2\sqrt{13})=\sqrt{13}-1>0$이므로 $r=\overline{CD}$. 따라서
+    $$r^2=\overline{CD}^{\,2}=\boxed{13+3\sqrt{13}}. \square$$
+
+---
