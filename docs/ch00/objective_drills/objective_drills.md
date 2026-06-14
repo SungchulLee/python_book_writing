@@ -15084,3 +15084,147 @@ $f'(x)=\dfrac{\ln 2x}{(2x)^{2}}\cdot 2-\dfrac{\ln x}{x^{2}}=\dfrac{\ln 2x-2\ln x
 #### [144-35] 삼차함수 — $af(a)+bf(b)>af(b)+bf(a)$, $f(1)=1,f'(1)=0$
 
 $(a-b)(f(a)-f(b))>0$: $f$ 증가함수. $f'(x)=3(x-1)^{2}\geq 0$, $f'(1)=0$. $f(x)=(x-1)^{3}+c$ 형태. $f(1)=c=1$. $f(0)+f(2)=(0+1)+(1+1)=\boxed{2}$. (②)
+
+
+## 카드 145 — 연세대 미래캠퍼스 (2025학년도)
+
+> 2025학년도 연세대학교 미래캠퍼스 선행학습 영향평가 보고서. 창의인재(자연·공학) 논술 3 문항과 창의인재(의예과) 수학 2 문항 — 총 13 하위 문제 (정적분 정의·삼차방정식·매개변수 미적·쌍곡선·삼각함수 극한).
+
+### 논술 ▸ 창의인재(자연계) — 수학
+
+#### [145-1] 정적분과 급수 (구간 분할 직사각형) — 문제 1
+
+곡선 $y=x^{2}$, $x$축, $x=1$로 둘러싸인 도형의 넓이 $S$. 닫힌구간 $[0,1]$ 을 $n$등분한 소구간의 **오른쪽** 끝점 함숫값 직사각형(〈그림 1〉)과 **왼쪽** 끝점 직사각형(〈그림 2〉).
+
+**(1-1)** $n=5$ 일 때 〈그림 1〉, 〈그림 2〉 각각의 직사각형 넓이의 합.
+**(1-2)** $n=100$ 일 때 위 두 합을 각각 구하시오.
+**(1-3)** $\displaystyle\int_{0}^{\sqrt{\pi/2}} x\cos(x^{2})\,dx$ 의 값.
+
+??? success "풀이"
+
+    **(1-1)** $\Delta x=\dfrac{1}{5}$, 오른쪽 끝점 $y$좌표 $\left(\dfrac{k}{5}\right)^{2}\,(k=1,\ldots,5)$:
+
+    $$A_{1}=\sum_{k=1}^{5}\dfrac{1}{5}\!\left(\dfrac{k}{5}\right)^{2}=\dfrac{1+4+9+16+25}{125}=\dfrac{55}{125}=\boxed{0.44}.$$
+
+    왼쪽 끝점 $\left(\dfrac{k}{5}\right)^{2}\,(k=0,\ldots,4)$: $A_{2}=\dfrac{0+1+4+9+16}{125}=\dfrac{30}{125}=\boxed{0.24}$.
+
+    **(1-2)** $A_{1}=\dfrac{1}{n^{3}}\sum_{k=1}^{n}k^{2}=\dfrac{n(n+1)(2n+1)}{6n^{3}}$. $n=100$: $\dfrac{100\cdot 101\cdot 201}{6\cdot 100^{3}}=\boxed{\dfrac{338{,}350}{100^{3}}\approx 0.33835}$.
+
+    $A_{2}=\dfrac{1}{n^{3}}\sum_{k=0}^{n-1}k^{2}=\dfrac{(n-1)n(2n-1)}{6n^{3}}$. $n=100$: $\dfrac{99\cdot 100\cdot 199}{6\cdot 100^{3}}=\boxed{\dfrac{328{,}350}{100^{3}}\approx 0.32835}$.
+
+    **(1-3)** $u=x^{2},\,du=2x\,dx$: $\int x\cos(x^{2})dx=\dfrac{1}{2}\int\cos u\,du=\dfrac{1}{2}\sin u$.
+
+    $$\int_{0}^{\sqrt{\pi/2}}x\cos(x^{2})\,dx=\dfrac{1}{2}\!\left[\sin x^{2}\right]_{0}^{\sqrt{\pi/2}}=\dfrac{1}{2}\!\left(\sin\dfrac{\pi}{2}-0\right)=\boxed{\dfrac{1}{2}}.$$
+
+#### [145-2] 삼차방정식 허근·극값 — 문제 2
+
+**(2-1)** 최고차 계수 1인 삼차방정식 $x^{3}+ax^{2}+bx-4=0$ 의 한 허근이 $1+i$. $y=x^{3}+ax^{2}+bx-4$ 와 $x$축·$y$축으로 둘러싸인 도형의 넓이.
+
+**(2-2)** $x^{3}+cx^{2}+100x+100=0$ ($c$ 양의 정수)이 극댓값과 극솟값을 모두 가질 때 $c$ 의 최솟값.
+
+??? success "풀이"
+
+    **(2-1)** 켤레 $1-i$ 도 근. 나머지 실근 $x_{1}$: $(x-(1+i))(x-(1-i))(x-x_{1})=x^{3}-(x_{1}+2)x^{2}+(2x_{1}+2)x-2x_{1}$. 비교: $-2x_{1}=-4\Rightarrow x_{1}=2$, $a=-(x_{1}+2)=-4$, $b=2x_{1}+2=6$.
+
+    $y=x^{3}-4x^{2}+6x-4$. $x$절편 $x=2$, $0\leq x\leq 2$ 에서 $y\leq 0$:
+
+    $$\int_{0}^{2}|x^{3}-4x^{2}+6x-4|\,dx=\int_{0}^{2}(-x^{3}+4x^{2}-6x+4)dx=\left[-\dfrac{x^{4}}{4}+\dfrac{4x^{3}}{3}-3x^{2}+4x\right]_{0}^{2}=\boxed{\dfrac{8}{3}}.$$
+
+    **(2-2)** $y'=3x^{2}+2cx+100$. 극값 존재 $\Leftrightarrow$ 판별식 $4c^{2}-1200>0\Leftrightarrow c^{2}>300$. $17^{2}=289,\,18^{2}=324$ 이므로 양의 정수 최솟값 $c=\boxed{18}$.
+
+#### [145-3] 부분적분·매개변수·두 점 거리 — 문제 3
+
+$P_{1}$ 위치: $x_{1}(t)=\int_{0}^{t}\theta\sin\theta\,d\theta,\,y_{1}(t)=\int_{0}^{t}\theta\cos\theta\,d\theta$. $P_{2}$ 위치: $x_{2}(t)=-t\cos t,\,y_{2}(t)=t\sin t$.
+
+**(3-1)** $P_{1}$ 과 원점 사이의 거리.
+**(3-2)** $P_{1}$ 과 원점 사이의 거리의 순간변화율이 0이 되는 시각 $t$.
+**(3-3)** $t=0$ 에서 $t=2\pi$ 까지 $P_{1}$ 이 움직인 거리.
+**(3-4)** $0<t\leq 2\pi$ 에서 $P_{1},P_{2}$ 사이의 거리가 최대가 되는 시각과 그때의 거리.
+
+??? success "풀이"
+
+    **(3-1)** 부분적분 $u=\theta,\,dv=\sin\theta\,d\theta$: $\int_{0}^{t}\theta\sin\theta d\theta=[-\theta\cos\theta]_{0}^{t}+\int_{0}^{t}\cos\theta d\theta=-t\cos t+\sin t$.
+
+    유사하게 $\int_{0}^{t}\theta\cos\theta d\theta=t\sin t+\cos t-1$. 거리 $s(t)$:
+
+    $s^{2}=(-t\cos t+\sin t)^{2}+(t\sin t+\cos t-1)^{2}=t^{2}+1+(-2t\sin t)+(-2\cos t)$, 즉 $\boxed{s(t)=\sqrt{t^{2}+2-2t\sin t-2\cos t}}$.
+
+    **(3-2)** $s^{2}$ 미분: $2t-2(\sin t+t\cos t)+2\sin t=2t-2t\cos t=2t(1-\cos t)$. $=0 \Rightarrow t=0$ 또는 $\boxed{t=2n\pi}$ ($n=1,2,\ldots$).
+
+    **(3-3)** $x_{1}'=t\sin t,\,y_{1}'=t\cos t$. $\sqrt{(x_{1}')^{2}+(y_{1}')^{2}}=t$ ($t\geq 0$). 길이 $\int_{0}^{2\pi}t\,dt=\boxed{2\pi^{2}}$.
+
+    **(3-4)** $(x_{1}-x_{2})^{2}+(y_{1}-y_{2})^{2}=(\sin t)^{2}+(\cos t-1)^{2}=2-2\cos t$. 거리 $\sqrt{2-2\cos t}=2\sin\dfrac{t}{2}\,(0\leq t\leq 2\pi)$.
+
+    $\dfrac{d}{dt}(2\sin\tfrac{t}{2})=\cos\tfrac{t}{2}=0 \Rightarrow t=\pi$. 이때 거리 $2\sin(\pi/2)=\boxed{2}$ at $t=\pi$.
+
+### 논술 ▸ 창의인재(의예과) — 수학
+
+#### [145-4] 쌍곡선·부분적분·벡터 내적 — 문제 1
+
+두 초점 $F,F'$ 거리 14, 주축 10인 쌍곡선. 점 $P$ (제1사분면)에서 그은 접선 $\ell$ 이 $\angle FPF'$ 이등분, $x$축과 점 $Q$ 에서 만남. $\overline{F'R}=10$ 인 점 $R$ 이 $PF'$ 위에 있고, $F'R$ 을 지름으로 하는 원이 $Q$ 를 지남.
+
+**(1-1)** $\angle FPF'=\theta$, $f(x)=\dfrac{5}{\theta}(5x-2)^{3}$ 에 대해
+
+$$\int_{0}^{\theta}x\cos x\cdot f'(\sin x)\,dx+\int_{\pi/2-\theta}^{\pi/2}f(\cos x)\,dx.$$
+
+**(1-2)** $RF$ 의 2:1 내분점 $D$, 직선 $PR$ 대칭점 $E$. $\vec{PR}=\vec{a},\vec{PF}=\vec{b}$, $\vec{PE}=k\vec{a}+l\vec{b}$ 일 때 $k+l$.
+
+??? success "풀이"
+
+    **(1-1) $\cos\theta$ 계산**: 쌍곡선 $\dfrac{x^{2}}{25}-\dfrac{y^{2}}{24}=1$. $\overline{F'P}-\overline{FP}=10=\overline{F'R}$ 이므로 $\overline{PR}=\overline{PF}$, $\triangle PRF$ 등변. $Q$ 가 $F'R$ 지름원 위 → $\angle F'QR=\pi/2 \Rightarrow \angle FQR=\pi/2$. $\triangle PQR\equiv\triangle PQF$ (SAS): $\angle PQR=\angle PQF=\pi/4 \Rightarrow \ell$ 기울기 $\tan(\pi/4)=1$.
+
+    $Q=(k,0)$ ($k>0$): $\overline{F'Q}=7+k,\overline{FQ}=7-k=\overline{RQ}$. $\triangle RQF'$ 직각: $10^{2}=(7+k)^{2}+(7-k)^{2}\Rightarrow k=1$.
+
+    $\ell:\,y=x-1$, 쌍곡선과 교점 $P=(25,24)$. $\overline{FP}=30,\overline{F'P}=40,\overline{FF'}=14$. 코사인법칙: $\cos\theta=\dfrac{30^{2}+40^{2}-14^{2}}{2\cdot 30\cdot 40}=\dfrac{24}{25}$, $\sin\theta=\dfrac{7}{25}$.
+
+    **적분 계산**: $[xf(\sin x)]'=f(\sin x)+x\cos x\cdot f'(\sin x)$:
+
+    $\int_{0}^{\theta}x\cos x f'(\sin x)dx=[xf(\sin x)]_{0}^{\theta}-\int_{0}^{\theta}f(\sin x)dx=\theta f(\sin\theta)-\int_{0}^{\theta}f(\sin x)dx$.
+
+    $\int_{\pi/2-\theta}^{\pi/2}f(\cos x)dx$, $x=\pi/2-t$ 치환: $=\int_{0}^{\theta}f(\sin t)dt$. 합 $=\theta f(\sin\theta)=\theta f(7/25)$.
+
+    $f(7/25)=\dfrac{5}{\theta}(5\cdot 7/25-2)^{3}=\dfrac{5}{\theta}(-3/5)^{3}=\dfrac{5}{\theta}\cdot\!\left(-\dfrac{27}{125}\right)=-\dfrac{27}{25\theta}$. 따라서 $\theta f(7/25)=\boxed{-\dfrac{27}{25}}$.
+
+    **(1-2)** $P(25,24),F(7,0),F'(-7,0),R$ 은 $\overline{F'R}=10,\,F'$ 에서 $P$ 향: 단위벡터 $\dfrac{1}{40}(32,24)=(4/5,3/5)$, $R=F'+10\cdot(4/5,3/5)=(-7+8,6)=(1,6)$. $D$ ($RF$ 2:1 내분): $D=\dfrac{R+2F}{3}=\dfrac{(1+14,\,6+0)}{3}=(5,2)$.
+
+    $\vec{PD}=\dfrac{\vec{PR}+2\vec{PF}}{3}=\dfrac{\vec{a}+2\vec{b}}{3}$. $\vec{PE}=k\vec{a}+l\vec{b}$, 직선 $PR$ 에 대한 대칭이므로 $\vec{PD}+\vec{PE}=m\vec{PR}$ ($m\in\mathbb{R}$):
+
+    $\!\left(\dfrac{1}{3}+k\right)\vec{a}+\!\left(\dfrac{2}{3}+l\right)\vec{b}=m\vec{a}\Rightarrow l=-\dfrac{2}{3}$.
+
+    $|\vec{PD}|=|\vec{PE}|$ ($\vec{PD},\vec{PE}$ 동일 길이): $\!\left(\dfrac{\vec{a}+2\vec{b}}{3}\right)\!\cdot\!\left(\dfrac{\vec{a}+2\vec{b}}{3}\right)=\!\left(k\vec{a}-\dfrac{2}{3}\vec{b}\right)\!\cdot\!\left(k\vec{a}-\dfrac{2}{3}\vec{b}\right)$.
+
+    $|\vec{a}|=|\vec{b}|=\overline{PR}=\overline{PF}=30$, $\vec{a}\cdot\vec{b}=30^{2}\cos\theta=900\cdot 24/25=864$.
+
+    $\dfrac{|a|^{2}+4\vec{a}\cdot\vec{b}+4|b|^{2}}{9}=k^{2}|a|^{2}-\dfrac{4k}{3}\vec{a}\cdot\vec{b}+\dfrac{4}{9}|b|^{2}$.
+
+    수치: $(900+4\cdot 864+4\cdot 900)/9=(900+3456+3600)/9=7956/9=884$. 우변 $=900k^{2}-\dfrac{4k\cdot 864}{3}+400=900k^{2}-1152k+400$.
+
+    $900k^{2}-1152k+400=884 \Rightarrow 900k^{2}-1152k-484=0\Rightarrow 225k^{2}-288k-121=0$. $(3k+1)(75k-121)=0$. $k\neq -\dfrac{1}{3}$ 이므로 $k=\dfrac{121}{75}$.
+
+    $$k+l=\dfrac{121}{75}-\dfrac{2}{3}=\dfrac{121-50}{75}=\boxed{\dfrac{71}{75}}.$$
+
+#### [145-5] 원뿔·삼각함수 극한·구의 반지름 — 문제 2
+
+**(2-1)** 모선 $\ell$, 밑원 중심 $M$. 점 $A,B$ 가 밑원 위 ($M$ 통과), $\angle AMK=\theta$ ($K$는 직선 $OP$ 와 밑원 교점), $\overline{PQ}=f(\theta)$, 호 $\overline{AK}$ 길이 $=g(\theta)$. $\displaystyle\lim_{\theta\to 0^{+}}\dfrac{f(\theta)}{g(\theta)}$.
+
+**(2-2)** 짝수 $n$ 개의 구가 (다)의 원기둥 안에 있고 모두 평면 $\beta$ 와 안 만남. 구의 반지름이 최대일 때 $n$ 의 값.
+
+??? success "풀이"
+
+    **(2-1)** 원뿔 $\triangle OAB$ 정삼각형 ($\overline{OA}=\overline{OB}=\ell,\,\overline{AB}=2R$, $\overline{AC}\perp\overline{OB},\,\overline{OC}=\overline{BC}$이므로 $\overline{AB}=\ell\Rightarrow R=\ell/2$).
+
+    $\triangle MGJ$ 에서 $\angle GMJ=\theta,\,\overline{MJ}=t,\,\overline{JG}=t\sin\theta$. 직사각형 HGJP: $\overline{JG}=\overline{PH}=t\sin\theta$. $Q$ 는 $P$ 의 $AC$ 대칭점이므로 $\overline{PQ}=2\overline{PH}=2t\sin\theta$. 호 $\overline{AK}=R\theta$.
+
+    $L(\theta)=\dfrac{2t\sin\theta}{R\theta}$. $t$ 를 $\theta$ 로: $\overline{HG}=\overline{PJ}$, $\overline{HG}=(R-t\cos\theta)/\sqrt{3}$, $\overline{PJ}=\sqrt{3}(R-t)$. 등호로 $t=\dfrac{2R}{3-\cos\theta}$.
+
+    $L(\theta)=\dfrac{4R\sin\theta}{R\theta(3-\cos\theta)}=\dfrac{4\sin\theta}{\theta(3-\cos\theta)}$. 극한:
+
+    $$\lim_{\theta\to 0^{+}}L(\theta)=\lim_{\theta\to 0^{+}}\dfrac{\sin\theta}{\theta}\cdot\dfrac{4}{3-\cos\theta}=1\cdot\dfrac{4}{2}=\boxed{2}.$$
+
+    **(2-2)** 구의 중심을 지나는 평면 ($\beta$ 와 평행)으로 자르면: $n$개 구의 중심이 정$n$각형. 인접한 두 구의 중심 거리 = $2r$, 정 $n$각형 외접원 반지름 = $r/\sin(\pi/n)$. 즉 원 $O_{1}$ 반지름 $R$ 일 때 $R=r/\sin(\pi/n)+r=(1+1/\sin(\pi/n))r$, 따라서 $r=\dfrac{R\sin(\pi/n)}{1+\sin(\pi/n)}$.
+
+    구가 $\beta$ 와 만나지 않을 조건 (원뿔과 원기둥에 모두 접): $\sqrt{3}R>\overline{U_{2}W_{2}}=(3+\sqrt{3})r$. 부등식 정리:
+
+    $\sqrt{3}>(3+\sqrt{3})\dfrac{\sin(\pi/n)}{1+\sin(\pi/n)} \Leftrightarrow \dfrac{1}{\sqrt{3}}>\sin\dfrac{\pi}{n}$.
+
+    표: $1/\sqrt{3}\approx 0.5774$, $\sin(\pi/5)\approx 0.5878,\,\sin(\pi/6)=0.5$. 짝수 $n$ 중 조건 만족 최대 — 부등식 $\sin(\pi/n)<1/\sqrt{3}$ → $n\geq 6$. 최대 반지름은 부등식 임계에서 ($n$ 작을수록 $r$ 큼), 짝수 $n=\boxed{6}$.
