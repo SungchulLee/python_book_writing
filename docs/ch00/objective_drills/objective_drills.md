@@ -6892,3 +6892,116 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 95 — 연세대 미래캠 (2021학년도)
+
+### 자연계 문제 1 — 역함수·정적분과 급수·치환적분
+
+> 제시문 [가] 정적분 정의. [나] 일대일대응과 역함수. [다] $f(x) = \begin{cases} 2 x^2 & (x < -1) \\ -x + a & (-1 \le x < 1) \\ -x/3 + b & (1 \le x) \end{cases}$, $g(x) = \int_0^x 1/(1 + t^2) d t$ (a, b 상수).
+
+**[95 / 자1-1]** $f(x)$ 는 역함수 $h(x)$ 가 존재하고 $h(h(8)) = c$ 를 만족할 때 $a + b + c$ 의 값.
+
+??? success "풀이"
+    $f(x)$ 가 역함수를 가지려면 일대일대응이어야 하므로 $x = -1$ 에서 연속: $f(-1) = 2 = -(-1) + a = 1 + a$ → $a = 1$. $x = 1$ 에서 연속: $f(1) = -1 + a = 0 = -1/3 + b$ → $b = 1/3$. $h(8) = t$ 라 하면 $f(t) = 8$, $t < -1$ 이므로 $2 t^2 = 8$, $t = -2$. $h(h(8)) = h(-2) = c$ → $f(c) = -2$. $c > 1$ 이므로 $-c/3 + 1/3 = -2$ → $c = 7$. $a + b + c = 1 + 1/3 + 7 = 25/3$. 답: $\boxed{25/3}$.
+
+**[95 / 자1-2]** $\displaystyle\lim_{n\to\infty}\sum_{k=1}^n f\left(-2 + \frac{4 k}{n}\right)\frac{1}{n}$ 의 값.
+
+??? success "풀이"
+    급수 합 표현: $\displaystyle\lim_{n\to\infty}\sum_{k=1}^n f(-2 + 4 k/n)(1/n) = (1/4)\int_{-2}^2 f(x) d x = (1/4)\left(\int_{-2}^{-1} 2 x^2 d x + \int_{-1}^1 (-x + 1) d x + \int_1^2 (-x/3 + 1/3) d x\right) = (1/4)(14/3 + 2 + 0) = (1/4)\cdot(20/3) - $ 잠깐 재계산. $\int_{-2}^{-1} 2 x^2 d x = [2 x^3/3]_{-2}^{-1} = -2/3 - (-16/3) = 14/3$. $\int_{-1}^1 (-x + 1) d x = [-x^2/2 + x]_{-1}^1 = (1/2) - (-3/2) = 2$. $\int_1^2 (-x/3 + 1/3) d x = [-x^2/6 + x/3]_1^2 = (-4/6 + 2/3) - (-1/6 + 1/3) = 0 - 1/6 = -1/6$. 합 $= 14/3 + 2 - 1/6 = 28/6 + 12/6 - 1/6 = 39/6 = 13/2$. 따라서 $(1/4)\cdot 13/2 = 13/8$. 답: $\boxed{13/8}$.
+
+**[95 / 자1-3]** $g(\alpha) = \pi/3$ 일 때 $\displaystyle\int_0^\alpha\frac{\sin^3(g(x))}{1 + x^2} d x$ 의 값.
+
+??? success "풀이"
+    $g'(x) = 1/(1 + x^2)$. $\displaystyle\int_0^\alpha\frac{\sin^3(g(x))}{1 + x^2} d x = \int_0^\alpha g'(x)\sin^3(g(x)) d x$. $u = g(x)$ 치환: $u(0) = 0, u(\alpha) = \pi/3$. $= \int_0^{\pi/3}\sin^3 u\, d u = \int_0^{\pi/3}(1 - \cos^2 u)\sin u\, d u$. $t = \cos u$ 치환: $t(0) = 1, t(\pi/3) = 1/2$. $= \int_1^{1/2} -(1 - t^2) d t = \int_{1/2}^1 (1 - t^2) d t = [t - t^3/3]_{1/2}^1 = (1 - 1/3) - (1/2 - 1/24) = 2/3 - 11/24 = 16/24 - 11/24 = 5/24$. 답: $\boxed{5/24}$.
+
+### 자연계 문제 2 — 원과 곡선·그래프 개형·수열의 극한
+
+> 제시문 [가] 원의 방정식 $x^2 + y^2 = r^2$. [나] $r > 1$ 에 대해 $C(r)$ 은 중심 $\mathrm{A}_r(a_r, 0)$, 반지름 $r$ 인 원. $\mathrm{P}_r$ 은 $C(r)$ 과 $C(r + 1)$ 의 교점 ($y$ 좌표 양수), $\theta_r = \angle\mathrm{P}_r\mathrm{A}_{r+1}\mathrm{O}$. $S$ 는 $y = \pm\sqrt{2 x}$ 곡선. $C(r)$ 과 $S$ 가 두 점에서 접한다.
+
+**[95 / 자2-1]** $a_r$ 을 $r$ 로 나타내시오.
+
+??? success "풀이"
+    $S$: $y^2 = 2 x$, 즉 $x = y^2/2$. $C(r)$: $(x - a_r)^2 + y^2 = r^2$. 연립: $(y^2/2 - a_r)^2 + y^2 = r^2$. $u = y^2 \ge 0$: $(u/2 - a_r)^2 + u = r^2$ → $u^2/4 - a_r u + a_r^2 + u = r^2$ → $u^2/4 + (1 - a_r) u + a_r^2 - r^2 = 0$. 두 점 접한다 ⇒ 중근 ⇒ $u$ 에 대한 이차방정식 판별식 $= 0$: $(1 - a_r)^2 - a_r^2 + r^2 = 0$ → $1 - 2 a_r + r^2 = 0$ → $a_r = (r^2 + 1)/2$. 답: $\boxed{a_r = (r^2 + 1)/2}$.
+
+**[95 / 자2-2]** $a_{2 r}$ 에 대해 $1 < r$ 인 모든 실수에서 $\displaystyle\left(a_{2 r} - \frac{1}{2}\right)e^{-r} + k = 0$ 이 서로 다른 두 실근을 갖는 $k$ 의 범위. (단, $\lim_{x\to\infty}(2 x^2/e^x) = 0$.)
+
+??? success "풀이"
+    $a_{2 r} = ((2 r)^2 + 1)/2 = (4 r^2 + 1)/2$. $(4 r^2 + 1)/2 - 1/2 = 2 r^2$. 방정식: $2 r^2 e^{-r} + k = 0$, 즉 $f(r) = 2 r^2 e^{-r} = -k$. $f'(r) = 2 e^{-r}(2 r - r^2) = -2 e^{-r} r(r - 2)$. $r = 0, 2$ 에서 임계점. $f(0) = 0$ (극소), $f(2) = 8 e^{-2}$ (극대). $\lim_{r\to\infty} f(r) = 0$, $\lim_{r\to-\infty} f(r) = \infty$ — 그러나 우리는 $r > 1$ 범위만 봄. $r > 1$ 영역에서 $f(1) = 2/e$, $f(2) = 8/e^2$, $f(\infty) \to 0$. 그래프: $f$ 는 $r = 1$ 에서 $2/e$, $r = 2$ 에서 극대 $8/e^2$, $r\to\infty$ 로 감소하여 $0$. $f(r) = -k$ 가 $r > 1$ 에서 서로 다른 두 실근 가지려면 $2/e < -k < 8/e^2$, 즉 $-8/e^2 < k < -2/e$. 답: $\boxed{-8/e^2 < k < -2/e}$.
+
+**[95 / 자2-3]** $\displaystyle\lim_{r\to\infty}\tan(\theta_r)$ 의 값.
+
+??? success "풀이"
+    $C(r)$: $(x - a_r)^2 + y^2 = r^2$, $C(r+1)$: $(x - a_{r+1})^2 + y^2 = (r+1)^2$. 두 식 빼면 $-2(a_{r+1} - a_r) x + a_{r+1}^2 - a_r^2 = (r+1)^2 - r^2$ → $x = (r + 3)/2$ 정리 후 $\mathrm{P}_r$ 좌표 계산. 풀이에 의해 $\mathrm{P}_r = ((r^2 + r - 1)/2, \sqrt{3 r^2 + 4 r - 4}/2)$. $\mathrm{A}_{r+1} = ((r+1)^2 + 1)/2, 0) = ((r^2 + 2 r + 2)/2, 0)$. $s = $ ($\mathrm{P}_r$ 의 $y$ 좌표) $= \sqrt{3 r^2 + 4 r - 4}/2$, $t = a_{r+1} - x_{\mathrm{P}_r} = (r + 3)/2$. $\tan\theta_r = s/t = \sqrt{3 r^2 + 4 r - 4}/(r + 3)$. $r\to\infty$: $\to \sqrt 3$. 답: $\boxed{\sqrt 3}$.
+
+### 자연계 문제 3 — 주사위 확률변수·정적분 넓이·부분적분 부피
+
+> 제시문 [가] 이산확률변수 기댓값 $E(X) = \sum x_i p_i$, $E(a X + b) = a E(X) + b$. [나] 곡선 $y = 49 - (x - 7)^2$ 이 $x$ 축과 $\mathrm{A}(0, 0), \mathrm{B}(14, 0)$ 에서 만남. 두 주사위 던져 나오는 큰 수를 $X$ (값 $k$). 곡선과 직선 $x = k, x = 14 - k$ 의 교점 $\mathrm{D}, \mathrm{C}$, 사다리꼴 $\mathrm{ABCD}$ 의 넓이 $S$ 가 이산확률변수. [다] 사각형 $\mathrm{ABCD}$ 를 밑면, 두 점 $\mathrm{P}(x, 0), \mathrm{Q}(x, y)$ 지나고 $x$ 축에 수직인 평면으로 자르면 단면이 높이 $e^{-x}$, 밑변 $y$ 인 직사각형 → 입체도형 $\mathrm{R}$.
+
+**[95 / 자3-1]** $Y = 36 X - 150$ 일 때 $E(Y)$. $\mathrm{P}(S \ge 400) = q/p$ 일 때 $p + q$ ($p, q$ 서로소 자연수).
+
+??? success "풀이"
+    $X = $ 두 주사위 중 큰 수. $P(X = k)$: $X = 2$ 는 $(1,2), (2,1), (2,2)$ → $3/36$? 실제 $X = k$ 인 경우: $(i, j)$ 에서 큰 값이 $k$ → $i \le k, j \le k$ 이면서 $i$ 또는 $j$ 가 $k$. 즉 $k^2 - (k-1)^2 = 2 k - 1$ 가지. 총 $36$ 경우. $P(X = k) = (2 k - 1)/36$. 검증: $P(X = 2) = 3/36$. (PDF 풀이는 $30$ 가지 = $36 - 6$ (같은 수 제외) 기준 → $P(X = 2) = 2/30$). PDF 풀이를 따른다: $P(X = k) = 2(k-1)/30$ for $k = 2, ..., 6$. (예: $P(X = 2) = 2/30, P(X = 3) = 4/30, ..., P(X = 6) = 10/30$). $E(X) = 2\cdot 2/30 + 3\cdot 4/30 + 4\cdot 6/30 + 5\cdot 8/30 + 6\cdot 10/30 = (4 + 12 + 24 + 40 + 60)/30 = 140/30$. $E(36 X) = 36\cdot 140/30 = 168$. $E(Y) = 168 - 150 = 18$. $S = (1/2)(14 + (14 - 2 k))(49 - (k - 7)^2) = (14 - k)(49 - (k - 7)^2)$ — 보다 정확히 사다리꼴 면적. $S$ 값: $k = 2$ → $S = 288$, $k = 3$ → $363$, $k = 4$ → $400$, $k = 5$ → $405$, $k = 6$ → $384$. $P(S \ge 400) = P(k = 4) + P(k = 5) = 6/30 + 8/30 = 14/30 = 7/15$. $p = 15, q = 7$, $p + q = 22$. 답: $\boxed{E(Y) = 18,\ p + q = 22}$.
+
+**[95 / 자3-2]** 곡선과 $x$ 축으로 둘러싸인 부분에서 사각형 $\mathrm{ABCD}$ 를 제외한 넓이 $T$. $T$ 가 최소인 $k$ 와 그때 $3 T$.
+
+??? success "풀이"
+    포물선 전체 넓이 $= \int_0^{14}(49 - (x - 7)^2) d x = [49 x - (x - 7)^3/3]_0^{14} = 49\cdot 14 - 343/3 + (-343)/3 = 686 - 686/3 = 1372/3$. $T = 1372/3 - S$. $T$ 가 최소 ⇔ $S$ 가 최대. 위에서 $S$ 가 최대인 $k = 5$ 일 때 $S = 405$. $T = 1372/3 - 405$, $3 T = 1372 - 1215 = 157$. 답: $\boxed{3 T = 157}$.
+
+**[95 / 자3-3]** 두 주사위 던져 나온 눈 $2, 6$. 입체도형 $\mathrm{R}$ 의 부피 $= a + b e^{-6} + c e^{-8} + d e^{-14}$ 일 때 $a, b, c, d$ ($a, b, c, d$ 유리수).
+
+??? success "풀이"
+    $k = 6$. $x \in [0, 6]$: 단면 높이 $y = 8 x$ (직선 $\mathrm{AD}$). $x \in [6, 8]$: $y = 48$. $x \in [8, 14]$: $y = -8 x + 112$ (직선 $\mathrm{BC}$). $V = \int_0^6 8 x e^{-x} d x + \int_6^8 48 e^{-x} d x + \int_8^{14}(-8 x + 112) e^{-x} d x$. 부분적분: $\int x e^{-x} d x = -x e^{-x} - e^{-x}$. $\int_0^6 8 x e^{-x} d x = 8\left([-x e^{-x} - e^{-x}]_0^6\right) = 8(-6 e^{-6} - e^{-6} - (0 - 1)) = 8(1 - 7 e^{-6}) = 8 - 56 e^{-6}$. $\int_6^8 48 e^{-x} d x = 48(-e^{-x})|_6^8 = 48(e^{-6} - e^{-8})$. $\int_8^{14}(-8 x + 112) e^{-x} d x = -8\int_8^{14} x e^{-x} d x + 112\int_8^{14} e^{-x} d x = -8[-x e^{-x} - e^{-x}]_8^{14} + 112(-e^{-x})|_8^{14} = -8(-14 e^{-14} - e^{-14} + 8 e^{-8} + e^{-8}) + 112(e^{-8} - e^{-14}) = -8(-15 e^{-14} + 9 e^{-8}) + 112 e^{-8} - 112 e^{-14} = 120 e^{-14} - 72 e^{-8} + 112 e^{-8} - 112 e^{-14} = 8 e^{-14} + 40 e^{-8}$. 합: $V = (8 - 56 e^{-6}) + 48 e^{-6} - 48 e^{-8} + 40 e^{-8} + 8 e^{-14} = 8 - 8 e^{-6} - 8 e^{-8} + 8 e^{-14}$. 답: $\boxed{a = 8, b = -8, c = -8, d = 8}$.
+
+### 의예 문제 1 — 전염병 모형과 확률질량함수
+
+> 제시문 [가] 전염병 모형: $f'(t) = -(a/N) g(t) f(t)$, $g'(t) = (a/N) g(t) f(t) - b g(t)$, $h'(t) = b g(t)$ ($f$ 감염 가능, $g$ 감염자, $h$ 치료자, $N$ 총 인구). [나] $1{\sim}100$ 명의 감염 가능자, $X$ 감염자 수 확률변수: $P(X \ge k+1) = (k/(k+2)) P(X \ge k)$ ($k = 1, ..., 99$). 방역당국은 $P(X \le k) > 49/50$ 이면 최고단계로 격상.
+
+**[95 / 의1-1]** $a = 0.5, b = 0.05, N = 100$ 일 때 감염자 수 감소하는 $A$ 의 범위 ($A > 0$).
+
+??? success "풀이"
+    $g'(t) = ((a/b)\cdot f(t)/N - 1) b g(t)$. $g'(t) < 0$ ⇔ $(a/b)\cdot f(t)/N - 1 < 0$ ⇔ $f(t) < b N/a = 0.05\cdot 100/0.5 = 10$. 답: $\boxed{A < 10}$.
+
+**[95 / 의1-2]** $a = 0.5, b = 0.1, N = 100$, $f(0) = 99, g(0) = 1, h(0) = 0$. $h(t^*) = 20$ 일 때 $f(t^*)$ 의 값.
+
+??? success "풀이"
+    $f'(t)/h'(t) = -a g(t) f(t)/(N\cdot b g(t)) = -a f(t)/(b N)$ → $f'(t)/f(t) = -(a/(b N)) h'(t)$. 양변 $t$ 에 대해 적분: $\ln f(t) = -(a/(b N)) h(t) + C$. $f(t) = e^C\cdot e^{-a h(t)/(b N)}$. $t = 0$: $f(0) = e^C\cdot e^0 = e^C = 99$. $a/(b N) = 0.5/(0.1\cdot 100) = 1/20$. $f(t) = 99 e^{-h(t)/20}$. $h(t^*) = 20$: $f(t^*) = 99 e^{-1} = 99/e$. 답: $\boxed{99/e}$.
+
+**[95 / 의1-3]** $\displaystyle\frac{\mathrm{P}(1 \le X \le 3)}{\mathrm{P}(6 \le X \le 19)}$ 의 값과 방역 경보를 최고단계로 격상시키는 최소 감염자 수 $k$.
+
+??? success "풀이"
+    $P_k = P(X \ge k)$ 로 두면 $P_{k+1}/P_k = k/(k+2)$. 곱: $P_k = P_1\cdot\prod_{j=1}^{k-1}\frac{j}{j+2} = P_1\cdot\frac{1\cdot 2}{(k)(k+1)} = 1\cdot 2/(k(k+1)) = 2/(k(k+1))$ ($P_1 = 1$ 사용). 검증: $P_2 = 2/(2\cdot 3) = 1/3$, $P_3 = 2/(3\cdot 4) = 1/6$, $P_4 = 2/(4\cdot 5) = 1/10$, $P_6 = 2/(6\cdot 7) = 1/21$, $P_{20} = 2/(20\cdot 21) = 1/210$. $P(1 \le X \le 3) = P_1 - P_4 = 1 - 1/10 = 9/10$. $P(6 \le X \le 19) = P_6 - P_{20} = 1/21 - 1/210 = 10/210 - 1/210 = 9/210 = 3/70$. 비: $(9/10)/(3/70) = 9\cdot 70/(10\cdot 3) = 21$. $P(X \le k) = 1 - P_{k+1} = 1 - 2/((k+1)(k+2)) > 49/50$ ⇔ $2/((k+1)(k+2)) < 1/50$ ⇔ $(k+1)(k+2) > 100$. $k = 8$: $9\cdot 10 = 90 < 100$, $k = 9$: $10\cdot 11 = 110 > 100$. 최소 $k = 9$. 답: $\boxed{\text{비} = 21,\ k = 9}$.
+
+### 의예 문제 2 — 삼각함수 덧셈정리와 매개변수 운동
+
+> 제시문 [가] 삼각함수 덧셈정리. [나] 해변에 두 학생 $\mathrm{A}, \mathrm{B}$, 바다에 배 $\mathrm{C}$. $\overline{\mathrm{AB}} = \ell$, $\angle\mathrm{BAC} = \alpha, \angle\mathrm{ABC} = \beta$. $\overline{\mathrm{AB}}$ 의 중점이 원점이고 $\mathrm{C}(c_x, c_y)$.
+
+**[95 / 의2-1]** $\ell = 6, \alpha + \beta = 5\pi/12, \alpha > \pi/12, \beta > \pi/6$ 일 때 배의 자취의 길이.
+
+??? success "풀이"
+    $\angle\mathrm{ACB} = \pi - (\alpha + \beta) = 7\pi/12$. 원주각이 일정하므로 $\mathrm{C}$ 는 $\triangle\mathrm{ABC}$ 외접원의 호 위 점. 외접원 반지름 $R$: 사인법칙 $\overline{\mathrm{AB}}/\sin(\angle\mathrm{ACB}) = 2 R$ → $6/\sin(7\pi/12) = 2 R$. $\sin(7\pi/12) = \sin(\pi/3 + \pi/4) = \sin(\pi/3)\cos(\pi/4) + \cos(\pi/3)\sin(\pi/4) = (\sqrt 6 + \sqrt 2)/4$. $R = 12/(\sqrt 6 + \sqrt 2)$. 호 길이는 중심각 $\gamma = \pi/3$ (양쪽 경계 $\alpha = \pi/12, \beta = \pi/6$ 의 차이로 결정) × $R$: $L = R\cdot \pi/3 = 12\pi/(3(\sqrt 6 + \sqrt 2)) = 4\pi/(\sqrt 6 + \sqrt 2) = 4\pi(\sqrt 6 - \sqrt 2)/4 = \pi(\sqrt 6 - \sqrt 2)$. 답: $\boxed{\pi(\sqrt 6 - \sqrt 2)}$.
+
+**[95 / 의2-2]** $\ell = 6$, $\alpha = \pi/12 + 3 t, \beta = \pi/3 - 3 t$ ($0 < t < \pi/9$). $t = \pi/36$ 일 때 배의 위치 $(c_x, c_y)$ 와 속도 $(v_x, v_y)$.
+
+??? success "풀이"
+    $t = \pi/36$: $\alpha = \pi/12 + \pi/12 = \pi/6, \beta = \pi/3 - \pi/12 = \pi/4$. $\mathrm{A}(-3, 0), \mathrm{B}(3, 0)$. $\tan\alpha = c_y/(3 + c_x), \tan\beta = c_y/(3 - c_x)$. $1/\sqrt 3 = c_y/(3 + c_x)$ → $c_y = (3 + c_x)/\sqrt 3$. $1 = c_y/(3 - c_x)$ → $c_y = 3 - c_x$. 연립: $(3 + c_x)/\sqrt 3 = 3 - c_x$ → $3 + c_x = \sqrt 3(3 - c_x) = 3\sqrt 3 - \sqrt 3 c_x$ → $c_x(1 + \sqrt 3) = 3\sqrt 3 - 3 = 3(\sqrt 3 - 1)$ → $c_x = 3(\sqrt 3 - 1)/(\sqrt 3 + 1) = 3(\sqrt 3 - 1)^2/2 = 3(4 - 2\sqrt 3)/2 = 6 - 3\sqrt 3$. $c_y = 3 - c_x = 3 - 6 + 3\sqrt 3 = 3\sqrt 3 - 3 = 3(\sqrt 3 - 1)$. 속도: $\tan\alpha\cdot(3 + c_x) = c_y$ 양변 $t$ 미분 → $3\sec^2\alpha(3 + c_x) + \tan\alpha\cdot v_x = v_y$ ($\alpha' = 3$). $t = \pi/36$ 에서 $\sec^2(\pi/6) = 4/3$: $3\cdot(4/3)\cdot(9 - 3\sqrt 3) + (1/\sqrt 3) v_x = v_y$ → $4(9 - 3\sqrt 3) + v_x/\sqrt 3 = v_y$. 유사하게 $\tan\beta(3 - c_x) = c_y$ 미분 ($\beta' = -3$): $-3\sec^2\beta(3 - c_x) - \tan\beta\cdot v_x = v_y$ → $-3\cdot 2\cdot(3\sqrt 3 - 3) - v_x = v_y$. 연립 풀이 (PDF): $v_x = -18, v_y = 18(2 - \sqrt 3)$. 답: $\boxed{(c_x, c_y) = (6 - 3\sqrt 3,\ 3\sqrt 3 - 3),\ (v_x, v_y) = (-18,\ 18(2 - \sqrt 3))}$.
+
+**[95 / 의2-3]** $\alpha \in\{\pi/6, \pi/4, \pi/3\}$ 의 확률분포 $P(X = \pi/6) = 1/6, P(X = \pi/4) = 1/2, P(X = \pi/3) = 1/3$. $\ell = 6, \beta = 5\pi/12 - \alpha$ 일 때 $E(c_x), E(c_y)$.
+
+??? success "풀이"
+    $\alpha + \beta = 5\pi/12$, 대응 $\beta = \pi/4, \pi/6, \pi/12$. 각 경우 $c_x = -3(\tan\alpha - \tan\beta)/(\tan\alpha + \tan\beta), c_y = 6\tan\alpha\tan\beta/(\tan\alpha + \tan\beta)$. $\tan(\pi/12) = 2 - \sqrt 3$ ($\tan(\pi/6) = 1/\sqrt 3$ 와 $\tan$ 덧셈정리 사용). 각 $\alpha$ 별 $(c_x, c_y)$: $\alpha = \pi/6$ → $(3(2 - \sqrt 3),\ 3(\sqrt 3 - 1))$. $\alpha = \pi/4$ → $(-3(2 - \sqrt 3),\ 3(\sqrt 3 - 1))$. $\alpha = \pi/3$ → $(3(1 - \sqrt 3),\ 3(2\sqrt 3 - 3))$. $E(c_x) = (1/6)\cdot 3(2 - \sqrt 3) + (1/2)\cdot(-3(2 - \sqrt 3)) + (1/3)\cdot 3(1 - \sqrt 3) = (1/2)(2 - \sqrt 3) - (3/2)(2 - \sqrt 3) + (1 - \sqrt 3) = -1\cdot(2 - \sqrt 3) + (1 - \sqrt 3) = -2 + \sqrt 3 + 1 - \sqrt 3 = -1$. $E(c_y) = (1/6)\cdot 3(\sqrt 3 - 1) + (1/2)\cdot 3(\sqrt 3 - 1) + (1/3)\cdot 3(2\sqrt 3 - 3) = (1/2)(\sqrt 3 - 1) + (3/2)(\sqrt 3 - 1) + (2\sqrt 3 - 3) = 2(\sqrt 3 - 1) + 2\sqrt 3 - 3 = 2\sqrt 3 - 2 + 2\sqrt 3 - 3 = 4\sqrt 3 - 5$. 답: $\boxed{E(c_x) = -1,\ E(c_y) = 4\sqrt 3 - 5}$.
+
+### 면접 SW창의인재 문제 — 정삼각형 내접 직사각형과 프랙탈
+
+> 제시문 한 변 $4$ 인 정삼각형 $\mathrm{ABC}$. 점 $\mathrm{E, F}$ 는 $\overline{\mathrm{BC}}$ 위, $\mathrm{D, G}$ 는 각각 $\overline{\mathrm{AB}}, \overline{\mathrm{AC}}$ 위. 직사각형 $\mathrm{DEFG}$ 가 정삼각형 내부에 있다.
+
+**[95 / SW2-1]** 직사각형 $\mathrm{DEFG}$ 의 넓이의 최댓값.
+
+??? success "풀이"
+    $\mathrm{B}(0, 0), \mathrm{C}(4, 0), \mathrm{A}(2, 2\sqrt 3)$. 직선 $\mathrm{AC}$: $y = -\sqrt 3 x + 2\sqrt 3\cdot 2 = -\sqrt 3(x - 4)$. $\mathrm{G}(x, y) = (x, -\sqrt 3 x + 4\sqrt 3 - 2\sqrt 3) = (x, -\sqrt 3 x + 2\sqrt 3)$ — 잠시 재계산: 직선 $\mathrm{AC}$ 는 $\mathrm{A}(2, 2\sqrt 3)$ 과 $\mathrm{C}(4, 0)$ 지나므로 기울기 $-\sqrt 3$, $y = -\sqrt 3(x - 4) = -\sqrt 3 x + 4\sqrt 3$. $\mathrm{G}$ 가 $\mathrm{AC}$ 위 $(x, -\sqrt 3 x + 4\sqrt 3)$. 직사각형 가로 $2(x - 2)$, 세로 $-\sqrt 3 x + 4\sqrt 3 = \sqrt 3(4 - x)$ — PDF 풀이 보정: $A(x) = 2 x(-\sqrt 3 x + 2\sqrt 3) = -2\sqrt 3 x^2 + 4\sqrt 3 x$ (PDF 좌표 변환 사용). $A'(x) = -4\sqrt 3 x + 4\sqrt 3 = 0$ → $x = 1$. $A(1) = -2\sqrt 3 + 4\sqrt 3 = 2\sqrt 3$. 답: $\boxed{2\sqrt 3}$.
+
+**[95 / SW2-2]** 정삼각형 $\mathrm{ABC}$ 내부에 최대 넓이 직사각형 $\mathrm{R}_1 (= \mathrm{DEFG})$, 정삼각형 $\mathrm{ADG}$ 내부에 같은 방법으로 $\mathrm{R}_2$, $\ldots$ $\mathrm{R}_{10}$ 까지 그릴 때 $\mathrm{R}_1, \ldots, \mathrm{R}_{10}$ 의 넓이의 합.
+
+??? success "풀이"
+    $\triangle\mathrm{ADG}$ 는 $\triangle\mathrm{ABC}$ 와 닮음, 길이 비 $1/2$ → 넓이 비 $1/4$. 따라서 $\mathrm{R}_n$ 의 넓이 = 공비 $1/4$ 인 등비수열, 초항 $2\sqrt 3$. $S_{10} = 2\sqrt 3\cdot\frac{1 - (1/4)^{10}}{1 - 1/4} = 2\sqrt 3\cdot(4/3)(1 - (1/4)^{10}) = (8\sqrt 3/3)(1 - (1/4)^{10})$. 답: $\boxed{(8\sqrt 3/3)(1 - (1/4)^{10})}$.
+
+---
+
