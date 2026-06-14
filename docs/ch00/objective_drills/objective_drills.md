@@ -6468,3 +6468,82 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 91 — 건국대 (2020학년도)
+
+> KU논술우수자전형 인문사회II·자연계 수학 문항. 인문(연립방정식·누진세 이주모형·가격탄력성과 등비수열의 합·정적분 소비자잉여) 3개 + 자연(타원과 직각삼각형·타원과 직선의 중점 기울기·공간도형 정사영·점과 평면의 거리) 2개 문제 4 sub.
+
+### 인문계 문제 1 — 보조금 (연립일차방정식)
+
+> 제시문 [라]/[마]: $A$ 지자체의 어린이집 보조금 — 종일반 $10$ 만원/월, 반일반 $5$ 만원/월. 보조금 총액 $5000$ 만원, $800$ 가구 지원. 담당자 실수로 반일반에 $10$ 만원, 종일반에 $5$ 만원 지급. 현재 $600$ 가구에 $5000$ 만원 모두 지급된 상태.
+
+**[91 / 인1-1]** 종일반 가구 수 $a$, 반일반 가구 수 $b$, $5$ 만원 받은 종일반 가구 수 $c$, $10$ 만원 받은 반일반 가구 수 $d$. $a - b + c - d$.
+
+??? success "풀이"
+    원래 조건: $a + b = 800, 10 a + 5 b = 5000$ → $a = 200, b = 600$. 잘못된 상황: $c + d = 600, 5 c + 10 d = 5000$ → $c = 200, d = 400$. $a - b + c - d = 200 - 600 + 200 - 400 = -600$. 답: $\boxed{-600}$.
+
+### 인문계 문제 2 — 누진소득세·이주 (부등식)
+
+> 제시문 [마]/[바]: 두 국가 $A, B$ 인구 각 $100$ 명. 소득 분포 [표1]. 소득세: $A$ — 일률 $20\%$; $B$ — $1000$ 이하 $0\%$, $1000{\sim}5000$ $20\%$, $5000$ 초과 $40\%$. 이주비용 $C = 600 - Y/10$ (음수면 $0$). 동일 소득, 각자 (소득 − 세금 − 이주비용) 최대인 곳에 거주 선택. (구간별 인구 — $Y \le 1000$: $A=5, B=8$; $1000{\sim}2000$: $7, 9$; $2000{\sim}3000$: $10, 10$; $3000{\sim}4000$: $12, 11$; $4000{\sim}5000$: $14, 12$; $5000{\sim}6000$: $14, 12$; $6000{\sim}7000$: $12, 11$; $7000{\sim}8000$: $10, 10$; $8000{\sim}9000$: $7, 8$; $9000{\sim}10000$: $5, 7$; $>10000$: $4, 2$).
+
+**[91 / 인2-1]** 이주 후 $A$ 국가와 $B$ 국가의 총인구.
+
+??? success "풀이"
+    구간별 비교 (A의 세 vs B의 세 + $C$):
+    - $Y < 1000$: $A$ 세 $0.2 Y$, $B$ 세 $0$, $C = 600 - 0.1 Y$. $A \to B$ 이주 조건 $0.2 Y > 0 + C$ → $Y > 2000$. 적용 X.
+    - $1000 < Y < 5000$: $A$ 세 $0.2 Y$, $B$ 세 $0.2(Y - 1000)$. $A \to B$ 이주 조건 $Y > 4000$. → $4000 < Y < 5000$ 인 $A$ 국민 $14$ 명 $B$ 로 이주.
+    - $5000 < Y < 6000$: $A$ 세 $0.2 Y$, $B$ 세 $0.2\cdot 4000 + 0.4(Y - 5000)$. $A \to B$ 이주 조건 $Y < 6000$. 모든 $A$ 국민 $14$ 명 $B$ 로 이주.
+    - $Y > 6000$: $C = 0$. $A$ 세가 $B$ 세보다 작음. $B \to A$ 이주. $B$ 국민 $6000$ 초과 모두: $11 + 10 + 8 + 7 + 2 = 38$ 명.
+    종합: $A \to B$ $28$ 명, $B \to A$ $38$ 명. $A$ 인구 $= 100 - 28 + 38 = 110$, $B$ 인구 $= 100 - 38 + 28 = 90$. 답: $\boxed{A: 110,\ B: 90}$.
+
+### 인문계 문제 3 — 가격탄력성·등비수열·정적분 (소비자잉여)
+
+> 제시문 [바]: 소비자 잉여 정의. [사]: 수요의 가격탄력성 $= -(\text{수요량 변화율})/(\text{가격 변화율})$. $k$ 번째 제품의 수요곡선 $Y = f(X) = 2^{2 k}X^2 - 2^{2 k + 1}X + 2^{2 k} = 2^{2 k}(X - 1)^2$ ($0 \le X \le 1$).
+
+**[91 / 인3-1]** $k = 1$ 일 때 $f(X) = 4(X - 1)^2$. 기울기 $-2$ 가 되는 $X = Q_1$ 에서의 가격이 $P_1$. 가격이 $1 \to P_1$ 로 변할 때 수요의 가격탄력성.
+
+??? success "풀이"
+    $f'(X) = 8(X - 1)$, $f'(Q_1) = -2$ → $Q_1 = 3/4$. $P_1 = 4(3/4 - 1)^2 = 4/16 = 1/4$. 가격 1일 때 수요량 $Q_0$: $4(X - 1)^2 = 1$ → $X = 1/2$ (또는 $3/2$). $0 \le X \le 1$ → $Q_0 = 1/2$. 가격 변화율 $\Delta P/P = (1/4 - 1)/1 = -3/4$. 수요량 변화율 $\Delta Q/Q = (3/4 - 1/2)/(1/2) = 1/2$. 가격탄력성 $= -(1/2)/(-3/4) = 2/3$. 답: $\boxed{2/3}$.
+
+**[91 / 인3-2]** 모든 제품의 가격이 $1 \to 0.81$ 로 하락. 수입 변화 총합 $\sum_{k = 1}^{10}\Delta R_k$ ($(1/2)^{10} = 0.001$).
+
+??? success "풀이"
+    가격 $1$ 에서 수요량 $Q_0 = 1 - 1/2^k$, 수입 $1\cdot Q_0 = 1 - 1/2^k$. 가격 $0.81$ 에서 $(X - 1)^2 = 0.81/4^k$ → $Q_1 = 1 - 0.9/2^k$, 수입 $0.81 Q_1 = 0.81 - 0.729/2^k$. $\Delta R_k = (0.81 - 0.729/2^k) - (1 - 1/2^k) = -0.19 + 0.271/2^k$. 총합 $= -1.9 + 0.271\sum_{k = 1}^{10}(1/2)^k = -1.9 + 0.271(1 - 0.001) = -1.9 + 0.270729 = -1.629271$. 답: $\boxed{-1.629271}$.
+
+**[91 / 인3-3]** $k = 2$ 제품 가격이 $1$ 원에서 $n$ 개월 후 $(1/3)^n$ 원씩 추가 인하 (예: $1$ 개월 후 $2/3$, $2$ 개월 후 $5/9$). $(1/3)^{10} = a$. $10$ 개월 후 소비자잉여를 $a$ 로 표현.
+
+??? success "풀이"
+    가격 점화식: $P_n = P_0 - \sum_{m = 1}^n (1/3)^m = 1 - (1/3)(1 - (1/3)^n)/(2/3) = 1 - (1 - (1/3)^n)/2 = (1 + (1/3)^n)/2$. $P_{10} = (1 + a)/2$. 수요곡선 $Y = 16(X - 1)^2$. 수요량: $16(X - 1)^2 = P_{10}$ → $X - 1 = -\sqrt{P_{10}}/4$ → $Q_{10} = 1 - \sqrt{(1 + a)/2}/4 = 1 - \sqrt{1 + a}/(4\sqrt 2)$. 소비자 잉여 $Z_{10} = \int_0^{Q_{10}} 16(X - 1)^2 d X - P_{10}\cdot Q_{10} = (16/3)[(X - 1)^3]_0^{Q_{10}} - P_{10} Q_{10}$. 정리: $Z_{10} = (16/3)[(Q_{10} - 1)^3 + 1] - P_{10} Q_{10}$. PDF 정리: $Z_{10} = 29/6 - a/2 + \sqrt 2 (1 + a)^{3/2}/24$. 답: $\boxed{Z_{10} = 29/6 - a/2 + \sqrt 2 (1 + a)^{3/2}/24}$.
+
+### 자연계 문제 1 — 타원과 직각삼각형·직선의 기울기 (이차곡선·미분)
+
+> 제시문 1 [가] 타원 방정식·초점, [나] 중점 좌표, [다] [그림 1] 타원 위 점 $\mathrm{A}, \mathrm{B}$, 직선 $\mathrm{AB}$ 가 초점 $\mathrm{F'}$ 지남.
+
+**[91 / 자1-1]** 타원 $x^2/9 + y^2/4 = 1$ 에서 $\angle\mathrm{FAB} = \pi/2$ 인 $\triangle\mathrm{FAB}$ 의 넓이 $S$ (점 $\mathrm{A}$ 의 $y$ 좌표는 양수).
+
+??? success "풀이"
+    초점 $\mathrm{F}(-\sqrt 5, 0), \mathrm{F'}(\sqrt 5, 0)$. $\overline{\mathrm{FA}} = a, \overline{\mathrm{F'A}} = b$, $a + b = 2\cdot 3 = 6$. $\angle\mathrm{FAF'}$ 가 직각 (이거나 $\angle\mathrm{FAB}$ 인데 $\mathrm{B}$ 가 $\mathrm{F'}$ 지나는 직선 위) — PDF: $\triangle\mathrm{FAF'}$ 직각삼각형, $a^2 + b^2 = (2\sqrt 5)^2 = 20$. $a + b = 6$, $ab = (36 - 20)/2 = 8$. $\{a, b\} = \{2, 4\}$.
+    **경우 (1)** $a = 4, b = 2$: $\overline{\mathrm{FB}} = x, \overline{\mathrm{F'B}} = y$, $x + y = 6$, 그리고 $\triangle\mathrm{FAB}$ 직각이므로 피타고라스: $4^2 + (2 + y)^2 = x^2$ ($\mathrm{B}$ 가 $\mathrm{F'}$ 너머에 있을 때 $\overline{\mathrm{AB}} = 2 + y$). 연립: $y = 1$. $S = (1/2)\cdot 4\cdot (2 + 1) = 6$.
+    **경우 (2)** $a = 2, b = 4$: $2^2 + (4 + y)^2 = x^2$, $x + y = 6$. $y = 4/5$. $S = (1/2)\cdot 2\cdot (4 + 4/5) = 24/5$.
+    답: $\boxed{S = 6 \text{ 또는 } 24/5}$.
+
+**[91 / 자1-2]** 타원 $x^2/2 + y^2 = 1$ 에서 $\mathrm{F'}(1, 0)$ 지나는 직선이 타원과 만나는 점 $\mathrm{A}, \mathrm{B}$, 중점 $\mathrm{M}$. 직선 $\mathrm{FM}$ ($\mathrm{F}(-1, 0)$) 기울기의 최댓값.
+
+??? success "풀이"
+    직선 $\mathrm{AB}: y = m(x - 1)$. 타원과 연립: $x^2 + 2 m^2(x - 1)^2 = 2$ → $(1 + 2 m^2)x^2 - 4 m^2 x + (2 m^2 - 2) = 0$. 두 근의 합 $= 4 m^2/(1 + 2 m^2)$ → $\mathrm{M}$ 의 $x$ 좌표 $= 2 m^2/(1 + 2 m^2)$. $y_M = m(x_M - 1) = -m/(1 + 2 m^2)$. 직선 $\mathrm{FM}$ 기울기 $f(m) = y_M/(x_M - (-1)) = -m/((1 + 2 m^2)\cdot ((2 m^2 + 1 + 2 m^2)/(1 + 2 m^2))) = -m/(1 + 4 m^2)$. $f'(m) = (4 m^2 - 1)/(1 + 4 m^2)^2 = 0$ → $m = \pm 1/2$. $m = -1/2$ 에서 최댓값 $f(-1/2) = (1/2)/(1 + 1) = 1/4$. 답: $\boxed{1/4}$.
+
+### 자연계 문제 2 — 공간도형 (삼수선·정사영)
+
+> 제시문 2 [가]/[나]/[다] 정사영·거리 정의. [라] [그림 2] 사면체 $\mathrm{ABCD}$, $\mathrm{P}$ 는 $\overline{\mathrm{BD}}$ 위, $\overline{\mathrm{CD}} \perp \text{평면 ABC}$. [마] [그림 3] 사면체 $\mathrm{ABCE}$, $\mathrm{D}$ 는 $\overline{\mathrm{CE}}$ 위.
+
+**[91 / 자2-1]** [그림 2] 에서 $\mathrm{B}$ 와 직선 $\mathrm{AC}$ 사이 거리 $= 6$, $\overline{\mathrm{DP}} = 4$. $\mathrm{P}$ 의 평면 $\mathrm{ABC}$ 위로의 정사영 $\mathrm{Q}$, $\mathrm{P}$ 에서 $\mathrm{AC}$ 까지 수선의 발 $\mathrm{R}$. $\overline{\mathrm{CQ}} = 2, \overline{\mathrm{CR}} = 1$. $\overline{\mathrm{CD}}$.
+
+??? success "풀이"
+    $\overline{\mathrm{CD}} \perp \mathrm{ABC}$ → $\mathrm{Q}$ 는 $\mathrm{BC}$ 위 (∵ $\mathrm{P}$ 가 $\mathrm{BD}$ 위, 정사영). 삼수선 정리: $\mathrm{R}$ 은 $\mathrm{Q}$ 에서 $\mathrm{AC}$ 에 내린 수선의 발. $\triangle\mathrm{CRQ}$ 직각삼각형, $\overline{\mathrm{CQ}} = 2, \overline{\mathrm{CR}} = 1$ → $\overline{\mathrm{QR}} = \sqrt 3$. $\mathrm{B}$ 에서 $\mathrm{AC}$ 수선의 발 $\mathrm{E}$, $\overline{\mathrm{BE}} = 6$. $\triangle\mathrm{CRQ} \sim \triangle\mathrm{CEB}$ → $\overline{\mathrm{BC}} = \overline{\mathrm{CQ}}\cdot 6/\sqrt 3 = 12/\sqrt 3 = 4\sqrt 3$. $\cos\angle\mathrm{BCD} = \overline{\mathrm{CQ}}/\overline{\mathrm{DP}} = 2/4 = 1/2$ → $\theta = \pi/3$. $\angle\mathrm{BCD}$ 직각 (∵ $\mathrm{CD} \perp \mathrm{ABC}$): $\overline{\mathrm{CD}} = \overline{\mathrm{BC}}\tan(\pi/3) = 4\sqrt 3\cdot \sqrt 3 = 12$. 답: $\boxed{12}$.
+
+**[91 / 자2-2]** [그림 3] 에서 $\triangle\mathrm{ABC} = 5, \triangle\mathrm{ABE} = 3$. $\overline{\mathrm{CD}} = 2$, 정사영 $\overline{\mathrm{CD}}$ to 평면 $\mathrm{ABE}$ 길이 $= 1$. 점 $\mathrm{D}$ 와 평면 $\mathrm{ABC}$ 사이의 거리.
+
+??? success "풀이"
+    $\mathrm{C}$ 에서 평면 $\mathrm{ABE}$ 에 내린 수선의 발 $\mathrm{G}$. $\mathrm{D}$ 에서 $\overline{\mathrm{CG}}$ 에 내린 수선의 발 $\mathrm{H}$. 정사영 길이 $\overline{\mathrm{DH}} = 1$, $\overline{\mathrm{CD}} = 2$ → $\overline{\mathrm{CH}} = \sqrt{4 - 1} = \sqrt 3$. 사면체 $\mathrm{ABCD}$ 부피 $= \mathrm{ABEC} - \mathrm{ABED} = (1/3)\cdot \triangle\mathrm{ABE}\cdot \overline{\mathrm{CG}} - (1/3)\cdot \triangle\mathrm{ABE}\cdot \overline{\mathrm{HG}} = (1/3)\cdot 3\cdot (\overline{\mathrm{CG}} - \overline{\mathrm{HG}}) = \overline{\mathrm{CH}} = \sqrt 3$. 그리고 $\mathrm{ABCD}$ 부피 $= (1/3)\cdot 5\cdot d = 5 d/3$ (여기서 $d = $ 점 $\mathrm{D}$ 와 평면 $\mathrm{ABC}$ 거리). $5 d/3 = \sqrt 3$ → $d = 3\sqrt 3/5$. 답: $\boxed{3\sqrt 3/5}$.
+
+---
+
