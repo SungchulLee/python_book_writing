@@ -9185,3 +9185,198 @@ $$\lim_{x\to 0}\dfrac{1}{x}\bigl[f(x) + f(2x) + f(3x) + \cdots + f(2023x) - 2023
     조건부확률의 관점: $P(\text{합격}\mid\text{여})$는 모집단위별 $P(\text{합격}\mid\text{여, 계열})$의 단순평균이 아니라 모집단위별 지원자 비율로 가중평균된다.
 
 ---
+## 카드 113 — 연세대 미래캠 (2025학년도)
+
+### 논술 자연 1 — 정적분과 급수의 합·치환적분
+
+**[1 / 자연 1-1]** 함수 $f(x) = x^2$, 닫힌구간 $[0, 1]$에서 곡선 $y = f(x)$, $x$축, 직선 $x = 1$로 둘러싸인 영역을 5등분한다. 〈그림 1〉: 각 소구간의 **오른쪽 끝점**에서의 함숫값을 높이로 갖는 직사각형 5개의 넓이 합 $A_1$. 〈그림 2〉: **왼쪽 끝점**에서의 함숫값을 높이로 갖는 직사각형 5개(첫 직사각형 넓이는 0)의 넓이 합 $A_2$. $A_1$과 $A_2$를 구하여라. (10점)
+
+??? success "풀이"
+    소구간 폭 $\Delta x = 1/5$. 직사각형 높이는 $(k/5)^2$.
+
+    $A_1 = \displaystyle\sum_{k = 1}^5 \dfrac{1}{5}\left(\dfrac{k}{5}\right)^2 = \dfrac{1}{125}\sum_{k = 1}^5 k^2 = \dfrac{1 + 4 + 9 + 16 + 25}{125} = \dfrac{55}{125} = \boxed{\dfrac{11}{25}}$.
+
+    $A_2 = \displaystyle\sum_{k = 0}^4 \dfrac{1}{5}\left(\dfrac{k}{5}\right)^2 = \dfrac{0 + 1 + 4 + 9 + 16}{125} = \dfrac{30}{125} = \boxed{\dfrac{6}{25}}$.
+
+**[2 / 자연 1-2]** 위와 같은 방법으로 구간 $[0, 1]$을 $n = 100$등분할 때 두 직사각형들 넓이의 합 $A_1, A_2$를 구하여라. (10점)
+
+??? success "풀이"
+    일반적으로 $\displaystyle A_1 = \sum_{k = 1}^n \dfrac{1}{n}\left(\dfrac{k}{n}\right)^2 = \dfrac{1}{n^3}\cdot\dfrac{n(n + 1)(2n + 1)}{6}$, $\displaystyle A_2 = \dfrac{1}{n^3}\cdot\dfrac{(n - 1)n(2n - 1)}{6}$.
+
+    $n = 100$: $A_1 = \dfrac{100\cdot 101\cdot 201}{6\cdot 10^6} = \dfrac{338350}{10^6}$, $A_2 = \dfrac{99\cdot 100\cdot 199}{6\cdot 10^6} = \dfrac{328350}{10^6}$.
+
+    답: $\boxed{A_1 = 0.33835,\ A_2 = 0.32835}$.
+
+**[3 / 자연 1-3]** 치환적분법을 이용하여 $\displaystyle\int_0^{\sqrt{\pi/2}} x\cos(x^2)\, dx$의 값을 구하여라. (10점)
+
+??? success "풀이"
+    $x^2 = t$로 치환하면 $2x\, dx = dt$. $x = 0$일 때 $t = 0$, $x = \sqrt{\pi/2}$일 때 $t = \pi/2$.
+
+    $$\int_0^{\sqrt{\pi/2}} x\cos(x^2)\, dx = \int_0^{\pi/2}\dfrac{\cos t}{2}\, dt = \dfrac{1}{2}\bigl[\sin t\bigr]_0^{\pi/2} = \dfrac{1}{2}(1 - 0) = \boxed{\dfrac{1}{2}}.$$
+
+### 논술 자연 2 — 복소수·삼차방정식·극값
+
+**[4 / 자연 2-1]** 최고차 항의 계수가 1인 삼차방정식 $x^3 + ax^2 + bx - 4 = 0$의 한 개의 허근이 $1 + i$이다 ($a, b$는 실수). 곡선 $y = x^3 + ax^2 + bx - 4$와 $x$축, $y$축으로 둘러싸인 도형의 넓이를 구하여라. (20점)
+
+??? success "풀이"
+    계수가 실수이므로 켤레 $1 - i$도 근. 남은 실근 $x_1$. 삼차식 $(x - (1 + i))(x - (1 - i))(x - x_1) = (x^2 - 2x + 2)(x - x_1)$ 전개:
+
+    $$x^3 - (x_1 + 2)x^2 + (2x_1 + 2)x - 2x_1.$$
+
+    상수항 비교 $-2x_1 = -4$ → $x_1 = 2$. 따라서 $a = -(x_1 + 2) = -4,\ b = 2x_1 + 2 = 6$.
+
+    $y = x^3 - 4x^2 + 6x - 4$. $y(0) = -4 < 0,\ y(2) = 8 - 16 + 12 - 4 = 0$. $y' = 3x^2 - 8x + 6$의 판별식 $64 - 72 < 0$이므로 $y$는 항상 증가. $[0, 2]$에서 $y\le 0$.
+
+    $$S = \int_0^2 |y|\, dx = \int_0^2 (-x^3 + 4x^2 - 6x + 4)\, dx = \left[-\dfrac{x^4}{4} + \dfrac{4x^3}{3} - 3x^2 + 4x\right]_0^2 = -4 + \dfrac{32}{3} - 12 + 8 = \boxed{\dfrac{8}{3}}.$$
+
+**[5 / 자연 2-2]** 최고차 항의 계수가 1인 삼차방정식 $x^3 + cx^2 + 100x + 100 = 0$의 계수 $c$는 양의 정수이다. $y = x^3 + cx^2 + 100x + 100$이 극댓값과 극솟값을 모두 가질 때 $c$의 최솟값을 구하여라. (10점)
+
+??? success "풀이"
+    극값을 모두 가지려면 $y' = 3x^2 + 2cx + 100 = 0$이 서로 다른 두 실근을 가져야 한다. 판별식 $D/4 = c^2 - 300 > 0$ → $c^2 > 300$.
+
+    $17^2 = 289 < 300 < 324 = 18^2$이므로 양의 정수 $c$의 최솟값은 $\boxed{c = 18}$.
+
+### 논술 자연 3 — 매개변수 곡선·부분적분·점과 점 사이의 거리
+
+**[6 / 자연 3-1]** 좌표평면 위 점 $\mathrm P_1$의 시각 $t\ge 0$에서의 위치 $(x_1(t), y_1(t))$가 $x_1(t) = \displaystyle\int_0^t\theta\sin\theta\, d\theta,\ y_1(t) = \displaystyle\int_0^t\theta\cos\theta\, d\theta$이다. 점 $\mathrm P_1$과 원점 $\mathrm O$ 사이의 거리 $s(t)$를 구하여라. (10점)
+
+??? success "풀이"
+    부분적분: $\displaystyle\int\theta\sin\theta\, d\theta = -\theta\cos\theta + \int\cos\theta\, d\theta = -\theta\cos\theta + \sin\theta$.
+
+    $x_1(t) = -t\cos t + \sin t$. 비슷이 $y_1(t) = t\sin t + \cos t - 1$.
+
+    $s(t)^2 = x_1^2 + y_1^2 = (-t\cos t + \sin t)^2 + (t\sin t + \cos t - 1)^2$. 전개:
+
+    $$= t^2\cos^2 t - 2t\cos t\sin t + \sin^2 t + t^2\sin^2 t + 2t\sin t\cos t - 2t\sin t + \cos^2 t - 2\cos t + 1$$
+
+    $$= t^2 + (\sin^2 t + \cos^2 t) - 2t\sin t - 2\cos t + 1 = t^2 + 2 - 2t\sin t - 2\cos t.$$
+
+    답: $\boxed{s(t) = \sqrt{t^2 + 2 - 2t\sin t - 2\cos t}}$.
+
+**[7 / 자연 3-2]** 점 $\mathrm P_1$과 원점 사이의 거리의 순간변화율이 $0$이 되는 시각 $t$를 구하여라. (10점)
+
+??? success "풀이"
+    $s^2 = t^2 + 2 - 2t\sin t - 2\cos t$의 양변을 $t$에 대해 미분:
+
+    $$2s\dfrac{ds}{dt} = 2t - 2\sin t - 2t\cos t + 2\sin t = 2t(1 - \cos t).$$
+
+    $\dfrac{ds}{dt} = 0$ → $t(1 - \cos t) = 0$ → $t = 0$ 또는 $\cos t = 1$, 즉 $t = 2n\pi$ ($n = 0, 1, 2, \ldots$).
+
+    답: $\boxed{t = 0\ \text{또는}\ t = 2n\pi\ (n = 1, 2, \ldots)}$.
+
+**[8 / 자연 3-3]** 시각 $t = 0$에서 $t = 2\pi$까지 점 $\mathrm P_1$이 움직인 거리를 구하여라. (10점)
+
+??? success "풀이"
+    $\dfrac{dx_1}{dt} = -\cos t + t\sin t + \cos t = t\sin t$, $\dfrac{dy_1}{dt} = \sin t + t\cos t - \sin t = t\cos t$.
+
+    속력 $\sqrt{(dx_1/dt)^2 + (dy_1/dt)^2} = \sqrt{t^2(\sin^2 t + \cos^2 t)} = t$ ($t\ge 0$).
+
+    움직인 거리 $\displaystyle l(2\pi) = \int_0^{2\pi} t\, dt = \left[\dfrac{t^2}{2}\right]_0^{2\pi} = \boxed{2\pi^2}$.
+
+**[9 / 자연 3-4]** 또 다른 점 $\mathrm P_2(x_2(t), y_2(t)) = (-t\cos t,\ t\sin t)$. 시각 $t = 0$에서 $t = 2\pi$ 사이에 두 점 $\mathrm P_1, \mathrm P_2$ 사이의 거리가 최대가 되는 시각과 그때의 거리를 구하여라. (10점)
+
+??? success "풀이"
+    $\mathrm P_1 - \mathrm P_2 = (\sin t,\ \cos t - 1)$. 두 점 사이 거리 $d(t) = \sqrt{\sin^2 t + (\cos t - 1)^2} = \sqrt{2 - 2\cos t}$.
+
+    $d'(t) = \dfrac{\sin t}{\sqrt{2 - 2\cos t}} = 0$ → $\sin t = 0$ → $t = 0, \pi, 2\pi$.
+
+    $(0, 2\pi)$에서 극값 시각 $t = \pi$. $d(\pi) = \sqrt{2 - 2(-1)} = \sqrt 4 = 2$. 이계도함수 또는 함숫값 직접 비교로 최댓값임을 확인.
+
+    답: $\boxed{t = \pi,\ \text{거리} = 2}$.
+
+### 논술 의예 1 — 쌍곡선·부분적분·치환적분·평면벡터
+
+**[10 / 의예 1-1]** 두 초점 $\mathrm F(7, 0),\ \mathrm F'(-7, 0)$ 사이 거리 $14$, 주축 길이 $10$인 쌍곡선의 위 점 $\mathrm P$에서 그은 직선 $\ell$이 $x$축과 만나는 점을 $\mathrm Q$ ($\mathrm Q$의 $x$좌표는 양수). $\ell$은 $\angle\mathrm{FPF'}$을 이등분한다. $\overline{\mathrm{F'R}} = 10$인 점 $\mathrm R$이 $\overline{\mathrm{PF'}}$ 위에 있고 $\overline{\mathrm{F'R}}$을 지름으로 하는 원이 $\mathrm Q$를 지난다. $\angle\mathrm{FPF'} = \theta$, $f(x) = \dfrac{5}{\theta}(5x - 2)^3$일 때
+
+$$I = \int_0^\theta x\cos x\, f'(\sin x)\, dx + \int_{\pi/2 - \theta}^{\pi/2} f(\cos x)\, dx$$
+
+의 값을 구하여라. (15점)
+
+??? success "풀이"
+    쌍곡선 방정식: $\dfrac{x^2}{25} - \dfrac{y^2}{24} = 1$ (∵ $a = 5,\ c = 7,\ b^2 = c^2 - a^2 = 24$).
+
+    $\mathrm P$가 쌍곡선 위이므로 $\overline{\mathrm{F'P}} - \overline{\mathrm{FP}} = 10$. $\overline{\mathrm{F'R}} = 10$이므로 $\overline{\mathrm{PR}} = \overline{\mathrm{PF}}$, $\triangle\mathrm{PRF}$는 이등변. $\mathrm Q$가 $\overline{\mathrm{F'R}}$을 지름으로 하는 원 위 → $\angle\mathrm{F'QR} = \pi/2$, 즉 $\angle\mathrm{FQR} = \pi/2$. $\mathrm{PQ}$가 $\angle\mathrm{FPF'}$의 이등분선이므로 $\triangle\mathrm{PQR}\equiv\triangle\mathrm{PQF}$ (SAS) → $\overline{\mathrm{RQ}} = \overline{\mathrm{FQ}}$, $\ell$의 기울기 $\tan(\pi/4) = 1$.
+
+    $\mathrm Q(k, 0)$이라 하면 $\overline{\mathrm{F'Q}} = 7 + k,\ \overline{\mathrm{FQ}} = 7 - k$, $\overline{\mathrm{RQ}} = 7 - k$. $\triangle\mathrm{RQF'}$ 직각: $10^2 = (7 + k)^2 + (7 - k)^2$ → $100 = 98 + 2k^2$ → $k = 1$. $\mathrm Q(1, 0)$.
+
+    $\ell: y = x - 1$ 쌍곡선 대입: 점 $\mathrm P(25, 24)$. $\overline{\mathrm{FP}} = 30,\ \overline{\mathrm{F'P}} = 40,\ \overline{\mathrm{FF'}} = 14$. 코사인법칙:
+
+    $$\cos\theta = \dfrac{30^2 + 40^2 - 14^2}{2\cdot 30\cdot 40} = \dfrac{900 + 1600 - 196}{2400} = \dfrac{2304}{2400} = \dfrac{24}{25},\quad \sin\theta = \dfrac{7}{25}.$$
+
+    부분적분 ($[x f(\sin x)]' = f(\sin x) + x\cos x\, f'(\sin x)$):
+
+    $$\int_0^\theta x\cos x\, f'(\sin x)\, dx = \bigl[x f(\sin x)\bigr]_0^\theta - \int_0^\theta f(\sin x)\, dx = \theta f(\sin\theta) - \int_0^\theta f(\sin x)\, dx.$$
+
+    치환 $x = \pi/2 - t$로 $\int_{\pi/2 - \theta}^{\pi/2} f(\cos x)\, dx = \int_0^\theta f(\sin t)\, dt$.
+
+    두 식을 합하면 $I = \theta f(\sin\theta) = \theta\cdot\dfrac{5}{\theta}(5\cdot 7/25 - 2)^3 = 5(7/5 - 2)^3 = 5(-3/5)^3 = -\dfrac{27}{25}$. 답: $\boxed{-\dfrac{27}{25}}$.
+
+**[11 / 의예 1-2]** $\overline{\mathrm{RF}}$를 $2:1$로 내분하는 점을 $\mathrm D$, 직선 $\mathrm{PR}$에 대한 $\mathrm D$의 대칭점을 $\mathrm E$. 두 벡터 $\vec a = \overrightarrow{\mathrm{PR}},\ \vec b = \overrightarrow{\mathrm{PF}}$에 대해 $\overrightarrow{\mathrm{PE}} = k\vec a + l\vec b$일 때 $k + l$의 값을 구하여라. (15점)
+
+??? success "풀이"
+    내분점 $\overrightarrow{\mathrm{PD}} = \dfrac{\overrightarrow{\mathrm{PR}} + 2\overrightarrow{\mathrm{PF}}}{3} = \dfrac{\vec a + 2\vec b}{3}$.
+
+    $\mathrm D$와 $\mathrm E$가 직선 $\mathrm{PR}$에 대해 대칭 → $\overrightarrow{\mathrm{PD}} + \overrightarrow{\mathrm{PE}} = m\overrightarrow{\mathrm{PR}} = m\vec a$ (어떤 실수 $m$). 따라서
+
+    $$\dfrac{\vec a + 2\vec b}{3} + (k\vec a + l\vec b) = m\vec a \Rightarrow \left(\dfrac{1}{3} + k - m\right)\vec a + \left(\dfrac{2}{3} + l\right)\vec b = \vec 0.$$
+
+    $\vec a, \vec b$ 일차독립이므로 $l = -\dfrac{2}{3}$, $m = k + \dfrac{1}{3}$.
+
+    또한 $|\overrightarrow{\mathrm{PD}}| = |\overrightarrow{\mathrm{PE}}|$이므로 $|\overrightarrow{\mathrm{PD}}|^2 = |\overrightarrow{\mathrm{PE}}|^2$:
+
+    $$\left|\dfrac{\vec a + 2\vec b}{3}\right|^2 = |k\vec a + l\vec b|^2 = \left|k\vec a - \dfrac{2}{3}\vec b\right|^2.$$
+
+    $|\vec a| = \overline{\mathrm{PR}} = \overline{\mathrm{PF}} = |\vec b| = 30$, $\cos\theta = 24/25$:
+
+    $$\dfrac{1}{9}|\vec a|^2 + \dfrac{4}{9}|\vec b|^2 + \dfrac{4}{9}\vec a\cdot\vec b = k^2|\vec a|^2 + \dfrac{4}{9}|\vec b|^2 - \dfrac{4k}{3}\vec a\cdot\vec b.$$
+
+    $|\vec a|^2 = |\vec b|^2 = 900$, $\vec a\cdot\vec b = 900\cdot 24/25 = 864$. 정리: $225k^2 - 288k - 121 = 0$, 즉 $(3k + 1)(75k - 121) = 0$. $k\ne -1/3$이므로 $k = 121/75$.
+
+    $k + l = \dfrac{121}{75} - \dfrac{2}{3} = \dfrac{121 - 50}{75} = \boxed{\dfrac{71}{75}}$.
+
+### 논술 의예 2 — 삼각함수의 극한·공간도형 (원뿔·원기둥·구)
+
+**[12 / 의예 2-1]** 모선 길이 $l$인 원뿔이 있고 밑면 원의 중심 $\mathrm M$, 밑면 원 위의 두 점 $\mathrm A, \mathrm B$가 지름의 양 끝이다. $\mathrm A$를 지나고 $\mathrm{OB}$에 수직인 평면 $\alpha$가 $\overline{\mathrm{OB}}$와 만나는 점을 $\mathrm C$. 평면 $\alpha$와 원뿔의 교선 위의 점 $\mathrm P$, 직선 $\mathrm{AC}$에 대한 $\mathrm P$의 대칭점을 $\mathrm Q$. 직선 $\mathrm{OP}$가 원뿔의 밑면과 만나는 점을 $\mathrm K$, $\angle\mathrm{AMK} = \theta$, $\overline{\mathrm{PQ}}$의 길이를 $f(\theta)$, 호 $\mathrm{AK}$의 길이를 $g(\theta)$. $L(\theta) = f(\theta)/g(\theta)$와 $\displaystyle\lim_{\theta\to 0+} L(\theta)$를 구하여라. (15점)
+
+??? success "풀이"
+    원뿔에서 $\triangle\mathrm{OAB}$는 $\overline{\mathrm{OA}} = \overline{\mathrm{OB}} = l$, $\overline{\mathrm{AB}} = 2R$ ($R$ = 밑면 반지름) 이등변. $\overline{\mathrm{AC}}\perp\overline{\mathrm{OB}}$이고 $\mathrm C$가 $\overline{\mathrm{OB}}$ 이등분이므로 $\triangle\mathrm{OAB}$는 정삼각형: $\overline{\mathrm{AB}} = 2R = l$, 즉 $R = l/2$, $\angle\mathrm{CAB} = \pi/6$.
+
+    삼수선 정리로 $\overline{\mathrm{PH}} = \overline{\mathrm{JG}} = t\sin\theta$ ($\mathrm H, \mathrm G, \mathrm J$는 보조 수선의 발, $\overline{\mathrm{MJ}} = t$). $\mathrm P$가 $\mathrm{AC}$에 대해 $\mathrm Q$의 대칭점이므로 $\overline{\mathrm{PQ}} = 2\overline{\mathrm{PH}} = 2t\sin\theta$. 호 $\overline{\mathrm{AK}} = R\theta$.
+
+    $f(\theta) = 2t\sin\theta$, $g(\theta) = R\theta$ → $L(\theta) = \dfrac{2t\sin\theta}{R\theta}$.
+
+    기하 조건 (직사각형 $\mathrm{HGJP}$, $\triangle\mathrm{AGH}$, $\triangle\mathrm{KJP}$ 분석)으로 $t = \dfrac{2R}{3 - \cos\theta}$. 대입:
+
+    $$L(\theta) = \dfrac{2\sin\theta}{R\theta}\cdot\dfrac{2R}{3 - \cos\theta} = \dfrac{4\sin\theta}{\theta(3 - \cos\theta)}.$$
+
+    $\displaystyle\lim_{\theta\to 0+} L(\theta) = \lim_{\theta\to 0+}\dfrac{\sin\theta}{\theta}\cdot\dfrac{4}{3 - \cos\theta} = 1\cdot\dfrac{4}{3 - 1} = \boxed{2}$.
+
+**[13 / 의예 2-2]** 원뿔(밑면 반지름 $R = l/2$)이 원기둥(같은 밑면 반지름·같은 높이) 안에 있다. 원뿔 위쪽에 $n$개의 구가 있고 모두 같은 평면 위에 중심이 있으며, 짝수 $n$, 각 구는 원기둥 옆면과 양 옆 구 두 개에 접한다. 모든 구가 평면 $\beta$ (원기둥 밑면) 아래에 있지 않도록 하는 (즉 평면 $\beta$를 넘지 않도록 하는) 구의 반지름을 $n$의 함수로 나타내고, 구의 반지름이 최대가 되는 $n$의 값을 구하여라.
+
+자연수 $x = 3, 4, \ldots, 10$에 대해 $\sin(\pi/x)$와 $1/\sqrt x$의 근삿값은 다음 표와 같다.
+
+| $x$ | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|
+| $\sin(\pi/x)$ | 0.8660 | 0.7071 | 0.5878 | 0.5000 | 0.4339 | 0.3827 | 0.3420 | 0.3090 |
+| $1/\sqrt x$ | 0.5774 | 0.5000 | 0.4472 | 0.4082 | 0.3780 | 0.3536 | 0.3333 | 0.3162 |
+
+(15점)
+
+??? success "풀이"
+    모든 구의 중심이 같은 평면(밑면과 평행) 위에 있고 이 평면이 원기둥을 자른 단면은 반지름 $R$의 원 $\mathrm O_1$. $n$개 구가 잘린 단면은 반지름 $r$의 원 $\mathrm O_2$, $n$개의 원 $\mathrm O_2$의 중심은 정$n$각형 꼭짓점에 위치, 인접 원 중심간 거리 $2r$. 원 $\mathrm O_1$ 중심 → 인접 두 $\mathrm O_2$ 중심 각 $\theta_2 = \pi/n$.
+
+    $\sin\theta_2 = r/(\text{중심거리})$이므로 $\mathrm O_1$ 중심에서 $\mathrm O_2$ 중심까지 거리 $= r/\sin(\pi/n)$. 외접 조건: $R = r/\sin(\pi/n) + r = \dfrac{1 + \sin(\pi/n)}{\sin(\pi/n)}\cdot r$, 즉
+
+    $$r = \dfrac{R\sin(\pi/n)}{1 + \sin(\pi/n)}.$$
+
+    원뿔 모선과 외접 조건, 평면 $\beta$ 조건으로 (PDF 분석) $\sqrt 3 R > (3 + \sqrt 3)r/\sin(\pi/n)\cdot\sin(\pi/n)/(1+\sin(\pi/n))\cdot\sqrt{} \ldots$ 정리하면 부등식
+
+    $$\dfrac{1}{\sqrt 3} > \sin\!\left(\dfrac{\pi}{n}\right).$$
+
+    표에서 $1/\sqrt 3\approx 0.5774$, $\sin(\pi/5) = 0.5878 > 0.5774$, $\sin(\pi/6) = 0.5000 < 0.5774$. 따라서 부등식 만족하는 자연수 $n$ ($n$은 짝수)의 최소는 $n = 6$.
+
+    $r$는 $\sin(\pi/n)$에 대한 증가함수 ($d/dx[x/(1+x)] = 1/(1+x)^2 > 0$)이므로 $\sin(\pi/n)$이 최대일 때 $r$이 최대. $n$이 작을수록 $\sin(\pi/n)$이 크므로 $n = 6$일 때 $r$ 최대.
+
+    답: $\boxed{n = 6}$.
+
+---
