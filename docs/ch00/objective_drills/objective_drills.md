@@ -12341,3 +12341,218 @@ $a_0 = a$, $b_0 = b$라 하고, 구간 $[a_0, b_0]$을 이등분하면 사잇값
     답: 최소 $\boxed{n = 35}$ (또는 더 정밀 평가는 $n = 34$).
 
 ---
+
+## 카드 132 — 연세대학교 미래캠퍼스 (2023학년도)
+
+2023학년도 연세대학교 미래캠퍼스 논술고사(창의인재 자연·의예)와 SW창의인재 면접 기출. 출처: 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서. 6개 문항카드, 12 sub-문항.
+
+### 논술 창의인재 자연 1번 — 수열의 극한과 무한급수 (문항카드 3)
+
+(가) 두 수열 $\{x_n\}$, $\{z_n\}$에 대하여 $\displaystyle\lim_{n\to\infty}x_n = \lim_{n\to\infty}z_n = \alpha$ ($\alpha$는 상수)일 때, 수열 $\{y_n\}$이 모든 자연수 $n$에 대하여 $x_n \le y_n \le z_n$이면 $\displaystyle\lim_{n\to\infty}y_n = \alpha$이다 (조임 정리).
+
+(나) 무한급수 $\displaystyle\sum_{n=1}^{\infty}x_n = x_1 + x_2 + \cdots + x_n + \cdots$의 수렴·발산은 급수의 $n$항까지의 부분합 $S_n = \displaystyle\sum_{k=1}^{n}x_k$의 수열 $\{S_n\}$의 수렴·발산으로 정의한다.
+
+**[1 / 자연 문제 1-1]** 제시문 (가)를 이용하여 극한값 $\displaystyle\lim_{n\to\infty}\left(\dfrac{1}{n^2 + 1} + \dfrac{2}{n^2 + 2} + \cdots + \dfrac{n}{n^2 + n}\right)$을 구하시오.
+
+??? success "풀이"
+    자연수 $n$과 $1 \le k \le n$에 대해 $\dfrac{1}{n^2 + n} \le \dfrac{1}{n^2 + k} \le \dfrac{1}{n^2 + 1}$이므로 $k$를 곱해 더하면
+    
+    $$\dfrac{1 + 2 + \cdots + n}{n^2 + n} \le \dfrac{1}{n^2 + 1} + \dfrac{2}{n^2 + 2} + \cdots + \dfrac{n}{n^2 + n} \le \dfrac{1 + 2 + \cdots + n}{n^2 + 1}.$$
+    
+    $1 + 2 + \cdots + n = \dfrac{n(n + 1)}{2}$이므로
+    
+    $$\lim_{n\to\infty}\dfrac{n(n+1)/2}{n^2 + n} = \dfrac{1}{2}, \quad \lim_{n\to\infty}\dfrac{n(n+1)/2}{n^2 + 1} = \dfrac{1}{2}.$$
+    
+    조임 정리에 의해 극한값은 $\boxed{\dfrac{1}{2}}$.
+
+**[2 / 자연 문제 1-2]** 제시문 (나)를 이용하여 급수 $\displaystyle\sum_{n=1}^{\infty}\dfrac{2}{(2n - 1)(2n + 3)}$의 수렴·발산을 조사하고, 수렴하면 극한값을 구하시오.
+
+??? success "풀이"
+    $\dfrac{2}{(2n - 1)(2n + 3)} = \dfrac{1}{2}\left(\dfrac{1}{2n - 1} - \dfrac{1}{2n + 3}\right)$이므로 부분합
+    
+    $$S_n = \dfrac{1}{2}\sum_{k=1}^{n}\left(\dfrac{1}{2k - 1} - \dfrac{1}{2k + 3}\right) = \dfrac{1}{2}\left(\dfrac{1}{1} + \dfrac{1}{3} - \dfrac{1}{2n + 1} - \dfrac{1}{2n + 3}\right).$$
+    
+    (분수 항들이 두 칸씩 떨어진 텔레스코핑.)
+    
+    $\displaystyle\lim_{n\to\infty}S_n = \dfrac{1}{2}\left(1 + \dfrac{1}{3}\right) = \boxed{\dfrac{2}{3}}$이고 급수는 수렴한다.
+
+### 논술 창의인재 자연 2번 — 함수의 연속, 도함수, 정적분 (문항카드 4)
+
+(가) 함수 $h(x)$가 실수 $x_0$에서 정의되고, $\displaystyle\lim_{x\to x_0}h(x)$가 존재하며, $\displaystyle\lim_{x\to x_0}h(x) = h(x_0)$일 때 $h(x)$는 $x = x_0$에서 연속이라고 한다.
+
+(나) 함수 $h(x)$가 어떤 열린구간의 모든 점에서 연속일 때, $h(x)$는 그 열린구간에서 연속이라고 한다.
+
+(다) 실수 $a, b, c, d$와 양수 $k > 0$에 대해서, 두 함수 $f(x)$와 $g(x)$를 다음과 같이 정의하자.
+
+$$f(x) = \begin{cases} ax + b & (x < -3) \\ -x^2 + 9 & (-3 \le x < 0) \\ cx + d & (0 \le x) \end{cases}, \qquad g(x) = k(x - 1) + 12.$$
+
+**[3 / 자연 문제 2-1]** 제시문 (다)에서 주어진 함수 $f(x)$와 그 도함수 $f'(x)$가 모든 실수에서 연속이도록 하는 상수 $a, b, c, d$의 값을 구하고, 제시문 (다)에서 주어진 함수 $f(x)$와 $g(x)$가 접하도록 하는 상수 $k$의 값을 구하시오.
+
+??? success "풀이"
+    $x = -3$에서 $f'(x)$가 연속: $\displaystyle\lim_{x\to -3^+}f'(x) = -2(-3) = 6$, $\displaystyle\lim_{x\to -3^-}f'(x) = a$이므로 $a = 6$.
+    
+    $f(x)$가 $x = -3$에서 연속: $\displaystyle\lim_{x\to -3^+}f(x) = 0$, $\displaystyle\lim_{x\to -3^-}f(x) = -3a + b = -18 + b$이므로 $b = 18$.
+    
+    $x = 0$에서 $f'(x)$가 연속: $\displaystyle\lim_{x\to 0^+}f'(x) = c$, $\displaystyle\lim_{x\to 0^-}f'(x) = 0$이므로 $c = 0$.
+    
+    $f(x)$가 $x = 0$에서 연속: $\displaystyle\lim_{x\to 0^+}f(x) = d$, $\displaystyle\lim_{x\to 0^-}f(x) = 9$이므로 $d = 9$.
+    
+    두 함수가 접하는 것은 $-3 \le x < 0$의 구간에서: $-x^2 + 9 = kx + 12 - k$, 즉 $x^2 + kx + 3 - k = 0$. 중근 조건 $D = k^2 - 4(3 - k) = k^2 + 4k - 12 = (k - 2)(k + 6) = 0$. $k > 0$이므로 $\boxed{a = 6,\ b = 18,\ c = 0,\ d = 9,\ k = 2}$.
+
+**[4 / 자연 문제 2-2]** 위의 [문제 2-1]에서 구한 $a, b, c, d, k$에 대해, 두 함수 $f(x)$, $g(x)$의 그래프와 직선 $y = 0$으로 둘러싸인 영역의 넓이를 구하시오.
+
+??? success "풀이"
+    $f(x) = -x^2 + 9$ ($-3 \le x < 0$)와 $y = 0$의 교점: $x = -3$. $g(x) = 2x + 10$와 $y = 0$의 교점: $x = -5$. 두 함수의 접점: $-x^2 + 9 = 2x + 10$, $x^2 + 2x + 1 = 0$, $x = -1$.
+    
+    넓이 $= \displaystyle\int_{-5}^{-3}(2x + 10)\, dx + \int_{-3}^{-1}\left[(2x + 10) - (-x^2 + 9)\right]\, dx$
+    
+    $= [x^2 + 10x]_{-5}^{-3} + \displaystyle\int_{-3}^{-1}(x^2 + 2x + 1)\, dx = (9 - 30) - (25 - 50) + \left[\dfrac{x^3}{3} + x^2 + x\right]_{-3}^{-1}$
+    
+    $= -21 + 25 + \left[\left(-\dfrac{1}{3} + 1 - 1\right) - \left(-9 + 9 - 3\right)\right] = 4 + \left(-\dfrac{1}{3} + 3\right) = 4 + \dfrac{8}{3} = \boxed{\dfrac{20}{3}}$.
+
+### 논술 창의인재 자연 3번 — 사인함수 치환, 삼차함수, 절댓값 함수의 극값 (문항카드 5)
+
+(가) 방정식 $h(x, y) = 0$이 나타내는 도형을 $x$축의 방향으로 $a$만큼, $y$축의 방향으로 $b$만큼 평행이동한 도형의 방정식은 $h(x - a, y - b) = 0$이 된다.
+
+(나) 실수 $x$의 절댓값 $|x|$는 수직선 위의 원점에서 $x$에 대응하는 점까지 거리를 나타낸다. 즉 $|x| = x$ ($x \ge 0$), $|x| = -x$ ($x < 0$).
+
+(다) 함수 $y = h(x)$가 $x = a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $h(x) \ge h(a)$일 때, 함수 $h(x)$는 $x = a$에서 극소라 하며, $h(a)$를 극솟값이라고 한다. 또, $x = a$를 포함하는 어떤 열린구간에 속하는 모든 $x$에 대하여 $h(x) \le h(a)$일 때, 함수 $h(x)$는 $x = a$에서 극대라 하며, $h(a)$를 극댓값이라고 한다.
+
+(라) 두 함수 $f(x)$와 $g(x)$를 다음과 같이 정의하자.
+
+$$f(x) = x^3 - 2x^2 - 5, \qquad g(x) = \dfrac{5}{2}\,\bigl|\,f(x - 1) + 3\,\bigr|.$$
+
+**[5 / 자연 문제 3-1]** 제시문 (라)에서 주어진 함수 $f(x)$에 대해서 $y = f\!\left(2\sin\dfrac{x}{5} + 3\right)$의 최댓값을 $M$, 최솟값을 $m$이라고 하자. $27m + M$의 값을 구하시오.
+
+??? success "풀이"
+    $t = 2\sin(x/5) + 3$이라 하면 모든 실수 $x$에 대해 $1 \le t \le 5$이다. $f(t) = t^3 - 2t^2 - 5$, $f'(t) = 3t^2 - 4t = t(3t - 4)$. $t \in [1, 5]$에서 $f'(t) = 0$인 점은 $t = 4/3$.
+    
+    | $t$ | $1$ | $\cdots$ | $4/3$ | $\cdots$ | $5$ |
+    | --- | --- | --- | --- | --- | --- |
+    | $f'(t)$ | | $-$ | $0$ | $+$ | |
+    | $f(t)$ | $-6$ | $\searrow$ | $-167/27$ | $\nearrow$ | $70$ |
+    
+    $f(1) = -6$, $f(4/3) = 64/27 - 32/9 - 5 = (64 - 96 - 135)/27 = -167/27$, $f(5) = 125 - 50 - 5 = 70$.
+    
+    최댓값 $M = 70$, 최솟값 $m = -167/27$. 따라서 $27m + M = 27\cdot(-167/27) + 70 = -167 + 70 = \boxed{-97}$.
+
+**[6 / 자연 문제 3-2]** 제시문 (라)에서 주어진 함수 $g(x)$가 극값을 갖는 $x$의 값은 $\alpha$개이다. 이때 $g(x)$의 극솟값을 모두 더한 값을 $\beta$라 하자. $\alpha\beta$의 값을 구하시오.
+
+??? success "풀이"
+    $f(x) = x^3 - 2x^2 - 5$의 극대 $f(0) = -5$, 극소 $f(4/3) = -167/27$. $y = f(x - 1) + 3$은 $y = f(x)$를 $x$축 방향 $+1$, $y$축 방향 $+3$ 평행이동: 극대 $(1, -2)$, 극소 $(7/3, 3 - 167/27 = -86/27)$.
+    
+    $y = f(x - 1) + 3$의 $x$절편 $C$ ($1 < 7/3 < C$). $y = |f(x - 1) + 3|$은 $x \ge C$에서 $y = f(x - 1) + 3$, $x < C$에서 $y = -(f(x - 1) + 3)$. 이 그래프는 $x$절편 $A, B, C$를 가진다 (여기서 $A < B < C$는 $|f(x - 1) + 3| = 0$의 세 실근, 즉 $f(x - 1) = -3$의 세 실근).
+    
+    $g(x) = \dfrac{5}{2}|f(x - 1) + 3|$의 그래프는 점 $x = A, x = C$에서 극솟값 $0$, 점 $x = B$에서 극댓값을 가지며, $x = 1$ (원래 극대점), $x = 7/3$ (원래 극소점)에서도 극값을 가진다. 그러나 절댓값 변환으로 $x = 1$ 부근은 $y < 0$에서 반전되어 새 극소가 생기지 않을 수도 있고, 자세한 그래프 개형 분석은 다음과 같다.
+    
+    PDF의 그래프 개형 분석에 따르면 $g(x)$는 $x = A, x = C$에서 극솟값 (값 $0$), $x = B$에서 극댓값, 즉 극값을 갖는 $x$의 값은 총 $3$개이다 — $\alpha = 3$.
+    
+    PDF 풀이에서 $g(1) = \dfrac{5}{2}|f(0) + 3| = \dfrac{5}{2}\cdot|-5 + 3| = \dfrac{5}{2}\cdot 2 = 5$ (절댓값 함수에서 만들어진 새 극값). 그리고 $g(C) = 0$. 즉 극솟값의 합 $\beta = 5 + 0 = 5$ (PDF 채점 기준에서 명시).
+    
+    따라서 $\alpha\beta = 3 \times 5 = \boxed{15}$.
+
+### 논술 의예 수학 1번 — 지수함수의 접선, 자연로그, 포물선 (문항카드 6)
+
+(가) $e$는 무리수이고, 그 값은 $e = 2.71828182845904\ldots$이다.
+
+(나) 함수 $f(x) = e^{nx} + e^{-nx}$ ($n = 1, 2, 3, \ldots$)의 그래프 위의 점 $\mathrm{P}(x, y)$에서의 접선의 기울기는 $2n$이라고 하자. 점 $\mathrm{P}(x, y)$를 $y$축에 대하여 대칭이동한 점의 좌표를 $\mathrm{Q}$라 할 때 원점 $\mathrm{O}(0, 0)$과 두 점 $\mathrm{P}, \mathrm{Q}$에 대하여 삼각형 $\mathrm{OPQ}$의 넓이가 최대일 때의 $\mathrm{P}$와 $\mathrm{Q}$를 각각 $\mathrm{P}'$와 $\mathrm{Q}'$라 하자.
+
+(다) 제시문 (나)에서 주어진 함수 $f(x)$에 대해서 함수 $g(x) = \dfrac{1}{n}\ln f(x)$ ($n = 1, 2, 3, \ldots$)라고 하자.
+
+**[7 / 의예 문제 1-1]** 제시문 (나)에서 주어진 함수 $f(x)$와 점 $\mathrm{P}$의 $x$좌표를 $a_n$이라 할 때 $\displaystyle\lim_{n\to 0}\left(\dfrac{1}{a_n} + 1\right)^{1/n} = \alpha$라 하자. 제시문 (다)에서 주어진 함수 $g(x)$에 대해서 닫힌 구간 $[0, k]$에서 $g'(x)$의 최댓값이 $\dfrac{1}{3}e^{1/\ln\alpha}$일 때 $k$의 값을 구하시오.
+
+??? success "풀이"
+    $f'(x) = n(e^{nx} - e^{-nx}) = 2n$이므로 $e^{nx} - e^{-nx} = 2$. $X = e^{nx} > 0$이라 두면 $X^2 - 2X - 1 = 0$, $X = 1 + \sqrt{2}$ (양수). 따라서 $a_n = \dfrac{1}{n}\ln(1 + \sqrt{2})$.
+    
+    $\left(\dfrac{1}{a_n} + 1\right)^{1/n} = \left(\dfrac{1}{a_n} + 1\right)^{a_n / \ln(1 + \sqrt{2})}$. $n \to 0$일 때 $a_n \to \infty$, 즉
+    
+    $$\lim_{n\to 0}\left(\dfrac{1}{a_n} + 1\right)^{1/n} = \lim_{a_n\to\infty}\left[\left(\dfrac{1}{a_n} + 1\right)^{a_n}\right]^{1/\ln(1+\sqrt{2})} = e^{1/\ln(1 + \sqrt{2})}.$$
+    
+    따라서 $\alpha = e^{1/\ln(1 + \sqrt{2})}$이고 $\ln\alpha = 1/\ln(1 + \sqrt{2})$, $1/\ln\alpha = \ln(1 + \sqrt{2})$, 그리고 $e^{1/\ln\alpha} = 1 + \sqrt{2}$.
+    
+    $g(x) = \dfrac{1}{n}\ln f(x)$, $g'(x) = \dfrac{f'(x)}{nf(x)} = \dfrac{e^{nx} - e^{-nx}}{e^{nx} + e^{-nx}} = 1 - \dfrac{2e^{-nx}}{e^{nx} + e^{-nx}}$. $x$가 증가하면 $g'(x)$가 증가하므로 $[0, k]$에서 $g'(x)$의 최댓값은 $g'(k)$.
+    
+    $g'(k) = \dfrac{1}{3}\cdot(1 + \sqrt{2})$. 즉 $1 - \dfrac{2e^{-nk}}{e^{nk} + e^{-nk}} = \dfrac{1 + \sqrt{2}}{3}$. 양변 정리: $\dfrac{2 - \sqrt{2}}{3} = \dfrac{2e^{-nk}}{e^{nk} + e^{-nk}}$, $\dfrac{2 - \sqrt{2}}{6} = \dfrac{e^{-nk}}{e^{nk} + e^{-nk}}$.
+    
+    $t = (2 - \sqrt{2})/6$이라 두면 $te^{nk} + te^{-nk} = e^{-nk}$, $te^{nk} = (1 - t)e^{-nk}$, $e^{2nk} = (1 - t)/t = 5 + 3\sqrt{2}$.
+    
+    따라서 $k = \boxed{\dfrac{1}{2n}\ln(5 + 3\sqrt{2})}$.
+
+**[8 / 의예 문제 1-2]** 포물선 $y^2 = 12x$ 위의 점 $(a, b)$에서의 접선과 제시문 (나)에서 주어진 함수 $f(x)$의 점 $\mathrm{Q}'$에서의 접선이 서로 수직이다. 삼각형 $\mathrm{OP}'\mathrm{Q}'$의 넓이를 $S$라 하자. $S\sqrt{ab}$의 값을 구하시오.
+
+??? success "풀이"
+    [문제 1-1]에서 점 $\mathrm{P}$의 $x$좌표 $a_n = \ln(1 + \sqrt{2})/n$, $y$좌표 $= f(a_n) = (1 + \sqrt{2}) + (1 + \sqrt{2})^{-1} = (1 + \sqrt{2}) + (\sqrt{2} - 1) = 2\sqrt{2}$. 점 $\mathrm{Q}$의 좌표: $(-a_n, 2\sqrt{2})$.
+    
+    삼각형 $\mathrm{OPQ}$의 밑변 $|PQ| = 2a_n$, 높이 $2\sqrt{2}$. 넓이 $= 2\sqrt{2}\cdot a_n = \dfrac{2\sqrt{2}\ln(1 + \sqrt{2})}{n}$. $n = 1, 2, 3, \ldots$이므로 최대 ($n = 1$). 이때 $\mathrm{P}'(\ln(1 + \sqrt{2}), 2\sqrt{2})$, $\mathrm{Q}'(-\ln(1 + \sqrt{2}), 2\sqrt{2})$.
+    
+    점 $\mathrm{P}'$에서 접선의 기울기 $f'(\ln(1 + \sqrt{2})) = 2 \cdot 1 = 2$ ($n = 1$일 때). $\mathrm{Q}'$에서 접선은 $\mathrm{P}'$ 접선을 $y$축 대칭이므로 기울기 $-2$.
+    
+    포물선 $y^2 = 12x$ 위 점 $(a, b)$의 접선 $y = \dfrac{6}{b}x + \dfrac{6a}{b}$. 기울기 $6/b$. 수직 조건: $-2 \cdot \dfrac{6}{b} = -1$, $b = 12$. $b^2 = 12a$에서 $a = 144/12 = 12$. 즉 $ab = 144$, $\sqrt{ab} = 12$.
+    
+    $S = 2\sqrt{2}\ln(1 + \sqrt{2})$. 따라서 $S\sqrt{ab} = 12 \cdot 2\sqrt{2}\ln(1 + \sqrt{2}) = \boxed{24\sqrt{2}\ln(1 + \sqrt{2})}$.
+
+### 논술 의예 수학 2번 — 호도법, 코사인법칙, 삼각함수의 덧셈정리 (문항카드 7)
+
+평평한 땅에 정삼각형 $\mathrm{ABC}$ 모양의 잔디밭이 있다. 살수반경이 $2\text{ m}$인 스프링클러 $2$개를 선분 $\mathrm{AB}, \mathrm{BC}$ 위 각각 점 $\mathrm{O}_1, \mathrm{O}_2$에 설치한다. 중심이 $\mathrm{O}_1$인 원은 점 $\mathrm{A}$를 지나고, 중심이 $\mathrm{O}_2$인 원은 점 $\mathrm{B}$를 지난다. 두 원은 서로 외접한다. 잔디밭에서 물이 뿌려지지 않은 두 영역 중 큰 영역(점 $\mathrm{C}$ 부근)을 $S_1$, 작은 영역을 $S_2$라 하자.
+
+**[9 / 의예 문제 2-1]** 영역 $S_1$과 $S_2$의 넓이를 구하시오.
+
+??? success "풀이"
+    삼각형 $\mathrm{O}_1\mathrm{BO}_2$에서 $\overline{\mathrm{O}_1\mathrm{O}_2} = 4$ (두 원이 외접), $\overline{\mathrm{O}_2\mathrm{B}} = 2$, $\angle \mathrm{B} = \pi/3$. $\overline{\mathrm{O}_1\mathrm{B}} = x$라 두면 코사인법칙 $16 = x^2 + 4 - 4x\cos(\pi/3) = x^2 - 2x + 4$, $x^2 - 2x - 12 = 0$, $x = 1 + \sqrt{13}$ ($> 0$). 정삼각형 한 변의 길이 $\overline{\mathrm{AB}} = 2 + x = 3 + \sqrt{13}$.
+    
+    $S_1 + S_2$: 정삼각형 $\mathrm{ABC}$에서 한 변 $2$인 정삼각형 $\mathrm{AO}_1\mathrm{P}_1$, $\mathrm{BO}_2\mathrm{P}_2$ (각 넓이 $\sqrt{3}$)와 원주각 $2\pi/3$인 부채꼴 $\mathrm{O}_1\mathrm{P}_1\mathrm{Q}_1$, $\mathrm{O}_2\mathrm{P}_2\mathrm{Q}_2$ (각 넓이 $\dfrac{1}{2}\cdot 4\cdot \dfrac{2\pi}{3} = \dfrac{4\pi}{3}$)를 뺀 것:
+    
+    $$S_1 + S_2 = \dfrac{(3 + \sqrt{13})^2\sqrt{3}}{4} - 2\sqrt{3} - \dfrac{8\pi}{3} = \dfrac{(22 + 6\sqrt{13})\sqrt{3}}{4} - 2\sqrt{3} - \dfrac{8\pi}{3} = \dfrac{7\sqrt{3}}{2} + \dfrac{3\sqrt{39}}{2} - \dfrac{8\pi}{3}.$$
+    
+    $S_2$: 직각삼각형 $\mathrm{HO}_1\mathrm{O}_2$ (단, $\mathrm{H}$는 $\mathrm{O}_2$에서 변 $\mathrm{AB}$에 내린 수선의 발)에서 $\overline{\mathrm{O}_1\mathrm{H}} = \sqrt{13}$, $\overline{\mathrm{O}_2\mathrm{H}} = \sqrt{3}$. 넓이 $\sqrt{39}/2$. 여기서 삼각형 $\mathrm{HO}_2\mathrm{P}_2$ (밑변 $1$, 높이 $\sqrt{3}$, 넓이 $\sqrt{3}/2$)와 두 부채꼴 (원주각 $\theta$인 $\mathrm{O}_1\mathrm{Q}_1\mathrm{D}$, 원주각 $\pi/3 - \theta$인 $\mathrm{O}_2\mathrm{P}_2\mathrm{D}$, 합한 원주각 $\pi/3$, 넓이 합 $2\theta + 2(\pi/3 - \theta) = 2\pi/3$)를 빼면
+    
+    $$S_2 = \dfrac{\sqrt{39}}{2} - \dfrac{\sqrt{3}}{2} - \dfrac{2\pi}{3}.$$
+    
+    $$S_1 = (S_1 + S_2) - S_2 = \dfrac{7\sqrt{3}}{2} + \dfrac{3\sqrt{39}}{2} - \dfrac{8\pi}{3} - \dfrac{\sqrt{39}}{2} + \dfrac{\sqrt{3}}{2} + \dfrac{2\pi}{3} = \boxed{4\sqrt{3} + \sqrt{39} - 2\pi}.$$
+    
+    그리고 $S_2 = \boxed{\dfrac{\sqrt{39}}{2} - \dfrac{\sqrt{3}}{2} - \dfrac{2\pi}{3}}$.
+
+**[10 / 의예 문제 2-2]** 영역 $S_1$에 물을 뿌리기 위해 점 $\mathrm{C}$에 새로운 급수 노즐을 놓는다고 하자. 이 노즐의 살수반경의 최솟값을 $r$이라 할 때, $r^2$을 구하시오.
+
+??? success "풀이"
+    살수반경의 최솟값 $r$은 $\overline{\mathrm{CP}_1}$과 $\overline{\mathrm{CD}}$ 중 큰 값이다 ($\mathrm{D}$는 두 원이 외접하는 점). $\overline{\mathrm{CP}_1} = \overline{\mathrm{AB}} - 2 = (3 + \sqrt{13}) - 2 = 1 + \sqrt{13}$이므로 $\overline{\mathrm{CP}_1}^2 = (1 + \sqrt{13})^2 = 14 + 2\sqrt{13}$.
+    
+    삼각형 $\mathrm{O}_2\mathrm{CD}$에서 코사인법칙: $\overline{\mathrm{O}_2\mathrm{C}} = 1 + \sqrt{13}$ ($= \mathrm{BC} - \mathrm{BO}_2 = (3 + \sqrt{13}) - 2$), $\overline{\mathrm{O}_2\mathrm{D}} = 2$, $\angle \mathrm{CO}_2\mathrm{D} = \theta + \pi/3$ (여기서 $\sin\theta = \sqrt{3}/4$, $\cos\theta = \sqrt{13}/4$이고 직각삼각형 $\mathrm{HO}_1\mathrm{O}_2$에서 유도).
+    
+    $$\overline{\mathrm{CD}}^2 = (1 + \sqrt{13})^2 + 4 - 4(1 + \sqrt{13})\cos(\theta + \pi/3) = (18 + 2\sqrt{13}) - 4(1 + \sqrt{13})\cos(\theta + \pi/3).$$
+    
+    삼각함수의 덧셈정리에 의해 $\cos(\theta + \pi/3) = \cos\theta\cos(\pi/3) - \sin\theta\sin(\pi/3) = \dfrac{1}{2}\left(\dfrac{\sqrt{13}}{4} - \sqrt{3}\cdot\dfrac{\sqrt{3}}{4}\right) = \dfrac{\sqrt{13} - 3}{8}$.
+    
+    $$\overline{\mathrm{CD}}^2 = (18 + 2\sqrt{13}) - 4(1 + \sqrt{13})\cdot\dfrac{\sqrt{13} - 3}{8} = (18 + 2\sqrt{13}) - \dfrac{(1 + \sqrt{13})(\sqrt{13} - 3)}{2} = (18 + 2\sqrt{13}) - \dfrac{10 - 2\sqrt{13}}{2} = 18 + 2\sqrt{13} - 5 + \sqrt{13} = 13 + 3\sqrt{13}.$$
+    
+    비교: $\overline{\mathrm{CD}}^2 - \overline{\mathrm{CP}_1}^2 = (13 + 3\sqrt{13}) - (14 + 2\sqrt{13}) = \sqrt{13} - 1 > 0$. 따라서 $\overline{\mathrm{CD}} > \overline{\mathrm{CP}_1}$이므로 $r^2 = \overline{\mathrm{CD}}^2 = \boxed{13 + 3\sqrt{13}}$.
+
+### 면접 SW창의인재 문제 2 — 속도와 거리, 등비급수의 수렴 (문항카드 13)
+
+(가) 좌표평면 위를 움직이는 점 $\mathrm{P}$의 시각 $t$에서의 위치 $(x, y)$가 두 함수 $x = f(t), y = g(t)$로 나타내어질 때, 점 $\mathrm{P}$의 시각 $t$에서의 속력은 $\sqrt{\{f'(t)\}^2 + \{g'(t)\}^2}$이고, 시각 $t = a$에서 $t = b$까지 점 $\mathrm{P}$가 움직인 거리 $s$는
+
+$$s = \int_a^b \sqrt{\{f'(t)\}^2 + \{g'(t)\}^2}\, dt.$$
+
+(나) 급수 $\displaystyle\sum_{n=1}^{\infty}a_n$의 수렴·발산은 부분합 $S_n = \displaystyle\sum_{k=1}^{n}a_k$의 수렴·발산으로 정의한다.
+
+**[11 / 면접 SW창의인재 문제 2-1]** 좌표평면 위를 움직이는 점 $\mathrm{P}(x, y)$의 시각 $t$에서의 위치가 $x = e^{-t}\cos t,\ y = e^{-t}\sin t$일 때, 시각 $t = 0$에서 $t = \pi$까지 점 $\mathrm{P}$가 움직인 거리를 구하시오.
+
+??? success "풀이"
+    $\dfrac{dx}{dt} = -e^{-t}\cos t - e^{-t}\sin t$, $\dfrac{dy}{dt} = -e^{-t}\sin t + e^{-t}\cos t$.
+    
+    $\left(\dfrac{dx}{dt}\right)^2 + \left(\dfrac{dy}{dt}\right)^2 = e^{-2t}\left[(\cos t + \sin t)^2 + (\sin t - \cos t)^2\right] = e^{-2t}\cdot 2(\cos^2 t + \sin^2 t) = 2e^{-2t}$.
+    
+    $$s = \int_0^{\pi}\sqrt{2e^{-2t}}\, dt = \sqrt{2}\int_0^{\pi}e^{-t}\, dt = \sqrt{2}[-e^{-t}]_0^{\pi} = \boxed{\sqrt{2}(1 - e^{-\pi})}.$$
+
+**[12 / 면접 SW창의인재 문제 2-2]** 자연수 $n$에 대하여 시각 $t = (n - 1)\pi$에서 $t = n\pi$까지 [문제 2-1]의 점 $\mathrm{P}(x, y)$가 움직인 거리를 $a_n$이라 할 때, 급수 $\displaystyle\sum_{n=1}^{\infty}a_n$의 수렴·발산을 조사하시오.
+
+??? success "풀이"
+    [문제 2-1]과 같은 계산으로
+    
+    $$a_n = \int_{(n-1)\pi}^{n\pi}\sqrt{2}\,e^{-t}\, dt = \sqrt{2}\bigl[-e^{-t}\bigr]_{(n-1)\pi}^{n\pi} = \sqrt{2}\bigl(e^{-(n-1)\pi} - e^{-n\pi}\bigr) = \sqrt{2}\,e^{-(n-1)\pi}\bigl(1 - e^{-\pi}\bigr).$$
+    
+    즉 $\{a_n\}$은 초항 $a_1 = \sqrt{2}(1 - e^{-\pi})$, 공비 $r = e^{-\pi}$인 등비수열. $|r| = e^{-\pi} < 1$이므로 등비급수가 수렴하고
+    
+    $$\sum_{n=1}^{\infty}a_n = \dfrac{a_1}{1 - r} = \dfrac{\sqrt{2}(1 - e^{-\pi})}{1 - e^{-\pi}} = \boxed{\sqrt{2}}.$$
+
+---
