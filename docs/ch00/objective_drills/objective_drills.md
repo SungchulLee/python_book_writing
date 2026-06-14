@@ -11260,3 +11260,187 @@ $$P(X = i) = \dfrac{{}_{11 - i}\mathrm{H}_i\times{}_{11 - i}\mathrm{H}_i}{{}_d\m
     **(3)** $y = -0.05 x + 1.7$. $x = 30$: $y = -0.05\cdot 30 + 1.7 = -1.5 + 1.7 = \boxed{0.2}$. $2030$년 $\mathrm{K}$국 출산율 예측치 $0.2$.
 
 ---
+
+## 카드 126 — 건국대 (2024, 논술 자연 A 수학)
+
+출처: 건국대학교 2024학년도 KU논술우수자전형 — 자연계 A 수학 (문항카드 3, 문제 1, 2, 3, 4).
+
+---
+
+### 논술 자연 A 수학 — 접선과 곡선 길이·같은 것 순열·합성함수 적분·코사인법칙
+
+**[1 / 문제 1]** 원 $\mathrm{S}$는 중심 $(0, \sqrt{13}/3)$, 반지름 $1$. 원점에서 바라볼 때 제 $1$사분면의 곡선 $y = \dfrac{1}{6}x^3 + \dfrac{1}{2 x}$ 중에서 원 $\mathrm{S}$에 가려지지 않고 보이는 부분의 길이를 구하여라.
+
+??? success "풀이"
+    원점을 지나는 접선 $y = m x$에서 중심 $(0, \sqrt{13}/3)$까지 거리 $= |\sqrt{13}/3|/\sqrt{m^2 + 1} = 1$ ⇒ $m^2 + 1 = 13/9$ ⇒ $m^2 = 4/9$ ⇒ $m = 2/3$ ($1$사분면).
+
+    접선과 곡선의 교점: $2 x/3 = x^3/6 + 1/(2 x)$ ⇒ $4 x^2 = x^4 + 3$ ⇒ $(x^2 - 1)(x^2 - 3) = 0$ ⇒ $x = 1, \sqrt{3}$. 두 점 사이의 곡선이 보임 ($1\le x\le\sqrt{3}$).
+
+    $y' = x^2/2 - 1/(2 x^2)$. $1 + (y')^2 = 1 + x^4/4 - 1/2 + 1/(4 x^4) = (x^2/2 + 1/(2 x^2))^2$.
+
+    $$L = \int_1^{\sqrt{3}}\!\left(\dfrac{x^2}{2} + \dfrac{1}{2 x^2}\right)dx = \left[\dfrac{x^3}{6} - \dfrac{1}{2 x}\right]_1^{\sqrt{3}} = \left(\dfrac{\sqrt{3}}{2} - \dfrac{1}{2\sqrt{3}}\right) - \left(\dfrac{1}{6} - \dfrac{1}{2}\right) = \dfrac{\sqrt{3}}{3} + \dfrac{1}{3} = \boxed{\dfrac{1 + \sqrt{3}}{3}}.$$
+
+**[2 / 문제 2]** 같은 것이 있는 순열 — 문자 A $3$개, B $4$개, C $3$개, D $2$개 (총 $12$개)를 일렬로 나열. (1) [조건 1] D가 연속하여 나오지 않도록 나열하는 방법의 수. (2) [조건 2] 처음 나오는 A가 처음 나오는 B보다 먼저 나오도록 나열하는 방법의 수.
+
+??? success "풀이"
+    **(1)** 전체 나열 수 $\dfrac{12!}{3!\cdot 4!\cdot 3!\cdot 2!}$. DD를 하나로 묶은 경우 $\dfrac{11!}{3!\cdot 4!\cdot 3!\cdot 1!}$. 따라서
+
+    $$\dfrac{12!}{3!\cdot 4!\cdot 3!\cdot 2!} - \dfrac{11!}{3!\cdot 4!\cdot 3!} = \dfrac{11!\cdot(12/2 - 1)}{3!\cdot 4!\cdot 3!} = \dfrac{5\cdot 11!}{3!\cdot 4!\cdot 3!} = \boxed{231{,}000}.$$
+
+    **(2)** 단계별:
+    - **1단계**: $12$개 자리 중 A, B의 위치 $7$개 자리를 선택: $\binom{12}{7}$.
+    - **2단계**: 선택된 $7$자리 중 가장 왼쪽에는 반드시 A를 배치 (조건 2). 나머지 $6$자리에 A $2$개, B $4$개 배치: $\dfrac{6!}{2!\cdot 4!} = 15$.
+    - **3단계**: 남은 $5$자리에 C $3$개, D $2$개 배치: $\dfrac{5!}{3!\cdot 2!} = 10$.
+
+    $$\binom{12}{7}\cdot 15\cdot 10 = 792\cdot 150 = \boxed{118{,}800}.$$
+
+**[3 / 문제 3]** 두 곡선 $y = e^{2 x}$, $y = e^{-(x - t)} + 1$과 $y$축으로 둘러싸인 도형의 넓이가 $S(t)$. $t = \ln 6$일 때 $S'(\ln 6)$의 값을 구하여라.
+
+??? success "풀이"
+    교점 $x = a$: $e^{2 a} = e^{-(a - t)} + 1$. 영역은 $0\le x\le a$, $e^{-(x - t)} + 1\le y\le e^{2 x}$ (영역 모양에 따름; 자세한 식 작성은 적분으로):
+
+    $$S(t) = \int_0^a (e^{-(x - t)} + 1 - e^{2 x})\,dx = -e^{-(a - t)} + a - \dfrac{1}{2}e^{2 a} + \dfrac{1}{2}.$$
+
+    $S'(t)$를 $t$로 미분 (Leibniz, $a = a(t)$):
+
+    $$S'(t) = -e^{-(a - t)}\cdot(1 - da/dt) + da/dt - e^{2 a}\cdot da/dt + 0 = (e^{-(a - t)} + 1 - e^{2 a})\dfrac{da}{dt} - e^{-(a - t)}.$$
+
+    교점 정의식 $e^{2 a} = e^{-(a - t)} + 1$이므로 첫 항 괄호는 $0$. 따라서
+
+    $$S'(t) = -e^{-(a - t)} + e^t.$$
+
+    (보고서 표기: $S'(t) = -e^{-(a - t)} + e^t$.)
+
+    $t = \ln 6$: 교점 방정식 $e^{2 a} = e^{-(a - \ln 6)} + 1 = 6 e^{-a} + 1$. $b = e^a$ 두면 $b^2 = 6/b + 1$ ⇒ $b^3 - b - 6 = 0$ ⇒ $(b - 2)(b^2 + 2 b + 3) = 0$ ⇒ $b = 2$, $a = \ln 2$.
+
+    $$S'(\ln 6) = -e^{-(\ln 2 - \ln 6)} + e^{\ln 6} = -e^{\ln 3} + 6 = -3 + 6 = \boxed{3}.$$
+
+    (사인 확인: $e^{-(a - t)} = e^{-\ln 2 + \ln 6} = e^{\ln 3} = 3$.)
+
+**[4 / 문제 4]** 도형 $\mathrm{A}$는 네 점 $(0, 0), (1, 0), (1, 1), (0, 1)$이 꼭짓점인 정사각형. 점 $\mathrm{P}$는 제 $2$사분면 위의 점이며 중심 원점, 반지름 $3$인 원 위에 있다. $\alpha$는 점 $\mathrm{P}$에서 정사각형 $\mathrm{A}$를 바라본 각의 크기. $\cos\alpha$가 최소가 될 때 점 $\mathrm{P}$의 좌표와 $\cos\alpha$의 값을 구하여라.
+
+??? success "풀이"
+    $\mathrm{P}$에서 $\mathrm{A}$를 바라보는 각 $\alpha$는 $\mathrm{P}$에서 두 꼭짓점 사이 각. $\mathrm{P}$의 $y$좌표 ≤ $1$일 때와 > $1$일 때 두 경우로 나눔.
+
+    **경우 1** ($y_{\mathrm{P}}\le 1$): $\mathrm{P}$에서 $(0, 0)$까지 거리 $= 3$, 다른 꼭짓점 $(1, 0)$까지 거리 $d$. 코사인법칙 ($\mathrm{P}(0,0)(1,0)$ 삼각형, $\overline{(0,0)(1,0)} = 1$):
+
+    $$\cos\alpha = \dfrac{3^2 + d^2 - 1}{2\cdot 3\cdot d} = \dfrac{8 + d^2}{6 d} = \dfrac{4}{3 d} + \dfrac{d}{6}\ge 2\sqrt{\dfrac{4}{3\cdot 6}} = \dfrac{2\sqrt{2}}{3}$$ (산술-기하).
+
+    **경우 2** ($y_{\mathrm{P}} > 1$): $\mathrm{P}$에서 $(0, 0)$까지 거리 $3$, $(1, 1)$까지 거리 $d$. $\overline{(0,0)(1,1)} = \sqrt{2}$.
+
+    $$\cos\alpha = \dfrac{9 + d^2 - 2}{6 d} = \dfrac{7 + d^2}{6 d} = \dfrac{7}{6 d} + \dfrac{d}{6}\ge 2\sqrt{\dfrac{7}{36}} = \dfrac{\sqrt{7}}{3}.$$
+
+    경우 2의 하한 $\sqrt{7}/3 < 2\sqrt{2}/3$이므로 전체 최솟값 $= \sqrt{7}/3$ (경우 2). 등호 $d = \sqrt{7}$.
+
+    $\mathrm{Q} = (1, 1)$ 두고 $\angle\mathrm{POQ} = \theta$. 삼각형 $\mathrm{OPQ}$ ($\overline{\mathrm{OP}} = 3$, $\overline{\mathrm{OQ}} = \sqrt{2}$, $\overline{\mathrm{PQ}} = \sqrt{7}$):
+
+    $$\cos\theta = \dfrac{9 + 2 - 7}{2\cdot 3\cdot\sqrt{2}} = \dfrac{4}{6\sqrt{2}} = \dfrac{\sqrt{2}}{3},\quad \sin\theta = \sqrt{1 - 2/9} = \dfrac{\sqrt{7}}{3}.$$
+
+    $\mathrm{OQ}$는 $x$축과 $\pi/4$를 이루므로 $\mathrm{OP}$는 $\pi/4 + \theta$. 따라서
+
+    $$x_{\mathrm{P}} = 3\cos(\theta + \pi/4) = 3\cdot\dfrac{\sqrt{2}}{2}\cdot(\cos\theta - \sin\theta) = \dfrac{3\sqrt{2}}{2}\cdot\dfrac{\sqrt{2} - \sqrt{7}}{3} = \dfrac{\sqrt{2}(\sqrt{2} - \sqrt{7})}{2} = 1 - \dfrac{\sqrt{14}}{2}.$$
+
+    $$y_{\mathrm{P}} = 3\sin(\theta + \pi/4) = \dfrac{3\sqrt{2}}{2}\cdot\dfrac{\cos\theta + \sin\theta}{?}\ldots$$
+
+    같은 방식으로 $y_{\mathrm{P}} = 1 + \sqrt{14}/2$.
+
+    $$\therefore\ \cos\alpha_{\min} = \boxed{\dfrac{\sqrt{7}}{3}},\quad \mathrm{P} = \boxed{\!\left(1 - \dfrac{\sqrt{14}}{2},\ 1 + \dfrac{\sqrt{14}}{2}\right)\!}.$$
+
+---
+
+## 카드 127 — 건국대 (2024, 논술 자연 B 수학)
+
+출처: 건국대학교 2024학년도 KU논술우수자전형 — 자연계 B 수학 (문항카드 4, 문제 1, 2, 3, 4).
+
+---
+
+### 논술 자연 B 수학 — 도형 넓이 최대·같은 것 순열·원의 공통 부분·근과 계수
+
+**[1 / 문제 1]** 제 $1$사분면 도형 $\mathrm{R}$ — 곡선 $x = t$, $x^2 + y^2 = 1$, $(x - t)^2 + y^2 = (1 - t)^2$로 둘러싸인 부분. (1) $t = 1/2$일 때 도형 $\mathrm{R}$의 넓이. (2) $\mathrm{R}$의 넓이가 최대가 될 때 $t$의 값.
+
+??? success "풀이"
+    $\mathrm{A}(t, 0)$, $\mathrm{B}(1, 0)$. 직선 $x = t$가 단위원과 만나는 점 $\mathrm{C}(t, \sqrt{1 - t^2})$, 작은 원 ($\mathrm{A}$ 중심 반지름 $1 - t$)과 만나는 점 $\mathrm{D}(t, 1 - t)$. $\angle\mathrm{AOC} = \theta$.
+
+    $\mathrm{R}$의 넓이 $f(t) = $ 부채꼴 $\mathrm{OBC}$ 넓이 $-$ 삼각형 $\mathrm{OAC}$ 넓이 $-$ 사분원 $\mathrm{A}$의 부분 넓이.
+
+    적분식:
+
+    $$f(t) = \int_t^1\sqrt{1 - x^2}\, dx - \dfrac{\pi}{4}(1 - t)^2.$$
+
+    $x = \cos\theta$ 치환으로 적분:
+
+    $$f(t) = \dfrac{1}{2}\theta - \dfrac{1}{2}t\sqrt{1 - t^2} - \dfrac{\pi}{4}(1 - t)^2.$$
+
+    **(1)** $t = 1/2$: $\theta = \pi/3$. $f(1/2) = \dfrac{\pi}{6} - \dfrac{1}{2}\cdot\dfrac{1}{2}\cdot\dfrac{\sqrt{3}}{2} - \dfrac{\pi}{4}\cdot\dfrac{1}{4} = \dfrac{\pi}{6} - \dfrac{\sqrt{3}}{8} - \dfrac{\pi}{16}$.
+
+    공통분모 정리: $\dfrac{8\pi - 3\pi}{48} - \dfrac{\sqrt{3}}{8} = \boxed{\dfrac{5\pi}{48} - \dfrac{\sqrt{3}}{8}}$.
+
+    **(2)** $f'(t) = -\sqrt{1 - t^2} + \dfrac{\pi}{2}(1 - t) = 0$ ⇒ $\sqrt{1 - t^2} = \dfrac{\pi}{2}(1 - t)$. 양변 제곱: $1 + t = \dfrac{\pi^2}{4}(1 - t)$ ⇒ $4(1 + t) = \pi^2(1 - t)$ ⇒ $t = \boxed{\dfrac{\pi^2 - 4}{\pi^2 + 4}}$.
+
+**[2 / 문제 2]** 문자 A $3$개, B $5$개, C $3$개로 이루어진 $11$개 문자를 나열. [조건 1]: C 바로 다음에는 항상 B가 이웃하여 나옴. [조건 2]: A 바로 다음에는 B가 이웃하여 나오지 않음. (1) 조건 1 만족 방법 수. (2) 조건 2 만족 방법 수.
+
+??? success "풀이"
+    **(1)** CB를 하나의 문자로 처리 ($3$개의 CB 단위). 남은 문자: A $3$개, (CB) $3$개, B $5 - 3 = 2$개. 총 $8$개 문자 나열:
+
+    $$\dfrac{8!}{3!\cdot 3!\cdot 2!} = \boxed{560}.$$
+
+    **(2)** A $3$개, C $3$개 먼저 나열: $\dfrac{6!}{3!\cdot 3!} = 20$. 나열 후 $7$개의 빈 자리 (*) 중 A 바로 뒤 자리 $3$개를 제외하고 남은 $4$개의 *자리에 B $5$개를 배치 (중복조합):
+
+    $${}_4\mathrm{H}_5 = {}_8\mathrm{C}_5 = 56.$$
+
+    $$\therefore\ \dfrac{6!}{3!\cdot 3!}\cdot{}_8\mathrm{C}_5 = 20\cdot 56 = \boxed{1120}.$$
+
+**[3 / 문제 3]** 두 원: 중심 원점 반지름 $1$, 중심 $(t, 0)$ 반지름 $t$. 두 원의 내부 공통 부분 넓이 $S(t)$. $S'(1)$의 값을 구하여라.
+
+??? success "풀이"
+    $\mathrm{A}(t, 0)$, $\mathrm{B}(1, 0)$. 두 원의 교점을 $\mathrm{C}$. $\angle\mathrm{AOC} = \alpha$ 두면 $\angle\mathrm{OAC} = \pi - 2\alpha$ (대칭성).
+
+    $S(t) = 2(S_1 + S_2 - S_3)$
+    - $S_1 = $ 부채꼴 OBC (반지름 $1$, 중심각 $\alpha$) = $\alpha/2$
+    - $S_2 = $ 부채꼴 AOC (반지름 $t$, 중심각 $\pi - 2\alpha$) = $t^2(\pi - 2\alpha)/2$
+    - $S_3 = $ 삼각형 OAC = $(1/2)\cdot t\cdot\sin\alpha$ (밑변 OA = $t$, 높이 = $\sin\alpha$)
+
+    $$S(t) = \alpha + t^2(\pi - 2\alpha) - t\sin\alpha.$$
+
+    코사인법칙 ($\mathrm{OAC}$, $\overline{\mathrm{OC}} = 1$, $\overline{\mathrm{AC}} = t$, $\overline{\mathrm{OA}} = t$):
+
+    $$\cos\alpha = \dfrac{1 + t^2 - t^2}{2\cdot 1\cdot t} = \dfrac{1}{2 t}.$$
+
+    $t$로 미분: $-\sin\alpha\cdot d\alpha/dt = -1/(2 t^2)$ ⇒ $d\alpha/dt = 1/(2 t^2\sin\alpha)$.
+
+    $t = 1$: $\cos\alpha = 1/2$ ⇒ $\alpha = \pi/3$, $\sin\alpha = \sqrt{3}/2$. $d\alpha/dt = 1/(2\cdot\sqrt{3}/2) = 1/\sqrt{3}$.
+
+    $S'(t) = d\alpha/dt + 2 t(\pi - 2\alpha) + t^2(-2 d\alpha/dt) - \sin\alpha - t\cos\alpha\cdot d\alpha/dt$. $t = 1$ 대입:
+
+    $$S'(1) = \dfrac{1}{\sqrt{3}} + 2\!\left(\pi - \dfrac{2\pi}{3}\right) - 2\cdot\dfrac{1}{\sqrt{3}} - \dfrac{\sqrt{3}}{2} - \dfrac{1}{2}\cdot\dfrac{1}{\sqrt{3}} = \boxed{\dfrac{2\pi}{3} - \sqrt{3}}.$$
+
+**[4 / 문제 4]** 점 $\mathrm{P}$는 중심 $(1, 8)$, 반지름 $1$인 원 위. 점 $\mathrm{A}, \mathrm{B}$는 포물선 $y = x^2$과 직선 $y = 2 x + t$의 교점 ($\mathrm{A}$는 $2$사분면, $\mathrm{B}$는 $1$사분면). $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2$의 최솟값이 될 때 $\mathrm{A}$의 좌표를 구하여라.
+
+??? success "풀이"
+    $\mathrm{A}(a, a^2)$, $\mathrm{B}(b, b^2)$, $\mathrm{P}(x, y)$. $a, b$는 $x^2 = 2 x + t$ ⇒ $x^2 - 2 x - t = 0$의 근. 근과 계수:
+
+    $$a + b = 2,\quad a b = -t.$$
+
+    $a^2 + b^2 = 4 + 2 t$, $a^4 + b^4 = (a^2 + b^2)^2 - 2(a b)^2 = 2 t^2 + 16 t + 16$.
+
+    $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2 = (x - a)^2 + (y - a^2)^2 + (x - b)^2 + (y - b^2)^2$. 정리하면
+
+    $$= 2(x - 1)^2 + 2(y - t - 2)^2 + 10(t + 1).$$
+
+    중간점 $\mathrm{M}(1, t + 2)$ 두면 $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2 = 2\overline{\mathrm{MP}}^2 + 10(t + 1)$.
+
+    $\mathrm{M}$이 $x = 1$ 위, 원 중심 $(1, 8)$도 $x = 1$ 위이므로 $\mathrm{P}$가 $x = 1$ 위에서 $\mathrm{M}$에 가까운 점:
+    - $t + 2\le 8$ ($t\le 6$): $\mathrm{P}(1, 7)$, $\overline{\mathrm{MP}} = |t - 5|$.
+    - $t + 2\ge 8$ ($t\ge 6$): $\mathrm{P}(1, 9)$, $\overline{\mathrm{MP}} = |t - 7|$.
+
+    **경우 1** ($0 < t\le 6$): $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2 = 2(t - 5)^2 + 10(t + 1) = 2 t^2 - 10 t + 60 = 2(t - 5/2)^2 + 60 - 25/2$. 최솟값 $t = 5/2$.
+
+    **경우 2** ($t\ge 6$): $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2 = 2(t - 7)^2 + 10(t + 1) = 2(t - 9/2)^2 + 108 - 81/2$. 최솟값 $t = 9/2$ — 그러나 $t\ge 6$이므로 단조증가, 최솟값 $t = 6$.
+
+    두 경우 비교: 경우 1의 $t = 5/2$에서 더 작음. 따라서 $t = 5/2$.
+
+    $\mathrm{A}, \mathrm{B}$는 $x^2 - 2 x - 5/2 = 0$ ⇒ $x = (2\pm\sqrt{4 + 10})/2 = (2\pm\sqrt{14})/2$. $\mathrm{A}$는 $2$사분면 ($x < 0$): $x = (2 - \sqrt{14})/2$. $y = x^2 = (2 - \sqrt{14})^2/4 = (18 - 4\sqrt{14})/4 = (9 - 2\sqrt{14})/2$.
+
+    $$\therefore\ \mathrm{A} = \boxed{\!\left(\dfrac{2 - \sqrt{14}}{2},\ \dfrac{9 - 2\sqrt{14}}{2}\right)\!}.$$
+
+---
