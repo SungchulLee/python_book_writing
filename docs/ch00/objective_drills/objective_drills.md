@@ -18110,3 +18110,114 @@ $f(x)=e^{nx}+e^{-nx}\;(n=1,2,\ldots)$의 점 $P(x,y)$에서의 접선의 기울�
     $$r^2=\overline{CD}^{\,2}=\boxed{13+3\sqrt{13}}. \square$$
 
 ---
+
+## 카드 158 — 건국대 (2018학년도 KU논술우수자전형 인문Ⅱ·자연 수학)
+
+> 출처: 「2018학년도 건국대학교 선행학습 영향평가 자체평가보고서」 문항카드 2(인문사회계 Ⅱ 수학)·문항카드 3(자연계 수학). 인문Ⅱ는 *주식 포트폴리오·로렌츠 곡선과 지니계수·최저임금 초과공급량의 기댓값*을, 자연은 *직사각형 종이 접기와 미적분 최적화·구와 평면의 위치 관계*를 평가한다.
+
+---
+
+#### [158-1] 인문Ⅱ 문제 2-1 — 포트폴리오의 총수익 최댓값과 최솟값
+
+K씨가 600만 원으로 한 주당 가격 1만 원·3만 원·9만 원이고 수익률 5%·6%·10%인 주식 A,B,C를 합쳐 120주 구매한다. 각 주식 수 $x,y,z\ge 0$ (정수). $x,y$를 $z$로 나타내고, 총수익 $T$(만 원)의 최댓값·최솟값을 구하시오.
+
+??? success "풀이"
+    조건: $x+y+z=120,\;x+3y+9z=600$. 두 식 차이로 $2y+8z=480\Rightarrow y=-4z+240$, 대입 $x=120-y-z=3z-120$.
+    
+    수익률을 합하면 $T=0.05x+0.18y+0.9z=0.05(3z-120)+0.18(-4z+240)+0.9z=(0.15-0.72+0.9)z+(-6+43.2)=0.33z+37.2$.
+    
+    $x\ge 0\Rightarrow z\ge 40$, $y\ge 0\Rightarrow z\le 60$. 일차함수이므로
+    $$T_{\min}=T(40)=0.33\!\cdot\!40+37.2=50.4,\quad T_{\max}=T(60)=0.33\!\cdot\!60+37.2=57.$$
+    $$\boxed{x=3z-120,\;y=-4z+240,\;T\in[50.4,\;57]\text{ 만 원}}.\;\square$$
+
+#### [158-2] 인문Ⅱ 문제 2-2 — 로렌츠 곡선과 정적분으로 본 지니계수
+
+P정책을 $k$년 시행하면 $m$년 후의 로렌츠 곡선이 $L(x)=x^{m^2-(2k+4)m+k^2+4k+6}$이라 한다. (1) $k=1$일 때 2018·2019·2020년 지니계수를 구하시오. (2) 2027년 지니계수가 0.4 미만이 되려면 P정책을 몇 년 시행해야 하는가?
+
+??? success "풀이"
+    지니계수 정의: $G=\dfrac{\int_0^1(x-L(x))\,dx}{\tfrac{1}{2}\cdot 1\cdot 1}=2\int_0^1(x-L(x))\,dx$. $L(x)=x^N$이면 $G=1-\tfrac{2}{N+1}$.
+    
+    **(1) $k=1$:** $N=m^2-6m+11$. 2018(=2017+1)·2019(=2017+2)·2020(=2017+3) ⇒ $m=1,2,3$.
+    
+    $m=1: N=6,\;G=1-\tfrac{2}{7}=\boxed{\tfrac{5}{7}}.$
+    $m=2: N=3,\;G=1-\tfrac{2}{4}=\boxed{\tfrac{1}{2}}.$
+    $m=3: N=2,\;G=1-\tfrac{2}{3}=\boxed{\tfrac{1}{3}}.$
+    
+    **(2) $m=10$ (2027년)일 때 $N=100-20(k+2)+k^2+4k+6=k^2-16k+66$. $L(x)=x^{N}$이고 지니계수
+    $$G=1-\tfrac{2}{N+1}=1-\tfrac{2}{k^2-16k+67}<0.4\Leftrightarrow \tfrac{2}{k^2-16k+67}>0.6\Leftrightarrow k^2-16k+67<\tfrac{10}{3}.$$
+    $(k-8)^2<\tfrac{1}{3}\Rightarrow 8-\tfrac{1}{\sqrt{3}}<k<8+\tfrac{1}{\sqrt{3}}$, 즉 $7.42<k<8.58$. 정수 $k$는 $\boxed{k=8}$. $\square$
+
+#### [158-3] 인문Ⅱ 문제 2-3 — 이산확률변수의 기댓값과 무한급수의 합
+
+$n$년도의 노동수요곡선 $D_n=-X+a_n$, 공급곡선 $S_n=X+b_n$. 최저임금을 $L_n$으로 상향, 초과공급량 $Q_n$. $L_n$의 확률질량함수
+$$\mathrm{P}\!\Big(L_n=L+2^{-k}\Big)=\tfrac{2^{-k}}{1-2^{-n}}\quad(k=1,\ldots,n)$$
+이고 $3^{-n}<4b_n-L<4a_n-5L<2^{-n}$이다. $\mathrm{E}(Q_n)$과 $\displaystyle\lim_{n\to\infty}\mathrm{E}(Q_n)$을 구하시오.
+
+??? success "풀이"
+    **$Q_n$ 유도.** $L_n=-X_D+a_n\Rightarrow X_D=-L_n+a_n$, $L_n=X_S+b_n\Rightarrow X_S=L_n-b_n$. 초과공급량 $Q_n=X_S-X_D=2L_n-(a_n+b_n)$.
+    
+    **$L_n$의 기댓값.** $\displaystyle\sum_{k=1}^{n}2^{-k}=1-2^{-n}$, $\displaystyle\sum_{k=1}^{n}4^{-k}=\tfrac{1}{3}(1-4^{-n})$이므로
+    $$\mathrm{E}(L_n)=\sum_{k=1}^{n}(L+2^{-k})\tfrac{2^{-k}}{1-2^{-n}}=L+\tfrac{1}{3}\cdot\tfrac{1-4^{-n}}{1-2^{-n}}=L+\tfrac{1}{3}(1+2^{-n}).$$
+    
+    **$Q_n$의 기댓값.** $\mathrm{E}(Q_n)=2\mathrm{E}(L_n)-(a_n+b_n)=2L+\tfrac{2}{3}(1+2^{-n})-(a_n+b_n)$.
+    
+    **극한.** $3^{-n}<4a_n-5L<2^{-n}$와 $3^{-n}<4b_n-L<2^{-n}$에서 양변을 4로 나누고 조임정리:
+    $$\lim_{n\to\infty}a_n=\tfrac{5L}{4},\quad\lim_{n\to\infty}b_n=\tfrac{L}{4}\Rightarrow\lim_{n\to\infty}(a_n+b_n)=\tfrac{3L}{2}.$$
+    
+    따라서 $\boxed{\mathrm{E}(Q_n)=2L+\tfrac{2}{3}(1+2^{-n})-(a_n+b_n),\quad\lim_{n\to\infty}\mathrm{E}(Q_n)=2L+\tfrac{2}{3}-\tfrac{3L}{2}=\tfrac{L}{2}+\tfrac{2}{3}}.\;\square$
+
+#### [158-4] 자연 문제 1-1 — 직사각형 종이를 대각선으로 접었을 때 겹치는 삼각형의 넓이
+
+직사각형 $ABCD$ ($\overline{AB}=a,\overline{BC}=b$) 모양의 종이를 대각선 $BD$를 따라 접었을 때, 겹치는 부분(빗금 영역, 그림에서 $\triangle GBD$)의 넓이를 $a, b$로 나타내시오.
+
+??? success "풀이"
+    종이를 접었으므로 $\angle GBD=\angle DBC=\theta$. 또한 $\overline{AD}\parallel\overline{BC}$로 $\angle GDB=\angle DBC=\theta$. 즉 $\triangle GBD$는 등변삼각형($\overline{GB}=\overline{GD}$).
+    
+    $\overline{BD}=\sqrt{a^2+b^2}$. $G$에서 $\overline{BD}$에 내린 수선의 발을 중점이라 하면 높이 $h=\tan\theta\cdot\tfrac{\overline{BD}}{2}$. 그런데 $\triangle BCD$에서 $\tan\theta=\tfrac{a}{b}$이므로
+    $$h=\tfrac{a}{b}\cdot\tfrac{\sqrt{a^2+b^2}}{2}=\tfrac{a\sqrt{a^2+b^2}}{2b}.$$
+    따라서 $\triangle GBD$의 넓이는
+    $$\tfrac{1}{2}\cdot\sqrt{a^2+b^2}\cdot\tfrac{a\sqrt{a^2+b^2}}{2b}=\boxed{\dfrac{a(a^2+b^2)}{4b}}. \square$$
+
+#### [158-5] 자연 문제 1-2 — 미분법으로 본 사각뿔 부피의 최댓값
+
+직사각형 $ABCD$ ($\overline{AB}=2,\overline{BC}=3$)에서 선분 $AD$ 위의 점 $E$를 잡고 $\overline{CE}$를 따라 접어 점 $D$를 $F$로 보낸다. 평면 $CEF\perp$ 평면 $ABCD$일 때 사각뿔 $F\text{-}ABCE$의 부피의 최댓값을 구하시오.
+
+??? success "풀이"
+    $\overline{DE}=x\in[0,3]$. 사각형 $ABCE$의 넓이는 직사각형에서 $\triangle DEC$를 뺀 것: $3\cdot 2-\tfrac{1}{2}\cdot 2\cdot x=6-x$.
+    
+    사각뿔의 높이 $h$는 점 $F$에서 평면 $ABCD$까지 거리. $\triangle DEC$에서 $\overline{CE}=\sqrt{x^2+4}$이고 접었으므로 $\overline{CF}=\overline{CD}=2$, $\overline{EF}=\overline{ED}=x$. 평면 $CEF\perp ABCD$이므로 $F$의 수선 발은 $\overline{CE}$ 위에 있고, $\triangle CDE$의 넓이가 $\tfrac{1}{2}\cdot\overline{CE}\cdot h=\tfrac{1}{2}\cdot 2\cdot x$에서 $h=\tfrac{2x}{\sqrt{x^2+4}}$.
+    
+    부피 $V(x)=\tfrac{1}{3}(6-x)\cdot\tfrac{2x}{\sqrt{x^2+4}}=\tfrac{2}{3}\cdot\tfrac{6x-x^2}{\sqrt{x^2+4}}$. 미분하면
+    $$V'(x)=\tfrac{2}{3}\cdot\tfrac{(6-2x)\sqrt{x^2+4}-(6x-x^2)\cdot\tfrac{x}{\sqrt{x^2+4}}}{x^2+4}=\tfrac{2}{3}\cdot\tfrac{(2-x)(x^2+2x+12)}{(x^2+4)^{3/2}}.$$
+    $x^2+2x+12>0$이므로 부호는 $(2-x)$로 결정 — $0<x<2$에서 증가, $2<x<3$에서 감소. 따라서 $x=2$에서 최대:
+    $$V(2)=\tfrac{2}{3}\cdot\tfrac{12-4}{\sqrt{8}}=\tfrac{2}{3}\cdot\tfrac{8}{2\sqrt{2}}=\boxed{\dfrac{4\sqrt{2}}{3}}. \square$$
+
+#### [158-6] 자연 문제 2-1 — 구와 평면의 교선 원 위의 점에서 외부 점까지 거리의 최솟값
+
+구 $S:\;x^2+y^2+z^2=9$와 평면 $\alpha:\;x+y+z=3$이 만나서 생기는 원을 $C$라 하자. 점 $A(2,2,1)$에서 $C$ 위의 점까지의 거리의 최솟값을 구하시오.
+
+??? success "풀이"
+    중심 $O(0,0,0)$에서 $\alpha$에 내린 수선의 발을 $O'$이라 하면 법선벡터 $\vec n=(1,1,1)$이므로 $O'=(t,t,t)$. $\alpha$ 위에 있으므로 $3t=3\Rightarrow O'(1,1,1)$, $\overline{OO'}=\sqrt{3}$. 원 $C$의 반지름 $\overline{O'Q}=\sqrt{9-3}=\sqrt{6}$.
+    
+    $A$의 $\alpha$ 위로의 정사영 $H$: $A+s(1,1,1)\in\alpha\Rightarrow (2+s)+(2+s)+(1+s)=3\Rightarrow s=-\tfrac{2}{3}$. 따라서 $H=\bigl(\tfrac{4}{3},\tfrac{4}{3},\tfrac{1}{3}\bigr)$, $\overline{AH}=|s|\sqrt{3}=\tfrac{2}{3}\sqrt{3}=\tfrac{2}{\sqrt{3}}$.
+    
+    $\overline{O'H}=\sqrt{(\tfrac{1}{3})^2+(\tfrac{1}{3})^2+(\tfrac{2}{3})^2}=\sqrt{\tfrac{6}{9}}=\tfrac{\sqrt{6}}{3}$. $H$는 $O'$와 가까이 있고 $C$의 내부($\overline{O'H}<\sqrt{6}$). 원 위의 점 $Q$ 중 $H$에 가장 가까운 점까지 거리 $\overline{HQ}=\overline{O'Q}-\overline{O'H}=\sqrt{6}-\tfrac{\sqrt{6}}{3}=\tfrac{2\sqrt{6}}{3}$.
+    
+    $\triangle AHQ$가 직각삼각형이므로
+    $$\overline{AQ}_{\min}=\sqrt{\overline{AH}^2+\overline{HQ}^2}=\sqrt{\tfrac{4}{3}+\tfrac{24}{9}}=\sqrt{\tfrac{12+24}{9}}=\sqrt{4}=\boxed{2}. \square$$
+
+#### [158-7] 자연 문제 2-2 — 구와 평면(매개변수)의 교선 원의 중심이 그리는 곡선의 길이
+
+구 $S:\;(x-2)^2+y^2+z^2=2$와 평면 $\alpha_m:\;mx-y=0$이 만나 원이 생길 때, 그 원의 중심 $P$가 $m$의 변화에 따라 그리는 곡선의 길이를 구하시오.
+
+??? success "풀이"
+    $S$의 중심 $(2,0,0)$. $\alpha_m$의 법선벡터 $(m,-1,0)$이므로 $P=(2,0,0)+t(m,-1,0)=(2+mt,-t,0)$. $P\in\alpha_m$: $m(2+mt)-(-t)=0\Rightarrow t(m^2+1)=-2m\Rightarrow t=-\tfrac{2m}{m^2+1}$.
+    
+    $$P=\Big(\tfrac{2}{m^2+1},\;\tfrac{2m}{m^2+1},\;0\Big).$$
+    $x=\tfrac{2}{m^2+1}$, $y=\tfrac{2m}{m^2+1}$이라 두면 $\tfrac{y}{x}=m$, $x=\tfrac{2}{m^2+1}=\tfrac{2x^2}{x^2+y^2}\cdot\tfrac{x^2+y^2}{1\cdot 2}$... 다른 방법으로 $x^2+y^2=\tfrac{4+4m^2}{(m^2+1)^2}=\tfrac{4}{m^2+1}=2x$. 즉 $(x-1)^2+y^2=1$ — 중심 $(1,0,0)$, 반지름 $1$인 $xy$평면 위 원.
+    
+    **$m$의 범위.** 교선이 원이 되려면 $\alpha_m$이 $S$를 자르고 평면이 한 점에서 접하거나 만나지 않으면 안 됨. 교점 $(x,y,z)\in S\cap\alpha_m$: $z^2=2-(x-2)^2-(mx)^2=-((m^2+1)x^2-4x+2)$가 해를 가지려면 $(m^2+1)x^2-4x+2\le 0$의 판별식 $\tfrac{D}{4}=4-2(m^2+1)\ge 0\Rightarrow m^2\le 1$.
+    
+    $m\in[-1,1]$. $m=-1$일 때 $P=(1,-1,0)$, $m=1$일 때 $P=(1,1,0)$. 그 사이 $P$는 원 $(x-1)^2+y^2=1$의 오른쪽 반원(원점 $O(0,0,0)$이 아닌 쪽). 호 길이는 반원 = $\tfrac{1}{2}\cdot 2\pi\cdot 1=\boxed{\pi}. \square$
+
+---
