@@ -6692,3 +6692,129 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 93 — 건국대 (2025학년도)
+
+> KU논술우수자전형 인문사회II·자연계·자유전공학부 수학 문항. 인문(환율과 비율·균형가격과 소비자/생산자잉여·금융상품 이항분포 기댓값) 7 sub + 자연(매개변수 곡선과 직선·정사면체 부피와 이면각·사각형 대각선 미분·곡선 사이 넓이 함수의 미분) 5 sub + 자유전공(곡선 위 점과 비·합이 4의 배수 경우의 수·내접원과 삼각형) 4 sub = 16 sub-문항.
+
+### 인문계 문제 1 — 환율과 화폐 가치
+
+> 제시문 [라] 환율, [마] 물가지수. 갑국 치즈 $1$ kg: $1995$ 년 $5{,}000$ 원, $2025$ 년 $8{,}000$ 원. 을국 치즈 $1$ kg: $1995$ 년 $4$ 파운드, $2025$ 년 $10$ 파운드. 환율: $1995$ 년 $1200$ 원/파운드, $2025$ 년 $1600$ 원/파운드. 건우 갑국 $1995$ 년 연봉 $2{,}000$ 만 원. 건호 ($1995$ 년 후 $30$ 년) 을국 $2025$ 년 연봉 $10$ 만 파운드.
+
+**[93 / 인1-1]** 건우의 연봉을 치즈 가격으로 이용하여 $2025$ 년도 원화 가치로 환산.
+
+??? success "풀이"
+    $1995$ 년 치즈 환산: $2{,}000$ 만 원/($5{,}000$ 원/kg) $= 4{,}000$ kg. $2025$ 년 원화 가치: $4{,}000$ kg $\times 8{,}000$ 원/kg $= 3{,}200$ 만 원. 답: $\boxed{3{,}200\text{ 만 원}}$.
+
+**[93 / 인1-2]** 건호의 연봉을 치즈로 환산하여 $1995$ 년 파운드, $1995$ 년 환율로 원화 변환, 건우 연봉의 몇 배.
+
+??? success "풀이"
+    $2025$ 년 치즈: $10$ 만 파운드/($10$ 파운드/kg) $= 10{,}000$ kg. $1995$ 년 파운드 가치: $10{,}000\times 4 = 40{,}000$ 파운드. $1995$ 년 환율: $40{,}000\times 1{,}200 = 4{,}800$ 만 원. 건우 대비 $4{,}800/2{,}000 = 2.4$ 배. 답: $\boxed{2.4\text{ 배}}$.
+
+### 인문계 문제 2 — 균형 가격·소비자/생산자 잉여
+
+> 제시문 [바] 시장 균형, [새] 소비자/생산자 잉여, [야] 정적분. 공급곡선 $P(Q) = Q^2 + 2 Q$, 수요곡선 $P(Q) = 10 - Q$.
+
+**[93 / 인2-1]** 그래프 작성 및 균형 거래량·균형 가격.
+
+??? success "풀이"
+    $Q^2 + 2 Q = 10 - Q$ → $Q^2 + 3 Q - 10 = 0$ → $(Q + 5)(Q - 2) = 0$ → $Q = 2$ ($Q \ge 0$). $P = 10 - 2 = 8$. 답: $\boxed{Q = 2,\ P = 8}$.
+
+**[93 / 인2-2]** 소비자 잉여 및 생산자 잉여.
+
+??? success "풀이"
+    소비자 잉여 $= \int_0^2 (10 - Q)d Q - 8\cdot 2 = [10 Q - Q^2/2]_0^2 - 16 = 18 - 16 = 2$. 생산자 잉여 $= 16 - \int_0^2 (Q^2 + 2 Q)d Q = 16 - [Q^3/3 + Q^2]_0^2 = 16 - 8/3 - 4 = 12 - 8/3 = 28/3$. 답: $\boxed{\text{소비자 잉여} = 2,\ \text{생산자 잉여} = 28/3}$.
+
+### 인문계 문제 3 — 금융상품·이항분포
+
+> 제시문 [자] 조합, [차] 확률질량함수, [캐] 기댓값, [태] 독립시행, [패] 등비수열. 금융상품 $\mathrm{A}$: 매 시점 가격 상승/하락 확률 $0.5$, 상승 시 가격 $\times 2$, 하락 시 $\times 1/2$. $b_0 = 100$ (만 원).
+
+**[93 / 인3-1]** 시점 $a_4$ 에서 가격이 $400$ 만 원이 될 확률.
+
+??? success "풀이"
+    $b_4 = 400 = 100\cdot 4 = 100\cdot 2^2$ → 상승 $3$ 회, 하락 $1$ 회. 독립시행: ${}_4\mathrm{C}_3 (1/2)^3 (1/2)^1 = 4/16 = 1/4$. 답: $\boxed{1/4}$.
+
+**[93 / 인3-2]** 시점 $a_4$ 에서 거래 차익의 기댓값 (천 원 이하 버려 만 원 단위).
+
+??? success "풀이"
+    가격 $X$ 가능 값: $100/16 = 25/4, 25, 100, 400, 1600$ (만 원), 확률 $1/16, 4/16, 6/16, 4/16, 1/16$. $E(X) = (25/4 + 25\cdot 4 + 100\cdot 6 + 400\cdot 4 + 1600)/16 = (25/4 + 100 + 600 + 1600 + 1600)/16 = (15625/4)/16 = 15625/64 \approx 244.14$. $E(Y) = E(X) - 100 \approx 144.14$. 만원 단위: $\boxed{144}$ 만 원.
+
+**[93 / 인3-3]** 금융상품 $\mathrm{B}$ — 매 시점 상승 확률 $p$ (알려지지 않음). $a_2$ 에서 거래 차익 기댓값 $0$ 인 $p$.
+
+??? success "풀이"
+    $a_2$ 가격 가능 값: $25, 100, 400$ (만 원), 확률 $(1 - p)^2, 2 p(1 - p), p^2$. $E(X) = 25(1 - p)^2 + 200 p(1 - p) + 400 p^2 = 100$. 전개: $25 - 50 p + 25 p^2 + 200 p - 200 p^2 + 400 p^2 = 25 + 150 p + 225 p^2$. $225 p^2 + 150 p - 75 = 0$ → $3 p^2 + 2 p - 1 = 0$ → $(3 p - 1)(p + 1) = 0$ → $p = 1/3$. 답: $\boxed{p = 1/3}$.
+
+### 자연계 문제 1 — 매개변수 곡선·삼각함수 덧셈정리
+
+> 제시문 1 [가] 코사인 덧셈정리. [나] 점 $\mathrm{A}$ 원 $\mathrm{C}$ (원점 중심, 반지름 $3$) 위, $\mathrm{A}(3\cos t, 3\sin t)$. 점 $\mathrm{B}$ ($\mathrm{D}(7, 0)$ 중심, 반지름 $1$) 위, $\mathrm{B}(7 + \cos 3 t, \sin 3 t)$.
+
+**[93 / 자1-1]** $t = 0$ 부터 $t = 2\pi$ 까지 선분 $\mathrm{AB}$ 와 원 $\mathrm{C}$ 가 서로 다른 두 점에서 만나는 $t$ 의 범위.
+
+??? success "풀이"
+    조건: $\angle\mathrm{OAB}$ 예각 (선분이 원과 두 점에서 만남). 좌표: $\overline{\mathrm{AB}}^2 + 9 > \overline{\mathrm{OB}}^2$. 대입: $\{3\cos t - (7 + \cos 3 t)\}^2 + (3\sin t - \sin 3 t)^2 + 9 > (7 + \cos 3 t)^2 + \sin^2 3 t$. 정리: $7\cos t + \cos t\cos 3 t + \sin t\sin 3 t < 3$. 덧셈정리: $\cos t\cos 3 t + \sin t\sin 3 t = \cos(3 t - t) = \cos 2 t = 2\cos^2 t - 1$. 부등식: $2\cos^2 t + 7\cos t - 1 < 3$ → $2\cos^2 t + 7\cos t - 4 < 0$ → $(2\cos t - 1)(\cos t + 4) < 0$. $\cos t + 4 > 0$ → $\cos t < 1/2$. $0 \le t \le 2\pi$ 에서 $\pi/3 < t < 5\pi/3$. 답: $\boxed{\pi/3 < t < 5\pi/3}$.
+
+### 자연계 문제 2 — 정사면체·이면각
+
+> 제시문 2 [가] 이면각 정의. [나] 한 모서리 $6$ 인 정사면체 $\mathrm{ABCD}$. $\mathrm{E}$ 는 $\overline{\mathrm{BD}}$ 위 점 ($\overline{\mathrm{DE}} = 2$). 일정한 길이 선분 $\mathrm{PQ}$ 는 평면 $\mathrm{ABC}$ 위에 있고 $\mathrm{A}$ 지남.
+
+**[93 / 자2-1]** 사면체 $\mathrm{DEPQ}$ 부피 최대일 때 평면 $\mathrm{EPQ}$ 와 $\mathrm{ABC}$ 가 이루는 각 $\theta$, $\cos\theta$.
+
+??? success "풀이"
+    $\triangle\mathrm{PDE} = (1/3)\triangle\mathrm{PDB}$ (∵ $\overline{\mathrm{DE}}: \overline{\mathrm{EB}} = 2: 4$, 같은 밑변). 사면체 $\mathrm{DEPQ}$ 부피 $= (1/3)$ 사면체 $\mathrm{BDPQ}$. 사면체 $\mathrm{BDPQ}$ 부피 최대 = $\triangle\mathrm{BPQ}$ 최대 (높이 $\overline{\mathrm{DH}}$ 일정, $\mathrm{H}$ $\triangle\mathrm{ABC}$ 무게중심). $\triangle\mathrm{BPQ}$ 최대 ⇔ $\overline{\mathrm{PQ}} \perp \overline{\mathrm{AB}}$. 삼수선: $\mathrm{E}$ 에서 평면 $\mathrm{ABC}$ 수선의 발 $\mathrm{F}$, $\mathrm{F}$ 에서 $\mathrm{PQ}$ 수선의 발 $\mathrm{G}$. $\cos\theta = \overline{\mathrm{FG}}/\overline{\mathrm{EG}}$. PDF 계산: $\overline{\mathrm{FG}} = 4$, $\overline{\mathrm{EF}} = (2/3)\overline{\mathrm{DH}} = (2/3)\cdot 2\sqrt 6 = 4\sqrt 6/3$. $\overline{\mathrm{EG}} = \sqrt{16 + 32/3} = \sqrt{80/3} = 4\sqrt{15}/3$. $\cos\theta = 4/(4\sqrt{15}/3) = 3/\sqrt{15} = 3\sqrt{15}/15 = \sqrt{15}/5$. 답: $\boxed{\sqrt{15}/5}$.
+
+### 자연계 문제 3 — 사각형 대각선·합성함수 미분
+
+> 제시문 3 [가] 합성함수 미분. [나] 사각형 $\mathrm{ABCD}$: $\overline{\mathrm{AB}} = \sqrt 3, \overline{\mathrm{BC}} = 2, \overline{\mathrm{CD}} = 2, \overline{\mathrm{DA}} = 1$. $\angle\mathrm{BAD} = \theta$ 일 때 대각선 $\overline{\mathrm{AC}}$ 길이 $f(\theta)$.
+
+**[93 / 자3-1]** $f'(\pi/2)$.
+
+??? success "풀이"
+    $\angle\mathrm{ABC} = \phi$. 사각형 분할: $\triangle\mathrm{ABD}$ ($\theta$) 와 $\triangle\mathrm{BCD}$ ($\phi$). 직각삼각형 $\mathrm{CDH}$ ($\mathrm{H}$ $\mathrm{D}$ 에서 $\overline{\mathrm{CB}}$ 또는 $\overline{\mathrm{BC}}$ 적당 점) 에서: $\overline{\mathrm{DH}} = |\sqrt 3 - \cos\theta - 2\cos\phi|, \overline{\mathrm{CH}} = |2\sin\phi - \sin\theta|$. $\overline{\mathrm{CD}} = 2$: (1) $4 = (\sqrt 3 - \cos\theta - 2\cos\phi)^2 + (2\sin\phi - \sin\theta)^2$. $\phi$ 는 $\theta$ 의 함수. $\theta$ 미분: (2) $0 = (\sqrt 3 - \cos\theta - 2\cos\phi)(\sin\theta + 2\phi'\sin\phi) + (2\sin\phi - \sin\theta)(2\phi'\cos\phi - \cos\theta)$. $\theta = \pi/2$: $\phi = \pi/2$ (대칭), $f(\pi/2) = \sqrt 7$. (2): $0 = \sqrt 3(1 + 2\phi'(\pi/2))$ → $\phi'(\pi/2) = -1/2$. 코사인법칙: $f(\theta)^2 = 4 + 3 - 4\sqrt 3\cos\phi$ ($\triangle\mathrm{ABC}$ 의 $\mathrm{A}$ 측). $\theta$ 미분: $2 f(\theta) f'(\theta) = 4\sqrt 3\phi'(\theta)\sin\phi$. $\theta = \pi/2$: $2\sqrt 7\cdot f'(\pi/2) = 4\sqrt 3\cdot (-1/2)\cdot 1 = -2\sqrt 3$ → $f'(\pi/2) = -\sqrt 3/\sqrt 7 = -\sqrt{21}/7$. 답: $\boxed{-\sqrt{21}/7}$.
+
+### 자연계 문제 4 — 포물선과 점·곡선 사이 넓이
+
+> 제시문 4 [가] 정적분 넓이. [나] 곡선 $y = x^2$ ($x \ge 0$), 점 $\mathrm{P}(0, 10)$. $\mathrm{A}, \mathrm{B}$ 곡선 위, $\angle\mathrm{OPA} = \theta$. [그림 1] 곡선·$\overline{\mathrm{OP}}$·$\overline{\mathrm{PA}}$ 로 둘러싸인 도형 넓이 $f(\theta)$. [그림 2] $\angle\mathrm{APB} = \pi/2$, 곡선·$\overline{\mathrm{PA}}$·$\overline{\mathrm{PB}}$ 도형 넓이 $g(\theta)$. $g(\theta) = f(\theta + \pi/2) - f(\theta)$ ($0 < \theta < \pi/2$).
+
+**[93 / 자4-1]** $\mathrm{A}$ 의 $x$ 좌표 $t$ 일 때 $f'(\theta)$ 를 $t$ 의 식으로.
+
+??? success "풀이"
+    $\mathrm{A}(t, t^2)$, $\mathrm{P}(0, 10)$. $\mathrm{A}$ 에서 $x$ 축 수선의 발 $\mathrm{Q}$. 사다리꼴 $\mathrm{OPAQ}$ 넓이 $= (1/2)(10 + t^2)\cdot t$ ($\overline{\mathrm{OP}} = 10$, $\overline{\mathrm{AQ}} = t^2$, 평행, 거리 $t$). $f(\theta) = (1/2)(10 + t^2)t - \int_0^t x^2 d x = t(10 + t^2)/2 - t^3/3 = 5 t + t^3/6$. $\tan\theta = t/(10 - t^2)$ ($\mathrm{A}$ 에서 $y$ 축 수선의 발 $\mathrm{H}(0, t^2)$, $\overline{\mathrm{PH}} = 10 - t^2$, $\overline{\mathrm{AH}} = t$). 양변 $\theta$ 미분: $\sec^2\theta = ((10 - t^2) + 2 t^2)/(10 - t^2)^2\cdot d t/d\theta = (10 + t^2)/(10 - t^2)^2\cdot d t/d\theta$. $\sec^2\theta = 1 + t^2/(10 - t^2)^2 = ((10 - t^2)^2 + t^2)/(10 - t^2)^2$ → $d t/d\theta = ((10 - t^2)^2 + t^2)/(10 + t^2)$. $f'(\theta) = (t^2/2 + 5)d t/d\theta = ((10 + t^2)/2)\cdot ((10 - t^2)^2 + t^2)/(10 + t^2) = ((10 - t^2)^2 + t^2)/2$. 답: $\boxed{f'(\theta) = ((10 - t^2)^2 + t^2)/2}$.
+
+**[93 / 자4-2]** $g'(\theta) = 0$ 일 때 $\mathrm{A}, \mathrm{B}$ 의 $x$ 좌표 $a, b$. $a^2 + b^2, a b, g(\theta)$ 각각.
+
+??? success "풀이"
+    $f'(\theta) = ((10 - a^2)^2 + a^2)/2$, $f'(\theta + \pi/2) = ((10 - b^2)^2 + b^2)/2$. $g'(\theta) = f'(\theta + \pi/2) - f'(\theta) = 0$ → $(10 - b^2)^2 + b^2 = (10 - a^2)^2 + a^2$. 전개·인수분해: $(a^2 - b^2)(a^2 + b^2 - 19) = 0$. $a \ne b$ → $a^2 + b^2 = 19$. $\overline{\mathrm{AP}} \perp \overline{\mathrm{BP}}$ (∵ $\angle\mathrm{APB} = \pi/2$): $\mathrm{P}\mathrm{A}$ 기울기·$\mathrm{P}\mathrm{B}$ 기울기 곱 $= -1$. $((a^2 - 10)/a)\cdot ((b^2 - 10)/b) = -1$ → $(a^2 - 10)(b^2 - 10) + a b = 0$ → $(a b)^2 - 10\cdot 19 + 100 + a b = 0$ → $(a b)^2 + a b - 90 = 0$ → $(a b - 9)(a b + 10) = 0$ → $a b = 9$ (또는 $-10$, $0 < a < b$이므로 양). $a + b = \sqrt{a^2 + b^2 + 2 a b} = \sqrt{19 + 18} = \sqrt{37}$, $b - a = \sqrt{19 - 18} = 1$. $b^3 - a^3 = (b - a)(b^2 + a b + a^2) = 1\cdot 28 = 28$. $g(\theta) = f(\theta + \pi/2) - f(\theta) = (b^3/6 + 5 b) - (a^3/6 + 5 a) = (b^3 - a^3)/6 + 5(b - a) = 28/6 + 5 = 14/3 + 15/3 = 29/3$. 답: $\boxed{a^2 + b^2 = 19,\ a b = 9,\ g(\theta) = 29/3}$.
+
+### 자유전공 문제 1 — 곡선 위 점과 비
+
+> 제시문 2-1 [가] 극값 판정. [나] 점 $\mathrm{A}$ 는 곡선 $y = x^3 + x + 3$ ($x \ge 0$) 위, $\mathrm{B}$ 는 직선 $y = 4 x - 2$ 위. 선분 $\mathrm{AB}$ 가 원점 $\mathrm{O}$ 지남.
+
+**[93 / 자유1-1]** $\overline{\mathrm{OA}}/\overline{\mathrm{OB}}$ 의 최솟값.
+
+??? success "풀이"
+    $\mathrm{A}(a, a^3 + a + 3)$. (1) $a = 0$: $\mathrm{A}(0, 3)$, $\mathrm{B}$ 가 $\mathrm{OA}$ ($y$ 축) 와 $y = 4 x - 2$ 교점인 $(0, -2)$. $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = 3/2$. (2) $a \ne 0$: 직선 $\mathrm{OA}$ 기울기 $(a^3 + a + 3)/a$. $\mathrm{B}$ 좌표: $y = (a^3 + a + 3)/a\cdot x = 4 x - 2$ → $x_B = 2 a/(4 a - (a^3 + a + 3))$. $\overline{\mathrm{OA}} = \sqrt{a^2 + (a^3 + a + 3)^2}$, $\overline{\mathrm{OB}} = 2\sqrt{a^2 + (a^3 + a + 3)^2}/|a^3 - 3 a + 3|$. $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = |a^3 - 3 a + 3|/2$. $f(x) = x^3 - 3 x + 3$: $f'(x) = 3 x^2 - 3 = 0$, $x = 1$. $f(1) = 1, f(x) \ge 0$. $|f(a)|_{\min} = 1$ ($a = 1$). $\overline{\mathrm{OA}}/\overline{\mathrm{OB}} = 1/2$. (1) vs (2): $1/2 < 3/2$. 답: $\boxed{1/2}$.
+
+### 자유전공 문제 2 — 4의 배수 (경우의 수)
+
+> 제시문 2-2 [가] 합의 법칙.
+
+**[93 / 자유2-1]** $9$ 장의 카드 ($1{\sim}9$) 중 $4$ 장 동시 추출, 합이 $4$ 의 배수인 경우의 수.
+
+??? success "풀이"
+    $4$ 수의 합: 최소 $1 + 2 + 3 + 4 = 10$, 최대 $6 + 7 + 8 + 9 = 30$. 가능한 $4$ 의 배수 합 $k$: $12, 16, 20, 24, 28$. 각각 경우 셈 (서로 다른 자연수): (1) $k = 12$: $\{1, 2, 3, 6\}, \{1, 2, 4, 5\}$ — $2$. (2) $k = 16$: $\{1, 2, 4, 9\}, \{1, 2, 5, 8\}, \{1, 2, 6, 7\}, \{1, 3, 4, 8\}, \{1, 3, 5, 7\}, \{1, 4, 5, 6\}, \{2, 3, 4, 7\}, \{2, 3, 5, 6\}$ — $8$. (3) $k = 20$: $12$. (4) $k = 24$: $8$. (5) $k = 28$: $\{4, 7, 8, 9\}, \{5, 6, 8, 9\}$ — $2$. 합: $2 + 8 + 12 + 8 + 2 = 32$. 답: $\boxed{32}$.
+
+### 자유전공 문제 3 — 내접원과 삼각형
+
+> 제시문 2-3 [가] 원과 직선의 위치관계. [나] 원 $\mathrm{T}$ 반지름 $1$, 선분 $\mathrm{AB}$ 와 점 $\mathrm{P}$ 에서 접함. $\overline{\mathrm{AB}} = 4, \overline{\mathrm{AP}} = t$.
+
+**[93 / 자유3-1]** $t = 1/2$ 일 때 원 $\mathrm{T}$ 가 내접원인 $\triangle\mathrm{ABC}$ 의 넓이.
+
+??? success "풀이"
+    $\mathrm{A}(0, 0), \mathrm{B}(4, 0)$, 원 중심 $\mathrm{E}(1/2, 1)$. 직선 $\mathrm{AC}$ 기울기 $m$, $y = m x$. 원과의 거리 $= 1$: $|1 - m/2|/\sqrt{m^2 + 1} = 1$. 풀이: $m = -4/3$ (양의 1사분면 위로 향함, 부호 정리). 직선 $\mathrm{BC}$ 기울기 $n$, $y = n(x - 4)$. 거리: $|n/2 - 1 - 4 n|/\sqrt{n^2 + 1} = 1$ → $n = -28/45$. 교점 $\mathrm{C}$: $-4 x/3 = -28(x - 4)/45$ → $-60 x = -28 x + 112$ → $-32 x = 112$ → $x = -7/2$. $y = 14/3$. 넓이 $= (1/2)\cdot 4\cdot 14/3 = 28/3$. 답: $\boxed{28/3}$.
+
+**[93 / 자유3-2]** 원 $\mathrm{T}$ 가 내접원인 $\triangle\mathrm{ABC}$ 가 존재할 $t$ 의 범위.
+
+??? success "풀이"
+    조건: $\angle\mathrm{A} + \angle\mathrm{B} < \pi$. $\tan(\pi/2 - \mathrm{A}/2) > \tan(\mathrm{B}/2)$. $\tan(\mathrm{A}/2) = 1/t$ (내접원 반지름 $1$, $\overline{\mathrm{AP}} = t$). $\tan(\mathrm{B}/2) = 1/(4 - t)$. $\tan(\pi/2 - \mathrm{A}/2) = \cot(\mathrm{A}/2) = t > 1/(4 - t)$ → $t(4 - t) > 1$ → $t^2 - 4 t + 1 < 0$ → $2 - \sqrt 3 < t < 2 + \sqrt 3$. 답: $\boxed{2 - \sqrt 3 < t < 2 + \sqrt 3}$.
+
+---
+
