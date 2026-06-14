@@ -7857,5 +7857,79 @@ $2000$ 년 말 인구 분포: $k$ 세 인구 $(100 - k)^2$ 만 명 ($k = 0, \dot
 
 ---
 
+## 카드 105 — 건국대 (2018학년도)
+
+건국대 2018학년도 KU 논술우수자전형. 인문 II 수학 (주식 포트폴리오·로렌츠 곡선 지니계수·최저임금 초과공급량 기댓값) 3 sub, 자연계 수학 (직사각형 접기 도형·접은 사각뿔 부피·구와 평면의 단면 원·원 중심 자취) 4 sub.
+
+### 인문 II 2-1 — 연립방정식·일차함수 최대 최소 (주식 포트폴리오)
+
+K 씨가 $600$ 만 원으로 주식 $120$ 주 구매. A ($1$ 만 원, $5\%$), B ($3$ 만 원, $6\%$), C ($9$ 만 원, $10\%$). $A, B, C$ 를 각각 $x, y, z$ 주.
+
+**[105 / 인사2-2-1]** $x, y$ 를 $z$ 로 나타내고, 총수익 $T$ 만 원의 최댓값·최솟값.
+
+??? success "풀이"
+    (식 1) $x + y + z = 120$. (식 2) $x + 3 y + 9 z = 600$. 연립: $x = 3 z - 120,\ y = -4 z + 240$. $T = 0.05 x + 0.18 y + 0.9 z = 0.33 z + 37.2$. $x, y, z \ge 0$: $x = 3 z - 120 \ge 0$ → $z \ge 40$; $y = -4 z + 240 \ge 0$ → $z \le 60$. $40 \le z \le 60$. $T$ 는 $z$ 의 일차함수 (증가). 최솟값 $T(40) = 0.33\cdot 40 + 37.2 = 50.4$, 최댓값 $T(60) = 0.33\cdot 60 + 37.2 = 57$. 답: $\boxed{x = 3 z - 120,\ y = -4 z + 240,\ T_{\min} = 50.4,\ T_{\max} = 57}$.
+
+### 인문 II 2-2 — 지니계수와 다항식 정적분
+
+D 국 로렌츠 곡선 $L(x) = x^{m^2 - (2 k + 4)m + k^2 + 4 k + 6}$ ($k$ 년 시행, $m$ 년 후).
+
+**[105 / 인사2-2-2-1]** P 정책 1 년 시행 ($k = 1$). $2018, 2019, 2020$ 년의 지니계수.
+
+??? success "풀이"
+    $L(x) = x^{m^2 - 6 m + 11} = x^{(m - 3)^2 + 2}$. 지니계수 $G = \frac{\int_0^1(x - L(x))\,dx}{1/2} = 2\int_0^1(x - x^{(m-3)^2 + 2})\,dx = 2[1/2 - 1/((m-3)^2 + 3)] = 1 - 2/((m - 3)^2 + 3)$. $m = 1$ ($2018$): $1 - 2/(4 + 3) = 5/7$. $m = 2$ ($2019$): $1 - 2/(1 + 3) = 1/2$. $m = 3$ ($2020$): $1 - 2/(0 + 3) = 1/3$. 답: $\boxed{2018: 5/7,\ 2019: 1/2,\ 2020: 1/3}$.
+
+**[105 / 인사2-2-2-2]** $2027$ 년 지니계수가 $0.4$ 미만이 되려면 P 정책을 몇 년간 시행해야 하는가? ($m = 10$).
+
+??? success "풀이"
+    $L(x) = x^{100 - (2 k + 4)\cdot 10 + k^2 + 4 k + 6} = x^{k^2 - 16 k + 66}$. $G = 1 - 2/(k^2 - 16 k + 67)$ (지수 + 1). $G < 0.4$ → $2/(k^2 - 16 k + 67) > 0.6$ → $k^2 - 16 k + 67 < 10/3$ → $(k - 8)^2 < 1/3$ → $8 - 1/\sqrt 3 < k < 8 + 1/\sqrt 3 \approx 7.42 < k < 8.58$. $k$ 정수 → $k = 8$ 년. 답: $\boxed{8\text{ 년}}$.
+
+### 인문 II 2-3 — 이산확률변수의 기댓값과 등비급수 극한
+
+A 국 노동수요곡선 $D_n: L_n = -X_D + a_n$, 공급곡선 $S_n: L_n = X_S + b_n$. $L_n$ 의 확률질량함수 $\mathrm P(L_n = L + 2^{-k}) = 2^{-k}/(1 - 2^{-n})$ ($k = 1, \dots, n$). $3^{-n} < 4 b_n - L < 4 a_n - 5 L < 2^{-n}$. 초과공급량 $Q_n = X_S - X_D = 2 L_n - (a_n + b_n)$.
+
+**[105 / 인사2-2-3]** $Q_n$ 의 기댓값 $\mathrm E(Q_n)$ 과 $\lim_{n\to\infty}\mathrm E(Q_n)$.
+
+??? success "풀이"
+    $\mathrm E(L_n) = \sum_{k=1}^n(L + 2^{-k})\cdot\frac{2^{-k}}{1 - 2^{-n}}$. $\sum 2^{-k} = 1 - 2^{-n}$, $\sum 4^{-k} = (1/3)(1 - 4^{-n})$. $\mathrm E(L_n) = L + \frac{(1/3)(1 - 4^{-n})}{1 - 2^{-n}} = L + \frac{1 + 2^{-n}}{3}$. $\mathrm E(Q_n) = 2\mathrm E(L_n) - (a_n + b_n) = 2 L + \frac{2(1 + 2^{-n})}{3} - (a_n + b_n)$. 극한: $\lim 2^{-n} = 0$, $\lim 3^{-n} = 0$ → 끼임에 의해 $4 a_n - 5 L \to 0$ → $\lim a_n = 5 L/4$; $4 b_n - L \to 0$ → $\lim b_n = L/4$. $\lim(a_n + b_n) = 5 L/4 + L/4 = 3 L/2$. $\lim\mathrm E(Q_n) = 2 L + 2/3 - 3 L/2 = L/2 + 2/3$. 답: $\boxed{\lim\mathrm E(Q_n) = L/2 + 2/3}$.
+
+### 자연계 수학 1-1 — 직사각형 접기·삼각함수
+
+평면 직사각형 $\mathrm{ABCD}$, $\overline{\mathrm{AB}} = a,\ \overline{\mathrm{BC}} = b$. 대각선 $\mathrm{BD}$ 를 따라 접었을 때 빗금 (점 $\mathrm A$ 가 $\mathrm C$ 쪽으로 접힘) 부분 $\triangle\mathrm{GBD}$ 의 넓이 ($\mathrm G$ 는 접은 $\mathrm A$ 가 $\mathrm{CD}$ 와 만난 점이 아니라, 접힌 면과 $\mathrm{AD}$ 의 교점).
+
+**[105 / 자수-1-1]** $\triangle\mathrm{GBD}$ 의 넓이를 $a, b$ 로 표현.
+
+??? success "풀이"
+    접었으므로 $\angle\mathrm{GBD} = \angle\mathrm{DBC} = \theta$. $\angle\mathrm{GDB} + \angle\mathrm{BDC} = \pi/2$, $\angle\mathrm{BDC} + \theta = \pi/2$ → $\angle\mathrm{GDB} = \theta$. $\triangle\mathrm{GBD}$ 이등변, 높이 $h = \tan\theta\cdot\overline{\mathrm{BD}}/2 = (a/b)\sqrt{a^2 + b^2}/2$ ($\triangle\mathrm{BCD}$ 에서 $\tan\theta = a/b$). $\overline{\mathrm{BD}} = \sqrt{a^2 + b^2}$. 넓이 $= \frac 12\overline{\mathrm{BD}}\cdot h = \frac 12\sqrt{a^2 + b^2}\cdot\frac{a\sqrt{a^2 + b^2}}{2 b} = \frac{a(a^2 + b^2)}{4 b}$. 답: $\boxed{\dfrac{a(a^2 + b^2)}{4 b}}$.
+
+### 자연계 수학 1-2 — 접은 사각뿔의 부피 최댓값
+
+$\overline{\mathrm{AB}} = 2,\ \overline{\mathrm{BC}} = 3$ 인 직사각형 $\mathrm{ABCD}$ 에서 점 $\mathrm E$ 를 $\mathrm{AD}$ 위에 잡아 $\overline{\mathrm{CE}}$ 를 따라 접어 $\mathrm D$ 가 $\mathrm F$ 로 이동. 평면 $\mathrm{CEF}$ ⊥ 평면 $\mathrm{ABCD}$. 사각뿔 $\mathrm F-\mathrm{ABCE}$ 의 부피의 최댓값.
+
+**[105 / 자수-1-2]** $\overline{\mathrm{DE}} = x$ ($0 \le x \le 3$). 부피 최댓값.
+
+??? success "풀이"
+    밑면 $\mathrm{ABCE}$ 의 넓이 $= 3\cdot 2 - \frac 12\cdot 2\cdot x = 6 - x$. $\mathrm F$ 는 $\mathrm D$ 의 이동상, $\overline{\mathrm{CE}}\perp\mathrm{DF}$ 이고 $\overline{\mathrm{DF}}$ 가 평면 $\mathrm{ABCD}$ 위 사영. 접힘 후 $\mathrm F$ 의 높이 $h$: $\overline{\mathrm{CE}} = \sqrt{x^2 + 4}$ (피타고라스). $\triangle\mathrm{CDE}$ 넓이 $= \frac 12\cdot 2\cdot x = x = \frac 12\overline{\mathrm{CE}}\cdot h$ → $h = 2 x/\sqrt{x^2 + 4}$. 부피 $V(x) = \frac 13(6 - x)\cdot\frac{2 x}{\sqrt{x^2 + 4}}$. $V'(x) = 0$ 풀면 $x = 2$. $V(2) = \frac 13\cdot 4\cdot\frac{4}{\sqrt 8} = \frac{16}{3\cdot 2\sqrt 2} = \frac{4\sqrt 2}{3}$. 답: $\boxed{V_{\max} = \dfrac{4\sqrt 2}{3}}$.
+
+### 자연계 수학 2-1 — 구·평면의 단면 원, 점과 원 위 점의 거리
+
+구 $x^2 + y^2 + z^2 = 9$ 와 평면 $x + y + z = 3$ 이 만나서 생기는 원 $C$. 점 $\mathrm A(2, 2, 1)$ 에서 $C$ 위 점까지 거리의 최솟값.
+
+**[105 / 자수-2-1]** $\overline{\mathrm{AQ}}$ 의 최솟값 ($\mathrm Q \in C$).
+
+??? success "풀이"
+    구 중심 $\mathrm O(0, 0, 0)$, 평면 $\alpha: x + y + z = 3$ 법선 $(1, 1, 1)/\sqrt 3$. 원 $C$ 의 중심 $\mathrm{O'}$ 는 $\mathrm O$ 의 $\alpha$ 위로의 정사영 $= (1, 1, 1)$ (∵ $t(1, 1, 1)$ 이 $\alpha$ 위면 $3 t = 3$, $t = 1$). $\overline{\mathrm{OO'}} = \sqrt 3$. $C$ 의 반지름 $r_C = \sqrt{9 - 3} = \sqrt 6$. $\mathrm A(2, 2, 1)$ 의 $\alpha$ 위 정사영 $\mathrm H$: $\mathrm A + t(1, 1, 1)$ 이 $\alpha$ 에 있으려면 $5 + 3 t = 3$ → $t = -2/3$, $\mathrm H = (2 - 2/3, 2 - 2/3, 1 - 2/3) = (4/3, 4/3, 1/3)$. $\overline{\mathrm{AH}} = \sqrt{3\cdot(2/3)^2} = 2/\sqrt 3$. $\overline{\mathrm{O'H}} = \sqrt{3\cdot(1/3)^2} = \sqrt 3/3 = 1/\sqrt 3$. $\overline{\mathrm{HQ}}_{\min} = r_C - \overline{\mathrm{O'H}} = \sqrt 6 - \sqrt 6/3 = 2\sqrt 6/3$. $\overline{\mathrm{AQ}}_{\min} = \sqrt{\overline{\mathrm{AH}}^2 + \overline{\mathrm{HQ}}_{\min}^2} = \sqrt{4/3 + 24/9} = \sqrt{4/3 + 8/3} = \sqrt 4 = 2$. 답: $\boxed{\overline{\mathrm{AQ}}_{\min} = 2}$.
+
+### 자연계 수학 2-2 — 구와 평면의 단면원 중심의 자취
+
+구 $S: (x - 2)^2 + y^2 + z^2 = 2$ 와 평면 $\alpha: mx - y = 0$ 이 만나 원이 생길 때 원의 중심 $\mathrm P$. $m$ 이 변하면서 $\mathrm P$ 가 그리는 곡선의 길이.
+
+**[105 / 자수-2-2]** $\mathrm P$ 의 자취의 길이.
+
+??? success "풀이"
+    $\mathrm P$ 는 $S$ 의 중심 $(2, 0, 0)$ 의 $\alpha$ 위 정사영. $\alpha$ 의 법선 $(m, -1, 0)/\sqrt{m^2 + 1}$. $\mathrm P = (2 + m t, -t, 0)$ 가 $\alpha$ 위: $m(2 + m t) - (-t) = 0$ → $t = -2 m/(m^2 + 1)$. $\mathrm P = (2/(m^2 + 1),\ 2 m/(m^2 + 1),\ 0)$. $x = 2/(m^2 + 1),\ y = 2 m/(m^2 + 1)$. $(x - 1)^2 + y^2 = (m^2 + 1 - 2)^2/(m^2 + 1)^2 + 4 m^2/(m^2 + 1)^2 = ((m^2 - 1)^2 + 4 m^2)/(m^2 + 1)^2 = (m^2 + 1)^2/(m^2 + 1)^2 = 1$. 자취는 $(x - 1)^2 + y^2 = 1$ 의 일부. 단면이 생기려면 평면과 구의 거리 $< \sqrt 2$: $|2 m|/\sqrt{m^2 + 1} < \sqrt 2$ → $4 m^2 < 2(m^2 + 1)$ → $m^2 < 1$ → $-1 < m < 1$. 끝점 ($m = \pm 1$): $(1, \pm 1, 0)$. $\mathrm P$ 는 원 $(x - 1)^2 + y^2 = 1$ 의 오른쪽 반원 (양 끝 $(1, -1, 0)$ 과 $(1, 1, 0)$ 을 잇는 반원, $x > 0$ 쪽). 길이 $= \frac 12\cdot 2\pi\cdot 1 = \pi$. 답: $\boxed{\text{자취 길이 } = \pi}$.
+
+---
+
 
 
