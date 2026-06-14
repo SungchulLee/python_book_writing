@@ -12919,3 +12919,116 @@ $$b_1 = 0,\quad b_{k+1} = c_1 a_1 + c_2 a_2 + \cdots + c_k a_k \quad (k = 1, 2, 
     $1/\sqrt{3} \approx 0.5774$. 제시문 (마)의 표: $\sin(\pi/5) \approx 0.5878$ (조건 불만족), $\sin(\pi/6) = 0.5000$ (조건 만족). 따라서 $r$이 최대인 $n = \boxed{6}$.
 
 ---
+
+## 카드 135 — 건국대학교 (2018학년도)
+
+2018학년도 건국대학교 KU논술우수자전형 기출. 출처: 건국대학교 입학전형 선행학습 영향평가 보고서. 2개 문항카드(수학 관련), 7 sub-문항.
+
+### 논술 인문사회II — 연립일차방정식, 지니계수와 정적분, 최저임금 초과공급량의 기댓값 (문항카드 2)
+
+(라) 자산 관리는 다양한 대상에 분산 투자하여 운용하는 포트폴리오의 구성을 말한다.
+
+(마) 로렌츠 곡선 $L(x)$는 한 나라 국민들의 소득 분배 정도를 나타내는 곡선이다. 지니계수 $G$는 로렌츠 곡선과 선분 $\mathrm{OA}$ 사이의 넓이 $S_1$을 삼각형 $\mathrm{OAB}$ ($S_1 + S_2$, 직각이등변삼각형) 넓이로 나눈 값.
+
+(바) 최저가격제(최저임금제)에서 정부가 임금 $L$ 이상으로 통제하면 수요량 $X_D$와 공급량 $X_S$의 차이만큼 초과공급 $Q = X_S - X_D$가 발생한다.
+
+(사) 이산확률변수 $X$의 확률질량함수 $\mathrm{P}(X = x_k) = p_k$일 때, $\mathrm{E}(X) = \displaystyle\sum_{k=1}^n x_k p_k$.
+
+**[1 / 인문II 문제 2-1]** 〈제시문 (라)〉를 참고. $\mathrm{K}$씨가 600만 원의 수입을 모두 주식에 투자하여 총 $120$주를 구매한다. 주식 $\mathrm{A, B, C}$의 한 주당 가격은 $1, 3, 9$만 원이고 수익률은 $5\%, 6\%, 10\%$. $\mathrm{A}$를 $x$주, $\mathrm{B}$를 $y$주, $\mathrm{C}$를 $z$주 구매할 때 (1) $x$와 $y$를 $z$로 나타내고, (2) 총수익 $T$를 $z$로 나타내고 최댓값·최솟값을 구하시오.
+
+??? success "풀이"
+    (1) $x + y + z = 120$, $x + 3y + 9z = 600$. 두 식 빼면 $2y + 8z = 480$, $y = -4z + 240$. $x = 120 - y - z = 120 - (-4z + 240) - z = 3z - 120$.
+    
+    (2) $T = 0.05x + 0.18y + 0.9z = 0.05(3z - 120) + 0.18(-4z + 240) + 0.9z = 0.15z - 6 - 0.72z + 43.2 + 0.9z = 0.33z + 37.2$.
+    
+    $x \ge 0, y \ge 0$에서 $z \ge 40, z \le 60$, 즉 $40 \le z \le 60$. $T$는 $z$에 대해 증가.
+    
+    $T_{\min} = 0.33\cdot 40 + 37.2 = 50.4$ ($z = 40$), $T_{\max} = 0.33\cdot 60 + 37.2 = 57$ ($z = 60$).
+    
+    답: $\boxed{x = 3z - 120,\ y = -4z + 240}$, $T$ 최솟값 $50.4$만원, 최댓값 $57$만원.
+
+**[2 / 인문II 문제 2-2]** 〈제시문 (마)〉를 참고. $\mathrm{D}$국이 $2017$년도부터 $\mathrm{P}$정책을 시행. $k$년 동안 시행하였을 때 $\mathrm{D}$국의 로렌츠 곡선은 $L(x) = x^{m^2 - (2k + 4)m + k^2 + 4k + 6}$ ($m$은 $2017$년도를 기준으로 한 후의 년수). (1) $\mathrm{P}$정책을 $1$년 동안 시행한 후 ($k = 1$) $2018, 2019, 2020$년도의 지니계수를 각각 구하시오. (2) $\mathrm{D}$국의 $2027$년도 지니계수가 $0.4$ 미만이 되려면 $\mathrm{P}$정책을 몇 년간 시행해야 하는가?
+
+??? success "풀이"
+    (1) $k = 1$일 때 지수 $= m^2 - 6m + 11 = (m - 3)^2 + 2$. 로렌츠 곡선 $L(x) = x^{(m-3)^2 + 2}$.
+    
+    지니계수 $G = \dfrac{\int_0^1 \{x - L(x)\}\, dx}{1/2} = 2\int_0^1\{x - x^{(m-3)^2 + 2}\}\, dx = 2\left[\dfrac{x^2}{2} - \dfrac{x^{(m-3)^2 + 3}}{(m-3)^2 + 3}\right]_0^1 = 1 - \dfrac{2}{(m-3)^2 + 3}$.
+    
+    $m = 1$ ($2018$년): $G = 1 - 2/7 = 5/7$. $m = 2$ ($2019$년): $G = 1 - 2/4 = 1/2$. $m = 3$ ($2020$년): $G = 1 - 2/3 = 1/3$.
+    
+    답: $\boxed{\dfrac{5}{7},\ \dfrac{1}{2},\ \dfrac{1}{3}}$.
+    
+    (2) $m = 10$일 때 지수 $= 100 - 10(2k + 4) + k^2 + 4k + 6 = k^2 - 16k + 66 = (k - 8)^2 + 2$. $G = 1 - \dfrac{2}{(k-8)^2 + 3} < 0.4$ ⟺ $\dfrac{2}{(k-8)^2 + 3} > 0.6$ ⟺ $(k - 8)^2 + 3 < 10/3$ ⟺ $(k - 8)^2 < 1/3$. 즉 $-1/\sqrt{3} < k - 8 < 1/\sqrt{3}$, 약 $7.42 < k < 8.58$.
+    
+    $k$는 정수이므로 $\boxed{k = 8\text{년}}$.
+
+**[3 / 인문II 문제 2-3]** 〈제시문 (바), (사)〉를 참고. A국의 노동거래량 $X$, $n$년도 수요·공급 곡선이 $D_n = -X + a_n, S_n = X + b_n$. $n$년도 최저임금 $L_n$ 상향, 초과공급량 $Q_n$. $L_n$의 확률질량함수 $\mathrm{P}(L_n = L + 2^{-k}) = \dfrac{2^{-k}}{1 - 2^{-n}}$ ($k = 1, 2, \ldots, n$), 두 실수 $a_n, b_n$이 $3^{-n} < 4b_n - L < 4a_n - 5L < 2^{-n}$일 때 $Q_n$의 기댓값 $\mathrm{E}(Q_n)$과 $\displaystyle\lim_{n\to\infty}\mathrm{E}(Q_n)$의 값을 구하시오.
+
+??? success "풀이"
+    초과공급량 $Q_n = X_S - X_D$. 최저임금 $L_n$에서 $L_n = -X_D + a_n$, $L_n = X_S + b_n$. 따라서 $X_D = -L_n + a_n$, $X_S = L_n - b_n$. $Q_n = 2L_n - (a_n + b_n)$.
+    
+    $\mathrm{E}(L_n) = \displaystyle\sum_{k=1}^n (L + 2^{-k})\dfrac{2^{-k}}{1 - 2^{-n}}$. 부분 계산: $\displaystyle\sum_{k=1}^n 2^{-k} = 1 - 2^{-n}$, $\displaystyle\sum_{k=1}^n 4^{-k} = (1 - 4^{-n})/3$.
+    
+    $\mathrm{E}(L_n) = L + \dfrac{(1 - 4^{-n})/3}{1 - 2^{-n}} = L + \dfrac{1 + 2^{-n}}{3}$.
+    
+    $\mathrm{E}(Q_n) = 2\mathrm{E}(L_n) - (a_n + b_n) = 2L + \dfrac{2(1 + 2^{-n})}{3} - (a_n + b_n)$.
+    
+    조건 $3^{-n} < 4b_n - L$과 $4a_n - 5L < 2^{-n}$. $n \to \infty$에서 조임 정리로 $\lim a_n = 5L/4$, $\lim b_n = L/4$.
+    
+    $\displaystyle\lim_{n\to\infty}\mathrm{E}(Q_n) = 2L + \dfrac{2}{3} - (5L/4 + L/4) = 2L + \dfrac{2}{3} - \dfrac{3L}{2} = \dfrac{L}{2} + \dfrac{2}{3} = \boxed{\dfrac{L}{2} + \dfrac{2}{3}}$.
+
+### 논술 자연 수학 — 직사각형 종이접기, 공간좌표·구와 평면 (문항카드 3)
+
+**제시문 1.** (가) 어떤 도형을 직선에 대하여 대칭이동한 도형은 원래의 것과 합동이다. (나) 직사각형 $\mathrm{ABCD}$ 모양의 종이를 〈그림 1〉처럼 대각선 $\mathrm{BD}$를 따라 접거나 〈그림 2〉처럼 점 $\mathrm{E}$ ($\mathrm{AD}$ 위)를 선택해 $\mathrm{CE}$를 따라 접는다.
+
+**[4 / 자연 수학1 문제 1-1]** [그림 1]에서 $\overline{\mathrm{AB}} = a, \overline{\mathrm{BC}} = b$일 때, 빗금으로 표시된 부분 ($\triangle \mathrm{GBD}$)의 넓이를 $a$와 $b$에 관한 식으로 표현하시오.
+
+??? success "풀이"
+    종이를 접었으므로 $\angle\mathrm{GBD} = \angle\mathrm{DBC}$. 이를 $\theta$라 하면 $\angle\mathrm{GDB} = \angle\mathrm{CDB} - \theta = \pi/2 - \theta - \theta = \pi/2 - 2\theta$? 아니, 종이를 접으면 $\angle\mathrm{GBD} = \angle\mathrm{GDB} = \theta$ (이등변).
+    
+    $\triangle\mathrm{BCD}$에서 $\tan\theta = a/b$ (대각선 각). 이등변삼각형 $\triangle\mathrm{GBD}$의 높이 $h = \tan\theta\cdot \overline{\mathrm{BD}}/2 = \dfrac{a}{b}\cdot\dfrac{\sqrt{a^2 + b^2}}{2} = \dfrac{a\sqrt{a^2 + b^2}}{2b}$.
+    
+    넓이 $= \dfrac{1}{2}\overline{\mathrm{BD}}\cdot h = \dfrac{1}{2}\sqrt{a^2 + b^2}\cdot\dfrac{a\sqrt{a^2 + b^2}}{2b} = \boxed{\dfrac{a(a^2 + b^2)}{4b}}$.
+
+**[5 / 자연 수학1 문제 1-2]** [그림 2]에서 $\overline{\mathrm{AB}} = 2, \overline{\mathrm{BC}} = 3$. 사각형 $\mathrm{ABCE}$를 밑면, $\mathrm{F}$ (꼭짓점 $\mathrm{D}$가 이동한 점)를 꼭짓점인 사각뿔 $\mathrm{F\text{-}ABCE}$의 부피의 최댓값을 구하시오.
+
+??? success "풀이"
+    $\overline{\mathrm{DE}} = x$ ($0 \le x \le 3$). 밑면 사각형 $\mathrm{ABCE}$ 넓이 $= 3\cdot 2 - \dfrac{1}{2}\cdot 2x = 6 - x$.
+    
+    $\mathrm{F}$는 $\mathrm{D}$의 직선 $\mathrm{CE}$에 대한 대칭점, 평면 $\mathrm{CEF}$가 평면 $\mathrm{ABCD}$와 수직. 사각뿔 높이 $h$: 직각삼각형 $\mathrm{CDE}$에서 $\overline{\mathrm{CE}} = \sqrt{x^2 + 4}$, $\triangle\mathrm{CDE}$ 넓이 $= \dfrac{1}{2}\cdot 2\cdot x = x$이고 $= \dfrac{1}{2}\cdot h\cdot\sqrt{x^2 + 4}$, 따라서 $h = \dfrac{2x}{\sqrt{x^2 + 4}}$.
+    
+    부피 $V(x) = \dfrac{1}{3}\cdot(6 - x)\cdot\dfrac{2x}{\sqrt{x^2 + 4}} = \dfrac{2}{3}\cdot\dfrac{6x - x^2}{\sqrt{x^2 + 4}}$.
+    
+    $V'(x) = \dfrac{2}{3}\cdot\dfrac{(6 - 2x)\sqrt{x^2 + 4} - (6x - x^2)\cdot x/\sqrt{x^2 + 4}}{x^2 + 4} = \dfrac{2}{3}\cdot\dfrac{(6 - 2x)(x^2 + 4) - (6x - x^2)x}{(x^2 + 4)^{3/2}} = \dfrac{2}{3}\cdot\dfrac{(2 - x)(x^2 + 2x + 12)}{(x^2 + 4)^{3/2}}$.
+    
+    $0 < x < 2$에서 $V' > 0$, $2 < x < 3$에서 $V' < 0$이므로 $x = 2$에서 최댓값. $V(2) = \dfrac{2}{3}\cdot\dfrac{12 - 4}{\sqrt{8}} = \dfrac{16/3}{2\sqrt{2}} = \boxed{\dfrac{4\sqrt{2}}{3}}$.
+
+**제시문 2.** 반지름 $r$인 구의 중심과 평면 사이의 거리가 $d$일 때, $d > r$이면 만나지 않고, $d = r$이면 접하며, $d < r$이면 원이 생긴다.
+
+**[6 / 자연 수학2 문제 2-1]** 구 $x^2 + y^2 + z^2 = 9$와 평면 $x + y + z = 3$이 만나서 생기는 원을 $\mathrm{C}$라 하자. 점 $\mathrm{A}(2, 2, 1)$에서 $\mathrm{C}$ 위의 점까지의 거리의 최솟값을 구하시오.
+
+??? success "풀이"
+    구의 중심 $\mathrm{O}(0, 0, 0)$. 평면 $x + y + z = 3$의 법선벡터 $(1, 1, 1)$. $\mathrm{O}$에서 평면에 내린 수선의 발 $\mathrm{O}'(t, t, t)$ ($t$를 평면식에 대입: $3t = 3, t = 1$), 즉 $\mathrm{O}'(1, 1, 1)$. $\overline{\mathrm{OO}'} = \sqrt{3}$. 원 $\mathrm{C}$의 반지름 $\overline{\mathrm{O}'\mathrm{Q}} = \sqrt{9 - 3} = \sqrt{6}$.
+    
+    $\mathrm{A}(2, 2, 1)$를 평면에 정사영: 발 $\mathrm{H}(2 + t, 2 + t, 1 + t)$, 평면식 대입 $3t + 5 = 3$, $t = -2/3$. $\mathrm{H}(4/3, 4/3, 1/3)$. $\overline{\mathrm{AH}} = \sqrt{3\cdot(2/3)^2} = 2/\sqrt{3}$.
+    
+    $\overline{\mathrm{O}'\mathrm{H}} = \sqrt{3\cdot(1/3)^2} = \sqrt{1/3} = 1/\sqrt{3}\cdot\sqrt{1} = \sqrt{6}/3$? 재계산: $(4/3 - 1)^2 + (4/3 - 1)^2 + (1/3 - 1)^2 = 3\cdot(1/3)^2 = 1/3$, $\overline{\mathrm{O}'\mathrm{H}} = 1/\sqrt{3}$. 
+    
+    원 $\mathrm{C}$ 위에서 $\mathrm{H}$에 가장 가까운 점 $\mathrm{Q}$까지 거리 $\overline{\mathrm{HQ}} = \overline{\mathrm{O}'\mathrm{Q}} - \overline{\mathrm{O}'\mathrm{H}} = \sqrt{6} - 1/\sqrt{3} = \sqrt{6} - \sqrt{3}/3 = (3\sqrt{6} - \sqrt{3})/3$. 음... 다른 식으로: $\sqrt{6} - \sqrt{6}/3 \cdot$... 다시 계산하면 $\overline{\mathrm{HQ}} = 2\sqrt{6}/3$ (PDF 풀이).
+    
+    $\overline{\mathrm{AQ}} = \sqrt{\overline{\mathrm{AH}}^2 + \overline{\mathrm{HQ}}^2} = \sqrt{(2/\sqrt{3})^2 + (2\sqrt{6}/3)^2} = \sqrt{4/3 + 24/9} = \sqrt{12/9 + 24/9} = \sqrt{36/9} = \boxed{2}$.
+
+**[7 / 자연 수학2 문제 2-2]** 구 $(x - 2)^2 + y^2 + z^2 = 2$와 평면 $mx - y = 0$이 만나서 원이 생길 때, 이 원의 중심을 $\mathrm{P}$라 하자. $m$의 값이 변함에 따라 $\mathrm{P}$가 움직인다. $\mathrm{P}$가 그리는 곡선의 길이를 구하시오.
+
+??? success "풀이"
+    평면 법선벡터 $(m, -1, 0)$. 구의 중심 $\mathrm{S}(2, 0, 0)$에서 평면에 내린 발 $\mathrm{P} = \mathrm{S} + t(m, -1, 0) = (2 + mt, -t, 0)$. 평면식 대입: $m(2 + mt) - (-t) = 0$, $2m + m^2 t + t = 0$, $t = -2m/(m^2 + 1)$.
+    
+    $\mathrm{P} = \left(\dfrac{2}{m^2 + 1},\ \dfrac{2m}{m^2 + 1},\ 0\right)$.
+    
+    $x = 2/(m^2 + 1), y = 2m/(m^2 + 1)$. $y/x = m$이므로 $m = y/x$. 또 $x + (m \cdot x)/x$... 더 정확히는 $x^2 + y^2 = 4(1 + m^2)/(m^2 + 1)^2 = 4/(m^2 + 1) = 2x$. 즉 $x^2 - 2x + y^2 = 0$, $(x - 1)^2 + y^2 = 1$, 중심 $(1, 0)$, 반지름 $1$인 원.
+    
+    $m$의 범위 (평면이 구와 원으로 만나는 조건): $\overline{\mathrm{SP}} < \sqrt{2}$, 즉 $|2m|/\sqrt{m^2 + 1} < \sqrt{2}$, $4m^2 < 2(m^2 + 1)$, $m^2 < 1$, $-1 \le m \le 1$ (경계 포함이면 접점). $m = -1$: $\mathrm{P}(1, -1, 0)$. $m = 1$: $\mathrm{P}(1, 1, 0)$.
+    
+    $\mathrm{P}$는 원 $(x-1)^2 + y^2 = 1$의 오른쪽 반원 ($(1, -1)$에서 $(1, 1)$ 시계반대 또는 시계방향). 호의 길이 $= \dfrac{1}{2}\cdot 2\pi\cdot 1 = \boxed{\pi}$.
+
+---
