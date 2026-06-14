@@ -17002,3 +17002,173 @@ $$
     $$
     V_{B\text{-측}}=\boxed{\dfrac{49\sqrt 3}{576}}.\qquad\square
     $$
+
+---
+
+## 카드 152 — 건국대학교 (2018학년도)
+
+[2018학년도 건국대학교 입학전형 선행학습영향평가 자체평가보고서] · KU논술우수자 전형. 인문 II 수학(주식 포트폴리오 최적화, 로렌츠 곡선과 지니계수, 최저임금과 초과공급의 기댓값) + 자연계 수학(종이 접기 삼각형 넓이, 사각뿔 부피 최댓값, 구·평면 교선원 위의 점과 한 점의 최단거리, 구·평면 교선원의 중심 자취).
+
+### 인문 II — 사회·경제 수학
+
+#### [152-1] (인문 II 문제 2-1) 주식 포트폴리오 최적화
+
+**문제.** 한 주에 $1$ 만 원, $3$ 만 원, $9$ 만 원짜리 주식 세 종류를 각각 $x,y,z$ 주씩 구매한다. 총 주식 개수는 $120$ 개이고, 총 구매액은 $600$ 만 원. 단위당 수익률이 각각 $5\%,18\%,90\%$ 일 때, 총 수익을 $T$(만 원) 라 하자. $T$ 의 최댓값과 최솟값을 구하시오.
+
+??? success "풀이"
+
+    **연립방정식.** $x+y+z=120$, $x+3y+9z=600$. 두 식에서 $x,y$ 를 $z$ 에 대해 표현:
+
+    $$
+    x=3z-120,\quad y=-4z+240.
+    $$
+
+    **수익 함수.** $T=0.05x+0.18y+0.9z=0.05(3z-120)+0.18(-4z+240)+0.9z=0.33z+37.2$.
+
+    **범위.** $x\ge 0,\,y\ge 0\Longrightarrow 3z\ge 120,\,4z\le 240$, 즉 $40\le z\le 60$.
+
+    **결론.** $T=0.33z+37.2$ 는 $z$ 에 대해 증가함수이므로
+
+    $$
+    T_{\min}=0.33\cdot 40+37.2=\boxed{50.4},\quad T_{\max}=0.33\cdot 60+37.2=\boxed{57}.\qquad\square
+    $$
+
+#### [152-2] (인문 II 문제 2-2) 로렌츠 곡선과 지니계수
+
+**문제.** $k$ 년간 어떤 정책을 시행할 때 로렌츠 곡선은 $L(x)=x^{k^{2}-(2k+4)k+k^{2}+4k+6}$ 로 변한다(원래 식은 시행 $m=k$ 년 후 $L(x)=x^{(m-3)^{2}+2}$ 의 일반화로 $k$ 가 횟수, $m$ 이 햇수). $m=10$ 년 시행 시 로렌츠 곡선이 $L(x)=x^{k^{2}-16k+66}$ 일 때, 지니계수 $G$ 가 $0.4$ 미만이 되도록 하는 정수 $k$ 의 값(년수)을 구하시오.
+
+??? success "풀이"
+
+    지니계수의 정의
+
+    $$
+    G=\frac{\int_{0}^{1}(x-L(x))\,dx}{\tfrac12\cdot 1\cdot 1}=2\int_{0}^{1}(x-x^{k^{2}-16k+66})\,dx=2\Bigl[\tfrac{x^{2}}{2}-\tfrac{x^{k^{2}-16k+67}}{k^{2}-16k+67}\Bigr]_{0}^{1}
+    $$
+
+    $$
+    =1-\frac{2}{k^{2}-16k+67}.
+    $$
+
+    $G<0.4\Longleftrightarrow 1-\frac{2}{k^{2}-16k+67}<0.4\Longleftrightarrow k^{2}-16k+67<\frac{10}{3}\Longleftrightarrow (k-8)^{2}<\frac{1}{3}$.
+
+    $$
+    8-\frac{1}{\sqrt 3}<k<8+\frac{1}{\sqrt 3},\quad\text{즉 }7.42<k<8.58.
+    $$
+
+    정수 $k$ 는 $k=\boxed{8}$ 년. $\square$
+
+#### [152-3] (인문 II 문제 2-3) 최저임금 초과공급의 기댓값 극한
+
+**문제.** 최저임금이 $L_n$ 일 때 노동수요량 $X_D=-L_n+a_n$, 노동공급량 $X_S=L_n-b_n$. 초과공급량 $Q_n=X_S-X_D=2L_n-(a_n+b_n)$. 확률변수 $L_n$ 의 확률질량함수가 $P(L_n=L+2^{-k})=\dfrac{2^{-k}}{1-2^{-n}}\,(k=1,2,\dots,n)$, 그리고 $3^{-n}<4b_n-L<4a_n-5L<2^{-n}$ 이라 한다. $\lim_{n\to\infty}E(Q_n)$ 을 구하시오.
+
+??? success "풀이"
+
+    $E(L_n)=\sum_{k=1}^{n}(L+2^{-k})\cdot\dfrac{2^{-k}}{1-2^{-n}}=L+\dfrac{\sum 4^{-k}}{\sum 2^{-k}}=L+\dfrac{3^{-1}(1-4^{-n})}{1-2^{-n}}\to L+\dfrac{1}{3}$.
+
+    $E(Q_n)=2E(L_n)-(a_n+b_n)$.
+
+    조건에서 $0\le 4a_n-5L\le 2^{-n}\to 0$, 그러므로 $\lim a_n=\dfrac{5L}{4}$. 마찬가지로 $0\le 4b_n-L\le 2^{-n}\to 0$, $\lim b_n=\dfrac{L}{4}$.
+
+    $$
+    \lim_{n\to\infty}E(Q_n)=2\bigl(L+\tfrac13\bigr)-\bigl(\tfrac{5L}{4}+\tfrac{L}{4}\bigr)=2L+\tfrac23-\tfrac{6L}{4}=\frac{L}{2}+\boxed{\tfrac{2}{3}}.
+    $$
+
+    (정확히는 $\boxed{\tfrac{L}{2}+\tfrac{2}{3}}$). $\square$
+
+### 자연계 수학 — 평면 도형의 접기, 공간 도형
+
+#### [152-4] (자연 문제 1-1) 직사각형 종이를 대각선으로 접은 빗금 부분의 넓이
+
+**문제.** [그림 1] 직사각형 $ABCD$ 의 종이를 대각선 $BD$ 를 따라 접었을 때, 접힌 영역과 원래 영역이 겹쳐서 만드는 이등변삼각형 $GBD$ 의 넓이를 $\overline{AB}=a,\,\overline{BC}=b$ 에 관한 식으로 표현하시오.
+
+??? success "풀이"
+
+    종이를 접었으므로 $\angle GBD=\angle DBC=\theta$. 그리고 직사각형이므로 $\angle CDB=\theta$ (엇각). 따라서 $\angle GDB=\theta$ 이고 $\triangle GBD$ 는 $\overline{GB}=\overline{GD}$ 인 이등변삼각형.
+
+    $G$ 에서 $\overline{BD}$ 에 내린 수선의 발을 $H$ 라 하면 $\overline{GH}=h=\tan\theta\cdot\dfrac{\overline{BD}}{2}$. $\triangle BCD$ 에서 $\tan\theta=\dfrac{a}{b}$, $\overline{BD}=\sqrt{a^{2}+b^{2}}$. 따라서
+
+    $$
+    h=\frac{a}{b}\cdot\frac{\sqrt{a^{2}+b^{2}}}{2}=\frac{a\sqrt{a^{2}+b^{2}}}{2b}.
+    $$
+
+    넓이
+
+    $$
+    \triangle GBD=\frac12\cdot\overline{BD}\cdot h=\frac12\cdot\sqrt{a^{2}+b^{2}}\cdot\frac{a\sqrt{a^{2}+b^{2}}}{2b}=\boxed{\frac{a(a^{2}+b^{2})}{4b}}.\qquad\square
+    $$
+
+#### [152-5] (자연 문제 1-2) 사각뿔의 부피 최댓값
+
+**문제.** [그림 2] 직사각형 $ABCD$ ($\overline{AB}=2,\,\overline{BC}=3$) 종이를 선분 $\overline{AD}$ 위의 점 $E$ 를 잡아 선분 $\overline{CE}$ 를 따라 접되, $D$ 가 이동한 점 $F$ 에 대해 평면 $CEF$ 가 평면 $ABCD$ 와 수직이 되도록 한다. 사각뿔 $F\text{-}ABCE$ 의 부피의 최댓값을 구하시오.
+
+??? success "풀이"
+
+    $\overline{DE}=x$ 로 두면 $0\le x\le 3$. 사각형 $ABCE$ 의 넓이는 직사각형 $ABCD$ 에서 $\triangle DEC$ 를 뺀 것:
+
+    $$
+    S=3\cdot 2-\tfrac12\cdot 2\cdot x=6-x.
+    $$
+
+    높이 $h$ 는 직각삼각형 $CDE$ 에서 $\overline{CE}=\sqrt{x^{2}+4}$ 이고 $\triangle CDE$ 의 넓이 $\tfrac12\cdot 2\cdot x=x$ 가 $\tfrac12\cdot h\cdot\overline{CE}$ 와 같다는 사실에서
+
+    $$
+    \tfrac12\cdot h\cdot\sqrt{x^{2}+4}=x\Longrightarrow h=\frac{2x}{\sqrt{x^{2}+4}}.
+    $$
+
+    $V(x)=\tfrac13(6-x)\cdot\tfrac{2x}{\sqrt{x^{2}+4}}=\tfrac23\cdot\dfrac{6x-x^{2}}{\sqrt{x^{2}+4}}$.
+
+    미분: $V'(x)=\dfrac23\cdot\dfrac{(2-x)(x^{2}+2x+12)}{\sqrt{(x^{2}+4)^{3}}}$. $0<x<2$ 에서 $V'>0$, $2<x<3$ 에서 $V'<0$. 따라서 $x=2$ 에서 최댓값:
+
+    $$
+    V(2)=\tfrac23\cdot\dfrac{12-4}{\sqrt 8}=\tfrac23\cdot\dfrac{8}{2\sqrt 2}=\frac{8}{3\sqrt 2}=\boxed{\frac{4\sqrt 2}{3}}.\qquad\square
+    $$
+
+#### [152-6] (자연 문제 2-1) 구·평면 교선원 위의 점과 한 점 사이의 최단거리
+
+**문제.** 구 $x^{2}+y^{2}+z^{2}=9$ 와 평면 $x+y+z=3$ 이 만나서 생기는 원을 $C$ 라 하자. 점 $A(2,2,1)$ 에서 $C$ 위의 점까지의 거리의 최솟값을 구하시오.
+
+??? success "풀이"
+
+    구의 중심 $O=(0,0,0)$, 평면 $\alpha:\,x+y+z=3$. 평면 $\alpha$ 의 법선벡터 $\vec n=(1,1,1)$.
+
+    $O$ 에서 $\alpha$ 에 내린 수선의 발을 $O'$ 라 하면 $O'=(t,t,t)$ 이고 평면 위 점이므로 $3t=3\Longrightarrow t=1$. $O'=(1,1,1)$. $\overline{OO'}=\sqrt 3$.
+
+    원 $C$ 의 반지름: $\overline{O'Q}=\sqrt{r^{2}-\overline{OO'}^{2}}=\sqrt{9-3}=\sqrt 6$.
+
+    $A$ 에서 $\alpha$ 위 정사영 $H$: $H=(2+t,2+t,1+t)$ 가 $\alpha$ 에 있어야 하므로 $5+3t=3\Longrightarrow t=-2/3$. $H=(4/3,4/3,1/3)$. $\overline{AH}=\sqrt{(2/3)^{2}\cdot 3}=\dfrac{2}{\sqrt 3}$.
+
+    $\overline{O'H}=\sqrt{(1/3)^{2}\cdot 3}=\dfrac{\sqrt 6}{3}$. 따라서 $\overline{HQ}_{\min}=\overline{O'Q}-\overline{O'H}=\sqrt 6-\dfrac{\sqrt 6}{3}=\dfrac{2\sqrt 6}{3}$.
+
+    직각삼각형 $AHQ$ 에서
+
+    $$
+    \overline{AQ}_{\min}=\sqrt{\overline{AH}^{2}+\overline{HQ}_{\min}^{2}}=\sqrt{\tfrac{4}{3}+\tfrac{24}{9}}=\sqrt{\tfrac{12+24}{9}}=\sqrt{4}=\boxed{2}.\qquad\square
+    $$
+
+#### [152-7] (자연 문제 2-2) 구·평면 교선원의 중심이 그리는 곡선의 길이
+
+**문제.** 구 $(x-2)^{2}+y^{2}+z^{2}=2$ 와 평면 $mx-y=0$ 이 만나서 원이 생길 때, 이 원의 중심을 $P$ 라 하자. $m$ 의 값이 변함에 따라 $P$ 가 움직일 때 $P$ 가 그리는 곡선의 길이를 구하시오.
+
+??? success "풀이"
+
+    평면 $\alpha:\,mx-y=0$ 의 법선벡터 $\vec n=(m,-1,0)$. 구의 중심 $(2,0,0)$ 에서 $\alpha$ 에 내린 수선의 발이 $P$ 이므로
+
+    $$
+    P=(2,0,0)+t(m,-1,0)=(2+mt,-t,0)
+    $$
+
+    이고 $P\in\alpha$ 에서 $m(2+mt)-(-t)=0\Longrightarrow t=-\dfrac{2m}{m^{2}+1}$. 따라서
+
+    $$
+    P=\left(\frac{2}{m^{2}+1},\,\frac{2m}{m^{2}+1},\,0\right).
+    $$
+
+    $x=\dfrac{2}{m^{2}+1},\,y=\dfrac{2m}{m^{2}+1}$ 에서 $m=\pm\sqrt{\dfrac{2-x}{x}}$, $y=\pm\sqrt{x(2-x)}$, 즉 $(x-1)^{2}+y^{2}=1$ ($xy$ 평면 위 원).
+
+    $m$ 의 허용 범위: 구와 평면이 만나려면 $(m^{2}+1)x^{2}-4x+2=0$ 이 실근을 가져야 하고 $z^{2}=-((m^{2}+1)x^{2}-4x+2)\ge 0$. 판별식 $D/4=4-2(m^{2}+1)\ge 0\Longleftrightarrow m^{2}\le 1$, 즉 $-1\le m\le 1$.
+
+    $m=-1$ 에서 $P=(1,-1,0)$, $m=1$ 에서 $P=(1,1,0)$. 원 $(x-1)^{2}+y^{2}=1$ 의 오른쪽 반원 ($x\ge 1$) 을 따라 움직이므로 호의 길이
+
+    $$
+    \frac{1}{2}\cdot 2\pi=\boxed{\pi}.\qquad\square
+    $$
