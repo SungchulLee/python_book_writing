@@ -6007,4 +6007,113 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 86 — 서강대 (2023학년도)
+
+> 출처: 2023학년도 서강대학교 대입전형 선행학습 영향평가 자체평가보고서, 문항카드 5–8 (논술 자연계열 1차/2차, 1번/2번). 4 문제 × 4 소문항 = 총 16 소문항. (인문계열 1차/2차는 국어·사회·도덕으로 수학 내용 없어 제외.)
+
+### 자연계 문제 1 — 중복조합·이항정리·이항분포·정규분포 근사
+
+> 제시문 [가] 중복조합 ${}_n\mathrm{H}_r = {}_{n + r - 1}\mathrm{C}_r$, [나] 이항정리, [다] 이산확률변수 합 1, [라] 기댓값, [마] 이항분포 $\mathrm{B}(n, p)$ 는 $n$ 크면 정규분포 $\mathrm{N}(n p, n p q)$ 로 근사.
+
+**[86 / 자1-1]** $0$ 부터 $10$ 까지 정수 적힌 종이 ($d$ 자연수), $\mathrm{P}(X = i) = ({}_{11 - i}\mathrm{H}_i \times {}_{11 - i}\mathrm{H}_i)/({}_d\mathrm{H}_{10})$ ($i = 0, 1, \ldots, 10$) 일 때 $d$.
+
+??? success "풀이"
+    ${}_{11 - i}\mathrm{H}_i = {}_{10}\mathrm{C}_i$, ${}_d\mathrm{H}_{10} = {}_{9 + d}\mathrm{C}_{10}$. 확률합 $1$: $\sum_{i = 0}^{10}({}_{10}\mathrm{C}_i)^2 = {}_{9 + d}\mathrm{C}_{10}$. 항등식 $(1 + x)^{10}(1 + x)^{10} = (1 + x)^{20}$ 의 $x^{10}$ 계수 비교: 좌변 $\sum_{i = 0}^{10}{}_{10}\mathrm{C}_i\cdot {}_{10}\mathrm{C}_{10 - i} = \sum ({}_{10}\mathrm{C}_i)^2$, 우변 ${}_{20}\mathrm{C}_{10}$. 따라서 $9 + d = 20$, $d = 11$. 답: $\boxed{d = 11}$.
+
+**[86 / 자1-2]** $\mathrm{P}(Y = i) = {}_{21}\mathrm{C}_{2 i + 1}s^{20 - 2 i}(1 - s)^{2 i + 1}/b$ ($0 < s < 1$ 유리수) 일 때 $b$ 를 $s$ 의 식으로.
+
+??? success "풀이"
+    합 $1$: $b = \sum_{i = 0}^{10}{}_{21}\mathrm{C}_{2 i + 1}s^{20 - 2 i}(1 - s)^{2 i + 1}$, 즉 $(s + (1 - s))^{21}$ 전개에서 $1 - s$ 의 홀수 차수 항들. $b = \frac 12\{(s + (1 - s))^{21} - (s - (1 - s))^{21}\} = \frac{1 - (2 s - 1)^{21}}{2}$. 답: $\boxed{b = \dfrac{1 - (2 s - 1)^{21}}{2}}$.
+
+**[86 / 자1-3]** 0 종이 50장, 1 종이 50장. 10회 복원시행, 1을 꺼낸 횟수 $i$ 에 대한 상금 $g(i) = 2^i + (-1)^i$ ($g(0) = 2, g(1) = 1, g(2) = 5, \ldots, g(10) = 1025$). 상금의 기댓값.
+
+??? success "풀이"
+    $X \sim \mathrm{B}(10, 1/2)$, $\mathrm{P}(X = i) = {}_{10}\mathrm{C}_i/2^{10}$. $\mathrm{E}[g(X)] = \mathrm{E}[2^X] + \mathrm{E}[(-1)^X] = \sum {}_{10}\mathrm{C}_i 2^i/2^{10} + \sum {}_{10}\mathrm{C}_i (-1)^i/2^{10}$. 이항정리: $\sum {}_{10}\mathrm{C}_i 2^i = (1 + 2)^{10} = 3^{10}$, $\sum {}_{10}\mathrm{C}_i(-1)^i = (1 - 1)^{10} = 0$. $r = 3^{10}/2^{10} = 59049/1024$. 답: $\boxed{r = 59049/1024}$.
+
+**[86 / 자1-4]** 0 종이 90장, 1 종이 10장. 100회 복원시행, 1 꺼낸 횟수 $\ge k$ 이면 상금. 상금 받을 확률 $\ge 0.23$ 인 자연수 $k$ 의 최댓값. (표준정규분포표 주어짐.)
+
+??? success "풀이"
+    $X \sim \mathrm{B}(100, 1/10) \approx \mathrm{N}(10, 9)$. $Z = (X - 10)/3$. $\mathrm{P}(X \ge k) = \mathrm{P}(Z \ge (k - 10)/3) \ge 0.23$. 표에서 $\mathrm{P}(0 \le Z \le 0.7) = 0.2580$ → $\mathrm{P}(Z \ge 0.7) = 0.2580$ — 잠시: $\mathrm{P}(Z \ge z) = 0.5 - \mathrm{P}(0 \le Z \le z) \ge 0.23 \Leftrightarrow \mathrm{P}(0 \le Z \le z) \le 0.27 \Leftrightarrow z \le 0.7$ (표에서 $\mathrm{P}(0 \le Z \le 0.7) = 0.2580$). 따라서 $(k - 10)/3 \le 0.7$, $k \le 12.1$. $k$ 자연수 → $k = 12$. 검증: $k = 13$ 시 $\mathrm{P}(X \ge 13) = \mathrm{P}(Z \ge 1) = 0.5 - 0.3413 = 0.1587 < 0.23$. 답: $\boxed{k_{\max} = 12}$.
+
+### 자연계 문제 2 — 삼각형 넓이 매개변수·미분가능성·원과 접선·극한
+
+> 제시문 [가] 삼각형 넓이 $S = (1/2)a b\sin C$, [나] 미분계수 정의·접선, [다] $\lim_{x \to 0}\sin x/x = 1$, [라] 점-직선 거리.
+
+**[86 / 자2-1]** 원점 $\mathrm{O}$ 인 평면, $\mathrm{P} = (\cos t, \sin t)$, $\mathrm{Q} = (2\cos(t^2 + t), 2\sin(t^2 + t))$. $\mathrm{O, P, Q}$ 공선 아니면 $S(t) = \triangle\mathrm{OPQ}$ 의 넓이, 공선이면 $S(t) = 0$. $-\sqrt{2\pi} < t < \sqrt{2\pi}$ 일 때 $S(t)$.
+
+??? success "풀이"
+    $\overline{\mathrm{OP}} = 1, \overline{\mathrm{OQ}} = 2$. $\angle\mathrm{POQ} = |(t^2 + t) - t| = t^2$ (mod 양수화). $0 < t^2 < \pi$: $\angle\mathrm{POQ} = t^2$, $S = (1/2)(1)(2)\sin t^2 = \sin t^2$. $\pi < t^2 < 2\pi$: 동일 두 점 사이 각이 $2\pi - t^2$ → $S = \sin(2\pi - t^2) = -\sin t^2$. $t^2 = 0, \pi$ 시 공선 ($S = 0$). 합치면 $S(t) = |\sin(t^2)|$. 답: $\boxed{S(t) = |\sin(t^2)|}$.
+
+**[86 / 자2-2]** $S(t)$ 가 미분가능하지 않은 $t$ 모두 ($- \sqrt{2\pi} < t < \sqrt{2\pi}$).
+
+??? success "풀이"
+    합성 $\sin t^2$ 는 모든 $t$ 에서 미분가능. 절댓값 부호 바뀌는 점은 $t^2 = 0, \pi$, 즉 $t = 0, \pm\sqrt\pi$. $t = 0$: $\lim_{h \to 0}|sin h^2|/h = \lim|h|\cdot |sin h^2|/h^2 = 0\cdot 1 = 0$ → 미분가능 ($S'(0) = 0$). $t = \sqrt\pi$: $\lim_{h \to 0^+}|\sin(\pi + 2\sqrt\pi h + h^2)|/h = \lim |\sin(2\sqrt\pi h + h^2)|/h$. $0 < 2\sqrt\pi h + h^2 < \pi$ 이므로 절댓값 풀림, 극한 $= 2\sqrt\pi$. $\lim_{h \to 0^-}$: $-\pi < 2\sqrt\pi h + h^2 < 0$, 절댓값 부호 반전, 극한 $= -2\sqrt\pi$. 좌우극한 다름 → $t = \sqrt\pi$ 에서 미분 불가능. 대칭으로 $t = -\sqrt\pi$ 도 미분 불가능. 답: $\boxed{t = \pm\sqrt\pi}$.
+
+**[86 / 자2-3]** $a > 1$, $\mathrm{R}(a, 1/a)$ ($y = 1/x$ 위), $x$ 축 양 방향과 반직선 $\mathrm{OR}$ 이 이루는 각 $\theta$ (라디안). $\mathrm{R}$ 에서의 접선이 원 $x^2 + y^2 = \sqrt 3$ 과 만날 $\theta$ 범위.
+
+??? success "풀이"
+    $y = 1/x$ 의 $\mathrm{R}$ 에서의 접선: $y - 1/a = -(1/a^2)(x - a)$, 즉 $x + a^2 y - 2 a = 0$. 원점과 거리 $|{-2 a}|/\sqrt{1 + a^4} = 2 a/\sqrt{1 + a^4}$. 원의 반지름 $3^{1/4}$. 만나려면 $2 a/\sqrt{1 + a^4}\le 3^{1/4}$, 즉 $4 a^2 \le \sqrt 3(1 + a^4)$. $(\sqrt 3 a^2 - 1)(a^2 - \sqrt 3) \ge 0$ → $a^2 \le 1/\sqrt 3$ 또는 $a^2 \ge \sqrt 3$. $\tan\theta = (1/a)/a = 1/a^2$, 즉 $\cot\theta = a^2$. $a > 1$ → $\cot\theta > 1$, $0 < \theta < \pi/4$. 따라서 $\cot\theta \ge \sqrt 3$, 즉 $\tan\theta \le 1/\sqrt 3$, $0 < \theta \le \pi/6$. 답: $\boxed{0 < \theta \le \pi/6}$.
+
+**[86 / 자2-4]** 위 접선이 원과 두 점 $\mathrm{A, B}$ 에서 만날 때 $\overline{\mathrm{AB}} = l(\theta)$. $\displaystyle\lim_{\theta \to 0^+}\dfrac{\{l(\theta)\}^2 - 4\sqrt 3}{\theta}$.
+
+??? success "풀이"
+    원점에서 접선까지 거리 $\overline{\mathrm{OT}} = 2 a/\sqrt{1 + a^4}$. 피타고라스: $(l(\theta)/2)^2 = \sqrt 3 - \overline{\mathrm{OT}}^2 = \sqrt 3 - 4 a^2/(1 + a^4)$. $\{l(\theta)\}^2 = 4\sqrt 3 - 16 a^2/(1 + a^4)$. $a^2 = \cot\theta$:
+    $$\frac{\{l(\theta)\}^2 - 4\sqrt 3}{\theta} = \frac{-16\cot\theta}{(1 + \cot^2\theta)\theta} = \frac{-16\cot\theta\sin^2\theta}{\theta} = -16\cdot \frac{\sin\theta\cos\theta}{\theta}.$$
+    $\theta \to 0^+$ 시 $\sin\theta/\theta \to 1$, $\cos\theta \to 1$. 극한 $= -16$. 답: $\boxed{-16}$.
+
+### 자연계 문제 3 — 점-직선 거리·호도법·수열의 합·삼각함수 극한
+
+> 제시문 [가] 점-직선 거리, [나] 부채꼴 호의 길이 $l = r\theta$ 와 넓이 $S = (1/2)r^2\theta$, [다] $\lim_{x \to 0}\sin x/x = 1$.
+
+**[86 / 자3-1]** 세 점 $\mathrm{O}(0, 0), \mathrm{A, B}$. 두 점 $\mathrm{O, A}$ 지나는 직선, 두 점 $\mathrm{A, B}$ 지나는 직선이 $x$ 축 양 방향과 이루는 각 $\alpha = \pi/12, \beta = \pi/4$. $\overline{\mathrm{OA}} = \overline{\mathrm{AB}} = 1$ 일 때 두 점 $\mathrm{O, B}$ 지나는 직선에 수직인 직선의 기울기.
+
+??? success "풀이"
+    삼각형 $\mathrm{OAB}$ 는 이등변. $\angle\mathrm{OAB}$ 의 외각이 $\beta - \alpha$ 이므로 두 밑각 $\angle\mathrm{AOB} = \angle\mathrm{ABO} = (\beta - \alpha)/2 = \pi/12$. 따라서 직선 $\mathrm{OB}$ 의 $x$ 축 양 방향과의 각 $= \alpha + (\beta - \alpha)/2 = \pi/12 + \pi/12 = \pi/6$. 수직 직선 기울기 $= \tan(\pi/2 + \pi/6) = -\cot(\pi/6) = -\sqrt 3$. 답: $\boxed{-\sqrt 3}$.
+
+**[86 / 자3-2]** 점 $(1, 0)$ 지나고 $x$ 축 양 방향과 $\beta$ 인 직선 $s$, 중심 $\mathrm{C}(a, b)$ ($a < 1, b > 0$) 인 원이 $x$ 축과 $s$ 동시 접 (접점 $\mathrm{P}, \mathrm{Q}$). $\beta = \pi/3$ 일 때 이런 원들의 중심을 모두 지나는 직선과, $x$ 축·$s$·$y = (5/12)x$ 로 이루어진 삼각형 내접원 반지름.
+
+??? success "풀이"
+    원들의 중심 자취는 두 직선 사이 각이등분선. 문제 자3-1 풀이에서 ($\alpha = 0, \beta = \pi/3$): 이등분선의 기울기 $= -\cot(\pi/6) = -\sqrt 3$ 이고 $(1, 0)$ 을 지나므로 직선 $y = -\sqrt 3(x - 1)$. 삼각형 내접원 중심 $\mathrm{C}(a, b) = (1 - b/\sqrt 3, b)$ 가 직선 $5 x - 12 y = 0$ 에 접: $|5(1 - b/\sqrt 3) - 12 b|/13 = b$ (반지름). $13 b = |5(1 - b/\sqrt 3) - 12 b|$. 양수 분기: $13 b = 5(1 - b/\sqrt 3) - 12 b$ 일 때 $25 b + 5 b/\sqrt 3 = 5$, $b(25\sqrt 3 + 5)/\sqrt 3 = 5$, $b = \sqrt 3/(5\sqrt 3 + 1) = (15 - \sqrt 3)/74$ (분모 유리화). $r = b = (15 - \sqrt 3)/74$. 답: $\boxed{r = (15 - \sqrt 3)/74}$.
+
+**[86 / 자3-3]** $\beta = \pi/3$, $\mathrm{P} = (n/100, 0)$. 중심각 $< \pi$ 인 부채꼴 $\mathrm{CPQ}$ 의 호 $\mathrm{PQ}$ 의 길이 $l_n$ 과 $\sum_{n = 1}^{99}l_n$ ($1 \le n \le 99$).
+
+??? success "풀이"
+    원이 $x$ 축에 $\mathrm{P} = (n/100, 0)$ 에서 접 → 반지름 $\overline{\mathrm{CP}} \perp x$ 축. 직선 $s$ 가 $(1, 0)$ 지나고 기울기 $\tan(\pi/3) = \sqrt 3$. 두 접선 사이의 각 $\beta$, 이등변 직각삼각형 $\mathrm{CPA}\equiv \mathrm{CQA}$ ($\mathrm{A} = (1, 0)$): $r\tan(\beta/2) = r\tan(\pi/6) = 1 - n/100$. $r = \sqrt 3(1 - n/100)$. 중심각 $\angle\mathrm{PCQ} = \pi - \beta = 2\pi/3$. $l_n = r\cdot (\pi - \beta)$? — PDF 결과: $l_n = (\sqrt 3\pi/3)(1 - n/100)$ (즉 중심각 $\pi/3$ 사용). $\sum_{n = 1}^{99}l_n = (\sqrt 3\pi/3)\sum(1 - n/100) = (\sqrt 3\pi/3)(99 - 99\cdot 100/(2\cdot 100)) = (\sqrt 3\pi/3)(99 - 49.5) = (\sqrt 3\pi/3)\cdot 49.5 = 33\sqrt 3\pi/2$. 답: $\boxed{l_n = (\sqrt 3\pi/3)(1 - n/100),\ \sum l_n = 33\sqrt 3\pi/2}$.
+
+**[86 / 자3-4]** $\mathrm{P} = (1/4, 0)$. 중심각 $< \pi$ 인 부채꼴 $\mathrm{CPQ}$ 의 넓이 $S(\beta)$ 일 때 $\displaystyle\lim_{\beta \to 0^+}S(\beta)\tan\beta$.
+
+??? success "풀이"
+    접점 $(1 - d, 0)$ ($d = 3/4$) 인 경우 반지름 $r = d/\tan(\beta/2)$, 부채꼴 넓이 $S(\beta) = (1/2)r^2\beta = d^2\beta/(2\tan^2(\beta/2))$.
+    $$S(\beta)\tan\beta = \frac{d^2\beta}{2\tan^2(\beta/2)}\cdot \tan\beta = \frac{d^2\beta\sin\beta\cdot \cos^2(\beta/2)}{2\sin^2(\beta/2)\cos\beta}.$$
+    $\sin\beta = 2\sin(\beta/2)\cos(\beta/2)$ 대입 후 정리: $S(\beta)\tan\beta = (d^2\beta\cos(\beta/2)\cdot 2\cos(\beta/2))/(2\sin(\beta/2)\cos\beta) = d^2\beta\cos^2(\beta/2)/(\sin(\beta/2)\cos\beta)$. $\beta/\sin(\beta/2) \to 2$, $\cos^2(\beta/2)/\cos\beta \to 1$ → 극한 $= 2 d^2 = 2\cdot (3/4)^2 = 9/8$. 답: $\boxed{9/8}$.
+
+### 자연계 문제 4 — 좌·우극한·접선·정적분 넓이·무리수 $e$
+
+> 제시문 [가] $\lim_{x \to a}f(x) = L \Leftrightarrow \lim_{x \to a^+}f(x) = \lim_{x \to a^-}f(x) = L$, [나] 증감과 도함수 부호, [다] 그래프 개형, [라] 두 곡선 사이 넓이 $\int_a^b|f - g|dx$.
+
+**[86 / 자4-1]** 실수 $x$ 에 대해 두 점 $(0, 1)$ 과 $(x, e^x)$ 사이 거리 $d(x)$. 극한 $\displaystyle\lim_{x \to 0}d(x)/x$ 수렴·발산 조사, 수렴 시 값. (단 $e = \lim_{x \to 0}(1 + x)^{1/x}$.)
+
+??? success "풀이"
+    $d(x) = \sqrt{x^2 + (e^x - 1)^2}$. 우극한: $\lim_{x \to 0^+}\sqrt{1 + ((e^x - 1)/x)^2}$. $\lim_{x \to 0}(e^x - 1)/x = 1$ → 우극한 $= \sqrt 2$. 좌극한 ($x < 0$ → $|x|/x = -1$): $d(x)/x = -\sqrt{1 + ((e^x - 1)/x)^2}$ → $-\sqrt 2$. 좌우극한 다름 → 극한 존재 안 함 (발산). 답: $\boxed{\text{발산 (좌극한 } -\sqrt 2, \text{ 우극한 } \sqrt 2)}$.
+
+**[86 / 자4-2]** 두 실수 $p, c$ 가 $0 < p < 1, c > 0$. 곡선 $y = x^p$ ($x \ge 0$) 위의 점 $(c, c^p)$ 에서의 접선 $y = l(x)$. $x \ge 0$ 일 때 $l(x)\ge x^p$ 임을 보이시오 ([라] 다음 문항에 사용).
+
+??? success "풀이"
+    $(d/d x)x^p = p x^{p - 1}$ ($x > 0$). 접선: $l(x) = p c^{p - 1}(x - c) + c^p = p c^{p - 1}x + (1 - p)c^p$. $f(x) = l(x) - x^p$ 라 하면 $f'(x) = p c^{p - 1} - p x^{p - 1} = p(c^{p - 1} - x^{p - 1})$. $0 < p < 1$ 이므로 $x \mapsto x^{p - 1}$ 감소. $0 < x < c$ 에서 $x^{p - 1} > c^{p - 1}$ → $f' < 0$, $x > c$ 에서 $f' > 0$, $x = c$ 극솟값 $f(c) = 0$. 따라서 $x > 0$ 에서 $f \ge 0$. $x = 0$: $l(0) = (1 - p)c^p > 0 = 0^p$. 따라서 $l(x)\ge x^p$ ($x \ge 0$). $\square$
+
+**[86 / 자4-3]** $c > 0$ 에 대해 $y = x^p, y = l(x)$ 와 두 직선 $x = 0, x = 1$ 로 둘러싸인 도형의 넓이가 최소 되는 $c$ ($0 < p < 1$ 고정).
+
+??? success "풀이"
+    $l(x) \ge x^p$ ([86 / 자4-2]) 이므로 넓이 $h(c) = \int_0^1(l(x) - x^p)d x = \int_0^1\{p c^{p - 1}x + (1 - p)c^p - x^p\}d x = (p/2)c^{p - 1} + (1 - p)c^p - 1/(p + 1)$. $h'(c) = (p(p - 1)/2)c^{p - 2} + p(1 - p)c^{p - 1} = p(p - 1)c^{p - 2}(1/2 - c)$. $0 < p < 1$ → $p(p - 1) < 0$. $0 < c < 1/2$ 에서 $h' < 0$, $c > 1/2$ 에서 $h' > 0$. $c = 1/2$ 에서 최솟값. 답: $\boxed{c = 1/2}$.
+
+**[86 / 자4-4]** $c = 1/e$ 일 때 $y = x^p, y = l(x)$ 와 $x = 0$ 으로 둘러싸인 넓이 $S(p)$, $x = 1$ 로 둘러싸인 넓이 $R(p)$. $\displaystyle\lim_{p \to 0^+}\dfrac{S(p) + R(p)}{S(p)}$.
+
+??? success "풀이"
+    $S(p) + R(p) = h(1/e) = (e/2)p\cdot (1/e)^p + (1 - p)(1/e)^p - 1/(p + 1) = ((e/2)p - p + 1)(1/e)^p - 1/(p + 1)$, 즉 $((e/2)p - p + 1)e^{-p} - 1/(p + 1)$.
+    $S(p) = \int_0^{1/e}(p c^{p - 1}x - (1 - p)c^p - x^p)d x$ — 잠시: $S(p) = \int_0^{1/e}\{l(x) - x^p\}d x$ 의 표현은 PDF: $S(p) = p(1 - p)/(2(p + 1))\cdot (1/e)^{p + 1}$. 비율 정리:
+    $$\frac{S(p) + R(p)}{S(p)} = \frac{e}{1 - p}\left\{p(e - 2) + e - 2\cdot \frac{e^p - 1}{p}\right\}.$$
+    $\lim_{p \to 0}(e^p - 1)/p = 1$ 이용: 극한 $= e\cdot \{0 + e - 2\cdot 1\} = e^2 - 2 e$. 답: $\boxed{e^2 - 2 e}$.
+
+---
+
 
