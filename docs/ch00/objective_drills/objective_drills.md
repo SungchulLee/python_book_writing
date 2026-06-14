@@ -5937,4 +5937,74 @@ $g(\theta) = \sqrt{(4\cos\theta - 3 t)^2 + 4 t^2 \sin^2\theta}\ \ (0 \le \theta 
 
 ---
 
+## 카드 85 — 연세대 미래캠퍼스 (2020학년도)
+
+> 출처: 2020학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서, 문항카드 3 (논술 자연 1) + 4 (논술 자연 2) + 5 (논술 자연 3) + 6 (논술 의예 1) + 7 (논술 의예 2). 총 10 문항.
+
+### 자연계 문제 1 — 부분적분 (절댓값 사인 × 지수)
+
+**[85 / 자1]** $f(x) = |\sin x|$ 에 대하여 $\displaystyle \int_{-\pi/2}^{\pi/2}f(x)e^x dx$.
+
+??? success "풀이"
+    부정적분 $\int \sin x\, e^x dx$ 계산. 부분적분: $\int \sin x\, e^x dx = \sin x\, e^x - \int \cos x\, e^x dx = \sin x\, e^x - (\cos x\, e^x + \int \sin x\, e^x dx)$. 양변에 $\int \sin x\, e^x dx$ 더하면 $2\int \sin x\, e^x dx = (\sin x - \cos x)e^x$, 즉 $\int \sin x\, e^x dx = (\sin x - \cos x)e^x/2$. $[-\pi/2, 0]$ 에서 $\sin x \le 0$, $[0, \pi/2]$ 에서 $\sin x \ge 0$:
+    $$\int_{-\pi/2}^{\pi/2}|\sin x|e^x dx = -\int_{-\pi/2}^{0}\sin x\, e^x dx + \int_{0}^{\pi/2}\sin x\, e^x dx.$$
+    첫 항 $= -[(\sin x - \cos x)e^x/2]_{-\pi/2}^{0} = -[(0 - 1)/2 - (-1 - 0)e^{-\pi/2}/2] = 1/2 - e^{-\pi/2}/2$. 둘째 항 $= [(\sin x - \cos x)e^x/2]_0^{\pi/2} = (1 - 0)e^{\pi/2}/2 - (0 - 1)/2 = e^{\pi/2}/2 + 1/2$. 합 $= 1 + (e^{\pi/2} - e^{-\pi/2})/2$. 답: $\boxed{1 + \dfrac{e^{\pi/2} - e^{-\pi/2}}{2}}$.
+
+### 자연계 문제 2 — 점과 직선의 거리·원과 직선
+
+**[85 / 자2-1]** 좌표평면 위 점 $\mathrm{P}(x_1, y_1)$ 과 직선 $\ell: a x + b y + c = 0$ ($a \ne 0, b \ne 0$) 사이의 거리가 $d = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}$ 임을 보이시오.
+
+??? success "풀이"
+    $\mathrm{P}$ 를 지나 $x, y$ 축에 평행한 직선이 $\ell$ 과 만나는 점 $\mathrm{A}, \mathrm{B}$. $\mathrm{A}$ 의 $x$ 좌표 $= -(b y_1 + c)/a$, $\mathrm{B}$ 의 $y$ 좌표 $= -(a x_1 + c)/b$. $\overline{\mathrm{AP}} = |a x_1 + b y_1 + c|/|a|$, $\overline{\mathrm{BP}} = |a x_1 + b y_1 + c|/|b|$. 직각삼각형 $\mathrm{APB}$ 넓이 $= (1/2)\overline{\mathrm{AP}}\cdot \overline{\mathrm{BP}} = (1/2)\overline{\mathrm{AB}}\cdot \overline{\mathrm{PH}}$ ($\mathrm{H}$ 는 $\mathrm{P}$ 에서 $\ell$ 에 내린 수선의 발). 즉 $\overline{\mathrm{PH}} = \overline{\mathrm{AP}}\cdot \overline{\mathrm{BP}}/\overline{\mathrm{AB}}$, $\overline{\mathrm{AB}} = \sqrt{\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2}$. $k = a x_1 + b y_1 + c$ 라 하면 $\overline{\mathrm{AP}} = |k/a|, \overline{\mathrm{BP}} = |k/b|, \overline{\mathrm{AB}} = |k|\sqrt{a^2 + b^2}/|a b|$. 따라서 $\overline{\mathrm{PH}} = (k^2/|a b|)/(|k|\sqrt{a^2 + b^2}/|a b|) = |k|/\sqrt{a^2 + b^2} = |a x_1 + b y_1 + c|/\sqrt{a^2 + b^2}$. $\square$
+
+**[85 / 자2-2]** 두 조건 $p: x^2 - n \le 0, q: -1 \le x \le 3$ 에 대해 $p$ 가 $q$ 이기 위한 필요조건이고 $n$ 한자리 자연수일 때, 중심이 $(n, 0)$ 인 단위원 위의 점과 직선 $y = -(3/4)x - 3/4$ 사이의 거리의 최솟값.
+
+??? success "풀이"
+    $p$ 가 $q$ 의 필요조건 → $q \Rightarrow p$, 즉 진리집합 $Q \subset P$. $P = \{x: -\sqrt n \le x \le \sqrt n\}$, $Q = [-1, 3]$. $Q \subset P$ 위해 $\sqrt n \ge 3$, 즉 $n \ge 9$. 한자리 자연수 → $n = 9$. 단위원 중심 $(9, 0)$, 직선 $3 x + 4 y + 3 = 0$. 중심에서 직선까지 거리 $= |3\cdot 9 + 4\cdot 0 + 3|/5 = 30/5 = 6$. 단위원 위 점과 직선의 최소 거리 $= 6 - 1 = 5$. 답: $\boxed{5}$.
+
+### 자연계 문제 3 — sin x/x 극한 증명·도함수의 정의
+
+**[85 / 자3-1]** 함수의 극한의 대소 관계와 단위원·중심각 $x$ 인 부채꼴을 이용하여 $\displaystyle \lim_{x \to 0}\dfrac{\sin x}{x} = 1$ 임을 보이시오.
+
+??? success "풀이"
+    (1) $0 < x < \pi/2$: 단위원 $\mathrm{O}$, $\overline{\mathrm{OA}} = 1$, 중심각 $\angle \mathrm{AOB} = x$. $\mathrm{A}$ 에서 그은 접선과 $\overline{\mathrm{OB}}$ 의 연장선의 교점 $\mathrm{T}$. 넓이 비교: $\triangle \mathrm{AOB} = (1/2)\sin x$, 부채꼴 $\mathrm{AOB} = x/2$, $\triangle \mathrm{AOT} = (1/2)\tan x$. 따라서 $(1/2)\sin x < x/2 < (1/2)\tan x$. $\sin x > 0$ 이므로 각 변을 $(1/2)\sin x$ 로 나누고 역수: $1 > \sin x/x > \cos x$. $\cos x \to 1$ ($x \to 0^{+}$) → 조임정리로 $\lim_{x \to 0^{+}}\sin x/x = 1$. (2) $-\pi/2 < x < 0$: $x = -t$ ($t > 0$) → $\sin x/x = \sin(-t)/(-t) = \sin t/t \to 1$. 따라서 $\lim_{x \to 0}\sin x/x = 1$. $\square$
+
+**[85 / 자3-2]** $\displaystyle \lim_{x \to 0}\dfrac{1 - \cos x}{x}$.
+
+??? success "풀이"
+    분자·분모에 $1 + \cos x$ 곱: $(1 - \cos x)(1 + \cos x)/(x(1 + \cos x)) = (1 - \cos^2 x)/(x(1 + \cos x)) = \sin^2 x/(x(1 + \cos x)) = (\sin x/x)\cdot (\sin x/(1 + \cos x))$. 극한: $1\cdot 0/2 = 0$. 답: $\boxed{0}$.
+
+**[85 / 자3-3]** 도함수의 정의를 이용하여 $y = \sin x$ 의 도함수.
+
+??? success "풀이"
+    $y' = \lim_{h \to 0}(\sin(x + h) - \sin x)/h$. 덧셈정리: $\sin(x + h) = \sin x\cos h + \cos x\sin h$. 따라서 분자 $= \cos x\sin h - \sin x(1 - \cos h)$. $y' = \cos x\cdot \lim\sin h/h - \sin x\cdot \lim(1 - \cos h)/h = \cos x\cdot 1 - \sin x\cdot 0 = \cos x$. 답: $\boxed{y' = \cos x}$.
+
+### 의예과 문제 1 — 원과 직선의 접·잘린 선분 최댓값
+
+**[85 / 의1-1]** 원 $(x - 3)^2 + (y - 2)^2 = 4$ 와 직선 $t x + y = 2$ 가 접하기 위한 $t$ 와 접점의 좌표.
+
+??? success "풀이"
+    중심 $(3, 2)$, 반지름 $2$. 직선 $t x + y - 2 = 0$, 중심까지 거리 $= |3 t + 2 - 2|/\sqrt{t^2 + 1} = 3|t|/\sqrt{t^2 + 1} = 2$ → $9 t^2 = 4(t^2 + 1) \Rightarrow t^2 = 4/5 \Rightarrow t = \pm 2/\sqrt 5$. 접점: 중심 $(3, 2)$ 을 지나고 직선 $y = -t x + 2$ 에 수직인 직선 (기울기 $1/t$): $y = (x - 3)/t + 2$. 두 직선 연립: $-t x + 2 = (x - 3)/t + 2 \Rightarrow -t^2 x = x - 3 \Rightarrow x = 3/(t^2 + 1) = 3/(9/5) = 5/3$. $y = -t(5/3) + 2$. $t = \pm 2/\sqrt 5$ → $y = \mp 2\sqrt 5/3 + 2 = (6 \mp 2\sqrt 5)/3$ (복부호 동순). 답: $\boxed{t = \pm 2/\sqrt 5,\ \text{접점} (5/3, (6 \mp 2\sqrt 5)/3)}$.
+
+**[85 / 의1-2]** 직선 $(\sin t)x + y = 12 + 3\sin t$ 가 원 $x^2 + (y - 3)^2 = 25$ 에 의하여 잘린 선분 길이의 최댓값과 그때 $t \in [0, 2\pi]$.
+
+??? success "풀이"
+    잘린 선분 길이 $L = 2\sqrt{r^2 - d^2}$, $r = 5$. 중심 $(0, 3)$, 직선 $(\sin t)x + y - 12 - 3\sin t = 0$: $d = |0 + 3 - 12 - 3\sin t|/\sqrt{\sin^2 t + 1} = 3(3 + \sin t)/\sqrt{\sin^2 t + 1}$ (분자 $> 0$ 절댓값 풀림). $L$ 최댓값 $\Leftrightarrow d$ 최솟값. $x = \sin t \in [-1, 1]$ 에서 $f(x) = (3 + x)^2/(x^2 + 1)$ 의 최솟값. $f'(x) = ((3 + x)(2(x^2 + 1) - (3 + x)(2 x)))/(x^2 + 1)^2 = (3 + x)(2 - 6 x)/(x^2 + 1)^2$. 근: $x = -3$ (범위 밖) 또는 $x = 1/3$. $f(-1) = 4/2 = 2, f(1/3) = (10/3)^2/(10/9) = (100/9)/(10/9) = 10, f(1) = 16/2 = 8$. 최솟값은 $x = -1$, $f = 2$ → $d_{\min} = 3\sqrt 2$. $\sin t = -1 \Rightarrow t = 3\pi/2$. $L_{\max} = 2\sqrt{25 - 18} = 2\sqrt 7$. 답: $\boxed{L_{\max} = 2\sqrt 7,\ t = 3\pi/2}$.
+
+### 의예과 문제 2 — 공간도형 정사각뿔 분할 부피
+
+> 모든 모서리의 길이가 $2$ 인 정사각뿔 $\mathrm{E\text{-}ABCD}$ 를 밑면의 한 변 $\overline{\mathrm{AD}}$ 를 지나는 평면으로 두 조각으로 분할. 평면 $\mathrm{AFGD}$ ($\mathrm{F}$ on $\overline{\mathrm{EB}}$, $\mathrm{G}$ on $\overline{\mathrm{EC}}$, $\overline{\mathrm{FG}} \parallel \overline{\mathrm{AD}}$) 에 의해 잘린 사각뿔 $\mathrm{E\text{-}AFGD}$ 를 $T_1$, $\mathrm{E\text{-}ABCD}$ 에서 $T_1$ 을 제외한 도형을 $T_2$.
+
+**[85 / 의2-1]** $\overline{\mathrm{FB}} = 1$ 일 때 $T_1, T_2$ 의 부피.
+
+??? success "풀이"
+    정사각뿔 부피: 밑면 $2 \times 2 = 4$, 모서리 $2$ 인 정사각뿔의 높이 $\sqrt{2^2 - (\sqrt 2)^2} = \sqrt 2$ (정사각형 대각선 $2\sqrt 2$, 반대각선 $\sqrt 2$). $V = (1/3)\cdot 4\cdot \sqrt 2 = 4\sqrt 2/3$. $\overline{\mathrm{FB}} = 1$ 일 때 $T_2$ 를 세 조각으로: 가운데 삼각기둥 (단면 $\overline{\mathrm{FB}}$ 와 평행한 직각이등변삼각형, 직각변 $\sqrt 2/2$, 깊이 $1$, 부피 $= 2\cdot (1/2)\cdot 1\cdot (\sqrt 2/2) = \sqrt 2/2$ — 잠시 정확히: 윗면 $\overline{\mathrm{FG}} = 1, \overline{\mathrm{FB}} = 1$, 높이 $\sqrt 2/2$, 그러므로 $V_{\text{가운데}} = (1/2)\cdot 2\cdot 1\cdot (\sqrt 2/2) = \sqrt 2/2$). 양옆 두 조각 (직사각뿔, 합치면) $= (1/3)\cdot 2\cdot 1\cdot \sqrt 2/2 = \sqrt 2/3$. $T_2 = \sqrt 2/2 + \sqrt 2/3$? 다시 확인: PDF 에 따르면 $T_1 = \sqrt 2/2 + \sqrt 2/3 = 5\sqrt 2/6$ ($T_1$ 의 분할), $T_2 = 4\sqrt 2/3 - 5\sqrt 2/6 = 3\sqrt 2/6 = \sqrt 2/2$. 답: $\boxed{T_1 = 5\sqrt 2/6,\ T_2 = \sqrt 2/2}$.
+
+**[85 / 의2-2]** $T_1$ 과 $T_2$ 의 부피가 같을 때 $\overline{\mathrm{FB}}$ 의 길이.
+
+??? success "풀이"
+    $\overline{\mathrm{FB}} = t$ 라 하고 위와 같은 방법으로 $T_2$ 의 부피 계산: $T_2 = (1/2)\cdot 2\cdot (\sqrt 2/2)\cdot (2 - t) + (1/3)\cdot 2\cdot t\cdot (\sqrt 2/2)\cdot ?$. PDF 결과: $T_2 = t(2 - t)/\sqrt 2 + (\sqrt 2/3)t^2 = -\sqrt 2 t^2/6 + \sqrt 2 t$. $T_1 = T_2 \Rightarrow T_2 = V/2 = 2\sqrt 2/3$. $-\sqrt 2 t^2/6 + \sqrt 2 t = 2\sqrt 2/3 \Rightarrow -t^2/6 + t = 2/3 \Rightarrow -t^2 + 6 t = 4 \Rightarrow t^2 - 6 t + 4 = 0 \Rightarrow t = 3 \pm \sqrt 5$. $0 < t < 2$ → $t = 3 - \sqrt 5$. 답: $\boxed{\overline{\mathrm{FB}} = 3 - \sqrt 5}$.
+
+---
+
 
