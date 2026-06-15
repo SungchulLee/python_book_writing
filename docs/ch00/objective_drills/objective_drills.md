@@ -25041,3 +25041,241 @@ $f(x) = \begin{cases} 2x^2 & (x < -1) \\ -x + a & (-1 \le x < 1) \\ -\dfrac{1}{3
     호 길이 $= \dfrac{1}{2}\cdot 2\pi\cdot 1 = \pi$.
 
 ---
+## 카드 190 — 건국대 (2019) — 인문Ⅱ 수학·자연 수학 2 문항카드 · 7 하위문항
+
+> **출처.** 2019학년도 건국대학교 입학전형 선행학습 영향평가 보고서 — KU논술우수자전형. 문항카드 2 (인문사회계Ⅱ) 수학 문제 2: 2-1·2-2·2-3 / 문항카드 3 (자연계 수학) 문제 1: 1-1·1-2, 문제 2: 2-1·2-2.
+
+---
+
+### 인문Ⅱ 문제 2 — 부등식의 영역·수열의 합·정적분 응용
+
+**제시문 [라].** 소비 활동은 근로 소득, 재산 소득 등과 같이 가계가 벌어들이는 소득을 바탕으로 한다. 따라서 가계의 소비는 당연히 주어진 소득의 범위 내에서 이루어지게 된다.
+
+**제시문 [마].** 인구 구조는 어느 인구 집단의 연령별, 성별, 산업별 인구 구성 상태를 말한다. 연령별 인구 구조에서는 유소년층 인구 비율이 대체로 선진국보다 개발 도상국에서 높게 나타나고, 노년층 인구 비율은 선진국이 개발 도상국보다 높게 나타난다.
+
+**제시문 [바].** 경기는 상승과 하락을 반복한다. 한 나라 전체의 생산량과 물가의 변화는 총수요와 총공급 곡선의 변화로 설명할 수 있다. 총수요와 총공급의 변화는 국가 경제 전체의 생산량, 물가 그리고 실업과 같은 경제 변수를 변화시키고 호황과 불황의 원인이 되기도 한다.
+
+**【2-1】** [라]에서 언급하는 "주어진 소득의 범위 내에서" 소비하는 상황을 다음과 같이 분석한다. 두 재화 $\mathrm{A}, \mathrm{B}$ 의 가격을 각각 $P_A, P_B$ 라 하고, 구매량을 $Q_A, Q_B$ 라 하면 가격은
+
+$$P_A = 50 - Q_A, \qquad P_B = 100 - Q_B$$
+
+로 정해진다. 총 구매액이 $3100$ 을 넘지 않으면서 $3076$ 보다 작지는 않도록 $Q_A, Q_B$ 를 정하려 한다. 단 $Q_A, Q_B$ 는 음이 아닌 정수이고, $Q_A \le 49$, $Q_B \le 99$ 이다. 조건을 모두 만족하는 순서쌍 $(Q_A, Q_B)$ 의 개수를 구하시오.
+
+??? success "풀이"
+    $x = Q_A$, $y = Q_B$ 라 하면 총 구매액
+    
+    $$S = Q_A P_A + Q_B P_B = x(50 - x) + y(100 - y) = -[(x - 25)^2 + (y - 50)^2] + (625 + 2500).$$
+    
+    $S \le 3100$:
+    
+    $$-[(x-25)^2 + (y-50)^2] + 3125 \le 3100 \iff (x-25)^2 + (y-50)^2 \ge 25 = 5^2.$$
+    
+    $S \ge 3076$:
+    
+    $$-[(x-25)^2 + (y-50)^2] + 3125 \ge 3076 \iff (x-25)^2 + (y-50)^2 \le 49 = 7^2.$$
+    
+    $0 \le x \le 49$, $0 \le y \le 99$ 와 결합하면 영역은 중심 $(25, 50)$, 반지름 $5$ 이상 $7$ 이하인 원환의 격자점.
+    
+    중심이 격자점이고 원환의 두 반지름이 모두 정수이므로 평행이동 $u = x - 25, v = y - 50$ 로 옮기면 $25 \le u^2 + v^2 \le 49$. 이 영역의 격자점은 다음과 같이 센다.
+    
+    제 1 사분면 내부 ($u, v \ge 1$): $u = 1$ 일 때 $24 \le v^2 \le 48$ → $v \in \{5, 6\}$ (2개). $u = 2$ 일 때 $21 \le v^2 \le 45$ → $v \in \{5, 6\}$ (2개). $u = 3$ 일 때 $16 \le v^2 \le 40$ → $v \in \{4, 5, 6\}$ (3개). $u = 4$ 일 때 $9 \le v^2 \le 33$ → $v \in \{3, 4, 5\}$ (3개). $u = 5$ 일 때 $0 \le v^2 \le 24$ → $v \in \{1, 2, 3, 4\}$ (4개). $u = 6$ 일 때 $v^2 \le 13$ → $v \in \{1, 2, 3\}$ (3개). $u = 7$ 일 때 $v^2 \le 0$ → 없음.
+    
+    합 $= 2 + 2 + 3 + 3 + 4 + 3 = 17$. 4개 사분면 대칭으로 사분면 내부 점 $4 \cdot 17 = 68$.
+    
+    축 위 점 ($u = 0$ 또는 $v = 0$, 한 좌표 $\ge 5$ 그리고 $\le 7$): 양의 $u$ 축에서 $u \in \{5, 6, 7\}$, $u$ 축 음의 방향 동일, $v$ 축 양·음 동일. 총 $4 \cdot 3 = 12$.
+    
+    따라서 순서쌍 $(Q_A, Q_B)$ 의 개수 $= 68 + 12 = 80$.
+
+**【2-2】** [마]에서 설명한 개발 도상국의 전형적 인구 구조에서 선진국의 전형적 인구 구조로 전환하는 국가를 가정한다. 이 국가의 $2000$ 년 말 인구분포는 $0$ 세에 $100^2$ 만 명, $1$ 세에 $99^2$ 만 명, $\ldots$, $99$ 세에 $1$ 만 명 (즉 $k$ 세에 $(100-k)^2$ 만 명). 모든 사람은 $99$ 세까지 생존하고, $n$ 년에는 $(2100-n)^2$ 만 명이 태어난다.
+
+(1) $2000$ 년 말 총인구 $a$, $2099$ 년 말 총인구 $b$ 에 대해 $b - a$ 를 구하시오.
+
+(2) $2000$ 년 말 평균 연령 $c$, $2099$ 년 말 평균 연령 $d$ 에 대해 $d - c$ 의 값을 구하시오 (소수점 아래 첫 번째 자리에서 반올림).
+
+??? success "풀이"
+    (1) $2000$ 년 말 인구 합:
+    
+    $$a = \sum_{k=0}^{99} (100 - k)^2 \,\text{만} = \sum_{j=1}^{100} j^2 \,\text{만} = \dfrac{100 \cdot 101 \cdot 201}{6} \,\text{만} = 338{,}350 \,\text{만}.$$
+    
+    $2099$ 년 말 인구: $n = 2099$ 에 태어난 $0$ 세는 $(2100 - 2099)^2 = 1^2 = 1$ 만, $1$ 세는 $2$ 년 전 $n = 2098$ 의 $0$ 세 출생수 $= (2100 - 2098)^2 = 2^2$ 만, $\ldots$, $99$ 세는 $99$ 년 전 출생수 $= 100^2$ 만. 따라서
+    
+    $$b = \sum_{k=0}^{99} (k+1)^2 \,\text{만} = \sum_{j=1}^{100} j^2 \,\text{만} = a.$$
+    
+    $b - a = 0$.
+    
+    (2) $S_{2000} = \sum_{k=0}^{99} k \cdot (100 - k)^2 \cdot \text{만}$, $S_{2099} = \sum_{k=0}^{99} k \cdot (k + 1)^2 \cdot \text{만}$.
+    
+    $S_{2099} - S_{2000} = \sum_{k=0}^{99} k\!\left[(k+1)^2 - (100 - k)^2\right] = \sum_{k=0}^{99} k(202k - 9999)$
+    
+    $= 202 \sum_{k=1}^{99} k^2 - 9999 \sum_{k=1}^{99} k = 202 \cdot \dfrac{99 \cdot 100 \cdot 199}{6} - 9999 \cdot \dfrac{99 \cdot 100}{2}$
+    
+    $= \dfrac{99 \cdot 100}{6}(202 \cdot 199 - 3 \cdot 9999) = \dfrac{99 \cdot 100}{6}(40198 - 29997) = \dfrac{99 \cdot 100}{6} \cdot 10201 = 16{,}831{,}650 \cdot \text{만}$.
+    
+    $a = b$ 이므로
+    
+    $$d - c = \dfrac{S_{2099} - S_{2000}}{a} = \dfrac{(99 \cdot 100 / 6) \cdot 10201}{(100 \cdot 101 \cdot 201)/6} = \dfrac{99 \cdot 10201}{101 \cdot 201} = \dfrac{1009899}{20301} \approx 49.7462.$$
+    
+    소수점 아래 첫 번째 자리에서 반올림하면 $\boxed{50}$.
+
+**【2-3】** [바]에서 설명하듯 총수요 곡선의 이동은 경기의 상승과 하락을 초래할 수 있다. 총공급 곡선 $Y = X^2$ ($X \ge 0$) 은 고정, 총수요 곡선은
+
+$$Y = 3 - 2(X - F(t)) \quad\text{where}\quad F(t) = \int_0^t g(s) \, ds$$
+
+이고
+
+$$g(s) = \begin{cases} 1 - \tfrac{1}{2}|s - 4|, & 0 \le s \le 8, \\ 1 - \tfrac{1}{2}|s - 12|, & 8 < s \le 16, \\ 1 - \tfrac{1}{2}|s - 20|, & 16 < s \le 24, \\ \cdots & \end{cases}$$
+
+(주기 $8$ 인 삼각파). $F(t)$ 가 처음으로 최솟값을 갖는 시점 $a$, 이때의 실질 GDP $b$, $F(t)$ 가 처음으로 최댓값을 갖는 시점 $c$, 이때의 실질 GDP $d$. $c + d - a - b$ 를 구하시오. ($\sqrt{2} = 1.41, \sqrt{3} = 1.73, \sqrt{5} = 2.24, \sqrt{6} = 2.45$, 소수점 아래 둘째 자리에서 반올림.)
+
+??? success "풀이"
+    $g(s)$ 는 주기 $8$ 인 삼각파로 $s = 4, 12, 20, \ldots$ 에서 최댓값 $1$, $s = 0, 8, 16, \ldots$ 에서 최솟값 $-1$. 한 주기 적분은 $0$.
+    
+    $F(t) = \int_0^t g(s)\, ds$. $0 \le t \le 4$ 에서 $g(s) = 1 - \tfrac{1}{2}(4 - s) = -1 + \tfrac{s}{2}$, 즉
+    
+    $$F(t) = \int_0^t \!\left(-1 + \tfrac{s}{2}\right) ds = -t + \tfrac{t^2}{4}.$$
+    
+    이는 $t = 2$ 에서 최솟값 $F(2) = -2 + 1 = -1$. 따라서 $F$ 가 처음 최솟값을 갖는 시점 $a = 2$, $F(a) = -1$.
+    
+    $4 \le t \le 8$ 에서 비슷한 계산으로 $F$ 가 증가, $F(6)$ 에서 처음 최댓값. $F(6) = \int_0^4 g + \int_4^6 g = 0 + 1 = 1$ (반주기 적분 = 한 삼각형 넓이 = $1$). 따라서 $c = 6$, $F(c) = 1$.
+    
+    수요·공급 교점: $X^2 = 3 - 2(X - F(t))$ → $X^2 + 2X - 2F(t) - 3 = 0$ → $(X + 1)^2 = 4 + 2F(t)$. $X \ge 0$ 이므로
+    
+    $$X = -1 + \sqrt{4 + 2F(t)}.$$
+    
+    $b = -1 + \sqrt{4 + 2(-1)} = -1 + \sqrt{2} \approx -1 + 1.41 = 0.41$.
+    
+    $d = -1 + \sqrt{4 + 2(1)} = -1 + \sqrt{6} \approx -1 + 2.45 = 1.45$.
+    
+    $c + d - a - b = 6 + 1.45 - 2 - 0.41 = 5.04$. 소수점 아래 둘째 자리에서 반올림하면 $\boxed{5.0}$.
+
+---
+
+### 자연 문제 1 — 정사영·부등식의 영역
+
+**제시문 1 (가).** 평면 $\alpha$ 와 평면 $\beta$ 가 이루는 각이 $\theta$ 일 때, 넓이가 $S$ 인 $\alpha$ 위 도형을 $\beta$ 로 정사영하여 얻은 도형의 넓이를 $S'$ 라 하면 $S' = S \cos\theta$.
+
+**제시문 1 (나).** [그림 1]은 평면의 점 $\mathrm{A}(2, 5), \mathrm{B}(0, 0), \mathrm{C}(4, 0), \mathrm{D}(3, 4)$ 를 꼭짓점으로 하는 사각형 $\mathrm{ABCD}$. 점 $\mathrm{P}$ 는 사각형 내부 또는 경계에서 움직인다.
+
+**제시문 1 (다).** [그림 2]는 공간의 한 평면 위에 있는 점 $\mathrm{E}(-1, 0, 2), \mathrm{F}(4, -2, -1), \mathrm{G}(4, 1, -4), \mathrm{H}(0, 1, 0)$ 을 꼭짓점으로 하는 사각형 $\mathrm{EFGH}$. 점 $\mathrm{Q}$ 는 사각형 내부 또는 경계에서 움직인다.
+
+**【1-1】** [그림 1]에서 $\overline{\mathrm{PA}} = 1$ 일 때, 삼각형 $\mathrm{ADP}$ 와 삼각형 $\mathrm{BCP}$ 의 넓이 합의 최솟값을 구하시오.
+
+??? success "풀이"
+    직선 $\mathrm{AD}$: $\mathrm{A}(2, 5), \mathrm{D}(3, 4)$. 기울기 $-1$, 방정식 $x + y - 7 = 0$. $\mathrm{ABCD}$ 내부에서 $x + y - 7 \le 0$. $\overline{\mathrm{AD}} = \sqrt{2}$, $\mathrm{P}(x, y)$ 에서 $\mathrm{AD}$ 까지 거리 $= \dfrac{|x + y - 7|}{\sqrt{2}} = \dfrac{7 - x - y}{\sqrt{2}}$.
+    
+    $$\triangle \mathrm{ADP} = \dfrac{1}{2} \cdot \sqrt{2} \cdot \dfrac{7 - x - y}{\sqrt{2}} = \dfrac{1}{2}(7 - x - y).$$
+    
+    $\overline{\mathrm{BC}} = 4$ ($x$ 축 위), $\mathrm{P}$ 에서 $\mathrm{BC}$ 까지 거리 $= y$.
+    
+    $$\triangle \mathrm{BCP} = \dfrac{1}{2} \cdot 4 \cdot y = 2y.$$
+    
+    합 $k = \dfrac{1}{2}(7 - x - y) + 2y = \dfrac{1}{2}(7 - x + 3y)$. 즉 점 $\mathrm{P}$ 는 직선 $x - 3y - 7 + 2k = 0$ 위에 있다.
+    
+    조건 $\overline{\mathrm{PA}} = 1$ 은 $(x - 2)^2 + (y - 5)^2 = 1$. $k$ 의 최솟값은 직선 $x - 3y - 7 + 2k = 0$ 과 이 원이 만나는 $k$ 의 최솟값.
+    
+    $x = 3y + 7 - 2k$ 를 원에 대입: $(3y + 5 - 2k)^2 + (y - 5)^2 = 1$
+    
+    $\Rightarrow 10y^2 + (20 - 12k)y + 4k^2 - 20k + 49 = 0$.
+    
+    실근 조건: 판별식 $= (20 - 12k)^2 - 40(4k^2 - 20k + 49) = 4(-4k^2 + 80k - 390) \ge 0$
+    
+    $\Rightarrow k^2 - 20k + 97.5 \le 0 \Rightarrow k = 10 \pm \dfrac{\sqrt{10}}{2}$.
+    
+    최솟값 $k_{\min} = 10 - \dfrac{\sqrt{10}}{2}$.
+
+**【1-2】** [그림 2]에서 삼각형 $\mathrm{EHQ}$ 의 넓이와 삼각형 $\mathrm{GFQ}$ 의 넓이 합이 $5\sqrt{3}$ 이 되는 점 $\mathrm{Q}$ 의 모임은 선분이다. 이 선분의 길이를 구하시오.
+
+??? success "풀이"
+    사각형 $\mathrm{EFGH}$ 를 포함하는 평면 $\alpha$: 점 $\mathrm{E}, \mathrm{F}, \mathrm{G}, \mathrm{H}$ 가 모두 $x + y + z = 1$ 을 만족하므로 $\alpha: x + y + z = 1$.
+    
+    $\alpha$ 와 $xy$ 평면 사이의 각 $\theta$: 법선 $(1, 1, 1)$ 와 $(0, 0, 1)$ 의 사잇각, $\cos\theta = \dfrac{1}{\sqrt{3}}$.
+    
+    $\alpha$ 위 도형을 $xy$ 평면으로 정사영. $\mathrm{E}, \mathrm{F}, \mathrm{G}, \mathrm{H}, \mathrm{Q}$ 의 정사영을 $\mathrm{E'}, \mathrm{F'}, \mathrm{G'}, \mathrm{H'}, \mathrm{Q'}$ 라 하면
+    
+    $$\triangle \mathrm{E'H'Q'} + \triangle \mathrm{G'F'Q'} = \cos\theta \cdot (\triangle \mathrm{EHQ} + \triangle \mathrm{GFQ}) = \dfrac{1}{\sqrt{3}} \cdot 5\sqrt{3} = 5.$$
+    
+    $\mathrm{E'}(-1, 0), \mathrm{F'}(4, -2), \mathrm{G'}(4, 1), \mathrm{H'}(0, 1)$.
+    
+    직선 $\mathrm{E'H'}$: $x - y + 1 = 0$. $\mathrm{Q'}(x, y)$ 에서 거리 $= \dfrac{|x - y + 1|}{\sqrt{2}} = \dfrac{x - y + 1}{\sqrt{2}}$ (내부에서 $x - y + 1 \ge 0$). $\overline{\mathrm{E'H'}} = \sqrt{2}$.
+    
+    $$\triangle \mathrm{E'H'Q'} = \dfrac{1}{2}(x - y + 1).$$
+    
+    직선 $\mathrm{G'F'}$: $x = 4$, $\overline{\mathrm{G'F'}} = 3$, $\mathrm{Q'}$ 까지 거리 $= 4 - x$.
+    
+    $$\triangle \mathrm{G'F'Q'} = \dfrac{3}{2}(4 - x).$$
+    
+    합 $S = \dfrac{1}{2}(x - y + 1) + \dfrac{3}{2}(4 - x) = -x - \dfrac{y}{2} + \dfrac{13}{2} = 5 \Rightarrow y = -2x + 3$.
+    
+    직선 $\mathrm{H'G'}$: $y = 1$. $y = -2x + 3$ 와 교점 $\mathrm{I'}(1, 1)$.
+    
+    직선 $\mathrm{E'F'}$: 기울기 $-\dfrac{2}{5}$, $y = -\dfrac{2}{5}x - \dfrac{2}{5}$. $y = -2x + 3$ 와 교점: $-\dfrac{2}{5}x - \dfrac{2}{5} = -2x + 3 \Rightarrow 8x = 17 \Rightarrow x = \dfrac{17}{8}$, $y = -\dfrac{5}{4}$. $\mathrm{J'}\!\left(\dfrac{17}{8}, -\dfrac{5}{4}\right)$.
+    
+    $xy$ 평면의 $\mathrm{I'}, \mathrm{J'}$ 의 원래 평면 $\alpha$ 에서의 대응점: $z = 1 - x - y$ 로 복원. $\mathrm{I}(1, 1, -1)$, $\mathrm{J}\!\left(\dfrac{17}{8}, -\dfrac{5}{4}, \dfrac{1}{8}\right)$.
+    
+    $\Delta\mathrm{IJ} = \!\left(\dfrac{9}{8}, -\dfrac{9}{4}, \dfrac{9}{8}\right)$. $\overline{\mathrm{IJ}} = \sqrt{\dfrac{81}{64} + \dfrac{81}{16} + \dfrac{81}{64}} = \sqrt{\dfrac{81 + 324 + 81}{64}} = \sqrt{\dfrac{486}{64}} = \dfrac{9\sqrt{6}}{8}$.
+
+---
+
+### 자연 문제 2 — 삼각함수 덧셈정리·공간 도형 분할
+
+**제시문 2 (가).** 미분가능 함수 $y = f(x)$ 에서 $f'(a) = 0$ 이고 $x = a$ 의 좌우에서 $f'(x)$ 의 부호가 양에서 음으로 바뀌면 $f(x)$ 는 $x = a$ 에서 극댓값 $f(a)$ 를, 음에서 양으로 바뀌면 극솟값 $f(a)$ 를 갖는다.
+
+**제시문 2 (나).** [그림 3]은 한 변의 길이가 $1$ 인 정삼각형 $\mathrm{ABC}$ 와 $\mathrm{A'B'C'}$ 을 아랫면과 윗면으로 하고 높이가 $1$ 인 삼각기둥. 윗·아랫면은 옆면과 수직. 점 $\mathrm{D}, \mathrm{N}, \mathrm{F}$ 는 각각 선분 $\mathrm{AA'}$, $\mathrm{AB}$, $\mathrm{B'C'}$ 의 중점.
+
+**【2-1】** 점 $\mathrm{P}$ 가 삼각형 $\mathrm{ABC}$ 의 내부 또는 경계에 있을 때, 각 $\mathrm{DPA'}$ 의 크기가 최대가 되는 점 $\mathrm{P}$ 를 모두 구하시오.
+
+??? success "풀이"
+    $\overline{\mathrm{AP}} = a$ ($a \ge 0$). $\mathrm{AA'} \perp$ (아랫면) 이므로 $\angle \mathrm{PAA'}$ 와 $\angle \mathrm{PAD}$ 는 모두 직각. $\overline{\mathrm{AA'}} = 1$, $\overline{\mathrm{AD}} = \dfrac{1}{2}$.
+    
+    직각삼각형 $\mathrm{PAA'}$ 에서 $\tan \angle \mathrm{A'PA} = \dfrac{1}{a}$, 직각삼각형 $\mathrm{PAD}$ 에서 $\tan \angle \mathrm{DPA} = \dfrac{1/2}{a} = \dfrac{1}{2a}$.
+    
+    $\theta = \angle \mathrm{DPA'}$, $\theta' = \angle \mathrm{DPA}$ 라 하면 $\theta + \theta' = \angle \mathrm{A'PA}$. 덧셈정리로
+    
+    $$\dfrac{1}{a} = \tan(\theta + \theta') = \dfrac{\tan\theta + \frac{1}{2a}}{1 - \frac{1}{2a}\tan\theta} \implies \tan\theta = \dfrac{a}{2a^2 + 1}.$$
+    
+    $\theta$ 최댓값 ↔ $\tan\theta$ 최댓값 ($0 \le \theta < \pi/2$). $f(a) = \dfrac{a}{2a^2 + 1}$, $f'(a) = \dfrac{(2a^2 + 1) - a \cdot 4a}{(2a^2 + 1)^2} = \dfrac{1 - 2a^2}{(2a^2 + 1)^2}$.
+    
+    $f'(a) = 0 \Rightarrow a = \dfrac{1}{\sqrt{2}}$. $0 \le a < \dfrac{1}{\sqrt{2}}$ 에서 $f' > 0$, $a > \dfrac{1}{\sqrt{2}}$ 에서 $f' < 0$ 이므로 $a = \dfrac{1}{\sqrt{2}}$ 에서 극대 (최대) $f\!\left(\dfrac{1}{\sqrt{2}}\right) = \dfrac{1}{2\sqrt{2}}$.
+    
+    $\mathrm{P}$ 가 만족해야 할 조건: $\overline{\mathrm{AP}} = \dfrac{1}{\sqrt{2}}$ 이고 $\mathrm{P}$ 는 정삼각형 $\mathrm{ABC}$ 내부 또는 경계. 한 변 길이 $1$ 인 정삼각형에서 $\mathrm{A}$ 중심·반지름 $\dfrac{1}{\sqrt{2}}$ 인 원의 호 (변 $\mathrm{AB}$ 와 변 $\mathrm{AC}$ 사이) 가 답.
+    
+    즉 $\mathrm{P}$ 는 $\mathrm{ABC}$ 평면 위에서 중심 $\mathrm{A}$, 반지름 $\dfrac{1}{\sqrt{2}}$ 인 원의 호 (변 $\mathrm{AC}$ 와 변 $\mathrm{AB}$ 사이) 를 이루는 점들이다.
+
+**【2-2】** 세 점 $\mathrm{D}, \mathrm{N}, \mathrm{F}$ 를 지나는 평면 $\alpha$ 가 삼각기둥을 두 조각으로 나눈다. 꼭짓점 $\mathrm{B}$ 를 포함하는 조각의 부피를 구하시오.
+
+??? success "풀이"
+    좌표: $\mathrm{A}(1, 0, 0)$, $\mathrm{B}\!\left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}, 0\right)$, $\mathrm{C}(0, 0, 0)$, $\mathrm{A'}(1, 0, 1)$, $\mathrm{B'}\!\left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}, 1\right)$, $\mathrm{C'}(0, 0, 1)$. 그러면
+    
+    $\mathrm{D} =$ $\mathrm{AA'}$ 중점 $= \!\left(1, 0, \dfrac{1}{2}\right)$, $\mathrm{N} =$ $\mathrm{AB}$ 중점 $= \!\left(\dfrac{3}{4}, \dfrac{\sqrt{3}}{4}, 0\right)$, $\mathrm{F} =$ $\mathrm{B'C'}$ 중점 $= \!\left(\dfrac{1}{4}, \dfrac{\sqrt{3}}{4}, 1\right)$.
+    
+    평면 $\alpha$: 세 점 평면 방정식 $ax + by + cz = d$. $\mathrm{D}$ 에서 $a + c/2 = d$, $\mathrm{N}$ 에서 $3a/4 + b\sqrt{3}/4 = d$, $\mathrm{F}$ 에서 $a/4 + b\sqrt{3}/4 + c = d$. 풀면 $a = 4, b = 8/\sqrt{3}, c = 2, d = 5$. 즉
+    
+    $$\alpha: 4x + \dfrac{8}{\sqrt{3}} y + 2z = 5.$$
+    
+    교점:
+    
+    - $\mathrm{G}$: $\alpha \cap $ 직선 $\mathrm{A'C'}$ (점 $(t, 0, 1)$). $4t + 2 = 5 \Rightarrow t = 3/4$. $\mathrm{G}\!\left(\dfrac{3}{4}, 0, 1\right)$.
+    - $\mathrm{H}$: $\alpha \cap $ 직선 $\mathrm{BC}$ (점 $(s, \sqrt{3}s, 0)$, $s \in [0, 1/2]$). $4s + (8/\sqrt{3})(\sqrt{3}s) = 5 \Rightarrow 12s = 5 \Rightarrow s = 5/12$. $\mathrm{H}\!\left(\dfrac{5}{12}, \dfrac{5\sqrt{3}}{12}, 0\right)$.
+    - $\mathrm{I}$: $\alpha \cap $ 직선 $\mathrm{A'B'}$ 연장. $\mathrm{A'B'}$ 위의 점 $(1 - t/2, t\sqrt{3}/2, 1)$, $t \in \mathbb{R}$. 대입 $4(1 - t/2) + (8/\sqrt{3})(t\sqrt{3}/2) + 2 = 5 \Rightarrow 4 - 2t + 4t + 2 = 5 \Rightarrow t = -1/2$. $\mathrm{I}\!\left(\dfrac{5}{4}, -\dfrac{\sqrt{3}}{4}, 1\right)$ (선분 밖).
+    - $\mathrm{J}$: $\alpha \cap $ 직선 $\mathrm{BB'}$ 연장 (점 $(1/2, \sqrt{3}/2, z)$). $2 + 4 + 2z = 5 \Rightarrow z = -1/2$. $\mathrm{J}\!\left(\dfrac{1}{2}, \dfrac{\sqrt{3}}{2}, -\dfrac{1}{2}\right)$ (기둥 밖).
+    
+    $\mathrm{B}$ 를 포함하는 조각의 부피 $= V(\text{사면체 } \mathrm{FIJB'}) - V(\text{사면체 } \mathrm{A'DGI}) - V(\text{사면체 } \mathrm{BHNJ})$.
+    
+    $\mathrm{F}, \mathrm{I}, \mathrm{B'}$ 는 모두 $z = 1$ 평면 위 (사면체 $\mathrm{FIJB'}$ 의 밑면). 밑면 $\triangle \mathrm{FIB'}$: $\mathrm{F}(1/4, \sqrt{3}/4)$, $\mathrm{I}(5/4, -\sqrt{3}/4)$, $\mathrm{B'}(1/2, \sqrt{3}/2)$ ($z = 1$ 단면). 넓이 $= \dfrac{1}{2}|(5/4 - 1/4)(\sqrt{3}/2 - \sqrt{3}/4) - (-\sqrt{3}/4 - \sqrt{3}/4)(1/2 - 1/4)| = \dfrac{1}{2}|1 \cdot \sqrt{3}/4 - (-\sqrt{3}/2)(1/4)| = \dfrac{1}{2}|\sqrt{3}/4 + \sqrt{3}/8| = \dfrac{1}{2} \cdot \dfrac{3\sqrt{3}}{8} = \dfrac{3\sqrt{3}}{16}$. 높이 (꼭짓점 $\mathrm{J}$ 에서 $z = 1$ 까지) $= 3/2$.
+    
+    $$V_1 = \dfrac{1}{3} \cdot \dfrac{3\sqrt{3}}{16} \cdot \dfrac{3}{2} = \dfrac{3\sqrt{3}}{32}.$$
+    
+    $\mathrm{A'DG}$ ($z$ 좌표 $\in \{1, 1/2, 1\}$): 밑면 $\triangle \mathrm{A'IG}$ ($z = 1$ 평면): $\mathrm{A'}(1, 0)$, $\mathrm{I}(5/4, -\sqrt{3}/4)$, $\mathrm{G}(3/4, 0)$ ($z = 1$). 넓이 $= \dfrac{1}{2}|(5/4 - 1)(0) - (-\sqrt{3}/4)(3/4 - 1)| = \dfrac{1}{2}|0 - (-\sqrt{3}/4)(-1/4)| = \dfrac{\sqrt{3}}{32}$. 높이 ($\mathrm{D}$ 에서 $z = 1$ 까지) $= 1/2$.
+    
+    $$V_2 = \dfrac{1}{3} \cdot \dfrac{\sqrt{3}}{32} \cdot \dfrac{1}{2} = \dfrac{\sqrt{3}}{192}.$$
+    
+    $\mathrm{BHN}$ 밑면 ($z = 0$): $\mathrm{B}(1/2, \sqrt{3}/2)$, $\mathrm{H}(5/12, 5\sqrt{3}/12)$, $\mathrm{N}(3/4, \sqrt{3}/4)$. 넓이 $= \dfrac{1}{2}|(5/12 - 1/2)(\sqrt{3}/4 - \sqrt{3}/2) - (5\sqrt{3}/12 - \sqrt{3}/2)(3/4 - 1/2)|$
+    
+    $= \dfrac{1}{2}|(-1/12)(-\sqrt{3}/4) - (-\sqrt{3}/12)(1/4)| = \dfrac{1}{2}|\sqrt{3}/48 + \sqrt{3}/48| = \dfrac{\sqrt{3}}{48}$. 높이 ($\mathrm{J}$ 에서 $z = 0$ 까지) $= 1/2$.
+    
+    $$V_3 = \dfrac{1}{3} \cdot \dfrac{\sqrt{3}}{48} \cdot \dfrac{1}{2} = \dfrac{\sqrt{3}}{288}.$$
+    
+    $$V = V_1 - V_2 - V_3 = \dfrac{3\sqrt{3}}{32} - \dfrac{\sqrt{3}}{192} - \dfrac{\sqrt{3}}{288} = \dfrac{54\sqrt{3} - 3\sqrt{3} - 2\sqrt{3}}{576} = \dfrac{49\sqrt{3}}{576}.$$
+
+---
+
