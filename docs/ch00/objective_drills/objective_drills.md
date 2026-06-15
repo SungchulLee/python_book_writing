@@ -20412,3 +20412,363 @@ $\ell = 6$, $\beta = \tfrac{5\pi}{12} - \alpha$일 때 $\mathrm{C}$의 위치 $(
 
     $$\therefore\ E(c_x) = -1, \quad E(c_y) = -5 + 4\sqrt{3}$$
 
+
+---
+
+## 카드 168 — 서강대 (2025학년도)
+
+> **출처:** 2025학년도 서강대 선행학습 영향평가 자체평가 보고서 — 논술(일반) 전형 자연계열 1차·2차 수학.
+> 자연계열 1차 2문항(8개 하위 문항)과 2차 2문항(8개 하위 문항)을 묶어 **16개 하위 문항**을 한 카드에 정리한다. 다루는 주제: 쌍곡선·타원·접선·이차곡선의 정의, 사인법칙·코사인법칙·탄젠트 덧셈정리, 두 점 사이 거리와 절대부등식(산술·기하평균), 삼각함수의 치환을 통한 이차함수의 최댓값/최솟값, 함수의 연속성과 미분가능성, 합성함수·곱의 미분과 도함수 활용.
+
+---
+
+#### [168-1] 쌍곡선의 정의 — 점 $\mathrm{P}$의 자취 방정식
+
+좌표평면 위 두 점 $\mathrm{A}(5, 0)$과 $\mathrm{B}(-5, 0)$에 대하여 같은 평면 위의 점 $\mathrm{C}$와 점 $\mathrm{P}$는 다음 조건을 동시에 만족시킨다.
+
+- (i) $\overline{\mathrm{AC}} = 6$
+- (ii) 점 $\mathrm{P}$는 선분 $\mathrm{AC}$ 위에 있다.
+- (iii) $\overline{\mathrm{BP}} + \overline{\mathrm{CP}} = 8$
+
+점 $\mathrm{P}$가 그리는 도형이 쌍곡선의 일부 됨을 보이고, 이 쌍곡선의 방정식을 구하시오.
+
+??? success "풀이"
+    조건 (i), (ii)에서 $\overline{\mathrm{AP}} + \overline{\mathrm{CP}} = \overline{\mathrm{AC}} = 6$. 조건 (iii)과 빼면
+
+    $$\overline{\mathrm{BP}} - \overline{\mathrm{AP}} = 8 - 6 = 2$$
+
+    즉, 점 $\mathrm{P}$는 두 점 $\mathrm{A}$와 $\mathrm{B}$로부터 거리의 차가 $2$인 쌍곡선 위에 있다. 두 초점이 $\mathrm{A}(5, 0)$과 $\mathrm{B}(-5, 0)$, 거리의 차가 $2a = 2$이므로 $a = 1$, $c = 5$, $b^2 = c^2 - a^2 = 24$. 따라서 쌍곡선의 방정식은
+
+    $$x^2 - \frac{y^2}{24} = 1$$
+
+#### [168-2] 쌍곡선 위의 점에서의 접선과 거리 최솟값 — 산술·기하평균
+
+[168-1]에서 구한 쌍곡선 위의 점 $\mathrm{Q}$에서의 접선이 $y$축과 만나는 점을 $\mathrm{R}$이라 하자. $\overline{\mathrm{QR}}$이 최소가 되는 점 $\mathrm{Q}$에 대하여 $\overline{\mathrm{OQ}}^2$의 값을 구하시오. (단, 점 $\mathrm{Q}$는 제2사분면 위에 있고 $\mathrm{O}$는 원점.)
+
+??? success "풀이"
+    $\mathrm{Q}(x_2, y_2)$ ($x_2 < 0$, $y_2 > 0$)라 하면 쌍곡선 위의 점에서의 접선은
+
+    $$x_2 x - \frac{y_2 y}{24} = 1$$
+
+    $y$축과의 교점: $x = 0$에서 $y = -\dfrac{24}{y_2}$. 즉 $\mathrm{R} = \left(0, -\dfrac{24}{y_2}\right)$.
+
+    $$\overline{\mathrm{QR}}^2 = x_2^2 + \left(y_2 + \tfrac{24}{y_2}\right)^{\!2} = x_2^2 + y_2^2 + 48 + \tfrac{576}{y_2^2}$$
+
+    $x_2^2 = 1 + \tfrac{y_2^2}{24}$를 대입하면
+
+    $$\overline{\mathrm{QR}}^2 = 49 + \tfrac{25}{24}\, y_2^2 + \tfrac{576}{y_2^2}$$
+
+    산술·기하평균으로
+
+    $$\tfrac{25}{24}\, y_2^2 + \tfrac{576}{y_2^2} \ge 2 \sqrt{\tfrac{25}{24}\, y_2^2 \cdot \tfrac{576}{y_2^2}} = 2 \sqrt{\tfrac{25 \cdot 576}{24}} = 2 \sqrt{600} = 20 \sqrt{6}$$
+
+    등호 성립 조건 $\tfrac{25}{24}\, y_2^2 = \tfrac{576}{y_2^2}$에서 $y_2^2 = \tfrac{48\sqrt{6}}{5}$이고 $x_2^2 = 1 + \tfrac{y_2^2}{24} = 1 + \tfrac{2\sqrt{6}}{5}$.
+
+    $$\overline{\mathrm{OQ}}^2 = x_2^2 + y_2^2 = 1 + \tfrac{2\sqrt{6}}{5} + \tfrac{48\sqrt{6}}{5} = 1 + 10\sqrt{6}$$
+
+#### [168-3] 사인법칙으로 $\cos\alpha$ 구하기
+
+[168-1]의 설정에서 점 $\mathrm{C}$와 점 $\mathrm{P}$가 일치할 때, 선분 $\mathrm{BC}$가 $y$축과 만나는 점을 $\mathrm{D}$라 하자. $\angle \mathrm{COD} = \alpha$라 할 때 $\cos\alpha$의 값을 구하시오. (단, $\mathrm{O}$는 원점이고 $0 < \alpha < \tfrac{\pi}{2}$)
+
+??? success "풀이"
+    $\mathrm{C} = \mathrm{P}$일 때 $\overline{\mathrm{BP}} + \overline{\mathrm{CP}} = 8$에서 $\overline{\mathrm{BC}} = 8$. 또 $\overline{\mathrm{AC}} = 6$, $\overline{\mathrm{AB}} = 10$이므로 $6^2 + 8^2 = 10^2$, 즉 삼각형 $\mathrm{ABC}$는 $\angle\mathrm{C} = \tfrac{\pi}{2}$인 직각삼각형.
+
+    원점 $\mathrm{O}$가 빗변 $\mathrm{AB}$의 중점이므로 세 점 $\mathrm{A}, \mathrm{B}, \mathrm{C}$는 중심 $\mathrm{O}$, 지름 $\mathrm{AB}$인 원 위에 놓이고 $\overline{\mathrm{OC}} = 5$.
+
+    $\angle\mathrm{B} = \theta$라 하면 $\sin\theta = \tfrac{\mathrm{AC}}{\mathrm{AB}} = \tfrac{6}{10} = \tfrac{3}{5}$.
+
+    $\mathrm{D}$는 선분 $\mathrm{BC}$ 위 $y$축 교점이므로 $\angle\mathrm{DOC} = \alpha$이고, $\angle\mathrm{BOC} = \tfrac{\pi}{2} + \alpha$. 삼각형 $\mathrm{BOC}$에 사인법칙을 적용하면
+
+    $$\frac{\overline{\mathrm{OC}}}{\sin\theta} = \frac{\overline{\mathrm{BC}}}{\sin(\tfrac{\pi}{2} + \alpha)} = \frac{\overline{\mathrm{BC}}}{\cos\alpha}$$
+
+    $$\cos\alpha = \overline{\mathrm{BC}} \cdot \frac{\sin\theta}{\overline{\mathrm{OC}}} = 8 \cdot \frac{3/5}{5} = \frac{24}{25}$$
+
+#### [168-4] 삼각형 $\mathrm{BCP}$ 넓이의 도함수 — 코사인법칙과 합성함수의 미분
+
+[168-1]의 삼각형 $\mathrm{ABC}$에서 $\angle\mathrm{A} = \theta$일 때 삼각형 $\mathrm{BCP}$의 넓이를 $f(\theta)$라 하자. $\cos\beta = \tfrac{4}{5}$를 만족시키는 $\beta$에 대하여 $f'(\beta)$의 값을 구하시오. (단, $0 < \beta < \tfrac{\pi}{2}$이고 점 $\mathrm{C}$는 선분 $\mathrm{AB}$ 위에 있지 않으며 점 $\mathrm{P}$와 일치하지 않는다.)
+
+??? success "풀이"
+    **1단계 — $\overline{\mathrm{AP}}$를 $\theta$로 표현.** 쌍곡선의 정의로 $\overline{\mathrm{AP}} = x$라 하면 $\overline{\mathrm{BP}} = x + 2$. 삼각형 $\mathrm{ABP}$에서 코사인법칙
+
+    $$(x+2)^2 = x^2 + 10^2 - 2 \cdot x \cdot 10 \cdot \cos\theta$$
+
+    $$\Longrightarrow 4x + 4 = 100 - 20 x \cos\theta \Longrightarrow x = \frac{24}{5 \cos\theta + 1}$$
+
+    **2단계 — $f(\theta)$.** $\overline{\mathrm{AC}} = 6$, $\overline{\mathrm{AB}} = 10$이므로 삼각형 $\mathrm{ABC}$의 넓이 $= \tfrac{1}{2} \cdot 6 \cdot 10 \cdot \sin\theta = 30 \sin\theta$. 삼각형 $\mathrm{ABP}$의 넓이 $= \tfrac{1}{2} \cdot 10 \cdot x \cdot \sin\theta = 5 x \sin\theta$. 따라서
+
+    $$f(\theta) = 30 \sin\theta - 5 \sin\theta \cdot \frac{24}{5\cos\theta + 1} = 30 \sin\theta - \frac{120 \sin\theta}{5 \cos\theta + 1}$$
+
+    **3단계 — $f'(\theta)$.** 곱의 미분과 몫의 미분으로
+
+    $$f'(\theta) = 30 \cos\theta - 120 \cdot \frac{\cos\theta (5\cos\theta + 1) - \sin\theta (-5 \sin\theta)}{(5\cos\theta + 1)^2}$$
+
+    $$= 30 \cos\theta - 120 \cdot \frac{5 \cos^2\theta + \cos\theta + 5 \sin^2\theta}{(5\cos\theta + 1)^2} = 30 \cos\theta - 120 \cdot \frac{\cos\theta + 5}{(5\cos\theta + 1)^2}$$
+
+    **4단계 — 값 대입.** $\cos\beta = \tfrac{4}{5}$에서 $5 \cos\beta + 1 = 5$, $(5\cos\beta+1)^2 = 25$, $\cos\beta + 5 = \tfrac{29}{5}$.
+
+    $$f'(\beta) = 30 \cdot \tfrac{4}{5} - 120 \cdot \frac{29/5}{25} = 24 - \frac{120 \cdot 29}{125} = 24 - \frac{3480}{125} = -\frac{96}{25}$$
+
+#### [168-5] 이차함수의 최솟값 — 삼각함수의 $\cos\theta$ 치환
+
+양의 실수 $t$에 대하여 함수 $g(\theta) = \sqrt{(4 \cos\theta - 3t)^2 + 4 t^2 \sin^2\theta}$ ($0 \le \theta < 2\pi$)의 최솟값을 $f(t)$라 하자. $f(1)$의 값을 구하시오.
+
+??? success "풀이"
+    $x = \cos\theta$로 치환하면 $-1 \le x \le 1$이고 $\sin^2\theta = 1 - x^2$. $h(x) = (g(\theta))^2$이라 하면
+
+    $$h(x) = (4x - 3t)^2 + 4 t^2 (1 - x^2) = (16 - 4t^2) x^2 - 24 t x + 13 t^2 = 4(4 - t^2) x^2 - 24 t x + 13 t^2$$
+
+    $t = 1$일 때 $h(x) = 12 x^2 - 24 x + 13 = 12(x - 1)^2 + 1$이고 꼭짓점 $x = 1$이 $[-1, 1]$에 속하므로 최솟값 $h(1) = 1$. 따라서
+
+    $$f(1) = \sqrt{1} = 1$$
+
+#### [168-6] 이차함수의 최솟값 — $0 < t < 1$의 일반 경우
+
+[168-5]의 $f(t)$에 대하여 $0 < t < 1$일 때 $f(t)$를 구하시오.
+
+??? success "풀이"
+    $4 - t^2 > 0$이고
+
+    $$h(x) = 4(4 - t^2) \!\left(x - \tfrac{3t}{4 - t^2}\right)^{\!2} + \frac{t^2 (16 - 13 t^2)}{4 - t^2}$$
+
+    꼭짓점 $x = \dfrac{3t}{4 - t^2}$가 $[-1, 1]$에 속하는지 확인. $\tfrac{3t}{4 - t^2} > 0$이고 $\tfrac{3t}{4-t^2} < 1 \Longleftrightarrow 3t < 4 - t^2 \Longleftrightarrow t^2 + 3t - 4 < 0 \Longleftrightarrow (t-1)(t+4) < 0$. $0 < t < 1$에서 만족.
+
+    따라서 $[-1, 1]$에서 $h$의 최솟값은 꼭짓점값 $\dfrac{t^2 (16 - 13 t^2)}{4 - t^2}$이고
+
+    $$f(t) = \sqrt{\frac{t^2 (16 - 13 t^2)}{4 - t^2}} = \frac{t \sqrt{16 - 13 t^2}}{\sqrt{4 - t^2}}$$
+
+#### [168-7] 이차함수의 최솟값 — $t > 1$의 경우
+
+[168-5]의 $f(t)$에 대하여 $t > 1$일 때 $f(t)$를 구하시오.
+
+??? success "풀이"
+    경우를 나누어 분석한다.
+
+    **(i) $t = 2$.** $4 - t^2 = 0$이므로 $h(x) = -48 x + 52$ (일차함수). $[-1, 1]$에서 감소하므로 최솟값 $h(1) = 4$. $f(2) = 2 = |4 - 3 \cdot 2|$.
+
+    **(ii) $1 < t < 2$.** $4 - t^2 > 0$이고 꼭짓점 $\tfrac{3t}{4-t^2} > 1$ (∵ $t > 1$에서 $(t-1)(t+4) > 0$이므로 $3t > 4 - t^2$). $[-1, 1]$에서 $h$는 감소하므로 최솟값은 $h(1) = (4 - 3t)^2$. $f(t) = |4 - 3t|$.
+
+    **(iii) $t > 2$.** $4 - t^2 < 0$이고 $h$는 위로 볼록. 꼭짓점은 음수이지만 위로 볼록이므로 최댓값. $[-1, 1]$에서의 최솟값은 끝점에서 발생하고
+
+    $$h(1) = (3t - 4)^2, \qquad h(-1) = (3t + 4)^2$$
+
+    $(3t - 4)^2 < (3t + 4)^2$이므로 최솟값은 $h(1)$. $f(t) = |3t - 4| = |4 - 3t|$.
+
+    (i), (ii), (iii)을 종합하면
+
+    $$t > 1 \text{일 때 } f(t) = |4 - 3t|$$
+
+#### [168-8] $f(t)$의 $t = 1$에서 연속성과 미분가능성
+
+[168-5]의 $f(t)$에 대하여 $t = 1$에서의 연속성과 미분가능성을 조사하시오.
+
+??? success "풀이"
+    [168-6], [168-7]에서
+
+    $$f(t) = \begin{cases} \dfrac{t \sqrt{16 - 13 t^2}}{\sqrt{4 - t^2}}, & 0 < t < 1 \\ |4 - 3t|, & t \ge 1 \end{cases}$$
+
+    **연속성.** $\displaystyle \lim_{t \to 1^-} f(t) = \dfrac{1 \cdot \sqrt{3}}{\sqrt{3}} = 1$, $\displaystyle \lim_{t \to 1^+} f(t) = |4 - 3| = 1$, $f(1) = 1$. 모두 일치하므로 $t = 1$에서 연속.
+
+    **미분가능성.** $1 \le t < \tfrac{4}{3}$에서 $f(t) = 4 - 3t$, $f'(t) = -3$.
+
+    $$\lim_{t \to 1^+} \frac{f(t) - 1}{t - 1} = \lim_{t \to 1^+} \frac{(4 - 3t) - 1}{t - 1} = \lim_{t \to 1^+} \frac{-3(t - 1)}{t - 1} = -3$$
+
+    좌극한도 분자·분모를 유리화하면 (자세한 계산은 생략) $-3$으로 동일하다. 따라서 $t = 1$에서 미분가능.
+
+#### [168-9] 의예 1차 — 타원의 정의와 직각조건 ($l_1 l_2$)
+
+두 초점이 $\mathrm{F}(\sqrt{3} b, 0)$, $\mathrm{F}'(-\sqrt{3} b, 0)$인 타원 $\dfrac{x^2}{4 b^2} + \dfrac{y^2}{b^2} = 1$ 위의 점 $\mathrm{P}(x_1, y_1)$이 $\angle\mathrm{F}'\mathrm{P}\mathrm{F} = 90^\circ$를 만족시킨다. $\overline{\mathrm{F}'\mathrm{P}} = l_1$이고 $\overline{\mathrm{FP}} = l_2$($l_1 > l_2$)라 할 때, $l_1$과 $l_2$의 곱 $l_1 l_2$를 구하고 $l_1, l_2$를 각각 구하시오. (단, $b > 0$이고 $x_1 > 0$, $y_1 > 0$)
+
+??? success "풀이"
+    타원의 정의로 $l_1 + l_2 = 2 \cdot 2b = 4b$. 또 $\angle\mathrm{F}'\mathrm{P}\mathrm{F} = 90^\circ$이고 $\overline{\mathrm{F}'\mathrm{F}} = 2\sqrt{3} b$이므로 피타고라스의 정리로
+
+    $$l_1^2 + l_2^2 = (2\sqrt{3} b)^2 = 12 b^2$$
+
+    $(l_1 + l_2)^2 = l_1^2 + l_2^2 + 2 l_1 l_2$에서 $16 b^2 = 12 b^2 + 2 l_1 l_2$. 따라서
+
+    $$l_1 l_2 = 2 b^2$$
+
+    $l_1$과 $l_2$는 이차방정식 $t^2 - 4 b t + 2 b^2 = 0$의 두 근. $t = 2 b \pm \sqrt{2} b$이고 $l_1 > l_2$이므로
+
+    $$l_1 = (2 + \sqrt{2}) b, \quad l_2 = (2 - \sqrt{2}) b$$
+
+#### [168-10] 의예 1차 — 점 $\mathrm{P}$의 좌표 (직각조건과 타원의 방정식)
+
+[168-9]의 점 $\mathrm{P}(x_1, y_1)$의 좌표를 구하시오.
+
+??? success "풀이"
+    점 $\mathrm{P}$가 타원 위에 있으므로
+
+    $$\frac{x_1^2}{4 b^2} + \frac{y_1^2}{b^2} = 1 \quad (\text{a})$$
+
+    $\angle\mathrm{F}'\mathrm{P}\mathrm{F} = 90^\circ$이므로 두 직선 $\mathrm{F}'\mathrm{P}$와 $\mathrm{F}\mathrm{P}$의 기울기의 곱이 $-1$:
+
+    $$\frac{y_1}{x_1 + \sqrt{3} b} \cdot \frac{y_1}{x_1 - \sqrt{3} b} = -1 \Longrightarrow y_1^2 = 3 b^2 - x_1^2 \quad (\text{b})$$
+
+    (b)를 (a)에 대입: $\dfrac{x_1^2}{4 b^2} + \dfrac{3 b^2 - x_1^2}{b^2} = 1$, 양변에 $4 b^2$ 곱하면 $x_1^2 + 12 b^2 - 4 x_1^2 = 4 b^2$, 즉 $3 x_1^2 = 8 b^2$, $x_1^2 = \tfrac{8 b^2}{3}$. $x_1 > 0$이므로 $x_1 = \tfrac{2\sqrt{6}}{3} b$.
+
+    $y_1^2 = 3 b^2 - \tfrac{8 b^2}{3} = \tfrac{b^2}{3}$, $y_1 > 0$이므로 $y_1 = \tfrac{\sqrt{3}}{3} b$. 따라서
+
+    $$(x_1, y_1) = \left(\tfrac{2\sqrt{6}}{3} b, \tfrac{\sqrt{3}}{3} b\right)$$
+
+#### [168-11] 의예 1차 — 점 $\mathrm{Q}$와 두 초점의 거리 ($135^\circ$ 코사인법칙)
+
+같은 타원 위의 점 $\mathrm{Q}(x_2, y_2)$가 $\angle\mathrm{F}'\mathrm{F}\mathrm{Q} = 135^\circ$를 만족시킨다 (단, $x_2 > 0, y_2 > 0$). $\overline{\mathrm{F}'\mathrm{Q}} = l_3$이고 $\overline{\mathrm{FQ}} = l_4$라 할 때, $l_3$과 $l_4$를 각각 구하시오.
+
+??? success "풀이"
+    타원의 정의로 $l_3 + l_4 = 4 b$. 삼각형 $\mathrm{QF}'\mathrm{F}$에서 점 $\mathrm{F}$에서의 각이 $135^\circ$이므로 코사인법칙
+
+    $$l_3^2 = l_4^2 + (2 \sqrt{3} b)^2 - 2 \cdot l_4 \cdot 2\sqrt{3} b \cdot \cos(135^\circ) = l_4^2 + 12 b^2 + 2 \sqrt{6} b \cdot l_4$$
+
+    $l_3 = 4b - l_4$를 대입하면
+
+    $$(4b - l_4)^2 = l_4^2 + 12 b^2 + 2 \sqrt{6} b \cdot l_4$$
+
+    $$16 b^2 - 8 b l_4 + l_4^2 = l_4^2 + 12 b^2 + 2 \sqrt{6} b l_4$$
+
+    $$4 b^2 = (8 + 2\sqrt{6}) b l_4 \Longrightarrow l_4 = \frac{4 b}{8 + 2\sqrt{6}} = \frac{2 b}{4 + \sqrt{6}}$$
+
+    유리화: $l_4 = \dfrac{2 b (4 - \sqrt{6})}{16 - 6} = \dfrac{2 b (4 - \sqrt{6})}{10} = \dfrac{(4 - \sqrt{6}) b}{5}$.
+
+    $l_3 = 4 b - l_4 = \dfrac{20 b - (4 - \sqrt{6}) b}{5} = \dfrac{(16 + \sqrt{6}) b}{5}$.
+
+#### [168-12] 의예 1차 — 접선의 방정식과 탄젠트의 덧셈정리
+
+[168-11]의 점 $\mathrm{Q}$에서의 타원의 접선이 $x$축과 만나는 점을 $\mathrm{R}$이라 하자. $\angle\mathrm{FQR} = \theta$라 할 때 $\tan\theta$를 구하시오.
+
+??? success "풀이"
+    **1단계 — $\mathrm{Q}$의 좌표.** $\angle\mathrm{F}'\mathrm{F}\mathrm{Q} = 135^\circ$이므로 점 $\mathrm{F}$에서 점 $\mathrm{Q}$로 가는 직선이 $x$축의 양의 방향과 이루는 각은 $180^\circ - 135^\circ = 45^\circ$. 즉 직선 $\mathrm{FQ}$의 기울기는 $\tan 45^\circ = 1$이고 방정식 $y = x - \sqrt{3} b$.
+
+    이를 타원에 대입: $5 x_2^2 - 8\sqrt{3} b x_2 + 8 b^2 = 0 \Longrightarrow x_2 = \tfrac{(4\sqrt{3} + 2\sqrt{2}) b}{5}$ (양의 근), $y_2 = x_2 - \sqrt{3} b = \tfrac{(2\sqrt{2} - \sqrt{3}) b}{5}$.
+
+    **2단계 — $\mathrm{R}$의 좌표.** 접선의 방정식 $\dfrac{x_2 x}{4 b^2} + \dfrac{y_2 y}{b^2} = 1$. $y = 0$에서 $x = \dfrac{4 b^2}{x_2} = \dfrac{4 b^2 \cdot 5}{(4\sqrt{3} + 2\sqrt{2}) b} = \dfrac{10 b}{2\sqrt{3} + \sqrt{2}}$.
+
+    유리화: $\dfrac{10 b (2\sqrt{3} - \sqrt{2})}{12 - 2} = (2\sqrt{3} - \sqrt{2}) b$. $\mathrm{R} = ((2\sqrt{3} - \sqrt{2}) b, 0)$.
+
+    **3단계 — $\tan\alpha$ (보조각).** 점 $\mathrm{Q}$에서 $x$축으로 내린 수선의 발 $\mathrm{S}(x_2, 0)$. $\angle\mathrm{QRS} = \alpha$라 하면
+
+    $$\tan\alpha = \frac{y_2}{x_3 - x_2} = \frac{(2\sqrt{2} - \sqrt{3})/5}{(2\sqrt{3} - \sqrt{2}) - (4\sqrt{3} + 2\sqrt{2})/5} = \frac{2\sqrt{2} - \sqrt{3}}{6\sqrt{3} - 7\sqrt{2}}$$
+
+    분모·분자에 $6\sqrt{3} + 7\sqrt{2}$를 곱하면 분모는 $108 - 98 = 10$, 분자는 $(2\sqrt{2})(6\sqrt{3}) + (2\sqrt{2})(7\sqrt{2}) - (\sqrt{3})(6\sqrt{3}) - (\sqrt{3})(7\sqrt{2}) = 12\sqrt{6} + 28 - 18 - 7\sqrt{6} = 5\sqrt{6} + 10$. 따라서 $\tan\alpha = \dfrac{2 + \sqrt{6}}{2}$.
+
+    **4단계 — $\theta = 135^\circ - \alpha$.** 탄젠트 덧셈정리로
+
+    $$\tan\theta = \tan(135^\circ - \alpha) = \frac{\tan 135^\circ - \tan\alpha}{1 + \tan 135^\circ \tan\alpha} = \frac{-1 - \tan\alpha}{1 - \tan\alpha} = \frac{-1 - (2 + \sqrt{6})/2}{1 - (2 + \sqrt{6})/2} = \frac{-(4 + \sqrt{6})/2}{-\sqrt{6}/2} = \frac{4 + \sqrt{6}}{\sqrt{6}}$$
+
+    분모를 유리화: $\tan\theta = \dfrac{(4 + \sqrt{6}) \sqrt{6}}{6} = \dfrac{4\sqrt{6} + 6}{6} = \dfrac{3 + 2\sqrt{6}}{3}$.
+
+#### [168-13] 의예 2차 — 정적분 $\int_0^\pi g(x)\, dx$ (삼각함수의 주기성)
+
+두 함수 $f(x)$와 $g(x)$가 모든 실수 $x$에 대하여 다음 조건을 만족시킨다.
+
+- (i) $f(x) \le g(x)$
+- (ii) $\{g(x) - f(x)\}^2 + \sin^2 f(x) = 1$
+
+함수 $f(x) = 10 x$일 때, 정적분 $\displaystyle \int_0^\pi g(x)\, dx$의 값을 구하시오.
+
+??? success "풀이"
+    조건 (ii)에서 $\{g(x) - f(x)\}^2 = 1 - \sin^2 f(x) = \cos^2 f(x)$. 조건 (i)에서 $g(x) - f(x) \ge 0$이므로
+
+    $$g(x) - f(x) = |\cos f(x)| \Longrightarrow g(x) = f(x) + |\cos f(x)|$$
+
+    $f(x) = 10 x$이면 $g(x) = 10 x + |\cos 10 x|$이고
+
+    $$\int_0^\pi g(x)\, dx = \int_0^\pi 10 x\, dx + \int_0^\pi |\cos 10 x|\, dx = 5 \pi^2 + \int_0^\pi |\cos 10 x|\, dx$$
+
+    $y = |\cos 10 x|$는 주기 $\tfrac{\pi}{10}$인 주기함수이고, 한 주기에서 $\int_0^{\pi/10} |\cos 10 x|\, dx = \tfrac{2}{10} = \tfrac{1}{5}$. $[0, \pi]$에는 $10$주기가 포함되므로
+
+    $$\int_0^\pi |\cos 10 x|\, dx = 10 \cdot \tfrac{1}{5} = 2$$
+
+    $$\therefore\ \int_0^\pi g(x)\, dx = 5 \pi^2 + 2$$
+
+#### [168-14] 의예 2차 — $g(x) = x + |\cos x|$의 미분가능성과 단조성
+
+[168-13]에서 $f(x) = x$일 때 $g(x)$가 열린구간 $(0, \pi)$에서 미분가능한지 조사하고, 함수 $g(x)$가 닫힌구간 $[0, \pi]$에서 증가함을 보이시오.
+
+??? success "풀이"
+    $f(x) = x$이면 $g(x) = x + |\cos x|$이고
+
+    $$g(x) = \begin{cases} x + \cos x, & 0 \le x \le \tfrac{\pi}{2} \\ x - \cos x, & \tfrac{\pi}{2} < x \le \pi \end{cases}$$
+
+    **미분가능성.** $x \ne \tfrac{\pi}{2}$에서 $g$는 두 식의 미분이 존재. $x = \tfrac{\pi}{2}$에서
+
+    $$\lim_{h \to 0^-} \frac{g(\tfrac{\pi}{2} + h) - g(\tfrac{\pi}{2})}{h} = \lim_{h \to 0^-} \frac{h - \sin h}{h} = 1 - 1 = 0$$
+
+    $$\lim_{h \to 0^+} \frac{g(\tfrac{\pi}{2} + h) - g(\tfrac{\pi}{2})}{h} = \lim_{h \to 0^+} \frac{h + \sin h}{h} = 1 + 1 = 2$$
+
+    좌극한 $0 \ne 2$ 우극한이므로 $x = \tfrac{\pi}{2}$에서 미분가능하지 않다. 즉 $g$는 $(0, \tfrac{\pi}{2})$와 $(\tfrac{\pi}{2}, \pi)$에서 미분가능하지만 $x = \tfrac{\pi}{2}$에서는 미분가능하지 않다.
+
+    **증가.** $(0, \tfrac{\pi}{2})$에서 $g'(x) = 1 - \sin x > 0$ ($\sin x < 1$이므로). $(\tfrac{\pi}{2}, \pi)$에서 $g'(x) = 1 + \sin x > 0$. 또 $g$는 $[0, \pi]$에서 연속이므로 닫힌구간 $[0, \pi]$에서 증가한다.
+
+#### [168-15] 의예 2차 — 방정식이 유일한 실근을 갖는 $k$의 범위
+
+[168-14]의 $g(x) = x + |\cos x|$에 대하여 방정식
+
+$$g(x) - k x + \tfrac{\pi}{2} (k - 1) = 0$$
+
+이 $0 \le x \le \pi$에서 오직 하나의 실근을 갖도록 하는 양의 실수 $k$의 값의 범위를 구하시오.
+
+??? success "풀이"
+    $h(x) = g(x) - k x + \tfrac{\pi}{2}(k - 1)$이라 하면 $h(\tfrac{\pi}{2}) = g(\tfrac{\pi}{2}) - \tfrac{\pi k}{2} + \tfrac{\pi k}{2} - \tfrac{\pi}{2} = \tfrac{\pi}{2} - \tfrac{\pi}{2} = 0$. 따라서 $x = \tfrac{\pi}{2}$가 방정식의 한 근이다. 다른 구간 $[0, \tfrac{\pi}{2})$와 $(\tfrac{\pi}{2}, \pi]$에서 근이 존재하지 않을 조건을 찾으면 된다.
+
+    **구간 $[0, \tfrac{\pi}{2})$.** $h'(x) = 1 - \sin x - k$.
+
+    - $k \ge 1$이면 $h'(x) \le 0$이므로 $h$는 감소. $h(0) = 1 + \tfrac{\pi}{2}(k-1) > 0$이면 $h(x) > h(\tfrac{\pi}{2}) = 0$ ($0 \le x < \tfrac{\pi}{2}$). $h(0) > 0 \Leftrightarrow k > 1 - \tfrac{2}{\pi}$. $k \ge 1$이면 항상 만족 → 근 없음.
+    - $0 < k < 1$이면 $h'(\alpha) = 0$인 $\alpha \in (0, \tfrac{\pi}{2})$ 존재 ($\alpha$에서 $h$의 최댓값). $h(0) = 1 + \tfrac{\pi}{2}(k - 1) \le 0$일 때 (즉 $0 < k \le 1 - \tfrac{2}{\pi}$) 중간값정리로 근이 한 개 존재. $h(0) > 0$ (즉 $1 - \tfrac{2}{\pi} < k < 1$)이면 $h > 0$ → 근 없음.
+
+    종합: $[0, \tfrac{\pi}{2})$에서 근이 없는 $k$ 범위 $k > 1 - \tfrac{2}{\pi}$.
+
+    **구간 $(\tfrac{\pi}{2}, \pi]$.** $h'(x) = 1 + \sin x - k$.
+
+    - $0 < k \le 1$이면 $h'(x) > 0$이므로 $h$는 증가. $h(\tfrac{\pi}{2}) = 0$이므로 $h(x) > 0$ → 근 없음.
+    - $k \ge 2$이면 $h'(x) \le 0$이므로 $h$는 감소. $h(\tfrac{\pi}{2}) = 0$이므로 $h(x) < 0$ → 근 없음.
+    - $1 < k < 2$이면 $h'(\beta) = 0$인 $\beta \in (\tfrac{\pi}{2}, \pi)$ 존재 ($\beta$에서 최댓값). $h(\pi) = 1 + \tfrac{\pi}{2}(1 - k)$. $h(\pi) \le 0 \Leftrightarrow k \ge 1 + \tfrac{2}{\pi}$일 때 근이 한 개 존재; $h(\pi) > 0$일 때 (즉 $1 < k < 1 + \tfrac{2}{\pi}$) 근 없음.
+
+    종합: $(\tfrac{\pi}{2}, \pi]$에서 근이 없는 $k$ 범위 $0 < k < 1 + \tfrac{2}{\pi}$ 또는 $k \ge 2$.
+
+    **두 구간 모두에서 근이 없어야 한다.**
+
+    $$\left[k > 1 - \tfrac{2}{\pi}\right] \cap \left[0 < k < 1 + \tfrac{2}{\pi} \text{ 또는 } k \ge 2\right] = \left(1 - \tfrac{2}{\pi},\ 1 + \tfrac{2}{\pi}\right) \cup [2, \infty)$$
+
+    즉
+
+    $$1 - \tfrac{2}{\pi} < k < 1 + \tfrac{2}{\pi} \quad \text{또는} \quad k \ge 2$$
+
+#### [168-16] 의예 2차 — 합성함수의 미분으로 $f'(a) = \tfrac{2}{3}$인 $a$ 결정
+
+[168-13]에서 $g(x) = x$일 때, $f'(a) = \tfrac{2}{3}$를 만족시키는 실수 $a$의 값을 구하시오. (단, $\tfrac{\pi}{2} < a < \pi + 1$)
+
+??? success "풀이"
+    **1단계 — 관계식.** $g(x) = x$이므로 $x = f(x) + |\cos f(x)|$. $\{x - f(x)\}^2 + \sin^2 f(x) = 1$의 양변을 $x$로 미분하면
+
+    $$2 (x - f(x))(1 - f'(x)) + 2 f'(x) \sin f(x) \cos f(x) = 0$$
+
+    $x - f(x) = |\cos f(x)|$이므로
+
+    $$|\cos f(x)| \{1 - f'(x)\} + f'(x) \sin f(x) \cos f(x) = 0 \quad (\ast)$$
+
+    **2단계 — 경우 분석 ($\cos f(a) > 0$).** $|\cos f(a)| = \cos f(a)$. $(\ast)$를 정리하면
+
+    $$\cos f(a) - f'(a) \cos f(a) (1 - \sin f(a)) = 0 \Longrightarrow f'(a) = \frac{1}{1 - \sin f(a)}$$
+
+    (단, $\sin f(a) \ne 1$.) $f'(a) = \tfrac{2}{3}$이면 $1 - \sin f(a) = \tfrac{3}{2}$이므로 $\sin f(a) = -\tfrac{1}{2}$, $\cos f(a) > 0$이므로 $\cos f(a) = \tfrac{\sqrt{3}}{2}$.
+
+    $f(a) = a - \cos f(a) = a - \tfrac{\sqrt{3}}{2}$. $\tfrac{\pi}{2} < a < \pi + 1$이므로 $\tfrac{\pi}{2} - \tfrac{\sqrt{3}}{2} < f(a) < \pi + 1 - \tfrac{\sqrt{3}}{2}$ ≈ $(0.70, 3.27)$. 이 범위에서 $\sin f(a) = -\tfrac{1}{2}$, $\cos f(a) > 0$을 모두 만족하는 $f(a)$는 존재하지 않는다.
+
+    **3단계 — 경우 분석 ($\cos f(a) < 0$).** $|\cos f(a)| = -\cos f(a)$. 비슷하게 정리하면
+
+    $$f'(a) = \frac{1}{1 + \sin f(a)}$$
+
+    $f'(a) = \tfrac{2}{3}$이면 $\sin f(a) = \tfrac{1}{2}$, $\cos f(a) < 0$이므로 $\cos f(a) = -\tfrac{\sqrt{3}}{2}$. 따라서 $f(a) = a + \cos f(a) = a - \tfrac{\sqrt{3}}{2}$.
+
+    $f(a) = \tfrac{5\pi}{6}$ ($\sin = \tfrac{1}{2}$, $\cos < 0$인 가장 자연스러운 값)이라 놓으면
+
+    $$a = f(a) + \tfrac{\sqrt{3}}{2} = \tfrac{5\pi}{6} + \tfrac{\sqrt{3}}{2}$$
+
+    $\tfrac{5\pi}{6} + \tfrac{\sqrt{3}}{2} \approx 2.62 + 0.87 = 3.49 \in (\tfrac{\pi}{2}, \pi + 1)$ ✓.
+
+    **4단계 — 경우 분석 ($\cos f(a) = 0$).** $f(a) = a - 0 = a$이고 $\cos a = 0$이 $\tfrac{\pi}{2} < a < \pi + 1$에서 성립하려면 $a = \tfrac{\pi}{2}$ 또는 $a = \tfrac{3\pi}{2}$. 하지만 $a > \tfrac{\pi}{2}$이고 $a < \pi + 1 < \tfrac{3\pi}{2}$이므로 해 없음.
+
+    **결론.**
+
+    $$a = \frac{5\pi}{6} + \frac{\sqrt{3}}{2}$$
+
