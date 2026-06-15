@@ -23815,3 +23815,190 @@ $$f(x) = \begin{cases} x & (-1 \le x < 0) \\ d & (x = 0) \\ \dfrac{a}{2}x^2 + bx
 
 ---
 
+
+## 카드 184 — 연세대 미래캠 (2024학년도) — 자연·의예 5 문항 · 11 하위문항
+
+연세대학교 미래캠퍼스 2024학년도 대입전형 선행학습 영향평가 결과 보고서에서 발췌. 논술우수자 전형(창의인재) 자연계 문제 1·2·3 (수학·수학Ⅰ·수학Ⅱ·미적분) + 의예과 수학 문제 1·2 (수학·수학Ⅰ·미적분·기하). 자연 2+2+3 + 의예 수학 2+2 = 11 하위문항.
+
+---
+
+### 문항카드 3 — 자연 문제 1 (수학·미적분)
+
+**설정.** 제시문: $V = \displaystyle\int_a^b S(x)\,dx$ (단면 넓이가 $S(x)$ 인 입체도형의 부피), 무리함수 $y = f(x)$ 의 정의, 두 무리함수 $y = 2\sqrt{3x}$, $y = 2\sqrt{x}$ 의 그래프.
+
+점 $\mathrm{A}(p, 0)$ 에서 $x$ 축에 수직인 직선을 그어 $y = 2\sqrt{3x}$ 와 만나는 점 $\mathrm{D}$, 선분 $\mathrm{AD}$ 를 한 변으로 하는 정사각형 $\mathrm{ABCD}$ 를 만들면 $\mathrm{C}$ 는 $y = 2\sqrt{x}$ 위에 있다. 도형 $\mathrm{CDE}$ 를 밑면으로 하는 입체도형의 선분 $\mathrm{CD}$ 에 수직인 단면은 정삼각형.
+
+**【1-1】** 양수 $p$ 의 값.
+
+??? success "풀이"
+    정사각형 한 변 길이를 $q$ 라 하면 $\mathrm{B}(p+q, 0)$. $\mathrm{D}$ 의 $y$ 좌표 $= q$ 이고 $\mathrm{D}$ 는 $y = 2\sqrt{3x}$ 위 → $q = 2\sqrt{3p}$. $\mathrm{C}$ 의 $y$ 좌표도 $q$ (정사각형) 이고 $\mathrm{C}$ 는 $y = 2\sqrt{x}$ 위 → $q = 2\sqrt{p + q}$.
+
+    $q^2 = 12p \Rightarrow p = q^2/12$, $q^2 = 4(p + q) \Rightarrow p = (q^2 - 4q)/4$.
+
+    $\dfrac{q^2}{12} = \dfrac{q^2 - 4q}{4} \Rightarrow 4q^2 = 12q^2 - 48q \Rightarrow 8q^2 = 48q \Rightarrow q = 6$.
+
+    $\therefore p = 36/12 = 3$.
+
+**【1-2】** 유리수 $m, n$ 에 대하여 입체도형의 부피가 $m + n\sqrt{3}$ 일 때 $m + n$.
+
+??? success "풀이"
+    $p = 3, q = 6$. $\mathrm{A}(3, 0), \mathrm{B}(9, 0), \mathrm{C}(9, 6), \mathrm{D}(3, 6)$, $\mathrm{E}(3, 2\sqrt{3})$ (점 $\mathrm{D}$ 의 $x$ 좌표에서 $y = 2\sqrt{x}$ 와 만남).
+
+    $[3, 9]$ 위 점 $x$ 에서 단면을 이루는 정삼각형 한 변 길이 $\ell(x) = 6 - 2\sqrt{x}$.
+
+    $S(x) = \dfrac{\sqrt{3}}{4}(6 - 2\sqrt{x})^2$, $V = \dfrac{\sqrt{3}}{4}\displaystyle\int_3^9 (36 - 24\sqrt{x} + 4x)\,dx$.
+
+    $\displaystyle\int_3^9 36\,dx = 216$, $\displaystyle\int_3^9 24\sqrt{x}\,dx = 16(27 - 3\sqrt{3}) = 432 - 48\sqrt{3}$, $\displaystyle\int_3^9 4x\,dx = 2(81 - 9) = 144$.
+
+    합: $216 - 432 + 48\sqrt{3} + 144 = -72 + 48\sqrt{3}$.
+
+    $V = \dfrac{\sqrt{3}}{4}(-72 + 48\sqrt{3}) = -18\sqrt{3} + 36 = 36 - 18\sqrt{3}$.
+
+    $m = 36, n = -18$, $\therefore m + n = 18$.
+
+---
+
+### 문항카드 4 — 자연 문제 2 (수학Ⅱ·미적분)
+
+**설정.** 제시문: $\displaystyle\lim_{h \to 0}\dfrac{\sin h}{h} = 1$, $\displaystyle\lim_{h \to 0}\dfrac{\cos h - 1}{h} = 0$, 미분계수 정의.
+
+**【2-1】** 도함수의 정의를 이용하여 $y = \cos 2x$ 의 도함수를 유도하라.
+
+??? success "풀이"
+    $y' = \displaystyle\lim_{h \to 0}\dfrac{\cos 2(x+h) - \cos 2x}{h} = \lim_{h \to 0}\dfrac{\cos 2x \cos 2h - \sin 2x \sin 2h - \cos 2x}{h}$
+
+    $= \cos 2x\!\displaystyle\lim_{h \to 0}\dfrac{\cos 2h - 1}{h} - \sin 2x\!\displaystyle\lim_{h \to 0}\dfrac{\sin 2h}{h}$.
+
+    $\displaystyle\lim_{h \to 0}\dfrac{\cos 2h - 1}{h} = \lim_{h \to 0}\dfrac{\cos 2h - 1}{2h}\cdot 2 = 0\cdot 2 = 0$, $\displaystyle\lim_{h \to 0}\dfrac{\sin 2h}{h} = 2$.
+
+    $\therefore y' = -2\sin 2x$.
+
+**【2-2】** $f(x) = e^{-x}\cos 2x$ 일 때 $\displaystyle\lim_{x \to 0}\dfrac{1}{x}[f(x) + f(2x) + f(3x) + \cdots + f(2023x) - 2023]$.
+
+??? success "풀이"
+    $f(0) = 1$, $f'(x) = -e^{-x}\cos 2x - 2e^{-x}\sin 2x$, $f'(0) = -1$. $2023 = 2023\cdot f(0)$ 이므로
+
+    $\displaystyle\lim_{x \to 0}\dfrac{1}{x}\sum_{k=1}^{2023}[f(kx) - f(0)] = \sum_{k=1}^{2023}\!\lim_{x \to 0}\dfrac{f(kx) - f(0)}{kx}\cdot k = \sum_{k=1}^{2023} k\cdot f'(0)$
+
+    $= -1 \cdot \dfrac{2023 \cdot 2024}{2} = -2{,}047{,}276$.
+
+---
+
+### 문항카드 5 — 자연 문제 3 (수학)
+
+**설정.** 제시문: 명제·정의·증명의 개념과 다음 명제 $(*)$ — '$a, b$ 가 실수일 때, $a^2 + b^2 = 0$ 이면 $a = 0$ 이고 $b = 0$ 이다.' 일대일대응 (일대일함수 + 치역 $=$ 공역). 합의 법칙·곱의 법칙.
+
+**【3-1】** 명제 $(*)$ 를 귀류법으로 증명하는 과정에서 (Ⅰ), (Ⅱ), (Ⅲ), (Ⅳ) 를 증명 순서대로 나열하고 빈칸을 채워라.
+
+??? success "풀이"
+    **순서:** (Ⅲ) → (Ⅳ) → (Ⅰ) → (Ⅱ).
+
+    (Ⅲ) 결론을 부정하여 "$a \ne 0$ 또는 $b \ne 0$ 이라고 하자."
+
+    (Ⅳ) ① $a \ne 0, b = 0$ 이면 $a^2 > 0, b^2 = 0$ 이므로 $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \ne 0$.
+    
+    ② $a = 0, b \ne 0$ 이면 $a^2 = 0, b^2 > 0$ 이므로 "$a^2 + b^2 > 0$", 즉 "$a^2 + b^2 \ne 0$".
+    
+    ③ "$a \ne 0, b \ne 0$ 이면 $a^2 > 0, b^2 > 0$ 이므로 $a^2 + b^2 > 0$, 즉 $a^2 + b^2 \ne 0$."
+
+    (Ⅰ) 세 가지 경우 모두 $a^2 + b^2 = 0$ 이라는 가정에 모순.
+
+    (Ⅱ) 따라서 $a, b$ 가 실수일 때, $a^2 + b^2 = 0$ 이면 $a = 0$ 이고 $b = 0$.
+
+**【3-2】** $X = \{x \mid -c \le x \le c, c > 0\}$, $Y = \{y \mid -8 \le y \le 0\}$. 일차함수 $f(x) = px + q$ 가 일대일대응일 때 $q/p$ 의 값을 모두 구하라. ($p, q$ 는 실수)
+
+??? success "풀이"
+    일차함수는 단조이므로 $X$ 의 양 끝이 $Y$ 의 양 끝과 대응:
+
+    **① $p > 0$:** $f(-c) = -8, f(c) = 0$. $-cp + q = -8, cp + q = 0$. 두 식의 합 $2q = -8$ → $q = -4$, $p = 4/c$. $\dfrac{q}{p} = -\dfrac{4}{4/c} = -c$.
+
+    **② $p < 0$:** $f(-c) = 0, f(c) = -8$. 비슷하게 $q = -4, p = -4/c$. $\dfrac{q}{p} = c$.
+
+    $\therefore \dfrac{q}{p} = \pm c$.
+
+**【3-3】** 삼각형의 세 변의 길이 $x_1, x_2, x_3$ 자연수, $x_1 \ge x_2 \ge x_3$, $x_1 + x_2 + x_3 = 36$ 만족하는 삼각형의 개수.
+
+??? success "풀이"
+    삼각형 부등식 $x_1 < x_2 + x_3 = 36 - x_1$ → $x_1 < 18$. $x_3 \ge 1$ 이고 $x_1 \ge x_2 \ge x_3$ → $3x_1 \ge 36$, $x_1 \ge 12$. 즉 $x_1 \in \{12, 13, 14, 15, 16, 17\}$.
+
+    각 $x_1$ 에서 $x_2 + x_3 = 36 - x_1$, $x_1 \ge x_2 \ge x_3 \ge 1$ 인 $(x_2, x_3)$:
+
+    - $x_1 = 12$: $(12, 12)$ — 1개
+    - $x_1 = 13$: $(13, 10), (12, 11)$ — 2개
+    - $x_1 = 14$: $(14, 8), (13, 9), (12, 10), (11, 11)$ — 4개
+    - $x_1 = 15$: $(15, 6), (14, 7), (13, 8), (12, 9), (11, 10)$ — 5개
+    - $x_1 = 16$: $(16, 4), (15, 5), (14, 6), (13, 7), (12, 8), (11, 9), (10, 10)$ — 7개
+    - $x_1 = 17$: $(17, 2), (16, 3), \ldots, (10, 9)$ — 8개
+
+    $\therefore 1 + 2 + 4 + 5 + 7 + 8 = 27$.
+
+---
+
+### 문항카드 6 — 의예 문제 1 (수학·수학Ⅰ)
+
+**설정.** 제시문: $U_{k+1} = \{1, 2, \ldots, k+1\}$. 두 부분집합 $A, B$ 에 대해 $A \cup B = U_{k+1}$ 과 $n(A) = 2$ 만족 $(A, B)$ 의 개수 $a_k$. $A \cup B = U_{k+1}$ 과 $n(A) = 3$ 만족 $\langle A, B\rangle$ 의 개수 $b_k$. 점화식 $b_1 = 0$, $b_{k+1} = c_1 a_1 + c_2 a_2 + \cdots + c_k a_k$ ($k = 1, 2, \ldots$) 을 만족하는 양수 $c_1, c_2, \ldots, c_k$ 가 존재.
+
+**【1-1】** $c_2$ 를 구하고, $b_3$ 을 구하는 데 사용된 $\langle A, B\rangle$ 를 모두 찾아라.
+
+??? success "풀이"
+    $a_k = {}_{k+1}\mathrm{C}_2 \times 4 = 2k(k+1)$ (전체집합 원소 $k+1$ 개 중 $A$ 의 원소 $2$ 개 선택, $A^c$ 의 원소는 반드시 $B$, $A$ 의 원소 2개는 각각 $B$ 에 속하거나 속하지 않거나 $2^2 = 4$). $a_1 = 4, a_2 = 12$.
+
+    $b_k = {}_{k+1}\mathrm{C}_3 \times 8 = \dfrac{4}{3}(k-1)k(k+1)$ ($A$ 의 원소 $3$ 개 선택, $A$ 의 원소 각각 $B$ 에 속할지 결정 $2^3 = 8$). $b_2 = 8 = 2a_1$ → $c_1 = 2$. $b_3 = 32 = 2a_1 + 2a_2 = 8 + 24 = 32$ → $c_2 = 2$.
+
+    $b_3 = 32$ 이고, $b_3$ 을 구하는 데 사용된 $\langle A, B\rangle$ 의 모든 쌍은 $U_4 = \{1, 2, 3, 4\}$ 의 부분집합 $A$ ($n(A) = 3$) 와 $B \supseteq A^c$ 의 모든 조합 — $A \in \{\{1,2,3\}, \{1,2,4\}, \{1,3,4\}, \{2,3,4\}\}$ 각각에 대해 $B$ 는 $A$ 의 부분집합 $8$ 가지 각각에 $A^c$ 한 원소를 합친 집합. 총 $4 \times 8 = 32$ 개.
+
+**【1-2】** 상수들의 곱 $c_1 c_2 \cdots c_k$ 를 구하고, 그 이유를 설명하라.
+
+??? success "풀이"
+    $\displaystyle\sum_{i=1}^k a_i = \sum_{i=1}^k 2i(i+1) = 2\left[\dfrac{k(k+1)(2k+1)}{6} + \dfrac{k(k+1)}{2}\right] = \dfrac{k(k+1)}{3}(2k+1+3) = \dfrac{2}{3}k(k+1)(k+2)$.
+
+    $b_{k+1} = \dfrac{4}{3}k(k+1)(k+2) = 2 \displaystyle\sum_{i=1}^k a_i$. 따라서 모든 $i$ 에 대해 $c_i = 2$.
+
+    $\therefore c_1 c_2 \cdots c_k = 2^k$.
+
+---
+
+### 문항카드 7 — 의예 문제 2 (미적분·기하)
+
+**설정.** 평평한 땅 위의 직사각형 공원 $\mathrm{ABCD}$. $\overline{\mathrm{DA}} = 180$ m, 선분 $\mathrm{DA}$ 위 $\overline{\mathrm{PA}} = \overline{\mathrm{QD}}$ 인 지점 $\mathrm{P}, \mathrm{Q}$ 에 국기게양대. 황토길: 두 게양대로부터 거리의 합이 $180$ m 인 곳 (타원). 꽃길: 두 게양대로부터 거리의 차가 $60$ m 인 곳 (쌍곡선); 파란/빨간 분리. 파란 꽃길은 $\mathrm{DA}$ 위 한 지점에서 시작하여 $\mathrm{B}$ 에서 종료. 황토길과 파란 꽃길이 만나는 지점에 음수대; 음수대와 두 게양대가 만드는 삼각형은 $\overline{\mathrm{PQ}}$ 를 빗변으로 하는 직각삼각형.
+
+**【2-1】** 두 국기게양대 사이의 거리와 공원의 세로 길이.
+
+??? success "풀이"
+    선분 $\mathrm{DA}$ 의 중점을 원점, $\mathrm{DA}$ 를 $x$ 축에 두면 $\mathrm{D}(-90, 0), \mathrm{A}(90, 0)$, $\mathrm{P}(c, 0), \mathrm{Q}(-c, 0)$.
+
+    **타원:** $\dfrac{x^2}{a^2} + \dfrac{y^2}{b^2} = 1$, $a = 90$, $b^2 = 90^2 - c^2$.
+
+    **쌍곡선:** $\dfrac{x^2}{a'^2} - \dfrac{y^2}{b'^2} = 1$, $a' = 30$, $b'^2 = c^2 - 30^2$.
+
+    음수대 $\mathrm{R}$ 에 대해 $\overline{\mathrm{RP}} + \overline{\mathrm{RQ}} = 180$, $\overline{\mathrm{RP}} - \overline{\mathrm{RQ}} = \pm 60$, $\overline{\mathrm{RP}}^2 + \overline{\mathrm{RQ}}^2 = (2c)^2$. 두 합·차 제곱의 합 등식:
+
+    $(\overline{\mathrm{RP}} + \overline{\mathrm{RQ}})^2 + (\overline{\mathrm{RP}} - \overline{\mathrm{RQ}})^2 = 2(\overline{\mathrm{RP}}^2 + \overline{\mathrm{RQ}}^2)$.
+
+    $180^2 + 60^2 = 2(2c)^2 \Rightarrow 36000 = 8c^2 \Rightarrow c^2 = 4500$, $c = 30\sqrt{5}$.
+
+    두 국기게양대 거리 $= 2c = 60\sqrt{5}$.
+
+    파란 꽃길의 끝점 $\mathrm{B} = (90, h)$ 가 쌍곡선 위 → $h = b'\sqrt{(90/30)^2 - 1} = b'\sqrt{8} = 2\sqrt{2}\,b'$. $b'^2 = c^2 - 900 = 3600$, $b' = 60$.
+
+    공원 세로 길이 $\overline{\mathrm{AB}} = h = 120\sqrt{2}$.
+
+**【2-2】** $\mathrm{B}$ 지점 지면에서 $\mathrm{P}$ 게양대 꼭대기를 바라본 각도가 $15°$, 게양대 높이를 $h$ 라 할 때 $h^2 = 1800(h_1 + h_2\sqrt{3} + h_3\sqrt{5} + h_4\sqrt{15})$ (유리수 $h_i$). $h_1 + h_2 + h_3 + h_4$.
+
+??? success "풀이"
+    $\tan 15° = \tan(45° - 30°) = \dfrac{1 - 1/\sqrt{3}}{1 + 1/\sqrt{3}} = \dfrac{\sqrt{3} - 1}{\sqrt{3} + 1} = \dfrac{(\sqrt{3}-1)^2}{2} = \dfrac{4 - 2\sqrt{3}}{2} = 2 - \sqrt{3}$.
+
+    $\tan^2 15° = (2 - \sqrt{3})^2 = 7 - 4\sqrt{3}$.
+
+    $\overline{\mathrm{PA}} = 90 - c = 90 - 30\sqrt{5}$, $\overline{\mathrm{AB}} = 120\sqrt{2}$. 삼각형 $\triangle\mathrm{PAB}$ 는 $\angle\mathrm{PAB} = 90°$ 인 직각삼각형:
+
+    $\overline{\mathrm{BP}}^2 = (90 - 30\sqrt{5})^2 + (120\sqrt{2})^2 = 900(14 - 6\sqrt{5}) + 28800 = 12600 - 5400\sqrt{5} + 28800 = 41400 - 5400\sqrt{5} = 1800(23 - 3\sqrt{5})$.
+
+    $h^2 = \tan^2 15°\cdot\overline{\mathrm{BP}}^2 = (7 - 4\sqrt{3})\cdot 1800(23 - 3\sqrt{5}) = 1800\cdot[7\cdot 23 - 7\cdot 3\sqrt{5} - 4\sqrt{3}\cdot 23 + 4\sqrt{3}\cdot 3\sqrt{5}]$
+
+    $= 1800(161 - 92\sqrt{3} - 21\sqrt{5} + 12\sqrt{15})$.
+
+    $h_1 = 161, h_2 = -92, h_3 = -21, h_4 = 12$. $\therefore h_1 + h_2 + h_3 + h_4 = 161 - 92 - 21 + 12 = 60$.
+
+---
+
