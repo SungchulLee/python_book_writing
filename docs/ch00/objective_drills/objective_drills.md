@@ -24730,3 +24730,182 @@ $f(x) = \begin{cases} 2x^2 & (x < -1) \\ -x + a & (-1 \le x < 1) \\ -\dfrac{1}{3
     $= 2(-1+\sqrt{3}) + (-3+2\sqrt{3}) = -2 + 2\sqrt{3} - 3 + 2\sqrt{3} = -5 + 4\sqrt{3}$.
 
 ---
+## 카드 188 — 연세대 미래캠 (2020학년도) — 자연·의예 5 문항 · 10 하위문항
+
+연세대학교 미래캠퍼스 2020학년도 대입전형 선행학습 영향평가 결과 보고서에서 발췌. 일반논술 전형 자연계 문제 1·2·3 (수학·수학Ⅱ·미적분Ⅱ) + 의예과 수학 문제 1·2 (수학·미적분Ⅱ·기하와 벡터). 자연 1+2+3 + 의예 수학 2+2 = 10 하위문항.
+
+---
+
+### 문항카드 3 — 자연 문제 1 (미적분Ⅱ)
+
+**설정.** 제시문: 부분적분법 — 미분가능한 두 함수 $f, g$ 에 대해 $\displaystyle\int f(x)g'(x)\,dx = f(x)g(x) - \int f'(x)g(x)\,dx$.
+
+**【1】** $f(x) = |\sin x|$ 에 대해 정적분 $\displaystyle\int_{-\pi/2}^{\pi/2} f(x)e^x\,dx$.
+
+??? success "풀이"
+    부정적분 $\displaystyle\int \sin x\cdot e^x\,dx$ 를 부분적분으로 계산:
+
+    $\displaystyle\int \sin x\cdot e^x\,dx = \sin x\cdot e^x - \int \cos x\cdot e^x\,dx = \sin x\cdot e^x - \!\left(\cos x\cdot e^x + \displaystyle\int \sin x\cdot e^x\,dx\right)$.
+
+    $2\displaystyle\int \sin x\cdot e^x\,dx = (\sin x - \cos x)e^x \Rightarrow \displaystyle\int \sin x\cdot e^x\,dx = \dfrac{(\sin x - \cos x)e^x}{2}$.
+
+    적분구간 분할: $[-\pi/2, 0]$ 에서 $\sin x \le 0$ 이므로 $|\sin x| = -\sin x$. $[0, \pi/2]$ 에서 $|\sin x| = \sin x$.
+
+    $\displaystyle\int_{-\pi/2}^{\pi/2}|\sin x|e^x\,dx = -\displaystyle\int_{-\pi/2}^0 \sin x\cdot e^x\,dx + \int_0^{\pi/2}\sin x\cdot e^x\,dx$
+
+    $= -\!\left[\dfrac{(\sin x - \cos x)e^x}{2}\right]_{-\pi/2}^0 + \!\left[\dfrac{(\sin x - \cos x)e^x}{2}\right]_0^{\pi/2}$
+
+    $= -\!\left(-\dfrac{1}{2} - \!\left(-\dfrac{e^{-\pi/2}}{2}\right)\!\right) + \!\left(\dfrac{e^{\pi/2}}{2} - \!\left(-\dfrac{1}{2}\right)\!\right) = \dfrac{1}{2} - \dfrac{e^{-\pi/2}}{2} + \dfrac{e^{\pi/2}}{2} + \dfrac{1}{2} = 1 + \dfrac{e^{\pi/2} - e^{-\pi/2}}{2}$.
+
+---
+
+### 문항카드 4 — 자연 문제 2 (수학·수학Ⅱ)
+
+**설정.** 점과 직선 사이의 거리, 원과 직선의 위치관계, 필요조건.
+
+**【2-1】** 좌표평면 위의 점 $\mathrm{P}(x_1, y_1)$ 과 직선 $\ell: ax + by + c = 0$ 사이의 거리 $d = \dfrac{|ax_1 + by_1 + c|}{\sqrt{a^2 + b^2}}$ 임을 보여라 (단 $a \ne 0, b \ne 0$).
+
+??? success "풀이"
+    $\mathrm{P}(x_1, y_1)$ 에서 $x$ 축, $y$ 축에 평행한 직선을 그어 $\ell$ 과 만나는 점을 $\mathrm{A, B}$. $\mathrm{A}$ 의 $x$ 좌표 $= -\dfrac{by_1 + c}{a}$, $\mathrm{B}$ 의 $y$ 좌표 $= -\dfrac{ax_1 + c}{b}$.
+
+    $\overline{\mathrm{AP}} = \!\left|x_1 + \dfrac{by_1 + c}{a}\right| = \!\left|\dfrac{ax_1 + by_1 + c}{a}\right|$, $\overline{\mathrm{BP}} = \!\left|\dfrac{ax_1 + by_1 + c}{b}\right|$.
+
+    $\mathrm{P}$ 에서 $\ell$ 까지 수선의 발을 $\mathrm{H}$. 직각삼각형 $\mathrm{APB}$ 의 넓이: $\overline{\mathrm{AB}}\cdot\overline{\mathrm{PH}} = \overline{\mathrm{AP}}\cdot\overline{\mathrm{BP}}$.
+
+    피타고라스 정리: $\overline{\mathrm{AB}} = \sqrt{\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2}$.
+
+    $k = ax_1 + by_1 + c$ 로 놓으면 $\overline{\mathrm{AP}} = |k/a|, \overline{\mathrm{BP}} = |k/b|$.
+
+    $\sqrt{\dfrac{k^2}{a^2} + \dfrac{k^2}{b^2}}\cdot\overline{\mathrm{PH}} = \dfrac{k^2}{|ab|} \Rightarrow \dfrac{|k|\sqrt{a^2 + b^2}}{|ab|}\cdot\overline{\mathrm{PH}} = \dfrac{k^2}{|ab|} \Rightarrow \overline{\mathrm{PH}} = \dfrac{|k|}{\sqrt{a^2 + b^2}} = \dfrac{|ax_1 + by_1 + c|}{\sqrt{a^2 + b^2}}$.
+
+**【2-2】** 두 조건 $p: x^2 - n \le 0$, $q: -1 \le x \le 3$ 에 대해 $p$ 가 $q$ 이기 위한 필요조건이고 $n$ 은 한 자리 자연수일 때, 중심이 $(n, 0)$ 인 단위원 위의 점과 직선 $y = -\dfrac{3}{4}x - \dfrac{3}{4}$ 사이의 거리의 최솟값.
+
+??? success "풀이"
+    $p$ 가 $q$ 의 필요조건 $\Rightarrow Q \subset P$. $Q = \{x : -1 \le x \le 3\}, P = \{x : -\sqrt{n} \le x \le \sqrt{n}\}$. $Q \subset P \Rightarrow 3 \le \sqrt{n}$, 즉 $n \ge 9$. 한 자리 자연수이므로 $n = 9$.
+
+    중심 $(9, 0)$, 반지름 $1$ 인 단위원과 직선 $3x + 4y + 3 = 0$ 의 거리:
+
+    중심에서 직선까지 거리 $d_0 = \dfrac{|3\cdot 9 + 4\cdot 0 + 3|}{\sqrt{9 + 16}} = \dfrac{30}{5} = 6$.
+
+    원 위의 점에서 직선까지 거리 최솟값 $= d_0 - r = 6 - 1 = 5$.
+
+---
+
+### 문항카드 5 — 자연 문제 3 (미적분Ⅱ)
+
+**【3-1】** 단위원과 함수의 극한의 대소 관계에 대한 성질을 이용하여 $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$ 임을 보여라.
+
+??? success "풀이"
+    **(1)** $0 < x < \pi/2$ 일 때, 단위원 $\mathrm{O}$ (반지름 $1$) 에서 중심각 $\angle\mathrm{AOB} = x$ 라 하자. 점 $\mathrm{A}$ 에서의 접선과 선분 $\mathrm{OB}$ 의 연장선의 교점을 $\mathrm{T}$ 라 하면
+
+    넓이: $\triangle\mathrm{AOB} < $ 부채꼴 $\mathrm{AOB} < \triangle\mathrm{AOT}$, 즉 $\dfrac{\sin x}{2} < \dfrac{x}{2} < \dfrac{\tan x}{2}$.
+
+    각 변을 $\dfrac{\sin x}{2}$ 로 나누면 $1 < \dfrac{x}{\sin x} < \dfrac{1}{\cos x}$. 역수: $1 > \dfrac{\sin x}{x} > \cos x$.
+
+    $\displaystyle\lim_{x\to 0+}\cos x = 1$ 이므로 샌드위치 정리에 의해 $\displaystyle\lim_{x\to 0+}\dfrac{\sin x}{x} = 1$.
+
+    **(2)** $-\pi/2 < x < 0$ 일 때, $x = -t$ 로 치환하면 $x \to 0-$ 일 때 $t \to 0+$ 이므로
+
+    $\displaystyle\lim_{x\to 0-}\dfrac{\sin x}{x} = \lim_{t\to 0+}\dfrac{\sin(-t)}{-t} = \lim_{t\to 0+}\dfrac{\sin t}{t} = 1$.
+
+    **(1), (2)** 에 의해 $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$.
+
+**【3-2】** $\displaystyle\lim_{x\to 0}\dfrac{1 - \cos x}{x}$.
+
+??? success "풀이"
+    $\displaystyle\lim_{x\to 0}\dfrac{1 - \cos x}{x} = \lim_{x\to 0}\dfrac{(1 - \cos x)(1 + \cos x)}{x(1 + \cos x)} = \lim_{x\to 0}\dfrac{1 - \cos^2 x}{x(1 + \cos x)} = \lim_{x\to 0}\dfrac{\sin^2 x}{x(1 + \cos x)}$
+
+    $= \displaystyle\lim_{x\to 0}\dfrac{\sin x}{x}\cdot\dfrac{\sin x}{1 + \cos x} = 1\cdot\dfrac{0}{2} = 0$.
+
+**【3-3】** 도함수의 정의를 이용하여 삼각함수 $y = \sin x$ 의 도함수를 구하라.
+
+??? success "풀이"
+    $y' = \displaystyle\lim_{h\to 0}\dfrac{\sin(x+h) - \sin x}{h} = \lim_{h\to 0}\dfrac{\sin x\cos h + \cos x\sin h - \sin x}{h}$ (삼각함수 덧셈정리)
+
+    $= \displaystyle\lim_{h\to 0}\!\left[\cos x\cdot\dfrac{\sin h}{h} - \sin x\cdot\dfrac{1 - \cos h}{h}\right] = \cos x\cdot 1 - \sin x\cdot 0 = \cos x$.
+
+    $\therefore (\sin x)' = \cos x$.
+
+---
+
+### 문항카드 6 — 의예 문제 1 (수학·미적분Ⅱ)
+
+**설정.** 반지름 $r$ 인 원의 중심에서 직선까지의 거리 $d$ 에 대해 (1) $r > d$ 이면 두 점에서 만남, (2) $r = d$ 이면 접함, (3) $r < d$ 이면 만나지 않음.
+
+**【1-1】** 원 $(x - 3)^2 + (y - 2)^2 = 4$ 와 직선 $tx + y = 2$ 가 접하기 위한 실수 $t$ 의 값과 접점의 좌표.
+
+??? success "풀이"
+    원의 중심 $(3, 2)$, 반지름 $2$. 직선 $tx + y - 2 = 0$ 까지 거리 $d = \dfrac{|3t + 2 - 2|}{\sqrt{t^2 + 1}} = \dfrac{3|t|}{\sqrt{t^2 + 1}}$.
+
+    접하는 조건 $d = 2$: $\dfrac{3|t|}{\sqrt{t^2+1}} = 2 \Rightarrow 9t^2 = 4(t^2 + 1) \Rightarrow 5t^2 = 4 \Rightarrow t = \pm\dfrac{2}{\sqrt{5}}$.
+
+    접점: 직선 $y = -tx + 2$ 와 수직이고 원의 중심 $(3, 2)$ 를 지나는 직선은 기울기 $1/t$, 식 $y = \dfrac{x - 3}{t} + 2$.
+
+    교점: $-tx + 2 = \dfrac{x - 3}{t} + 2 \Rightarrow -t^2 x = x - 3 \Rightarrow x(1 + t^2) = 3 \Rightarrow x = \dfrac{3}{1 + t^2}$.
+
+    $t^2 = 4/5 \Rightarrow x = \dfrac{3}{9/5} = \dfrac{5}{3}$. $y = -t\cdot\dfrac{5}{3} + 2 = \dfrac{6 \mp 2\sqrt{5}}{3}$ ($t = \pm 2/\sqrt{5}$ 에 대응하여 $y = (6\mp 2\sqrt{5})/3$).
+
+    $\therefore t = \pm\dfrac{2}{\sqrt{5}}$, 접점 $\!\left(\dfrac{5}{3}, \dfrac{6 \mp 2\sqrt{5}}{3}\right)$.
+
+**【1-2】** 직선 $(\sin t)x + y = 12 + 3\sin t$ 가 원 $x^2 + (y - 3)^2 = 25$ 에 의해 잘린 선분 길이의 최댓값을 구하고, 그때 실수 $t \in [0, 2\pi]$ 의 값.
+
+??? success "풀이"
+    잘린 선분 길이 $\ell = 2\sqrt{r^2 - d^2}$ ($r = 5$). $\ell$ 최댓값 $\Leftrightarrow$ $d$ 최솟값.
+
+    원 중심 $(0, 3)$ 에서 직선 $(\sin t)x + y - (12 + 3\sin t) = 0$ 까지 거리:
+
+    $d = \dfrac{|3 - 12 - 3\sin t|}{\sqrt{\sin^2 t + 1}} = \dfrac{3|3 + \sin t|}{\sqrt{\sin^2 t + 1}} = \dfrac{3(3 + \sin t)}{\sqrt{\sin^2 t + 1}}$ ($3 + \sin t \ge 2 > 0$).
+
+    $s = \sin t$ 로 놓으면 $f(s) = \dfrac{(3+s)^2}{s^2+1}$. $f'(s) = \dfrac{2(3+s)(1 - 3s)}{(s^2+1)^2}$. $f'(s) = 0 \Leftrightarrow s = -3$ (범위 밖) 또는 $s = 1/3$.
+
+    $s = -1$: $f(-1) = 4/2 = 2$. $s = 1/3$: $f(1/3) = (10/3)^2/(10/9) = 10$. $s = 1$: $f(1) = 16/2 = 8$. $[-1, 1]$ 에서 최솟값 $s = -1$.
+
+    $d_{\min}^2 = 9\cdot 2 = 18 \Rightarrow d_{\min} = 3\sqrt{2}$. $\sin t = -1 \Rightarrow t = \dfrac{3\pi}{2}$.
+
+    $\ell_{\max} = 2\sqrt{25 - 18} = 2\sqrt{7}$.
+
+---
+
+### 문항카드 7 — 의예 문제 2 (기하와 벡터)
+
+**설정.** 모든 모서리 길이 $2$ 인 정사각뿔 $\mathrm{E}\text{-}\mathrm{ABCD}$. 밑면 한 변 $\mathrm{AD}$ 를 지나는 평면이 모서리 $\mathrm{EB, EC}$ 와 각각 $\mathrm{F, G}$ 에서 만나서 정사각뿔을 두 조각으로 분할. 평면 $\mathrm{AFGD}$ 에 의해 잘린 사각뿔 $\mathrm{E}\text{-}\mathrm{AFGD}$ 를 $T_1$, 정사각뿔에서 $T_1$ 을 제외한 도형을 $T_2$.
+
+**【2-1】** $\overline{\mathrm{FB}} = 1$ 일 때, $T_1$ 과 $T_2$ 의 부피.
+
+??? success "풀이"
+    삼각형 $\mathrm{AEC}$ 는 밑변 $\overline{\mathrm{AC}} = 2\sqrt{2}$, 다른 두 변 $2$ 인 이등변삼각형. $\mathrm{E}$ 에서 $\mathrm{AC}$ 의 중점 $\mathrm{K}$ 로의 수직이등분선 $\overline{\mathrm{EK}} = \sqrt{2}$ (정사각뿔 높이).
+
+    정사각뿔 부피 $V = \dfrac{1}{3}\cdot 4\cdot\sqrt{2} = \dfrac{4\sqrt{2}}{3}$.
+
+    $\overline{\mathrm{FB}} = 1$ 이므로 $\overline{\mathrm{EF}} = 1$ (모서리 $\overline{\mathrm{EB}} = 2$). $\mathrm{F, G}$ 는 모서리의 중점이고, 평면 $\mathrm{AFGD}$ 가 정사각뿔을 두 조각 $T_1$ (위쪽, $\mathrm{E}$ 쪽), $T_2$ (아래쪽) 로 분할.
+
+    $T_1$ ($\mathrm{E}\text{-}\mathrm{AFGD}$) 을 세 조각으로 분할:
+
+    - 가운데 부분 (삼각기둥, 높이 $\overline{\mathrm{EK}}/2 = \sqrt{2}/2$, 밑변 $\overline{\mathrm{FG}} = 1$, 깊이 $2$): 부피 $= \dfrac{1}{2}\cdot 2\cdot\dfrac{\sqrt{2}}{2}\cdot 1 = \dfrac{\sqrt{2}}{2}$.
+    - 나머지 두 조각을 붙이면 직사각뿔: 부피 $= \dfrac{1}{3}\cdot 2\cdot 1\cdot\dfrac{\sqrt{2}}{2} = \dfrac{\sqrt{2}}{3}$.
+
+    $T_1 = \dfrac{\sqrt{2}}{2} + \dfrac{\sqrt{2}}{3} = \dfrac{3\sqrt{2} + 2\sqrt{2}}{6} = \dfrac{5\sqrt{2}}{6}$.
+
+    $T_2 = V - T_1 = \dfrac{4\sqrt{2}}{3} - \dfrac{5\sqrt{2}}{6} = \dfrac{8\sqrt{2} - 5\sqrt{2}}{6} = \dfrac{\sqrt{2}}{2}$.
+
+    $\therefore T_1 = \dfrac{5\sqrt{2}}{6}$, $T_2 = \dfrac{\sqrt{2}}{2}$.
+
+**【2-2】** $T_1$ 과 $T_2$ 의 부피가 서로 같을 때 $\overline{\mathrm{FB}}$ 의 길이.
+
+??? success "풀이"
+    $T_1 = T_2 = \dfrac{V}{2} = \dfrac{2\sqrt{2}}{3}$. $\overline{\mathrm{FB}} = t$ ($0 < t < 2$) 일 때 점 $\mathrm{F}$ 의 좌표는 $\mathrm{B}$ 에서 $\mathrm{E}$ 방향으로 $(2-t)$ 만큼: $\overline{\mathrm{EF}} = 2 - t$. 좌표설정으로 $\mathrm{F}\!\left(2 - \dfrac{t}{2}, \dfrac{t}{2}, \dfrac{t}{\sqrt{2}}\right)$.
+
+    $T_2$ 를 세 조각으로 분할 ($T_2$ 는 아래쪽):
+
+    - 가운데 부분 (삼각기둥): 부피 $= \dfrac{1}{2}\cdot 2\cdot\dfrac{t}{\sqrt{2}}\cdot(2 - t) = \dfrac{t(2-t)}{\sqrt{2}}$.
+    - 나머지 두 조각 (직사각뿔): 부피 $= \dfrac{1}{3}\cdot 2\cdot t\cdot\dfrac{t}{\sqrt{2}} = \dfrac{\sqrt{2}}{3}t^2$.
+
+    $T_2(t) = \dfrac{t(2-t)}{\sqrt{2}} + \dfrac{\sqrt{2}}{3}t^2 = -\dfrac{\sqrt{2}}{6}t^2 + \sqrt{2}\,t$.
+
+    $T_2 = \dfrac{2\sqrt{2}}{3}$ 와 같게 두면 $-\dfrac{\sqrt{2}}{6}t^2 + \sqrt{2}\,t = \dfrac{2\sqrt{2}}{3} \Rightarrow t^2 - 6t + 4 = 0$.
+
+    $t = \dfrac{6 \pm \sqrt{20}}{2} = 3 \pm \sqrt{5}$. $0 < t < 2$ 이므로 $t = 3 - \sqrt{5}$.
+
+    $\therefore \overline{\mathrm{FB}} = 3 - \sqrt{5}$.
+
+---
