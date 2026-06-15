@@ -25917,3 +25917,132 @@ $$Y = f(X) = 2^{2k} X^2 - 2^{2k+1} X + 2^{2k} = 4^k (X - 1)^2, \quad 0 \le X \le
 
 ---
 
+## 카드 196 — 건국대 (2024) — 자연계 B 수학 1 문항카드 · 4 하위문항
+
+> **출처.** 2024학년도 건국대학교 입학전형 선행학습 영향평가 평가보고서 — KU 논술 우수자 전형. 문항카드 4 (자연계 B) 문제 1, 2, 3, 4. 정적분·중복조합·합성함수 미분·근과 계수.
+
+---
+
+**제시문 1.** $f(x)$ 가 $x = a$ 에서 극값을 갖고 $a$ 를 포함하는 열린구간에서 미분가능하면 $f'(a) = 0$. 도형 $R$ 은 제 $1$ 사분면, 곡선 $x^2 + y^2 = 1$ (단위 원), $(x - t)^2 + y^2 = (1 - t)^2$ (중심 $(t, 0)$, 반지름 $1 - t$), 직선 $x = t$ 로 둘러싸인 영역. ($0 < t < 1$).
+
+**【1】** 
+
+(1) $t = \dfrac{1}{2}$ 일 때 도형 $R$ 의 넓이를 구하시오.
+
+(2) 도형 $R$ 의 넓이가 최대가 될 때의 $t$ 의 값을 구하시오.
+
+??? success "풀이"
+    $\mathrm{A}(t, 0), \mathrm{B}(1, 0)$. 직선 $x = t$ 와 큰 원의 위쪽 교점 $\mathrm{C}(t, \sqrt{1 - t^2})$, 작은 원과는 점 $(t, 1 - t)$ 에서 (작은 원은 $\mathrm{A}$ 중심·반지름 $1 - t$).
+    
+    $\angle\mathrm{AOC} = \theta = \arccos t$.
+    
+    $R$ 의 넓이 $f(t) = \int_t^1 \sqrt{1 - x^2}\, dx - \dfrac{\pi(1-t)^2}{4}$
+    
+    (큰 원의 $x \ge t$ 제 $1$ 사분면 영역 $-$ 작은 원의 제 $1$ 사분면 사분원).
+    
+    $x = \cos\phi$ 치환: $\int_t^1 \sqrt{1 - x^2}\, dx = \dfrac{\theta}{2} - \dfrac{t\sqrt{1 - t^2}}{2}$.
+    
+    $$f(t) = \dfrac{\theta}{2} - \dfrac{t\sqrt{1 - t^2}}{2} - \dfrac{\pi(1-t)^2}{4}.$$
+    
+    **(1)** $t = 1/2, \theta = \pi/3$:
+    
+    $$f(1/2) = \dfrac{\pi}{6} - \dfrac{1}{2} \cdot \dfrac{1}{2} \cdot \dfrac{\sqrt{3}}{2} - \dfrac{\pi}{16} = \dfrac{8\pi - 3\pi}{48} - \dfrac{\sqrt{3}}{8} = \dfrac{5\pi}{48} - \dfrac{\sqrt{3}}{8}.$$
+    
+    **(2)** $f(t) = \int_t^1 \sqrt{1 - x^2}\, dx - \dfrac{\pi(1-t)^2}{4}$ 형태에서 미분:
+    
+    $$f'(t) = -\sqrt{1 - t^2} + \dfrac{\pi(1 - t)}{2}.$$
+    
+    $f'(t) = 0 \Rightarrow \sqrt{1 - t^2} = \dfrac{\pi(1 - t)}{2}$. 제곱: $1 - t^2 = \dfrac{\pi^2(1 - t)^2}{4}$. $(1 - t)(1 + t) = \dfrac{\pi^2(1 - t)^2}{4}$.
+    
+    $1 + t = \dfrac{\pi^2(1 - t)}{4} \Rightarrow 4 + 4t = \pi^2 - \pi^2 t \Rightarrow t(\pi^2 + 4) = \pi^2 - 4 \Rightarrow t = \dfrac{\pi^2 - 4}{\pi^2 + 4}$.
+
+---
+
+**제시문 2.** 같은 것이 있는 순열의 수. 문자 $\mathrm{A}$ $3$ 개, $\mathrm{B}$ $5$ 개, $\mathrm{C}$ $3$ 개로 이루어진 $11$ 개 문자를 일렬로 나열.
+
+**【2】** 
+
+(1) [조건 1] 문자 $\mathrm{C}$ 바로 다음에는 항상 문자 $\mathrm{B}$ 가 이웃하여 나오도록 나열하는 방법의 수.
+
+(2) [조건 2] 문자 $\mathrm{A}$ 바로 다음에는 문자 $\mathrm{B}$ 가 이웃하여 나오지 않도록 나열하는 방법의 수.
+
+??? success "풀이"
+    **(1)** "CB" 쌍을 하나로 묶음 ($\mathrm{C}$ 가 $3$ 개, 각각 $\mathrm{B}$ 와 묶임 $\to$ CB 묶음 $3$ 개, 남은 $\mathrm{B}$ $2$ 개, $\mathrm{A}$ $3$ 개, 총 $8$ 개 문자).
+    
+    $$\dfrac{8!}{3! \cdot 3! \cdot 2!} = \dfrac{40320}{72} = 560.$$
+    
+    **(2)** 
+    
+    - 1단계: $\mathrm{A}$ $3$ 개와 $\mathrm{C}$ $3$ 개를 일렬로 나열. $\dfrac{6!}{3! \cdot 3!} = 20$.
+    - 2단계: 6개 문자 사이·앞·뒤의 $7$ 개 빈 자리 중 $\mathrm{A}$ 바로 다음 자리 $3$ 개를 제외한 $4$ 개 자리에 $\mathrm{B}$ $5$ 개를 분배. 중복조합 $_4 H_5 = \dbinom{4 + 5 - 1}{5} = \dbinom{8}{5} = 56$.
+    
+    합 $= 20 \times 56 = 1120$.
+
+---
+
+**제시문 3.** 반지름 $r$, 중심각 $\theta$ 인 부채꼴의 넓이 $\dfrac{1}{2} r^2 \theta$. 한 원은 중심 원점, 반지름 $1$; 다른 원은 중심 $(t, 0)$, 반지름 $t$ ($t > 0$). 두 원의 공통 부분의 넓이 $S(t)$.
+
+**【3】** $t = 1$ 에서의 미분계수 $S'(1)$ 을 구하시오.
+
+??? success "풀이"
+    두 원의 교점을 $\mathrm{C}$ (위쪽), $\mathrm{A}(t, 0)$, $\mathrm{B}(1, 0)$. $\angle\mathrm{AOC} = \alpha$ 라 하면 (큰 원 중심에서의 각) $\angle\mathrm{OAC} = \pi - 2\alpha$ (삼각형 $\mathrm{OAC}$ 에서 $\mathrm{OC} = 1, \mathrm{OA} = t, \mathrm{AC} = t$).
+    
+    공통 부분은 두 활꼴의 합:
+    
+    $$S(t) = 2(S_1 + S_2 - S_3) = 2 \!\left[\dfrac{1}{2} \alpha + \dfrac{1}{2} t^2 (\pi - 2\alpha) - \dfrac{1}{2} t \sin\alpha\right] = \alpha + t^2(\pi - 2\alpha) - t\sin\alpha.$$
+    
+    삼각형 $\mathrm{OAC}$ 에서 코사인법칙: $t^2 = t^2 + 1 - 2t\cos\alpha \Rightarrow \cos\alpha = \dfrac{1}{2t}$.
+    
+    양변 미분: $-\sin\alpha \dfrac{d\alpha}{dt} = -\dfrac{1}{2t^2} \Rightarrow \dfrac{d\alpha}{dt} = \dfrac{1}{2 t^2 \sin\alpha}$.
+    
+    $$S'(t) = \dfrac{d\alpha}{dt} + 2t(\pi - 2\alpha) - 2t^2 \dfrac{d\alpha}{dt} - \sin\alpha - t \cos\alpha \dfrac{d\alpha}{dt}.$$
+    
+    $t = 1$ 에서 삼각형 $\mathrm{OAC}$ 가 정삼각형, $\alpha = \pi/3$, $\sin\alpha = \sqrt{3}/2$, $\cos\alpha = 1/2$, $\dfrac{d\alpha}{dt} = \dfrac{1}{2 \cdot 1 \cdot \sqrt{3}/2} = \dfrac{1}{\sqrt{3}}$, $\pi - 2\alpha = \pi/3$.
+    
+    $$S'(1) = \dfrac{1}{\sqrt{3}} + 2 \cdot \dfrac{\pi}{3} - 2 \cdot \dfrac{1}{\sqrt{3}} - \dfrac{\sqrt{3}}{2} - 1 \cdot \dfrac{1}{2} \cdot \dfrac{1}{\sqrt{3}} = \dfrac{2\pi}{3} - \dfrac{1}{\sqrt{3}} - \dfrac{1}{2\sqrt{3}} - \dfrac{\sqrt{3}}{2}.$$
+    
+    $\dfrac{1}{\sqrt{3}} + \dfrac{1}{2\sqrt{3}} = \dfrac{3}{2\sqrt{3}} = \dfrac{\sqrt{3}}{2}$.
+    
+    $$S'(1) = \dfrac{2\pi}{3} - \dfrac{\sqrt{3}}{2} - \dfrac{\sqrt{3}}{2} = \dfrac{2\pi}{3} - \sqrt{3}.$$
+
+---
+
+**제시문 4.** 좌표평면 두 점 사이의 거리. 점 $\mathrm{P}$ 는 중심 $(1, 8)$, 반지름 $1$ 인 원 위. 점 $\mathrm{A}, \mathrm{B}$ 는 포물선 $y = x^2$ 과 직선 $y = 2x + t$ 의 교점, $\mathrm{A}$ 는 제 $2$ 사분면, $\mathrm{B}$ 는 제 $1$ 사분면 ($t > 0$).
+
+**【4】** $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2$ 의 값이 최소가 될 때의 점 $\mathrm{A}$ 의 좌표를 구하시오.
+
+??? success "풀이"
+    $\mathrm{A}(a, a^2), \mathrm{B}(b, b^2)$. $a, b$ 는 $x^2 - 2x - t = 0$ 의 근: $a + b = 2, ab = -t$.
+    
+    $a^2 + b^2 = 4 + 2t$, $a^4 + b^4 = (a^2 + b^2)^2 - 2(ab)^2 = (4+2t)^2 - 2t^2 = 2t^2 + 16t + 16$.
+    
+    $\mathrm{P}(x, y)$ 라 하면
+    
+    $$\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2 = (x-a)^2 + (y-a^2)^2 + (x-b)^2 + (y-b^2)^2$$
+    
+    전개·정리 (사용: $a + b = 2$, $a^2 + b^2 = 4 + 2t$, $a^4 + b^4 = 2t^2 + 16t + 16$):
+    
+    $$= 2(x - 1)^2 + 2(y - t - 2)^2 + 10(t + 1).$$
+    
+    $\mathrm{M}(1, t + 2)$ 라 하면 $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2 = 2 \overline{\mathrm{MP}}^2 + 10(t + 1)$.
+    
+    $\mathrm{M}$ 과 원의 중심 $(1, 8)$ 둘 다 $x = 1$ 위. $\mathrm{P}$ 는 원 위. $\overline{\mathrm{MP}}$ 최소화: $\mathrm{P}$ 는 $(1, 7)$ 또는 $(1, 9)$.
+    
+    - $0 < t \le 6$ ($\mathrm{M}$ 이 원 중심 아래 또는 가까운 쪽): $\mathrm{P}(1, 7)$, $\overline{\mathrm{MP}} = |t + 2 - 7| = |t - 5|$.
+    - $t \ge 6$ ($\mathrm{M}$ 이 원 중심 위쪽): $\mathrm{P}(1, 9)$, $\overline{\mathrm{MP}} = |t - 7|$.
+    
+    각 구간 $\overline{\mathrm{AP}}^2 + \overline{\mathrm{BP}}^2$:
+    
+    - $0 < t \le 6$: $2(t - 5)^2 + 10(t + 1) = 2t^2 - 10t + 60 = 2\!\left(t - \dfrac{5}{2}\right)^2 + \dfrac{95}{2}$. 최솟값 $\dfrac{95}{2}$ at $t = \dfrac{5}{2}$.
+    - $t \ge 6$: $2(t - 7)^2 + 10(t + 1) = 2t^2 - 18t + 108 = 2\!\left(t - \dfrac{9}{2}\right)^2 + \dfrac{135}{2}$. 경계 $t = 6$ 에서 $72$.
+    
+    전체 최솟값: $t = \dfrac{5}{2}$ 에서 $\dfrac{95}{2}$.
+    
+    $\mathrm{A}$ 의 $x$ 좌표: $x^2 - 2x - 5/2 = 0 \Rightarrow x = \dfrac{2 \pm \sqrt{4 + 10}}{2} = \dfrac{2 \pm \sqrt{14}}{2}$. $\mathrm{A}$ 는 제 $2$ 사분면 ($x < 0$): $x_A = \dfrac{2 - \sqrt{14}}{2}$.
+    
+    $y_A = x_A^2 = \dfrac{(2 - \sqrt{14})^2}{4} = \dfrac{18 - 4\sqrt{14}}{4} = \dfrac{9 - 2\sqrt{14}}{2}$.
+    
+    $\mathrm{A}\!\left(\dfrac{2 - \sqrt{14}}{2}, \dfrac{9 - 2\sqrt{14}}{2}\right)$.
+
+---
+
