@@ -24211,3 +24211,238 @@ $f(x) = x^3 - 2x^2 - 5, \quad g(x) = \dfrac{5}{2}|f(x-1)+3|$.
     **크기 비교.** $\overline{\mathrm{CD}}^2 - \overline{\mathrm{CP_1}}^2 = (13+3\sqrt{13}) - (14+2\sqrt{13}) = \sqrt{13} - 1 > 0$. $\therefore \overline{\mathrm{CD}} > \overline{\mathrm{CP_1}}$ 이므로 $r^2 = \overline{\mathrm{CD}}^2 = 13 + 3\sqrt{13}$.
 
 ---
+## 카드 186 — 연세대 미래캠 (2022학년도) — 자연·의예 5 문항 · 14 하위문항
+
+연세대학교 미래캠퍼스 2022학년도 대입전형 선행학습 영향평가 결과 보고서에서 발췌. 논술우수자 전형(창의인재) 자연계 문제 1·2·3 (수학Ⅰ·수학Ⅱ·미적분·확률과통계) + 의예과 수학 문제 1·2 (수학Ⅰ·수학Ⅱ·미적분·확률과통계). 자연 3+2+3 + 의예 수학 3+3 = 14 하위문항.
+
+---
+
+### 문항카드 3 — 자연 문제 1 (확률과통계)
+
+**설정.** 세 개의 주머니 $\mathrm{A, B, C}$. 주머니 $\mathrm{A}$ 에는 번호 $1, 2, 3, 4$ 가 새겨진 공 $4$ 개, 주머니 $\mathrm{B}$ 에는 번호 $1, 1, 2, 3$ 이 새겨진 공 $4$ 개, 주머니 $\mathrm{C}$ 에는 번호 $1, 1, 1, 1$ 이 새겨진 공 $4$ 개. 주머니 세 개 중 한 개를 임의로 선택하고, 선택된 주머니에서만 임의로 $n$ 번 공을 꺼낸다 (매번 꺼낸 공의 번호 확인 후 되돌려 넣음).
+
+**【1-1】** 공을 꺼내는 실험을 $1$ 번 시행할 때 $1$ 번 공이 뽑힐 확률. 그리고 꺼낸 공이 $1$ 번 공일 때 선택된 주머니가 $\mathrm{C}$ 일 확률.
+
+??? success "풀이"
+    $\mathrm{A}, \mathrm{B}, \mathrm{C}$ 가 선택될 확률 각각 $\dfrac{1}{3}$. 각 주머니에서 $1$ 번 공이 뽑힐 확률: $\mathrm{A}$ 에서 $\dfrac{1}{4}$, $\mathrm{B}$ 에서 $\dfrac{2}{4} = \dfrac{1}{2}$, $\mathrm{C}$ 에서 $1$.
+
+    $1$ 번 공이 뽑힐 확률 $P(D_1) = \dfrac{1}{3}\cdot\dfrac{1}{4} + \dfrac{1}{3}\cdot\dfrac{1}{2} + \dfrac{1}{3}\cdot 1 = \dfrac{1+2+4}{12} = \dfrac{7}{12}$.
+
+    조건부확률: $P(\mathrm{C}\,|\,D_1) = \dfrac{P(\mathrm{C} \cap D_1)}{P(D_1)} = \dfrac{(1/3)\cdot 1}{7/12} = \dfrac{4}{7}$.
+
+**【1-2】** 선택된 주머니에서 $n$ 번 모두 $1$ 번 공이 뽑혔다. 주머니 $\mathrm{C}$ 가 선택되었을 확률.
+
+??? success "풀이"
+    $D_n = \{n$ 번 모두 $1$ 번 공$\}$. 독립시행이므로
+
+    $P(D_n) = \dfrac{1}{3}\!\left(\dfrac{1}{4}\right)^n + \dfrac{1}{3}\!\left(\dfrac{1}{2}\right)^n + \dfrac{1}{3}\cdot 1^n = \dfrac{1 + 2^n + 4^n}{3\cdot 4^n}$.
+
+    $P(\mathrm{C}\,|\,D_n) = \dfrac{(1/3)\cdot 1}{(1 + 2^n + 4^n)/(3\cdot 4^n)} = \dfrac{4^n}{1 + 2^n + 4^n}$.
+
+**【1-3】** 몇 회의 반복 실험에서 뽑힌 공이 모두 $1$ 번 공일 때, 주머니 $\mathrm{C}$ 를 선택했다는 주장이 사실일 확률이 $0.9$ 이상이라고 할 수 있는지 근거를 제시하라.
+
+??? success "풀이"
+    $P(\mathrm{C}\,|\,D_n) = \dfrac{4^n}{1 + 2^n + 4^n}$ 를 계산:
+
+    - $n = 1$: $\dfrac{4}{7} \approx 0.571 < 0.9$
+    - $n = 2$: $\dfrac{16}{1 + 4 + 16} = \dfrac{16}{21} \approx 0.762 < 0.9$
+    - $n = 3$: $\dfrac{64}{1 + 8 + 64} = \dfrac{64}{73} \approx 0.877 < 0.9$
+    - $n = 4$: $\dfrac{256}{1 + 16 + 256} = \dfrac{256}{273} \approx 0.938 \ge 0.9$
+
+    $\therefore$ $4$ 회 이상 반복 실험에서 모두 $1$ 번 공이 뽑힐 때, $\mathrm{C}$ 를 선택했다는 주장이 사실일 확률은 $0.9$ 이상이라고 할 수 있다.
+
+---
+
+### 문항카드 4 — 자연 문제 2 (수학·수학Ⅱ)
+
+**설정.** 제시문 (가) $0 \le a < b$. 이차함수 $y = x^2$ 의 그래프 위 두 점 $\mathrm{A}(a, a^2)$ 와 $\mathrm{B}(b, b^2)$ 에서 그은 두 접선의 교점 $\mathrm{C}(c, d)$. (나) 두 실수 $a, b$ 에 대해 $a = \dfrac{-t + \sqrt{t^2+16t}}{8}$, $b = \dfrac{-3t + 3\sqrt{t^2+4t}}{8}$ ($t > 0$). $\mathrm{A}, \mathrm{B}$ 에 대해 선분 $\mathrm{AB}$ 를 $m : n$ ($m > 0, n > 0$) 으로 내분하는 점 $\mathrm{P}$ 의 좌표 $(f(t), g(t))$. (다) 두 점 $\mathrm{A}(x_1, y_1)$, $\mathrm{B}(x_2, y_2)$ 에 대해 $\mathrm{AB}$ 를 $m : n$ 으로 내분하는 점의 좌표는 $\!\left(\dfrac{mx_2 + nx_1}{m+n}, \dfrac{my_2 + ny_1}{m+n}\right)$.
+
+**【2-1】** 제시문 (가) 에서 이차함수 $y = x^2$ 과 두 접선에 의해 둘러싸인 도형의 넓이.
+
+??? success "풀이"
+    $f(x) = x^2 \Rightarrow f'(x) = 2x$. $\mathrm{A}$ 에서 접선: $y = 2ax - a^2$. $\mathrm{B}$ 에서 접선: $y = 2bx - b^2$. 두 접선의 교점 $x$ 좌표: $2ax - a^2 = 2bx - b^2 \Rightarrow x = \dfrac{a+b}{2}$.
+
+    넓이 $= \displaystyle\int_a^{(a+b)/2}\{x^2 - (2ax - a^2)\}\,dx + \int_{(a+b)/2}^b\{x^2 - (2bx - b^2)\}\,dx$
+
+    $= \displaystyle\int_a^{(a+b)/2}(x-a)^2\,dx + \int_{(a+b)/2}^b(x-b)^2\,dx = \!\left[\dfrac{(x-a)^3}{3}\right]_a^{(a+b)/2} + \!\left[\dfrac{(x-b)^3}{3}\right]_{(a+b)/2}^b$
+
+    $= \dfrac{1}{3}\!\left(\dfrac{b-a}{2}\right)^3 + \dfrac{1}{3}\!\left(\dfrac{b-a}{2}\right)^3 = \dfrac{2}{3}\!\left(\dfrac{b-a}{2}\right)^3 = \dfrac{(b-a)^3}{12}$.
+
+**【2-2】** 제시문 (나) 의 점 $\mathrm{P}$ 의 $x$ 좌표 $f(t)$ 에 대해 $\displaystyle\lim_{t\to\infty} f(t)$ 를 구하고 이유를 명확히 설명하라.
+
+??? success "풀이"
+    $f(t) = \dfrac{mb + na}{m+n} = \dfrac{1}{8(m+n)}\!\left[-3(t - \sqrt{t^2+4t})m - (t - \sqrt{t^2+16t})n\right]$.
+
+    $\displaystyle\lim_{t\to\infty}(t - \sqrt{t^2+4t}) = \lim_{t\to\infty}\dfrac{t^2 - (t^2+4t)}{t + \sqrt{t^2+4t}} = \lim_{t\to\infty}\dfrac{-4}{1 + \sqrt{1 + 4/t}} = -2$.
+
+    $\displaystyle\lim_{t\to\infty}(t - \sqrt{t^2+16t}) = \lim_{t\to\infty}\dfrac{-16}{1 + \sqrt{1 + 16/t}} = -8$.
+
+    $\displaystyle\lim_{t\to\infty} f(t) = \dfrac{1}{8(m+n)}\!\left[-3m\cdot(-2) - n\cdot(-8)\right] = \dfrac{6m + 8n}{8(m+n)} = \dfrac{3m + 4n}{4(m+n)}$.
+
+---
+
+### 문항카드 5 — 자연 문제 3 (수학Ⅰ·미적분)
+
+**설정.** 제시문 (가) 매달 플라스틱 쓰레기 $1500$ 톤을 수거하여 재활용 가능한 플라스틱으로 재생산. 매달 플라스틱 쓰레기의 $65\%$ 가 선별 과정을 통과하고 그중 $80\%$ 가 재활용된다. 또 재생산된 플라스틱 쓰레기의 $65\%$ 가 선별 과정을 통과하고 그중 $80\%$ 가 재활용된다. (나) 어느 지역에서 시각 $t$ ($t \ge 1.5$) 에서의 재활용되는 플라스틱 쓰레기의 양 $f(t)$ 톤은 $f(t) = (10t^2 - 9t - 9)e^{-t}$.
+
+**【3-1】** 제시문 (가) 에서 이번 달에 수거한 플라스틱 쓰레기 $1500$ 톤에 대해서 재생산과 재활용 과정을 매달 한없이 반복할 때, 재활용하게 되는 플라스틱의 양 (톤).
+
+??? success "풀이"
+    매 반복에서 $0.65 \times 0.80 = 0.52$ 의 비율로 재활용. 재활용되는 총량:
+
+    $\displaystyle\sum_{n=1}^{\infty} 1500\cdot 0.52^n = \dfrac{1500\cdot 0.52}{1 - 0.52} = \dfrac{780}{0.48} = 1625$ (톤).
+
+**【3-2】** 제시문 (나) 에서 시각 $t$ 가 $1.5$ 에서 $x$ 가 될 때까지 ($1.5 \le t \le x$) 재활용하게 되는 플라스틱의 양을 $A(x)$ 라 하자. $\displaystyle\lim_{x\to\infty} A(x)$. (단, $\displaystyle\lim_{x\to\infty} x^2 e^{-x} = 0$.)
+
+??? success "풀이"
+    $A(x) = \displaystyle\int_{1.5}^x (10t^2 - 9t - 9)e^{-t}\,dt$. 부분적분 ($\alpha(t) = 10t^2 - 9t - 9$, $\beta'(t) = e^{-t} \Rightarrow \beta(t) = -e^{-t}$):
+
+    $A(x) = \!\left[-(10t^2 - 9t - 9)e^{-t}\right]_{1.5}^x - \displaystyle\int_{1.5}^x (20t - 9)(-e^{-t})\,dt = -(10x^2 - 9x - 9)e^{-x} + \int_{1.5}^x (20t - 9)e^{-t}\,dt$
+
+    (단, $10(1.5)^2 - 9(1.5) - 9 = 22.5 - 13.5 - 9 = 0$ 이므로 하한 항 소거).
+
+    $\displaystyle\int_{1.5}^x (20t - 9)e^{-t}\,dt$ 도 부분적분:
+
+    $= \!\left[-(20t - 9)e^{-t}\right]_{1.5}^x - \displaystyle\int_{1.5}^x 20(-e^{-t})\,dt = -(20x - 9)e^{-x} + 21 e^{-1.5} + \!\left[-20e^{-t}\right]_{1.5}^x$
+
+    $= -(20x - 9)e^{-x} + 21 e^{-1.5} - 20e^{-x} + 20 e^{-1.5} = -(20x + 11)e^{-x} + 41 e^{-1.5}$.
+
+    $A(x) = -(10x^2 - 9x - 9)e^{-x} - (20x + 11)e^{-x} + 41 e^{-1.5} = -(10x^2 + 11x + 2)e^{-x} + 41 e^{-1.5}$.
+
+    $\displaystyle\lim_{x\to\infty} A(x) = -\lim_{x\to\infty}(10x^2 + 11x + 2)e^{-x} + 41 e^{-1.5} = 0 + 41 e^{-1.5} = 41 e^{-1.5}$.
+
+**【3-3】** 제시문 (나) 에서 주어진 함수 $f(t)$ 에서 변곡점의 좌표를 $(a, b)$ 라 할 때 $a$ 를 구하고 이유를 설명하라.
+
+??? success "풀이"
+    $f(t) = (10t^2 - 9t - 9)e^{-t}$.
+
+    $f'(t) = (20t - 9)e^{-t} - (10t^2 - 9t - 9)e^{-t} = (-10t^2 + 29t)e^{-t}$.
+
+    $f''(t) = (-20t + 29)e^{-t} - (-10t^2 + 29t)e^{-t} = (10t^2 - 49t + 29)e^{-t}$.
+
+    $f''(t) = 0 \Leftrightarrow 10t^2 - 49t + 29 = 0 \Leftrightarrow t = \dfrac{49 \pm \sqrt{49^2 - 4\cdot 10\cdot 29}}{20} = \dfrac{49 \pm \sqrt{1241}}{20}$.
+
+    $\sqrt{1241} \approx 35.2$ 이므로 두 근은 약 $\dfrac{49 - 35.2}{20} \approx 0.69$ 와 $\dfrac{49 + 35.2}{20} \approx 4.21$. $t \ge 1.5$ 이므로 정의역에 속하는 근은 $t = \dfrac{49 + \sqrt{1241}}{20}$.
+
+    $t = 1.5$ 에서 $f''(1.5) = (10\cdot 2.25 - 49\cdot 1.5 + 29)e^{-1.5} = (22.5 - 73.5 + 29)e^{-1.5} = -22 e^{-1.5} < 0$. $t = \dfrac{49+\sqrt{1241}}{20}$ 좌우에서 $f''$ 의 부호가 음에서 양으로 바뀌므로 이 점이 변곡점.
+
+    $\therefore a = \dfrac{49 + \sqrt{1241}}{20}$.
+
+---
+
+### 문항카드 6 — 의예 문제 1 (수학Ⅰ·확률과통계·미적분)
+
+**설정.** 징검다리 건너기 게임. 한 줄당 강화유리와 일반유리가 각 $1$ 칸씩 임의로 배치된 $2$ 칸짜리 유리발판이 $20$ 줄 늘어서 있음. 강화유리는 올라가도 깨지지 않고, 일반유리는 한 사람만 올라가도 깨지며 그 사람은 탈락. 한 사람이 어느 줄의 강화유리에 서거나 일반유리를 깨면 그 줄의 강화유리 위치가 뒷사람들에게 공개됨. 참가자 수 $18$ 명, 줄 수 $20$.
+
+**【1-1】** 강화유리와 일반유리를 구분하여 강화유리를 찾을 확률이 $\dfrac{3}{4}$ 일 때 마지막 ($18$ 번째) 참가자가 생존할 확률이 $1 - \dfrac{a}{2^{40}}$ 이다. 상수 $a$ 의 값.
+
+??? success "풀이"
+    각 줄에서 강화유리를 찾을 확률 $p = \dfrac{3}{4}$, 줄 수 $m = 20$. $i$ 번째 사람이 생존할 확률은 자신 앞에서 일반유리에 의해 탈락한 사람이 최대 $i-1$ 명일 때이므로
+
+    $P_i = \displaystyle\sum_{r=0}^{i-1} \binom{m}{r} p^{m-r}(1-p)^r$.
+
+    $i = 18$: $P_{18} = \displaystyle\sum_{r=0}^{17}\binom{20}{r}\!\left(\dfrac{3}{4}\right)^{20-r}\!\left(\dfrac{1}{4}\right)^r$. 여사건:
+
+    $P_{18} = 1 - \displaystyle\sum_{r=18}^{20}\binom{20}{r}\dfrac{3^{20-r}}{4^{20}} = 1 - \dfrac{\binom{20}{18}\cdot 9 + \binom{20}{19}\cdot 3 + \binom{20}{20}\cdot 1}{4^{20}}$
+
+    $= 1 - \dfrac{190\cdot 9 + 20\cdot 3 + 1}{4^{20}} = 1 - \dfrac{1710 + 60 + 1}{4^{20}} = 1 - \dfrac{1771}{2^{40}}$.
+
+    $\therefore a = 1771$.
+
+**【1-2】** 한 줄 건너는 시간 $2$ 초, 전체 제한시간 $112$ 초. 유리 관찰 시간 $0.1$ 초씩 증가 시 강화유리 찾을 확률 $p$ 도 $q$ 만큼 증가; 관찰시간 $9.9$ 초 초과 시 $p = 1$, $0$ 초 관찰 시 $p = 1/2$. $17$ 번째 사람이 시간 초과로 탈락, $14, 15, 16$ 번째 사람만 생존할 확률이 $\dfrac{2^{b_1}\cdot 3^{b_2}\cdot 5^{b_3}\cdot 7^{b_4}\cdot 11^{b_5}\cdot 13^{b_6}\cdot 17^{b_7}\cdot 19^{b_8}}{10^{20}}$ 일 때 $b_1 - \displaystyle\sum_{j=2}^8 b_j$.
+
+??? success "풀이"
+    그래프에서 관찰시간 $9.9$ 초 초과 시 $p = 1$. $0.1$ 초마다 $q$ 증가, $0$ 초 출발 시 $p = 1/2$ 이므로 $9.9$ 초까지 $99$ 회 증가: $1/2 + 99q + q = 1 \Rightarrow q = 1/200$. (그래프상 $9.9$ 초 직후 $1$ 도달이므로 $100q = 1/2 \Rightarrow q = 1/200$.)
+
+    $i$ 번째 사람의 도착시간 $T_i = mt + (m+1)k + (i-1)k$ ($m = 20$, $k = 2$, $t$ = 관찰시간):
+
+    $T_i = 20t + 21\cdot 2 + (i-1)\cdot 2 = 20t + 42 + 2(i-1)$.
+
+    $T_{17} > 112$, $T_{16} \le 112$:
+
+    - $T_{16} \le 112 \Rightarrow 20t + 42 + 30 \le 112 \Rightarrow 20t \le 40 \Rightarrow t \le 2$.
+    - $T_{17} > 112 \Rightarrow 20t + 74 > 112 \Rightarrow t > 1.9$.
+
+    $1.9 < t \le 2$ 에서 $t$ 가 $1.9$ 초일 때 $p = 1/2 + 19q = 1/2 + 19/200$, $2$ 초일 때 $p = 1/2 + 20q = 1/2 + 20/200 = 0.6$. 관찰시간은 $0.1$ 초 단위 (관찰시간 도중 $p$ 안 바뀜) 이므로 이 구간 내 $p$ 는 $1/2 + 20\cdot 1/200 = 0.6$.
+
+    $17$ 번째 사람이 탈락하는 경우 $p = 0.6$. $14, 15, 16$ 번째만 생존 = $13$ 번째까지 탈락하고 $14$ 번째부터 $16$ 번째까지 생존; 이는 $20$ 줄 중 $13$ 줄에서 구분 실패하고 나머지 $7$ 줄 모두 성공하는 확률:
+
+    $\binom{20}{13}\cdot 0.6^7\cdot 0.4^{13} = \binom{20}{13}\cdot\dfrac{6^7\cdot 4^{13}}{10^{20}} = \dfrac{77520\cdot 2^7\cdot 3^7\cdot 2^{26}}{10^{20}} = \dfrac{2^{33}\cdot 3^7\cdot 77520}{10^{20}}$.
+
+    $77520 = 2^4\cdot 3\cdot 5\cdot 17\cdot 19$ 이므로 분자 $= 2^{37}\cdot 3^8\cdot 5^1\cdot 17^1\cdot 19^1$.
+
+    $b_1 = 37, b_2 = 8, b_3 = 1, b_4 = b_5 = b_6 = 0, b_7 = 1, b_8 = 1$.
+
+    $b_1 - \displaystyle\sum_{j=2}^8 b_j = 37 - (8 + 1 + 0 + 0 + 0 + 1 + 1) = 37 - 11 = 26$.
+
+**【1-3】** 강화유리·일반유리 구분 확률이 유리 관찰 시간 $t \ge 0$ 에 따른 연속함수 $f(t)$. (가) 참가자가 고민없이 $0$ 초에 구분할 확률 $1/2$. (나) $f(t) = 1$ 을 만족하는 $t$ 값 중 가장 작은 값을 $t^*$. (다) $x \le t^*$ 와 어떤 상수 $a$ 에 대해 $\displaystyle\int_a^x f(t)\,dt = -\dfrac{\sin x + \cos x}{2}e^x + f(x)$. (라) $x > t^*$ 에서 $f(x) = 1$. $f(t)$ 를 구하라.
+
+??? success "풀이"
+    조건 (다) 양변 미분: $f(x) = -\dfrac{\cos x - \sin x}{2}e^x - \dfrac{\sin x + \cos x}{2}e^x + f'(x) = -e^x\cos x + f'(x)$.
+
+    즉 $f(x) - f'(x) = -e^x\cos x \Rightarrow e^{-x}(f(x) - f'(x)) = -\cos x$.
+
+    $g(x) = e^{-x}f(x)$ 로 놓으면 $g'(x) = e^{-x}f'(x) - e^{-x}f(x) = -e^{-x}(f(x) - f'(x)) = \cos x$.
+
+    $g(x) = \sin x + C \Rightarrow f(x) = e^x(\sin x + C)$.
+
+    조건 (가) 에서 $f(0) = 1/2 \Rightarrow 1\cdot(0 + C) = 1/2 \Rightarrow C = 1/2$.
+
+    $\therefore f(t) = \begin{cases} e^t\!\left(\sin t + \dfrac{1}{2}\right), & t \le t^* \\ 1, & t > t^* \end{cases}$ ($t^*$ 는 $e^t(\sin t + 1/2) = 1$ 을 만족하는 최소 $t$).
+
+---
+
+### 문항카드 7 — 의예 문제 2 (수학Ⅰ·수학Ⅱ·미적분)
+
+**설정.** 제시문 (가) $f(x) = \cos(\pi x)$, 정의역 $\{x \mid x \ge 0\}$. (나) $h(x)$ 의 정의역 $\{x \mid 0 \le x \le 1\}$. 집합 $S = \!\left\{y\,\Big|\,f'(x) = \dfrac{f(x) - f(y)}{x - y},\, y \text{는 } x \text{보다 큰 실수}\right\}$ 의 원소 개수를 $h(x)$ 라 정의. (즉 점 $(x, f(x))$ 에서의 접선이 $f$ 와 만나는 점 중 $x$ 보다 큰 $y$ 의 개수.)
+
+**【2-1】** $\displaystyle\lim_{x\to a-} h(x) \ne h(a)$ 이고 $\displaystyle\lim_{x\to a+} h(x) = h(a)$ 인 상수 $a$ 의 값.
+
+??? success "풀이"
+    $x = 0$ 의 경우, $f'(0) = 0$ 이므로 접선은 $y = 1$. $y = 1$ 은 $\cos(\pi y) = 1$ 을 만족하는 모든 $y$ 에서 $f$ 와 만남: $y = 0, 2, 4, \ldots$. $h(0) = \infty$.
+
+    $x = 1$ 의 경우, $f'(1) = -\pi\sin\pi = 0$, 접선 $y = -1$. $y = 1, 3, 5, \ldots$ 에서 만남. $h(1) = \infty$.
+
+    $x = 1/2$ 의 경우, $f(1/2) = 0$, $f'(1/2) = -\pi\sin(\pi/2) = -\pi$. 접선: $y = -\pi(x - 1/2)$. $y > 1/2$ 에서 $\cos(\pi y) + \pi(y - 1/2) = 0$ 은 해 없음 (좌변은 $y > 1/2$ 에서 단조증가하여 $0$ 초과 유지). $h(1/2) = 0$.
+
+    $0 < x < 1/2$ 인 경우, 접선의 기울기 $-\pi\sin(\pi x) < 0$, 접선이 $f$ 와 유한개의 점에서 만남. 접선이 $(x, f(x))$ 이외에서 $f$ 와 접하는 경우 만나는 점의 개수는 짝수, 접하지 않는 경우 홀수. 그래프 분석에 의해 $h$ 는 $x = 1/2$ 의 좌극한에서 양의 정수값을 갖다가 $x = 1/2$ 에서 $0$ 으로 떨어지고, $1/2 < x < 1$ 에서 다시 $0$ 으로 유지됨.
+
+    따라서 좌극한 불연속, 우극한 연속인 점은 $a = 1/2$ 가 유일.
+
+**【2-2】** $0 \le x \le 1$ 에서 $h(x) = 0$ 인 $x$ 의 범위가 $[u, v]$ 일 때, $[u, v]$ 에서 정의된 $p(x) = k e^x f(x)$ 가 확률밀도함수가 되도록 하는 상수 $k$ 의 값.
+
+??? success "풀이"
+    $h(x) = 0$ 인 $x$ 의 범위는 $[1/2, 1]$. 확률밀도함수 조건:
+
+    $\displaystyle\int_{1/2}^1 k e^x \cos(\pi x)\,dx = 1$.
+
+    $I = \displaystyle\int_{1/2}^1 e^x\cos(\pi x)\,dx$. 부분적분 ($u = \cos(\pi x), dv = e^x dx$):
+
+    $I = [e^x\cos(\pi x)]_{1/2}^1 - \displaystyle\int_{1/2}^1 e^x\cdot(-\pi\sin(\pi x))\,dx = (-e - 0) + \pi\displaystyle\int_{1/2}^1 e^x\sin(\pi x)\,dx$.
+
+    $J = \displaystyle\int_{1/2}^1 e^x\sin(\pi x)\,dx$. 부분적분 ($u = \sin(\pi x)$):
+
+    $J = [e^x\sin(\pi x)]_{1/2}^1 - \displaystyle\int_{1/2}^1 e^x\cdot\pi\cos(\pi x)\,dx = (0 - \sqrt{e}) - \pi I = -\sqrt{e} - \pi I$.
+
+    $I = -e + \pi(-\sqrt{e} - \pi I) = -e - \pi\sqrt{e} - \pi^2 I \Rightarrow I(1 + \pi^2) = -(e + \pi\sqrt{e})$.
+
+    $I = -\dfrac{e + \pi\sqrt{e}}{1 + \pi^2}$. $kI = 1 \Rightarrow k = -\dfrac{1 + \pi^2}{e + \pi\sqrt{e}}$.
+
+**【2-3】** 실수 $b$ 에 대해 $b$ 가 $h(b) = 8$ 을 만족할 때 $b\pi + \cot(b\pi)$ 의 값.
+
+??? success "풀이"
+    $h(b) = 8$ 이므로 점 $(b, f(b))$ 에서의 접선이 $(b, f(b))$ 이외의 점 $(c, f(c))$ 에서 $f$ 와 접한다 ($c > b$). 코사인 함수 $f(x) = \cos(\pi x)$ 의 그래프 대칭성으로 $f'(b) = f'(c)$ 이고 $c = 9 - b$ ($b + c$ 가 홀수 정수배의 $\pi$ 주기 조건).
+
+    두 점 $(b, f(b))$, $(c, f(c))$ 의 평균변화율 $=$ $(b, f(b))$ 에서의 순간변화율:
+
+    $\dfrac{\cos(b\pi) - \cos(c\pi)}{b - c} = -\pi\sin(b\pi)$.
+
+    $\cos(c\pi) = \cos((9-b)\pi) = -\cos(b\pi)$ 이고 $b - c = 2b - 9$:
+
+    $\dfrac{2\cos(b\pi)}{2b - 9} = -\pi\sin(b\pi) \Rightarrow \dfrac{\cos(b\pi)}{\sin(b\pi)} = -\pi\cdot\dfrac{2b - 9}{2}$
+
+    $\Rightarrow \cot(b\pi) = -\pi\!\left(b - \dfrac{9}{2}\right) = -\pi b + \dfrac{9\pi}{2}$
+
+    $\therefore b\pi + \cot(b\pi) = \dfrac{9\pi}{2}$.
+
+---
