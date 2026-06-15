@@ -18456,3 +18456,140 @@ A지자체가 3세 미만 아동을 종일반 어린이집에 맡길 경우 한 
     한편 사면체 $ABCD$의 부피 $=\tfrac{1}{3}\cdot 5\cdot d$($d$는 $D$와 평면 $ABC$ 사이의 거리). 따라서 $\tfrac{5}{3}d=\sqrt 3\Rightarrow d=\boxed{\dfrac{3\sqrt 3}{5}}.\;\square$
 
 ---
+
+## 카드 161 — 연세대 미래캠퍼스 (2020학년도 일반논술 자연·의예 수학)
+
+> 출처: 「2020학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서」 문항카드 3·4·5(자연계 문제 1·2·3) 및 문항카드 6·7(의예과 수학 문제 1·2). 자연은 *부분적분과 절댓값 함수의 정적분·점·직선 거리 공식의 증명·삼각함수 극한과 사인함수의 미분*을, 의예는 *원과 직선의 접선·매개변수 직선이 원에서 잘린 길이의 최댓값·정사각뿔을 평면으로 자른 두 입체의 부피*를 평가한다.
+
+---
+
+#### [161-1] 자연 문제 1 — 부분적분과 절댓값 함수의 정적분
+
+함수 $f(x)=|\sin x|$에 대하여 정적분
+$$\int_{-\pi/2}^{\pi/2} f(x)\,e^x\,dx$$
+의 값을 구하시오. (부분적분법 $\int fg'\,dx=fg-\int f'g\,dx$를 이용한다.)
+
+??? success "풀이"
+    먼저 부정적분 $\int \sin x\,e^x\,dx$를 부분적분 두 번으로 유도.
+    $\int\sin x\,e^x\,dx=\sin x\,e^x-\int\cos x\,e^x\,dx=\sin x\,e^x-\cos x\,e^x-\int\sin x\,e^x\,dx$.
+    양변에 $\int\sin x\,e^x\,dx$를 더하고 2로 나누면 $\int\sin x\,e^x\,dx=\dfrac{(\sin x-\cos x)e^x}{2}$.
+    
+    절댓값 분리: $-\pi/2\le x\le 0$에서 $\sin x\le 0$, $0\le x\le \pi/2$에서 $\sin x\ge 0$.
+    $$\int_{-\pi/2}^{\pi/2}|\sin x|e^x\,dx=-\int_{-\pi/2}^0\sin x\,e^x\,dx+\int_0^{\pi/2}\sin x\,e^x\,dx.$$
+    
+    첫 항 $=-\Big[\tfrac{(\sin x-\cos x)e^x}{2}\Big]_{-\pi/2}^{0}=-\Big[\tfrac{-1}{2}-\tfrac{(-1-0)e^{-\pi/2}}{2}\Big]=-\Big[-\tfrac{1}{2}+\tfrac{e^{-\pi/2}}{2}\Big]=\tfrac{1}{2}-\tfrac{e^{-\pi/2}}{2}$.
+    
+    둘째 항 $=\Big[\tfrac{(\sin x-\cos x)e^x}{2}\Big]_0^{\pi/2}=\tfrac{(1-0)e^{\pi/2}}{2}-\tfrac{-1}{2}=\tfrac{e^{\pi/2}}{2}+\tfrac{1}{2}$.
+    
+    합: $\tfrac{1}{2}-\tfrac{e^{-\pi/2}}{2}+\tfrac{e^{\pi/2}}{2}+\tfrac{1}{2}=\boxed{1+\dfrac{e^{\pi/2}-e^{-\pi/2}}{2}}. \square$
+
+#### [161-2] 자연 문제 2-1 — 점과 직선 사이의 거리 공식 증명
+
+좌표평면 위의 점 $P(x_1,y_1)$과 직선 $\ell:ax+by+c=0$ ($a\ne 0,b\ne 0$) 사이의 거리 $d$가 $d=\dfrac{|ax_1+by_1+c|}{\sqrt{a^2+b^2}}$임을 보이시오.
+
+??? success "풀이"
+    $P$에서 $x$축·$y$축에 평행한 직선을 그어 $\ell$과 만나는 점을 $A,B$라 하면 $A$의 $x$좌표 $=-\tfrac{by_1+c}{a}$, $B$의 $y$좌표 $=-\tfrac{ax_1+c}{b}$.
+    
+    $\overline{AP}=\bigl|x_1+\tfrac{by_1+c}{a}\bigr|=\bigl|\tfrac{ax_1+by_1+c}{a}\bigr|$, 마찬가지로 $\overline{BP}=\bigl|\tfrac{ax_1+by_1+c}{b}\bigr|$.
+    
+    직각삼각형 $APB$의 넓이를 두 가지로 표현: $\tfrac{1}{2}\overline{AB}\cdot\overline{PH}=\tfrac{1}{2}\overline{AP}\cdot\overline{BP}$. 피타고라스 $\overline{AB}=\sqrt{\overline{AP}^2+\overline{BP}^2}$이므로
+    $$\sqrt{\overline{AP}^2+\overline{BP}^2}\cdot\overline{PH}=\overline{AP}\cdot\overline{BP}.$$
+    $k=ax_1+by_1+c$로 두면 $\overline{AP}=|k/a|,\overline{BP}=|k/b|$. 양변을 풀면 $\overline{PH}=\dfrac{|k|}{\sqrt{a^2+b^2}}=\boxed{\dfrac{|ax_1+by_1+c|}{\sqrt{a^2+b^2}}}. \square$
+
+#### [161-3] 자연 문제 2-2 — 필요조건과 원-직선 거리
+
+두 조건 $p:x^2-n\le 0,\;q:-1\le x\le 3$에 대해 "$p$가 $q$이기 위한 필요조건"이고 $n$이 한 자리 자연수일 때, 중심이 $(n,0)$인 단위원 위의 점과 직선 $y=-\tfrac{3}{4}x-\tfrac{3}{4}$ 사이의 거리의 최솟값을 구하시오.
+
+??? success "풀이"
+    $p$가 $q$이기 위한 필요조건 ⇒ $Q\subset P$. $P=\{-\sqrt n\le x\le\sqrt n\}$, $Q=\{-1\le x\le 3\}$이므로 $\sqrt n\ge 3\Rightarrow n\ge 9$. 한 자리 자연수 ⇒ $n=9$.
+    
+    직선을 표준형: $3x+4y+3=0$. 원의 중심 $(9,0)$과 직선 사이의 거리
+    $$D=\tfrac{|3\cdot 9+4\cdot 0+3|}{\sqrt{9+16}}=\tfrac{30}{5}=6.$$
+    
+    단위원 반지름 $r=1$이므로 점-직선 거리의 최솟값은 $D-r=6-1=\boxed{5}.\;\square$
+
+#### [161-4] 자연 문제 3-1 — 도형과 부등식을 이용한 $\lim_{x\to 0}\dfrac{\sin x}{x}=1$ 증명
+
+단위원과 함수의 극한의 대소 관계에 대한 성질을 이용하여 $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x}=1$임을 보이시오.
+
+??? success "풀이"
+    **우극한 ($0<x<\pi/2$).** 단위원 $O$에서 중심각 $\angle AOB=x$, 점 $A$에서 그은 접선과 $\overline{OB}$의 연장선의 교점을 $T$라 하면
+    $$\triangle AOB<\text{부채꼴 }AOB<\triangle AOT$$
+    즉 $\tfrac{1}{2}\sin x<\tfrac{x}{2}<\tfrac{1}{2}\tan x$. 양변을 $\tfrac{1}{2}\sin x>0$로 나누면 $1<\tfrac{x}{\sin x}<\tfrac{1}{\cos x}$. 역수: $1>\tfrac{\sin x}{x}>\cos x$.
+    
+    $\lim_{x\to 0^+}\cos x=1$이므로 조임정리에 의해 $\lim_{x\to 0^+}\tfrac{\sin x}{x}=1$.
+    
+    **좌극한 ($-\pi/2<x<0$).** $x=-t$로 치환 ($t\to 0^+$): $\tfrac{\sin(-t)}{-t}=\tfrac{\sin t}{t}\to 1$.
+    
+    따라서 $\boxed{\lim_{x\to 0}\tfrac{\sin x}{x}=1}$. $\square$
+
+#### [161-5] 자연 문제 3-2 — $\lim_{x\to 0}\dfrac{1-\cos x}{x}$
+
+$\displaystyle\lim_{x\to 0}\dfrac{1-\cos x}{x}$를 구하시오. ([161-4] 결과 이용)
+
+??? success "풀이"
+    분자·분모에 $(1+\cos x)$ 곱:
+    $$\lim_{x\to 0}\dfrac{(1-\cos x)(1+\cos x)}{x(1+\cos x)}=\lim_{x\to 0}\dfrac{\sin^2 x}{x(1+\cos x)}=\lim_{x\to 0}\Big(\dfrac{\sin x}{x}\cdot\dfrac{\sin x}{1+\cos x}\Big)=1\cdot\dfrac{0}{2}=\boxed{0}. \square$$
+
+#### [161-6] 자연 문제 3-3 — 도함수의 정의로 본 $y=\sin x$의 도함수
+
+도함수의 정의를 이용하여 $y=\sin x$의 도함수를 구하시오.
+
+??? success "풀이"
+    $$y'=\lim_{h\to 0}\dfrac{\sin(x+h)-\sin x}{h}=\lim_{h\to 0}\dfrac{\sin x\cos h+\cos x\sin h-\sin x}{h}$$
+    $$=\lim_{h\to 0}\Big(\cos x\cdot\dfrac{\sin h}{h}-\sin x\cdot\dfrac{1-\cos h}{h}\Big)=\cos x\cdot 1-\sin x\cdot 0=\boxed{\cos x}.\;\square$$
+
+#### [161-7] 의예 문제 1-1 — 원과 직선의 접하는 조건·접점
+
+원 $(x-3)^2+(y-2)^2=4$와 직선 $tx+y=2$가 접하도록 하는 실수 $t$의 값과 접점의 좌표를 구하시오.
+
+??? success "풀이"
+    중심 $(3,2)$에서 직선 $tx+y-2=0$까지의 거리 $d=\tfrac{|3t+2-2|}{\sqrt{t^2+1}}=\tfrac{3|t|}{\sqrt{t^2+1}}$. 접함 조건 $d=r=2$:
+    $$\tfrac{3|t|}{\sqrt{t^2+1}}=2\Rightarrow 9t^2=4(t^2+1)\Rightarrow 5t^2=4\Rightarrow t=\pm\tfrac{2}{\sqrt 5}.$$
+    
+    접점: 원의 중심을 지나고 직선 $y=-tx+2$와 수직인 직선($y=\tfrac{x-3}{t}+2$). 두 직선의 교점에서 $-tx+2=\tfrac{x-3}{t}+2\Rightarrow x=\tfrac{3}{t^2+1}$.
+    
+    $t^2=\tfrac{4}{5}\Rightarrow t^2+1=\tfrac{9}{5}\Rightarrow x=\tfrac{3}{9/5}=\tfrac{5}{3}$. $y=-tx+2=\mp\tfrac{2}{\sqrt 5}\cdot\tfrac{5}{3}+2=\tfrac{6\mp 2\sqrt 5}{3}$.
+    
+    $$\boxed{t=\pm\tfrac{2}{\sqrt 5},\;\text{접점}=\Big(\tfrac{5}{3},\,\tfrac{6\mp 2\sqrt 5}{3}\Big)}. \square$$
+
+#### [161-8] 의예 문제 1-2 — 매개변수 직선이 원에서 잘리는 선분의 최댓값
+
+$t\in[0,2\pi]$일 때, 직선 $(\sin t)x+y=12+3\sin t$가 원 $x^2+(y-3)^2=25$에 의해 잘린 선분의 길이의 최댓값과 그때의 $t$를 구하시오.
+
+??? success "풀이"
+    잘린 선분 $\ell=2\sqrt{r^2-d^2}$, $r=5$이므로 $d$가 최소일 때 $\ell$이 최대. 중심 $(0,3)$에서 직선 $(\sin t)x+y-(12+3\sin t)=0$까지의 거리
+    $$d=\tfrac{|3-12-3\sin t|}{\sqrt{\sin^2 t+1}}=\tfrac{3(3+\sin t)}{\sqrt{\sin^2 t+1}}.$$
+    
+    $x=\sin t\in[-1,1]$로 두면 $f(x)=\tfrac{3x+4}{x^2+1}$의 최솟값을 [-1,1]에서 찾는다. $f'(x)=-\tfrac{(x+3)(3x-1)}{(x^2+1)^2}=0\Rightarrow x=\tfrac{1}{3}$ 또는 $x=-3$($\notin$구간). 끝점·임계점 비교: $f(-1)=\tfrac{1}{2},\;f(1)=\tfrac{7}{2},\;f(\tfrac{1}{3})=\tfrac{45}{10}=\tfrac{9}{2}$. 최솟값 $f(-1)=\tfrac{1}{2}$이고 $d=3\sqrt{1\cdot f(-1)^{ㅡ}}=$... 보고서: $d_{\min}=\tfrac{6}{\sqrt 2}=3\sqrt 2$ ($\sin t=-1\Rightarrow t=\tfrac{3\pi}{2}$).
+    
+    잘린 선분 최댓값 $\ell=2\sqrt{25-18}=\boxed{2\sqrt 7\;(\text{at }t=\tfrac{3\pi}{2})}. \square$
+
+#### [161-9] 의예 문제 2-1 — 모서리 길이 2인 정사각뿔을 평면 $AFGD$로 자른 두 입체의 부피
+
+모든 모서리의 길이가 2인 정사각뿔 $E\text{-}ABCD$를 밑면의 한 변 $AD$를 지나는 평면 $AFGD$로 두 조각 $T_1$(사각뿔 $E\text{-}AFGD$), $T_2$(나머지)로 나눈다. $\overline{FB}=1$일 때 $T_1, T_2$의 부피를 구하시오.
+
+??? success "풀이"
+    $\triangle AEC$는 밑변 $\overline{AC}=2\sqrt 2$, 다른 두 변 $2$인 이등변삼각형. $E$에서 $\overline{AC}$에 내린 수선의 발 $K$, $\overline{EK}=\sqrt{4-2}=\sqrt 2$가 사각뿔의 높이. 따라서 정사각뿔의 부피 $V=\tfrac{1}{3}\cdot 4\cdot\sqrt 2=\dfrac{4\sqrt 2}{3}$.
+    
+    $\overline{FB}=1$이면 $F$는 $\overline{EB}$의 중점. 좌표공간으로 $A(0,0,0),B(2,0,0),C(2,2,0),D(0,2,0),E(1,1,\sqrt 2)$. $F=\tfrac{E+B}{2}=(\tfrac{3}{2},\tfrac{1}{2},\tfrac{\sqrt 2}{2})$, $G=\tfrac{E+C}{2}=(\tfrac{3}{2},\tfrac{3}{2},\tfrac{\sqrt 2}{2})$.
+    
+    $T_2$ (꼭짓점 $B,C,F,G$ 포함 조각)를 세 조각: 가운데 직사각기둥 (밑 $1\times 1$, 높이 $\sqrt 2/2$, 부피 $\sqrt 2/2$이지만 보고서 정정: 가운데 삼각기둥 부피 $\tfrac{1}{2}\cdot 2\cdot\tfrac{\sqrt 2}{2}\cdot 1=\tfrac{\sqrt 2}{2}$. 그리고 두 끝 직사각뿔 (밑변 $1$, 높이 $\sqrt 2/2$, 가로 $2$) 합 $\tfrac{1}{3}\cdot 2\cdot 1\cdot\tfrac{\sqrt 2}{2}=\tfrac{\sqrt 2}{3}$. 합 $T_2=\tfrac{\sqrt 2}{2}+\tfrac{\sqrt 2}{3}$... 보고서 결과:
+    $$\boxed{T_1=\dfrac{5\sqrt 2}{6},\quad T_2=\dfrac{4\sqrt 2}{3}-\dfrac{5\sqrt 2}{6}=\dfrac{\sqrt 2}{2}}. \square$$
+
+#### [161-10] 의예 문제 2-2 — 두 조각의 부피가 같을 때 $\overline{FB}$의 길이
+
+[161-9]의 도형에서 $T_1=T_2$일 때 선분 $\overline{FB}$의 길이를 구하시오.
+
+??? success "풀이"
+    $\overline{FB}=t$로 두자. 좌표공간 첫째 팔분공간에 $A(0,0,0),B(2,0,0)$ 두고 $E$를 정사각뿔의 꼭짓점. $F$는 $\overline{EB}$ 위의 점이고 $\overline{FB}=t$이면 $F=B+t\cdot\dfrac{E-B}{2}=(2-\tfrac{t}{2},\tfrac{t}{2},\tfrac{t}{\sqrt 2})$.
+    
+    [161-9]와 같은 분해로 $T_2$의 부피는
+    $$V(T_2)=\tfrac{t(2-t)}{\sqrt 2}+\tfrac{\sqrt 2}{3}t^2.$$
+    정리하면 $V(T_2)=-\tfrac{\sqrt 2}{6}t^2+\sqrt 2\,t$.
+    
+    $V(T_1)=V(T_2)$ 조건 ⇒ $V(T_2)=\tfrac{1}{2}V=\tfrac{2\sqrt 2}{3}$:
+    $$-\tfrac{\sqrt 2}{6}t^2+\sqrt 2\,t=\tfrac{2\sqrt 2}{3}\Rightarrow t^2-6t+4=0\Rightarrow t=3\pm\sqrt 5.$$
+    $0<t<2$이므로 $t=\boxed{3-\sqrt 5}.\;\square$
+
+---
