@@ -21214,3 +21214,129 @@ $A$ 는 모든 소득에 $20\%$ 세율, $B$ 는 누진세 ($\le 1000$: $0\%$, $1
     점 $D$ 와 평면 $ABC$ 사이의 거리를 $d$ 라 하면
     $V(ABCD) = \tfrac13 \cdot S(ABC) \cdot d = \tfrac53 d = \sqrt 3$, $d = \dfrac{3\sqrt 3}{5}$.
 
+## 카드 171 — 건국대 (2019학년도)
+
+자료: `2019_건국대+입학전형+선행학습+영향평가+보고서_부록포함_최종본.pdf`. KU논술우수자전형 **인문사회II 수학 3 sub-문항 + 자연계 수학 4 sub-문항** 총 7 문항.
+
+### 171-1 (인문 II 수학 [문제 2-1] — 부등식 영역과 격자점 세기)
+
+**문제.** 두 재화 $A, B$ 의 가격이 $P_A = 50 - Q_A,\ P_B = 100 - Q_B$ 로 주어진다. 총 구매액이 $3100$ 을 넘지 않으면서 $3076$ 보다 작지는 않도록 재화 $A, B$ 의 구매량을 정한다. 단, 구매량은 음이 아닌 정수이고, $A$ 는 $49$ 단위, $B$ 는 $99$ 단위까지 가능하다. 조건을 만족하는 $(Q_A,\ Q_B)$ 의 순서쌍 개수는? **답.** $80$.
+
+??? success "풀이"
+    $S = Q_A P_A + Q_B P_B = x(50 - x) + y(100 - y)$ ($x = Q_A,\ y = Q_B$).
+
+    완전제곱식 정리: $S = 3125 - [(x - 25)^2 + (y - 50)^2]$.
+
+    조건 $3076 \le S \le 3100$ 는 $25 \le (x - 25)^2 + (y - 50)^2 \le 49$, 곧 $5^2 \le \cdots \le 7^2$ (반지름 $5$ 와 $7$ 사이의 환영역).
+
+    $0 \le x \le 50,\ 0 \le y \le 100$ 도 자동 만족. 정수해 세기: 환영역의 $1$ 사분면 내부점 $(2 + 2 + 3 + 3 + 4 + 4) \cdot 4 = 68$, 축 위의 점 $3 \cdot 4 = 12$. 합 $80$.
+
+### 171-2 (인문 II 수학 [문제 2-2] — 자연수 거듭제곱의 합)
+
+**문제.** $2000$ 년 말 $n$ 세 인구는 $(100 - n)^2$ 만 명 ($n = 0, 1, \dots, 99$). 모든 사람이 $99$ 세까지 생존하고 $n$ 년에는 $(2100 - n)^2$ 만 명이 태어난다.
+(1) $2000$ 년 말의 총인구 $a$ 와 $2099$ 년 말의 총인구 $b$ 에 대하여 $b - a$ 의 값?
+(2) $2000$ 년 말의 평균연령 $c$, $2099$ 년 말의 평균연령 $d$ 에 대하여 $d - c$ 의 값을 소수점 아래 첫째 자리에서 반올림한 값?
+
+**답.** (1) $b - a = 0$, (2) $d - c \approx 50$.
+
+??? success "풀이 (1)"
+    $a = \displaystyle\sum_{k=1}^{100} k^2 = \dfrac{100 \cdot 101 \cdot 201}{6} = 338{,}350$.
+    $2099$ 년의 분포는 $0$ 세 $1^2$ 만, $1$ 세 $2^2$ 만, …, $99$ 세 $100^2$ 만이므로 $b = \displaystyle\sum_{k=1}^{100} k^2 = a$. 따라서 $b - a = 0$.
+
+??? success "풀이 (2)"
+    $\displaystyle S_{2000} = \sum_{k=1}^{100} k^2(100 - k) = 100\sum k^2 - \sum k^3$.
+    $c = \dfrac{S_{2000}}{a} = 100 - \dfrac{\sum k^3}{\sum k^2} = 100 - \dfrac{3 \cdot 100 \cdot 101}{2 \cdot 201} \approx 24.62$.
+
+    $\displaystyle S_{2099} = \sum k^2 (k - 1) = \sum k^3 - \sum k^2$, $d = \dfrac{\sum k^3}{\sum k^2} - 1 \approx 74.37$.
+
+    $d - c = 2 \cdot \dfrac{3 \cdot 100 \cdot 101}{2 \cdot 201} - 101 \approx 49.7462$, 반올림하면 $50$.
+
+### 171-3 (인문 II 수학 [문제 2-3] — 총수요·총공급과 정적분)
+
+**문제.** 총공급곡선 $Y = X^2$ ($X \ge 0$), $t$ 시점 총수요곡선 $Y = 3 - 2(X - F(t))$. 정책효과 $F(t) = \int_0^t g(s)\,ds$ 이고
+$g(s) = \begin{cases} 1 - \tfrac12|s - 4| & (0 \le s \le 8)\\ 1 - \tfrac12|s - 12| & (8 < s \le 16)\\ 1 - \tfrac12|s - 20| & (16 < s \le 24)\\ \cdots & \end{cases}$
+($g$ 는 주기 $8$, $F$ 도 주기적. $F$ 가 처음 최솟값을 갖는 시점을 $a$, 그때 실질 GDP $b$, $F$ 가 처음 최댓값을 갖는 시점을 $c$, 그때 실질 GDP $d$.) $c + d - a - b$ 의 값을 소수점 아래 둘째 자리에서 반올림한 값은? ($\sqrt 2 = 1.41$, $\sqrt 6 = 2.45$.) **답.** $5.0$.
+
+??? success "풀이"
+    $g(s) = \tfrac{s}{2} - 1$ on $[0, 2]$, $g(s) = 1 - \tfrac{s}{2}$ on $[2, 4]$, etc.
+    $F$ 의 첫 최솟값은 $F(2) = \int_0^2 (\tfrac{t}{2} - 1)\,dt = [\tfrac{t^2}{4} - t]_0^2 = -1$. 따라서 $a = 2$.
+    교점은 $X^2 = 3 - 2(X - F)$, $X^2 + 2X + 1 = 4 + 2F$, $X = -1 + \sqrt{4 + 2F}$.
+    $b = -1 + \sqrt{4 + 2(-1)} = -1 + \sqrt 2 \approx 0.41$.
+    $F$ 의 첫 최댓값은 $F(6) = 0 + 1 = 1$, $c = 6$.
+    $d = -1 + \sqrt{4 + 2} = -1 + \sqrt 6 \approx 1.45$.
+    $c + d - a - b = 6 + 1.45 - 2 - 0.41 = 5.04 \approx 5.0$.
+
+---
+
+### 171-4 (자연 수학 [문제 1-1] — 부등식 영역과 원의 위치)
+
+**문제.** $A(2, 5),\ B(0, 0),\ C(4, 0),\ D(3, 4)$. 사각형 $ABCD$ 내부 또는 경계의 점 $P$ 에 대해 $\overline{PA} = 1$ 을 만족시킬 때, 삼각형 $ADP$ 의 넓이와 삼각형 $BCP$ 의 넓이의 합 $k$ 의 최솟값은? **답.** $10 - \dfrac{\sqrt{10}}{2}$.
+
+??? success "풀이"
+    직선 $AD$ 의 방정식 $x + y - 7 = 0$. 점 $P(x, y)$ 에서 직선 $AD$ 까지 거리 $\dfrac{|x + y - 7|}{\sqrt 2}$. 사각형 내부에서 $x + y - 7 \le 0$, $\overline{AD} = \sqrt 2$ 이므로
+    $\triangle ADP$ 넓이 $= \dfrac12 \cdot \sqrt 2 \cdot \dfrac{7 - x - y}{\sqrt 2} = \dfrac12(7 - x - y)$.
+
+    $\triangle BCP$ 넓이 $= \dfrac12 \cdot 4 \cdot y = 2y$.
+
+    $k = \dfrac12(7 - x + 3y)$. $P$ 는 $\overline{PA} = 1$ 즉 $(x - 2)^2 + (y - 5)^2 = 1$ 위에 있다. 직선 $x - 3y - 7 + 2k = 0$ 이 이 원과 만나야 한다.
+
+    $x = 3y + 7 - 2k$ 대입: $(3y + 5 - 2k)^2 + (y - 5)^2 = 1$, $10y^2 + (20 - 12k)y + 4k^2 - 20k + 49 = 0$.
+    판별식 $\ge 0$: $-4k^2 + 80k - 390 \ge 0$. 이차부등식 풀면 $10 - \dfrac{\sqrt{10}}{2} \le k \le 10 + \dfrac{\sqrt{10}}{2}$.
+    $k$ 의 최솟값 $= 10 - \dfrac{\sqrt{10}}{2}$.
+
+### 171-5 (자연 수학 [문제 1-2] — 정사영의 자취)
+
+**문제.** 공간 위 평면 $\alpha:\ x + y + z = 1$ 위의 사각형 $EFGH$ 가 있다 ($E(-1, 0, 2),\ F(4, -2, -1),\ G(4, 1, -4),\ H(0, 1, 0)$). 점 $Q$ 가 사각형 $EFGH$ 내부 또는 경계에서 움직일 때, 삼각형 $EHQ$ 와 삼각형 $GFQ$ 의 넓이의 합이 $5\sqrt 3$ 이 되는 $Q$ 의 모임은 선분이다. 이 선분의 길이는? **답.** $\dfrac98 \sqrt 6$.
+
+??? success "풀이"
+    $E, F, G, H, Q$ 의 $xy$ 평면 정사영을 각각 $E', F', G', H', Q'$. 평면 $\alpha$ 와 $xy$ 평면의 이면각 $\theta$ 는 법선벡터 $(1, 1, 1)$ 과 $(0, 0, 1)$ 의 사이각에서 $\cos\theta = \tfrac{1}{\sqrt 3}$.
+
+    삼각형 $E'H'Q'$ 와 삼각형 $G'F'Q'$ 의 넓이 합 $= 5\sqrt 3 \cos\theta = 5\sqrt 3 \cdot \tfrac{1}{\sqrt 3} = 5$.
+
+    직선 $E'H'$ 방정식 $x - y + 1 = 0$. $Q'(x, y)$ 에서 거리 $\dfrac{x - y + 1}{\sqrt 2}$ (내부에서). $\overline{E'H'} = \sqrt 2$ 이므로 $\triangle E'H'Q'$ 넓이 $= \dfrac{x - y + 1}{2}$.
+
+    $\overline{G'F'} = 3$ ($y$ 좌표만 다름), $\triangle G'F'Q'$ 넓이 $= \dfrac32 (4 - x)$.
+
+    합 $= \tfrac12(x - y + 1) + \tfrac32(4 - x) = -x - \tfrac{y}{2} + \tfrac{13}{2} = 5$, $\Rightarrow y = -2x + 3$.
+
+    이 직선과 $H'G'\ (y = 1)$ 교점 $I'(1, 1)$. 직선 $E'F'$ ($y = -\tfrac{2}{5}x - \tfrac{2}{5}$) 와 교점 $J'(\tfrac{17}{8}, -\tfrac54)$.
+
+    평면 $\alpha$ 위의 대응점 $I(1, 1, -1)$, $J(\tfrac{17}{8}, -\tfrac54, \tfrac18)$.
+    $\overline{IJ} = \sqrt{(\tfrac98)^2 + (\tfrac94)^2 + (\tfrac98)^2} = \dfrac98 \sqrt{1 + 4 + 1} = \dfrac98 \sqrt 6$.
+
+### 171-6 (자연 수학 [문제 2-1] — 삼각함수의 덧셈정리와 최댓값)
+
+**문제.** 한 변의 길이가 $1$ 인 정삼각형 $ABC$ 와 $A'B'C'$ 를 아랫면과 윗면으로 하고 높이가 $1$ 인 삼각기둥. 점 $P$ 가 삼각형 $ABC$ 의 내부 또는 경계에 있을 때, 각 $\angle DPA'$ 의 크기가 최대가 되는 점 $P$ 의 모임은? (단, $D$ 는 $\overline{AA'}$ 의 중점.) **답.** $A$ 를 중심으로 하고 반지름이 $\dfrac{1}{\sqrt 2}$ 인 원 위의 점들 중 변 $AC$ 와 변 $AB$ 사이의 호.
+
+??? success "풀이"
+    $\overline{AP} = a$, $\angle DPA' = \theta$, $\angle DPA = \theta'$. $\angle PAA' = \tfrac\pi 2$.
+    $\tan\theta' = \dfrac{1}{2a}$ ($\overline{AD} = \tfrac12$), $\tan(\theta + \theta') = \dfrac{1}{a}$ ($\overline{AA'} = 1$).
+    $\tan\theta = \dfrac{\tan(\theta + \theta') - \tan\theta'}{1 + \tan(\theta + \theta')\tan\theta'} = \dfrac{1/a - 1/(2a)}{1 + 1/(2a^2)} = \dfrac{a}{2a^2 + 1}$.
+
+    $f(a) = \dfrac{a}{2a^2 + 1}$ 의 최댓값: $f'(a) = \dfrac{1 - 2a^2}{(2a^2 + 1)^2}$. $f'(a) = 0 \Leftrightarrow a = \dfrac{1}{\sqrt 2}$.
+    최댓값 $f(\tfrac{1}{\sqrt 2}) = \dfrac{1}{2\sqrt 2}$.
+
+    $\overline{AP} = \tfrac{1}{\sqrt 2}$ 인 점 $P$ 의 모임이 답.
+
+### 171-7 (자연 수학 [문제 2-2] — 평면이 삼각기둥을 자른 부피)
+
+**문제.** 같은 삼각기둥에서 세 점 $D = ($ $\overline{AA'}$ 중점$),\ N = ($ $\overline{AB}$ 중점$),\ F = ($ $\overline{B'C'}$ 중점$)$ 을 지나는 평면 $\alpha$. $\alpha$ 가 삼각기둥을 두 조각으로 나눌 때, 꼭짓점 $B$ 를 포함하는 조각의 부피는? **답.** $\dfrac{49\sqrt 3}{576}$.
+
+??? success "풀이"
+    좌표: $A(0, 0, 0),\ B(1, 0, 0),\ C(\tfrac12, \tfrac{\sqrt 3}{2}, 0)$, $A', B', C'$ 는 $z + 1$ 평행.
+    $D(0, 0, \tfrac12),\ N(\tfrac12, 0, 0),\ F(\tfrac34, \tfrac{\sqrt 3}{4}, 1)$.
+    평면 $\alpha$ 의 방정식: $4x + \tfrac{8}{\sqrt 3} y + 2z - 5 = 0$ (법선 $(2, \tfrac{4}{\sqrt 3}, 1)$).
+
+    $\alpha$ 와 $\overline{A'C'},\ \overline{BC},\ \overline{A'B'},\ \overline{BB'}$ 의 교점:
+    $G(\tfrac34, 0, 1)$ on $A'C'$ (parameterized as $(x, 0, 1)$),
+    $H(\tfrac{5}{12}, \tfrac{5\sqrt 3}{12}, 0)$ on $BC$,
+    $I(\tfrac54, -\tfrac{\sqrt 3}{4}, 1)$ on $A'B'$ extension,
+    $J(\tfrac12, \tfrac{\sqrt 3}{2}, -\tfrac12)$ on $BB'$ extension.
+
+    $B$ 포함 부분 = $V(FIJB') - V(A'DGI) - V(BHNJ)$:
+    $V(FIJB') = \tfrac13 \cdot \tfrac12 \cdot \tfrac12 \cdot \tfrac{\sqrt 3}{4} \cdot \tfrac32 = \tfrac{3\sqrt 3}{32}$.
+    $V(A'DGI) = \tfrac13 \cdot \tfrac12 \cdot \tfrac12 \cdot \tfrac{\sqrt 3}{8} \cdot \tfrac12 = \tfrac{\sqrt 3}{192}$.
+    $V(BHNJ) = \tfrac13 \cdot \tfrac12 \cdot \tfrac12 \cdot \tfrac{\sqrt 3}{12} \cdot \tfrac12 = \tfrac{\sqrt 3}{288}$.
+
+    부피 = $\dfrac{3\sqrt 3}{32} - \dfrac{\sqrt 3}{192} - \dfrac{\sqrt 3}{288} = \dfrac{49\sqrt 3}{576}$.
+
