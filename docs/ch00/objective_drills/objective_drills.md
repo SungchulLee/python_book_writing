@@ -21340,3 +21340,105 @@ $g(s) = \begin{cases} 1 - \tfrac12|s - 4| & (0 \le s \le 8)\\ 1 - \tfrac12|s - 1
 
     부피 = $\dfrac{3\sqrt 3}{32} - \dfrac{\sqrt 3}{192} - \dfrac{\sqrt 3}{288} = \dfrac{49\sqrt 3}{576}$.
 
+## 카드 172 — 건국대 (2018학년도)
+
+자료: `2018_건국대+입학전형+선행학습+영향평가+보고서(1).pdf`. KU논술우수자전형 **인문사회II 수학 3 sub-문항 + 자연계 수학 4 sub-문항** 총 7 문항.
+
+### 172-1 (인문 II 수학 [문제 2-1] — 주식 포트폴리오와 일차계획)
+
+**문제.** K씨가 $600$ 만 원을 모두 주식에 투자하여 총 $120$ 주를 구매한다. $A$ (수익률 $5\%$, 한 주 $1$ 만 원), $B$ ($6\%$, $3$ 만 원), $C$ ($10\%$, $9$ 만 원) 중 각각 $x, y, z$ 주 구매. (1) $x, y$ 를 $z$ 로 나타내라. (2) 총수익 $T$ 만 원을 $z$ 로 나타내고 $T$ 의 최댓값과 최솟값을 구하라. **답.** (1) $x = 3z - 120,\ y = -4z + 240$, (2) $T = 0.33z + 37.2$ ($40 \le z \le 60$), 최솟값 $50.4$ ($z = 40$), 최댓값 $57$ ($z = 60$).
+
+??? success "풀이"
+    (1) $x + y + z = 120$, $x + 3y + 9z = 600$. 두 식 빼면 $2y + 8z = 480$, $y = -4z + 240$. 따라서 $x = 120 - y - z = 3z - 120$.
+
+    (2) 수익 $= n \cdot a \cdot \dfrac{r}{100}$. $T = 0.05 x + 0.18 y + 0.9 z = 0.05(3z - 120) + 0.18(-4z + 240) + 0.9z = 0.33z + 37.2$.
+    $x \ge 0,\ y \ge 0$ 에서 $40 \le z \le 60$. 일차함수이므로 끝점 평가: $z = 40$ 일 때 $T = 50.4$, $z = 60$ 일 때 $T = 57$.
+
+### 172-2 (인문 II 수학 [문제 2-2] — 로렌츠 곡선과 지니계수)
+
+**문제.** D국 P정책 $k$ 년 시행 후 $m$ 년 기준 로렌츠 곡선 $L(x) = x^{m^2 - (2k + 4)m + k^2 + 4k + 6}$ ($0 \le x \le 1$). 지니계수 $G = \dfrac{S_1}{S_1 + S_2}$.
+(1) $1$ 년 시행 ($k = 1$) 일 때 $2018, 2019, 2020$ 년 지니계수는?
+(2) $2027$ 년 ($m = 10$) 의 지니계수가 $0.4$ 미만이 되려면 P정책을 몇 년 시행해야 하는가?
+
+**답.** (1) $\dfrac57,\ \dfrac12,\ \dfrac13$. (2) $k = 8$ 년.
+
+??? success "풀이 (1)"
+    $L(x) = x^{(m-3)^2 + 2}$ ($k = 1$). 지수를 $p$ 라 두면 $L = x^p$.
+    $G = \dfrac{\int_0^1 (x - L)\,dx}{\tfrac12} = 2\int_0^1 (x - x^p)\,dx = 2 \cdot (\tfrac12 - \tfrac{1}{p+1}) = 1 - \dfrac{2}{p + 1}$.
+    $G = 1 - \dfrac{2}{(m - 3)^2 + 3}$.
+    $m = 1, 2, 3$ 대입: $G_1 = 1 - \tfrac{2}{7} = \tfrac57$, $G_2 = 1 - \tfrac{2}{4} = \tfrac12$, $G_3 = 1 - \tfrac{2}{3} = \tfrac13$.
+
+??? success "풀이 (2)"
+    $m = 10$ 에서 지수 $p = 100 - 10(2k + 4) + k^2 + 4k + 6 = k^2 - 16k + 66$.
+    $G = 1 - \dfrac{2}{k^2 - 16k + 67} < 0.4$
+    $\Leftrightarrow$ $k^2 - 16k + 67 < \tfrac{10}{3}$
+    $\Leftrightarrow$ $(k - 8)^2 < \tfrac13$.
+    $7.42 < k < 8.58$. 정수 $k$ 는 $k = 8$.
+
+### 172-3 (인문 II 수학 [문제 2-3] — 최저임금 초과공급량의 기댓값)
+
+**문제.** $n$ 년 수요곡선 $D_n: L_n = -X + a_n$, 공급곡선 $S_n: L_n = X + b_n$. $L_n$ 의 확률질량함수가 $P(L_n = L + 2^{-k}) = \dfrac{2^{-k}}{1 - 2^{-n}}$ ($k = 1, 2, \dots, n$). $a_n, b_n$ 이 $3^{-n} < 4b_n - L < 4a_n - 5L < 2^{-n}$ 만족. 초과공급량 $Q_n$ 의 기댓값 $E(Q_n)$ 과 $\displaystyle\lim_{n \to \infty} E(Q_n)$ 의 값은? **답.** $\displaystyle\lim_{n \to \infty} E(Q_n) = \dfrac{L}{2} + \dfrac23$.
+
+??? success "풀이"
+    수요 $X_D = -L_n + a_n$, 공급 $X_S = L_n - b_n$. 초과공급 $Q_n = X_S - X_D = 2L_n - (a_n + b_n)$.
+
+    $\displaystyle E(L_n) = \sum_{k=1}^n (L + 2^{-k})\dfrac{2^{-k}}{1 - 2^{-n}} = L + \dfrac{3^{-1}(1 - 4^{-n})}{1 - 2^{-n}} = L + 3^{-1}(1 + 2^{-n})$.
+
+    $E(Q_n) = 2 E(L_n) - (a_n + b_n) = 2L + \tfrac23(1 + 2^{-n}) - (a_n + b_n)$.
+
+    조건 $3^{-n} < 4b_n - L < 4a_n - 5L < 2^{-n}$ 에서 $n \to \infty$ 시 $\lim a_n = \tfrac{5L}{4}$, $\lim b_n = \tfrac{L}{4}$, 합 $\lim(a_n + b_n) = \tfrac{3L}{2}$.
+
+    $\displaystyle\lim_{n \to \infty} E(Q_n) = 2L + \tfrac23 - \tfrac{3L}{2} = \dfrac{L}{2} + \dfrac23$.
+
+---
+
+### 172-4 (자연 수학 [문제 1-1] — 종이접기와 이등변삼각형)
+
+**문제.** 직사각형 $ABCD$ 모양의 종이를 대각선 $\overline{BD}$ 를 따라 접었을 때, 빗금으로 표시된 부분 ($\triangle GBD$) 의 넓이를 $a = \overline{AB},\ b = \overline{BC}$ 의 식으로 표현하라. (단, $G$ 는 접은 후 변 $AD$ 가 가는 위치와 $\triangle ABD$ 의 교차점.) **답.** $\dfrac{a}{4b}(a^2 + b^2)$.
+
+??? success "풀이"
+    $\triangle GBD$ 의 높이를 $h$. 종이접기로 $\angle GBD = \angle DBC = \theta$. $\overline{CD} \perp \overline{BC}$ 이므로 $\tan\theta = \dfrac{a}{b}$.
+    $\triangle GBD$ 에서 $\angle GDB = \theta$ (이등변), 따라서 높이 $h = \tan\theta \cdot \dfrac{\overline{BD}}{2} = \dfrac{a}{2b}\sqrt{a^2 + b^2}$.
+    넓이 $= \dfrac12 \cdot \sqrt{a^2 + b^2} \cdot \dfrac{a\sqrt{a^2 + b^2}}{2b} = \dfrac{a(a^2 + b^2)}{4b}$.
+
+### 172-5 (자연 수학 [문제 1-2] — 사각뿔의 부피 최댓값)
+
+**문제.** 직사각형 $ABCD$ ($\overline{AB} = 2,\ \overline{BC} = 3$). 변 $AD$ 위의 점 $E$ 를 잡고 선분 $\overline{CE}$ 를 따라 접어 점 $D$ 가 $F$ 로 이동, 평면 $CEF \perp$ 평면 $ABCD$. 사각뿔 $F\text{-}ABCE$ 의 부피의 최댓값은? **답.** $\dfrac{4\sqrt 2}{3}$.
+
+??? success "풀이"
+    $\overline{DE} = x$ ($0 \le x \le 3$). 사각형 $ABCE$ 의 넓이 $= 3 \cdot 2 - \tfrac12 \cdot 2 \cdot x = 6 - x$.
+    사각뿔의 높이 $h$: $\overline{CE} = \sqrt{x^2 + 4}$. $\triangle CDE$ 의 넓이 $= \tfrac12 \cdot 2 \cdot x = x$ 이고 $\overline{CE} \cdot h / 2 = x$ 로부터 $h = \dfrac{2x}{\sqrt{x^2 + 4}}$.
+
+    부피 $V(x) = \tfrac13 (6 - x) \cdot \dfrac{2x}{\sqrt{x^2 + 4}}$.
+    $V'(x) = \tfrac{2}{3}\cdot\dfrac{(2 - x)(x^2 + 2x + 12)}{\sqrt{(x^2 + 4)^3}}$. $V' = 0 \Leftrightarrow x = 2$.
+    $V(2) = \tfrac13 \cdot 4 \cdot \dfrac{4}{\sqrt 8} = \dfrac{16}{3 \cdot 2\sqrt 2} = \dfrac{4\sqrt 2}{3}$.
+
+### 172-6 (자연 수학 [문제 2-1] — 구와 평면의 교선까지의 최단거리)
+
+**문제.** 구 $x^2 + y^2 + z^2 = 9$ 와 평면 $x + y + z = 3$ 의 교선을 원 $C$. 점 $A(2, 2, 1)$ 에서 $C$ 위의 점까지 거리의 최솟값은? **답.** $2$.
+
+??? success "풀이"
+    구의 중심 $O$, 평면 $\alpha:\ x + y + z = 3$. 원 $C$ 의 중심 $O'$ 은 $O$ 에서 $\alpha$ 에 내린 수선의 발. $\overrightarrow{OO'}$ 은 법선 방향 $(1, 1, 1)$ 의 양수배. $O'(t, t, t)$ 이 $\alpha$ 위에 있으려면 $t = 1$, $O' = (1, 1, 1)$. $\overline{OO'} = \sqrt 3$, 원의 반지름 $\overline{O'Q} = \sqrt{9 - 3} = \sqrt 6$.
+
+    $A(2, 2, 1)$ 의 $\alpha$ 위로의 정사영 $H$: $H = (2, 2, 1) + s(1, 1, 1)$, $\alpha$ 위에 있어야 $s = -\tfrac23$. $H = (\tfrac43, \tfrac43, \tfrac13)$.
+    $\overline{AH} = \sqrt{3 \cdot (\tfrac23)^2} = \dfrac{2}{\sqrt 3}$.
+    $\overline{O'H} = \sqrt{(\tfrac13)^2 \cdot 3} = \dfrac{\sqrt 3}{3} = \dfrac{1}{\sqrt 3}$. $\overline{HQ}_{\min} = \overline{O'Q} - \overline{O'H} = \sqrt 6 - \dfrac{\sqrt 3}{3} = \dfrac{2\sqrt 6}{3}$.
+
+    $\overline{AQ}_{\min} = \sqrt{\overline{AH}^2 + \overline{HQ}_{\min}^2} = \sqrt{\tfrac43 + \tfrac{24}{9}} = \sqrt 4 = 2$.
+
+### 172-7 (자연 수학 [문제 2-2] — 구와 평면 단면원 중심의 자취)
+
+**문제.** 구 $(x - 2)^2 + y^2 + z^2 = 2$ 와 평면 $mx - y = 0$ 의 교차원의 중심을 $P$. $m$ 의 변화에 따라 $P$ 가 그리는 곡선의 길이는? **답.** $\pi$.
+
+??? success "풀이"
+    평면 $\alpha: mx - y = 0$ 의 법선벡터 $(m, -1, 0)$. 구의 중심 $S(2, 0, 0)$ 에서 $\alpha$ 에 내린 수선의 발 $P$.
+    $P = S + t(m, -1, 0)$ 이 $\alpha$ 위에 있어야 $m(2 + mt) - (-t) = 0$, $t = -\dfrac{2m}{m^2 + 1}$.
+    $P = \left(\dfrac{2}{m^2 + 1},\ \dfrac{2m}{m^2 + 1},\ 0\right)$.
+
+    $x = \dfrac{2}{m^2 + 1},\ y = \dfrac{2m}{m^2 + 1}$. 제곱하여 더하면 $x^2 + y^2 = \dfrac{4(1 + m^2)}{(m^2 + 1)^2} = \dfrac{4}{m^2 + 1} = 2x$.
+    $\Rightarrow (x - 1)^2 + y^2 = 1$. ($z = 0$.)
+
+    $\alpha$ 와 구가 만나려면 ($S$ 에서 $\alpha$ 까지 거리) $\le \sqrt 2$: $\dfrac{2|m|}{\sqrt{m^2 + 1}} \le \sqrt 2$, $\Rightarrow m^2 \le 1$, $-1 \le m \le 1$.
+
+    $m = \pm 1$ 일 때 $P = (1, \pm 1, 0)$. $P$ 는 단위원 $(x - 1)^2 + y^2 = 1$ 중 $(1, -1)$ 에서 $(1, 1)$ 로 가는 오른쪽 반원을 따라 움직인다. 호의 길이 $= \tfrac12 \cdot 2\pi = \pi$.
+
