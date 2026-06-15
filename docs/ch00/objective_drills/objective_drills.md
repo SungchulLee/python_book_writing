@@ -20013,3 +20013,402 @@ $$S = \left\{y \ \middle| \ f'(x) = \frac{f(x) - f(y)}{x - y},\ y\text{는 } x\t
 
     $$b\pi + \cot(b\pi) = \frac{9\pi}{2}$$
 
+
+---
+
+## 카드 167 — 연세대 미래캠퍼스 (2021학년도)
+
+> **출처:** 2021학년도 연세대 미래캠퍼스 선행학습영향평가 결과 보고서 — 일반논술 전형 자연계열·의예과 수학.
+> 자연계열 3문항(9개 하위 문항)과 의예과 2문항(6개 하위 문항)을 묶어 **15개 하위 문항**을 한 카드에 정리한다. 다루는 주제: 역함수 연속조건, 정적분과 급수의 합, 치환적분, 원·무리함수 접선과 이차방정식의 판별식, 함수 개형과 부등식, 수열의 극한, 이산확률변수와 사다리꼴 넓이, 입체도형 부피와 부분적분, 전염병 모형의 도함수·치환적분·확률질량함수, 사인법칙·매개변수 함수의 미분, 이산확률변수의 기댓값.
+
+---
+
+#### [167-1] 역함수 — 연속함수와 일대일대응으로 결정되는 상수
+
+다음과 같이 정의된 함수 $f(x)$와 $g(x)$를 생각하자. (단, $a, b$는 상수)
+
+$$f(x) = \begin{cases} 2x^2, & x < -1 \\ -x + a, & -1 \le x < 1 \\ -\tfrac{1}{3} x + b, & 1 \le x \end{cases}, \qquad g(x) = \int_0^x \frac{1}{1 + t^2}\, dt$$
+
+함수 $f(x)$의 정의역과 공역이 실수 전체의 집합이다. $f(x)$가 역함수 $h(x)$가 존재하고 $h(h(8)) = c$를 만족시킬 때, $a + b + c$의 값을 구하시오.
+
+??? success "풀이"
+    **1단계 — 연속 조건.** $f$가 일대일대응이 되려면 연속이어야 한다.
+
+    - $x = -1$에서 연속: $2(-1)^2 = -(-1) + a \Rightarrow 2 = 1 + a \Rightarrow a = 1$.
+    - $x = 1$에서 연속: $-1 + a = -\tfrac{1}{3} + b \Rightarrow 0 = -\tfrac{1}{3} + b \Rightarrow b = \tfrac{1}{3}$.
+
+    **2단계 — $h(h(8))$.** $f$의 역함수가 $h$이므로 $h(h(8)) = c \Longleftrightarrow h(8) = f(c)$.
+
+    $h(8)$은 $f(x) = 8$을 만족하는 $x$다. $x < -1$에서 $2x^2 = 8 \Rightarrow x = -2$ (조건 $x < -1$ 만족). 따라서 $h(8) = -2$.
+
+    $f(c) = -2$를 푸는데, $c > 1$이라 가정하면 $-\tfrac{1}{3} c + \tfrac{1}{3} = -2 \Rightarrow -\tfrac{1}{3} c = -\tfrac{7}{3} \Rightarrow c = 7$. 조건 $c > 1$ 충족.
+
+    **3단계 — 합.** $a + b + c = 1 + \tfrac{1}{3} + 7 = \dfrac{25}{3}$.
+
+#### [167-2] 정적분과 급수의 합 — 리만합 → 적분
+
+[167-1]의 함수 $f(x)$에 대하여
+
+$$\lim_{n \to \infty} \sum_{k=1}^{n} f\!\left(-2 + \tfrac{4k}{n}\right) \cdot \tfrac{1}{n}$$
+
+의 값을 구하시오.
+
+??? success "풀이"
+    $\Delta x = \dfrac{4}{n}$로 보면 $\dfrac{1}{n} = \dfrac{1}{4} \cdot \Delta x$이므로
+
+    $$\lim_{n \to \infty} \sum_{k=1}^{n} f\!\left(-2 + \tfrac{4k}{n}\right) \cdot \tfrac{1}{n} = \frac{1}{4} \int_{-2}^{2} f(x)\, dx$$
+
+    구간을 $[-2, -1], [-1, 1], [1, 2]$로 나누어 계산한다.
+
+    $$\int_{-2}^{-1} 2x^2\, dx = \tfrac{2}{3}\bigl[x^3\bigr]_{-2}^{-1} = \tfrac{2}{3}(-1 + 8) = \tfrac{14}{3}$$
+
+    $$\int_{-1}^{1} (-x + 1)\, dx = \bigl[-\tfrac{x^2}{2} + x\bigr]_{-1}^{1} = \tfrac{1}{2} - (-\tfrac{3}{2}) = 2$$
+
+    $$\int_{1}^{2} \left(-\tfrac{x}{3} + \tfrac{1}{3}\right) dx = \tfrac{1}{3}\bigl[-\tfrac{x^2}{2} + x\bigr]_{1}^{2} = \tfrac{1}{3}\bigl((-2 + 2) - (-\tfrac{1}{2} + 1)\bigr) = -\tfrac{1}{6}$$
+
+    합: $\tfrac{14}{3} + 2 - \tfrac{1}{6} = \tfrac{28}{6} + \tfrac{12}{6} - \tfrac{1}{6} = \dfrac{39}{6} = \dfrac{13}{2}$. 따라서
+
+    $$\frac{1}{4} \cdot \frac{13}{2} = \frac{13}{8}$$
+
+#### [167-3] 치환적분 — $g(\alpha) = \pi/3$일 때 정적분
+
+[167-1]의 $g(x) = \displaystyle\int_0^x \frac{1}{1 + t^2}\, dt$가 $g(\alpha) = \tfrac{\pi}{3}$를 만족할 때, $\displaystyle\int_0^\alpha \frac{\sin^3(g(x))}{1 + x^2}\, dx$의 값을 구하시오. (단, $\alpha$는 상수)
+
+??? success "풀이"
+    $g'(x) = \dfrac{1}{1 + x^2}$이므로 $u = g(x)$, $du = g'(x)\, dx = \dfrac{dx}{1 + x^2}$로 치환.
+
+    $x = 0 \to u = g(0) = 0$, $x = \alpha \to u = g(\alpha) = \tfrac{\pi}{3}$. 따라서
+
+    $$\int_0^\alpha \frac{\sin^3(g(x))}{1 + x^2}\, dx = \int_0^{\pi/3} \sin^3 u\, du = \int_0^{\pi/3} (1 - \cos^2 u) \sin u\, du$$
+
+    $v = \cos u$, $dv = -\sin u\, du$로 다시 치환하면 $u = 0 \to v = 1$, $u = \tfrac{\pi}{3} \to v = \tfrac{1}{2}$이고
+
+    $$\int_0^{\pi/3} (1 - \cos^2 u) \sin u\, du = -\int_1^{1/2} (1 - v^2)\, dv = \int_{1/2}^1 (1 - v^2)\, dv$$
+
+    $$= \bigl[v - \tfrac{v^3}{3}\bigr]_{1/2}^1 = \left(1 - \tfrac{1}{3}\right) - \left(\tfrac{1}{2} - \tfrac{1}{24}\right) = \tfrac{2}{3} - \tfrac{11}{24} = \tfrac{16 - 11}{24} = \frac{5}{24}$$
+
+#### [167-4] 원·무리함수 곡선의 접선 — 판별식 $D = 0$
+
+좌표평면 위 곡선 $S$는 두 무리함수 $y = \sqrt{2x}$와 $y = -\sqrt{2x}$로 만들어지는 곡선(즉 $y^2 = 2x$)이다. $1$보다 큰 실수 $r$에 대해서 $C(r)$은 중심 $\mathrm{A}_r(a_r, 0)$, 반지름 $r$인 원을 나타낸다. 원 $C(r)$과 곡선 $S$가 서로 다른 두 점에서 접한다고 할 때, $a_r$을 $r$로 나타내시오.
+
+??? success "풀이"
+    원 $C(r)$: $(x - a_r)^2 + y^2 = r^2$, 곡선 $S$: $y^2 = 2x$. 두 식에서 $y^2$을 소거하면
+
+    $$(x - a_r)^2 + 2x = r^2 \Longrightarrow x^2 - 2 a_r x + a_r^2 + 2x - r^2 = 0$$
+
+    $$\Longrightarrow x^2 + (2 - 2 a_r)\, x + (a_r^2 - r^2) = 0$$
+
+    원과 곡선이 서로 다른 두 점에서 접하려면 이 이차방정식의 두 해가 일치해야 하고, 각 해마다 $y = \pm\sqrt{2x}$로 두 점을 만들어 총 두 접점이 된다. 즉 판별식 $D = 0$.
+
+    $$\frac{D}{4} = (1 - a_r)^2 - (a_r^2 - r^2) = 0$$
+
+    $$\Longleftrightarrow 1 - 2 a_r + a_r^2 = a_r^2 - r^2 \Longleftrightarrow 2 a_r = 1 + r^2$$
+
+    $$\therefore\ a_r = \frac{r^2 + 1}{2}$$
+
+#### [167-5] 함수의 개형과 그래프로 풀이 — 실수 $k$의 범위
+
+[167-4]의 $\mathrm{A}_r(a_r, 0)$에 대해서, $1$보다 큰 모든 실수 $r$에 대한 방정식
+
+$$\left(a_{2r} - \tfrac{1}{2}\right) e^{-r} + k = 0$$
+
+가 서로 다른 두 실근을 갖도록 하는 실수 $k$의 범위를 구하시오. (단, $\displaystyle \lim_{x \to \infty} \frac{2x^2}{e^x} = 0$)
+
+??? success "풀이"
+    $a_{2r} = \dfrac{(2r)^2 + 1}{2} = \dfrac{4r^2 + 1}{2}$이므로 $a_{2r} - \tfrac{1}{2} = 2r^2$. 따라서 방정식은
+
+    $$2 r^2 e^{-r} + k = 0 \Longleftrightarrow 2 r^2 e^{-r} = -k$$
+
+    $f(r) = 2 r^2 e^{-r}$의 그래프 개형을 그린다. $f'(r) = 4 r e^{-r} - 2 r^2 e^{-r} = 2 r e^{-r} (2 - r)$이고 $f''(0) = 4 > 0$, $f''(2) = -4 e^{-2} < 0$이므로
+
+    - $r = 0$에서 극솟값 $f(0) = 0$
+    - $r = 2$에서 극댓값 $f(2) = 8 e^{-2} = \dfrac{8}{e^2}$
+    - $\displaystyle \lim_{r \to \infty} f(r) = 0$, $\displaystyle \lim_{r \to -\infty} f(r) = \infty$
+
+    $r > 1$에서 $f(r)$은 $f(1) = \tfrac{2}{e}$에서 시작해 $r = 2$의 극대 $\tfrac{8}{e^2}$로 증가했다가 감소하면서 $0$에 수렴.
+
+    $-k = y$가 $r > 1$에서 곡선과 서로 다른 두 점에서 만나려면 $\tfrac{2}{e} < -k < \tfrac{8}{e^2}$. 부호를 뒤집으면
+
+    $$-\frac{8}{e^2} < k < -\frac{2}{e}$$
+
+#### [167-6] 수열의 극한 — 두 원의 교점이 만드는 각의 탄젠트
+
+[167-4]의 $\mathrm{A}_r(a_r, 0)$에 대해 두 원 $C(r)$, $C(r+1)$의 한 교점을 $\mathrm{P}_r$(단, $y$좌표 양수)이라 하자. $\theta_r$은 점 $\mathrm{P}_r$과 원 $C(r+1)$의 중심과 원점이 이루는 각 $\angle \mathrm{P}_r \mathrm{A}_{r+1} \mathrm{O}$를 나타낼 때, $\displaystyle \lim_{r \to \infty} \tan(\theta_r)$를 구하시오.
+
+??? success "풀이"
+    **1단계 — 교점 좌표.** 연립이차방정식
+
+    $$\begin{cases} (x - a_r)^2 + y^2 = r^2 \\ (x - a_{r+1})^2 + y^2 = (r+1)^2 \end{cases}$$
+
+    두 번째 식에서 첫 번째 식을 빼면 $(x - a_{r+1})^2 - (x - a_r)^2 = (r+1)^2 - r^2 = 2r + 1$. 전개하면 $x = \dfrac{r^2 + r - 1}{2}$.
+
+    이를 첫 번째 식에 대입하면 $y^2 = r^2 - (x - a_r)^2 = \dfrac{3r^2 + 4r - 4}{4}$이고 $\mathrm{P}_r$의 $y$좌표 양수이므로 $y = \dfrac{\sqrt{3r^2 + 4r - 4}}{2}$.
+
+    **2단계 — $\tan(\theta_r)$.** $\mathrm{P}_r$에서 $x$축으로 수직선의 발을 잡고 $\mathrm{A}_{r+1} = \left(\dfrac{(r+1)^2 + 1}{2}, 0\right)$까지의 수평거리를 $t$, 수직거리를 $s$라 하면
+
+    $$t = a_{r+1} - x = \frac{(r+1)^2 + 1 - (r^2 + r - 1)}{2} = \frac{r + 3}{2}, \qquad s = \frac{\sqrt{3r^2 + 4r - 4}}{2}$$
+
+    $\tan(\theta_r) = \dfrac{s}{t} = \dfrac{\sqrt{3r^2 + 4r - 4}}{r + 3}$.
+
+    **3단계 — 극한.** 분자·분모를 $r$로 나누면
+
+    $$\lim_{r \to \infty} \frac{\sqrt{3 + 4/r - 4/r^2}}{1 + 3/r} = \frac{\sqrt{3}}{1} = \sqrt{3}$$
+
+#### [167-7] 이산확률변수 — 두 주사위 큰 눈의 기댓값
+
+두 개의 주사위를 던져서 나오는 눈의 수 중 큰 수를 확률변수 $X$라 하자. (두 주사위가 같은 눈일 경우는 제외하여 표본공간 30가지를 사용한다.) 이때 $Y = 36 X - 150$의 기댓값 $E(Y)$를 구하시오.
+
+또, $X = k$일 때 곡선 $y = 49 - (x - 7)^2$이 두 직선 $x = k$, $x = 14 - k$와 만나는 점을 각각 $\mathrm{D}, \mathrm{C}$라 하고 사다리꼴 $\mathrm{ABCD}$($\mathrm{A}(0, 0)$, $\mathrm{B}(14, 0)$)의 넓이를 $S$라 하자. $P(S \ge 400) = \dfrac{q}{p}$일 때 $p + q$를 구하시오. (단, $p$와 $q$는 서로소인 자연수.)
+
+??? success "풀이"
+    **1단계 — $X$의 분포.** 두 주사위가 다른 표본공간 $30$가지 중
+
+    | $X$ | $2$ | $3$ | $4$ | $5$ | $6$ |
+    |---|---|---|---|---|---|
+    | 경우의 수 | $2$ | $4$ | $6$ | $8$ | $10$ |
+    | $P(X = k)$ | $\tfrac{2}{30}$ | $\tfrac{4}{30}$ | $\tfrac{6}{30}$ | $\tfrac{8}{30}$ | $\tfrac{10}{30}$ |
+
+    **2단계 — $E(X)$, $E(Y)$.**
+
+    $$E(X) = \tfrac{2 \cdot 2 + 3 \cdot 4 + 4 \cdot 6 + 5 \cdot 8 + 6 \cdot 10}{30} = \tfrac{140}{30} = \tfrac{14}{3}$$
+
+    $E(Y) = E(36 X - 150) = 36 \cdot \tfrac{14}{3} - 150 = 168 - 150 = 18$.
+
+    **3단계 — $S$의 분포.** 사다리꼴의 넓이는
+
+    $$S = \tfrac{1}{2}\bigl[14 + (14 - 2k)\bigr]\bigl[49 - (k - 7)^2\bigr]$$
+
+    | $X = k$ | $2$ | $3$ | $4$ | $5$ | $6$ |
+    |---|---|---|---|---|---|
+    | $S$ | $288$ | $363$ | $400$ | $405$ | $384$ |
+
+    **4단계 — $P(S \ge 400)$.** $S = 400$ ($k = 4$) 또는 $S = 405$ ($k = 5$). 다른 $k$는 $S < 400$.
+
+    $$P(S \ge 400) = \tfrac{6}{30} + \tfrac{8}{30} = \tfrac{14}{30} = \tfrac{7}{15}$$
+
+    $p = 15, q = 7$이고 $p + q = 22$.
+
+#### [167-8] 곡선·축이 둘러싼 도형에서 사다리꼴을 제외한 넓이의 최솟값
+
+[167-7]의 사다리꼴에서, 곡선 $y = 49 - (x - 7)^2$과 $x$축으로 둘러싸인 부분에서 사다리꼴 $\mathrm{ABCD}$를 제외한 넓이를 $T$라 할 때, $T$를 최소로 하는 $k$의 값을 찾고 그때의 $3T$의 값을 구하시오.
+
+??? success "풀이"
+    포물선 전체의 넓이는
+
+    $$\int_0^{14} \bigl(49 - (x - 7)^2\bigr)\, dx = \bigl[49 x - \tfrac{(x - 7)^3}{3}\bigr]_0^{14} = (49 \cdot 14 - \tfrac{343}{3}) - (-\tfrac{343}{3}) = 686 - \tfrac{0}{1} = \tfrac{1372}{3}$$
+
+    또는 치환 $u = x - 7$로 $\int_{-7}^7 (49 - u^2)\, du = 2 \int_0^7 (49 - u^2)\, du = 2[49 u - u^3/3]_0^7 = 2 (343 - \tfrac{343}{3}) = \dfrac{1372}{3}$.
+
+    $T = \dfrac{1372}{3} - S$이고 [167-7]의 표에서 $S$의 최댓값은 $k = 5$에서 $S = 405$. 따라서 $T$의 최솟값은
+
+    $$T_{\min} = \frac{1372}{3} - 405 = \frac{1372 - 1215}{3} = \frac{157}{3}$$
+
+    $3 T_{\min} = 157$.
+
+#### [167-9] 입체도형 부피와 부분적분 — 단면이 직사각형인 입체
+
+[167-7]의 사다리꼴 $\mathrm{ABCD}$를 밑면으로 하는 입체도형 $\mathrm{R}$을 생각하자. 두 점 $\mathrm{P}(x, 0)$, $\mathrm{Q}(x, y)$를 지나고 $x$축에 수직인 평면으로 입체도형 $\mathrm{R}$을 자르면 단면이 높이 $e^{-x}$, 밑변 $y$인 직사각형이 된다.
+
+주사위 눈의 결과가 $2$와 $6$이라서 $X = 6$, $k = 6$일 때, 입체도형 $\mathrm{R}$의 부피를 $a + b e^{-6} + c e^{-8} + d e^{-14}$로 나타낼 때 $a, b, c, d$의 값을 구하시오. (단, $a, b, c, d$는 유리수.)
+
+??? success "풀이"
+    $k = 6$일 때 사다리꼴 변 위의 $y$좌표는
+
+    - $x \in [0, 6]$: 선분 $\mathrm{AD}$ 위에서 $y = 8 x$ (기울기 $48 / 6 = 8$)
+    - $x \in [6, 8]$: 윗변 $\mathrm{DC}$에서 $y = 48$
+    - $x \in [8, 14]$: 선분 $\mathrm{CB}$ 위에서 $y = -8 x + 112$
+
+    부피는
+
+    $$V = \int_0^6 8 x\, e^{-x}\, dx + \int_6^8 48\, e^{-x}\, dx + \int_8^{14} (-8 x + 112)\, e^{-x}\, dx$$
+
+    **첫 적분 (부분적분)** $u = 8 x$, $dv = e^{-x}\, dx$:
+
+    $$\int_0^6 8 x\, e^{-x}\, dx = \bigl[-8 x\, e^{-x}\bigr]_0^6 + \int_0^6 8\, e^{-x}\, dx = -48\, e^{-6} + 8(1 - e^{-6}) = 8 - 56\, e^{-6}$$
+
+    **둘째 적분.**
+
+    $$\int_6^8 48\, e^{-x}\, dx = 48\, (e^{-6} - e^{-8})$$
+
+    **셋째 적분 (부분적분)** $u = -8 x + 112$, $dv = e^{-x}\, dx$:
+
+    $$\int_8^{14} (-8 x + 112)\, e^{-x}\, dx = \bigl[-(-8 x + 112)\, e^{-x}\bigr]_8^{14} - 8 \int_8^{14} e^{-x}\, dx$$
+
+    $$= (0 - (-48\, e^{-8})) - 8 (e^{-8} - e^{-14}) = 48\, e^{-8} - 8\, e^{-8} + 8\, e^{-14} = 40\, e^{-8} + 8\, e^{-14}$$
+
+    **합산.**
+
+    $$V = 8 - 56\, e^{-6} + 48\, e^{-6} - 48\, e^{-8} + 40\, e^{-8} + 8\, e^{-14} = 8 - 8\, e^{-6} - 8\, e^{-8} + 8\, e^{-14}$$
+
+    $$\therefore\ a = 8, \quad b = -8, \quad c = -8, \quad d = 8$$
+
+#### [167-10] 의예 — 전염병 모형에서 감염자가 감소할 조건
+
+COVID-19와 같은 전염병에 대해 시각 $t$에서 $f(t)$는 감염 가능한 사람의 수, $g(t)$는 감염자 수, $h(t)$는 치료된 사람 수라 할 때 다음 모형이 주어졌다. (치료된 사람은 재감염되지 않음.)
+
+$$f'(t) = -\tfrac{a}{N} g(t) f(t), \qquad g'(t) = \tfrac{a}{N} g(t) f(t) - b\, g(t), \qquad h'(t) = b\, g(t)$$
+
+$a$는 감염률, $b$는 회복율(둘 다 양의 실수), $N$은 총 인구수로 상수. ($f(t) > 0$, $g(t) > 0$)
+
+$a = 0.5$, $b = 0.05$, $N = 100$일 때 감염 가능한 사람의 수가 $A$라 하자. 감염자 수가 감소하는 $A$의 범위를 구하시오. (단, $A > 0$.)
+
+??? success "풀이"
+    $g$가 감소 $\Longleftrightarrow g'(t) < 0$. 두 번째 식을 정리하면
+
+    $$g'(t) = g(t)\!\left[\tfrac{a}{N} f(t) - b\right]$$
+
+    $g(t) > 0$이므로 $g'(t) < 0 \Longleftrightarrow \tfrac{a}{N} f(t) < b \Longleftrightarrow f(t) < \dfrac{b N}{a}$.
+
+    값 대입: $\dfrac{b N}{a} = \dfrac{0.05 \cdot 100}{0.5} = \dfrac{5}{0.5} = 10$. 따라서 $A < 10$ (그리고 $A > 0$이므로 $0 < A < 10$).
+
+#### [167-11] 의예 — $f(t^\ast)$를 치환적분과 적분상수로 구하기
+
+[167-10]의 모형에서 $a = 0.5$, $b = 0.1$, $N = 100$, $f(0) = 99$, $g(0) = 1$, $h(0) = 0$이고, 어떤 실수 $t^\ast$에서 $h(t^\ast) = 20$일 때 $f(t^\ast)$의 값을 구하시오.
+
+??? success "풀이"
+    **1단계 — 비율을 만든다.** 첫 식과 세 번째 식의 비:
+
+    $$\frac{f'(t)}{h'(t)} = \frac{-\tfrac{a}{N} g(t) f(t)}{b\, g(t)} = -\frac{a}{b N} f(t)$$
+
+    양변을 $f(t)$로 나누고 $h'(t)$를 곱하면
+
+    $$\frac{f'(t)}{f(t)} = -\frac{a}{b N}\, h'(t)$$
+
+    **2단계 — 적분.** 양변을 $t$에 대해 적분하면 $\ln f(t) = -\dfrac{a}{b N}\, h(t) + C$, 즉
+
+    $$f(t) = e^C \cdot e^{-a h(t) / (b N)}$$
+
+    **3단계 — 적분상수 결정.** $t = 0$에서 $f(0) = 99$, $h(0) = 0$이므로 $e^C = 99$. 따라서
+
+    $$f(t) = 99 \cdot e^{-a h(t) / (b N)} = 99 \cdot e^{-h(t)/20}$$
+
+    (∵ $\dfrac{a}{b N} = \dfrac{0.5}{0.1 \cdot 100} = \dfrac{1}{20}$)
+
+    **4단계 — 값.** $h(t^\ast) = 20$이므로 $f(t^\ast) = 99 \cdot e^{-1} = \dfrac{99}{e}$.
+
+#### [167-12] 의예 — 확률질량함수의 점화식과 경보단계 격상 조건
+
+확률변수 $X$의 확률질량함수가 $P(X = x)$ ($x = 1, 2, \ldots, 100$)이고
+
+$$P(X \ge k + 1) = \tfrac{k}{k + 2}\, P(X \ge k) \quad (k = 1, 2, \ldots, 99)$$
+
+이다. 방역당국에서는 $P(X \le k)$의 값이 $\tfrac{49}{50}$보다 크면 전염병 경보단계를 최고단계로 격상한다.
+
+$\dfrac{P(1 \le X \le 3)}{P(6 \le X \le 19)}$의 값을 구하시오. 그리고 경보단계를 최고단계로 격상시키는 최소 감염자 수 $k$를 구하시오.
+
+??? success "풀이"
+    **1단계 — $P_k = P(X \ge k)$의 점화식과 일반항.** $P_1 = 1$이고
+
+    $$\frac{P_{k+1}}{P_k} = \frac{k}{k + 2}$$
+
+    연속 곱셈으로 $P_k = \dfrac{1 \cdot 2 \cdot \ldots \cdot (k-1)}{3 \cdot 4 \cdot \ldots \cdot (k+1)} \cdot P_1 = \dfrac{2}{k (k + 1)}$. 검증: $P_2 = \tfrac{2}{2 \cdot 3} = \tfrac{1}{3}$, $P_6 = \tfrac{2}{6 \cdot 7} = \tfrac{1}{21}$ 등 일치.
+
+    **2단계 — 두 확률의 비.**
+
+    $$P(1 \le X \le 3) = P_1 - P_4 = 1 - \tfrac{2}{4 \cdot 5} = 1 - \tfrac{1}{10} = \tfrac{9}{10}$$
+
+    $$P(6 \le X \le 19) = P_6 - P_{20} = \tfrac{2}{42} - \tfrac{2}{420} = \tfrac{20 - 2}{420} = \tfrac{18}{420} = \tfrac{3}{70}$$
+
+    $$\frac{P(1 \le X \le 3)}{P(6 \le X \le 19)} = \frac{9/10}{3/70} = \frac{9}{10} \cdot \frac{70}{3} = 21$$
+
+    **3단계 — 격상 조건.** $P(X \le k) = 1 - P_{k+1} = 1 - \dfrac{2}{(k+1)(k+2)} > \dfrac{49}{50}$.
+
+    $$\Longleftrightarrow \frac{2}{(k+1)(k+2)} < \frac{1}{50} \Longleftrightarrow (k+1)(k+2) > 100$$
+
+    $k = 8$: $9 \cdot 10 = 90$ ($<100$), $k = 9$: $10 \cdot 11 = 110$ ($>100$). 따라서 최소 $k = 9$.
+
+#### [167-13] 의예 — 외접원의 호 길이 (사인법칙)
+
+해변가에 있는 두 사람이 바다 위의 배를 관찰한다. 두 학생 $\mathrm{A}$와 $\mathrm{B}$는 $\ell$만큼 떨어져 있고 배가 위치한 점은 $\mathrm{C}$다. 두 학생이 배를 바라보는 각을 각각 $\angle \mathrm{BAC} = \alpha$, $\angle \mathrm{ABC} = \beta$라 하자.
+
+$\ell = 6$이고 $\alpha + \beta = \tfrac{5 \pi}{12}$, $\alpha > \tfrac{\pi}{12}$, $\beta > \tfrac{\pi}{6}$일 때 점 $\mathrm{C}$의 자취의 길이를 구하시오.
+
+??? success "풀이"
+    **1단계 — 호의 중심각.** $\alpha + \beta = \tfrac{5 \pi}{12}$이므로 $\angle \mathrm{ACB} = \pi - \tfrac{5\pi}{12} = \tfrac{7 \pi}{12}$. 원주각이 일정하므로 $\mathrm{C}$는 $\mathrm{AB}$를 현으로 하는 원호 위에 놓인다.
+
+    $\alpha = \tfrac{\pi}{12}$ ($\alpha$의 하한)일 때 $\mathrm{C}_1$, $\beta = \tfrac{\pi}{6}$ ($\beta$의 하한)일 때 $\mathrm{C}_2$라 하자. 호 $\mathrm{C}_1 \mathrm{C}_2$의 중심각 $\gamma$는 원주각 $\angle \mathrm{C}_1 \mathrm{B} \mathrm{C}_2 = \tfrac{\pi}{6}$의 $2$배, 즉 $\gamma = \tfrac{\pi}{3}$.
+
+    **2단계 — 외접원의 반지름.** 삼각형 $\mathrm{ABC}$의 외접원의 반지름 $R$은 사인법칙
+
+    $$2 R = \frac{\ell}{\sin(\angle \mathrm{ACB})} = \frac{6}{\sin(7 \pi / 12)}$$
+
+    $\sin(7\pi/12) = \sin(\pi - 7\pi/12) = \sin(5\pi/12) = \sin(\pi/6 + \pi/4) = \tfrac{1}{2} \cdot \tfrac{\sqrt{2}}{2} + \tfrac{\sqrt{3}}{2} \cdot \tfrac{\sqrt{2}}{2} = \dfrac{\sqrt{2} + \sqrt{6}}{4}$.
+
+    $$2 R = \frac{6 \cdot 4}{\sqrt{2} + \sqrt{6}} = \frac{24}{\sqrt{2} + \sqrt{6}} \Longrightarrow R = \frac{12}{\sqrt{2} + \sqrt{6}}$$
+
+    **3단계 — 호 길이.**
+
+    $$L = R \cdot \gamma = \frac{12}{\sqrt{2} + \sqrt{6}} \cdot \frac{\pi}{3} = \frac{4 \pi}{\sqrt{2} + \sqrt{6}}$$
+
+    분모를 유리화: $\dfrac{4 \pi (\sqrt{6} - \sqrt{2})}{(\sqrt{6})^2 - (\sqrt{2})^2} = \dfrac{4 \pi (\sqrt{6} - \sqrt{2})}{4} = \pi (\sqrt{6} - \sqrt{2})$.
+
+#### [167-14] 의예 — 매개변수 함수의 미분 (위치와 속도)
+
+[167-13]의 설정에서 $\ell = 6$이고 각도 $\angle \mathrm{BAC} = \alpha$, $\angle \mathrm{CBA} = \beta$가 매개변수 $t$ ($0 < t < \tfrac{\pi}{9}$)에 대한 함수 $\alpha = \tfrac{\pi}{12} + 3 t$, $\beta = \tfrac{\pi}{3} - 3 t$로 주어졌다. 선분 $\mathrm{AB}$의 중점이 원점인 좌표계에서 $\mathrm{C}$의 위치를 $(c_x, c_y)$, 속도를 $(v_x, v_y)$라 하자. $t = \tfrac{\pi}{36}$일 때 $\mathrm{C}$의 위치와 속도를 구하시오.
+
+??? success "풀이"
+    **1단계 — 두 각의 값.** $t = \tfrac{\pi}{36}$에서 $\alpha = \tfrac{\pi}{12} + \tfrac{\pi}{12} = \tfrac{\pi}{6}$, $\beta = \tfrac{\pi}{3} - \tfrac{\pi}{12} = \tfrac{\pi}{4}$. $\mathrm{A}(-3, 0)$, $\mathrm{B}(3, 0)$.
+
+    **2단계 — 위치.** 두 직선
+
+    $$\tan(\alpha) = \frac{c_y}{3 + c_x} = \frac{1}{\sqrt{3}}, \qquad \tan(\beta) = \frac{c_y}{3 - c_x} = 1$$
+
+    두 번째에서 $c_y = 3 - c_x$. 첫 번째에 대입하면 $\dfrac{3 - c_x}{3 + c_x} = \dfrac{1}{\sqrt{3}} \Longrightarrow \sqrt{3} (3 - c_x) = 3 + c_x \Longrightarrow c_x (1 + \sqrt{3}) = 3 \sqrt{3} - 3 \Longrightarrow c_x = \dfrac{3(\sqrt{3} - 1)}{1 + \sqrt{3}} = 6 - 3\sqrt{3}$.
+
+    따라서 $c_y = 3 - (6 - 3\sqrt{3}) = 3 \sqrt{3} - 3$.
+
+    **3단계 — 속도.** 위치 공식
+
+    $$c_x = \ell\!\left(\frac{\cos\alpha \sin\beta}{\sin(\alpha + \beta)}\right) - \frac{\ell}{2}, \qquad c_y = \ell\!\left(\frac{\sin\alpha \sin\beta}{\sin(\alpha + \beta)}\right)$$
+
+    $\alpha + \beta = \tfrac{5\pi}{12}$가 $t$의 함수에서 상수이므로 $(\alpha + \beta)' = 0$ 그리고 $\alpha' = 3$, $\beta' = -3$. 미분 후 $\sin(\alpha + \beta) = \sin(5\pi/12) = \cos(\pi/12)$로 정리하면
+
+    $$v_x = -18 \cdot \frac{\cos(\alpha - \beta)}{\sin(\alpha + \beta)}, \qquad v_y = -18 \cdot \frac{\sin(\alpha - \beta)}{\sin(\alpha + \beta)}$$
+
+    $\alpha - \beta = \tfrac{\pi}{6} - \tfrac{\pi}{4} = -\tfrac{\pi}{12}$. $\cos(-\tfrac{\pi}{12}) = \cos(\tfrac{\pi}{12}) = \sin(\tfrac{5\pi}{12})$이므로 $v_x = -18$. 또 $\sin(-\tfrac{\pi}{12}) = -\sin(\tfrac{\pi}{12})$이므로 $v_y = -18 \cdot \dfrac{-\sin(\pi/12)}{\cos(\pi/12)} = 18 \tan(\tfrac{\pi}{12}) = 18(2 - \sqrt{3})$.
+
+    $$\therefore\ (c_x, c_y) = (6 - 3\sqrt{3},\, 3\sqrt{3} - 3), \quad (v_x, v_y) = (-18,\, 18(2 - \sqrt{3}))$$
+
+#### [167-15] 의예 — 이산확률변수의 기댓값으로 위치의 평균
+
+[167-14]에서 $\alpha$가 가질 수 있는 값은 $\tfrac{\pi}{6}, \tfrac{\pi}{4}, \tfrac{\pi}{3}$이고 확률변수 $X$의 분포는 다음과 같다.
+
+| $X$ | $\pi/6$ | $\pi/4$ | $\pi/3$ |
+|---|---|---|---|
+| $P(X = \alpha)$ | $1/6$ | $1/2$ | $1/3$ |
+
+$\ell = 6$, $\beta = \tfrac{5\pi}{12} - \alpha$일 때 $\mathrm{C}$의 위치 $(c_x, c_y)$의 기댓값 $E(c_x)$와 $E(c_y)$를 구하시오.
+
+??? success "풀이"
+    **1단계 — 세 경우의 $\tan\alpha$, $\tan\beta$.**
+
+    | $\alpha$ | $\pi/6$ | $\pi/4$ | $\pi/3$ |
+    |---|---|---|---|
+    | $\beta = \tfrac{5\pi}{12} - \alpha$ | $\pi/4$ | $\pi/6$ | $\pi/12$ |
+    | $\tan \alpha$ | $1/\sqrt{3}$ | $1$ | $\sqrt{3}$ |
+    | $\tan \beta$ | $1$ | $1/\sqrt{3}$ | $2 - \sqrt{3}$ |
+
+    (참고: $\tan(\pi/12) = 2 - \sqrt{3}$.)
+
+    **2단계 — 각 경우의 $(c_x, c_y)$.** 두 직선 $\tan\alpha = \dfrac{c_y}{3 + c_x}$, $\tan\beta = \dfrac{c_y}{3 - c_x}$를 풀면
+
+    $$c_x = \frac{-3(\tan\alpha - \tan\beta)}{\tan\alpha + \tan\beta}, \qquad c_y = \frac{6 \tan\alpha \tan\beta}{\tan\alpha + \tan\beta}$$
+
+    | $\alpha$ | $c_x$ | $c_y$ |
+    |---|---|---|
+    | $\pi/6$ | $3(2 - \sqrt{3})$ | $3(-1 + \sqrt{3})$ |
+    | $\pi/4$ | $-3(2 - \sqrt{3})$ | $3(-1 + \sqrt{3})$ |
+    | $\pi/3$ | $3(1 - \sqrt{3})$ | $3(-3 + 2\sqrt{3})$ |
+
+    **3단계 — 기댓값.**
+
+    $$E(c_x) = \tfrac{1}{6} \cdot 3(2 - \sqrt{3}) + \tfrac{1}{2} \cdot (-3)(2 - \sqrt{3}) + \tfrac{1}{3} \cdot 3(1 - \sqrt{3})$$
+
+    $$= (2 - \sqrt{3})\!\left(\tfrac{1}{2} - \tfrac{3}{2}\right) + (1 - \sqrt{3}) = -(2 - \sqrt{3}) + (1 - \sqrt{3}) = -1$$
+
+    $$E(c_y) = \tfrac{1}{6} \cdot 3(-1 + \sqrt{3}) + \tfrac{1}{2} \cdot 3(-1 + \sqrt{3}) + \tfrac{1}{3} \cdot 3(-3 + 2\sqrt{3})$$
+
+    $$= (\tfrac{1}{2} + \tfrac{3}{2})(-1 + \sqrt{3}) + (-3 + 2\sqrt{3}) = 2(-1 + \sqrt{3}) + (-3 + 2\sqrt{3}) = -5 + 4\sqrt{3}$$
+
+    $$\therefore\ E(c_x) = -1, \quad E(c_y) = -5 + 4\sqrt{3}$$
+
