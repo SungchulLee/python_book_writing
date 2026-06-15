@@ -22474,3 +22474,243 @@ $$f(x) = \begin{cases} ax + b & (x < -3) \\ -x^2 + 9 & (-3 \le x < 0) \\ cx + d 
 
 ---
 
+
+## 카드 178 — 연세대 미래캠 (2021학년도) — 자연·의예 5 문항카드 · 15 하위문항
+
+연세대학교 미래캠퍼스 2021학년도 선행학습 영향평가 보고서에서 발췌. 자연계 3 문항카드 (수학·수학Ⅱ·미적분·확률과 통계) 9 하위문항 + 의예 2 문항카드 (수학Ⅱ·미적분·확률과 통계·수학Ⅰ) 6 하위문항 = 15 하위문항.
+
+---
+
+### 문항카드 3 — 자연 문제 1 (수학 + 수학Ⅱ + 미적분)
+
+**설정.** 함수 $f, g$ 를 다음과 같이 정의한다 ($a, b$ 는 상수):
+
+$$f(x) = \begin{cases} 2x^2, & x < -1 \\ -x + a, & -1 \le x < 1 \\ -\dfrac{1}{3}x + b, & x \ge 1 \end{cases}, \qquad g(x) = \int_0^x \dfrac{1}{1+t^2}\,dt.$$
+
+$f$ 는 $\mathbb R \to \mathbb R$ 의 일대일대응이고 역함수 $h$ 가 존재한다.
+
+**【1-1】** $h(h(8)) = c$ 일 때 $a + b + c$ 의 값.
+
+??? success "풀이"
+    역함수 존재 → $f$ 는 연속·단조감소. $x = -1$ 에서 연속: $2(-1)^2 = 1 + a \Rightarrow a = 1$. $x = 1$ 에서 연속: $-1 + 1 = -1/3 + b \Rightarrow b = 1/3$.
+
+    $h(8) = t$ 로 두면 $f(t) = 8$. $t < -1$ 구간에서 $2t^2 = 8 \Rightarrow t = -2$.
+
+    $h(h(8)) = h(-2) = c$ → $f(c) = -2$. $c \ge 1$ 구간에서 $-c/3 + 1/3 = -2 \Rightarrow c = 7$.
+
+    $a + b + c = 1 + \dfrac{1}{3} + 7 = \dfrac{25}{3}$.
+
+**【1-2】** $\displaystyle\lim_{n\to\infty}\sum_{k=1}^n f\!\left(-2 + \dfrac{4k}{n}\right)\dfrac{1}{n}$ 의 값.
+
+??? success "풀이"
+    $\dfrac{1}{n} = \dfrac{1}{4}\cdot\dfrac{4}{n}$ 로 보면 구분구적법으로 $\dfrac{1}{4}\displaystyle\int_{-2}^2 f(x)\,dx$.
+
+    $\displaystyle\int_{-2}^{-1} 2x^2\,dx = \dfrac{2}{3}[x^3]_{-2}^{-1} = \dfrac{2}{3}(-1 + 8) = \dfrac{14}{3}$.
+
+    $\displaystyle\int_{-1}^1 (-x + 1)\,dx = [-x^2/2 + x]_{-1}^1 = (1/2) - (-3/2) = 2$.
+
+    $\displaystyle\int_1^2 (-x/3 + 1/3)\,dx = [-x^2/6 + x/3]_1^2 = (-2/3 + 2/3) - (-1/6 + 1/3) = -1/6$.
+
+    합 $= 14/3 + 2 - 1/6 = 28/6 + 12/6 - 1/6 = 39/6 = 13/2$.
+
+    답 $= \dfrac{1}{4}\cdot\dfrac{13}{2} = \dfrac{13}{8}$.
+
+**【1-3】** $g(\alpha) = \dfrac{\pi}{3}$ 일 때 $\displaystyle\int_0^\alpha \dfrac{\sin^3(g(x))}{1+x^2}\,dx$ 의 값.
+
+??? success "풀이"
+    $g'(x) = \dfrac{1}{1+x^2}$. $u = g(x)$ 치환 → $du = g'(x)\,dx$, $x = 0 \Rightarrow u = 0$, $x = \alpha \Rightarrow u = \pi/3$.
+
+    $\displaystyle\int_0^{\pi/3}\sin^3 u\,du = \displaystyle\int_0^{\pi/3}(1 - \cos^2 u)\sin u\,du$. $t = \cos u$ 치환 → $-dt = \sin u\,du$, $u = 0 \Rightarrow t = 1$, $u = \pi/3 \Rightarrow t = 1/2$.
+
+    $\displaystyle\int_1^{1/2}-(1 - t^2)\,dt = \displaystyle\int_{1/2}^1 (1 - t^2)\,dt = [t - t^3/3]_{1/2}^1 = (1 - 1/3) - (1/2 - 1/24) = 2/3 - 11/24 = 16/24 - 11/24 = 5/24$.
+
+---
+
+### 문항카드 4 — 자연 문제 2 (수학 + 미적분)
+
+**설정.** $1 < r$ 인 실수 $r$ 에 대해 $C(r)$ 은 중심 $A_r(a_r, 0)$, 반지름 $r$ 인 원. 곡선 $S: y = \pm\sqrt{2x}$ 와 $C(r)$ 은 서로 다른 두 점에서 접한다. $C(r), C(r+1)$ 의 위쪽 교점을 $P_r$, $\theta_r = \angle P_r A_{r+1} O$.
+
+**【2-1】** $a_r$ 을 $r$ 로 표현.
+
+??? success "풀이"
+    $y^2 = 2x$ → $x = y^2/2$. 원 $(x - a_r)^2 + y^2 = r^2$ 에 대입: $(y^2/2 - a_r)^2 + y^2 = r^2$. $u = y^2$ 로 두면 $(u/2 - a_r)^2 + u = r^2$, 즉 $u^2/4 - a_r u + a_r^2 + u - r^2 = 0$, $u^2 + 4(1 - a_r)u + 4(a_r^2 - r^2) = 0$.
+
+    접한다 → 두 접점에서 $u$ 가 중근 (대칭으로 같은 $y^2$). 판별식 $= 0$: $16(1 - a_r)^2 = 16(a_r^2 - r^2)$, $1 - 2a_r + a_r^2 = a_r^2 - r^2$, $a_r = \dfrac{r^2 + 1}{2}$.
+
+**【2-2】** $\!\left(a_{2r} - \dfrac{1}{2}\right)e^{-r} + k = 0$ 이 $r > 1$ 의 범위에서 서로 다른 두 실근을 갖도록 하는 $k$ 의 범위. (단, $\displaystyle\lim_{x\to\infty}\dfrac{2x^2}{e^x} = 0$.)
+
+??? success "풀이"
+    $a_{2r} = (4r^2 + 1)/2$ → $a_{2r} - 1/2 = 2r^2$. 식: $2r^2 e^{-r} = -k$.
+
+    $\varphi(r) = 2r^2 e^{-r}$ ($r > 1$). $\varphi'(r) = (4r - 2r^2)e^{-r} = 2r(2 - r)e^{-r}$. $r > 1$ 에서 $\varphi'(r) > 0 \Leftrightarrow 1 < r < 2$, $\varphi'(r) < 0 \Leftrightarrow r > 2$.
+
+    $\varphi(1) = 2/e$, $\varphi(2) = 8/e^2$, $\lim_{r\to\infty}\varphi(r) = 0$.
+
+    $y = -k$ 와 $y = \varphi(r)$ 이 ($r > 1$) 에서 두 교점 → $2/e < -k < 8/e^2$, 즉 $-8/e^2 < k < -2/e$.
+
+**【2-3】** $\displaystyle\lim_{r\to\infty}\tan\theta_r$ 의 값.
+
+??? success "풀이"
+    교점 $P_r = (x_r, y_r)$ 는 두 원의 연립으로 $(x - a_{r+1})^2 - (x - a_r)^2 = (r+1)^2 - r^2$. 좌변 = $(a_r - a_{r+1})(2x - a_r - a_{r+1}) = (-r - 1/2)(2x - (r^2 + r + 3/2))$. 즉 $-(2r+1)(2x - r^2 - r - 3/2)/2 = 2r + 1$, $2x - r^2 - r - 3/2 = -2$, $x_r = \dfrac{r^2 + r - 1}{2}$.
+
+    $y_r^2 = r^2 - (x_r - a_r)^2 = r^2 - \!\left(\dfrac{r-2}{2}\right)^2\!\cdot$ 잠깐, $x_r - a_r = (r^2 + r - 1)/2 - (r^2 + 1)/2 = (r - 2)/2$. 따라서 $y_r^2 = r^2 - (r-2)^2/4 = (4r^2 - (r-2)^2)/4 = (3r^2 + 4r - 4)/4$, $y_r = \sqrt{3r^2 + 4r - 4}/2$.
+
+    $\theta_r = \angle P_r A_{r+1} O$ → $\tan\theta_r = y_r / (a_{r+1} - x_r) = \dfrac{\sqrt{3r^2 + 4r - 4}/2}{(r+3)/2} = \dfrac{\sqrt{3r^2 + 4r - 4}}{r + 3}$.
+
+    $r \to \infty$ 에서 $\sqrt{3r^2 + 4r - 4}/(r + 3) \to \sqrt{3}$.
+
+---
+
+### 문항카드 5 — 자연 문제 3 (확률과 통계 + 미적분)
+
+**설정.** 곡선 $y = 49 - (x - 7)^2$ 은 $x$ 축과 $A(0, 0), B(14, 0)$ 에서 만난다. 두 주사위 눈 중 큰 수 $X$ 의 값 $k$ 에 대해 곡선이 직선 $x = k, x = 14 - k$ 와 만나는 점이 $D, C$. 사각형 $ABCD$ 의 넓이 $S$ 도 이산확률변수.
+
+**【3-1】** $Y = 36X - 150$ 일 때 $E(Y)$. 그리고 $P(S \ge 400) = q/p$ ($p, q$ 서로소) 일 때 $p + q$.
+
+??? success "풀이"
+    두 눈이 서로 다른 30 가지 경우를 표본공간으로 한 (큰 눈 = $k$) 의 분포: $(k, j), (j, k)$ ($1 \le j < k$) 즉 $2(k-1)$ 가지. $P(X = k) = 2(k-1)/30$, $k \in \{2, 3, 4, 5, 6\}$, 즉 각각 $2/30, 4/30, 6/30, 8/30, 10/30$.
+
+    $E(X) = (2\cdot 2 + 3\cdot 4 + 4\cdot 6 + 5\cdot 8 + 6\cdot 10)/30 = (4 + 12 + 24 + 40 + 60)/30 = 140/30 = 14/3$.
+
+    $E(Y) = 36\cdot(14/3) - 150 = 168 - 150 = 18$.
+
+    $S = \dfrac{1}{2}\!\left[14 + (14 - 2k)\right]\!\left[49 - (k - 7)^2\right] = (14 - k)\!\left[49 - (k-7)^2\right]$. 표:
+
+    | $k$ | $2$ | $3$ | $4$ | $5$ | $6$ |
+    |-----|-----|-----|-----|-----|-----|
+    | $S$ | $288$ | $363$ | $400$ | $405$ | $384$ |
+
+    $P(S \ge 400) = P(S = 400) + P(S = 405) = 6/30 + 8/30 = 14/30 = 7/15$. $p = 15, q = 7$, $p + q = 22$.
+
+**【3-2】** 곡선과 $x$ 축으로 둘러싸인 부분에서 사각형 ABCD 를 제외한 넓이를 $T$ 라 할 때 $T$ 가 최소가 되는 $k$ 와 그때의 $3T$.
+
+??? success "풀이"
+    포물선과 $x$ 축의 넓이: $u = x - 7$ 치환으로 $\displaystyle\int_0^{14}\!\left[49 - (x-7)^2\right]\!dx = \displaystyle\int_{-7}^7 (49 - u^2)\,du = 2[49u - u^3/3]_0^7 = 2(343 - 343/3) = 4\cdot 343/3 = 1372/3$.
+
+    $T = 1372/3 - S$ → $T$ 최소 = $S$ 최대. 표에서 $S$ 최대 = $405$ ($k = 5$).
+
+    $3T = 3(1372/3 - 405) = 1372 - 1215 = 157$.
+
+**【3-3】** 두 주사위 눈이 $2, 6$ 이다 (따라서 $k = 6$). 사각형 ABCD 를 밑면으로 하고 두 점 $P(x, 0), Q(x, y)$ 를 지나며 $x$ 축에 수직인 평면으로 자른 단면이 높이 $e^{-x}$, 밑변 $y$ 인 직사각형인 입체도형 R 의 부피를 $a + be^{-6} + ce^{-8} + de^{-14}$ 꼴로 나타낼 때 $a, b, c, d$.
+
+??? success "풀이"
+    $k = 6$ 일 때 사각형 ABCD 의 꼭짓점: $A(0,0)$, $B(14,0)$, $C(8, 48)$, $D(6, 48)$. 단면 직사각형의 밑변 (사각형 ABCD 의 $y$ 폭):
+    
+    - $[0, 6]$: $AD$ 위 $y = 8x$ (선분 $A$-$D$),
+    - $[6, 8]$: $DC$ 위 $y = 48$,
+    - $[8, 14]$: $CB$ 위 $y = -8x + 112$.
+
+    부피 $V = \displaystyle\int_0^6 8x\,e^{-x}dx + \displaystyle\int_6^8 48\,e^{-x}dx + \displaystyle\int_8^{14}(-8x + 112)e^{-x}dx$.
+
+    부분적분 ($\int xe^{-x}dx = -xe^{-x} - e^{-x}$):
+
+    $\displaystyle\int_0^6 8xe^{-x}dx = 8[-xe^{-x} - e^{-x}]_0^6 = 8(-6e^{-6} - e^{-6} + 1) = 8 - 56e^{-6}$.
+
+    $\displaystyle\int_6^8 48e^{-x}dx = 48(-e^{-8} + e^{-6}) = 48e^{-6} - 48e^{-8}$.
+
+    $\displaystyle\int_8^{14}(-8x + 112)e^{-x}dx$. $u = -8x + 112, dv = e^{-x}dx$, $du = -8\,dx, v = -e^{-x}$:
+
+    $\displaystyle\int u\,dv = uv - \displaystyle\int v\,du = (8x - 112)e^{-x} - 8\displaystyle\int e^{-x}dx = (8x - 112)e^{-x} + 8e^{-x} = (8x - 104)e^{-x}$.
+
+    값: $[(8x - 104)e^{-x}]_8^{14} = (112 - 104)e^{-14} - (64 - 104)e^{-8} = 8e^{-14} + 40e^{-8}$.
+
+    총합 $V = (8 - 56e^{-6}) + (48e^{-6} - 48e^{-8}) + (8e^{-14} + 40e^{-8}) = 8 - 8e^{-6} - 8e^{-8} + 8e^{-14}$.
+
+    $a = 8, b = -8, c = -8, d = 8$.
+
+---
+
+### 문항카드 6 — 의예 문제 1 (수학Ⅱ + 미적분 + 확률과 통계)
+
+**설정.** 전염병 모형: $f'(t) = -\dfrac{a}{N}g(t)f(t)$, $g'(t) = \dfrac{a}{N}g(t)f(t) - bg(t)$, $h'(t) = bg(t)$. ($a, b > 0$, $N$ 총인구, $f, g > 0$.)
+
+**【1-1】** $a = 0.5, b = 0.05, N = 100$ 일 때 감염자 수 $g$ 가 감소하는 감염 가능 인구 수 $A = f$ 의 범위 ($A > 0$).
+
+??? success "풀이"
+    $g'(t) = \!\left(\dfrac{a}{b}\cdot\dfrac{f(t)}{N} - 1\right)\!b g(t)$. $g > 0, b > 0$ 이므로 $g'(t) < 0 \Leftrightarrow \dfrac{a}{b}\cdot\dfrac{f(t)}{N} < 1 \Leftrightarrow f(t) < \dfrac{bN}{a} = \dfrac{0.05\cdot 100}{0.5} = 10$.
+
+    따라서 $A < 10$ (즉 $0 < A < 10$).
+
+**【1-2】** $a = 0.5, b = 0.1, N = 100$, $f(0) = 99, g(0) = 1, h(0) = 0$. 어떤 $t^*$ 에서 $h(t^*) = 20$ 일 때 $f(t^*)$.
+
+??? success "풀이"
+    $\dfrac{f'(t)}{h'(t)} = \dfrac{-(a/N)g(t)f(t)}{bg(t)} = -\dfrac{a f(t)}{bN}$. $\dfrac{f'(t)}{f(t)} = -\dfrac{a}{bN}h'(t)$.
+
+    양변 적분: $\ln f(t) = -\dfrac{a}{bN}h(t) + C$. $t = 0$: $\ln 99 = 0 + C$ → $C = \ln 99$.
+
+    $f(t) = 99\,e^{-(a/(bN))h(t)} = 99\,e^{-h(t)/20}$ (∵ $a/(bN) = 0.5/(0.1\cdot 100) = 1/20$).
+
+    $h(t^*) = 20 \Rightarrow f(t^*) = 99\,e^{-1} = 99/e$.
+
+**【1-3】** $P(X \ge k+1) = \dfrac{k}{k+2}P(X \ge k)$ ($k = 1, \ldots, 99$), $X \in \{1, \ldots, 100\}$. $\dfrac{P(1 \le X \le 3)}{P(6 \le X \le 19)}$ 의 값. 그리고 $P(X \le k) > 49/50$ 을 만족하는 최소 $k$.
+
+??? success "풀이"
+    $P_k = P(X \ge k)$. $P_1 = 1$. 점화식 $P_{k+1} = \dfrac{k}{k+2}P_k$.
+
+    $P_2 = (1/3)P_1 = 1/3$, $P_3 = (2/4)P_2 = 1/6$, $P_4 = (3/5)P_3 = 1/10$, 일반항 $P_k = \dfrac{2}{k(k+1)}$ ($k \ge 1$). 검증: $P_5 = 2/30 = 1/15 = (4/6)P_4 = (2/3)(1/10) = 1/15$. ✓
+
+    $P(1 \le X \le 3) = 1 - P(X \ge 4) = 1 - P_4 = 1 - 1/10 = 9/10$.
+
+    $P(6 \le X \le 19) = P_6 - P_{20} = \dfrac{2}{6\cdot 7} - \dfrac{2}{20\cdot 21} = \dfrac{1}{21} - \dfrac{1}{210} = \dfrac{10 - 1}{210} = \dfrac{9}{210} = \dfrac{3}{70}$.
+
+    비율 $= (9/10) \div (3/70) = (9/10)\cdot(70/3) = 630/30 = 21$.
+
+    $P(X \le k) = 1 - P_{k+1} = 1 - \dfrac{2}{(k+1)(k+2)}$. $> 49/50 \Leftrightarrow \dfrac{2}{(k+1)(k+2)} < \dfrac{1}{50} \Leftrightarrow (k+1)(k+2) > 100$.
+
+    $k = 8$: $9\cdot 10 = 90 < 100$. $k = 9$: $10\cdot 11 = 110 > 100$. → 최소 $k = 9$.
+
+---
+
+### 문항카드 7 — 의예 문제 2 (수학Ⅰ + 미적분 + 확률과 통계)
+
+**설정.** 해변에서 거리 $\ell = 6$ 만큼 떨어진 두 학생 $A, B$ 가 바다 위 점 $C$ 의 배를 관찰. $\angle BAC = \alpha, \angle ABC = \beta$. 선분 $\overline{AB}$ 중점이 원점 ($A(-3, 0), B(3, 0)$), $C$ 의 좌표 $(c_x, c_y)$, 속도 $(v_x, v_y)$.
+
+**【2-1】** $\alpha + \beta = 5\pi/12$, $\alpha > \pi/12$, $\beta > \pi/6$ 일 때 배 $C$ 의 자취 호의 길이.
+
+??? success "풀이"
+    삼각형 ABC 에서 $\angle ACB = \pi - (\alpha + \beta) = 7\pi/12$ 일정 → $C$ 는 외접원의 호 위. 양 끝 $C_1$ ($\alpha = \pi/12, \beta = \pi/3$), $C_2$ ($\alpha = \pi/3, \beta = \pi/12$). 호 $\widehat{C_1 C_2}$ 에 대한 원주각 $\angle C_1 B C_2 = \beta_{C_1} - \beta_{C_2} = \pi/3 - \pi/12 = \pi/4$ … 가 아니라 원주각·중심각의 표준 관계로 중심각 $\gamma = \pi/3$ (예시답안 그림 참조).
+
+    사인법칙: $\dfrac{\ell}{\sin\angle ACB} = 2R$, $2R = \dfrac{6}{\sin(7\pi/12)} = \dfrac{6}{(\sqrt{6} + \sqrt{2})/4} = \dfrac{24}{\sqrt{6} + \sqrt{2}}$, $R = \dfrac{12}{\sqrt{6} + \sqrt{2}} = 3(\sqrt{6} - \sqrt{2})$.
+
+    $L = R\gamma = 3(\sqrt{6} - \sqrt{2})\cdot \dfrac{\pi}{3} = \pi(\sqrt{6} - \sqrt{2})$.
+
+**【2-2】** $\alpha = \pi/12 + 3t$, $\beta = \pi/3 - 3t$ ($0 < t < \pi/9$). $t = \pi/36$ 일 때 $(c_x, c_y)$ 와 $(v_x, v_y)$.
+
+??? success "풀이"
+    $t = \pi/36 \Rightarrow \alpha = \pi/6, \beta = \pi/4$. $\tan\alpha = c_y/(3 + c_x), \tan\beta = c_y/(3 - c_x)$.
+
+    $1/\sqrt{3} = c_y/(3 + c_x), \;\; 1 = c_y/(3 - c_x) \Rightarrow c_y = 3 - c_x$, $1/\sqrt{3} = (3 - c_x)/(3 + c_x) \Rightarrow 3 + c_x = \sqrt{3}(3 - c_x) \Rightarrow c_x(1 + \sqrt{3}) = 3\sqrt{3} - 3 = 3(\sqrt{3} - 1)$, $c_x = 3(\sqrt{3} - 1)/(\sqrt{3} + 1) = 3(\sqrt{3} - 1)^2/2 = 3(4 - 2\sqrt{3})/2 = 6 - 3\sqrt{3}$. $c_y = 3 - (6 - 3\sqrt{3}) = 3\sqrt{3} - 3$.
+
+    속도. $\tan\alpha \cdot (3 + c_x) = c_y$ 양변 $t$ 로 미분: $3\sec^2\alpha\cdot(3 + c_x) + \tan\alpha\cdot v_x = v_y$ (∵ $\alpha' = 3$). 비슷하게 $\tan\beta(3 - c_x) = c_y$: $-3\sec^2\beta(3 - c_x) - \tan\beta\cdot v_x = v_y$.
+
+    $\alpha = \pi/6$: $3\sec^2(\pi/6) = 3\cdot 4/3 = 4$. $3 + c_x = 9 - 3\sqrt{3}$. 첫 식: $4(9 - 3\sqrt{3}) + (1/\sqrt{3})v_x = v_y$ → $36 - 12\sqrt{3} + v_x/\sqrt{3} = v_y$.
+
+    $\beta = \pi/4$: $3\sec^2(\pi/4) = 6$. $3 - c_x = 3\sqrt{3} - 3$. 둘째 식: $-6(3\sqrt{3} - 3) - v_x = v_y$ → $18 - 18\sqrt{3} - v_x = v_y$.
+
+    두 식을 빼면: $(36 - 12\sqrt{3}) - (18 - 18\sqrt{3}) + (v_x/\sqrt{3} + v_x) = 0$, $18 + 6\sqrt{3} + v_x(1 + \sqrt{3})/\sqrt{3} = 0$, $v_x = -\sqrt{3}(18 + 6\sqrt{3})/(1 + \sqrt{3}) = -6\sqrt{3}(3 + \sqrt{3})/(1 + \sqrt{3}) = -6\sqrt{3}\sqrt{3}(\sqrt{3} + 1)/(1 + \sqrt{3}) = -18$.
+
+    $v_y = 18 - 18\sqrt{3} - (-18) = 36 - 18\sqrt{3} = 18(2 - \sqrt{3})$.
+
+    답: $(c_x, c_y) = (6 - 3\sqrt{3},\; 3\sqrt{3} - 3)$, $(v_x, v_y) = (-18,\; 18(2 - \sqrt{3}))$.
+
+**【2-3】** $\alpha$ 의 확률분포 $X$: $P(X = \pi/6) = 1/6, P(X = \pi/4) = 1/2, P(X = \pi/3) = 1/3$. $\beta = 5\pi/12 - \alpha$ 일 때 $E(c_x), E(c_y)$.
+
+??? success "풀이"
+    $\tan\alpha\cdot c_x - c_y = -3\tan\alpha$, $\tan\beta\cdot c_x + c_y = 3\tan\beta$ 연립 → $c_x = -\dfrac{3(\tan\alpha - \tan\beta)}{\tan\alpha + \tan\beta}$, $c_y = \dfrac{6\tan\alpha\tan\beta}{\tan\alpha + \tan\beta}$.
+
+    $\beta$ 대응값: $\alpha = \pi/6 \Rightarrow \beta = \pi/4$, $\alpha = \pi/4 \Rightarrow \beta = \pi/6$, $\alpha = \pi/3 \Rightarrow \beta = \pi/12$.
+
+    $\tan(\pi/12)$: 덧셈정리 $\tan(\pi/4 - \pi/6) = (1 - 1/\sqrt{3})/(1 + 1/\sqrt{3}) = (\sqrt{3} - 1)/(\sqrt{3} + 1) = 2 - \sqrt{3}$.
+
+    | $\alpha$ | $\pi/6$ | $\pi/4$ | $\pi/3$ |
+    |----------|---------|---------|---------|
+    | $\tan\alpha$ | $1/\sqrt{3}$ | $1$ | $\sqrt{3}$ |
+    | $\tan\beta$ | $1$ | $1/\sqrt{3}$ | $2-\sqrt{3}$ |
+    | $c_x$ | $3(2 - \sqrt{3})$ | $-3(2 - \sqrt{3})$ | $3(1 - \sqrt{3})$ |
+    | $c_y$ | $3(-1 + \sqrt{3})$ | $3(-1 + \sqrt{3})$ | $3(-3 + 2\sqrt{3})$ |
+
+    $E(c_x) = (1/6)\cdot 3(2 - \sqrt{3}) + (1/2)\cdot(-3)(2 - \sqrt{3}) + (1/3)\cdot 3(1 - \sqrt{3}) = (2 - \sqrt{3})[1/2 - 3/2] + (1 - \sqrt{3}) = -(2 - \sqrt{3}) + (1 - \sqrt{3}) = -1$.
+
+    $E(c_y) = (1/6 + 1/2)\cdot 3(\sqrt{3} - 1) + (1/3)\cdot 3(2\sqrt{3} - 3) = (2/3)\cdot 3(\sqrt{3} - 1) + (2\sqrt{3} - 3) = 2(\sqrt{3} - 1) + 2\sqrt{3} - 3 = 4\sqrt{3} - 5$.
+
+---
