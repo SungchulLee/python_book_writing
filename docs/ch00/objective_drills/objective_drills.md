@@ -22714,3 +22714,149 @@ $f$ 는 $\mathbb R \to \mathbb R$ 의 일대일대응이고 역함수 $h$ 가 �
     $E(c_y) = (1/6 + 1/2)\cdot 3(\sqrt{3} - 1) + (1/3)\cdot 3(2\sqrt{3} - 3) = (2/3)\cdot 3(\sqrt{3} - 1) + (2\sqrt{3} - 3) = 2(\sqrt{3} - 1) + 2\sqrt{3} - 3 = 4\sqrt{3} - 5$.
 
 ---
+
+## 카드 179 — 연세대 미래캠 (2020학년도) — 자연·의예 5 문항카드 · 10 하위문항
+
+연세대학교 미래캠퍼스 2020학년도 선행학습 영향평가 결과보고서에서 발췌. 자연계 3 문항카드 (미적분Ⅱ + 수학Ⅰ·Ⅱ) 6 하위문항 + 의예 2 문항카드 (수학·미적분Ⅱ + 기하와 벡터) 4 하위문항 = 10 하위문항.
+
+---
+
+### 문항카드 3 — 자연 문제 1 (미적분Ⅱ)
+
+**【1】** $f(x) = |\sin x|$ 에 대해 $\displaystyle\int_{-\pi/2}^{\pi/2} f(x)\,e^x\,dx$ 의 값.
+
+??? success "풀이"
+    부정적분 $I = \displaystyle\int \sin x\,e^x\,dx$ 를 부분적분 두 번:
+
+    $I = \sin x\,e^x - \displaystyle\int \cos x\,e^x\,dx = \sin x\,e^x - \!\left(\cos x\,e^x + \displaystyle\int \sin x\,e^x\,dx\right) = (\sin x - \cos x)e^x - I$.
+
+    $\therefore I = \dfrac{(\sin x - \cos x)e^x}{2}$ (적분상수 생략).
+
+    적분 구간 분할: $x \in [-\pi/2, 0]$ 에서 $|\sin x| = -\sin x$, $x \in [0, \pi/2]$ 에서 $|\sin x| = \sin x$.
+
+    $\displaystyle\int_{-\pi/2}^{\pi/2}|\sin x|e^x dx = -\!\left[\dfrac{(\sin x - \cos x)e^x}{2}\right]_{-\pi/2}^0 + \!\left[\dfrac{(\sin x - \cos x)e^x}{2}\right]_0^{\pi/2}$.
+
+    $= -\!\left(\dfrac{-1}{2} - \dfrac{(-1 - 0)e^{-\pi/2}}{2}\right) + \!\left(\dfrac{e^{\pi/2}}{2} - \dfrac{-1}{2}\right) = \dfrac{1}{2} - \dfrac{e^{-\pi/2}}{2} + \dfrac{e^{\pi/2}}{2} + \dfrac{1}{2} = 1 + \dfrac{e^{\pi/2} - e^{-\pi/2}}{2}$.
+
+---
+
+### 문항카드 4 — 자연 문제 2 (수학Ⅰ + 수학Ⅱ)
+
+**【2-1】** 점 $P(x_1, y_1)$ 과 직선 $\ell: ax + by + c = 0$ ($a, b \ne 0$) 사이의 거리 $d = \dfrac{|ax_1 + by_1 + c|}{\sqrt{a^2 + b^2}}$ 임을 증명.
+
+??? success "풀이"
+    $P$ 에서 $x$ 축, $y$ 축 평행 직선이 $\ell$ 과 만나는 점을 $A(-(by_1 + c)/a, y_1), B(x_1, -(ax_1 + c)/b)$. 직각삼각형 $APB$ 에서 $\overline{PH}\cdot\overline{AB} = \overline{PA}\cdot\overline{PB}$ (수선의 발 H).
+
+    $\overline{PA} = \dfrac{|ax_1 + by_1 + c|}{|a|}$, $\overline{PB} = \dfrac{|ax_1 + by_1 + c|}{|b|}$, $\overline{AB} = \sqrt{\overline{PA}^2 + \overline{PB}^2} = |ax_1 + by_1 + c|\cdot\dfrac{\sqrt{a^2 + b^2}}{|ab|}$.
+
+    $\therefore \overline{PH} = \dfrac{\overline{PA}\,\overline{PB}}{\overline{AB}} = \dfrac{|ax_1 + by_1 + c|^2/|ab|}{|ax_1 + by_1 + c|\sqrt{a^2 + b^2}/|ab|} = \dfrac{|ax_1 + by_1 + c|}{\sqrt{a^2 + b^2}}$.
+
+**【2-2】** 조건 $p: x^2 - n \le 0$, $q: -1 \le x \le 3$. $p$ 가 $q$ 이기 위한 필요조건이고 $n$ 은 한 자리 자연수일 때, 중심 $(n, 0)$ 인 단위원 위의 점과 직선 $y = -3x/4 - 3/4$ 사이의 거리의 최솟값.
+
+??? success "풀이"
+    $p$ 의 진리집합 $P = \{x: -\sqrt{n} \le x \le \sqrt{n}\}$, $q$ 의 진리집합 $Q = \{x: -1 \le x \le 3\}$. $p$ 가 $q$ 의 필요조건 $\Leftrightarrow Q \subset P \Leftrightarrow \sqrt{n} \ge 3 \Leftrightarrow n \ge 9$. 한 자리 자연수 → $n = 9$.
+
+    원의 중심 $(9, 0)$, 직선 $3x + 4y + 3 = 0$ 사이의 거리: $d_0 = |27 + 0 + 3|/\sqrt{9 + 16} = 30/5 = 6$.
+
+    원 위의 점과 직선 사이 최단거리 = $d_0 - r = 6 - 1 = 5$.
+
+---
+
+### 문항카드 5 — 자연 문제 3 (미적분Ⅱ)
+
+**【3-1】** 그림 (단위원에서 중심각 $x$ 의 부채꼴) 과 함수 극한의 대소 관계 성질을 이용해 $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$ 임을 보이시오.
+
+??? success "풀이"
+    $0 < x < \pi/2$: 단위원 $O$, 중심각 $x$ 의 부채꼴 $AOB$. $A$ 에서 원에 그은 접선과 $\overline{OB}$ 의 연장선의 교점을 $T$. $\triangle AOB$ < 부채꼴 $AOB$ < $\triangle AOT$:
+
+    $\dfrac{1}{2}\sin x < \dfrac{x}{2} < \dfrac{1}{2}\tan x \Rightarrow 1 < \dfrac{x}{\sin x} < \dfrac{1}{\cos x} \Rightarrow \cos x < \dfrac{\sin x}{x} < 1$.
+
+    $\lim_{x\to 0^+}\cos x = 1$ 이므로 조임정리에 의해 $\lim_{x\to 0^+}\sin x/x = 1$.
+
+    $-\pi/2 < x < 0$: $x = -t$ 치환 → $\lim_{x\to 0^-}\sin x/x = \lim_{t\to 0^+}\sin(-t)/(-t) = \lim_{t\to 0^+}\sin t/t = 1$.
+
+    좌우극한 모두 $1$ 이므로 $\displaystyle\lim_{x\to 0}\dfrac{\sin x}{x} = 1$.
+
+**【3-2】** (3-1)을 이용하여 $\displaystyle\lim_{x\to 0}\dfrac{1 - \cos x}{x}$.
+
+??? success "풀이"
+    $\dfrac{1 - \cos x}{x} = \dfrac{(1 - \cos x)(1 + \cos x)}{x(1 + \cos x)} = \dfrac{\sin^2 x}{x(1 + \cos x)} = \dfrac{\sin x}{x}\cdot\dfrac{\sin x}{1 + \cos x}$.
+
+    $\lim_{x\to 0}\dfrac{\sin x}{x} = 1$, $\lim_{x\to 0}\dfrac{\sin x}{1 + \cos x} = \dfrac{0}{2} = 0$. → 답 $0$.
+
+**【3-3】** 도함수의 정의를 이용해 $y = \sin x$ 의 도함수를 구하시오.
+
+??? success "풀이"
+    $y' = \displaystyle\lim_{h\to 0}\dfrac{\sin(x + h) - \sin x}{h} = \lim_{h\to 0}\dfrac{\sin x\cos h + \cos x\sin h - \sin x}{h}$
+
+    $= \cos x\cdot\displaystyle\lim_{h\to 0}\dfrac{\sin h}{h} - \sin x\cdot\lim_{h\to 0}\dfrac{1 - \cos h}{h} = \cos x\cdot 1 - \sin x\cdot 0 = \cos x$.
+
+---
+
+### 문항카드 6 — 의예 문제 1 (수학Ⅰ + 미적분Ⅱ)
+
+**【1-1】** 원 $(x - 3)^2 + (y - 2)^2 = 4$ 와 직선 $tx + y = 2$ 가 접하기 위한 실수 $t$ 와 접점의 좌표.
+
+??? success "풀이"
+    중심 $(3, 2)$, 반지름 $r = 2$. 직선 $tx + y - 2 = 0$ 까지 거리 $d = |3t + 2 - 2|/\sqrt{t^2 + 1} = 3|t|/\sqrt{t^2 + 1}$.
+
+    접한다 → $r = d$: $2\sqrt{t^2 + 1} = 3|t|$, $4(t^2 + 1) = 9t^2 \Rightarrow t^2 = 4/5 \Rightarrow t = \pm 2/\sqrt{5}$.
+
+    접점은 중심 $(3, 2)$ 를 지나고 주어진 직선에 수직인 직선 $y = (x - 3)/t + 2$ 와의 교점. $-tx + 2 = x/t + 2 - 3/t \Rightarrow (t + 1/t)x = 3/t \Rightarrow x = 3/(t^2 + 1) = 3/(4/5 + 1) = 5/3$.
+
+    $y = -(2/\sqrt{5})\cdot(5/3) + 2$ 또는 $y = +(2/\sqrt{5})\cdot(5/3) + 2 = (6 \mp 2\sqrt{5})/3$.
+
+    접점 $\!\left(\dfrac{5}{3},\; \dfrac{6 \mp 2\sqrt{5}}{3}\right)$ ($t = \pm 2/\sqrt{5}$ 각각).
+
+**【1-2】** 직선 $(\sin t)x + y = 12 + 3\sin t$ 가 원 $x^2 + (y - 3)^2 = 25$ 에 의해 잘린 선분의 길이 $L$ 의 최댓값과 $t \in [0, 2\pi]$ 값.
+
+??? success "풀이"
+    $L = 2\sqrt{r^2 - d^2}$ ($r = 5$). $L$ 최대 ↔ $d$ 최소. 직선 $(\sin t)x + y - 12 - 3\sin t = 0$, 원의 중심 $(0, 3)$:
+
+    $d(t) = \dfrac{|0 + 3 - 12 - 3\sin t|}{\sqrt{\sin^2 t + 1}} = \dfrac{3(3 + \sin t)}{\sqrt{\sin^2 t + 1}}$ (분자 양수).
+
+    $u = \sin t \in [-1, 1]$ 로 두면 $f(u) = (3 + u)^2/(u^2 + 1) = (u^2 + 6u + 9)/(u^2 + 1) = 1 + (6u + 8)/(u^2 + 1)$.
+
+    $d^2 = 9 f(u)$ 최소 ↔ $f(u)$ 최소. $f'(u) = \dfrac{6(u^2 + 1) - (6u + 8)(2u)}{(u^2 + 1)^2} = \dfrac{-6u^2 - 16u + 6}{(u^2 + 1)^2} = \dfrac{-2(3u - 1)(u + 3)}{(u^2 + 1)^2}$.
+
+    $u \in [-1, 1]$ 에서 임계점 $u = 1/3$. 양 끝과 임계점 값: $f(-1) = 4/2 = 2$, $f(1) = 16/2 = 8$, $f(1/3) = (1/9 + 2 + 9)/(1/9 + 1) = (100/9)/(10/9) = 10$.
+
+    최솟값은 $u = -1$ 에서 $f = 2$, 즉 $d^2 = 18, d = 3\sqrt{2}$.
+
+    $\sin t = -1 \Rightarrow t = 3\pi/2$ ($t \in [0, 2\pi]$).
+
+    $L_{\max} = 2\sqrt{25 - 18} = 2\sqrt{7}$, $t = \dfrac{3\pi}{2}$.
+
+---
+
+### 문항카드 7 — 의예 문제 2 (기하와 벡터)
+
+**설정.** 모서리 길이 $2$ 인 정사각뿔 $E\text{-}ABCD$. 밑면의 한 변 $AD$ 를 지나는 평면이 모서리 $EB$ 위의 점 $F$ 와 모서리 $EC$ 위의 점 $G$ 를 통과 ($\overline{FB} = t$, $0 \le t \le 2$). 평면 $AFGD$ 에 의해 잘린 사각뿔 $E\text{-}AFGD$ 를 $T_1$, 나머지를 $T_2$.
+
+**【2-1】** $\overline{FB} = 1$ 일 때 $T_1, T_2$ 의 부피.
+
+??? success "풀이"
+    정사각뿔 전체: 밑면 (한 변 $2$, 넓이 $4$), 높이 $\sqrt{2}$ → $V = (1/3)\cdot 4\cdot \sqrt{2} = 4\sqrt{2}/3$.
+
+    $\overline{FB} = 1$ 이므로 $F$ 는 $\overline{EB}$ 의 중점, $G$ 는 $\overline{EC}$ 의 중점. 평면 $AFGD$ 의 한쪽에 있는 $T_2$ ($F, G, B, C$ 를 포함하는 쪽) 를 세 조각으로 분할:
+
+    - 가운데 삼각기둥형 (밑면 직각삼각형, 두 다리 $1$ 과 $\sqrt{2}/2$, 깊이 $\overline{BC} = 2$): $V_1 = \dfrac{1}{2}\cdot 1\cdot \dfrac{\sqrt{2}}{2}\cdot 2 = \dfrac{\sqrt{2}}{2}$.
+
+    - 양옆 두 조각을 붙인 직사각뿔 (밑면 $1\times 2$, 높이 $\sqrt{2}/2$): $V_2 = \dfrac{1}{3}\cdot 2\cdot \dfrac{\sqrt{2}}{2} = \dfrac{\sqrt{2}}{3}$.
+
+    PDF 풀이는 위 두 조각을 $T_1$ 쪽에 배정하는 분해 방식을 사용: $V(T_1) = \dfrac{\sqrt{2}}{2} + \dfrac{\sqrt{2}}{3} = \dfrac{5\sqrt{2}}{6}$. 그리고 $V(T_2) = V - V(T_1) = \dfrac{4\sqrt{2}}{3} - \dfrac{5\sqrt{2}}{6} = \dfrac{\sqrt{2}}{2}$.
+
+    답: $V(T_1) = \dfrac{5\sqrt{2}}{6}$, $V(T_2) = \dfrac{\sqrt{2}}{2}$.
+
+**【2-2】** $V(T_1) = V(T_2)$ 일 때 $\overline{FB}$ 의 길이.
+
+??? success "풀이"
+    $\overline{FB} = t$ 로 일반화 ($0 \le t \le 2$). $F$ 는 $\overline{EB}$ 를 $E$ 에서 $B$ 쪽으로 $(2 - t):t$ 로 내분 → 좌표 $(2 - t/2,\; t/2,\; t\sqrt{2}/2)$. 위와 같은 분해로 가운데 삼각기둥형과 양옆 직사각뿔의 부피를 합치면
+
+    $$V(T_2) = \dfrac{t(2 - t)}{\sqrt{2}} + \dfrac{\sqrt{2}}{3}t^2 = -\dfrac{\sqrt{2}}{6}t^2 + \sqrt{2}\,t.$$
+
+    조건 $V(T_2) = V/2 = 2\sqrt{2}/3$: $-\sqrt{2}t^2/6 + \sqrt{2}t = 2\sqrt{2}/3 \Rightarrow t^2 - 6t + 4 = 0 \Rightarrow t = 3 \pm \sqrt{5}$.
+
+    $0 \le t \le 2$ → $\overline{FB} = t = 3 - \sqrt{5}$.
+
+---
