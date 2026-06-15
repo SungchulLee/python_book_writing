@@ -24909,3 +24909,135 @@ $f(x) = \begin{cases} 2x^2 & (x < -1) \\ -x + a & (-1 \le x < 1) \\ -\dfrac{1}{3
     $\therefore \overline{\mathrm{FB}} = 3 - \sqrt{5}$.
 
 ---
+## 카드 189 — 건국대 (2018학년도) — 인문Ⅱ·자연 2 문항 · 7 하위문항
+
+건국대학교 2018학년도 KU논술우수자전형 선행학습 영향평가 자체평가보고서에서 발췌. 인문Ⅱ 문제 2 (경제·수학·수학Ⅱ·미적분Ⅰ·미적분Ⅱ·확률과통계) + 자연 문제 1·2 (수학Ⅰ·미적분Ⅰ·미적분Ⅱ·기하와 벡터). 인문Ⅱ 3 sub + 자연 4 sub = 7 하위문항.
+
+---
+
+### 문항카드 2 — 인문Ⅱ 문제 2 (경제·수학·수학Ⅱ·미적분Ⅰ·미적분Ⅱ·확률과통계)
+
+**【2-1】** K씨 $600$ 만 원 수입을 모두 주식 $\mathrm{A, B, C}$ 에 투자하여 총 $120$ 주 구매. 수익률·주당 가격: $\mathrm{A}$ ($5\%, 1$ 만 원), $\mathrm{B}$ ($6\%, 3$ 만 원), $\mathrm{C}$ ($10\%, 9$ 만 원). 정수 단위로 구매, $x \ge 0, y \ge 0, z \ge 0$.
+
+(1) $\mathrm{A}$ 를 $x$ 주, $\mathrm{B}$ 를 $y$ 주, $\mathrm{C}$ 를 $z$ 주 구매할 때 $x, y$ 를 $z$ 로 나타내라.
+
+(2) K씨가 얻을 수 있는 총수익을 $T$ 만 원이라 할 때 $T$ 를 $z$ 로 나타내고 $T$ 의 최댓값과 최솟값을 구하라.
+
+??? success "풀이"
+    **(1)** $x + y + z = 120$ (주식 수), $x + 3y + 9z = 600$ (가격). 빼면 $2y + 8z = 480 \Rightarrow y = 240 - 4z$. $x = 120 - y - z = 120 - (240 - 4z) - z = -120 + 3z = 3z - 120$.
+
+    $\therefore x = 3z - 120, \, y = -4z + 240$.
+
+    **(2)** $T = 0.05x + 0.18y + 0.9z = 0.05(3z-120) + 0.18(-4z+240) + 0.9z = (0.15 - 0.72 + 0.9)z + (-6 + 43.2) = 0.33z + 37.2$.
+
+    $x \ge 0 \Rightarrow 3z - 120 \ge 0 \Rightarrow z \ge 40$. $y \ge 0 \Rightarrow -4z + 240 \ge 0 \Rightarrow z \le 60$. 즉 $40 \le z \le 60$.
+
+    $T = 0.33z + 37.2$ 는 $z$ 에 대해 증가함수. 최솟값 $z = 40$: $T = 0.33\cdot 40 + 37.2 = 13.2 + 37.2 = 50.4$. 최댓값 $z = 60$: $T = 19.8 + 37.2 = 57$.
+
+**【2-2】** $\mathrm{D}$ 국이 지니계수를 줄이기 위해 $\mathrm{P}$ 정책을 $k$ 년 시행. $2017$ 년도 기준 $m$ 년 후 로렌츠 곡선 $L(x) = x^{m^2 - (2k+4)m + k^2 + 4k + 6}$ ($0 \le x \le 1$).
+
+(1) $\mathrm{P}$ 정책을 $1$ 년 시행했을 때, $2018, 2019, 2020$ 년도의 $\mathrm{D}$ 국 지니계수.
+
+(2) $\mathrm{D}$ 국의 $2027$ 년도 지니계수가 $0.4$ 미만이 되려면 $\mathrm{P}$ 정책을 몇 년간 시행해야 하는가?
+
+??? success "풀이"
+    지니계수 $G = \dfrac{S_1}{S_1 + S_2} = \dfrac{S_1}{1/2}$ ($\triangle\mathrm{OAB}$ 넓이 $= 1/2$). $S_1 = \displaystyle\int_0^1\{x - L(x)\}\,dx$.
+
+    $G = 2\displaystyle\int_0^1\{x - x^{f(m,k)}\}\,dx = 2\!\left[\dfrac{x^2}{2} - \dfrac{x^{f(m,k)+1}}{f(m,k)+1}\right]_0^1 = 1 - \dfrac{2}{f(m,k)+1}$.
+
+    여기서 $f(m, k) = m^2 - (2k+4)m + k^2 + 4k + 6 = (m - (k+2))^2 + 2$. $f + 1 = (m - k - 2)^2 + 3$.
+
+    **(1)** $k = 1$, $m = 1, 2, 3$ ($2018, 2019, 2020$):
+
+    - $m = 1$: $G = 1 - \dfrac{2}{(1-3)^2+3} = 1 - \dfrac{2}{7} = \dfrac{5}{7}$.
+    - $m = 2$: $G = 1 - \dfrac{2}{(2-3)^2+3} = 1 - \dfrac{2}{4} = \dfrac{1}{2}$.
+    - $m = 3$: $G = 1 - \dfrac{2}{(3-3)^2+3} = 1 - \dfrac{2}{3} = \dfrac{1}{3}$.
+
+    **(2)** $2027$ 년 $m = 10$. $G < 0.4$:
+
+    $1 - \dfrac{2}{(10 - k - 2)^2 + 3} < 0.4 \Rightarrow \dfrac{2}{(8-k)^2 + 3} > 0.6 \Rightarrow (8-k)^2 + 3 < \dfrac{10}{3} \Rightarrow (8-k)^2 < \dfrac{1}{3}$.
+
+    $|8 - k| < \dfrac{1}{\sqrt{3}} \approx 0.577 \Rightarrow 8 - 0.577 < k < 8 + 0.577$. $k$ 정수이므로 $k = 8$.
+
+**【2-3】** $\mathrm{A}$ 국 최저임금 $L$. 노동거래량 $X$, 수요곡선 $D_n = -X + a_n$, 공급곡선 $S_n = X + b_n$. 최저임금 $L_n$ 으로 상향 시 $n$ 년도 초과공급량 $Q_n$. $L_n$ 의 확률질량함수 $P(L_n = L + 2^{-k}) = \dfrac{2^{-k}}{1 - 2^{-n}}$ ($k = 1, 2, \ldots, n$). $a_n, b_n$ 은 $3^{-n} < 4b_n - L < 4a_n - 5L < 2^{-n}$ 를 만족. $E(Q_n)$ 과 $\displaystyle\lim_{n\to\infty}E(Q_n)$.
+
+??? success "풀이"
+    최저임금 $L_n$ 일 때 수요량 $X_D = -L_n + a_n$, 공급량 $X_S = L_n - b_n$. 초과공급량 $Q_n = X_S - X_D = 2L_n - (a_n + b_n)$.
+
+    $E(L_n) = \displaystyle\sum_{k=1}^n (L + 2^{-k})\cdot\dfrac{2^{-k}}{1 - 2^{-n}}$. 두 급수:
+
+    $\displaystyle\sum_{k=1}^n 2^{-k} = 1 - 2^{-n}$, $\displaystyle\sum_{k=1}^n 4^{-k} = \dfrac{1}{3}(1 - 4^{-n})$.
+
+    $E(L_n) = \dfrac{L(1 - 2^{-n}) + (1/3)(1 - 4^{-n})}{1 - 2^{-n}} = L + \dfrac{1}{3}\cdot\dfrac{1 - 4^{-n}}{1 - 2^{-n}} = L + \dfrac{1}{3}(1 + 2^{-n})$.
+
+    $E(Q_n) = 2E(L_n) - (a_n + b_n) = 2L + \dfrac{2}{3}(1 + 2^{-n}) - (a_n + b_n)$.
+
+    극한: $3^{-n} < 4b_n - L < 4a_n - 5L < 2^{-n}$. $\displaystyle\lim_{n\to\infty}3^{-n} = \lim_{n\to\infty}2^{-n} = 0$ 이므로 샌드위치에 의해
+
+    $\displaystyle\lim_{n\to\infty}(4a_n - 5L) = 0 \Rightarrow \lim a_n = \dfrac{5L}{4}$, $\displaystyle\lim_{n\to\infty}(4b_n - L) = 0 \Rightarrow \lim b_n = \dfrac{L}{4}$.
+
+    $\displaystyle\lim_{n\to\infty} E(Q_n) = 2L + \dfrac{2}{3} - \!\left(\dfrac{5L}{4} + \dfrac{L}{4}\right) = 2L + \dfrac{2}{3} - \dfrac{3L}{2} = \dfrac{L}{2} + \dfrac{2}{3}$.
+
+---
+
+### 문항카드 3 — 자연 문제 1·2 (수학Ⅰ·미적분Ⅰ·미적분Ⅱ·기하와 벡터)
+
+**설정.** 제시문 1: 평면 직사각형 $\mathrm{ABCD}$ 모양 종이. [그림 1] 대각선 $\mathrm{BD}$ 를 따라 접음. [그림 2] 선분 $\mathrm{AD}$ 위의 점 $\mathrm{E}$ 를 선택, 선분 $\mathrm{CE}$ 를 따라 접음. $\mathrm{F}$ 는 $\mathrm{D}$ 가 이동한 점, 평면 $\mathrm{CEF} \perp$ 평면 $\mathrm{ABCD}$. 제시문 2: 반지름 $r$ 인 구의 중심과 평면 사이 거리 $d$ 에 따른 구·평면 위치 관계.
+
+**【1-1】** [그림 1] 에서 $\overline{\mathrm{AB}} = a$, $\overline{\mathrm{BC}} = b$ 일 때, 빗금 부분 ($\triangle\mathrm{GBD}$) 의 넓이.
+
+??? success "풀이"
+    종이를 접었으므로 $\angle\mathrm{GBD} = \angle\mathrm{DBC} = \theta$. 직사각형이므로 $\angle\mathrm{GDB} + \angle\mathrm{CDB} = \pi/2$ 이고 $\angle\mathrm{CDB} + \theta = \pi/2$ 이므로 $\angle\mathrm{GDB} = \theta$.
+
+    $\triangle\mathrm{GBD}$ 가 이등변삼각형 (밑변 $\mathrm{BD}$, $\angle\mathrm{GBD} = \angle\mathrm{GDB} = \theta$). $\overline{\mathrm{BD}} = \sqrt{a^2 + b^2}$. 높이 $h = \tan\theta\cdot\overline{\mathrm{BD}}/2$. $\triangle\mathrm{BCD}$ 에서 $\tan\theta = \dfrac{a}{b}$. 따라서 $h = \dfrac{a}{b}\cdot\dfrac{\sqrt{a^2+b^2}}{2} = \dfrac{a\sqrt{a^2+b^2}}{2b}$.
+
+    $\triangle\mathrm{GBD}$ 넓이 $= \dfrac{1}{2}\cdot\sqrt{a^2+b^2}\cdot\dfrac{a\sqrt{a^2+b^2}}{2b} = \dfrac{a(a^2+b^2)}{4b}$.
+
+**【1-2】** [그림 2] 에서 $\overline{\mathrm{AB}} = 2$, $\overline{\mathrm{BC}} = 3$. 사각형 $\mathrm{ABCE}$ 가 밑면이고 $\mathrm{F}$ 가 꼭짓점인 사각뿔 $\mathrm{F}\text{-}\mathrm{ABCE}$ 의 부피 최댓값.
+
+??? success "풀이"
+    $\overline{\mathrm{DE}} = x$ 로 두자 ($0 \le x \le 3$). 밑면 넓이 $= 3\cdot 2 - \dfrac{1}{2}\cdot 2\cdot x = 6 - x$.
+
+    높이 $h$ 는 $\mathrm{F}$ 에서 평면 $\mathrm{ABCE}$ 까지 거리. $\overline{\mathrm{CE}} = \sqrt{x^2 + 4}$ ($\triangle\mathrm{CDE}$ 피타고라스). $\triangle\mathrm{CDE}$ 의 넓이 $= \dfrac{1}{2}\cdot 2\cdot x = x$, 또한 $= \dfrac{1}{2}\cdot\overline{\mathrm{CE}}\cdot h$ 이므로 $h = \dfrac{2x}{\sqrt{x^2+4}}$.
+
+    부피 $V(x) = \dfrac{1}{3}(6-x)\cdot\dfrac{2x}{\sqrt{x^2+4}}$. 미분:
+
+    $V'(x) = \dfrac{2}{3}\cdot\!\left(\dfrac{6x - x^2}{\sqrt{x^2+4}}\right)' = \dfrac{2}{3}\cdot\dfrac{(2-x)(x^2 + 2x + 12)}{\sqrt{(x^2+4)^3}}$.
+
+    $x^2 + 2x + 12 > 0$ 이므로 $V'(x) = 0 \Leftrightarrow x = 2$. $0 < x < 2$ 에서 $V' > 0$, $2 < x < 3$ 에서 $V' < 0$. 최댓값 $x = 2$ 에서:
+
+    $V(2) = \dfrac{1}{3}\cdot 4\cdot\dfrac{4}{\sqrt{8}} = \dfrac{1}{3}\cdot 4\cdot\dfrac{4}{2\sqrt{2}} = \dfrac{1}{3}\cdot\dfrac{8}{\sqrt{2}} = \dfrac{8}{3\sqrt{2}} = \dfrac{4\sqrt{2}}{3}$.
+
+**【2-1】** 구 $x^2 + y^2 + z^2 = 9$ 와 평면 $x + y + z = 3$ 이 만나서 생기는 원 $C$. 점 $\mathrm{A}(2, 2, 1)$ 에서 $C$ 위의 점까지 거리의 최솟값.
+
+??? success "풀이"
+    구의 중심 $\mathrm{O}(0,0,0)$, 평면 $\alpha: x + y + z = 3$, 원 $C$ 의 중심 $\mathrm{O'}$. 평면의 법선 $\mathbf{n} = (1, 1, 1)$. $\mathrm{O'} = (t, t, t)$, $3t = 3 \Rightarrow t = 1$. $\mathrm{O'} = (1, 1, 1)$, $\overline{\mathrm{OO'}} = \sqrt{3}$. 원 $C$ 의 반지름 $= \sqrt{9 - 3} = \sqrt{6}$.
+
+    $\mathrm{A}$ 의 $\alpha$ 위 정사영 $\mathrm{H}$: $\mathrm{A} + s(1, 1, 1)$ 이 $\alpha$ 위에 있도록. $(2+s) + (2+s) + (1+s) = 3 \Rightarrow 5 + 3s = 3 \Rightarrow s = -2/3$. $\mathrm{H}(4/3, 4/3, 1/3)$.
+
+    $\overline{\mathrm{AH}} = |s|\sqrt{3} = \dfrac{2\sqrt{3}}{3} = \dfrac{2}{\sqrt{3}}$.
+
+    $\overline{\mathrm{O'H}} = \sqrt{(4/3-1)^2 + (4/3-1)^2 + (1/3-1)^2} = \sqrt{1/9 + 1/9 + 4/9} = \dfrac{\sqrt{6}}{3}$.
+
+    $C$ 위의 점 중 $\mathrm{H}$ 에서 가장 가까운 점 $\mathrm{Q}$: 직선 $\mathrm{O'H}$ 와 $C$ 의 교점 중 가까운 쪽. $\overline{\mathrm{HQ}} = \overline{\mathrm{O'Q}} - \overline{\mathrm{O'H}} = \sqrt{6} - \dfrac{\sqrt{6}}{3} = \dfrac{2\sqrt{6}}{3}$.
+
+    $\overline{\mathrm{AQ}} = \sqrt{\overline{\mathrm{AH}}^2 + \overline{\mathrm{HQ}}^2} = \sqrt{\dfrac{4}{3} + \dfrac{24}{9}} = \sqrt{\dfrac{12 + 24}{9}} = \sqrt{4} = 2$.
+
+**【2-2】** 구 $(x-2)^2 + y^2 + z^2 = 2$ 와 평면 $mx - y = 0$ 이 만나서 원이 생길 때 원의 중심 $\mathrm{P}$. $m$ 의 값이 변할 때 $\mathrm{P}$ 가 그리는 곡선의 길이.
+
+??? success "풀이"
+    구의 중심 $(2, 0, 0)$ 에서 평면 $mx - y = 0$ 으로 내린 수선의 발이 $\mathrm{P}$. 평면 법선 $(m, -1, 0)$. $\mathrm{P} = (2 + tm, -t, 0)$ 이 평면 위: $m(2 + tm) - (-t) = 0 \Rightarrow t(m^2 + 1) = -2m \Rightarrow t = -\dfrac{2m}{m^2 + 1}$.
+
+    $\mathrm{P} = \!\left(2 - \dfrac{2m^2}{m^2 + 1}, \dfrac{2m}{m^2 + 1}, 0\right) = \!\left(\dfrac{2}{m^2 + 1}, \dfrac{2m}{m^2 + 1}, 0\right)$.
+
+    $X = \dfrac{2}{m^2 + 1}, Y = \dfrac{2m}{m^2 + 1}$ 라 하면 $Y/X = m$, $X^2 + Y^2 = \dfrac{4(1 + m^2)}{(m^2+1)^2} = \dfrac{4}{m^2+1} = 2X$.
+
+    $(X - 1)^2 + Y^2 = 1$ ($Z = 0$): 중심 $(1, 0, 0)$, 반지름 $1$ 인 원.
+
+    $m$ 의 범위: 구·평면이 만나려면 중심에서 평면까지 거리 $\le \sqrt{2}$: $\dfrac{2|m|}{\sqrt{m^2+1}} \le \sqrt{2} \Rightarrow 4m^2 \le 2(m^2+1) \Rightarrow m^2 \le 1$, 즉 $-1 \le m \le 1$.
+
+    $m = -1$: $\mathrm{P}(1, -1, 0)$. $m = 1$: $\mathrm{P}(1, 1, 0)$. $m = 0$: $\mathrm{P}(2, 0, 0)$. $\mathrm{P}$ 의 자취는 원 $(x-1)^2 + y^2 = 1$ 의 오른쪽 반원 ($(1, -1)$ 에서 $(2, 0)$ 거쳐 $(1, 1)$ 까지).
+
+    호 길이 $= \dfrac{1}{2}\cdot 2\pi\cdot 1 = \pi$.
+
+---
