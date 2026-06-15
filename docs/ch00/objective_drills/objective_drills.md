@@ -22266,3 +22266,211 @@ $$f(x) = \begin{cases} ax + b & (x < -3) \\ -x^2 + 9 & (-3 \le x < 0) \\ cx + d 
 
 ---
 
+
+## 카드 177 — 연세대 미래캠퍼스 (2022학년도)
+
+2022학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서. 논술우수자 전형 창의인재(자연계열·의예과) 문항카드 3 – 7. 자연 8 하위문항(확률과 통계·수학·수학Ⅱ·미적분), 의예 6 하위문항(수학Ⅰ·확률과 통계·수학Ⅱ·미적분).
+
+---
+
+### 문항카드 3 — 창의(자연) 문제 1 (확률과 통계)
+
+**설정.** 세 주머니 — A $\{1, 2, 3, 4\}$, B $\{1, 1, 2, 3\}$, C $\{1, 1, 1, 1\}$ (각 4 개의 공). 주머니 임의 선택 후, 해당 주머니에서 임의로 $n$ 번 공을 뽑는다 (매번 확인 후 되돌려 넣음).
+
+**【1-1】** 1 번 시행할 때 $1$ 번 공이 뽑힐 확률. 그리고 그것이 $1$ 번 공일 때 선택된 주머니가 C 일 확률.
+
+??? success "풀이"
+    $D_1 = \{1\text{번 공}\}$. $P(D_1) = \dfrac{1}{3}\left(\dfrac{1}{4} + \dfrac{2}{4} + \dfrac{4}{4}\right) = \dfrac{1}{3} \cdot \dfrac{7}{4} = \dfrac{7}{12}$.
+
+    $P(C \mid D_1) = \dfrac{P(C \cap D_1)}{P(D_1)} = \dfrac{(1/3) \cdot 1}{7/12} = \dfrac{4}{7}$.
+
+**【1-2】** $n$ 번 모두 $1$ 번 공이 뽑혔을 때 주머니 C 가 선택되었을 확률.
+
+??? success "풀이"
+    $D_n = \{n\text{번 모두 } 1\text{번 공}\}$. $P(D_n) = \dfrac{1}{3}\left[\left(\dfrac{1}{4}\right)^n + \left(\dfrac{1}{2}\right)^n + 1\right]$.
+
+    $P(C \cap D_n) = \dfrac{1}{3} \cdot 1$. 따라서
+
+    $$P(C \mid D_n) = \dfrac{1/3}{\frac{1}{3}\left[(1/4)^n + (1/2)^n + 1\right]} = \dfrac{4^n}{1 + 2^n + 4^n}.$$
+
+**【1-3】** 위 확률 $\ge 0.9$ 가 되는 최소 시행 횟수 $n$.
+
+??? success "풀이"
+    - $n = 1$: $4/(1+2+4) = 4/7 \approx 0.571 < 0.9$.
+    - $n = 2$: $16/(1+4+16) = 16/21 \approx 0.762 < 0.9$.
+    - $n = 3$: $64/(1+8+64) = 64/73 \approx 0.877 < 0.9$.
+    - $n = 4$: $256/(1+16+256) = 256/273 \approx 0.938 \ge 0.9$.
+
+    $4$ 회 반복하면 주머니 C 라는 주장의 확률이 $0.9$ 이상.
+
+---
+
+### 문항카드 4 — 창의(자연) 문제 2 (수학 + 수학Ⅱ)
+
+**제시문.** $0 \le a < b$. $y = x^2$ 위 두 점 $A(a, a^2), B(b, b^2)$ 에서 두 접선의 교점 $C$. 선분 AB 를 $m : n$ ($m, n > 0$) 으로 내분하는 점 $P$. $a = \dfrac{-t + \sqrt{t^2 + 16t}}{8}$, $b = \dfrac{-3t + 3\sqrt{t^2 + 4t}}{8}$ ($t > 0$).
+
+**【2-1】** $y = x^2$ 과 두 접선으로 둘러싸인 도형의 넓이.
+
+??? success "풀이"
+    $f(x) = x^2$, $f'(x) = 2x$. $A$ 에서 접선 $y = 2ax - a^2$, $B$ 에서 $y = 2bx - b^2$. 교점 $x$ 좌표 $= (a+b)/2$.
+
+    $$\int_a^{(a+b)/2}[x^2 - (2ax - a^2)]dx + \int_{(a+b)/2}^b[x^2 - (2bx - b^2)]dx$$
+
+    $= \displaystyle\int_a^{(a+b)/2}(x-a)^2 dx + \int_{(a+b)/2}^b(x-b)^2 dx = \dfrac{2}{3}\left(\dfrac{b-a}{2}\right)^3 = \dfrac{(b-a)^3}{12}$.
+
+**【2-2】** $P$ 의 $x$ 좌표 $f(t)$ 에 대한 $\displaystyle\lim_{t \to \infty} f(t)$.
+
+??? success "풀이"
+    $f(t) = \dfrac{mb + na}{m + n} = \dfrac{1}{8(m+n)}\left\{-3(t - \sqrt{t^2 + 4t})m - (t - \sqrt{t^2 + 16t})n\right\}$.
+
+    $\displaystyle\lim_{t \to \infty}(t - \sqrt{t^2 + 4t}) = \lim_{t \to \infty}\dfrac{-4t}{t + \sqrt{t^2+4t}} = \dfrac{-4}{1 + \sqrt{1}} = -2$.
+
+    $\displaystyle\lim_{t \to \infty}(t - \sqrt{t^2 + 16t}) = -8$.
+
+    $$\lim_{t \to \infty} f(t) = \dfrac{(-3)(-2)m + (-1)(-8)n}{8(m+n)} = \dfrac{6m + 8n}{8(m+n)} = \dfrac{3m + 4n}{4(m+n)}.$$
+
+---
+
+### 문항카드 5 — 창의(자연) 문제 3 (수학Ⅰ + 미적분)
+
+**제시문 [가].** 매달 플라스틱 쓰레기 1500 톤 수거. 65% 가 선별, 그 중 80% 가 재활용 (재생산률 0.65 × 0.8 = 0.52). 이 과정을 반복.
+
+**제시문 [나].** $f(t) = (10t^2 - 9t - 9)e^{-t}$ ($t \ge 1.5$).
+
+**【3-1】** 1500 톤에 대해 재생산·재활용을 매달 한없이 반복할 때 재활용되는 총량.
+
+??? success "풀이"
+    $$\sum_{n=1}^\infty 1500 \cdot 0.52^n = \dfrac{1500 \cdot 0.52}{1 - 0.52} = \dfrac{780}{0.48} = 1625\text{ 톤}.$$
+
+**【3-2】** $A(x) = \displaystyle\int_{1.5}^x f(t)\,dt$ 에 대한 $\displaystyle\lim_{x\to\infty} A(x)$. (단, $\displaystyle\lim_{x\to\infty} x^2 e^{-x} = 0$.)
+
+??? success "풀이"
+    부분적분 두 번:
+
+    $A(x) = [-(10t^2 - 9t - 9)e^{-t}]_{1.5}^x + \displaystyle\int_{1.5}^x(20t-9)e^{-t}dt = -(10x^2 - 9x - 9)e^{-x} + \displaystyle\int_{1.5}^x(20t-9)e^{-t}dt$.
+
+    $\displaystyle\int_{1.5}^x(20t-9)e^{-t}dt = -(20x-9)e^{-x} + (20\cdot 1.5 - 9)e^{-1.5} + \displaystyle\int_{1.5}^x 20 \cdot (-e^{-t})dt$
+
+    Wait, applying carefully: $\displaystyle\int(20t-9)e^{-t}dt = -(20t-9)e^{-t} - \displaystyle\int 20 e^{-t}(-)dt$ ... let me redo.
+
+    Using $\int u\, dv = uv - \int v\, du$ with $u = 20t-9$, $dv = e^{-t}dt$, $v = -e^{-t}$:
+
+    $\displaystyle\int_{1.5}^x(20t-9)e^{-t}dt = [-(20t-9)e^{-t}]_{1.5}^x + \displaystyle\int_{1.5}^x 20 e^{-t}dt = -(20x-9)e^{-x} + 21 e^{-1.5} - 20(e^{-x} - e^{-1.5})$
+
+    $= -(20x-9)e^{-x} - 20e^{-x} + 41 e^{-1.5} = -(20x+11)e^{-x} + 41 e^{-1.5}$.
+
+    따라서 $A(x) = (-10x^2 + 9x + 9)e^{-x} - (20x+11)e^{-x} + 41 e^{-1.5} = (-10x^2 - 11x - 2)e^{-x} + 41 e^{-1.5}$.
+
+    $\displaystyle\lim_{x\to\infty} A(x) = 0 + 41 e^{-1.5} = 41 e^{-1.5}$.
+
+**【3-3】** $f(t)$ 의 변곡점 $(a, b)$ 의 $a$.
+
+??? success "풀이"
+    $f'(t) = (20t-9)e^{-t} - (10t^2 - 9t - 9)e^{-t} = (-10t^2 + 29t)e^{-t}$.
+
+    $f''(t) = (-20t + 29)e^{-t} - (-10t^2 + 29t)e^{-t} = (10t^2 - 49t + 29)e^{-t}$.
+
+    $f''(t) = 0 \Rightarrow 10t^2 - 49t + 29 = 0 \Rightarrow t = \dfrac{49 \pm \sqrt{2401 - 1160}}{20} = \dfrac{49 \pm \sqrt{1241}}{20}$.
+
+    $t \ge 1.5$ 이고 $\sqrt{1241} \approx 35.2$ 이므로 $t = (49 - \sqrt{1241})/20 \approx 0.69 < 1.5$ 제외. $a = \dfrac{49 + \sqrt{1241}}{20}$.
+
+---
+
+### 문항카드 6 — 창의(의예) 문제 1 (수학Ⅰ + 확률과 통계 + 미적분)
+
+**설정.** 징검다리 건너기 — 20 줄, 한 줄에 2 칸 (강화유리·일반유리 임의 1 개씩). 참가자 수 18 명. 강화유리는 안 깨짐, 일반유리는 깨져 탈락. 참가자 모두가 앞사람의 결과로 그 줄 강화유리 위치 학습 (즉 일반유리 깨지면 그 줄 정보 공개).
+
+**【1-1】** 유리를 구분하여 강화유리를 찾을 확률 $3/4$. 마지막 참가자 (18 번) 생존확률 $1 - a/2^{40}$. $a$.
+
+??? success "풀이"
+    한 줄에서 강화유리를 찾을 확률 $p = 3/4$. $m$ 줄 남았다고 할 때 $i$ 번 참가자 생존확률은 $\displaystyle\sum_{r=0}^{i-1}\binom{m}{r}p^{m-r}(1-p)^r$ (앞에 $i-1$ 명까지 일반유리 깬 횟수가 $0, 1, \ldots, i-1$ 중 하나).
+
+    18 번 사람, $m = 20$, $i = 18$:
+
+    $$P = \sum_{r=0}^{17}\binom{20}{r}(3/4)^{20-r}(1/4)^r = 1 - \binom{20}{20}3^0 \cdot \dfrac{1}{4^{20}} - \binom{20}{19}3^1 \cdot \dfrac{1}{4^{20}} - \binom{20}{18}3^2 \cdot \dfrac{1}{4^{20}}.$$
+
+    분자: $\binom{20}{18} \cdot 9 + \binom{20}{19} \cdot 3 + 1 = 190 \cdot 9 + 20 \cdot 3 + 1 = 1710 + 60 + 1 = 1771$.
+
+    $P = 1 - \dfrac{1771}{2^{40}}$. $a = 1771$.
+
+**【1-2】** 관찰시간 $t$ 가 $0.1$ 초 늘어날 때마다 강화유리 찾을 확률이 $q$ 만큼 증가하다가 $9.9$ 초 후 $1$ 로 도달. 한 줄 점프 $k = 2$ 초, 제한시간 $112$ 초. 14, 15, 16 번 사람만 생존 (17 번이 시간 초과로 탈락) 할 확률 $\dfrac{2^{b_1}\cdot 3^{b_2}\cdot 5^{b_3}\cdot 7^{b_4}\cdot 11^{b_5}\cdot 13^{b_6}\cdot 17^{b_7}\cdot 19^{b_8}}{10^{20}}$. $b_1 - \displaystyle\sum_{j=2}^8 b_j$.
+
+??? success "풀이"
+    $0.1$ 초마다 $q$ 증가, $9.9$ 초에 $1/2 + 100q = 1 \Rightarrow q = 1/200$.
+
+    $i$ 번 사람 도달시간 $T_i = mt + (m+1)k + (i-1)k$ ($m = 20$, $k = 2$). $T_i = 20t + 42 + 2(i-1) = 20t + 40 + 2i$.
+
+    17 번 시간초과 $\Leftrightarrow T_{17} > 112 \Rightarrow 20t + 74 > 112 \Rightarrow t > 1.9$. 16 번 통과 $T_{16} \le 112 \Rightarrow t \le 2$. 따라서 $1.9 < t \le 2$.
+
+    이 범위 $t$ 에서 $p = 1/2 + 20q = 1/2 + 0.1 = 0.6$.
+
+    13 번이 탈락하고 14 번 생존: 20 줄 중 13 개 일반유리 통과 실패, 7 개 통과. $\binom{20}{13}\cdot 0.6^7 \cdot 0.4^{13} = 77520 \cdot \dfrac{6^7 \cdot 4^{13}}{10^{20}}$.
+
+    $6^7 = 2^7 \cdot 3^7 = 128 \cdot 2187$. $4^{13} = 2^{26}$. 분자 $77520 \cdot 6^7 \cdot 4^{13}$ 의 소인수분해.
+
+    $77520 = 2^4 \cdot 3 \cdot 5 \cdot 17 \cdot 19$. 곱하면 $2^{4+7+26} \cdot 3^{1+7} \cdot 5 \cdot 17 \cdot 19 = 2^{37}\cdot 3^8\cdot 5^1\cdot 17^1\cdot 19^1$.
+
+    $b_1 = 37$, $b_2 = 8$, $b_3 = 1$, $b_4 = 0$, $b_5 = 0$, $b_6 = 0$, $b_7 = 1$, $b_8 = 1$. $\displaystyle\sum_{j=2}^8 b_j = 8 + 1 + 0 + 0 + 0 + 1 + 1 = 11$. $b_1 - 11 = 26$.
+
+**【1-3】** 유리 구분 확률이 시간 $t$ 에 대한 연속함수 $f(t)$ 이고 (가) $f(0) = 1/2$, (나) $t^* = \min\{t : f(t) = 1\}$, (다) $x \le t^*$ 에서 $\displaystyle\int_a^x f(t)dt = -\dfrac{\sin x + \cos x}{2}e^x + f(x)$, (라) $x > t^*$ 에서 $f(x) = 1$. $f(t)$ 를 구하시오.
+
+??? success "풀이"
+    조건 (다) 미분:
+
+    $f(x) = -\dfrac{\cos x - \sin x}{2}e^x - \dfrac{\sin x + \cos x}{2}e^x + f'(x) \Rightarrow f(x) - f'(x) = -e^x \cos x$.
+
+    $e^{-x}[f(x) - f'(x)] = -\cos x$. $g(x) = e^{-x}f(x)$ 의 $g'(x) = -e^{-x}f(x) + e^{-x}f'(x) = -e^{-x}[f(x) - f'(x)] = \cos x$.
+
+    $g(x) = \sin x + C$, $f(x) = e^x(\sin x + C)$. $f(0) = C = 1/2$.
+
+    $$f(t) = \begin{cases} e^t(\sin t + 1/2) & (t \le t^*) \\ 1 & (t > t^*) \end{cases}$$
+
+---
+
+### 문항카드 7 — 창의(의예) 문제 2 (수학Ⅰ + 수학Ⅱ + 미적분)
+
+**설정.** $f(x) = \cos(\pi x)$ ($x \ge 0$). $h(x)$ ($0 \le x \le 1$) = $\{y > x : f'(x) = \dfrac{f(x) - f(y)}{x - y}\}$ 의 원소 개수, 즉 점 $(x, f(x))$ 에서 접선이 곡선 $f$ 와 다른 점에서 만나는 횟수.
+
+**【2-1】** $\displaystyle\lim_{x\to a^-}h(x) \ne h(a)$ 이고 $\displaystyle\lim_{x\to a^+}h(x) = h(a)$ 인 $a$.
+
+??? success "풀이"
+    그래프 분석: $0 \le x < 1/2$ 에서 접선의 기울기 음수, 접선이 $f$ 와 만나는 횟수는 유한. 접선이 $(x, f(x))$ 외 다른 곳에서 $f$ 와 접하면 그 점은 짝수 (양 끝점), 접하지 않으면 홀수.
+
+    $x = 1/2$ 일 때 접선이 $f$ 의 변곡점에서 $x$ 축 평행 → $f$ 와 접점 외 만남 0. $h(1/2) = 0$.
+
+    $x = 1/2$ 좌극한 (점진적 접근): $h$ 값 $1$ 또는 그 이상. 우극한: 접선 기울기 양수로 변하여 $x > 1/2$ 에서 $h(x) = 0$. 우극한 $= 0 = h(1/2)$, 좌극한 $\ne 0$.
+
+    따라서 $a = 1/2$.
+
+**【2-2】** $0 \le x \le 1$ 에서 $h(x) = 0$ 인 $x$ 의 범위 $[u, v]$. $p(x) = ke^x f(x)$ 가 $[u, v]$ 에서 확률밀도함수가 되도록 하는 $k$.
+
+??? success "풀이"
+    2-1 의 분석에서 $h(x) = 0$ 인 범위는 $[1/2, 1]$.
+
+    $\displaystyle\int_{1/2}^1 k e^x \cos(\pi x) dx = 1$. 부분적분:
+
+    $I = \displaystyle\int_{1/2}^1 e^x\cos(\pi x)dx = [e^x\cos(\pi x)]_{1/2}^1 - \displaystyle\int_{1/2}^1 (-\pi)e^x\sin(\pi x)dx = -e - 0 + \pi\displaystyle\int_{1/2}^1 e^x\sin(\pi x)dx$.
+
+    $\displaystyle\int_{1/2}^1 e^x \sin(\pi x)dx = [e^x \sin(\pi x)]_{1/2}^1 - \pi\displaystyle\int_{1/2}^1 e^x\cos(\pi x)dx = 0 - \sqrt{e} - \pi I = -\sqrt{e} - \pi I$.
+
+    $I = -e + \pi(-\sqrt{e} - \pi I) = -e - \pi\sqrt{e} - \pi^2 I$, $I(1 + \pi^2) = -(e + \pi\sqrt{e})$, $I = -\dfrac{e + \pi\sqrt{e}}{1 + \pi^2}$.
+
+    $kI = 1 \Rightarrow k = -\dfrac{1 + \pi^2}{e + \pi\sqrt{e}}$.
+
+**【2-3】** $h(b) = 8$ 을 만족하는 실수 $b$ 에 대해 $b\pi + \cot(b\pi)$.
+
+??? success "풀이"
+    $h(b) = 8$ → $(b, f(b))$ 에서의 접선이 다른 8 개 점에서 $f$ 와 만남. 분석상 그 중 하나는 접점 $(c, f(c))$ ($c > b$).
+
+    코사인 그래프 대칭 → $f'(b) = f'(c)$, $c = 9 - b$ (특정 $h$ 값에 대응하는 대칭 관계).
+
+    두 점 $(b, f(b))$, $(c, f(c))$ 의 평균변화율 = $f'(b)$:
+
+    $$\dfrac{\cos(c\pi) - \cos(b\pi)}{c - b} = -\pi\sin(b\pi).$$
+
+    $\cos(c\pi) = \cos((9-b)\pi) = -\cos(b\pi)$. 따라서 $\dfrac{-2\cos(b\pi)}{2b - 9} = -\pi\sin(b\pi)$, $\dfrac{\cos(b\pi)}{\sin(b\pi)} = -\pi \cdot \dfrac{2b - 9}{2}$.
+
+    $\cot(b\pi) = -\pi\!\left(b - \dfrac{9}{2}\right)$, 즉 $b\pi + \cot(b\pi) = \dfrac{9\pi}{2}$.
+
+---
+
