@@ -18593,3 +18593,270 @@ $t\in[0,2\pi]$일 때, 직선 $(\sin t)x+y=12+3\sin t$가 원 $x^2+(y-3)^2=25$�
     $0<t<2$이므로 $t=\boxed{3-\sqrt 5}.\;\square$
 
 ---
+
+---
+
+## 카드 162 — 서강대학교 (2023학년도)
+
+> 서강대 2023학년도 수시 논술 — 자연계열 1차 1·2번, 2차 1·2번의 네 문항카드 16개 하위 문항. 확률과 통계의 중복조합·이항정리·이항분포·정규근사부터 미적분의 삼각함수 미분·접선·정적분, 그리고 도형의 극한까지 폭넓게 다룬다.
+
+#### [162-1] 중복조합과 이항정리로 $d$ 구하기
+
+상자 속에 $0$부터 $10$까지의 정수 중 하나를 적은 종이가 여러 장 들어있다. 임의로 한 장을 꺼냈을 때 적힌 숫자를 확률변수 $X$라 하자. $X$의 확률질량함수가
+$$
+\mathrm P(X=i)=\frac{{}_{11-i}\mathrm H_i\times {}_{11-i}\mathrm H_i}{{}_{d}\mathrm H_{10}}\quad (i=0,1,\ldots,10)
+$$
+일 때, 자연수 $d$의 값을 구하여라.
+
+??? success "풀이"
+    확률의 총합이 $1$이므로
+    $$
+    \sum_{i=0}^{10} {}_{11-i}\mathrm H_i \cdot {}_{11-i}\mathrm H_i={}_{d}\mathrm H_{10}.
+    $$
+    ${}_n\mathrm H_r={}_{n+r-1}\mathrm C_r$ 에서 ${}_{11-i}\mathrm H_i={}_{10}\mathrm C_i$ 이므로 좌변은 $\sum_{i=0}^{10}\binom{10}{i}^2$. 이항정리 항등식 $(1+x)^{10}(1+x)^{10}=(1+x)^{20}$의 $x^{10}$ 계수를 비교하면
+    $$
+    \sum_{i=0}^{10}\binom{10}{i}^2={}_{20}\mathrm C_{10}.
+    $$
+    한편 ${}_d\mathrm H_{10}={}_{9+d}\mathrm C_{10}$이므로 $9+d=20$, 즉 $d=11$.
+
+#### [162-2] 이항정리로 $b$를 $s$의 식으로
+
+상자 속 숫자의 개수를 조정한 뒤 한 장 꺼낸 종이의 숫자를 $Y$라 하고
+$$
+\mathrm P(Y=i)=\frac{{}_{21}\mathrm C_{2i+1}\,s^{20-2i}(1-s)^{2i+1}}{b}\quad (i=0,1,\ldots,10)
+$$
+이다. $0<s<1$ 인 유리수 $s$ 에 대하여 $b$ 를 $s$ 의 식으로 나타내어라.
+
+??? success "풀이"
+    확률의 합이 $1$이므로 $b=\sum_{i=0}^{10}{}_{21}\mathrm C_{2i+1}s^{20-2i}(1-s)^{2i+1}$. 우변 각 항의 $s$와 $1-s$의 차수의 합은 항상 $21$이고, $1-s$의 차수는 모두 홀수임에 착안한다. $(s+(1-s))^{21}$ 과 $(s-(1-s))^{21}$ 의 이항전개에서 홀수차 항만 뽑으면
+    $$
+    b=\tfrac{1}{2}\!\left[\{s+(1-s)\}^{21}-\{s-(1-s)\}^{21}\right]=\frac{1-(2s-1)^{21}}{2}.
+    $$
+
+#### [162-3] 이항분포 $B(10,1/2)$ 와 상금의 기댓값
+
+$0$이 적힌 종이 $50$장, $1$이 적힌 종이 $50$장이 들어있는 상자에서 임의로 한 장 꺼내 숫자를 확인하고 다시 넣는 시행을 $10$회 반복한다. $1$이 나온 횟수를 $i$ 라 할 때, 상금이 $g(i)$ 로 다음 표와 같다:
+
+| $i$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| $g(i)$ | 2 | 1 | 5 | 7 | 17 | 31 | 65 | 127 | 257 | 511 | 1025 |
+
+상금의 기댓값을 구하여라.
+
+??? success "풀이"
+    $1$ 이 나온 횟수 $X$ 는 이항분포 $B(10,\tfrac12)$ 를 따르므로 $\mathrm P(X=i)=\binom{10}{i}/2^{10}$. 주어진 표에서 $g(i)=2^i+(-1)^i$ ($i=0,1,\ldots,10$) 임을 확인할 수 있다. 따라서 상금의 기댓값은
+    $$
+    r=\sum_{i=0}^{10}g(i)\mathrm P(X=i)=\frac{1}{2^{10}}\sum_{i=0}^{10}\binom{10}{i}\{2^i+(-1)^i\}.
+    $$
+    이항정리에 의해 $\sum_{i=0}^{10}\binom{10}{i}2^i=(1+2)^{10}=3^{10}$, $\sum_{i=0}^{10}\binom{10}{i}(-1)^i=(1-1)^{10}=0$. 따라서
+    $$
+    r=\frac{3^{10}}{2^{10}}=\frac{59049}{1024}.
+    $$
+
+#### [162-4] 이항분포의 정규근사와 표준정규분포표
+
+$0$이 적힌 종이 $90$장, $1$이 적힌 종이 $10$장에서 복원추출로 $100$회 반복하여 $1$이 적힌 종이를 꺼낸 횟수가 $k$ 회 이상이면 상금을 준다. 상금을 받을 확률이 $0.23$ 이상이 되는 자연수 $k$ 의 최댓값을 구하여라. (표 생략, $\mathrm P(0\le Z\le z)$ 값은 $0\le z\le 1$ 에서 $0.1$ 간격으로 주어져 있음.)
+
+??? success "풀이"
+    $1$이 나온 횟수 $X$는 이항분포 $B(100,\tfrac1{10})$. 시행 횟수가 충분히 크므로 $X$ 는 근사적으로 정규분포 $\mathrm N(10,9)$ 를 따른다. $Z=(X-10)/3$ 으로 표준화하면 $Z$ 는 표준정규분포.
+    $$
+    \mathrm P(X\ge k)=\mathrm P\!\left(Z\ge \tfrac{k-10}{3}\right)\ge 0.23.
+    $$
+    표에서 $\mathrm P(Z\ge z)\ge 0.23$ 인 $z$ 의 최댓값은 $\mathrm P(0\le Z\le 0.7)=0.2580$, 즉 $\mathrm P(Z\ge 0.7)=0.5-0.2580=0.2420\ge 0.23$ 에서 $z=0.7$. 이때 $k=10+3\cdot 0.7=12.1$. 자연수 $k$ 의 최댓값을 정확히 검증하기 위해 $k=13$ 에서 $\mathrm P(Z\ge 1)=0.5-0.3413=0.1587<0.23$ 이므로 부적합. 따라서 $k_{\max}=12$.
+
+#### [162-5] 매개변수와 절댓값 사인의 넓이
+
+원점이 $\mathrm O$ 인 좌표평면 위의 점 $\mathrm P=(\cos t,\sin t)$, $\mathrm Q=(2\cos(t^2+t),2\sin(t^2+t))$ 에 대해 세 점 $\mathrm O,\mathrm P,\mathrm Q$ 가 한 직선 위에 있지 않을 때 삼각형 $\mathrm{OPQ}$ 의 넓이를 $S(t)$, 그렇지 않을 때 $S(t)=0$ 이라 한다. $-\sqrt{2\pi}<t<\sqrt{2\pi}$ 에서 $S(t)$ 를 구하여라.
+
+??? success "풀이"
+    $\overline{\mathrm{OP}}=1$, $\overline{\mathrm{OQ}}=2$ 이고 두 동경 사이 각의 크기는 $|t^2+t-t|=t^2$. $t^2=0$ 또는 $t^2=\pi$ 이면 세 점이 일직선이므로 $S=0$. $0<t^2<\pi$ 일 때 $\angle\mathrm{POQ}=t^2$ 이므로 [가]의 사인 공식으로
+    $$
+    S(t)=\tfrac12\cdot 1\cdot 2\cdot \sin(t^2)=\sin(t^2).
+    $$
+    $\pi<t^2<2\pi$ 일 때 $\angle\mathrm{POQ}=2\pi-t^2$ 이므로 $S(t)=\sin(2\pi-t^2)=-\sin(t^2)$. 따라서
+    $$
+    S(t)=|\sin(t^2)|.
+    $$
+
+#### [162-6] 합성함수 $|\sin(t^2)|$ 의 미분가능성
+
+위에서 정의된 $S(t)$ 가 미분가능하지 않은 실수 $t$ 의 값을 모두 구하여라 (단, $-\sqrt{2\pi}<t<\sqrt{2\pi}$).
+
+??? success "풀이"
+    $t\in(-\sqrt\pi,0)\cup(0,\sqrt\pi)$ 에서 $S(t)=\sin(t^2)$, $t\in(-\sqrt{2\pi},-\sqrt\pi)\cup(\sqrt\pi,\sqrt{2\pi})$ 에서 $S(t)=-\sin(t^2)$ 이므로 모두 미분가능. 분기점 $t=0$ 과 $t=\pm\sqrt\pi$ 에서만 검사한다.
+
+    - $t=0$ 에서: $\lim_{h\to 0}\dfrac{S(h)-S(0)}{h}=\lim_{h\to 0}\dfrac{|\sin(h^2)|}{h}=\lim_{h\to 0}\dfrac{\sin(h^2)}{h^2}\cdot h=0$. 미분가능.
+    - $t=\sqrt\pi$ 에서: $h>0$ 이면 $0<h(2\sqrt\pi+h)<\pi$ 이므로 $\sin(\pi+2\sqrt\pi h+h^2)<0$,
+        $$
+        \lim_{h\to 0+}\frac{|\sin(\pi+2\sqrt\pi h+h^2)|}{h}=\lim_{h\to 0+}\frac{\sin(2\sqrt\pi h+h^2)}{h}=2\sqrt\pi.
+        $$
+        $h<0$ 이면 $-\pi<h(2\sqrt\pi+h)<0$ 이므로 좌극한은 $-2\sqrt\pi$. 좌·우 극한이 다르므로 $t=\sqrt\pi$ 에서 미분불가능. 대칭성에 의해 $t=-\sqrt\pi$ 에서도 미분불가능.
+
+    따라서 $S(t)$ 는 $t=\pm\sqrt\pi$ 에서만 미분불가능하다.
+
+#### [162-7] 점-직선 거리와 이차부등식: $\theta$ 의 범위
+
+$a>1$ 인 실수에 대해 원점 $\mathrm O$ 인 좌표평면에서 곡선 $y=1/x$ 위의 점 $\mathrm R(a,1/a)$ 와 $x$ 축 양의 방향과 반직선 $\mathrm{OR}$ 이 이루는 각의 크기를 $\theta$ 라 하자. $\mathrm R$ 에서의 접선이 원 $x^2+y^2=\sqrt 3$ 과 만날 때 $\theta$ 의 범위를 구하여라.
+
+??? success "풀이"
+    직선 $\mathrm{OR}$ 은 $y=(\tan\theta)x$ 이고 $\mathrm R(a,1/a)$ 에서 $a\tan\theta=1/a$, 즉 $a^2=\cot\theta$. 곡선 $y=1/x$ 의 $\mathrm R$ 에서의 접선은 $y=-(1/a^2)(x-a)+1/a$, 즉
+    $$
+    x+a^2 y-2a=0.
+    $$
+    원점에서 이 접선까지의 거리는 $d=\dfrac{2a}{\sqrt{1+a^4}}$. 접선이 원 $x^2+y^2=\sqrt 3$ (반지름 $3^{1/4}$) 과 만나려면 $d\le 3^{1/4}$, 즉 $4a^2\le \sqrt 3(1+a^4)$. $u=a^2(>1)$ 로 두면
+    $$
+    \sqrt 3\,u^2-4u+\sqrt 3\ge 0\iff (\sqrt 3\,u-1)(u-\sqrt 3)\ge 0.
+    $$
+    $u>1$ 이므로 $u\ge \sqrt 3$, 즉 $\cot\theta\ge\sqrt 3$. $a>1$ 에서 $0<\theta<\pi/4$ 이므로
+    $$
+    0<\theta\le \frac{\pi}{6}.
+    $$
+
+#### [162-8] 잘린 선분 길이와 삼각함수 극한
+
+위 [162-7]의 점 $\mathrm R$ 을 접점으로 하는 곡선 $y=1/x$ 의 접선이 원 $x^2+y^2=\sqrt 3$ 과 서로 다른 두 점 $\mathrm A,\mathrm B$ 에서 만난다고 하자. $\overline{\mathrm{AB}}=l(\theta)$ 일 때 극한값
+$$
+\lim_{\theta\to 0+}\frac{\{l(\theta)\}^2-4\sqrt 3}{\theta}
+$$
+을 구하여라.
+
+??? success "풀이"
+    원의 중심 $\mathrm O$ 에서 접선 $x+a^2y-2a=0$ 까지의 거리는 $d=2a/\sqrt{1+a^4}$. 직각삼각형 $\mathrm{OTA}$ (T는 수선의 발, $\overline{\mathrm{OA}}^2=\sqrt 3$) 에서
+    $$
+    \!\!\left(\frac{l(\theta)}{2}\right)^2=\sqrt 3-\frac{4a^2}{1+a^4}\Rightarrow \{l(\theta)\}^2=4\sqrt 3-\frac{16a^2}{1+a^4}.
+    $$
+    $a^2=\cot\theta$ 이므로 $1+a^4=1+\cot^2\theta=\csc^2\theta$, 즉 $16a^2/(1+a^4)=16\cot\theta\sin^2\theta=16\sin\theta\cos\theta$. 따라서
+    $$
+    \frac{\{l(\theta)\}^2-4\sqrt 3}{\theta}=-\frac{16\sin\theta\cos\theta}{\theta}\to -16\quad (\theta\to 0+).
+    $$
+
+#### [162-9] 이등변삼각형과 수직선의 기울기
+
+좌표평면 위 세 점 $\mathrm O(0,0)$, $\mathrm A,\mathrm B$ 에 대해 직선 $\mathrm{OA}$ 와 직선 $\mathrm{AB}$ 가 $x$ 축의 양의 방향과 이루는 각의 크기가 각각 $\alpha=\pi/12$, $\beta=\pi/4$ 이고 $\overline{\mathrm{OA}}=\overline{\mathrm{AB}}=1$ 이다. 두 점 $\mathrm O,\mathrm B$ 를 지나는 직선에 수직인 직선의 기울기를 구하여라.
+
+??? success "풀이"
+    이등변삼각형 $\mathrm{OAB}$ 의 두 밑각은 $(\beta-\alpha)/2=\pi/12$. 따라서 직선 $\mathrm{OB}$ 가 $x$ 축의 양의 방향과 이루는 각의 크기는 $\alpha+\dfrac{\beta-\alpha}{2}=\dfrac{\pi}{12}+\dfrac{\pi}{12}=\dfrac{\pi}{6}$. 이 직선에 수직인 직선의 기울기는
+    $$
+    \tan\!\left(\frac{\pi}{2}+\frac{\pi}{6}\right)=-\cot\frac{\pi}{6}=-\sqrt 3.
+    $$
+
+#### [162-10] 내접원의 반지름
+
+위 [162-9]의 결과로부터 $\beta=\pi/3$ 일 때 $(1,0)$ 을 지나고 기울기가 $\sqrt 3$ 인 직선 $s$ 가 있다. 중심이 $\mathrm C(a,b)$ 인 원이 $x$ 축과 직선 $s$ 에 동시에 접한다 ($a<1,\,b>0$). 위 조건을 만족하는 원들의 중심을 모두 지나는 직선의 방정식과 [가] (점-직선 거리)를 이용하여 $x$ 축, 직선 $s$, $y=(5/12)x$ 로 이루어진 삼각형에 내접하는 원의 반지름을 구하여라.
+
+??? success "풀이"
+    [162-9]에서 $\alpha=0$, $\beta=\pi/3$ 이면 두 점 $\mathrm O,\mathrm B$ 를 지나는 직선의 수직 기울기는 $-\cot(\pi/6)=-\sqrt 3$. 이 직선은 $(1,0)$ 을 지나므로 $y=-\sqrt 3(x-1)$. 원의 중심 $\mathrm C(1-b/\sqrt 3,\,b)$ 로 매개변수화된다.
+
+    이 중심에서 직선 $5x-12y=0$ 까지의 거리는 $\dfrac{1}{13}|5(1-b/\sqrt 3)-12b|$. 반지름 $b$ 와 같아야 하므로 $13b=|5(1-b/\sqrt 3)-12b|$.
+
+    - $5(1-b/\sqrt 3)-12b>0$ 인 경우: $13b=5-5b/\sqrt 3-12b$, $b(25+5/\sqrt 3)=5$, $b=\sqrt 3/(5\sqrt 3+1)=(15-\sqrt 3)/74$. 이때 $a=1-b/\sqrt 3>0$ 이므로 적합.
+    - 다른 부호인 경우: $b=(25\sqrt 3+15)/22$, $a=1-b/\sqrt 3<0$ 이 되어 부적합.
+
+    따라서 내접원의 반지름은
+    $$
+    r=\frac{15-\sqrt 3}{74}.
+    $$
+
+#### [162-11] 호의 길이의 합
+
+[162-10]과 같은 설정에서 $\beta=\pi/3$ 이고 $\mathrm P=(n/100,0)$ 일 때, 중심각이 $\pi$ 보다 작은 부채꼴 $\mathrm{CPQ}$ 에서 호 $\mathrm{PQ}$ 의 길이를 $l_n$ 이라 하자. $\sum_{n=1}^{99} l_n$ 을 구하여라.
+
+??? success "풀이"
+    점 $\mathrm A=(1,0)$ 이라 하면 두 직각삼각형 $\mathrm{CPA}$, $\mathrm{CQA}$ 는 합동이고 $\angle\mathrm{PCA}=\angle\mathrm{QCA}=\beta/2=\pi/6$. 원의 반지름 $r$ 에 대해 $r\tan(\beta/2)=1-n/100$, 즉
+    $$
+    r=\sqrt 3\!\left(1-\frac{n}{100}\right).
+    $$
+    부채꼴 $\mathrm{CPQ}$ 의 중심각은 $2\cdot(\pi/6)=\pi/3$ 이므로
+    $$
+    l_n=r\cdot \frac{\pi}{3}=\frac{\sqrt 3\,\pi}{3}\!\left(1-\frac{n}{100}\right).
+    $$
+    따라서
+    $$
+    \sum_{n=1}^{99} l_n=\frac{\sqrt 3\,\pi}{3}\!\left(99-\frac{1}{100}\cdot\frac{99\cdot 100}{2}\right)=\frac{\sqrt 3\,\pi}{3}\cdot \frac{99}{2}=\frac{33\sqrt 3\,\pi}{2}.
+    $$
+
+#### [162-12] 부채꼴 넓이와 $\lim S(\beta)\tan\beta$
+
+[162-10]과 같은 설정에서 $\mathrm P=(1/4,0)$ 라 하자. 중심각의 크기가 $\pi$ 보다 작은 부채꼴 $\mathrm{CPQ}$ 의 넓이를 $S(\beta)$ 라 할 때 $\lim_{\beta\to 0+} S(\beta)\tan\beta$ 의 값을 구하여라.
+
+??? success "풀이"
+    $\mathrm P=(1-d,0)$, $d=3/4$ 라 하자. $r\tan(\beta/2)=d$ 이므로 $r=d/\tan(\beta/2)$. 부채꼴의 중심각은 $\beta$ (위 [162-11]과 동일한 논리로 $\mathrm{CPQ}=2\cdot \beta/2=\beta$) 이므로
+    $$
+    S(\beta)=\tfrac12 r^2\beta=\frac{d^2\beta}{2\tan^2(\beta/2)}.
+    $$
+    따라서
+    $$
+    S(\beta)\tan\beta=\frac{d^2\beta\,\tan\beta}{2\tan^2(\beta/2)}=\frac{4d^2(\beta/2)^2\cos^2(\beta/2)\,\sin\beta}{2\sin^2(\beta/2)\,\beta\,\cos\beta}\cdot\frac{1}{1}.
+    $$
+    $\beta\to 0+$ 에서 $\sin\beta/\beta\to 1$, $\sin(\beta/2)/(\beta/2)\to 1$, $\cos(\beta/2),\cos\beta\to 1$ 이므로
+    $$
+    \lim_{\beta\to 0+} S(\beta)\tan\beta=2d^2=2\cdot\!\left(\frac{3}{4}\right)^{\!2}=\frac{9}{8}.
+    $$
+
+#### [162-13] 좌극한·우극한이 다른 거리 함수
+
+실수 $x$ 에 대해 두 점 $(0,1)$, $(x,e^x)$ 사이의 거리를 $d(x)$ 라 하자. 극한 $\lim_{x\to 0} d(x)/x$ 의 수렴/발산을 조사하라 (수렴하면 그 값).
+
+??? success "풀이"
+    $d(x)=\sqrt{x^2+(e^x-1)^2}$. $\lim_{x\to 0}(e^x-1)/x=1$ 임을 이용한다.
+
+    - 우극한: $x>0$ 이면 $d(x)/x=\sqrt{1+\{(e^x-1)/x\}^2}\to \sqrt{1+1}=\sqrt 2$.
+    - 좌극한: $x<0$ 에서 $1/x=-\sqrt{1/x^2}$ 이므로
+        $$
+        \frac{d(x)}{x}=-\sqrt{1+\!\left(\frac{e^x-1}{x}\right)^{\!2}}\to -\sqrt 2.
+        $$
+
+    좌·우 극한이 서로 다르므로 $\lim_{x\to 0} d(x)/x$ 는 존재하지 않는다.
+
+#### [162-14] 접선과 곡선: $l(x)\ge x^p$
+
+$0<p<1$, $c>0$ 인 실수에 대해 곡선 $y=x^p$ ($x\ge 0$) 위의 점 $(c,c^p)$ 에서의 접선의 방정식을 $y=l(x)$ 라 하자. $x\ge 0$ 에서 $l(x)\ge x^p$ 임을 보이고, 이 부등식과 [다] (그래프의 개형 분석)을 이용하여 두 함수 $y=x^p$, $y=l(x)$ 의 그래프를 한 평면에 그려라.
+
+??? success "풀이"
+    $\dfrac{d}{dx}x^p=px^{p-1}$ 이므로 접선은
+    $$
+    l(x)=pc^{p-1}(x-c)+c^p=pc^{p-1}x-(p-1)c^p.
+    $$
+    $f(x)=l(x)-x^p$ 라 하자 ($x>0$). $f'(x)=pc^{p-1}-px^{p-1}=p(c^{p-1}-x^{p-1})$. $0<p<1$ 에서 $x^{p-1}$ 은 감소함수이므로 $0<x<c$ 이면 $x^{p-1}>c^{p-1}$ 즉 $f'(x)<0$, $x>c$ 이면 $f'(x)>0$. 따라서 $f$ 는 $x=c$ 에서 최솟값 $0$ 을 갖고 $f(x)\ge 0$, 즉 $l(x)\ge x^p$. $x=0$ 에서도 $l(0)=(1-p)c^p>0$ 이므로 부등식 성립. 그래프는 $y=x^p$ 가 위로 볼록하면서 증가하고 $y=l(x)$ 가 $(c,c^p)$ 에서 접하면서 위쪽에 놓이는 모양이다.
+
+#### [162-15] 정적분으로 표현된 넓이의 최솟값
+
+$c>0$ 에 대해 두 함수 $y=x^p$, $y=l(x)$ 와 두 직선 $x=0$, $x=1$ 로 둘러싸인 도형의 넓이가 최소가 되는 $c$ 의 값을 구하여라 (단, $0<p<1$ 인 고정된 실수).
+
+??? success "풀이"
+    [162-14]에서 $l(x)\ge x^p$ 이므로 넓이는
+    $$
+    h(c)=\int_0^1 \{pc^{p-1}x-(p-1)c^p-x^p\}\,dx=\frac{p}{2}c^{p-1}-(p-1)c^p-\frac{1}{p+1}.
+    $$
+    $h'(c)=\dfrac{p(p-1)}{2}c^{p-2}-(p-1)p\,c^{p-1}=p(p-1)c^{p-2}\!\left(\dfrac{1}{2}-c\right)$.
+    $0<p<1$ 에서 $p(p-1)<0$, $c^{p-2}>0$ 이므로 $h'(c)$ 의 부호는 $c-1/2$ 와 같다. 즉 $0<c<1/2$ 에서 $h'<0$, $c>1/2$ 에서 $h'>0$. 따라서 $h$ 는 $c=1/2$ 에서 최솟값을 가지므로 답은
+    $$
+    c=\frac{1}{2}.
+    $$
+
+#### [162-16] $\lim_{p\to 0+}\dfrac{S(p)+R(p)}{S(p)}$
+
+$c=1/e$ 일 때, 두 함수 $y=x^p$, $y=l(x)$ 와 직선 $x=0$ 으로 둘러싸인 도형의 넓이를 $S(p)$, 직선 $x=1$ 로 둘러싸인 도형의 넓이를 $R(p)$ 라 하자. 극한 $\lim_{p\to 0+}\dfrac{S(p)+R(p)}{S(p)}$ 의 값을 구하여라.
+
+??? success "풀이"
+    [162-14]에 의해 $0\le x<1/e$ 또는 $x>1/e$ 에서 $l(x)>x^p$ 이므로
+    $$
+    S(p)=\int_0^{1/e}\!\!\{l(x)-x^p\}\,dx,\quad S(p)+R(p)=h(1/e).
+    $$
+    [162-15]의 계산을 $c=1/e$ 까지로 자르면
+    $$
+    S(p)=\frac{p(1-p)}{2(p+1)}\!\left(\frac{1}{e}\right)^{\!p+1}.
+    $$
+    또 [162-15]의 $h$ 식에 $c=1/e$ 대입:
+    $$
+    h\!\left(\tfrac1e\right)=\!\left(\frac{e}{2}p-(p-1)\right)\!\left(\frac{1}{e}\right)^{\!p}-\frac{1}{p+1}.
+    $$
+    두 식의 비를 정리하면
+    $$
+    \frac{S(p)+R(p)}{S(p)}=\frac{e}{1-p}\!\left\{p(e-2)+e-2\cdot\frac{e^p-1}{p}\right\}.
+    $$
+    $p\to 0+$ 에서 $(e^p-1)/p\to 1$, $1-p\to 1$ 이므로
+    $$
+    \lim_{p\to 0+}\frac{S(p)+R(p)}{S(p)}=e\{0+e-2\cdot 1\}=e^2-2e.
+    $$
+
