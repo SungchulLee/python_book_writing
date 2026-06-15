@@ -24002,3 +24002,212 @@ $$f(x) = \begin{cases} x & (-1 \le x < 0) \\ d & (x = 0) \\ \dfrac{a}{2}x^2 + bx
 
 ---
 
+## 카드 185 — 연세대 미래캠 (2023학년도) — 자연·의예 5 문항 · 10 하위문항
+
+연세대학교 미래캠퍼스 2023학년도 대입전형 선행학습 영향평가 결과 보고서에서 발췌. 논술우수자 전형(창의인재) 자연계 문제 1·2·3 (수학Ⅰ·수학Ⅱ·미적분) + 의예과 수학 문제 1·2 (수학Ⅰ·수학Ⅱ·미적분·기하). 자연 2+2+2 + 의예 수학 2+2 = 10 하위문항.
+
+---
+
+### 문항카드 3 — 자연 문제 1 (수학Ⅰ·미적분)
+
+**설정.** 제시문 (가) 샌드위치 정리: 두 수열 $\{x_n\}, \{z_n\}$ 에 대하여 $\displaystyle\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = \alpha$ ($\alpha$ 는 상수) 일 때, 수열 $\{y_n\}$ 이 모든 자연수 $n$ 에 대하여 $x_n \le y_n \le z_n$ 이면 $\displaystyle\lim_{n\to\infty} y_n = \alpha$. 제시문 (나) 무한급수 $\displaystyle\sum_{n=1}^{\infty} x_n$ 의 수렴·발산은 부분합 $S_n = \displaystyle\sum_{k=1}^{n} x_k$ 의 수렴·발산으로 정의.
+
+**【1-1】** 제시문 (가) 를 이용하여 $\displaystyle\lim_{n\to\infty}\!\left(\dfrac{1}{n^2+1} + \dfrac{2}{n^2+2} + \cdots + \dfrac{n}{n^2+n}\right)$ 의 값.
+
+??? success "풀이"
+    자연수 $n$ 에 대하여 $1 \le k \le n$ 이면 $\dfrac{1}{n^2+n} \le \dfrac{1}{n^2+k} \le \dfrac{1}{n^2+1}$. 양변에 $k$ 를 곱하고 $k=1$ 부터 $n$ 까지 더하면
+
+    $\dfrac{1+2+\cdots+n}{n^2+n} \le \displaystyle\sum_{k=1}^n \dfrac{k}{n^2+k} \le \dfrac{1+2+\cdots+n}{n^2+1}$.
+
+    좌·우 극한: $\displaystyle\lim_{n\to\infty}\dfrac{n(n+1)/2}{n^2+n} = \lim_{n\to\infty}\dfrac{n(n+1)}{2n(n+1)} = \dfrac{1}{2}$, $\displaystyle\lim_{n\to\infty}\dfrac{n(n+1)/2}{n^2+1} = \dfrac{1}{2}$.
+
+    제시문 (가) 에 의하여 구하는 극한값 $= \dfrac{1}{2}$.
+
+**【1-2】** 제시문 (나) 를 이용하여 급수 $\displaystyle\sum_{n=1}^{\infty}\dfrac{2}{(2n-1)(2n+3)}$ 의 수렴·발산을 조사하고, 수렴하면 극한값을 구하라.
+
+??? success "풀이"
+    부분분수 분해: $\dfrac{2}{(2n-1)(2n+3)} = \dfrac{1}{2}\!\left(\dfrac{1}{2n-1} - \dfrac{1}{2n+3}\right)$.
+
+    부분합 $S_n = \dfrac{1}{2}\displaystyle\sum_{k=1}^n\!\left(\dfrac{1}{2k-1} - \dfrac{1}{2k+3}\right) = \dfrac{1}{2}\!\left(\dfrac{1}{1} + \dfrac{1}{3} - \dfrac{1}{2n+1} - \dfrac{1}{2n+3}\right)$.
+
+    $\displaystyle\lim_{n\to\infty} S_n = \dfrac{1}{2}\!\left(1 + \dfrac{1}{3}\right) = \dfrac{2}{3}$. 급수는 수렴하고 극한값 $= \dfrac{2}{3}$.
+
+---
+
+### 문항카드 4 — 자연 문제 2 (수학Ⅱ)
+
+**설정.** 제시문 (가) 함수 $h(x)$ 가 $x = x_0$ 에서 연속의 정의 (정의·극한존재·일치). (나) 열린구간에서 연속, 연속함수. (다) 실수 $a, b, c, d$ 와 양수 $k > 0$ 에 대해
+
+$f(x) = \begin{cases} ax+b & (x<-3) \\ -x^2+9 & (-3 \le x < 0) \\ cx+d & (0 \le x) \end{cases}$, $g(x) = k(x-1)+12$.
+
+**【2-1】** $f(x)$ 와 도함수 $f'(x)$ 가 모든 실수에서 연속이도록 하는 $a, b, c, d$ 의 값을 구하고, $f(x)$ 와 $g(x)$ 가 접하도록 하는 양수 $k$ 의 값.
+
+??? success "풀이"
+    $x = -3$ 에서 $f'$ 연속: $\displaystyle\lim_{x\to-3+} f'(x) = -2\cdot(-3) = 6 = \lim_{x\to-3-} f'(x) = a$. $\therefore a = 6$.
+
+    $x = -3$ 에서 $f$ 연속: $0 = -3a + b = -18 + b$. $\therefore b = 18$.
+
+    $x = 0$ 에서 $f'$ 연속: $\displaystyle\lim_{x\to0-} f'(x) = 0 = \lim_{x\to0+} f'(x) = c$. $\therefore c = 0$.
+
+    $x = 0$ 에서 $f$ 연속: $9 = d$. $\therefore d = 9$.
+
+    $f(x)$ 와 $g(x) = kx + (12-k)$ 가 접하는 곳은 $-3 \le x < 0$ 영역 ($f(x) = -x^2+9$): $-x^2 + 9 = kx + 12 - k \Rightarrow x^2 + kx + 3 - k = 0$.
+
+    판별식 $D = k^2 - 4(3-k) = k^2 + 4k - 12 = (k-2)(k+6) = 0$. $k > 0$ 이므로 $k = 2$.
+
+**【2-2】** 위에서 구한 $a, b, c, d, k$ 에 대해, 두 함수 $f(x), g(x)$ 의 그래프와 직선 $y = 0$ 으로 둘러싸인 영역의 넓이.
+
+??? success "풀이"
+    $f$ 와 $y = 0$ 교점: $-x^2 + 9 = 0 \Rightarrow x = -3$ (해당 구간).
+
+    $g(x) = 2x + 10$ 과 $y = 0$ 교점: $2x + 10 = 0 \Rightarrow x = -5$.
+
+    $f$ 와 $g$ 접점: $2x + 10 = -x^2 + 9 \Rightarrow x^2 + 2x + 1 = 0 \Rightarrow x = -1$.
+
+    넓이 $= \displaystyle\int_{-5}^{-3}(2x+10)\,dx + \int_{-3}^{-1}\!\left[(2x+10)-(-x^2+9)\right]dx$
+
+    $= [x^2+10x]_{-5}^{-3} + \displaystyle\int_{-3}^{-1}(x^2+2x+1)\,dx$
+
+    $= (9-30)-(25-50) + \left[\dfrac{x^3}{3}+x^2+x\right]_{-3}^{-1}$
+
+    $= -21+25 + \!\left(-\dfrac{1}{3}+1-1\right)-\!\left(-9+9-3\right) = 4 + \dfrac{8}{3} = \dfrac{20}{3}$.
+
+---
+
+### 문항카드 5 — 자연 문제 3 (수학Ⅰ·수학Ⅱ)
+
+**설정.** 제시문 (가) 평행이동: $h(x,y) = 0$ 을 $x$ 축으로 $a$, $y$ 축으로 $b$ 만큼 평행이동한 식은 $h(x-a, y-b) = 0$. (나) 절댓값의 정의. (다) 극값의 정의. (라) 두 함수
+
+$f(x) = x^3 - 2x^2 - 5, \quad g(x) = \dfrac{5}{2}|f(x-1)+3|$.
+
+**【3-1】** $f(x)$ 에 대해 $y = f\!\left(2\sin\dfrac{x}{5} + 3\right)$ 의 최댓값 $M$, 최솟값 $m$ 일 때 $27m + M$.
+
+??? success "풀이"
+    $t = 2\sin\dfrac{x}{5} + 3$ 이라 하면 모든 실수 $x$ 에 대해 $-2+3 \le t \le 2+3$, 즉 $t \in [1, 5]$.
+
+    $f(t) = t^3 - 2t^2 - 5$, $f'(t) = 3t^2 - 4t = t(3t-4)$. $1 \le t \le 5$ 에서 $f'(t) = 0 \Leftrightarrow t = \dfrac{4}{3}$.
+
+    | $t$ | $1$ | $\cdots$ | $4/3$ | $\cdots$ | $5$ |
+    |---|---|---|---|---|---|
+    | $f'(t)$ | | $-$ | $0$ | $+$ | |
+    | $f(t)$ | $-6$ | $\searrow$ | $-167/27$ | $\nearrow$ | $70$ |
+
+    $f(1) = -6$, $f(4/3) = \dfrac{64}{27} - \dfrac{32}{9} - 5 = \dfrac{64-96-135}{27} = -\dfrac{167}{27}$, $f(5) = 125 - 50 - 5 = 70$.
+
+    $m = -\dfrac{167}{27}$, $M = 70$. $\therefore 27m + M = 27\cdot\!\left(-\dfrac{167}{27}\right) + 70 = -167 + 70 = -97$.
+
+**【3-2】** $g(x)$ 가 극값을 갖는 $x$ 의 값이 $\alpha$ 개. 이때 $g(x)$ 의 극솟값을 모두 더한 값을 $\beta$ 라 하자. $\alpha\beta$.
+
+??? success "풀이"
+    $f(x) = x^3 - 2x^2 - 5$ 의 극값: $f'(x) = x(3x-4) = 0 \Rightarrow x = 0, \dfrac{4}{3}$. $f(0) = -5$ (극대), $f(4/3) = -\dfrac{167}{27}$ (극소).
+
+    $y = f(x-1) + 3$ 은 $y = f(x)$ 를 $x$ 축으로 $1$, $y$ 축으로 $3$ 만큼 평행이동한 그래프. 극대 $x = 1$, 값 $-5 + 3 = -2$. 극소 $x = 7/3$, 값 $-\dfrac{167}{27} + 3 = -\dfrac{86}{27}$.
+
+    $f(x-1) + 3$ 은 단조증가 구간 $x > 7/3$ 에서 $-\dfrac{86}{27}$ 부터 증가하므로 $f(C-1)+3 = 0$ 인 $C > 7/3$ 가 유일하게 존재. $x < C$ 에서 $f(x-1)+3 < 0$, $x > C$ 에서 $f(x-1)+3 > 0$.
+
+    $g(x) = \dfrac{5}{2}|f(x-1)+3|$ 의 증감:
+
+    - $x < 1$ 에서 $g$ 감소 (원래 함수 증가 → 음수 → 절댓값은 감소).
+    - $1 < x < 7/3$ 에서 $g$ 증가.
+    - $7/3 < x < C$ 에서 $g$ 감소.
+    - $x > C$ 에서 $g$ 증가.
+
+    $g$ 는 $x = 1, \, 7/3, \, C$ 에서 극값. $x = 1$ 과 $x = C$ 에서 극소, $x = 7/3$ 에서 극대. $\therefore \alpha = 3$.
+
+    $g(1) = \dfrac{5}{2}|f(0) + 3| = \dfrac{5}{2}|-5+3| = \dfrac{5}{2}\cdot 2 = 5$. $g(C) = 0$.
+
+    $\beta = 5 + 0 = 5$. $\therefore \alpha\beta = 3 \times 5 = 15$.
+
+---
+
+### 문항카드 6 — 의예 문제 1 (수학Ⅰ·수학Ⅱ·미적분·기하)
+
+**설정.** 제시문 (가) $e = 2.71828\ldots$. (나) $f(x) = e^{nx} + e^{-nx}$ ($n = 1, 2, 3, \ldots$) 그래프 위 점 $\mathrm{P}(x, y)$ 에서의 접선의 기울기가 $2n$. 점 $\mathrm{P}$ 를 $y$ 축에 대해 대칭이동한 점을 $\mathrm{Q}$. 원점 $\mathrm{O}$ 와 $\mathrm{P, Q}$ 에 대해 삼각형 $\mathrm{OPQ}$ 의 넓이가 최대일 때의 $\mathrm{P, Q}$ 를 $\mathrm{P'}, \mathrm{Q'}$. (다) $g(x) = \dfrac{1}{n}\ln f(x)$.
+
+**【1-1】** 제시문 (나) 의 점 $\mathrm{P}$ 의 $x$ 좌표를 $a_n$ 이라 할 때 $\displaystyle\lim_{n\to 0}\!\left(\dfrac{1}{a_n}+1\right)^{1/n} = \alpha$. 제시문 (다) 의 $g(x)$ 에 대해 닫힌구간 $[0, k]$ 에서 $g'(x)$ 의 최댓값이 $\dfrac{1}{3}e^{1/\ln\alpha}$ 일 때 $k$ 의 값.
+
+??? success "풀이"
+    $f'(x) = n(e^{nx} - e^{-nx}) = 2n$ → $e^{nx} - e^{-nx} = 2$. $X = e^{nx}$ ($X > 0$) 로 놓으면 $X - X^{-1} = 2 \Rightarrow X^2 - 2X - 1 = 0 \Rightarrow X = 1 \pm \sqrt{2}$. $X > 0$ 이므로 $e^{nx} = 1 + \sqrt{2}$, $a_n = \dfrac{1}{n}\ln(1+\sqrt{2})$.
+
+    $n \to 0$ 이면 $a_n \to \infty$. 치환:
+
+    $\displaystyle\lim_{n\to 0}\!\left(\dfrac{1}{a_n}+1\right)^{1/n} = \lim_{a_n\to\infty}\!\left(\dfrac{1}{a_n}+1\right)^{a_n/\ln(1+\sqrt{2})} = \left[\lim_{a_n\to\infty}\!\left(\dfrac{1}{a_n}+1\right)^{a_n}\right]^{1/\ln(1+\sqrt{2})} = e^{1/\ln(1+\sqrt{2})}$.
+
+    $\therefore \alpha = e^{1/\ln(1+\sqrt{2})}$, $\ln\alpha = \dfrac{1}{\ln(1+\sqrt{2})}$, $\dfrac{1}{\ln\alpha} = \ln(1+\sqrt{2})$.
+
+    $g'(x) = \dfrac{f'(x)}{n f(x)} = \dfrac{e^{nx}-e^{-nx}}{e^{nx}+e^{-nx}} = 1 - \dfrac{2e^{-nx}}{e^{nx}+e^{-nx}}$.
+
+    $x$ 증가 → $e^{nx}+e^{-nx}$ 증가, $e^{-nx}$ 감소 → $\dfrac{2e^{-nx}}{e^{nx}+e^{-nx}}$ 감소 → $g'(x)$ 증가.
+
+    $[0, k]$ 에서 $g'$ 는 $x = k$ 에서 최대: $g'(k) = \dfrac{1}{3}e^{1/\ln\alpha} = \dfrac{1}{3}e^{\ln(1+\sqrt{2})} = \dfrac{1+\sqrt{2}}{3}$.
+
+    $1 - \dfrac{2e^{-nk}}{e^{nk}+e^{-nk}} = \dfrac{1+\sqrt{2}}{3} \Rightarrow \dfrac{2e^{-nk}}{e^{nk}+e^{-nk}} = \dfrac{2-\sqrt{2}}{3} \Rightarrow \dfrac{e^{-nk}}{e^{nk}+e^{-nk}} = \dfrac{2-\sqrt{2}}{6}$.
+
+    $t = \dfrac{2-\sqrt{2}}{6}$ 라 하면 $\dfrac{1}{e^{2nk}+1} = t$, 즉 $e^{2nk} = \dfrac{1-t}{t} = \dfrac{1-(2-\sqrt{2})/6}{(2-\sqrt{2})/6} = \dfrac{4+\sqrt{2}}{2-\sqrt{2}} = \dfrac{(4+\sqrt{2})(2+\sqrt{2})}{(2-\sqrt{2})(2+\sqrt{2})} = \dfrac{10+6\sqrt{2}}{2} = 5+3\sqrt{2}$.
+
+    $\therefore k = \dfrac{1}{2n}\ln(5+3\sqrt{2})$.
+
+**【1-2】** 포물선 $y^2 = 12x$ 위의 점 $(a, b)$ 에서의 접선과 제시문 (나) 의 $f(x)$ 의 점 $\mathrm{Q'}$ 에서의 접선이 서로 수직. 삼각형 $\mathrm{OP'Q'}$ 의 넓이를 $S$ 라 할 때 $S\sqrt{ab}$.
+
+??? success "풀이"
+    $\mathrm{P}$ 의 $x$ 좌표 $a_n = \dfrac{1}{n}\ln(1+\sqrt{2})$, $y$ 좌표 $= e^{n a_n} + e^{-n a_n} = (1+\sqrt{2}) + \dfrac{1}{1+\sqrt{2}} = (1+\sqrt{2}) + (\sqrt{2}-1) = 2\sqrt{2}$.
+
+    $\mathrm{Q} = \!\left(-\dfrac{1}{n}\ln(1+\sqrt{2}),\, 2\sqrt{2}\right)$.
+
+    삼각형 $\mathrm{OPQ}$ 넓이 $= \dfrac{1}{2}\cdot\overline{\mathrm{PQ}}\cdot(\mathrm{P} 의 y 좌표) = \dfrac{1}{2}\cdot\dfrac{2\ln(1+\sqrt{2})}{n}\cdot 2\sqrt{2} = \dfrac{2\sqrt{2}\ln(1+\sqrt{2})}{n}$.
+
+    $n = 1, 2, 3, \ldots$ 이므로 넓이가 최대인 경우는 $n = 1$. 이때 $\mathrm{P'}(\ln(1+\sqrt{2}), 2\sqrt{2})$, $\mathrm{Q'}(-\ln(1+\sqrt{2}), 2\sqrt{2})$.
+
+    $\mathrm{P'}$ 에서의 접선 기울기 $= 2n = 2$. $\mathrm{Q'}$ 에서의 접선은 $\mathrm{P'}$ 에서의 접선을 $y$ 축에 대해 대칭한 것이므로 기울기 $= -2$.
+
+    포물선 $y^2 = 12x$ 위 $(a, b)$ 에서 접선의 기울기: $2yy' = 12 \Rightarrow y' = \dfrac{6}{b}$. 접선: $y - b = \dfrac{6}{b}(x - a)$, 즉 $y = \dfrac{6}{b}x + b - \dfrac{6a}{b} = \dfrac{6}{b}x + \dfrac{b^2 - 6a}{b}$. $b^2 = 12a$ 이므로 $y$ 절편 $= \dfrac{6a}{b}$. 정리: $y = \dfrac{6}{b}x + \dfrac{6a}{b}$.
+
+    $\mathrm{Q'}$ 에서의 접선 기울기 $-2$ 와 수직: $\dfrac{6}{b}\cdot(-2) = -1 \Rightarrow b = 12$. $b^2 = 12a \Rightarrow 144 = 12a \Rightarrow a = 12$.
+
+    삼각형 $\mathrm{OP'Q'}$ 넓이 $S = 2\sqrt{2}\ln(1+\sqrt{2})$ ($n=1$ 에서). $\sqrt{ab} = \sqrt{144} = 12$.
+
+    $\therefore S\sqrt{ab} = 2\sqrt{2}\ln(1+\sqrt{2})\cdot 12 = 24\sqrt{2}\ln(1+\sqrt{2})$.
+
+---
+
+### 문항카드 7 — 의예 문제 2 (수학Ⅰ·미적분)
+
+**설정.** 정삼각형 모양 잔디밭 $\triangle\mathrm{ABC}$. 살수반경 $2\,\mathrm{m}$ 인 스프링클러 2 개를 선분 $\mathrm{AB}$, 선분 $\mathrm{BC}$ 위에 배치. 중심 $\mathrm{O_1}$ 인 원은 점 $\mathrm{A}$ 를 지나고, 중심 $\mathrm{O_2}$ 인 원은 점 $\mathrm{B}$ 를 지나며, 두 원은 서로 접한다. 잔디밭에서 물이 뿌려지지 않은 두 영역 중 큰 영역을 $S_1$, 작은 영역을 $S_2$ 라 하자.
+
+**【2-1】** 영역 $S_1$ 과 $S_2$ 의 넓이.
+
+??? success "풀이"
+    삼각형 $\mathrm{O_1 B O_2}$ 에서 $\overline{\mathrm{O_1 B}} = x$ 라 하면 $\overline{\mathrm{O_1 O_2}} = 4$ (두 원이 접하므로 중심거리 $=$ 반지름의 합 $=4$), $\overline{\mathrm{O_2 B}} = 2$ (원 $\mathrm{O_2}$ 가 $\mathrm{B}$ 를 지나므로), $\angle\mathrm{B} = \pi/3$. 코사인법칙: $4^2 = x^2 + 2^2 - 4x\cos\dfrac{\pi}{3}$, 즉 $16 = x^2 + 4 - 2x \Rightarrow x^2 - 2x - 12 = 0 \Rightarrow x = 1 + \sqrt{13}$ ($x > 0$).
+
+    정삼각형 한 변 길이 $= \overline{\mathrm{O_1 A}} + \overline{\mathrm{O_1 B}} = 2 + (1 + \sqrt{13}) = 3 + \sqrt{13}$.
+
+    **$S_1 + S_2$ 계산.** 영역 $S_1 + S_2$ 는 정삼각형 $\mathrm{ABC}$ 에서 정삼각형 $\mathrm{AO_1 P_1}$ (한 변 $2$, $\angle\mathrm{A} = \pi/3$), 정삼각형 $\mathrm{BO_2 P_2}$ (한 변 $2$), 부채꼴 $\mathrm{O_1 P_1 Q_1}$ (반지름 $2$, 중심각 $2\pi/3$), 부채꼴 $\mathrm{O_2 P_2 Q_2}$ (반지름 $2$, 중심각 $2\pi/3$) 를 뺀 영역:
+
+    $S_1 + S_2 = \dfrac{(\sqrt{13}+3)^2\sqrt{3}}{4} - 2\cdot\dfrac{2^2\sqrt{3}}{4} - 2\cdot\dfrac{1}{2}\cdot 2^2\cdot\dfrac{2\pi}{3} = \dfrac{(22+6\sqrt{13})\sqrt{3}}{4} - 2\sqrt{3} - \dfrac{8\pi}{3} = \dfrac{7\sqrt{3}}{2} + \dfrac{3\sqrt{39}}{2} - \dfrac{8\pi}{3}$.
+
+    **$S_2$ 계산.** 보조선: $\mathrm{O_2}$ 에서 $\mathrm{AB}$ 로 내린 수선의 발 $\mathrm{H}$. 직각삼각형 $\mathrm{HO_1 O_2}$ 에서 $\overline{\mathrm{O_1 H}} = \overline{\mathrm{O_1 B}} - \overline{\mathrm{HB}} = (1+\sqrt{13}) - 1 = \sqrt{13}$, $\overline{\mathrm{O_2 H}} = \sqrt{3}$. 두 원의 접점을 $\mathrm{D}$. 부채꼴 $\mathrm{O_1 Q_1 D}$ 의 중심각이 $\theta$ 이면 부채꼴 $\mathrm{O_2 P_2 D}$ 의 중심각은 $\dfrac{\pi}{3} - \theta$. 영역 $S_2$ 는 직각삼각형 $\mathrm{HO_1 O_2}$ 에서 직각삼각형 $\mathrm{HO_2 P_2}$ (밑변 $\overline{\mathrm{HP_2}} = 1$, 높이 $\sqrt{3}$), 부채꼴 $\mathrm{O_1 Q_1 D}$, 부채꼴 $\mathrm{O_2 P_2 D}$ 를 뺀 영역:
+
+    $S_2 = \dfrac{1}{2}\cdot\sqrt{13}\cdot\sqrt{3} - \dfrac{1}{2}\cdot 1\cdot\sqrt{3} - \dfrac{1}{2}\cdot 2^2\cdot\theta - \dfrac{1}{2}\cdot 2^2\cdot\!\left(\dfrac{\pi}{3} - \theta\right) = \dfrac{\sqrt{39}}{2} - \dfrac{\sqrt{3}}{2} - \dfrac{2\pi}{3}$.
+
+    **$S_1$ 계산.** $S_1 = (S_1 + S_2) - S_2 = \!\left(\dfrac{7\sqrt{3}}{2} + \dfrac{3\sqrt{39}}{2} - \dfrac{8\pi}{3}\right) - \!\left(\dfrac{\sqrt{39}}{2} - \dfrac{\sqrt{3}}{2} - \dfrac{2\pi}{3}\right) = 4\sqrt{3} + \sqrt{39} - 2\pi$.
+
+    $\therefore S_1 = 4\sqrt{3} + \sqrt{39} - 2\pi$, $S_2 = \dfrac{\sqrt{39}}{2} - \dfrac{\sqrt{3}}{2} - \dfrac{2\pi}{3}$.
+
+**【2-2】** 영역 $S_1$ 에 물을 뿌리기 위해 점 $\mathrm{C}$ 에 새로운 급수 노즐을 놓고자 한다. 이 노즐의 살수반경의 최솟값을 $r$ 이라 할 때 $r^2$.
+
+??? success "풀이"
+    살수반경의 최솟값 $r$ 은 $\overline{\mathrm{CP_1}}$ 과 $\overline{\mathrm{CD}}$ 중 큰 값. ($\mathrm{P_1}$ 은 원 $\mathrm{O_1}$ 의 변 $\mathrm{AC}$ 와의 접점, $\mathrm{D}$ 는 두 원의 접점.)
+
+    **$\overline{\mathrm{CP_1}}^2$ 계산.** $\overline{\mathrm{CP_1}} = (정삼각형 한 변) - \overline{\mathrm{AP_1}} = (3+\sqrt{13}) - 2 = 1 + \sqrt{13}$. $\overline{\mathrm{CP_1}}^2 = (1+\sqrt{13})^2 = 14 + 2\sqrt{13}$.
+
+    **$\overline{\mathrm{CD}}^2$ 계산.** 삼각형 $\mathrm{O_2 CD}$ 에 코사인법칙. $\overline{\mathrm{O_2 C}} = \sqrt{13} + 1$ (변 $\mathrm{BC}$ 위의 $\mathrm{O_2}$ 에서 $\mathrm{C}$ 까지: $(3+\sqrt{13}) - 2 = 1+\sqrt{13}$), $\overline{\mathrm{O_2 D}} = 2$, $\angle\mathrm{CO_2 D} = \theta + \dfrac{\pi}{3}$ (여기서 직각삼각형 $\mathrm{HO_1 O_2}$ 에서 $\sin\theta = \dfrac{\sqrt{3}}{4}$, $\cos\theta = \dfrac{\sqrt{13}}{4}$).
+
+    삼각함수의 덧셈정리: $\cos\!\left(\theta + \dfrac{\pi}{3}\right) = \cos\theta\cos\dfrac{\pi}{3} - \sin\theta\sin\dfrac{\pi}{3} = \dfrac{1}{2}\!\left(\dfrac{\sqrt{13}}{4} - \sqrt{3}\cdot\dfrac{\sqrt{3}}{4}\right) = \dfrac{\sqrt{13}-3}{8}$.
+
+    $\overline{\mathrm{CD}}^2 = (1+\sqrt{13})^2 + 2^2 - 2\cdot(1+\sqrt{13})\cdot 2\cdot\cos\!\left(\theta + \dfrac{\pi}{3}\right) = (14+2\sqrt{13}) + 4 - 4(1+\sqrt{13})\cdot\dfrac{\sqrt{13}-3}{8}$
+
+    $= 18 + 2\sqrt{13} - \dfrac{(1+\sqrt{13})(\sqrt{13}-3)}{2} = 18 + 2\sqrt{13} - \dfrac{\sqrt{13} - 3 + 13 - 3\sqrt{13}}{2} = 18 + 2\sqrt{13} - \dfrac{10 - 2\sqrt{13}}{2} = 18 + 2\sqrt{13} - 5 + \sqrt{13} = 13 + 3\sqrt{13}$.
+
+    **크기 비교.** $\overline{\mathrm{CD}}^2 - \overline{\mathrm{CP_1}}^2 = (13+3\sqrt{13}) - (14+2\sqrt{13}) = \sqrt{13} - 1 > 0$. $\therefore \overline{\mathrm{CD}} > \overline{\mathrm{CP_1}}$ 이므로 $r^2 = \overline{\mathrm{CD}}^2 = 13 + 3\sqrt{13}$.
+
+---
