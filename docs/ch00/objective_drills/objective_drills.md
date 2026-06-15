@@ -25815,3 +25815,105 @@ $$Y = f(X) = 2^{2k} X^2 - 2^{2k+1} X + 2^{2k} = 4^k (X - 1)^2, \quad 0 \le X \le
 
 ---
 
+## 카드 195 — 건국대 (2024) — 자연계 A 수학 1 문항카드 · 4 하위문항
+
+> **출처.** 2024학년도 건국대학교 입학전형 선행학습 영향평가 평가보고서 — KU 논술 우수자 전형. 문항카드 3 (자연계 A) 문제 1, 2, 3, 4. 곡선의 길이·순열·합성함수 미분·코사인법칙.
+
+---
+
+**제시문 1.** $x = a$ 에서 $x = b$ 까지 곡선 $y = f(x)$ 의 길이 $l = \int_a^b \sqrt{1 + (f'(x))^2}\, dx$. 원 $S$ 는 중심 $\!\left(0, \dfrac{\sqrt{13}}{3}\right)$, 반지름 $1$. 원점에서 바라볼 때 점 $\mathrm{A}, \mathrm{B}$ 는 원 $S$ 에 가려서 안 보이고 점 $\mathrm{C}, \mathrm{D}$ 는 보인다.
+
+**【1】** 원점에서 제 $1$ 사분면의 곡선 $y = \dfrac{1}{6}x^3 + \dfrac{1}{2x}$ 위 점들을 바라볼 때, 원 $S$ 에 가려지지 않고 보이는 점들로 이루어진 곡선의 길이를 구하시오.
+
+??? success "풀이"
+    원에 대한 접선 $y = mx$ (제 $1$ 사분면 통과): 중심 $\!(0, \sqrt{13}/3)$ 까지 거리 $= 1$:
+    
+    $$\dfrac{|\sqrt{13}/3|}{\sqrt{m^2 + 1}} = 1 \Rightarrow m^2 + 1 = 13/9 \Rightarrow m^2 = 4/9 \Rightarrow m = 2/3.$$
+    
+    접선과 곡선의 교점: $\dfrac{2}{3}x = \dfrac{1}{6}x^3 + \dfrac{1}{2x} \Rightarrow 4x^2 = x^4 + 3 \Rightarrow x^4 - 4x^2 + 3 = 0 \Rightarrow (x^2 - 1)(x^2 - 3) = 0 \Rightarrow x = 1, \sqrt{3}$ (제 $1$ 사분면).
+    
+    $y' = \dfrac{x^2}{2} - \dfrac{1}{2x^2}$. 항등식 $\!\left(\dfrac{x^2}{2} + \dfrac{1}{2x^2}\right)^2 = \!\left(\dfrac{x^2}{2} - \dfrac{1}{2x^2}\right)^2 + 1$ 에서
+    
+    $$\sqrt{1 + (y')^2} = \dfrac{x^2}{2} + \dfrac{1}{2x^2}.$$
+    
+    곡선의 길이:
+    
+    $$\int_1^{\sqrt{3}} \!\left(\dfrac{x^2}{2} + \dfrac{1}{2x^2}\right) dx = \!\left[\dfrac{x^3}{6} - \dfrac{1}{2x}\right]_1^{\sqrt{3}} = \!\left(\dfrac{\sqrt{3}}{2} - \dfrac{1}{2\sqrt{3}}\right) - \!\left(\dfrac{1}{6} - \dfrac{1}{2}\right) = \dfrac{\sqrt{3}}{3} + \dfrac{1}{3} = \dfrac{1 + \sqrt{3}}{3}.$$
+
+---
+
+**제시문 2.** $n$ 개 중에서 서로 같은 것이 각각 $p, q, \ldots, r$ 개씩 있을 때, $n$ 개를 일렬로 나열하는 순열의 수 $\dfrac{n!}{p! \cdot q! \cdots r!}$ ($p + q + \cdots + r = n$). 문자 $\mathrm{A}$ $3$ 개, $\mathrm{B}$ $4$ 개, $\mathrm{C}$ $3$ 개, $\mathrm{D}$ $2$ 개로 이루어진 $12$ 개 문자를 일렬로 나열.
+
+**【2】** 
+
+(1) [조건 1] 문자 $\mathrm{D}$ 가 연속하여 나오지 않도록 나열하는 방법의 수.
+
+(2) [조건 2] 처음 나오는 $\mathrm{A}$ 가 처음 나오는 $\mathrm{B}$ 보다 먼저 나오도록 나열하는 방법의 수.
+
+??? success "풀이"
+    **(1)** 전체 배열 수: $\dfrac{12!}{3! \cdot 4! \cdot 3! \cdot 2!} = 277{,}200$. $\mathrm{D}$ 가 연속하는 경우 ($\mathrm{DD}$ 를 하나로 묶음): $\dfrac{11!}{3! \cdot 4! \cdot 3! \cdot 1!} = 46{,}200$. 차이 $= 277{,}200 - 46{,}200 = 231{,}000$.
+    
+    **(2)** 
+    
+    - 1단계: $12$ 자리 중 $\mathrm{A}$ ($3$ 개), $\mathrm{B}$ ($4$ 개) 가 들어갈 $7$ 자리를 선택. $\dbinom{12}{7} = 792$.
+    - 2단계: 선택된 $7$ 자리 중 가장 왼쪽은 $\mathrm{A}$ (조건). 나머지 $6$ 자리에 $\mathrm{A}$ $2$ 개, $\mathrm{B}$ $4$ 개. $\dfrac{6!}{2! \cdot 4!} = 15$.
+    - 3단계: 남은 $5$ 자리에 $\mathrm{C}$ $3$ 개, $\mathrm{D}$ $2$ 개. $\dfrac{5!}{3! \cdot 2!} = 10$.
+    
+    합 $= 792 \times 15 \times 10 = 118{,}800$.
+
+---
+
+**제시문 3.** 두 함수 $y = f(x), y = g(x)$ 가 $[a, b]$ 에서 연속일 때 두 곡선과 $x = a, x = b$ 로 둘러싸인 도형의 넓이 $S = \int_a^b |f(x) - g(x)|\, dx$. 색칠된 도형은 두 곡선 $y = e^{2x}, y = e^{-(x-t)} + 1$ 과 $y$ 축으로 둘러싸인 도형, $S(t)$ 는 이 도형의 넓이 ($t > 0$).
+
+**【3】** $t = \ln 6$ 에서의 미분계수 $S'(\ln 6)$ 을 구하시오.
+
+??? success "풀이"
+    두 곡선의 교점 $x = a$ ($a > 0$): $e^{2a} = e^{-(a-t)} + 1$.
+    
+    $$S(t) = \int_0^a \!\left(e^{-(x-t)} + 1 - e^{2x}\right) dx.$$
+    
+    라이프니츠 적분법: $\dfrac{d}{dt} \int_0^a F(x, t)\, dx = F(a, t) \cdot \dfrac{da}{dt} + \int_0^a \dfrac{\partial F}{\partial t}\, dx$.
+    
+    경계항: $F(a, t) = e^{-(a-t)} + 1 - e^{2a} = 0$ (교점 정의에서).
+    
+    내부: $\dfrac{\partial}{\partial t}(e^{-(x-t)}) = e^{-(x-t)}$.
+    
+    $$\int_0^a e^{-(x-t)}\, dx = e^t \cdot (1 - e^{-a}) = e^t - e^{t-a} = e^t - e^{-(a-t)}.$$
+    
+    $$S'(t) = e^t - e^{-(a-t)}.$$
+    
+    $t = \ln 6$ 에서 $a$ 구하기: $e^{2a} = 6 e^{-a} + 1$. $b = e^a$ 라 하면 $b^3 = 6 + b$, 즉 $b^3 - b - 6 = 0$. $(b - 2)(b^2 + 2b + 3) = 0$ → $b = 2$, $a = \ln 2$.
+    
+    $S'(\ln 6) = e^{\ln 6} - e^{-(\ln 2 - \ln 6)} = 6 - e^{\ln 3} = 6 - 3 = 3$.
+
+---
+
+**제시문 4.** 사인·코사인·탄젠트 함수 정의. 도형 $A$ 는 네 점 $(0,0), (1,0), (1,1), (0,1)$ 이 꼭짓점인 정사각형. 점 $\mathrm{P}$ 는 제 $2$ 사분면, 중심이 원점, 반지름 $3$ 인 원 위. $\alpha$ 는 점 $\mathrm{P}$ 에서 $A$ 를 바라본 각의 크기 (정사각형의 양 끝점 사이의 시각).
+
+**【4】** $\cos\alpha$ 가 최소가 될 때의 점 $\mathrm{P}$ 의 좌표와 $\cos\alpha$ 를 구하시오.
+
+??? success "풀이"
+    점 $\mathrm{P}$ 에서 정사각형 $A$ 의 두 시각 끝점은 $\mathrm{P}$ 의 위치에 따라 결정. $|\mathrm{OP}| = 3$.
+    
+    **경우 1**: $\mathrm{P}$ 의 $y$ 좌표 $\le 1$. 시각 끝점은 $(0, 0)$ 과 $(0, 1)$ (정사각형 왼쪽 변). 점 $(0, 1)$ 까지 거리 $d$. 코사인법칙: $\cos\alpha = \dfrac{9 + d^2 - 1}{6d} = \dfrac{4}{3d} + \dfrac{d}{6} \ge 2\sqrt{\dfrac{4}{3 \cdot 6}} = \dfrac{2\sqrt{2}}{3}$ (AM-GM).
+    
+    **경우 2**: $\mathrm{P}$ 의 $y$ 좌표 $> 1$. 시각 끝점은 $(0, 0)$ 과 $(1, 1)$ (정사각형 대각). 점 $(1, 1)$ 까지 거리 $d$. $\cos\alpha = \dfrac{9 + d^2 - 2}{6d} = \dfrac{7}{6d} + \dfrac{d}{6} \ge 2\sqrt{\dfrac{7}{6 \cdot 6}} = \dfrac{\sqrt{7}}{3}$.
+    
+    $\dfrac{\sqrt{7}}{3} \approx 0.882 < \dfrac{2\sqrt{2}}{3} \approx 0.943$ 이므로 최솟값 $\cos\alpha = \dfrac{\sqrt{7}}{3}$ (경우 2).
+    
+    등호: $\dfrac{7}{6d} = \dfrac{d}{6} \Rightarrow d = \sqrt{7}$.
+    
+    $\mathrm{Q}(1, 1)$, $|\mathrm{OQ}| = \sqrt{2}$, $|\mathrm{OP}| = 3$, $|\mathrm{PQ}| = \sqrt{7}$. $\angle\mathrm{POQ} = \theta$:
+    
+    $$\cos\theta = \dfrac{9 + 2 - 7}{6\sqrt{2}} = \dfrac{4}{6\sqrt{2}} = \dfrac{\sqrt{2}}{3}, \quad \sin\theta = \dfrac{\sqrt{7}}{3} \quad (0 \le \theta \le \pi/2).$$
+    
+    $\mathrm{Q}$ 의 편각은 $\pi/4$. $\mathrm{P}$ 는 제 $2$ 사분면이므로 $\mathrm{Q}$ 보다 $\theta$ 만큼 반시계 방향, 편각 $\theta + \pi/4$:
+    
+    $$\mathrm{P}_x = 3\cos(\theta + \pi/4) = 3\!\left(\dfrac{\sqrt{2}}{3} \cdot \dfrac{1}{\sqrt{2}} - \dfrac{\sqrt{7}}{3} \cdot \dfrac{1}{\sqrt{2}}\right) = 1 - \dfrac{\sqrt{14}}{2},$$
+    
+    $$\mathrm{P}_y = 3\sin(\theta + \pi/4) = 3\!\left(\dfrac{\sqrt{7}}{3} \cdot \dfrac{1}{\sqrt{2}} + \dfrac{\sqrt{2}}{3} \cdot \dfrac{1}{\sqrt{2}}\right) = \dfrac{\sqrt{14}}{2} + 1.$$
+    
+    $\mathrm{P}\!\left(1 - \dfrac{\sqrt{14}}{2}, 1 + \dfrac{\sqrt{14}}{2}\right)$, $\cos\alpha = \dfrac{\sqrt{7}}{3}$.
+
+---
+
