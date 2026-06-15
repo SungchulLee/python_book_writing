@@ -23045,3 +23045,233 @@ $f$ 는 $\mathbb R \to \mathbb R$ 의 일대일대응이고 역함수 $h$ 가 �
     답: $n = 6$.
 
 ---
+
+## 카드 181 — 서강대 (2023학년도) — 자연계 4 문항카드 · 16 하위문항
+
+서강대학교 2023학년도 대입전형 선행학습 영향평가 자체평가보고서에서 발췌. 자연계 논술 1차·2차 각 2 문항씩, 총 4 문항카드 (확률과 통계 + 수학·수학Ⅰ·수학Ⅱ·미적분) × 4 하위문항 = 16 하위문항.
+
+---
+
+### 문항카드 5 — 자연 1차/1번 (확률과 통계)
+
+**설정.** 제시문: 중복조합 $_n\mathrm{H}_r = {}_{n+r-1}\mathrm{C}_r$, 이항정리, 확률질량함수 성질, 기댓값, 이항분포의 정규근사 $X \sim B(n, p) \to N(np, npq)$ ($q = 1 - p$).
+
+**【1-1】** 상자 속에 $0$ 부터 $10$ 까지의 정수 중 하나를 적은 종이 여러 장이 들어있고, 임의로 꺼낸 종이의 숫자를 $X$ 라 할 때 $P(X = i) = {}_{11-i}\mathrm{H}_i\cdot{}_{11-i}\mathrm{H}_i / {}_d\mathrm{H}_{10}$ ($i = 0, 1, \ldots, 10$) 일 때 자연수 $d$.
+
+??? success "풀이"
+    $_{n}\mathrm{H}_r = {}_{n+r-1}\mathrm{C}_r$ → $_{11-i}\mathrm{H}_i = {}_{10}\mathrm{C}_i$, $_d\mathrm{H}_{10} = {}_{d+9}\mathrm{C}_{10}$. 확률 총합 $= 1$:
+
+    $\displaystyle\sum_{i=0}^{10}\dfrac{({}_{10}\mathrm{C}_i)^2}{{}_{d+9}\mathrm{C}_{10}} = 1 \Rightarrow \sum_{i=0}^{10}({}_{10}\mathrm{C}_i)^2 = {}_{d+9}\mathrm{C}_{10}$.
+
+    Vandermonde 항등식 $(1+x)^{10}(1+x)^{10} = (1+x)^{20}$ 에서 $x^{10}$ 의 계수: $\displaystyle\sum_{i=0}^{10}{}_{10}\mathrm{C}_i\cdot{}_{10}\mathrm{C}_{10-i} = \sum({}_{10}\mathrm{C}_i)^2 = {}_{20}\mathrm{C}_{10}$.
+
+    $\therefore d + 9 = 20$, $d = 11$.
+
+**【1-2】** $P(Y = i) = ({}_{21}\mathrm{C}_{2i+1}/b)s^{20-2i}(1 - s)^{2i+1}$ ($i = 0, 1, \ldots, 10$), $0 < s < 1$. $b$ 를 $s$ 의 식으로.
+
+??? success "풀이"
+    $\displaystyle\sum_{i=0}^{10}P(Y = i) = 1 \Rightarrow b = \sum_{i=0}^{10}{}_{21}\mathrm{C}_{2i+1}\,s^{20-2i}(1-s)^{2i+1}$.
+
+    이항정리: $\{s + (1-s)\}^{21} = \displaystyle\sum_{k=0}^{21}{}_{21}\mathrm{C}_k\,s^{21-k}(1-s)^k = 1$. $\{s - (1-s)\}^{21} = (2s-1)^{21} = \displaystyle\sum_{k=0}^{21}{}_{21}\mathrm{C}_k\,s^{21-k}(-(1-s))^k = \sum(-1)^k{}_{21}\mathrm{C}_k\,s^{21-k}(1-s)^k$.
+
+    두 합의 차 $= 2\cdot$ ($k$ 홀수인 항의 합), 즉
+
+    $1 - (2s - 1)^{21} = 2\!\sum_{k \text{ 홀수}}{}_{21}\mathrm{C}_k\,s^{21-k}(1-s)^k$.
+
+    $k = 2i + 1$ 치환 → $\displaystyle\sum_{i=0}^{10}{}_{21}\mathrm{C}_{2i+1}\,s^{20-2i}(1-s)^{2i+1} = \dfrac{1 - (2s-1)^{21}}{2}$.
+
+    $\therefore b = \dfrac{1 - (2s - 1)^{21}}{2}$.
+
+**【1-3】** $0$ 이 $50$ 장, $1$ 이 $50$ 장 든 상자에서 종이를 꺼내 확인하고 다시 집어넣는 시행을 $10$ 회 반복. $1$ 이 나온 횟수 $i$ 에 따른 상금 $g(i)$ 가 표와 같을 때 상금의 기댓값.
+
+| $i$ | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|-----|---|---|---|---|---|---|---|---|---|---|----|
+| $g(i)$ | 2 | 1 | 5 | 7 | 17 | 31 | 65 | 127 | 257 | 511 | 1025 |
+
+??? success "풀이"
+    $X \sim B(10, 1/2)$, $P(X = i) = {}_{10}\mathrm{C}_i/2^{10}$. 표에서 $g(i) = 2^i + (-1)^i$ (체크: $i = 0: 1 + 1 = 2$, $i = 1: 2 - 1 = 1$, $i = 2: 4 + 1 = 5$, $i = 3: 8 - 1 = 7$, ...). ✓
+
+    $E[g(X)] = \dfrac{1}{2^{10}}\!\left[\displaystyle\sum_{i=0}^{10}{}_{10}\mathrm{C}_i\cdot 2^i + \sum_{i=0}^{10}{}_{10}\mathrm{C}_i\cdot(-1)^i\right] = \dfrac{(1+2)^{10} + (1-1)^{10}}{2^{10}} = \dfrac{3^{10}}{2^{10}} = \dfrac{59049}{1024}$.
+
+**【1-4】** $0$ 이 $90$ 장, $1$ 이 $10$ 장 든 상자에서 $100$ 회 시행. $1$ 이 나온 횟수가 $k$ 이상이면 상금. 상금 받을 확률이 $23\%$ 이상이 되는 자연수 $k$ 의 최댓값 (정규근사표 활용).
+
+??? success "풀이"
+    $X \sim B(100, 1/10)$, 정규근사 $N(10, 9)$. $Z = (X - 10)/3 \sim N(0, 1)$.
+
+    $P(X \ge k) = P(Z \ge (k-10)/3) \ge 0.23$. 표에서 $P(0 \le Z \le z) \ge 0.27 \Leftrightarrow P(Z \ge z) \le 0.23$, $z \approx 0.74$. 즉 $P(Z \ge z) = 0.23$ 일 때 $z \approx 0.74$. (정확히는 표 활용)
+
+    표에서 $P(0 \le Z \le 0.7) = 0.2580$, 즉 $P(Z \ge 0.7) = 0.2420 > 0.23$. → $(k-10)/3 \le 0.7$, $k \le 12.1$. 자연수 $k$ 의 최댓값 $= 12$.
+
+    검증 ($k = 13$): $P(X \ge 13) = P(Z \ge 1) = 0.1587 < 0.23$. ✓
+
+---
+
+### 문항카드 6 — 자연 1차/2번 (수학·수학Ⅰ·수학Ⅱ·미적분)
+
+**설정.** 사인법칙 넓이, 미분계수·접선, $\lim\sin x/x = 1$, 점과 직선 사이 거리 공식.
+
+**【2-1】** 원점 $O$ 인 좌표평면 위 $P(\cos t, \sin t)$, $Q(2\cos(t^2 + t), 2\sin(t^2 + t))$. 세 점 $O, P, Q$ 가 한 직선 위에 있지 않을 때 삼각형 $OPQ$ 의 넓이 $S(t)$ (한 직선 위에 있을 때 $S(t) = 0$). $-\sqrt{2\pi} < t < \sqrt{2\pi}$ 일 때 $S(t)$.
+
+??? success "풀이"
+    $\angle POQ = (t^2 + t) - t = t^2$, $|OP| = 1, |OQ| = 2$.
+
+    $t^2 = 0$ 또는 $t^2 = \pi$ → 일직선. $0 < t^2 < \pi$: 삼각형 → $S(t) = \dfrac{1}{2}\cdot 1\cdot 2\cdot |\sin(t^2)| = |\sin t^2| = \sin t^2$. $\pi < t^2 < 2\pi$ ($t^2$ 는 음의 사인): $\sin(t^2) < 0$, $S(t) = -\sin(t^2) = |\sin t^2|$.
+
+    $\therefore S(t) = |\sin(t^2)|$ on $-\sqrt{2\pi} < t < \sqrt{2\pi}$.
+
+**【2-2】** $S(t)$ 가 미분가능하지 않은 실수 $t$ ($-\sqrt{2\pi} < t < \sqrt{2\pi}$).
+
+??? success "풀이"
+    $|\sin u|$ 는 $\sin u = 0$ 에서만 미분불가, 다른 데서는 미분가능. $\sin t^2 = 0 \Leftrightarrow t^2 = 0, \pi, 2\pi$. $-\sqrt{2\pi} < t < \sqrt{2\pi}$ 범위에서 $t = 0, \pm\sqrt{\pi}$.
+
+    $t = 0$ 부근: $\sin(h^2)/h = h\cdot \sin(h^2)/h^2 \to 0$ ($h \to 0$). 미분가능 ($S'(0) = 0$).
+
+    $t = \sqrt{\pi}$ 부근: $S(t) = |\sin t^2|$. 우극한 ($t^2 > \pi$): $-\sin(t^2)$ 의 미분 = $-2t\cos t^2$, $t = \sqrt{\pi}$ 에서 $2\sqrt{\pi}$. 좌극한: $\sin(t^2)$ 의 미분 = $2t\cos t^2 = -2\sqrt{\pi}$. 좌우극한 다름 → 미분불가.
+
+    대칭으로 $t = -\sqrt{\pi}$ 도 미분불가.
+
+    $\therefore t = \pm\sqrt{\pi}$.
+
+**【2-3】** $a > 1$ 인 실수에 대해 $R(a, 1/a)$ ($y = 1/x$ 위 점). $x$ 축 양의 방향과 반직선 $\overline{OR}$ 이 이루는 각 $\theta$. $R$ 에서의 접선이 원 $x^2 + y^2 = \sqrt{3}$ 과 만날 $\theta$ 의 범위.
+
+??? success "풀이"
+    $\overline{OR}$ 의 기울기 $= 1/a^2 = \tan\theta$, 즉 $a^2 = \cot\theta$.
+
+    $y = 1/x$ 의 $R$ 에서 접선: $y - 1/a = -(1/a^2)(x - a)$, 즉 $x + a^2 y - 2a = 0$.
+
+    원의 중심 $(0, 0)$ 과 접선 거리 $= 2a/\sqrt{1 + a^4}$. 원과 만나기 위해 (두 점에서 또는 접) 거리 $\le 3^{1/4}$:
+
+    $2a/\sqrt{1 + a^4} \le 3^{1/4} \Rightarrow 4a^2 \le \sqrt{3}(1 + a^4) \Rightarrow \sqrt{3}a^4 - 4a^2 + \sqrt{3} \ge 0$.
+
+    인수분해: $(\sqrt{3}a^2 - 1)(a^2 - \sqrt{3}) \ge 0$. $a > 1$ → $a^2 > 1 > 1/\sqrt{3}$, 첫 인수 양수. → $a^2 \ge \sqrt{3}$, 즉 $\cot\theta \ge \sqrt{3}$.
+
+    $a > 1$ → $1/a^2 < 1$, $0 < \theta < \pi/4$. $\cot\theta \ge \sqrt{3} \Rightarrow \tan\theta \le 1/\sqrt{3} \Rightarrow 0 < \theta \le \pi/6$.
+
+**【2-4】** (2-3)의 점 $R$ 접선과 원이 서로 다른 두 점 $A, B$ 에서 만날 때 선분 $\overline{AB}$ 의 길이 $l(\theta)$. $\displaystyle\lim_{\theta\to 0^+}\dfrac{\{l(\theta)\}^2 - 4\sqrt{3}}{\theta}$.
+
+??? success "풀이"
+    $T$ 는 원점 $O$ 에서 접선 $x + a^2 y - 2a = 0$ 위로의 수선의 발. $|OT| = 2a/\sqrt{1+a^4}$. 직각삼각형 $OTA$: $\{l(\theta)/2\}^2 = \sqrt{3} - 4a^2/(1+a^4)$, 즉
+
+    $\{l(\theta)\}^2 - 4\sqrt{3} = -\dfrac{16a^2}{1 + a^4} = -\dfrac{16\cot\theta}{1 + \cot^2\theta} = -\dfrac{16\cot\theta}{\csc^2\theta} = -16\sin^2\theta\cot\theta = -16\sin\theta\cos\theta$.
+
+    $\displaystyle\lim_{\theta\to 0^+}\dfrac{-16\sin\theta\cos\theta}{\theta} = -16\cdot\lim_{\theta\to 0}\dfrac{\sin\theta}{\theta}\cdot \cos\theta = -16$.
+
+---
+
+### 문항카드 7 — 자연 2차/1번 (수학·수학Ⅰ·미적분)
+
+**설정.** 점과 직선 거리 공식, 부채꼴 호의 길이·넓이 $l = r\theta, S = r^2\theta/2 = rl/2$, $\lim\sin x/x = 1$.
+
+**【1-1】** 좌표평면 위 세 점 $O(0, 0), A, B$. 직선 $\overline{OA}, \overline{AB}$ 가 $x$ 축의 양의 방향과 이루는 각이 각각 $\alpha = \pi/12, \beta = \pi/4$. $|\overline{OA}| = |\overline{AB}| = 1$. 직선 $\overline{OB}$ 에 수직인 직선의 기울기.
+
+??? success "풀이"
+    이등변삼각형 $OAB$: $A$ 에서 외각 $\beta - \alpha = \pi/6$ → 두 밑각 (= $\angle AOB = \angle ABx$) 의 크기 $(\beta - \alpha)/2 = \pi/12$.
+
+    직선 $\overline{OB}$ 와 $x$ 축의 양의 방향이 이루는 각 = $\alpha + \angle AOB = \pi/12 + \pi/12 = \pi/6$.
+
+    수직 직선의 기울기 $= \tan(\pi/2 + \pi/6) = -\cot(\pi/6) = -\sqrt{3}$.
+
+**【1-2】** 점 $(1, 0)$ 을 지나고 $x$ 축의 양의 방향과 이루는 각이 $\beta = \pi/3$ 인 직선 $s$. 중심 $C(a, b)$ 인 원이 $x$ 축과 직선 $s$ 에 동시에 접하는 ($a < 1, b > 0$) 모든 원들의 중심을 지나는 직선의 방정식. 그리고 $x$ 축, 직선 $s$, 직선 $y = 5x/12$ 로 이루어진 삼각형에 내접하는 원의 반지름.
+
+??? success "풀이"
+    중심의 자취: $(1, 0)$ 에서 두 변까지의 각 이등분선. 점 $C$ 는 $x$ 축에서 거리 $b$, 직선 $s$ 에서 같은 거리. $\beta = \pi/3, \alpha = 0$ (x축) → 이등분선의 기울기는 (1-1) 풀이 ($\alpha = 0, \beta = \pi/3$) 적용 → $-\cot(\pi/6) = -\sqrt{3}$. 직선 $y = -\sqrt{3}(x - 1)$.
+
+    삼각형의 내접원: $x$ 축, 직선 $s$ ($5\sqrt{3}x - 5y - 5\sqrt{3} = 0$ wait, $s: y = \sqrt{3}(x - 1) \Rightarrow \sqrt{3}x - y - \sqrt{3} = 0$), 직선 $y = 5x/12$ ($5x - 12y = 0$) 의 교점들.
+
+    중심 $C$ 는 자취 $y = -\sqrt{3}(x - 1)$ 위 점 = $(1 - b/\sqrt{3}, b)$. 직선 $5x - 12y = 0$ 까지의 거리 = $b$ (= 반지름):
+
+    $\dfrac{|5(1 - b/\sqrt{3}) - 12b|}{13} = b \Rightarrow |5(1 - b/\sqrt{3}) - 12b| = 13b$.
+
+    부호 분석 ($x$ 좌표 $a = 1 - b/\sqrt{3} > 0$ 이어야 내접원 조건): $5(1 - b/\sqrt{3}) - 12b > 0$ 인 경우 $5 - 5b/\sqrt{3} - 12b = 13b$, $5 = 13b + 5b/\sqrt{3} + 12b = (25 + 5/\sqrt{3})b\cdot \cdots$ — PDF 정확히는
+
+    $5(1 - b/\sqrt{3}) - 12b = -13b$ 의 경우: $5 - 5b/\sqrt{3} - 12b = -13b$, $5 + b = 5b/\sqrt{3}$, $b(5/\sqrt{3} - 1) = 5$, $b = 5/(5/\sqrt{3} - 1) = 5\sqrt{3}/(5 - \sqrt{3}) = 5\sqrt{3}(5 + \sqrt{3})/22 = (25\sqrt{3} + 15)/22$. 이때 $a = 1 - b/\sqrt{3} < 0$ → 내접원 아님.
+
+    $5(1-b/\sqrt 3) - 12b = +13b$ 의 경우: $5 - 5b/\sqrt 3 - 12b = 13b$, $5 = 25 b + 5b/\sqrt 3 = b\cdot(25\sqrt 3 + 5)/\sqrt 3$, $b = 5\sqrt 3/(25\sqrt 3 + 5) = \sqrt 3/(5\sqrt 3 + 1) = \sqrt 3(5\sqrt 3 - 1)/((5\sqrt 3)^2 - 1) = (15 - \sqrt 3)/74$.
+
+    $\therefore r = \dfrac{15 - \sqrt{3}}{74}$.
+
+**【1-3】** $\beta = \pi/3, P(n/100, 0)$ 일 때 중심각 $< \pi$ 인 부채꼴 $CPQ$ 의 호 $\widehat{PQ}$ 의 길이 $l_n$ 과 $\displaystyle\sum_{n=1}^{99}l_n$.
+
+??? success "풀이"
+    원의 반지름 $r$: $r\tan(\beta/2) = r\tan(\pi/6) = 1 - n/100$ (점 $(1, 0)$ 에서 $\overline{CP}$ 길이). $r = \sqrt{3}(1 - n/100)$.
+
+    부채꼴 중심각 $\beta = \pi/3$, $l_n = r\beta = \dfrac{\sqrt{3}\pi}{3}(1 - n/100)$.
+
+    $\displaystyle\sum_{n=1}^{99}l_n = \dfrac{\sqrt{3}\pi}{3}\!\left(99 - \dfrac{1}{100}\sum_{n=1}^{99}n\right) = \dfrac{\sqrt{3}\pi}{3}\!\left(99 - \dfrac{99\cdot 100/2}{100}\right) = \dfrac{\sqrt{3}\pi}{3}\cdot \dfrac{99}{2} = \dfrac{33\sqrt{3}\pi}{2}$.
+
+**【1-4】** $P(1/4, 0)$ 일 때 부채꼴 $CPQ$ 의 넓이 $S(\beta)$. $\displaystyle\lim_{\beta\to 0^+}S(\beta)\tan\beta$.
+
+??? success "풀이"
+    $d = 1 - 1/4 = 3/4$. 원 반지름 $r = d/\tan(\beta/2)$.
+
+    $S(\beta) = r^2\beta/2 = \dfrac{d^2\beta}{2\tan^2(\beta/2)}$.
+
+    $S(\beta)\tan\beta = \dfrac{d^2\beta\tan\beta}{2\tan^2(\beta/2)}$. $\beta \to 0$ 에서 $\tan\beta \sim \beta$, $\tan(\beta/2) \sim \beta/2$:
+
+    $\sim \dfrac{d^2\cdot \beta\cdot \beta}{2\cdot \beta^2/4} = 2d^2$.
+
+    $d = 3/4$ → $2d^2 = 2\cdot 9/16 = 9/8$.
+
+---
+
+### 문항카드 8 — 자연 2차/2번 (수학·수학Ⅱ·미적분)
+
+**설정.** 함수 극한·우극한·좌극한, 증감·극값·그래프 개형, 두 곡선 사이 넓이 $\int|f - g|dx$, 무리수 $e$.
+
+**【2-1】** 실수 $x$ 에 대해 두 점 $(0, 1), (x, e^x)$ 사이 거리 $d(x)$. 극한 $\displaystyle\lim_{x\to 0}d(x)/x$ 의 수렴·발산.
+
+??? success "풀이"
+    $d(x) = \sqrt{x^2 + (e^x - 1)^2}$.
+
+    우극한 ($x \to 0^+$): $\dfrac{d(x)}{x} = \sqrt{1 + \!\left(\dfrac{e^x - 1}{x}\right)^2} \to \sqrt{1 + 1^2} = \sqrt{2}$.
+
+    좌극한 ($x \to 0^-$, $x = -t$ 치환, $t \to 0^+$): $\dfrac{d(-t)}{-t} = -\sqrt{1 + ((e^{-t} - 1)/(-t))^2} \to -\sqrt{1 + 1} = -\sqrt{2}$.
+
+    좌우극한이 다르므로 극한 **존재하지 않음** (발산).
+
+**【2-2】** $0 < p < 1, c > 0$. 곡선 $y = x^p$ ($x \ge 0$) 위 $(c, c^p)$ 에서의 접선 $y = l(x)$. $x \ge 0$ 에서 $l(x) \ge x^p$ 보이고 두 그래프의 개형.
+
+??? success "풀이"
+    $\dfrac{d}{dx}x^p = px^{p-1}$. $l(x) = pc^{p-1}(x - c) + c^p = pc^{p-1}x + (1 - p)c^p$.
+
+    $f(x) = l(x) - x^p$ ($x > 0$). $f'(x) = pc^{p-1} - px^{p-1} = p(c^{p-1} - x^{p-1})$. $p - 1 < 0$ → $x^{p-1}$ 감소함수. $f'(x) < 0 \Leftrightarrow x^{p-1} > c^{p-1} \Leftrightarrow x < c$ (∵ $x^{p-1}$ 감소). $f'(x) > 0 \Leftrightarrow x > c$.
+
+    $x = c$ 에서 최솟값 $f(c) = 0$. $x \ge 0$ 에서 $f \ge 0$, 즉 $l(x) \ge x^p$. ($x = 0$: $l(0) = (1-p)c^p > 0 \ge 0$ ✓.)
+
+    그래프 개형: $y = x^p$ 는 $x \ge 0$ 에서 증가, 위로 볼록 ($p - 1 < 0$). $y = l(x)$ 는 $x = c$ 에서 접하고 그 외에서는 위쪽 직선.
+
+**【2-3】** $y = x^p$, $y = l(x)$, $x = 0$, $x = 1$ 로 둘러싸인 도형의 넓이가 최소가 되는 $c$ ($0 < p < 1$ 고정).
+
+??? success "풀이"
+    $h(c) = \displaystyle\int_0^1 [l(x) - x^p]\,dx = \displaystyle\int_0^1 [pc^{p-1}x + (1-p)c^p - x^p]\,dx = \dfrac{pc^{p-1}}{2} + (1-p)c^p - \dfrac{1}{p+1}$.
+
+    $h'(c) = \dfrac{p(p-1)}{2}c^{p-2} + p(1-p)c^{p-1} = p(1-p)c^{p-2}\!\left(c - \dfrac{1}{2}\right)\cdot (-1)\cdots$ 다시:
+
+    $h'(c) = \dfrac{p(p-1)}{2}c^{p-2} + p(1-p)c^{p-1} = p(p-1)c^{p-2}\!\left(\dfrac{1}{2} - c\right) = p(1-p)c^{p-2}\!\left(c - \dfrac{1}{2}\right)$.
+
+    $0 < p < 1$ → $p(1-p) > 0$. $h'(c) < 0$ ($c < 1/2$), $h'(c) > 0$ ($c > 1/2$) → $c = 1/2$ 에서 최솟값.
+
+**【2-4】** $c = 1/e$. $y = x^p, y = l(x)$, $x = 0$ 로 둘러싸인 넓이 $S(p)$, $y = x^p, y = l(x), x = 1$ 로 둘러싸인 넓이 $R(p)$. $\displaystyle\lim_{p\to 0^+}\dfrac{S(p) + R(p)}{S(p)}$.
+
+??? success "풀이"
+    $S(p) = \displaystyle\int_0^{1/e}[l(x) - x^p]\,dx$. (2-3) 의 $h(c)$ 식의 일반화로 적분 한계 $1$ 을 $1/e$ 로 바꾸면:
+
+    $S(p) = \displaystyle\int_0^{1/e}\!\left[pc^{p-1}x + (1-p)c^p - x^p\right]\!dx$ with $c = 1/e$:
+    $= \dfrac{p(1/e)^{p-1}}{2}\cdot \dfrac{(1/e)^2}{1} + (1-p)(1/e)^p\cdot(1/e) - \dfrac{(1/e)^{p+1}}{p+1}$
+    $= \dfrac{p}{2}(1/e)^{p+1} + (1-p)(1/e)^{p+1} - \dfrac{(1/e)^{p+1}}{p+1}$
+    $= (1/e)^{p+1}\!\left[\dfrac{p}{2} + 1 - p - \dfrac{1}{p+1}\right]$
+    $= (1/e)^{p+1}\!\cdot \dfrac{p(1-p)}{2(p+1)}$
+    $= \dfrac{p(1-p)}{2(p+1)}(1/e)^{p+1}$.
+
+    $S(p) + R(p) = h(1/e) = \displaystyle\int_0^1[l(x) - x^p]\,dx$ ($c = 1/e$ 대입):
+    $= \dfrac{p(1/e)^{p-1}}{2} + (1-p)(1/e)^p - \dfrac{1}{p+1} = \!\left(\dfrac{e\,p}{2} - p + 1\right)\!(1/e)^p - \dfrac{1}{p+1} = \!\left(\dfrac{e}{2}p - p + 1\right)\!e^{-p} - \dfrac{1}{p+1}$.
+
+    $\dfrac{S(p) + R(p)}{S(p)}$ 비. $p \to 0^+$: 분모 $S(p) \to 0$, 분자도 적절히 정리:
+
+    $\dfrac{S(p) + R(p)}{S(p)} = \dfrac{e\!\left\{p^2(e - 2) + ep + 2(1 - e^p)\right\}}{p(1 - p)}$ (PDF의 직접 정리식).
+
+    $= \dfrac{e}{1 - p}\!\left[p(e - 2) + e - 2\cdot\dfrac{e^p - 1}{p}\right]$.
+
+    $p \to 0$: $(e^p - 1)/p \to 1$. $\to e\cdot [0 + e - 2\cdot 1] = e(e - 2) = e^2 - 2e$.
+
+---
