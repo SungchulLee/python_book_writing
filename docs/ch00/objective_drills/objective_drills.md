@@ -28547,3 +28547,133 @@ $$f'(t)=-\tfrac{a}{N}g(t)f(t),\quad g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t),\quad h'(t)
     $0<t<2$ 이므로 $t=3-\sqrt 5$. $\square$
 
 ---
+## 카드 206 — 건국대학교 (2018학년도) — 인문Ⅱ·자연 수학 2 문항카드 · 7 하위문항
+
+**출처.** 2018학년도 건국대학교 입학전형 선행학습 영향평가 자체평가보고서.
+
+**구성.** KU 논술우수자전형 인문사회계Ⅱ 문항카드 2(경제·수학·미적분Ⅰ·확률과 통계 융합) 3 하위문항 + 자연계 문항카드 3(수학Ⅰ·미적분Ⅰ·미적분Ⅱ·기하와 벡터) 4 하위문항.
+
+---
+
+### 문항카드 2 — 인문사회계Ⅱ 문제 2 (경제·수학 융합 · 연립일차방정식·로렌츠 곡선·이산확률변수)
+
+**[문제 2-1]** K씨는 $600$ 만 원의 수입을 모두 주식에 투자하여 총 $120$ 주를 구매하려 한다. 주식 $A$(수익률 $5\%$, 한 주 $1$ 만 원), $B$($6\%$, $3$ 만 원), $C$($10\%$, $9$ 만 원). 수익률 $r\%$, 한 주 $a$ 만 원짜리를 $n$ 주 구입하면 수익은 $\bigl(n\cdot a\cdot\tfrac{r}{100}\bigr)$ 만 원. **(1)** 주식 $A,B,C$ 를 각각 $x,y,z$ 주 구매할 때 $x,y$ 를 $z$ 로 나타내라. **(2)** 총수익을 $T$ (만 원) 라 할 때 $T$ 를 $z$ 로 나타내고 $T$ 의 최댓값과 최솟값을 구하라.
+
+??? success "풀이"
+    **(1)** 수량과 금액 조건:
+
+    $$x+y+z=120,\qquad x+3y+9z=600.$$
+
+    두 식의 차에서 $2y+8z=480$, 즉 $y=240-4z$. 첫 식에 대입하면 $x=120-y-z=3z-120$.
+
+    **(2)** $T=0.05x+0.06\cdot 3y+0.10\cdot 9z=0.05x+0.18y+0.9z$. 위 식을 대입하면
+
+    $$T=0.05(3z-120)+0.18(240-4z)+0.9z=0.33z+37.2.$$
+
+    $x\ge 0,\ y\ge 0$ 에서 $3z-120\ge 0$, $240-4z\ge 0$, 즉 $40\le z\le 60$. 따라서
+
+    $$T_{\min}=0.33\cdot 40+37.2=50.4\ (z=40),\quad T_{\max}=0.33\cdot 60+37.2=57\ (z=60).\ \square$$
+
+**[문제 2-2]** 로렌츠 곡선 $L(x)$, 지니계수 $G=\dfrac{S_{1}}{S_{1}+S_{2}}$ ($S_{1}$ : 로렌츠 곡선과 대각선 $\mathrm{OA}$ 사이의 넓이, $S_{1}+S_{2}=\tfrac{1}{2}$). D국이 $2017$ 년도부터 P정책을 $k$ 년 동안 시행하였을 때, $2017$ 년도를 기준으로 $m$ 년 후 D국의 로렌츠 곡선은 $L(x)=x^{m^{2}-(2k+4)m+k^{2}+4k+6}$. **(1)** $k=1$ 일 때 $2018,2019,2020$ 년도 D국의 지니계수를 구하라. **(2)** D국의 $2027$ 년도 지니계수가 $0.4$ 미만이려면 P정책을 몇 년간 시행해야 하는가?
+
+??? success "풀이"
+    먼저 일반 지니계수를 정리하자. $L(x)=x^{N}$ 이면
+
+    $$G=\frac{\int_{0}^{1}(x-L(x))\,dx}{\tfrac{1}{2}}=2\!\left[\tfrac{x^{2}}{2}-\tfrac{x^{N+1}}{N+1}\right]_{0}^{1}=1-\tfrac{2}{N+1}.$$
+
+    **(1)** $k=1$ 일 때 지수 $N(m)=m^{2}-6m+11=(m-3)^{2}+2$, 즉 $N+1=(m-3)^{2}+3$. 따라서
+
+    $$G(m)=1-\frac{2}{(m-3)^{2}+3}.$$
+
+    $m=1\,(2018)$ : $G=1-\tfrac{2}{4+3}=\tfrac{5}{7}$. $m=2\,(2019)$ : $G=1-\tfrac{2}{1+3}=\tfrac{1}{2}$. $m=3\,(2020)$ : $G=1-\tfrac{2}{0+3}=\tfrac{1}{3}$.
+
+    **(2)** $2027$ 년도는 $m=10$, 지수 $N=100-(2k+4)\cdot 10+k^{2}+4k+6=k^{2}-16k+66=(k-8)^{2}+2$. $N+1=(k-8)^{2}+3$. $G<0.4$ 조건은
+
+    $$1-\frac{2}{(k-8)^{2}+3}<0.4\ \Longrightarrow\ (k-8)^{2}+3<\tfrac{10}{3}\ \Longrightarrow\ (k-8)^{2}<\tfrac{1}{3}.$$
+
+    $|k-8|<\tfrac{1}{\sqrt 3}\approx 0.577$ 이고 $k$ 는 정수이므로 $k=8$. P정책을 $8$ 년 시행. $\square$
+
+**[문제 2-3]** A국의 현재 최저임금 $L$. A국이 $n$ 년 최저임금을 $L_{n}$ 으로 상향, 노동수요 $D_{n}=-X+a_{n}$, 노동공급 $S_{n}=X+b_{n}$. $L_{n}$ 이 확률질량함수 $\mathrm P(L_{n}=L+2^{-k})=\dfrac{2^{-k}}{1-2^{-n}}\,(k=1,\ldots,n)$ 인 이산확률변수이고 $3^{-n}<4b_{n}-L<4a_{n}-5L<2^{-n}$ 일 때, $n$ 년도 초과공급량 $Q_{n}$ 의 기댓값 $\mathrm E(Q_{n})$ 과 $\displaystyle\lim_{n\to\infty}\mathrm E(Q_{n})$ 을 구하라.
+
+??? success "풀이"
+    노동수요 $X_{D}=-L_{n}+a_{n}$, 노동공급 $X_{S}=L_{n}-b_{n}$ 에서 $Q_{n}=X_{S}-X_{D}=2L_{n}-(a_{n}+b_{n})$.
+
+    $\displaystyle\sum_{k=1}^{n}2^{-k}=1-2^{-n},\ \sum_{k=1}^{n}4^{-k}=\tfrac{1}{3}(1-4^{-n})$ 이므로
+
+    $$\mathrm E(L_{n})=\sum_{k=1}^{n}(L+2^{-k})\cdot\frac{2^{-k}}{1-2^{-n}}=L+\frac{(1-4^{-n})/3}{1-2^{-n}}=L+\tfrac{1}{3}(1+2^{-n}).$$
+
+    따라서
+
+    $$\mathrm E(Q_{n})=2\mathrm E(L_{n})-(a_{n}+b_{n})=2L+\tfrac{2}{3}(1+2^{-n})-(a_{n}+b_{n}).$$
+
+    조건 $3^{-n}<4b_{n}-L<4a_{n}-5L<2^{-n}$ 에서 $n\to\infty$ 일 때 조임정리로 $4b_{n}-L\to 0$, $4a_{n}-5L\to 0$, 즉 $b_{n}\to\tfrac{L}{4}$, $a_{n}\to\tfrac{5L}{4}$. 따라서 $a_{n}+b_{n}\to\tfrac{3L}{2}$ 이고
+
+    $$\lim_{n\to\infty}\mathrm E(Q_{n})=2L+\tfrac{2}{3}-\tfrac{3L}{2}=\frac{L}{2}+\frac{2}{3}.\ \square$$
+
+---
+
+### 문항카드 3 — 자연계열 문제 1·2 (수학Ⅰ·미적분Ⅰ·미적분Ⅱ·기하와 벡터 · 종이접기·정사영·구와 평면)
+
+**제시문 1.** 평면에 직사각형 $\mathrm{ABCD}$ 모양의 종이가 있다. [그림 1] 은 종이를 대각선 $\overline{\mathrm{BD}}$ 를 따라 접은 것. [그림 2] 는 선분 $\overline{\mathrm{AD}}$ 위의 점 $\mathrm E$ 를 선택해 직사각형 $\mathrm{ABCD}$ 를 $\overline{\mathrm{CE}}$ 를 따라 접었다 편 것. $\mathrm F$ 는 $\mathrm D$ 가 이동한 점이며 평면 $\mathrm{CEF}$ 는 평면 $\mathrm{ABCD}$ 와 수직.
+
+**[문제 1-1]** [그림 1] 에서 $\overline{\mathrm{AB}}=a,\ \overline{\mathrm{BC}}=b$ 일 때, 빗금 부분의 넓이를 $a,b$ 로 표현하라.
+
+??? success "풀이"
+    $\triangle\mathrm{GBD}$ 의 높이를 $h$ 라 하자. 종이를 접었으므로 $\angle\mathrm{GBD}=\angle\mathrm{DBC}=\theta$ 이고 $\angle\mathrm{GDB}+\angle\mathrm{CDB}=\tfrac{\pi}{2}$, $\angle\mathrm{CDB}+\theta=\tfrac{\pi}{2}$ 이므로 $\angle\mathrm{GDB}=\theta$. 따라서 $\triangle\mathrm{GBD}$ 는 이등변삼각형.
+
+    $\overline{\mathrm{BD}}=\sqrt{a^{2}+b^{2}}$, $\triangle\mathrm{BCD}$ 에서 $\tan\theta=\dfrac{a}{b}$ 이므로
+
+    $$h=\tan\theta\cdot\frac{\overline{\mathrm{BD}}}{2}=\frac{a}{b}\cdot\frac{\sqrt{a^{2}+b^{2}}}{2}=\frac{a\sqrt{a^{2}+b^{2}}}{2b}.$$
+
+    빗금 부분 넓이 $=\tfrac{1}{2}\cdot\overline{\mathrm{BD}}\cdot h=\tfrac{1}{2}\sqrt{a^{2}+b^{2}}\cdot\dfrac{a\sqrt{a^{2}+b^{2}}}{2b}=\dfrac{a(a^{2}+b^{2})}{4b}$. $\square$
+
+**[문제 1-2]** [그림 2] 에서 $\overline{\mathrm{AB}}=2,\ \overline{\mathrm{BC}}=3$ 일 때, 사각형 $\mathrm{ABCE}$ 가 밑면이고 $\mathrm F$ 가 꼭짓점인 사각뿔 $\mathrm F\text{-}\mathrm{ABCE}$ 의 부피의 최댓값을 구하라.
+
+??? success "풀이"
+    $\overline{\mathrm{DE}}=x\,(0\le x\le 3)$. 밑면 $\mathrm{ABCE}$ 의 넓이는 직사각형 $\mathrm{ABCD}$ 에서 $\triangle\mathrm{DEC}$ 를 뺀 것:
+
+    $$S(x)=2\cdot 3-\tfrac{1}{2}\cdot 2\cdot x=6-x.$$
+
+    $\overline{\mathrm{CE}}=\sqrt{x^{2}+4}$. 평면 $\mathrm{CEF}\perp$ 평면 $\mathrm{ABCD}$ 이므로 사각뿔 $\mathrm F\text{-}\mathrm{ABCE}$ 의 높이는 $\mathrm D$ 에서 $\overline{\mathrm{CE}}$ 에 내린 수선의 길이 $h=\dfrac{\overline{\mathrm{CD}}\cdot\overline{\mathrm{DE}}}{\overline{\mathrm{CE}}}=\dfrac{2x}{\sqrt{x^{2}+4}}$.
+
+    $$V(x)=\tfrac{1}{3}(6-x)\cdot\frac{2x}{\sqrt{x^{2}+4}}=\tfrac{2}{3}\cdot\frac{6x-x^{2}}{\sqrt{x^{2}+4}}.$$
+
+    $V'(x)=\dfrac{2}{3}\cdot\dfrac{(2-x)(x^{2}+2x+12)}{(x^{2}+4)^{3/2}}$. $(x^{2}+2x+12=(x+1)^{2}+11>0)$ 이므로 $V'(x)=0$ 에서 $x=2$. $0<x<2$ 에서 $V'>0$, $2<x<3$ 에서 $V'<0$ 이므로 $x=2$ 에서 극대 = 최대:
+
+    $$V(2)=\tfrac{1}{3}\cdot 4\cdot\frac{4}{\sqrt 8}=\frac{16}{3\cdot 2\sqrt 2}=\frac{4\sqrt 2}{3}.\ \square$$
+
+**[문제 2-1]** 구 $x^{2}+y^{2}+z^{2}=9$ 와 평면 $\alpha:x+y+z=3$ 이 만나서 생기는 원을 $C$ 라 하자. 점 $\mathrm A(2,2,1)$ 에서 $C$ 위의 점까지의 거리의 최솟값을 구하라.
+
+??? success "풀이"
+    구의 중심 $\mathrm O(0,0,0)$, 반지름 $3$. $\mathrm O$ 에서 $\alpha$ 까지의 거리 $\overline{\mathrm{OO'}}=\dfrac{|0+0+0-3|}{\sqrt 3}=\sqrt 3$. 원 $C$ 의 중심 $\mathrm O'$ 의 좌표: $\mathrm O$ 에서 $\alpha$ 에 내린 수선의 방향은 $(1,1,1)/\sqrt 3$, 따라서 $\mathrm O'=(1,1,1)$. 원의 반지름 $r_{C}=\sqrt{9-3}=\sqrt 6$.
+
+    $\mathrm A$ 의 $\alpha$ 위로의 정사영 $\mathrm H$ : $\mathrm A-t(1,1,1)\in\alpha$ 에서 $(2-t)+(2-t)+(1-t)=3$, $t=\tfrac{2}{3}$, $\mathrm H=(\tfrac{4}{3},\tfrac{4}{3},\tfrac{1}{3})$. $\overline{\mathrm{AH}}=\sqrt{3\cdot(\tfrac{2}{3})^{2}}=\dfrac{2}{\sqrt 3}$.
+
+    $\overline{\mathrm{O'H}}=\sqrt{(\tfrac{1}{3})^{2}+(\tfrac{1}{3})^{2}+(\tfrac{2}{3})^{2}}=\sqrt{\tfrac{6}{9}}=\dfrac{\sqrt 6}{3}$. $\mathrm H$ 와 가장 가까운 $C$ 위의 점 $\mathrm Q$ 까지의 거리 $\overline{\mathrm{HQ}}=r_{C}-\overline{\mathrm{O'H}}=\sqrt 6-\tfrac{\sqrt 6}{3}=\tfrac{2\sqrt 6}{3}$.
+
+    $\triangle\mathrm{AHQ}$ 가 직각삼각형이므로
+
+    $$\overline{\mathrm{AQ}}=\sqrt{\overline{\mathrm{AH}}^{2}+\overline{\mathrm{HQ}}^{2}}=\sqrt{\tfrac{4}{3}+\tfrac{24}{9}}=\sqrt{\tfrac{12+24}{9}}=\sqrt 4=2.\ \square$$
+
+**[문제 2-2]** 구 $(x-2)^{2}+y^{2}+z^{2}=2$ 와 평면 $mx-y=0$ 이 만나서 원이 생길 때, 이 원의 중심을 $\mathrm P$ 라 하자. $m$ 값이 변함에 따라 $\mathrm P$ 가 그리는 곡선의 길이를 구하라.
+
+??? success "풀이"
+    구 $S$ 의 중심 $(2,0,0)$, 반지름 $\sqrt 2$. 평면 $\alpha:mx-y=0$, 법선벡터 $(m,-1,0)$. $\mathrm P$ 는 $(2,0,0)$ 에서 $\alpha$ 에 내린 수선의 발:
+
+    $$\mathrm P=(2,0,0)+t(m,-1,0)=(2+mt,-t,0),\quad m(2+mt)-(-t)=0\ \Longrightarrow\ t=\frac{-2m}{m^{2}+1}.$$
+
+    $\mathrm P=\left(\dfrac{2}{m^{2}+1},\dfrac{2m}{m^{2}+1},0\right)$. $x=\tfrac{2}{m^{2}+1},\ y=\tfrac{2m}{m^{2}+1}$ 에서 $x^{2}+y^{2}=\tfrac{4(1+m^{2})}{(m^{2}+1)^{2}}=\tfrac{4}{m^{2}+1}=2x$. 즉
+
+    $$(x-1)^{2}+y^{2}=1.$$
+
+    $\mathrm P$ 는 $xy$ 평면 위 원 $(x-1)^{2}+y^{2}=1$ 의 호 위를 움직인다.
+
+    $m$ 의 범위: 구와 평면이 만나야 하므로 중심에서 평면까지 거리 $\le$ 반지름:
+
+    $$\frac{|2m|}{\sqrt{m^{2}+1}}\le\sqrt 2\ \Longrightarrow\ 4m^{2}\le 2(m^{2}+1)\ \Longrightarrow\ m^{2}\le 1.$$
+
+    $m=\pm 1$ 일 때 $\mathrm P=(1,\pm 1,0)$. 호는 $(1,-1,0)$ 에서 $(2,0,0)$ 을 지나 $(1,1,0)$ 까지 (오른쪽 반원). 따라서
+
+    $$\text{곡선의 길이}=\pi\cdot 1=\pi.\ \square$$
+
+---
