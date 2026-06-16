@@ -28120,3 +28120,263 @@ $$S=\left\{y\ \middle|\ f'(x)=\dfrac{f(x)-f(y)}{x-y},\ y\text{ 는 }x\text{ 보�
     $$\Longrightarrow\ \cot(b\pi)=-\pi\!\left(b-\tfrac{9}{2}\right)=-\pi b+\tfrac{9\pi}{2}\ \Longrightarrow\ b\pi+\cot(b\pi)=\tfrac{9\pi}{2}.\ \square$$
 
 ---
+## 카드 204 — 연세대 미래캠퍼스 (2021학년도) — 자연·의예 수학 5 문항카드 · 15 하위문항
+
+**출처.** 2021학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서.
+
+**구성.** 자연계열(일반논술 전형) 문항카드 3·4·5(수학·수학Ⅱ·미적분·확률과 통계) 9 하위문항 + 의예과 문항카드 6·7(수학Ⅰ·수학Ⅱ·미적분·확률과 통계) 6 하위문항.
+
+---
+
+### 문항카드 3 — 자연계열 문제 1 (수학·수학Ⅱ·미적분 · 역함수·정적분·치환적분)
+
+**(가)** 함수 $f(x)$ 가 $a,b$ 를 포함하는 열린구간에서 연속이고, $f(x)$ 의 한 부정적분이 $F(x)$ 일 때, $F(b)-F(a)$ 를 $f(x)$ 의 $a$ 에서 $b$ 까지의 정적분이라 하며 $\displaystyle\int_a^{b}f(x)\,dx$ 로 나타낸다.
+
+**(나)** 두 집합 $X,Y$ 위의 함수 $f:X\to Y$ 가 일대일대응이면 $Y$ 의 각 원소 $y$ 에 $y=f(x)$ 인 $X$ 의 원소 $x$ 가 대응하며, 이를 $f$ 의 역함수라 한다.
+
+**(다)** 함수 $f(x),g(x)$ 를 다음과 같이 정의한다. (단, $a,b$ 는 상수)
+
+$$f(x)=\begin{cases}2x^{2}, & x<-1,\\ -x+a, & -1\le x<1,\\ -\tfrac{1}{3}x+b, & 1\le x,\end{cases}\qquad g(x)=\int_{0}^{x}\!\frac{1}{1+t^{2}}\,dt.$$
+
+**[1-1]** **(다)** 의 $f(x)$ 가 정의역과 공역이 실수 전체이고, 역함수 $h(x)$ 가 존재하며 $h(h(8))=c$ 일 때 $a+b+c$ 의 값을 구하라.
+
+??? success "풀이"
+    $f$ 가 일대일대응이려면 $x=-1$ 에서 좌·우극한이 같아야 하므로 $f(-1)=2$ 에서 $-(-1)+a=2$, $a=1$. $x=1$ 에서도 마찬가지로 $f(1)=-\tfrac{1}{3}+b=0$, $b=\tfrac{1}{3}$. 따라서
+
+    $$f(x)=\begin{cases}2x^{2}, & x<-1,\\ -x+1, & -1\le x<1,\\ -\tfrac{1}{3}x+\tfrac{1}{3}, & 1\le x.\end{cases}$$
+
+    $h(8)=t$ 라 하면 $f(t)=8$, $t<-1$ 영역에서 $2t^{2}=8$ 이므로 $t=-2$. 다시 $h(-2)=c$ 에서 $f(c)=-2$, $c>1$ 영역에서 $-\tfrac{1}{3}c+\tfrac{1}{3}=-2$, $c=7$. 따라서 $a+b+c=1+\tfrac{1}{3}+7=\tfrac{25}{3}$. $\square$
+
+**[1-2]** **(다)** 의 $f(x)$ 에 대하여 $\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\!\left(-2+\tfrac{4k}{n}\right)\!\tfrac{1}{n}$ 의 값을 구하라.
+
+??? success "풀이"
+    리만 합으로 $\displaystyle\lim_{n\to\infty}\sum_{k=1}^{n}f\!\left(-2+\tfrac{4k}{n}\right)\!\tfrac{4}{n}\cdot\tfrac{1}{4}=\tfrac{1}{4}\!\int_{-2}^{2}\!f(x)\,dx$. 구간을 나누면
+
+    $$\tfrac{1}{4}\!\left(\!\int_{-2}^{-1}\!2x^{2}\,dx+\int_{-1}^{1}\!(-x+1)\,dx+\int_{1}^{2}\!(-\tfrac{1}{3}x+\tfrac{1}{3})\,dx\!\right)$$
+
+    $$=\tfrac{1}{4}\!\left(\tfrac{2}{3}\!\left[x^{3}\right]_{-2}^{-1}+\bigl[-\tfrac{1}{2}x^{2}+x\bigr]_{-1}^{1}+\bigl[-\tfrac{1}{6}x^{2}+\tfrac{1}{3}x\bigr]_{1}^{2}\right)$$
+
+    $$=\tfrac{1}{4}\!\left(\tfrac{2}{3}\cdot 7+2-\tfrac{1}{6}\right)=\tfrac{1}{4}\cdot\tfrac{28+12-1}{6}=\tfrac{1}{4}\cdot\tfrac{39}{6}=\tfrac{13}{8}.\ \square$$
+
+**[1-3]** **(다)** 의 $g(x)$ 가 $g(\alpha)=\dfrac{\pi}{3}$ 를 만족할 때, $\displaystyle\int_{0}^{\alpha}\!\frac{\sin^{3}\!\bigl(g(x)\bigr)}{1+x^{2}}\,dx$ 의 값을 구하라.
+
+??? success "풀이"
+    $g'(x)=\dfrac{1}{1+x^{2}}$ 이므로 $\displaystyle\int_{0}^{\alpha}\!\frac{\sin^{3}\!\bigl(g(x)\bigr)}{1+x^{2}}\,dx=\int_{0}^{\alpha}g'(x)\sin^{3}\!\bigl(g(x)\bigr)\,dx$. $u=g(x)$ 로 치환하면 $du=g'(x)\,dx$, $g(0)=0$, $g(\alpha)=\tfrac{\pi}{3}$ 이므로
+
+    $$=\int_{0}^{\pi/3}\!\sin^{3}\!u\,du=\int_{0}^{\pi/3}\!(1-\cos^{2}u)\sin u\,du.$$
+
+    다시 $t=\cos u$ ($-\sin u\,du=dt$) 로 치환하면 $u=0\to t=1$, $u=\tfrac{\pi}{3}\to t=\tfrac{1}{2}$ 이므로
+
+    $$=\int_{1}^{1/2}\!-(1-t^{2})\,dt=\int_{1/2}^{1}\!(1-t^{2})\,dt=\bigl[t-\tfrac{1}{3}t^{3}\bigr]_{1/2}^{1}=\tfrac{2}{3}-\tfrac{11}{24}=\tfrac{5}{24}.\ \square$$
+
+---
+
+### 문항카드 4 — 자연계열 문제 2 (수학·미적분 · 원의 방정식·그래프 개형·수열의 극한)
+
+**(가)** 중심이 원점이고 반지름이 $r$ 인 원의 방정식은 $x^{2}+y^{2}=r^{2}$.
+
+**(나)** $1$ 보다 큰 실수 $r$ 에 대해 $C(r)$ 는 좌표평면에서 중심 $\mathrm A_{r}(a_{r},0)$, 반지름 $r$ 인 원이다. 두 원 $C(r),C(r+1)$ 의 한 교점을 $\mathrm P_{r}$ 라 할 때 $\theta_{r}$ 은 점 $\mathrm P_{r}$ 와 원 $C(r+1)$ 의 중심과 원점이 이루는 각 $\angle \mathrm P_{r}\mathrm A_{r+1}\mathrm O$ 를 나타낸다 ($\mathrm P_{r}$ 의 $y$ 좌표는 양수). $S$ 는 두 무리함수 $y=\sqrt{2x},\ y=-\sqrt{2x}$ 으로 만들어지는 곡선이며, 원 $C(r)$ 과 곡선 $S$ 는 서로 다른 두 점에서 접한다.
+
+**[2-1]** **(나)** 의 $\mathrm A_{r}(a_{r},0)$ 에 대하여 $a_{r}$ 을 $r$ 로 나타내라.
+
+??? success "풀이"
+    원 $C(r)$ 의 방정식 $(x-a_{r})^{2}+y^{2}=r^{2}$ 과 곡선 $y^{2}=2x$ 를 연립하면 $(x-a_{r})^{2}+2x-r^{2}=0$. 두 점에서 접하려면 이차방정식의 판별식이 $0$:
+
+    $$\tfrac{D}{4}=(a_{r}-1)^{2}-(a_{r}^{2}-r^{2})=0\ \Longrightarrow\ -2a_{r}+1+r^{2}=0\ \Longrightarrow\ a_{r}=\frac{r^{2}+1}{2}.\ \square$$
+
+**[2-2]** **(나)** 의 $\mathrm A_{r}(a_{r},0)$ 에 대하여, $1$ 보다 큰 모든 실수 $r$ 에 대한 방정식 $\bigl(a_{2r}-\tfrac{1}{2}\bigr)e^{-r}+k=0$ 이 서로 다른 두 실근을 갖도록 하는 실수 $k$ 의 범위를 구하라. (단, $\displaystyle\lim_{x\to\infty}\frac{2x^{2}}{e^{x}}=0$.)
+
+??? success "풀이"
+    $a_{2r}=\dfrac{(2r)^{2}+1}{2}=2r^{2}+\tfrac{1}{2}$ 이므로 $a_{2r}-\tfrac{1}{2}=2r^{2}$, 식은 $2r^{2}e^{-r}+k=0$. $r$ 대신 $x$ 로 쓰고 $f(x)=2x^{2}e^{-x}$ 의 그래프를 그린다.
+
+    $f'(x)=2e^{-x}(2x-x^{2})$, $f'(x)=0$ 에서 $x=0$ 또는 $x=2$. $f''(x)=2e^{-x}(x^{2}-4x+2)$, $f''(0)=4>0$, $f''(2)=-4e^{-2}<0$. 따라서 $f$ 는 $x=0$ 에서 극솟값 $0$, $x=2$ 에서 극댓값 $8e^{-2}$ 를 가지며 $x\to\infty$ 일 때 $f(x)\to 0$.
+
+    $f(1)=2/e$. $x>1$ 에서 $f$ 는 $x=1$ 에서 $\tfrac{2}{e}$ 로 시작해 $x=2$ 까지 증가하여 $\tfrac{8}{e^{2}}$ 도달 후 감소하여 $0$ 으로 수렴한다. 따라서 $y=-k$ 가 $f$ 와 서로 다른 두 점에서 만나려면 $\tfrac{2}{e}<-k<\tfrac{8}{e^{2}}$, 즉
+
+    $$-\frac{8}{e^{2}}<k<-\frac{2}{e}.\ \square$$
+
+**[2-3]** **(나)** 의 $\theta_{r}$ 에 대하여 $\displaystyle\lim_{r\to\infty}\tan(\theta_{r})$ 을 구하라.
+
+??? success "풀이"
+    두 원 $C(r),C(r+1)$ 의 교점 $\mathrm P_{r}(x,y)$ 는 연립방정식
+
+    $$(x-a_{r})^{2}+y^{2}=r^{2},\ (x-a_{r+1})^{2}+y^{2}=(r+1)^{2}$$
+
+    에서 얻을 수 있다. 차를 정리하면 $-2(a_{r+1}-a_{r})x+(a_{r+1}^{2}-a_{r}^{2})=(r+1)^{2}-r^{2}$, 즉 $-2\cdot\tfrac{(r+1)^{2}-r^{2}}{2}\cdot x+\tfrac{(r+1)^{4}-r^{4}}{4}+\tfrac{(r+1)^{2}-r^{2}}{2}=2r+1$. 정리하면 $x=\dfrac{r^{2}+r-1}{2}$. 이를 첫 식에 대입하여 $y=\dfrac{\sqrt{3r^{2}+4r-4}}{2}$ ($y>0$).
+
+    한편 $\mathrm A_{r+1}=\bigl(\tfrac{(r+1)^{2}+1}{2},0\bigr)=\bigl(\tfrac{r^{2}+2r+2}{2},0\bigr)$. $\theta_{r}=\angle \mathrm P_{r}\mathrm A_{r+1}\mathrm O$ 이므로 점 $\mathrm A_{r+1}$ 을 기준으로 한 $\mathrm P_{r}$ 의 좌표는
+
+    $$s=y=\tfrac{\sqrt{3r^{2}+4r-4}}{2},\quad t=a_{r+1}-x=\tfrac{r^{2}+2r+2-(r^{2}+r-1)}{2}=\tfrac{r+3}{2}.$$
+
+    따라서
+
+    $$\lim_{r\to\infty}\tan(\theta_{r})=\lim_{r\to\infty}\frac{s}{t}=\lim_{r\to\infty}\frac{\sqrt{3r^{2}+4r-4}}{r+3}=\sqrt{3}.\ \square$$
+
+---
+
+### 문항카드 5 — 자연계열 문제 3 (확률과 통계·수학Ⅱ·미적분 · 이산확률변수·넓이·입체도형의 부피)
+
+**(가)** 이산확률변수 $X$ 의 확률질량함수가 $\mathrm P(X=x_{i})=p_{i}$ 일 때, 기댓값은 $\mathrm E(X)=\sum x_{i}p_{i}$. 또 $\mathrm E(aX+b)=a\mathrm E(X)+b$.
+
+**(나)** 곡선 $y=49-(x-7)^{2}$ 이 $x$ 축과 만나는 점은 $\mathrm A(0,0),\mathrm B(14,0)$. 두 개의 주사위를 던져 나오는 눈의 수 중 큰 수를 확률변수 $X$, 그 값을 $k$ 라 할 때 곡선이 직선 $x=k,\ x=14-k$ 와 만나는 점은 각각 $\mathrm D,\mathrm C$. 사각형 $\mathrm{ABCD}$ 의 넓이 $S$ 는 이산확률변수가 된다.
+
+**(다)** **(나)** 의 $X$ 의 값을 $k$ 라 하고, 사각형 $\mathrm{ABCD}$ 를 밑면으로 하는 입체도형 $R$ 이 있다. 두 점 $\mathrm P(x,0),\mathrm Q(x,y)$ 를 지나고 $x$ 축에 수직인 평면으로 $R$ 을 자르면 단면이 높이 $e^{-x}$, 밑변의 길이 $y$ 인 직사각형이 된다.
+
+**[3-1]** **(나)** 의 $X$ 에 대하여 $Y=36X-150$ 일 때 $\mathrm E(Y)$ 를 구하고, $\mathrm P(S\ge 400)=\dfrac{q}{p}$ ($p,q$ 는 서로소인 자연수) 일 때 $p+q$ 의 값을 구하라.
+
+??? success "풀이"
+    두 주사위 큰 수 $X$ 의 확률표:
+
+    | $X$ | 2 | 3 | 4 | 5 | 6 |
+    |---|---|---|---|---|---|
+    | $\mathrm P$ | 2/30 | 4/30 | 6/30 | 8/30 | 10/30 |
+
+    $\mathrm E(X)=\tfrac{2\cdot 2+3\cdot 4+4\cdot 6+5\cdot 8+6\cdot 10}{30}=\tfrac{140}{30}=\tfrac{14}{3}$ 이므로 $\mathrm E(Y)=36\cdot\tfrac{14}{3}-150=168-150=18$.
+
+    사각형 $\mathrm{ABCD}$ 는 윗변 $14-2k$, 아랫변 $14$, 높이 $49-(k-7)^{2}$ 인 사다리꼴이므로
+
+    $$S=\tfrac{1}{2}\bigl[14+(14-2k)\bigr]\bigl[49-(k-7)^{2}\bigr]=(14-k)\bigl[49-(k-7)^{2}\bigr].$$
+
+    $k=2,\ldots,6$ 에 대해 $S=288,363,400,405,384$. $S\ge 400$ 인 $k$ 는 $4,5$ 이므로
+
+    $$\mathrm P(S\ge 400)=\tfrac{6}{30}+\tfrac{8}{30}=\tfrac{14}{30}=\tfrac{7}{15}.$$
+
+    $\gcd(7,15)=1$ 이므로 $q=7,p=15$, $p+q=22$. $\square$
+
+**[3-2]** **(나)** 에서 곡선과 $x$ 축으로 둘러싸인 부분에서 사각형 $\mathrm{ABCD}$ 를 제외한 넓이 $T$ 가 최소가 되도록 하는 $k$ 의 값을 구하고, 그 때의 $3T$ 의 값을 구하라.
+
+??? success "풀이"
+    포물선의 면적 $\displaystyle\int_{0}^{14}\!\bigl[49-(x-7)^{2}\bigr]dx=\bigl[49x-\tfrac{(x-7)^{3}}{3}\bigr]_{0}^{14}=49\cdot 14-\tfrac{343-(-343)}{3}=686-\tfrac{686}{3}=\tfrac{1372}{3}$.
+
+    $T=\tfrac{1372}{3}-S$ 이므로 $T$ 가 최소이려면 $S$ 가 최대. $S$ 표에서 $k=5$ 일 때 $S=405$ 가 최대이다.
+
+    $$3T=3\!\left(\tfrac{1372}{3}-405\right)=1372-1215=157.\ \square$$
+
+**[3-3]** 두 주사위를 한 번 던져 나온 눈이 $2,6$ 이다. 이때 **(다)** 의 입체도형 $R$ 의 부피를 $a+be^{-6}+ce^{-8}+de^{-14}$ 로 나타낼 때 $a,b,c,d$ 의 값을 구하라. (단, $a,b,c,d$ 는 유리수.)
+
+??? success "풀이"
+    $k=6$, 사각형 $\mathrm{ABCD}$ 의 변 위의 직선들로 단면 직사각형의 밑변 $y$ 를 구한다. 좌변 $\mathrm{AD}$ 의 기울기 $=\tfrac{49-(6-7)^{2}}{6-0}=\tfrac{48}{6}=8$, 따라서 $x\in[0,6]$ 에서 $y=8x$. 윗변 $x\in[6,8]$ 에서 $y=48$. 우변 $\mathrm{CB}$ 는 $\bigl(8,48\bigr),(14,0)$ 을 지나므로 $x\in[8,14]$ 에서 $y=-8x+112$.
+
+    $$V=\int_{0}^{6}8x e^{-x}dx+\int_{6}^{8}48 e^{-x}dx+\int_{8}^{14}(-8x+112)e^{-x}dx.$$
+
+    부분적분 ($\int x e^{-x}dx=-xe^{-x}-e^{-x}+C$) 으로
+
+    $$\int_{0}^{6}8xe^{-x}dx=8\bigl[-xe^{-x}-e^{-x}\bigr]_{0}^{6}=8\bigl(-6e^{-6}-e^{-6}+1\bigr)=8-56e^{-6}.$$
+
+    $$\int_{6}^{8}48e^{-x}dx=48(e^{-6}-e^{-8}).$$
+
+    $$\int_{8}^{14}(-8x+112)e^{-x}dx=-8\bigl[-xe^{-x}-e^{-x}\bigr]_{8}^{14}+112\bigl[-e^{-x}\bigr]_{8}^{14}$$
+
+    $$=-8\bigl(-14e^{-14}-e^{-14}+8e^{-8}+e^{-8}\bigr)+112(-e^{-14}+e^{-8})$$
+
+    $$=120e^{-14}-72e^{-8}-112e^{-14}+112e^{-8}=8e^{-14}+40e^{-8}.$$
+
+    합치면 $V=8+(-56+48)e^{-6}+(-48+40)e^{-8}+8e^{-14}=8-8e^{-6}-8e^{-8}+8e^{-14}$.
+
+    $$\therefore\ a=8,\ b=-8,\ c=-8,\ d=8.\ \square$$
+
+---
+
+### 문항카드 6 — 의예과 문제 1 (수학Ⅱ·미적분·확률과 통계 · 함수의 증감·치환적분·이산확률변수)
+
+**(가)** COVID-19 같은 전염병 모형: 감염 가능한 사람 수 $f(t)$, 감염자 수 $g(t)$, 치료된 사람 수 $h(t)$ 가
+
+$$f'(t)=-\tfrac{a}{N}g(t)f(t),\quad g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t),\quad h'(t)=bg(t).$$
+
+여기서 $a$ 는 감염률, $b$ 는 회복율 (모두 양의 실수), $N$ 은 총 인구수 (상수). $f(t),g(t)>0$, 치료된 사람은 재감염되지 않는다.
+
+**(나)** 어느 도시의 감염 가능한 사람이 $1$ 부터 $100$ 명이며, 감염자 수 $X$ 의 확률질량함수가 $\mathrm P(X\ge k+1)=\dfrac{k}{k+2}\mathrm P(X\ge k)$ ($k=1,\ldots,99$) 를 만족한다. 방역당국은 $\mathrm P(X\le k)>\dfrac{49}{50}$ 이면 최고단계로 격상한다.
+
+**[1-1]** $a=0.5,\ b=0.05,\ N=100$ 일 때, 감염자 수가 감소하는 $A$ 의 범위를 구하라 ($A>0$, $A=f(t)$).
+
+??? success "풀이"
+    $g'(t)<0$ 이 감염자 감소 조건. $g'(t)=\bigl(\tfrac{a}{b}\cdot\tfrac{f(t)}{N}-1\bigr)\!bg(t)$ 이고 $a,b,g(t)>0$ 이므로 $g'(t)<0\Leftrightarrow\tfrac{a}{b}\cdot\tfrac{f(t)}{N}<1\Leftrightarrow f(t)<\tfrac{bN}{a}$. $a=0.5,\ b=0.05,\ N=100$ 에서 $\tfrac{bN}{a}=\tfrac{5}{0.5}=10$. 따라서 $A<10$. $\square$
+
+**[1-2]** $a=0.5,\ b=0.1,\ N=100,\ f(0)=99,\ g(0)=1,\ h(0)=0$ 이고, 어떤 실수 $t^{*}$ 에 대해 $h(t^{*})=20$ 일 때 $f(t^{*})$ 의 값을 구하라.
+
+??? success "풀이"
+    $\dfrac{f'(t)}{h'(t)}=-\dfrac{a g(t)f(t)/N}{b g(t)}=-\dfrac{a f(t)}{bN}$. 변수 분리하여 $\dfrac{f'(t)}{f(t)}=-\dfrac{a}{bN}h'(t)$ 양변 적분:
+
+    $$\ln f(t)=-\tfrac{a}{bN}h(t)+C\ \Longrightarrow\ f(t)=f(0)\,e^{-\frac{a}{bN}\bigl(h(t)-h(0)\bigr)}=99\,e^{-\frac{1}{20}h(t)}.$$
+
+    $h(t^{*})=20$ 이므로 $f(t^{*})=99 e^{-1}=\dfrac{99}{e}$. $\square$
+
+**[1-3]** **(나)** 에서 $\dfrac{\mathrm P(1\le X\le 3)}{\mathrm P(6\le X\le 19)}$ 의 값을 구하고, 방역당국이 전염병 경보단계를 최고단계로 격상시키는 최소 감염자 수 $k$ 를 구하라.
+
+??? success "풀이"
+    $P_{k}=\mathrm P(X\ge k)$ 로 놓으면 $\dfrac{P_{k+1}}{P_{k}}=\dfrac{k}{k+2}$ 이고 $P_{1}=1$ 이므로 점화식을 풀면
+
+    $$P_{k}=\prod_{j=1}^{k-1}\!\frac{j}{j+2}=\frac{2}{k(k+1)}\quad (k\ge 2),\ P_{1}=1.$$
+
+    검산: $P_{2}=\tfrac{1}{3},P_{3}=\tfrac{1}{6},P_{4}=\tfrac{1}{10},P_{6}=\tfrac{1}{21},P_{20}=\tfrac{1}{210}$.
+
+    $\mathrm P(1\le X\le 3)=P_{1}-P_{4}=1-\tfrac{1}{10}=\tfrac{9}{10}$, $\mathrm P(6\le X\le 19)=P_{6}-P_{20}=\tfrac{1}{21}-\tfrac{1}{210}=\tfrac{10-1}{210}=\tfrac{9}{210}=\tfrac{3}{70}$.
+
+    $$\therefore\ \frac{\mathrm P(1\le X\le 3)}{\mathrm P(6\le X\le 19)}=\frac{9/10}{3/70}=\frac{9\cdot 70}{10\cdot 3}=21.$$
+
+    경보단계 격상 조건 $\mathrm P(X\le k)>\tfrac{49}{50}$, 즉 $1-P_{k+1}>\tfrac{49}{50}$ 에서 $P_{k+1}<\tfrac{1}{50}$. $P_{k+1}=\tfrac{2}{(k+1)(k+2)}<\tfrac{1}{50}$ 은 $(k+1)(k+2)>100$ 일 때 성립. $k=9$: $10\cdot 11=110>100$ ✓, $k=8$: $9\cdot 10=90<100$ ✗. 따라서 최소 $k=9$. $\square$
+
+---
+
+### 문항카드 7 — 의예과 문제 2 (수학Ⅰ·미적분·확률과 통계 · 사인법칙·매개변수 미분·기댓값)
+
+**(가)** 삼각함수의 덧셈정리.
+
+**(나)** 두 학생 $\mathrm A,\mathrm B$ 가 $\ell=\overline{\mathrm{AB}}$ 만큼 떨어져 있고 배 $\mathrm C$ 를 각각 $\angle\mathrm{BAC}=\alpha$, $\angle\mathrm{ABC}=\beta$ 로 바라본다. 선분 $\overline{\mathrm{AB}}$ 의 중점을 원점으로 두고 $\mathrm C$ 의 위치를 $(c_{x},c_{y})$, 속도를 $(v_{x},v_{y})$ 로 나타낸다.
+
+**[2-1]** $\ell=6,\ \alpha+\beta=\tfrac{5\pi}{12},\ \alpha>\tfrac{\pi}{12},\ \beta>\tfrac{\pi}{6}$ 일 때 배의 자취의 길이를 구하라.
+
+??? success "풀이"
+    $\angle\mathrm{ACB}=\pi-(\alpha+\beta)=\pi-\tfrac{5\pi}{12}=\tfrac{7\pi}{12}$ 가 일정하므로 점 $\mathrm C$ 는 삼각형 $\mathrm{ABC}$ 의 외접원 위의 호를 그린다. 사인법칙으로 외접원의 반지름 $R$ 는
+
+    $$2R=\frac{\ell}{\sin(\pi-\tfrac{5\pi}{12})}=\frac{6}{\sin\tfrac{5\pi}{12}}=\frac{6}{\tfrac{\sqrt{6}+\sqrt{2}}{4}}=\frac{24}{\sqrt{6}+\sqrt{2}},\quad R=\frac{12}{\sqrt{6}+\sqrt{2}}.$$
+
+    호의 끝점은 $\alpha=\tfrac{\pi}{12}$ 와 $\beta=\tfrac{\pi}{6}$ 일 때이며, 두 끝점이 만드는 중심각은 원주각 $\bigl(\tfrac{\pi}{6}\bigr)$ 의 $2$ 배인 $\tfrac{\pi}{3}$. 따라서 자취의 길이는
+
+    $$L=R\cdot\tfrac{\pi}{3}=\frac{12}{\sqrt{6}+\sqrt{2}}\cdot\tfrac{\pi}{3}=\frac{4\pi}{\sqrt{6}+\sqrt{2}}=\pi(\sqrt{6}-\sqrt{2}).\ \square$$
+
+**[2-2]** $\ell=6$ 이고 $\alpha=\tfrac{\pi}{12}+3t,\ \beta=\tfrac{\pi}{3}-3t$ ($0<t<\tfrac{\pi}{9}$). $t=\tfrac{\pi}{36}$ 일 때 위치 $(c_{x},c_{y})$ 와 속도 $(v_{x},v_{y})$ 를 구하라.
+
+??? success "풀이"
+    $\tan\alpha=\dfrac{c_{y}}{3+c_{x}},\ \tan\beta=\dfrac{c_{y}}{3-c_{x}}$ 의 연립일차방정식 $\tan\alpha\,c_{x}-c_{y}=-3\tan\alpha,\ \tan\beta\,c_{x}+c_{y}=3\tan\beta$ 를 풀면
+
+    $$c_{x}=\frac{-3(\tan\alpha-\tan\beta)}{\tan\alpha+\tan\beta},\quad c_{y}=\frac{6\tan\alpha\tan\beta}{\tan\alpha+\tan\beta}.$$
+
+    $t=\tfrac{\pi}{36}$ 에서 $\alpha=\tfrac{\pi}{6},\ \beta=\tfrac{\pi}{4}$, $\tan\alpha=\tfrac{1}{\sqrt 3},\ \tan\beta=1$. 대입하면
+
+    $$c_{x}=\frac{-3\bigl(\tfrac{1}{\sqrt 3}-1\bigr)}{\tfrac{1}{\sqrt 3}+1}=\frac{-3(1-\sqrt 3)}{\sqrt 3+1}\cdot\frac{\sqrt 3-1}{\sqrt 3-1}=\frac{-3(1-\sqrt 3)(\sqrt 3-1)}{2}=6-3\sqrt 3,$$
+
+    $$c_{y}=\frac{6\cdot\tfrac{1}{\sqrt 3}}{\tfrac{1}{\sqrt 3}+1}=\frac{6}{1+\sqrt 3}\cdot\frac{\sqrt 3-1}{\sqrt 3-1}=\frac{6(\sqrt 3-1)}{2}=3(\sqrt 3-1).$$
+
+    속도는 식 $\tan\alpha\,c_{x}-c_{y}=-3\tan\alpha$ 의 양변을 $t$ 에 대해 미분: $3\sec^{2}\!\alpha\,c_{x}+\tan\alpha\,v_{x}-v_{y}=-3\cdot 3\sec^{2}\!\alpha=-9\sec^{2}\!\alpha$. $\alpha=\tfrac{\pi}{6}$ 에서 $\sec^{2}\!\alpha=\tfrac{4}{3}$, $\tan\alpha=\tfrac{1}{\sqrt 3}$, $c_{x}=6-3\sqrt 3$. 마찬가지로 $\tan\beta\,c_{x}+c_{y}=3\tan\beta$ 미분: $-3\sec^{2}\!\beta\,c_{x}+\tan\beta\,v_{x}+v_{y}=3\cdot(-3\sec^{2}\!\beta)=-9\sec^{2}\!\beta$. $\beta=\tfrac{\pi}{4}$ 에서 $\sec^{2}\!\beta=2$, $\tan\beta=1$. 두 식을 정리하면
+
+    $$\tfrac{1}{\sqrt 3}v_{x}-v_{y}=-9\cdot\tfrac{4}{3}-3\cdot\tfrac{4}{3}\cdot(6-3\sqrt 3)=-12-4(6-3\sqrt 3)=-36+12\sqrt 3,$$
+
+    $$v_{x}+v_{y}=-9\cdot 2-(-3)\cdot 2\cdot(6-3\sqrt 3)=-18+6(6-3\sqrt 3)=18-18\sqrt 3.$$
+
+    두 식을 연립하면 $v_{x}=-18$, $v_{y}=18(2-\sqrt{3})$. $\square$
+
+**[2-3]** **(나)** 에서 $\alpha=\tfrac{\pi}{6},\tfrac{\pi}{4},\tfrac{\pi}{3}$ 가 가능한 값이고 확률변수 $X$ 의 확률분포가 $\mathrm P\!\left(X=\tfrac{\pi}{6}\right)=\tfrac{1}{6},\ \mathrm P\!\left(X=\tfrac{\pi}{4}\right)=\tfrac{1}{2},\ \mathrm P\!\left(X=\tfrac{\pi}{3}\right)=\tfrac{1}{3}$. $\ell=6$ 이고 $\beta=\tfrac{5\pi}{12}-\alpha$ 일 때 배의 위치 $(c_{x},c_{y})$ 의 기댓값 $\mathrm E(c_{x}),\mathrm E(c_{y})$ 를 구하라.
+
+??? success "풀이"
+    $\alpha+\beta=\tfrac{5\pi}{12}$ 이므로 $\beta$ 값은 차례로 $\tfrac{\pi}{4},\tfrac{\pi}{6},\tfrac{\pi}{12}$. $\tan\tfrac{\pi}{12}$ 는 덧셈정리 $\tan\bigl(\tfrac{\pi}{6}\bigr)=\tan\bigl(\tfrac{\pi}{12}+\tfrac{\pi}{12}\bigr)$ 에서 이차방정식 $\tan^{2}\!\tfrac{\pi}{12}+2\sqrt 3\tan\tfrac{\pi}{12}-1=0$ 의 양근 $\tan\tfrac{\pi}{12}=2-\sqrt 3$.
+
+    각 $\alpha$ 별로 $(c_{x},c_{y})=\bigl(\tfrac{-3(\tan\alpha-\tan\beta)}{\tan\alpha+\tan\beta},\tfrac{6\tan\alpha\tan\beta}{\tan\alpha+\tan\beta}\bigr)$ 를 계산:
+
+    | $\alpha$ | $\tfrac{\pi}{6}$ | $\tfrac{\pi}{4}$ | $\tfrac{\pi}{3}$ |
+    |---|---|---|---|
+    | $\mathrm P$ | 1/6 | 1/2 | 1/3 |
+    | $c_{x}$ | $3(2-\sqrt 3)$ | $-3(2-\sqrt 3)$ | $3(1-\sqrt 3)$ |
+    | $c_{y}$ | $3(-1+\sqrt 3)$ | $3(-1+\sqrt 3)$ | $3(-3+2\sqrt 3)$ |
+
+    $$\mathrm E(c_{x})=\tfrac{1}{6}\cdot 3(2-\sqrt 3)+\tfrac{1}{2}\cdot(-3)(2-\sqrt 3)+\tfrac{1}{3}\cdot 3(1-\sqrt 3)$$
+
+    $$=\tfrac{2-\sqrt 3}{2}-\tfrac{3(2-\sqrt 3)}{2}+(1-\sqrt 3)=(2-\sqrt 3)\!\cdot\!(\tfrac{1}{2}-\tfrac{3}{2})+1-\sqrt 3$$
+
+    $$=-(2-\sqrt 3)+1-\sqrt 3=-2+\sqrt 3+1-\sqrt 3=-1.$$
+
+    $$\mathrm E(c_{y})=\tfrac{1}{6}\cdot 3(-1+\sqrt 3)+\tfrac{1}{2}\cdot 3(-1+\sqrt 3)+\tfrac{1}{3}\cdot 3(-3+2\sqrt 3)$$
+
+    $$=\tfrac{-1+\sqrt 3}{2}+\tfrac{3(-1+\sqrt 3)}{2}+(-3+2\sqrt 3)=2(-1+\sqrt 3)+(-3+2\sqrt 3)=-5+4\sqrt 3.\ \square$$
+
+---
