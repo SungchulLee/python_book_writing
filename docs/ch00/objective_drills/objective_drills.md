@@ -28380,3 +28380,170 @@ $$f'(t)=-\tfrac{a}{N}g(t)f(t),\quad g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t),\quad h'(t)
     $$=\tfrac{-1+\sqrt 3}{2}+\tfrac{3(-1+\sqrt 3)}{2}+(-3+2\sqrt 3)=2(-1+\sqrt 3)+(-3+2\sqrt 3)=-5+4\sqrt 3.\ \square$$
 
 ---
+## 카드 205 — 연세대 미래캠퍼스 (2020학년도) — 자연·의예 수학 5 문항카드 · 10 하위문항
+
+**출처.** 2020학년도 연세대학교 미래캠퍼스 선행학습 영향평가 결과 보고서.
+
+**구성.** 자연계열(일반논술 전형) 문항카드 3·4·5(미적분Ⅱ·수학·수학Ⅱ) 6 하위문항 + 의예과 문항카드 6·7(수학·미적분Ⅱ·기하와 벡터) 4 하위문항.
+
+---
+
+### 문항카드 3 — 자연계열 문제 1 (미적분Ⅱ · 부분적분법·삼각함수·지수함수)
+
+**(가)** 두 함수 $f(x),g(x)$ 가 미분가능할 때, $\displaystyle\int f(x)g'(x)\,dx=f(x)g(x)-\int f'(x)g(x)\,dx$. 이를 부분적분법이라 한다.
+
+**[문제 1]** 함수 $f(x)=|\sin x|$ 에 대하여 정적분 $\displaystyle\int_{-\pi/2}^{\pi/2}\!f(x)e^{x}\,dx$ 의 값을 구하라.
+
+??? success "풀이"
+    부분적분을 두 번 사용하여 부정적분을 먼저 구한다.
+
+    $$\int\sin x\,e^{x}\,dx=\sin x\,e^{x}-\int\cos x\,e^{x}\,dx=\sin x\,e^{x}-\cos x\,e^{x}-\int\sin x\,e^{x}\,dx$$
+
+    양변에 $\int\sin x\,e^{x}\,dx$ 를 더하고 $2$ 로 나누면 $\displaystyle\int\sin x\,e^{x}\,dx=\frac{(\sin x-\cos x)e^{x}}{2}+C$.
+
+    구간 $[-\pi/2,0]$ 에서 $\sin x\le 0$, $[0,\pi/2]$ 에서 $\sin x\ge 0$ 이므로
+
+    $$\int_{-\pi/2}^{\pi/2}\!|\sin x|e^{x}\,dx=-\!\int_{-\pi/2}^{0}\!\sin x\,e^{x}\,dx+\int_{0}^{\pi/2}\!\sin x\,e^{x}\,dx.$$
+
+    $\displaystyle\int_{-\pi/2}^{0}\!\sin x\,e^{x}\,dx=\left[\tfrac{(\sin x-\cos x)e^{x}}{2}\right]_{-\pi/2}^{0}=-\tfrac{1}{2}-\bigl(-\tfrac{e^{-\pi/2}}{2}\bigr)=\tfrac{e^{-\pi/2}-1}{2}$.
+
+    $\displaystyle\int_{0}^{\pi/2}\!\sin x\,e^{x}\,dx=\left[\tfrac{(\sin x-\cos x)e^{x}}{2}\right]_{0}^{\pi/2}=\tfrac{e^{\pi/2}}{2}-\bigl(-\tfrac{1}{2}\bigr)=\tfrac{e^{\pi/2}+1}{2}$.
+
+    합치면
+
+    $$-\tfrac{e^{-\pi/2}-1}{2}+\tfrac{e^{\pi/2}+1}{2}=1+\frac{e^{\pi/2}-e^{-\pi/2}}{2}.\ \square$$
+
+---
+
+### 문항카드 4 — 자연계열 문제 2 (수학·수학Ⅱ · 점과 직선의 거리·원과 직선·필요조건)
+
+**[문제 2-1]** 좌표평면 위의 점 $\mathrm P(x_{1},y_{1})$ 과 직선 $l:ax+by+c=0$ 사이의 거리 $d$ 가 $d=\dfrac{|ax_{1}+by_{1}+c|}{\sqrt{a^{2}+b^{2}}}$ 임을 보여라. (단, $a\ne 0,\ b\ne 0$.)
+
+??? success "풀이"
+    점 $\mathrm P$ 에서 $x$ 축, $y$ 축에 평행한 직선을 그어 직선 $l$ 과 만나는 점을 각각 $\mathrm A,\mathrm B$ 라 하면
+
+    $$\mathrm A\!\left(-\tfrac{by_{1}+c}{a},\,y_{1}\right),\quad \mathrm B\!\left(x_{1},\,-\tfrac{ax_{1}+c}{b}\right).$$
+
+    따라서 $\overline{\mathrm{AP}}=\left|\dfrac{ax_{1}+by_{1}+c}{a}\right|$, $\overline{\mathrm{BP}}=\left|\dfrac{ax_{1}+by_{1}+c}{b}\right|$, $\overline{\mathrm{AB}}=\sqrt{\overline{\mathrm{AP}}^{2}+\overline{\mathrm{BP}}^{2}}$.
+
+    직각삼각형 $\mathrm{APB}$ 의 넓이를 두 가지로 표현하면 $\overline{\mathrm{AB}}\cdot\overline{\mathrm{PH}}=\overline{\mathrm{AP}}\cdot\overline{\mathrm{BP}}$ 이므로 ($\mathrm H$ 는 $\mathrm P$ 에서 $l$ 에 내린 수선의 발)
+
+    $$\overline{\mathrm{PH}}=\frac{\overline{\mathrm{AP}}\cdot\overline{\mathrm{BP}}}{\overline{\mathrm{AB}}}=\frac{\bigl|\frac{k^{2}}{ab}\bigr|}{\frac{|k|\sqrt{a^{2}+b^{2}}}{|ab|}}=\frac{|k|}{\sqrt{a^{2}+b^{2}}}\quad(k=ax_{1}+by_{1}+c).$$
+
+    즉 $d=\dfrac{|ax_{1}+by_{1}+c|}{\sqrt{a^{2}+b^{2}}}$. $\square$
+
+**[문제 2-2]** 두 조건 $p:x^{2}-n\le 0$, $q:-1\le x\le 3$ 에 대하여 $p$ 가 $q$ 이기 위한 필요조건이고 $n$ 은 한 자리 자연수일 때, 중심이 $(n,0)$ 인 단위원 위의 점과 직선 $y=-\tfrac{3}{4}x-\tfrac{3}{4}$ 사이의 거리의 최솟값을 구하라.
+
+??? success "풀이"
+    $p$ 의 진리집합 $P=\{x:-\sqrt n\le x\le\sqrt n\}$, $q$ 의 진리집합 $Q=\{x:-1\le x\le 3\}$. $p$ 가 $q$ 의 필요조건이면 $Q\subset P$, 즉 $\sqrt n\ge 3$ 이므로 $n\ge 9$. 한 자리 자연수에서 $n=9$.
+
+    중심 $(9,0)$ 에서 직선 $3x+4y+3=0$ 까지의 거리: $\dfrac{|27+0+3|}{\sqrt{9+16}}=\dfrac{30}{5}=6$. 단위원의 반지름이 $1$ 이므로 최단거리 $d_{\min}=6-1=5$. $\square$
+
+---
+
+### 문항카드 5 — 자연계열 문제 3 (미적분Ⅱ · 삼각함수의 극한과 도함수)
+
+**[문제 3-1]** 단위원에서 도형의 넓이의 대소 관계와 함수의 극한의 대소 관계에 대한 성질을 이용하여 $\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$ 임을 보여라.
+
+??? success "풀이"
+    **(i)** $0<x<\tfrac{\pi}{2}$ 일 때, 단위원 $\mathrm O$ 에서 중심각 $\angle\mathrm{AOB}=x$ 라 하자. $\mathrm A$ 에서 $\mathrm O$ 에 그은 접선과 $\overline{\mathrm{OB}}$ 의 연장선의 교점을 $\mathrm T$ 라 하면 $\triangle\mathrm{AOB}<\text{부채꼴 }\mathrm{AOB}<\triangle\mathrm{AOT}$, 즉
+
+    $$\tfrac{1}{2}\sin x<\tfrac{1}{2}x<\tfrac{1}{2}\tan x.$$
+
+    $\sin x>0$ 으로 나누면 $1<\dfrac{x}{\sin x}<\dfrac{1}{\cos x}$, 역수를 취해 $\cos x<\dfrac{\sin x}{x}<1$. $\displaystyle\lim_{x\to 0^{+}}\cos x=1$ 과 조임정리에 의하여 $\displaystyle\lim_{x\to 0^{+}}\frac{\sin x}{x}=1$.
+
+    **(ii)** $-\tfrac{\pi}{2}<x<0$ 일 때 $x=-t$ 로 치환하면 $t\to 0^{+}$ 이고
+
+    $$\lim_{x\to 0^{-}}\frac{\sin x}{x}=\lim_{t\to 0^{+}}\frac{\sin(-t)}{-t}=\lim_{t\to 0^{+}}\frac{\sin t}{t}=1.$$
+
+    좌·우극한이 일치하므로 $\displaystyle\lim_{x\to 0}\frac{\sin x}{x}=1$. $\square$
+
+**[문제 3-2]** **[3-1]** 을 이용하여 극한 $\displaystyle\lim_{x\to 0}\frac{1-\cos x}{x}$ 를 구하라.
+
+??? success "풀이"
+    분자·분모에 $1+\cos x$ 를 곱하면
+
+    $$\lim_{x\to 0}\frac{1-\cos x}{x}=\lim_{x\to 0}\frac{(1-\cos x)(1+\cos x)}{x(1+\cos x)}=\lim_{x\to 0}\frac{\sin^{2}x}{x(1+\cos x)}=\lim_{x\to 0}\frac{\sin x}{x}\cdot\frac{\sin x}{1+\cos x}=1\cdot\frac{0}{2}=0.\ \square$$
+
+**[문제 3-3]** 도함수의 정의를 이용하여 삼각함수 $y=\sin x$ 의 도함수를 구하라.
+
+??? success "풀이"
+    도함수의 정의로
+
+    $$y'=\lim_{h\to 0}\frac{\sin(x+h)-\sin x}{h}=\lim_{h\to 0}\frac{\sin x\cos h+\cos x\sin h-\sin x}{h}$$
+
+    $$=\cos x\lim_{h\to 0}\frac{\sin h}{h}-\sin x\lim_{h\to 0}\frac{1-\cos h}{h}=\cos x\cdot 1-\sin x\cdot 0=\cos x.\ \square$$
+
+---
+
+### 문항카드 6 — 의예과 문제 1 (수학·미적분Ⅱ · 원과 직선의 위치관계·합성함수의 미분·최댓값)
+
+**제시문.** 반지름이 $r$ 인 원의 중심에서 직선까지의 거리를 $d$ 라 하자. $(1)\ r>d$ : 두 점에서 만난다, $(2)\ r=d$ : 접한다, $(3)\ r<d$ : 만나지 않는다.
+
+**[문제 1-1]** 원 $(x-3)^{2}+(y-2)^{2}=4$ 와 직선 $tx+y=2$ 가 접하기 위한 실수 $t$ 의 값과 접점의 좌표를 구하라.
+
+??? success "풀이"
+    원의 중심 $(3,2)$ 에서 직선 $tx+y-2=0$ 까지의 거리는 $d=\dfrac{|3t+2-2|}{\sqrt{t^{2}+1}}=\dfrac{3|t|}{\sqrt{t^{2}+1}}$. 접할 조건 $d=r=2$ 에서
+
+    $$\frac{3|t|}{\sqrt{t^{2}+1}}=2\ \Longrightarrow\ 9t^{2}=4(t^{2}+1)\ \Longrightarrow\ t^{2}=\tfrac{4}{5}\ \Longrightarrow\ t=\pm\frac{2}{\sqrt 5}.$$
+
+    접점은 중심 $(3,2)$ 에서 직선에 내린 수선의 발이다. 수선의 방향은 직선과 수직 (기울기 $1/t$):
+
+    $$y=\tfrac{1}{t}(x-3)+2.$$
+
+    이를 $tx+y=2$ 에 대입하면 $tx+\tfrac{x-3}{t}+2=2$, $t^{2}x+(x-3)=0$, $(t^{2}+1)x=3$, $x=\dfrac{3}{t^{2}+1}=\dfrac{3}{4/5+1}=\dfrac{5}{3}$. $y=2-tx=2-\tfrac{5t}{3}$. $t=\pm\tfrac{2}{\sqrt 5}$ 일 때
+
+    $$y=2\mp\frac{2}{\sqrt 5}\cdot\tfrac{5}{3}=2\mp\frac{2\sqrt 5}{3}=\frac{6\mp 2\sqrt 5}{3}.$$
+
+    따라서 접점은 $\left(\tfrac{5}{3},\,\tfrac{6\mp 2\sqrt 5}{3}\right)$. $\square$
+
+**[문제 1-2]** 직선 $(\sin t)x+y=12+3\sin t$ 가 원 $x^{2}+(y-3)^{2}=25$ 에 의하여 잘린 선분의 길이의 최댓값을 구하고, 그때의 실수 $t\in[0,2\pi]$ 의 값을 구하라.
+
+??? success "풀이"
+    원의 중심 $(0,3)$ 에서 직선 $(\sin t)x+y-12-3\sin t=0$ 까지의 거리
+
+    $$d=\frac{|0+3-12-3\sin t|}{\sqrt{\sin^{2}t+1}}=\frac{3(3+\sin t)}{\sqrt{\sin^{2}t+1}}\quad (3+\sin t>0).$$
+
+    잘린 선분의 길이는 $L=2\sqrt{r^{2}-d^{2}}=2\sqrt{25-d^{2}}$ 이므로 $L$ 이 최대이려면 $d$ 가 최소.
+
+    $u=\sin t\in[-1,1]$ 로 두고 $f(u)=\dfrac{3+u}{\sqrt{u^{2}+1}}$. $f'(u)=\dfrac{\sqrt{u^{2}+1}-(3+u)\cdot\frac{u}{\sqrt{u^{2}+1}}}{u^{2}+1}=\dfrac{(u^{2}+1)-u(3+u)}{(u^{2}+1)^{3/2}}=\dfrac{1-3u}{(u^{2}+1)^{3/2}}$.
+
+    $f'(u)=0$ 에서 $u=\tfrac{1}{3}$. 구간 끝점 $f(-1)=\tfrac{2}{\sqrt 2}=\sqrt 2$, $f(1)=\tfrac{4}{\sqrt 2}=2\sqrt 2$, $f(\tfrac{1}{3})=\tfrac{10/3}{\sqrt{10/9}}=\tfrac{10/3}{\sqrt{10}/3}=\sqrt{10}$. 최솟값은 $f(-1)=\sqrt 2$, 즉 $u=-1$ 에서 최소이고 $d_{\min}=3\sqrt 2$.
+
+    $\sin t=-1$ 일 때 $t=\tfrac{3\pi}{2}$ 이고
+
+    $$L_{\max}=2\sqrt{25-18}=2\sqrt 7.\ \square$$
+
+---
+
+### 문항카드 7 — 의예과 문제 2 (기하와 벡터 · 정사각뿔의 부피·평면의 방정식·점과 평면의 거리)
+
+모든 모서리의 길이가 $2$ 인 정사각뿔 $\mathrm E\text{-}\mathrm{ABCD}$ 를 밑면의 한 변 $\overline{\mathrm{AD}}$ 를 지나는 평면으로 두 조각으로 분할한다. 평면 $\mathrm{AFGD}$ ($\mathrm F\in\overline{\mathrm{EB}},\ \mathrm G\in\overline{\mathrm{EC}}$) 에 의해 잘린 사각뿔 $\mathrm E\text{-}\mathrm{AFGD}$ 를 $T_{1}$, 정사각뿔에서 $T_{1}$ 을 제외한 도형을 $T_{2}$ 라 하자.
+
+**[문제 2-1]** 선분 $\overline{\mathrm{FB}}=1$ 일 때, 도형 $T_{1}$ 과 $T_{2}$ 의 부피를 각각 구하라.
+
+??? success "풀이"
+    정사각뿔의 부피: $\triangle\mathrm{AEC}$ 는 밑변 $\overline{\mathrm{AC}}=2\sqrt 2$, 두 변 $\mathrm{AE}=\mathrm{CE}=2$ 인 이등변삼각형. 꼭짓점 $\mathrm E$ 에서 $\overline{\mathrm{AC}}$ 의 중점 $\mathrm K$ 까지의 거리 $\overline{\mathrm{EK}}=\sqrt{2^{2}-(\sqrt 2)^{2}}=\sqrt 2$ 가 정사각뿔의 높이이다. 따라서 정사각뿔의 부피는 $V=\tfrac{1}{3}\cdot 4\cdot\sqrt 2=\tfrac{4\sqrt 2}{3}$.
+
+    $\overline{\mathrm{FB}}=1$ 일 때 $T_{2}$ 를 세 조각으로 나누어 부피를 구한다. 가운데 부분은 높이가 정사각뿔 높이의 절반 $\tfrac{\sqrt 2}{2}$ 인 삼각기둥 형태로 부피 $\tfrac{1}{2}\cdot 2\cdot\tfrac{\sqrt 2}{2}\cdot 1=\tfrac{\sqrt 2}{2}$. 나머지 두 조각을 붙이면 직사각뿔이 되고 부피 $\tfrac{1}{3}\cdot 2\cdot 1\cdot\tfrac{\sqrt 2}{2}=\tfrac{\sqrt 2}{3}$.
+
+    $T_{2}$ 의 부피 $=\tfrac{\sqrt 2}{2}+\tfrac{\sqrt 2}{3}=\tfrac{3\sqrt 2+2\sqrt 2}{6}=\tfrac{5\sqrt 2}{6}$. 따라서
+
+    $$T_{1}=V-T_{2}=\frac{4\sqrt 2}{3}-\frac{5\sqrt 2}{6}=\frac{8\sqrt 2-5\sqrt 2}{6}=\frac{\sqrt 2}{2}.$$
+
+    여기서 풀이에 사용한 분할은 $T_{2}$ 가 더 큰 부분 ($\overline{\mathrm{FB}}=1$ 이므로 $\mathrm F$ 가 $\overline{\mathrm{EB}}$ 의 중점)임을 반영한다. 결국 $T_{1}=\tfrac{\sqrt 2}{2},\ T_{2}=\tfrac{5\sqrt 2}{6}$. (PDF 해설 방법 2: 좌표공간에서 평면 $\mathrm{AFGD}$ 의 식과 점 $\mathrm E$ 와의 거리를 이용해 $T_{1}$ 의 부피를 구해도 동일.) $\square$
+
+**[문제 2-2]** 도형 $T_{1}$ 과 $T_{2}$ 의 부피가 서로 같을 때, 선분 $\overline{\mathrm{FB}}$ 의 길이를 구하라.
+
+??? success "풀이"
+    $\overline{\mathrm{FB}}=t$ 라 두면 $\mathrm F=(2-\tfrac{t}{2},\,\tfrac{t}{2},\,\tfrac{t}{\sqrt 2})$. **[2-1]** 과 같은 분할로 $T_{2}$ 의 부피를 $t$ 의 식으로 표현하면
+
+    $$T_{2}(t)=\underbrace{\tfrac{1}{2}\cdot 2\cdot\tfrac{t}{\sqrt 2}\cdot(2-t)}_{\text{삼각기둥}}+\underbrace{\tfrac{1}{3}\cdot 2\cdot t\cdot\tfrac{t}{\sqrt 2}}_{\text{직사각뿔}}=\frac{t(2-t)}{\sqrt 2}+\frac{\sqrt 2}{3}t^{2}=-\frac{\sqrt 2}{6}t^{2}+\sqrt 2\,t.$$
+
+    $T_{1}=T_{2}$ 이려면 $T_{2}=\tfrac{V}{2}=\tfrac{2\sqrt 2}{3}$:
+
+    $$-\frac{\sqrt 2}{6}t^{2}+\sqrt 2\,t=\frac{2\sqrt 2}{3}\ \Longrightarrow\ t^{2}-6t+4=0\ \Longrightarrow\ t=3\pm\sqrt 5.$$
+
+    $0<t<2$ 이므로 $t=3-\sqrt 5$. $\square$
+
+---
