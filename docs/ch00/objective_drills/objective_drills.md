@@ -28793,3 +28793,91 @@ $$f'(t)=-\tfrac{a}{N}g(t)f(t),\quad g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t),\quad h'(t)
     $$1+\dfrac{2}{3}=\dfrac{5}{3}.\ \square$$
 
 ---
+
+## 카드 208 — 동국대학교 (2025학년도) — 자연계열 2 문제 · 7 하위문항
+
+**출처.** 2027학년도 동국대학교 논술전형 가이드북 — 자연계열 기출문제 (2025학년도) · 수리논술 3문제 중 문제 2 비공개 (출제오류로 전원 만점 처리). 문제 1·3 만 수록.
+
+**구성.** 이차함수·직선 교점·평면벡터 내적·cos θ 최솟값 (수학·기하 · 3 sub) + 근과 계수의 관계·정적분·곡선 사이 넓이·구분구적법 (수학·미적분 · 4 sub).
+
+---
+
+### 문제 1 — 이차함수·직선 교점·평면벡터 내적 (수학·기하)
+
+좌표평면 위의 점 $\mathrm P(0,1)$ 가 주어져 있고 이차함수 $y=x^{2}+\!\left(\tfrac{1}{3}-2k\right)\!x+k$ 와 직선 $y=x$ 의 두 교점을 $\mathrm Q_{1},\mathrm Q_{2}$ 라 하자. 점 $\mathrm P$ 와 $\mathrm Q_{1}$, 점 $\mathrm P$ 와 $\mathrm Q_{2}$ 를 지나는 직선을 각각 $l_{1},l_{2}$ 라 하고, 두 직선 $l_{1},l_{2}$ 가 이루는 각의 크기를 $\theta\,(0\le\theta\le\tfrac{\pi}{2})$ 라 할 때 다음을 구하라.
+
+**(1)** $\cos\theta$ 를 실수 $k$ 를 이용하여 나타내라.
+
+**(2)** $\theta$ 가 최솟값을 가질 때의 실수 $k$ 의 값과 그때의 $\theta$.
+
+**(3)** $\theta$ 가 최솟값을 가질 때의 점 $\mathrm Q_{1},\mathrm Q_{2}$ 의 좌표.
+
+??? success "풀이"
+    **(1)** 이차함수와 직선 $y=x$ 의 교점의 $x$ 좌표는 $x^{2}-2\!\left(\tfrac{1}{3}+k\right)\!x+k=0$ 의 해. 판별식의 $\tfrac{D}{4}=\!\left(k+\tfrac{1}{3}\right)^{2}-k=\!\left(k-\tfrac{1}{6}\right)^{2}+\tfrac{1}{12}>0$ 이므로 두 실근 $\alpha,\beta$ 를 갖는다. $\mathrm Q_{1}(\alpha,\alpha),\ \mathrm Q_{2}(\beta,\beta)$.
+    
+    벡터 $\vec a=\overrightarrow{\mathrm{PQ}_{1}}=(\alpha,\alpha-1)$, $\vec b=\overrightarrow{\mathrm{PQ}_{2}}=(\beta,\beta-1)$. 근과 계수의 관계 $\alpha+\beta=2k+\tfrac{2}{3},\ \alpha\beta=k$ 에서
+    
+    $$\vec a\cdot\vec b=\alpha\beta+(\alpha-1)(\beta-1)=2\alpha\beta-(\alpha+\beta)+1=2k-\!\left(2k+\tfrac{2}{3}\right)+1=\tfrac{1}{3}.$$
+    
+    $|\vec a|^{2}|\vec b|^{2}=(2\alpha^{2}-2\alpha+1)(2\beta^{2}-2\beta+1)$ 를 전개하여 정리하면
+    
+    $$|\vec a|^{2}|\vec b|^{2}=4(\alpha\beta)^{2}-4\alpha\beta(\alpha+\beta)+2(\alpha+\beta)^{2}-2(\alpha+\beta)+1=\dfrac{36k^{2}-12k+5}{9}=\dfrac{(6k-1)^{2}+4}{9}.$$
+    
+    따라서
+    
+    $$\cos\theta=\dfrac{1/3}{\sqrt{(6k-1)^{2}+4}/3}=\dfrac{1}{\sqrt{(6k-1)^{2}+4}}.$$
+    
+    **(2)** $\dfrac{1}{4\cos^{2}\theta}=\dfrac{(6k-1)^{2}+4}{4}=9\!\left(k-\tfrac{1}{6}\right)^{2}+1$ 은 $k=\tfrac{1}{6}$ 일 때 최솟값 $1$ 을 갖는다. $\cos\theta>0$ 이므로 $\cos\theta$ 의 최댓값은 $\tfrac{1}{2}$, $\theta$ 의 최솟값은 $\dfrac{\pi}{3}$.
+    
+    **(3)** $k=\tfrac{1}{6}$ 일 때 $x^{2}-x+\tfrac{1}{6}=0$ 의 해는 $x=\dfrac{1\pm\sqrt{1-\tfrac{2}{3}}}{2}=\dfrac{3\pm\sqrt 3}{6}$. 따라서
+    
+    $$\mathrm Q_{1}\!\left(\dfrac{3+\sqrt 3}{6},\dfrac{3+\sqrt 3}{6}\right),\quad \mathrm Q_{2}\!\left(\dfrac{3-\sqrt 3}{6},\dfrac{3-\sqrt 3}{6}\right).\ \square$$
+
+---
+
+### 문제 3 — 근과 계수의 관계·정적분·구분구적법 (수학·미적분)
+
+실수 $\alpha,\beta$ 는 $\dfrac{\alpha\beta}{\alpha-\beta}=20n,\ \alpha+\beta=9n,\ \alpha>\beta>0$ 을 만족한다. 두 곡선 $y=(x-\alpha)(x-\beta)$ 와 $y=\dfrac{3\alpha\beta(\alpha-\beta)}{5x}$ 로 둘러싸인 도형의 넓이를 $S_{n}$ 이라 하자(단 $n$ 은 자연수).
+
+**(1)** 두 곡선의 교점의 $x$ 좌표를 $n$ 을 이용하여 나타내라.
+
+**(2)** 교점을 꼭짓점으로 하는 다각형의 넓이를 $A_{n}$ 이라 할 때 $A_{n}$ 을 구하라.
+
+**(3)** $S_{n}$ 을 구하라.
+
+**(4)** $\displaystyle\lim_{n\to\infty}\dfrac{1}{n^{7}}\sum_{k=1}^{n}S_{k}A_{2k}$ 를 구하라.
+
+??? success "풀이"
+    $\alpha\beta=20n(\alpha-\beta)$ 를 $(\alpha-\beta)^{2}=(\alpha+\beta)^{2}-4\alpha\beta$ 에 대입하면 $(\alpha-\beta)^{2}+80n(\alpha-\beta)-81n^{2}=0$, 즉 $\bigl[(\alpha-\beta)-n\bigr]\bigl[(\alpha-\beta)+81n\bigr]=0$. $\alpha-\beta>0$ 에서 $\alpha-\beta=n$. 따라서 $\alpha\beta=20n^{2}$ 이고 $\alpha,\beta$ 는 $t^{2}-9nt+20n^{2}=0$ 의 해 $\alpha=5n,\beta=4n$. 두 곡선은
+    
+    $$y=(x-5n)(x-4n)=x^{2}-9nx+20n^{2},\qquad y=\dfrac{12n^{3}}{x}.$$
+    
+    **(1)** 교점은 $x^{3}-9nx^{2}+20n^{2}x-12n^{3}=(x-n)(x-2n)(x-6n)=0$ 에서
+    
+    $$x=n,\ 2n,\ 6n.$$
+    
+    **(2)** 교점 $(n,12n^{2}),(2n,6n^{2}),(6n,2n^{2})$. 두 점 $(n,12n^{2}),(6n,2n^{2})$ 를 지나는 직선의 방정식은 $y=-2nx+14n^{2}$. 점 $(2n,6n^{2})$ 에서 직선까지 거리
+    
+    $$d=\dfrac{|2n(2n)+6n^{2}-14n^{2}|}{\sqrt{4n^{2}+1}}=\dfrac{4n^{2}}{\sqrt{4n^{2}+1}}.$$
+    
+    두 점 사이 거리 $h=5n\sqrt{1+4n^{2}}$ 이므로
+    
+    $$A_{n}=\tfrac{1}{2}\cdot 5n\sqrt{1+4n^{2}}\cdot\dfrac{4n^{2}}{\sqrt{4n^{2}+1}}=10n^{3}.$$
+    
+    **(3)** $(n,2n)$ 에서 포물선 $>$ 쌍곡선, $(2n,6n)$ 에서 쌍곡선 $>$ 포물선. 따라서
+    
+    $$S_{n}=\int_{n}^{2n}\!\!(x^{2}-9nx+20n^{2}-\tfrac{12n^{3}}{x})\,dx-\int_{2n}^{6n}\!\!(x^{2}-9nx+20n^{2}-\tfrac{12n^{3}}{x})\,dx.$$
+    
+    각 항을 계산하면 다항식 부분은 $\left[\tfrac{x^{3}}{3}-\tfrac{9n x^{2}}{2}+20n^{2}x\right]$, 로그 항은 $-12n^{3}\ln|x|$. 정리하면
+    
+    $$S_{n}=\!\left(\tfrac{7}{2}+12\ln\tfrac{3}{2}\right)\!n^{3}.$$
+    
+    **(4)** $A_{2k}=10(2k)^{3}=80k^{3}$, $S_{k}A_{2k}=80\!\left(\tfrac{7}{2}+12\ln\tfrac{3}{2}\right)\!k^{6}$. 구분구적법
+    
+    $$\lim_{n\to\infty}\dfrac{1}{n^{7}}\sum_{k=1}^{n}k^{6}=\lim_{n\to\infty}\dfrac{1}{n}\sum_{k=1}^{n}\!\left(\tfrac{k}{n}\right)^{6}=\int_{0}^{1}x^{6}\,dx=\tfrac{1}{7}.$$
+    
+    따라서
+    
+    $$\lim_{n\to\infty}\dfrac{1}{n^{7}}\sum_{k=1}^{n}S_{k}A_{2k}=\dfrac{80}{7}\!\left(\tfrac{7}{2}+12\ln\tfrac{3}{2}\right)=40+\dfrac{960}{7}\ln\dfrac{3}{2}.\ \square$$
+
+---
