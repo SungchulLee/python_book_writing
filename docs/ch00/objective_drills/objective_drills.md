@@ -28881,3 +28881,138 @@ $$f'(t)=-\tfrac{a}{N}g(t)f(t),\quad g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t),\quad h'(t)
     $$\lim_{n\to\infty}\dfrac{1}{n^{7}}\sum_{k=1}^{n}S_{k}A_{2k}=\dfrac{80}{7}\!\left(\tfrac{7}{2}+12\ln\tfrac{3}{2}\right)=40+\dfrac{960}{7}\ln\dfrac{3}{2}.\ \square$$
 
 ---
+
+## 카드 209 — 동국대학교 (2026학년도) — 자연계열 3 문제 · 11 하위문항
+
+**출처.** 2027학년도 동국대학교 논술전형 가이드북 — 자연계열 기출문제 (2026학년도) · 수리논술 3문제.
+
+**구성.** 정팔면체·정사면체 이면각·삼수선 정리·삼각함수 덧셈정리 (기하 · 4 sub) + 등차수열·∑·극한 (수학·미적분 · 3 sub) + 삼차함수 변곡점 접선·평행이동·이차방정식 판별식 (수학·미적분 · 4 sub).
+
+---
+
+### 문제 1 — 정팔면체·정사면체의 이면각 (기하)
+
+모든 변의 길이가 $1$ 인 정팔면체와 정사면체에서 다음을 구하라. (그림과 같이 정팔면체의 꼭짓점을 $\mathrm A,\mathrm B,\mathrm C,\mathrm D,\mathrm E,\mathrm F$ 로, 정사면체의 꼭짓점을 $\mathrm G,\mathrm H,\mathrm I,\mathrm J$ 로 둔다.)
+
+**(1)** 정팔면체에서 평면 $\mathrm{ABC}$ 와 평면 $\mathrm{FBC}$ 가 이루는 이면각 중 둔각의 크기를 $\alpha$ 라 할 때 $\cos\alpha$.
+
+**(2)** 정팔면체에서 평면 $\mathrm{ABC}$ 와 평면 $\mathrm{AED}$ 가 이루는 이면각 중 예각의 크기를 $\beta$ 라 할 때 $\cos\beta$.
+
+**(3)** 정사면체에서 평면 $\mathrm{JGH}$ 와 평면 $\mathrm{IGH}$ 가 이루는 이면각 중 예각의 크기를 $\gamma$ 라 할 때 $\cos\gamma$.
+
+**(4)** 점 $\mathrm G$ 와 $\mathrm B$, 점 $\mathrm H$ 와 $\mathrm C$, 점 $\mathrm I$ 와 $\mathrm F$ 를 일치시키면 평면 $\mathrm{ABC}$ 와 평면 $\mathrm{JGH}$ 가 일치함을 이면각을 이용하여 보여라.
+
+??? success "풀이"
+    **(1)** $\overline{\mathrm{BC}}$ 의 중점 $\mathrm M$ 에서 $\overline{\mathrm{MA}}\perp\overline{\mathrm{BC}}$, $\overline{\mathrm{MF}}\perp\overline{\mathrm{BC}}$ 이므로 두 평면이 이루는 이면각 중 하나는 $\angle\mathrm{AMF}$. 점 $\mathrm A$ 에서 평면 $\mathrm{BCDE}$ 에 내린 수선의 발 $\mathrm N$ 은 정사각형 $\mathrm{BCDE}$ 의 대각선 교점. 직각삼각형 $\triangle\mathrm{ANM}$ 에서 $\overline{\mathrm{MA}}=\tfrac{\sqrt 3}{2},\ \overline{\mathrm{MN}}=\tfrac{1}{2}$ 이므로 $\cos(\angle\mathrm{AMN})=\tfrac{1}{\sqrt 3}$. 대칭에 의하여 $\angle\mathrm{AMF}=2\angle\mathrm{AMN}$ 이므로 덧셈정리
+    
+    $$\cos(\angle\mathrm{AMF})=2\cos^{2}(\angle\mathrm{AMN})-1=2\cdot\tfrac{1}{3}-1=-\tfrac{1}{3}.$$
+    
+    $\angle\mathrm{AMF}$ 가 둔각이므로 $\cos\alpha=-\tfrac{1}{3}$.
+    
+    **(2)** $\overline{\mathrm{ED}}$ 의 중점 $\mathrm Q$. 사각형 $\mathrm{MAQF}$ 는 네 변이 모두 $\tfrac{\sqrt 3}{2}$ 인 마름모. 점 $\mathrm A$ 를 지나 $\overline{\mathrm{ED}}\parallel\overline{\mathrm{BC}}$ 와 평행인 직선 $l$ 은 평면 $\mathrm{ABC}$ 와 평면 $\mathrm{AED}$ 의 교선이고, $\overline{\mathrm{AM}}\perp l,\ \overline{\mathrm{AQ}}\perp l$ 이므로 이면각 중 하나는 $\angle\mathrm{MAQ}$. $|\overline{\mathrm{MA}}|=|\overline{\mathrm{AQ}}|=\tfrac{\sqrt 3}{2},\ |\overline{\mathrm{MQ}}|=1$, 코사인 법칙
+    
+    $$\cos(\angle\mathrm{MAQ})=\dfrac{\tfrac{3}{4}+\tfrac{3}{4}-1}{2\cdot\tfrac{\sqrt 3}{2}\cdot\tfrac{\sqrt 3}{2}}=\dfrac{1/2}{3/2}=\tfrac{1}{3}.$$
+    
+    $\angle\mathrm{MAQ}$ 가 예각이므로 $\cos\beta=\tfrac{1}{3}$.
+    
+    **(3)** $\overline{\mathrm{GH}}$ 의 중점 $\mathrm O$, $\triangle\mathrm{IGH}$ 의 무게중심 $\mathrm P$. $\overline{\mathrm{OJ}}\perp\overline{\mathrm{GH}},\ \overline{\mathrm{OI}}\perp\overline{\mathrm{GH}}$ 이므로 이면각 중 하나는 $\angle\mathrm{JOI}=\angle\mathrm{JOP}$. 정사면체에서 $\mathrm J$ 의 평면 $\mathrm{IGH}$ 위로의 수선의 발이 $\mathrm P$ 이므로 $\triangle\mathrm{JOP}$ 는 $\angle\mathrm{P}=\tfrac{\pi}{2}$ 인 직각삼각형. $|\overline{\mathrm{OJ}}|=\tfrac{\sqrt 3}{2},\ |\overline{\mathrm{OP}}|=\tfrac{1}{3}|\overline{\mathrm{OI}}|=\tfrac{\sqrt 3}{6}$ 에서
+    
+    $$\cos(\angle\mathrm{JOP})=\dfrac{|\overline{\mathrm{OP}}|}{|\overline{\mathrm{OJ}}|}=\dfrac{\sqrt 3/6}{\sqrt 3/2}=\tfrac{1}{3}.$$
+    
+    $\angle\mathrm{JOP}$ 가 예각이므로 $\cos\gamma=\tfrac{1}{3}$.
+    
+    **(4)** $\mathrm G\equiv\mathrm B,\mathrm H\equiv\mathrm C,\mathrm I\equiv\mathrm F$ 로 일치시키면 $\overline{\mathrm{GH}}$ 의 중점 $\mathrm O$ 와 $\overline{\mathrm{BC}}$ 의 중점 $\mathrm M$ 도 일치. 평면 $\mathrm{JGH}=\mathrm{JBC}$ 와 평면 $\mathrm{ABC}$ 가 이루는 이면각은 평면 $\mathrm{JGH}$ 와 평면 $\mathrm{IGH}=\mathrm{FBC}$ 의 예각 $\gamma$ 와 평면 $\mathrm{FBC}$ 와 평면 $\mathrm{ABC}$ 의 둔각 $\alpha$ 의 합 $\alpha+\gamma$ 와 같다. $\cos(\pi-\alpha)=-\cos\alpha=\tfrac{1}{3}=\cos\gamma$ 이고 $0<\pi-\alpha,\gamma<\tfrac{\pi}{2}$ 이므로 $\pi-\alpha=\gamma$, 즉 $\alpha+\gamma=\pi$. 따라서 평면 $\mathrm{ABC}$ 와 평면 $\mathrm{JGH}$ 는 일치한다. $\square$
+
+---
+
+### 문제 2 — 등차수열·∑·수열의 극한 (수학·미적분)
+
+공차가 자연수인 두 등차수열 $\{a_{n}\},\{b_{n}\}$ 이 다음 조건을 만족한다.
+
+① $\displaystyle\lim_{n\to\infty}\dfrac{a_{n}-b_{n}}{n}=2,\ \sum_{n=1}^{10}(a_{n}-b_{n})=180$.
+② $\displaystyle\sum_{k=1}^{n}(a_{k}+b_{k})$ 는 $n=7$ 일 때만 최솟값을 갖는다.
+③ $\displaystyle\sum_{n=1}^{4}|b_{n}|=88$.
+
+**(1)** $\{a_{n}\}$ 과 $\{b_{n}\}$ 의 일반항을 구하라.
+
+**(2)** $c_{n}=|a_{n}|-|b_{n}|$ 일 때 $c_{n}$ 의 최솟값.
+
+**(3)** $S_{n}=\displaystyle\sum_{k=1}^{n}c_{k}$ 일 때 $\displaystyle\lim_{n\to\infty}\dfrac{S_{n}}{n^{2}}$.
+
+??? success "풀이"
+    공차를 $p,q$ 로 두자.
+    
+    **(1)** 조건 ①에서 $\lim\dfrac{a_{n}-b_{n}}{n}=p-q=2$ 이고
+    
+    $$\sum_{n=1}^{10}(a_{n}-b_{n})=10(a_{1}-b_{1})+45(p-q)=10(a_{1}-b_{1})+90=180\ \Longrightarrow\ a_{1}-b_{1}=9.$$
+    
+    따라서 $a_{n}=a_{1}+(n-1)p=b_{n}+2n+7$ 이고 $a_{n}>b_{n}$.
+    
+    조건 ②에서 $a_{n}+b_{n}<0\ (n\le 7),\ a_{n}+b_{n}>0\ (n\ge 8)$. $a_{n}>b_{n}$ 에서 $2b_{n}<a_{n}+b_{n}<0$ 이므로 $b_{n}<0\ (n\le 7)$. 따라서 조건 ③에서
+    
+    $$\sum_{n=1}^{4}|b_{n}|=-\sum_{n=1}^{4}b_{n}=-(4b_{1}+6q)=88\ \Longrightarrow\ b_{1}=-\dfrac{3}{2}q-22.$$
+    
+    조건 ②의 부등식 두 개를 사용하여
+    
+    $$a_{7}+b_{7}=2b_{1}+12q+21=(-3q-44)+12q+21=9q-23<0,$$
+    
+    $$a_{8}+b_{8}=2b_{1}+14q+23=(-3q-44)+14q+23=11q-21>0.$$
+    
+    $\dfrac{21}{11}<q<\dfrac{23}{9}$, 자연수 $q$ 는 $q=2$. 그러므로 $p=4,\ b_{1}=-25,\ a_{1}=-16$ 이고
+    
+    $$a_{n}=4n-20,\qquad b_{n}=2n-27.$$
+    
+    **(2)** $c_{n}=|4n-20|-|2n-27|$ 는 구간별로
+    
+    $$c_{n}=\begin{cases}-2n-7,& n\le 5\\6n-47,& 5\le n\le 13\\2n+7,& n\ge 14\end{cases}$$
+    
+    각각 감소·증가·증가하므로 $n=5$ 에서 최솟값 $c_{5}=-17$.
+    
+    **(3)** $n\ge 14$ 에서
+    
+    $$S_{n}=\sum_{k=1}^{13}c_{k}+\sum_{k=14}^{n}(2k+7)=\sum_{k=1}^{13}c_{k}+\bigl(n(n+1)-13\cdot 14\bigr)+7(n-13).$$
+    
+    따라서 $S_{n}=n^{2}+8n+(\text{상수})$, 즉
+    
+    $$\lim_{n\to\infty}\dfrac{S_{n}}{n^{2}}=1.\ \square$$
+
+---
+
+### 문제 3 — 삼차함수 변곡점 접선의 기울기 최댓값 (수학·미적분)
+
+다음 조건을 만족하는 점 $\mathrm P$ 가 존재하는 삼차함수 $f(x)$ 에 대하여 곡선 $y=f(x)$ 의 변곡점에서의 접선의 기울기의 최댓값 $M$ 을 다음 순서에 따라 구하라(단 $f(x)$ 의 최고차항의 계수는 양수).
+
+**조건:** 곡선 $y=f(x)$ 위의 점 $\mathrm P$ 에서의 접선 $l$ 이 점 $\mathrm P$ 가 아닌 곡선 위의 점 $\mathrm Q$ 에서 만나고, 점 $\mathrm Q$ 에서의 접선 $m$ 이 직선 $l$ 과 수직이다.
+
+**(1)** 곡선 $y=f(x)$ 를 $x$ 축 및 $y$ 축의 방향으로 적절히 평행이동하여 항의 개수가 최소가 되는 곡선 $y=g(x)$ 를 구하라.
+
+**(2)** 곡선 $y=g(x)$ 위의 점 $\mathrm P_{0}(t,g(t))$ 에서의 접선의 방정식을 구하라.
+
+**(3)** (2)에서 구한 접선과 곡선 $y=g(x)$ 가 만나는 점 $\mathrm Q_{0}\,(\neq\mathrm P_{0})$ 에서의 접선의 방정식을 구하라.
+
+**(4)** $M$ 의 값을 구하라.
+
+??? success "풀이"
+    **(1)** $f(x)=ax^{3}+bx^{2}+cx+d\,(a>0)$ 를 $x$ 축으로 평행이동하면 $2$ 차항을 제거할 수 있고 그 후 $y$ 축으로 평행이동하면 상수항도 제거할 수 있다. 따라서
+    
+    $$g(x)=ax^{3}+bx\quad(a>0).$$
+    
+    **(2)** $g'(t)=3at^{2}+b$ 이므로 점 $\mathrm P_{0}(t,at^{3}+bt)$ 에서의 접선은
+    
+    $$y=(3at^{2}+b)x-2at^{3}.$$
+    
+    **(3)** 접선과 $g(x)$ 의 교점은 $ax^{3}+bx=(3at^{2}+b)x-2at^{3}\Longleftrightarrow a(x-t)^{2}(x+2t)=0$. $\mathrm Q_{0}\neq\mathrm P_{0}$ 이므로 $\mathrm Q_{0}=(-2t,-8at^{3}-2bt)$. 점 $\mathrm Q_{0}$ 에서의 접선의 기울기 $g'(-2t)=12at^{2}+b$ 이므로
+    
+    $$y=(12at^{2}+b)x+16at^{3}.$$
+    
+    **(4)** 두 접선이 수직이므로 $(3at^{2}+b)(12at^{2}+b)=-1$. $u=t^{2}>0$ 로 두면
+    
+    $$36a^{2}u^{2}+15ab\,u+(b^{2}+1)=0.$$
+    
+    실근 $u>0$ 가 존재할 조건: 판별식 $(15ab)^{2}-4\cdot 36a^{2}(b^{2}+1)=9a^{2}(9b^{2}-16)\ge 0$ 에서 $b^{2}\ge\tfrac{16}{9}$ 이고, $a>0$ 이므로 두 근의 합 $-\dfrac{15ab}{36a^{2}}=-\dfrac{15b}{36a}>0$ 즉 $b<0$. 따라서 $b\le-\dfrac{4}{3}$.
+    
+    한편 곡선 $y=g(x)$ 의 변곡점은 $g''(x)=6ax=0$ 에서 원점이고, 그곳에서 접선의 기울기는 $g'(0)=b$. 따라서
+    
+    $$M=\max b=-\dfrac{4}{3}.\ \square$$
+
+---
