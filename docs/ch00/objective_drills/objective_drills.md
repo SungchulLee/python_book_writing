@@ -28677,3 +28677,119 @@ $$f'(t)=-\tfrac{a}{N}g(t)f(t),\quad g'(t)=\tfrac{a}{N}g(t)f(t)-bg(t),\quad h'(t)
     $$\text{곡선의 길이}=\pi\cdot 1=\pi.\ \square$$
 
 ---
+
+## 카드 207 — 동국대학교 (2024학년도) — 자연계열 3 문제 · 9 하위문항
+
+**출처.** 2027학년도 동국대학교 논술전형 가이드북 — 자연계열 기출문제 (2024학년도) · 수리논술 3문제.
+
+**구성.** 90분, 3문제 출제. 이차곡선 통합 (수학·기하 · 4 sub) + 역함수 미분·삼각함수 덧셈정리·치환적분 (미적분 · 3 sub) + 평면 운동·삼각함수·음함수 미분법 (미적분 · 2 sub).
+
+---
+
+### 문제 1 — 이차곡선 통합 (기하 · 원·타원·포물선·쌍곡선)
+
+다음 방정식 $x^{2}+y^{2}=(kx+1)^{2}$ ($k$ 는 실수) 에 대하여 답하라.
+
+**(1)** $k=0$ 이면 원의 방정식이다. 원의 중심과 반지름을 구하라.
+
+**(2)** $k=\tfrac{1}{2}$ 이면 타원의 방정식이다. 이 타원의 초점과 꼭짓점의 좌표를 구하라.
+
+**(3)** $k=1$ 이면 포물선의 방정식이다. 이 포물선의 초점과 준선의 방정식을 구하라.
+
+**(4)** $k=2$ 이면 쌍곡선의 방정식이다. 이 쌍곡선의 초점과 점근선의 방정식을 구하라.
+
+??? success "풀이"
+    **(1)** $k=0$ : $x^{2}+y^{2}=1$. 중심 $(0,0)$, 반지름 $1$.
+    
+    **(2)** $k=\tfrac{1}{2}$ : $x^{2}+y^{2}=\bigl(\tfrac{x}{2}+1\bigr)^{2}=\tfrac{x^{2}}{4}+x+1$ 에서
+    
+    $$\dfrac{3}{4}x^{2}-x+y^{2}=1\ \Longrightarrow\ \dfrac{3}{4}\!\Bigl(x-\tfrac{2}{3}\Bigr)^{2}+y^{2}=\dfrac{4}{3}\ \Longrightarrow\ \dfrac{(x-\tfrac{2}{3})^{2}}{16/9}+\dfrac{y^{2}}{4/3}=1.$$
+    
+    기준 타원 $\dfrac{x^{2}}{16/9}+\dfrac{y^{2}}{4/3}=1$ 에서 $a=\tfrac{4}{3},\ b=\tfrac{2\sqrt 3}{3},\ c=\sqrt{a^{2}-b^{2}}=\tfrac{2}{3}$. $x$ 축 양의 방향으로 $\tfrac{2}{3}$ 평행이동하면
+    
+    - 초점 $\bigl(\tfrac{4}{3},0\bigr),\ (0,0)$
+    - 꼭짓점 $(2,0),\ \bigl(-\tfrac{2}{3},0\bigr),\ \bigl(\tfrac{2}{3},\tfrac{2\sqrt 3}{3}\bigr),\ \bigl(\tfrac{2}{3},-\tfrac{2\sqrt 3}{3}\bigr)$
+    
+    **(3)** $k=1$ : $x^{2}+y^{2}=(x+1)^{2}=x^{2}+2x+1$, 즉 $y^{2}=2x+1=2\bigl(x+\tfrac{1}{2}\bigr)$. 기준 포물선 $y^{2}=2x$ 는 $4p=2$ 에서 $p=\tfrac{1}{2}$, 초점 $\bigl(\tfrac{1}{2},0\bigr)$, 준선 $x=-\tfrac{1}{2}$. $x$ 축 방향 $-\tfrac{1}{2}$ 평행이동:
+    
+    $$\text{초점 }(0,0),\quad \text{준선 } x=-1.$$
+    
+    **(4)** $k=2$ : $x^{2}+y^{2}=(2x+1)^{2}=4x^{2}+4x+1$, $-3x^{2}-4x+y^{2}=1$, $-3\bigl(x+\tfrac{2}{3}\bigr)^{2}+y^{2}=-\tfrac{1}{3}$, 즉
+    
+    $$\dfrac{(x+\tfrac{2}{3})^{2}}{1/9}-\dfrac{y^{2}}{1/3}=1.$$
+    
+    기준 쌍곡선 $\dfrac{x^{2}}{1/9}-\dfrac{y^{2}}{1/3}=1$ 에서 $a=\tfrac{1}{3},\ b=\tfrac{\sqrt 3}{3},\ c=\sqrt{a^{2}+b^{2}}=\tfrac{2}{3}$. $x$ 축 방향 $-\tfrac{2}{3}$ 평행이동:
+    
+    $$\text{초점 }(0,0),\ \Bigl(-\tfrac{4}{3},0\Bigr),\quad \text{점근선 } y=\pm\sqrt 3\Bigl(x+\tfrac{2}{3}\Bigr).\ \square$$
+
+---
+
+### 문제 2 — 역함수 미분·탄젠트 덧셈정리·치환적분 (미적분)
+
+함수 $f(x)=\sin x+4x+1$ 의 역함수 $f^{-1}(x)$ 가 존재하고 미분가능하다. 실수 $t$ 에 대하여 곡선 $y=f(x)$ 위의 점 $(t,f(t))$ 에서의 접선을 $l_{1}$, 곡선 $y=f^{-1}(x)$ 위의 점 $(f(t),t)$ 에서의 접선을 $l_{2}$ 라 하고, $l_{1}$ 과 $l_{2}$ 가 이루는 예각의 크기를 $\theta$ 라 할 때, $g(t)=\tan\theta$ 라 한다.
+
+**(1)** $g\!\left(\tfrac{\pi}{2}\right)$ 의 값을 구하라.
+
+**(2)** 함수 $g(t)$ 의 최솟값을 구하라.
+
+**(3)** $\displaystyle\int_{f(0)}^{f(2\pi)} g\bigl(f^{-1}(x)\bigr)\,dx$ 의 값을 구하라.
+
+??? success "풀이"
+    곡선 $y=f(x)$ 위의 점 $(t,f(t))$ 에서의 접선의 기울기는 $f'(t)=\cos t+4$. 역함수의 미분법에 의하여 $l_{2}$ 의 기울기는 $\dfrac{1}{f'(t)}$. 두 접선이 $x$ 축 양의 방향과 이루는 각을 $\alpha,\beta$ 라 하면 $\tan\alpha=f'(t),\ \tan\beta=\dfrac{1}{f'(t)}$ 이므로
+    
+    $$g(t)=\tan(\alpha-\beta)=\dfrac{\tan\alpha-\tan\beta}{1+\tan\alpha\tan\beta}=\dfrac{f'(t)-\tfrac{1}{f'(t)}}{2}=\dfrac{(f'(t))^{2}-1}{2f'(t)}.$$
+    
+    **(1)** $f'\!\bigl(\tfrac{\pi}{2}\bigr)=0+4=4$ 이므로 $g\!\bigl(\tfrac{\pi}{2}\bigr)=\dfrac{16-1}{8}=\dfrac{15}{8}$.
+    
+    **(2)** $s=f'(t)=\cos t+4\in[3,5]$. $h(s)=\dfrac{s^{2}-1}{2s}=\dfrac{s}{2}-\dfrac{1}{2s}$ 의 미분은 $h'(s)=\dfrac{1}{2}+\dfrac{1}{2s^{2}}>0$ 으로 증가함수. 따라서 $h$ 의 최솟값은 $s=3$ 에서 $h(3)=\dfrac{9-1}{6}=\dfrac{4}{3}$.
+    
+    **(3)** 치환 $x=f(t)$ ($dx=f'(t)\,dt$) 를 적용하면
+    
+    $$\int_{f(0)}^{f(2\pi)} g(f^{-1}(x))\,dx=\int_{0}^{2\pi} g(t)f'(t)\,dt=\int_{0}^{2\pi}\dfrac{(f'(t))^{2}-1}{2}\,dt.$$
+    
+    $(f'(t))^{2}-1=(\cos t+4)^{2}-1=\cos^{2}t+8\cos t+15$. $\displaystyle\int_{0}^{2\pi}\cos^{2}t\,dt=\pi$, $\int_{0}^{2\pi}\cos t\,dt=0$, $\int_{0}^{2\pi}15\,dt=30\pi$ 이므로
+    
+    $$\int_{f(0)}^{f(2\pi)} g(f^{-1}(x))\,dx=\dfrac{\pi+0+30\pi}{2}=\dfrac{31\pi}{2}.\ \square$$
+
+---
+
+### 문제 3 — 원 위 점 운동·삼각함수 덧셈정리·음함수 미분법 (미적분)
+
+좌표평면 위에 중심이 원점 $\mathrm O$, 반지름 $1$ 인 원과 $x$ 축 위의 점 $\mathrm A(a,0)$ 가 있다($2\le a\le 3$). 점 $\mathrm P$ 는 점 $(1,0)$ 에서 출발하여 시각 $t$ 가 $0<t<\tfrac{\pi}{3}$ 일 때 $\angle\mathrm{POA}=t$ 를 만족하도록 원 위를 반시계방향으로 움직인다. 점 $\mathrm A$ 와 $\mathrm P$ 를 잇는 직선이 원과 만나는 점 중 $\mathrm P$ 가 아닌 점을 $\mathrm Q$ 라 하자. 시각 $t=t_{0}$ 일 때 $\mathrm Q$ 의 위치는 $(0,1)$ 이다.
+
+**(1)** $t=t_{0}$ 일 때 점 $\mathrm Q$ 의 속력을 $a$ 를 이용하여 나타내라.
+
+**(2)** $t=t_{0}$ 일 때 점 $\mathrm Q$ 의 속력이 최대가 되는 $a$ 의 값과 그때의 속력을 구하라.
+
+??? success "풀이"
+    **(1)** 시각 $t$ 에 직선 $\mathrm{OQ}$ 와 $x$ 축 양의 방향이 이루는 각을 $s(t)$ 라 하면 $\mathrm Q$ 의 좌표는 $(\cos s(t),\sin s(t))$, 속력은 $\left|\dfrac{ds}{dt}\right|$. $\mathrm Q,\mathrm P$ 에서 $x$ 축에 내린 수선의 발을 $h_{\mathrm Q},h_{\mathrm P}$ 라 하면 $\angle\mathrm{QA}h_{\mathrm Q}=\angle\mathrm{PA}h_{\mathrm P}$ 에서
+    
+    $$\dfrac{\sin s(t)}{a-\cos s(t)}=\dfrac{\sin t}{a-\cos t}\ \Longleftrightarrow\ (a-\cos t)\sin s(t)-\sin t\,(a-\cos s(t))=0.$$
+    
+    양변을 $t$ 에 대하여 미분(음함수의 미분법):
+    
+    $$\sin t\sin s+(a-\cos t)\cos s\cdot s'(t)-\cos t\,(a-\cos s)-\sin t\sin s\cdot s'(t)=0.$$
+    
+    $t=t_{0}$ 일 때 $s(t_{0})=\tfrac{\pi}{2}$ 이므로 $\cos s=0,\ \sin s=1$. 대입하면
+    
+    $$\sin t_{0}-a\cos t_{0}-\sin t_{0}\cdot s'(t_{0})=0\ \Longrightarrow\ s'(t_{0})=1-a\cdot\dfrac{\cos t_{0}}{\sin t_{0}}.$$
+    
+    따라서 $\mathrm Q$ 의 속력 $=\left|1-a\cdot\dfrac{\cos t_{0}}{\sin t_{0}}\right|$.
+    
+    **(2)** $\mathrm Q=(0,1)$, $\mathrm A=(a,0)$ 에서 $\angle\mathrm{AQO}=\alpha$ 라 하면 $\tan\alpha=a$. $|\overline{\mathrm{OQ}}|=|\overline{\mathrm{OP}}|=1$ 에서 이등변삼각형 $\triangle\mathrm{OPQ}$ 이고 $\mathrm A,\mathrm P,\mathrm Q$ 가 한 직선 위에 있으므로 $\angle\mathrm{QPO}=\alpha$. 따라서 $\angle\mathrm{QOP}=\pi-2\alpha$.
+    
+    한편 $s(t_{0})=\tfrac{\pi}{2},\ \angle\mathrm{POA}=t_{0}$ 에서 $\angle\mathrm{QOP}=\tfrac{\pi}{2}-t_{0}$. 따라서
+    
+    $$\tfrac{\pi}{2}-t_{0}=\pi-2\alpha\ \Longrightarrow\ t_{0}=2\alpha-\tfrac{\pi}{2}.$$
+    
+    $\dfrac{\cos t_{0}}{\sin t_{0}}=\cot\!\left(2\alpha-\tfrac{\pi}{2}\right)=\dfrac{\sin 2\alpha}{-\cos 2\alpha}=-\tan 2\alpha=-\dfrac{2\tan\alpha}{1-\tan^{2}\alpha}=\dfrac{2a}{a^{2}-1}.$
+    
+    따라서
+    
+    $$\text{속력}=\left|1-\dfrac{2a^{2}}{a^{2}-1}\right|=\left|-\dfrac{a^{2}+1}{a^{2}-1}\right|=1+\dfrac{2}{a^{2}-1}\quad(a>1).$$
+    
+    $a\in[2,3]$ 에서 $a^{2}-1\in[3,8]$ 이고 $1+\dfrac{2}{a^{2}-1}$ 는 $a$ 에 대한 감소함수. 따라서 $a=2$ 에서 최대값
+    
+    $$1+\dfrac{2}{3}=\dfrac{5}{3}.\ \square$$
+
+---
